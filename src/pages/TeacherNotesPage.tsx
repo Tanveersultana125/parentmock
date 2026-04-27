@@ -173,6 +173,7 @@ const TeacherNotesPage = () => {
 
   // Mark unread teacher messages as read when conversation is opened
   useEffect(() => {
+    if (!db) return; // mock build — no Firestore writes
     if (!selectedTeacher) return;
     allNotes.forEach(n => {
       if (n.teacherId === selectedTeacher.teacherId && n.from === "teacher" && n.read !== true) {

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { useAuth } from "@/lib/AuthContext";
+import { db } from "@/lib/firebase";
 import { scopedQuery } from "@/lib/scopedQuery";
 import { onSnapshot, where } from "firebase/firestore";
 
@@ -66,6 +67,7 @@ export const MobileBottomNav = (_props: MobileBottomNavProps) => {
   const [alertsCount, setAlertsCount] = useState(0);
 
   useEffect(() => {
+    if (!db) return; // mock build — no Firestore
     if (!studentData?.id) return;
     const schoolId = studentData.schoolId;
     const q = scopedQuery("risks", schoolId, where("studentId", "==", studentData.id));

@@ -32,6 +32,18 @@ const SettingsPage = () => {
 
   // ─── DATA SYNCHRONIZATION ───
   useEffect(() => {
+    if (!db) {
+      // mock build — seed the form from the mock studentData and stop.
+      if (studentData) {
+        setProfileForm({
+          name: studentData.name || "",
+          email: studentData.email || "",
+          phone: studentData.phone || "",
+          language: studentData.language || "English",
+        });
+      }
+      return;
+    }
     if (!studentData?.id) return;
 
     // Listen to real-time changes in the student/parent profile

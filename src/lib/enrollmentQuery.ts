@@ -21,6 +21,7 @@ import {
   Unsubscribe,
 } from "firebase/firestore";
 import { scopedQuery } from "./scopedQuery";
+import { db } from "./firebase";
 
 interface StudentLike {
   id?: string;
@@ -37,6 +38,12 @@ export function subscribeEnrollments(
   onError?: (err: Error) => void,
 ): Unsubscribe {
   if (!student?.id) {
+    cb([]);
+    return () => {};
+  }
+  if (!db) {
+    // mock build — no Firestore. Emit an empty list and return a no-op
+    // unsubscriber so callers can still wire effects normally.
     cb([]);
     return () => {};
   }

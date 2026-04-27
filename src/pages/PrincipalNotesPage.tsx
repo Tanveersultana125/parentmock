@@ -18,6 +18,7 @@ const PrincipalNotesPage = () => {
   const chatEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (!db) { setLoading(false); return; } // mock build — no Firestore
     if (!studentData?.id) return;
     setLoading(true);
     const schoolId = studentData.schoolId;
