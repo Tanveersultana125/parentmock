@@ -20,14 +20,27 @@ export interface CallAIOptions {
   systemPrompt?: string;
 }
 
-// Singleton callable — created once, reused across all calls
-const proxyFn = httpsCallable<
+// Lazy singleton callable. Built on first invocation so the module can be
+// imported in mock/demo builds (where `functions` is null) without crashing.
+let proxyFn: ReturnType<typeof httpsCallable<
   { prompt: string; systemPrompt?: string; jsonMode?: boolean; imageBase64?: string; model?: string },
   { content: string }
->(functions, "parentAIProxy", { timeout: 60000 });
+>> | null = null;
 
 export async function callAI(prompt: string, options: CallAIOptions = {}): Promise<any> {
   const { jsonMode = true, imageBase64, model, systemPrompt } = options;
+
+  if (!functions) {
+    // Mock/demo build — no Firebase backend. Caller's catch block will
+    // serve its fallback content.
+    throw new Error("AI backend disabled in mock build");
+  }
+  if (!proxyFn) {
+    proxyFn = httpsCallable<
+      { prompt: string; systemPrompt?: string; jsonMode?: boolean; imageBase64?: string; model?: string },
+      { content: string }
+    >(functions, "parentAIProxy", { timeout: 60000 });
+  }
 
   const result = await proxyFn({ prompt, systemPrompt, jsonMode, imageBase64, model });
   const content = result.data?.content;

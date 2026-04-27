@@ -65,7 +65,9 @@ export function useLeaderboard(): UseLeaderboardResult {
   const schoolId: string | undefined = studentData?.schoolId;
   const classId: string | undefined = studentData?.classId;
 
-  const enabled = Boolean(schoolId && classId);
+  // Mock build: no Firestore. Disable the query entirely so React Query
+  // never tries to talk to Firebase.
+  const enabled = Boolean(db && schoolId && classId);
 
   const q = useQuery<LeaderboardDoc | null, Error>({
     queryKey: ['leaderboard', schoolId, classId],

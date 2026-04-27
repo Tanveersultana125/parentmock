@@ -92,6 +92,7 @@ export function useInsights(): UseInsightsResult {
   // lives across snapshot updates as intended.
   useEffect(() => {
     if (!studentId) return;
+    if (!db) { setLoading(false); return; } // mock build — no Firestore
 
     const resolveLatestWeek = async () => {
       try {
@@ -124,6 +125,7 @@ export function useInsights(): UseInsightsResult {
       setLoading(false);
       return;
     }
+    if (!db) { setLoading(false); return; } // mock build — no Firestore
     setLoading(true);
     const ref = doc(db, `student_insights/${studentId}/weeks/${weekId}`);
     const unsub = onSnapshot(

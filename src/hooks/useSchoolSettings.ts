@@ -55,6 +55,7 @@ export function useSchoolSettings(): SchoolSettings {
   useEffect(() => {
     const schoolId = studentData?.schoolId;
     if (!schoolId) return;                         // no schoolId → keep defaults
+    if (!db) return;                               // mock build — no Firestore
 
     const unsub = onSnapshot(
       doc(db, "schools", schoolId, "settings", "general"),
