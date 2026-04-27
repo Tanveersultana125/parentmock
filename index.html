@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <!-- ── Viewport: prevent zoom, enable safe-area ────────────────────── -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+
+    <!-- Primary -->
+    <title>Edullent Parent</title>
+    <meta name="description" content="Track your child's academic progress, attendance, assignments and more." />
+    <meta name="author" content="Edullent" />
+    <meta name="keywords" content="school, parent, education, student, attendance, grades" />
+
+    <!-- ── PWA core ────────────────────────────────────────────────────── -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#0B1F3A" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://apis.google.com https://www.gstatic.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://*.firebaseio.com https://*.googleapis.com https://apis.google.com https://*.cloudfunctions.net wss://*.firebaseio.com https://fonts.gstatic.com https://unpkg.com; frame-src 'self' https://*.firebaseapp.com https://*.google.com https://accounts.google.com;" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="Edullent" />
+
+    <!-- ── Apple PWA ───────────────────────────────────────────────────── -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Edullent" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png" />
+
+    <!-- ── Apple Splash Screens — auto-picked by device via media query ─ -->
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-640x1136.png"   media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-750x1334.png"   media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-828x1792.png"   media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1125x2436.png"  media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1170x2532.png"  media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1179x2556.png"  media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1242x2208.png"  media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1242x2688.png"  media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1284x2778.png"  media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1290x2796.png"  media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1536x2048.png"  media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1620x2160.png"  media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1668x2224.png"  media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1668x2388.png"  media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-2048x2732.png"  media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+
+    <!-- ── Fonts ────────────────────────────────────────────────────────── -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+
+    <!-- ── Favicons ────────────────────────────────────────────────────── -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- ── OG / Social ────────────────────────────────────────────────── -->
+    <meta property="og:title" content="Edullent Parent" />
+    <meta property="og:description" content="Track your child's academic progress in real time." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/icons/icon-512x512.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Edullent Parent" />
+    <meta name="twitter:image" content="/icons/icon-512x512.png" />
+
+    <!-- ── Microsoft Tiles ────────────────────────────────────────────── -->
+    <meta name="msapplication-TileColor" content="#0B1F3A" />
+    <meta name="msapplication-TileImage" content="/icons/icon-144x144.png" />
+    <meta name="msapplication-tap-highlight" content="no" />
+
+    <!-- Google Fonts (non-blocking) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800;900&display=swap" />
+
+    <!-- ── Critical native-app CSS (inline = zero layout shift) ─────────
+         Prevents: pull-to-refresh, white flash, zoom rubber-banding,
+         tap highlight flash, iOS callout menus.
+         Applied before React hydrates so there's no FOUC.          -->
+    <style>
+      html {
+        overscroll-behavior: none;
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+        /* Match theme so iOS PWA cold-start has no white flash even if no
+           apple-touch-startup-image matched the device. */
+        background: #0B1F3A;
+      }
+      body {
+        overscroll-behavior: none;
+        overscroll-behavior-y: none;
+        -webkit-overflow-scrolling: touch;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        background: #0B1F3A;
+        /* NOTE: touch-action intentionally NOT set here —
+           setting it on body blocks native scroll on some Android browsers */
+        margin: 0;
+      }
+      /* Splash screen: show app color while JS loads */
+      #root:empty::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background: #0B1F3A;
+        z-index: 9999;
+      }
+    </style>
+
+    <!-- ── PDF.js ─────────────────────────────────────────────────────── -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+    <script>
+      window.pdfjsLib = window['pdfjs-dist/build/pdf'];
+      if (window.pdfjsLib) {
+        window.pdfjsLib.GlobalWorkerOptions.workerSrc =
+          'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

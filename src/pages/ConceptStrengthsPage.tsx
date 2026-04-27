@@ -1,0 +1,1966 @@
+import { useState, useEffect, useRef } from "react";
+import { toast } from "sonner";
+import {
+  CheckCircle2, CircleDashed, AlertCircle, Loader2, Lightbulb,
+  Sparkles, CalendarDays, BookOpenText, FlaskConical,
+  HelpCircle, ChevronRight, Camera, Send, Eye, RefreshCw,
+  ClipboardList, Zap, Clock, Sun, Moon, Bell, RotateCw, Image as ImageIcon
+} from "lucide-react";
+import {
+  LineChart, Line, XAxis, YAxis, CartesianGrid,
+  Tooltip, ResponsiveContainer, Legend
+} from "recharts";
+import { useAuth } from "../lib/AuthContext";
+import { db } from "../lib/firebase";
+import { collection, query, where, onSnapshot } from "firebase/firestore";
+import { ParentAIController } from "../ai/controller/ai-controller";
+import { useIsMobile } from "@/hooks/use-mobile";
+
+import { callAI } from "../ai/utils/callAI";
+
+// ── Feature tabs ─────────────────────────────────────────────────────────────
+type FeatureTab = "strengths" | "study-plan" | "explainer" | "practice" | "doubt";
+
+const FEATURE_TABS: { key: FeatureTab; label: string; icon: any; color: string }[] = [
+  { key: "strengths",  label: "Strengths",   icon: CheckCircle2,  color: "from-emerald-500 to-teal-500"   },
+  { key: "study-plan", label: "Study Plan",  icon: CalendarDays,  color: "from-indigo-500 to-violet-500"  },
+  { key: "explainer",  label: "Explain",     icon: BookOpenText,  color: "from-sky-500 to-cyan-500"       },
+  { key: "practice",   label: "Practice",    icon: FlaskConical,  color: "from-amber-500 to-orange-500"   },
+  { key: "doubt",      label: "Doubt Solver",icon: HelpCircle,    color: "from-rose-500 to-pink-500"      },
+];
+
+// ── Slot helper ──────────────────────────────────────────────────────────────
+const SLOTS = [
+  { icon: Sun,  label: "Morning",   time: "7:00 – 8:00 AM",  color: "bg-amber-50 border-amber-200",    dot: "bg-amber-400"   },
+  { icon: Clock, label: "Afternoon", time: "2:00 – 3:00 PM",  color: "bg-sky-50 border-sky-200",        dot: "bg-sky-400"     },
+  { icon: Moon,  label: "Evening",   time: "7:00 – 8:00 PM",  color: "bg-violet-50 border-violet-200",  dot: "bg-violet-400"  },
+];
+
+// ── Rule-based fallbacks ─────────────────────────────────────────────────────
+function makeStudyPlanFallback(weak: string[], subject: string): any {
+  const topics = weak.length > 0 ? weak : [subject, "General Revision"];
+  return {
+    today: SLOTS.map((s, i) => ({
+      slot: s.label, time: s.time,
+      topic: topics[i % topics.length] || "Revision",
+      activity: i === 0 ? "Read notes and highlight key points" : i === 1 ? "Solve 10 practice problems" : "Quick recall quiz",
+      duration: "45 min", reason: "Consistent spaced repetition improves retention."
+    })),
+    tomorrow: SLOTS.map((s, i) => ({
+      slot: s.label, time: s.time,
+      topic: topics[(i + 1) % topics.length] || "Review",
+      activity: i === 0 ? "Review yesterday's notes" : i === 1 ? "Attempt past-paper questions" : "Teach it back to yourself",
+      duration: "40 min", reason: "Active recall is the most effective study method."
+    }))
+  };
+}
+
+function makeExplanationFallback(topic: string): any {
+  return {
+    simple_explanation: `${topic} is a fundamental concept in your curriculum. It forms the building block for more advanced topics ahead.`,
+    real_world_example: `Think of it like everyday objects around you — once you notice the pattern, it appears everywhere!`,
+    emoji: "💡",
+    remember_points: [
+      `${topic} has a clear definition — always start from there.`,
+      "Practice applying it in different scenarios to build confidence.",
+      "Connect it to something you already know for better retention."
+    ]
+  };
+}
+
+function makePracticeFallback(topic: string): any {
+  return {
+    questions: [
+      { question: `What is the main idea behind ${topic}?`, options: ["A. It describes a process", "B. It is a type of material", "C. It is a historical event", "D. It is a mathematical formula"], correct: "A", explanation: "Understanding the core idea first helps with everything else." },
+      { question: `Which of the following is an example related to ${topic}?`, options: ["A. Water cycle", "B. Cell division", "C. Both A and B", "D. Neither"], correct: "C", explanation: "Many natural phenomena share similar patterns." },
+      { question: `${topic} is most closely related to which subject area?`, options: ["A. Science", "B. Mathematics", "C. Social Studies", "D. Depends on context"], correct: "D", explanation: "Concepts often span multiple subjects." },
+      { question: `If you wanted to demonstrate ${topic}, you would:`, options: ["A. Draw a diagram", "B. Conduct an experiment", "C. Write a definition", "D. All of the above"], correct: "D", explanation: "Multiple approaches reinforce learning." },
+      { question: `The best way to remember ${topic} is to:`, options: ["A. Read once", "B. Memorize the definition", "C. Practice with examples", "D. Skip it"], correct: "C", explanation: "Practice is always more effective than passive reading." },
+    ]
+  };
+}
+
+function makeDoubtFallback(doubt: string): any {
+  return {
+    hints: [
+      `Read the question again carefully: "${doubt.substring(0, 60)}..." — what is it really asking?`,
+      "Identify the key words or numbers in the problem. What do they represent?",
+      "Think about which formula or concept applies here. Have you seen something similar before?",
+      "Try working backwards from what the answer should look like.",
+      "Almost there! Write out each step one at a time and check if it makes sense."
+    ]
+  };
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// MOCK DATA — flip USE_MOCK_DATA to false to restore live Firestore data
+// ═══════════════════════════════════════════════════════════════════════
+const USE_MOCK_DATA = true;
+
+const MOCK_STUDENT_DATA: any = {
+  id: "mock-student-001",
+  name: "Aarav Sharma",
+  grade: "8B",
+  className: "Grade 8B",
+  rollNo: "23",
+  schoolId: "mock-school-001",
+  classId: "mock-class-001",
+  email: "aarav.sharma@example.com",
+  status: "Active",
+};
+
+const _csTs = (daysAgo: number) => {
+  const d = new Date(Date.now() - daysAgo * 86400000);
+  return {
+    seconds: Math.floor(d.getTime() / 1000),
+    toDate: () => d,
+    toMillis: () => d.getTime(),
+  };
+};
+const _csISO = (daysFromNow: number) => {
+  const d = new Date(); d.setDate(d.getDate() + daysFromNow);
+  return d.toISOString();
+};
+
+// 6 subject enrollments (matches ClassesPage roster)
+const MOCK_ENROLLMENTS: any[] = [
+  { id: "en-math",   subject: "Mathematics",      classId: "mock-class-001", className: "Grade 8B", teacherId: "t-priya",  teacherName: "Mrs. Priya Mehta",  isClassTeacher: true },
+  { id: "en-eng",    subject: "English",          classId: "mock-class-001", className: "Grade 8B", teacherId: "t-kiran",  teacherName: "Mr. Kiran Patel" },
+  { id: "en-hindi",  subject: "Hindi",            classId: "mock-class-001", className: "Grade 8B", teacherId: "t-sunita", teacherName: "Mrs. Sunita Verma" },
+  { id: "en-sci",    subject: "Science",          classId: "mock-class-001", className: "Grade 8B", teacherId: "t-anil",   teacherName: "Dr. Anil Reddy" },
+  { id: "en-social", subject: "Social Studies",   classId: "mock-class-001", className: "Grade 8B", teacherId: "t-rahul",  teacherName: "Mr. Rahul Khanna" },
+  { id: "en-cs",     subject: "Computer Science", classId: "mock-class-001", className: "Grade 8B", teacherId: "t-neha",   teacherName: "Ms. Neha Iyer" },
+];
+
+// 30+ test scores — multiple topics per subject, varied scores so the
+// Strong / Developing / Attention buckets each have realistic content.
+// Cross-page check: includes the same headline scores used in Performance / Tests / MyChild.
+const MOCK_ALL_SCORES: any[] = [
+  // ── Mathematics (8 topics) ──
+  { id: "m1", testName: "Algebra — Linear Equations",    subject: "Mathematics",      score: 46, maxScore: 50,  percentage: 92, timestamp: _csTs(3)  },
+  { id: "m2", testName: "Geometry — Triangles",          subject: "Mathematics",      score: 18, maxScore: 20,  percentage: 90, timestamp: _csTs(22) },
+  { id: "m3", testName: "Mensuration — Area & Perimeter",subject: "Mathematics",      score: 38, maxScore: 40,  percentage: 95, timestamp: _csTs(33) },
+  { id: "m4", testName: "Mid-Term Mathematics",          subject: "Mathematics",      score: 86, maxScore: 100, percentage: 86, timestamp: _csTs(50) },
+  { id: "m5", testName: "Mental Math Speed Drill",       subject: "Mathematics",      score: 24, maxScore: 25,  percentage: 96, timestamp: _csTs(28) },
+  { id: "m6", testName: "Fractions & Decimals",          subject: "Mathematics",      score: 16, maxScore: 20,  percentage: 80, timestamp: _csTs(45) },
+  { id: "m7", testName: "Word Problems Quiz",            subject: "Mathematics",      score: 14, maxScore: 20,  percentage: 70, timestamp: _csTs(60) },
+  { id: "m8", testName: "Probability Basics",            subject: "Mathematics",      score: 13, maxScore: 20,  percentage: 65, timestamp: _csTs(72) },
+
+  // ── English (7 topics) ──
+  { id: "e1", testName: "Vocabulary Quiz",               subject: "English",          score: 17, maxScore: 20,  percentage: 85, timestamp: _csTs(70) },
+  { id: "e2", testName: "Grammar — Tenses",              subject: "English",          score: 16, maxScore: 20,  percentage: 80, timestamp: _csTs(35) },
+  { id: "e3", testName: "Letter Writing",                subject: "English",          score: 22, maxScore: 25,  percentage: 88, timestamp: _csTs(56) },
+  { id: "e4", testName: "Reading Comprehension",         subject: "English",          score: 36, maxScore: 50,  percentage: 72, timestamp: _csTs(8)  },
+  { id: "e5", testName: "Essay — My Hero",               subject: "English",          score: 28, maxScore: 40,  percentage: 70, timestamp: _csTs(20) },
+  { id: "e6", testName: "Poetry Analysis",               subject: "English",          score: 12, maxScore: 20,  percentage: 60, timestamp: _csTs(48) },
+  { id: "e7", testName: "Mid-Term English",              subject: "English",          score: 78, maxScore: 100, percentage: 78, timestamp: _csTs(50) },
+
+  // ── Hindi (5 topics) ──
+  { id: "h1", testName: "Vyakaran — Sandhi",             subject: "Hindi",            score: 44, maxScore: 50,  percentage: 88, timestamp: _csTs(12) },
+  { id: "h2", testName: "Patra Lekhan",                  subject: "Hindi",            score: 18, maxScore: 20,  percentage: 90, timestamp: _csTs(25) },
+  { id: "h3", testName: "Kavita Vishleshan",             subject: "Hindi",            score: 22, maxScore: 25,  percentage: 88, timestamp: _csTs(40) },
+  { id: "h4", testName: "Apathit Gadyansh",              subject: "Hindi",            score: 16, maxScore: 20,  percentage: 80, timestamp: _csTs(58) },
+  { id: "h5", testName: "Mid-Term Hindi",                subject: "Hindi",            score: 87, maxScore: 100, percentage: 87, timestamp: _csTs(50) },
+
+  // ── Science (7 topics) ──
+  { id: "s1", testName: "Force, Motion & Energy Quiz",   subject: "Science",          score: 17, maxScore: 20,  percentage: 85, timestamp: _csTs(5)  },
+  { id: "s2", testName: "Photosynthesis Test",           subject: "Science",          score: 43, maxScore: 50,  percentage: 86, timestamp: _csTs(40) },
+  { id: "s3", testName: "Sound & Light Concepts",        subject: "Science",          score: 18, maxScore: 20,  percentage: 90, timestamp: _csTs(65) },
+  { id: "s4", testName: "Cells & Microorganisms",        subject: "Science",          score: 21, maxScore: 25,  percentage: 84, timestamp: _csTs(36) },
+  { id: "s5", testName: "Chemical Reactions Lab",        subject: "Science",          score: 17, maxScore: 25,  percentage: 68, timestamp: _csTs(32) },
+  { id: "s6", testName: "Acids, Bases & Salts",          subject: "Science",          score: 13, maxScore: 20,  percentage: 65, timestamp: _csTs(54) },
+  { id: "s7", testName: "Mid-Term Science",              subject: "Science",          score: 84, maxScore: 100, percentage: 84, timestamp: _csTs(50) },
+
+  // ── Social Studies (5 topics) ──
+  { id: "ss1", testName: "Indian History — Mughal Era",  subject: "Social Studies",   score: 16, maxScore: 20,  percentage: 80, timestamp: _csTs(15) },
+  { id: "ss2", testName: "Civics — Constitution Quiz",   subject: "Social Studies",   score: 33, maxScore: 40,  percentage: 82, timestamp: _csTs(38) },
+  { id: "ss3", testName: "Geography — India Map Test",   subject: "Social Studies",   score: 18, maxScore: 25,  percentage: 72, timestamp: _csTs(22) },
+  { id: "ss4", testName: "World Geography Basics",       subject: "Social Studies",   score: 13, maxScore: 20,  percentage: 65, timestamp: _csTs(60) },
+  { id: "ss5", testName: "Mid-Term Social Studies",      subject: "Social Studies",   score: 80, maxScore: 100, percentage: 80, timestamp: _csTs(50) },
+
+  // ── Computer Science (5 topics) ──
+  { id: "c1", testName: "HTML Basics Test",              subject: "Computer Science", score: 19, maxScore: 20,  percentage: 95, timestamp: _csTs(28) },
+  { id: "c2", testName: "Python Logic Quiz",             subject: "Computer Science", score: 21, maxScore: 25,  percentage: 84, timestamp: _csTs(28) },
+  { id: "c3", testName: "Cyber Safety Quiz",             subject: "Computer Science", score: 18, maxScore: 20,  percentage: 90, timestamp: _csTs(45) },
+  { id: "c4", testName: "Project Submission",            subject: "Computer Science", score: 17, maxScore: 20,  percentage: 85, timestamp: _csTs(70) },
+  { id: "c5", testName: "Spreadsheet Basics",            subject: "Computer Science", score: 14, maxScore: 20,  percentage: 70, timestamp: _csTs(80) },
+];
+
+// 90 weekday attendance records (matches AttendancePage / MyChildPage — ~92% present)
+const MOCK_ATTENDANCE: any[] = (() => {
+  const records: any[] = [];
+  const today = new Date();
+  for (let i = 0; i < 120; i++) {
+    const d = new Date(today);
+    d.setDate(today.getDate() - i);
+    if (d.getDay() === 0 || d.getDay() === 6) continue;
+    const pos = i % 25;
+    const status = pos === 7 || pos === 19 ? "absent" : pos === 13 ? "late" : "present";
+    records.push({ id: `att-${i}`, date: d.toLocaleDateString("en-CA"), status });
+  }
+  return records;
+})();
+
+// 7 assignments (matches AssignmentsPage / MyChildPage)
+const MOCK_ASSIGNMENTS: any[] = [
+  { id: "as1", title: "Mathematics Chapter 5 Worksheet",        classId: "mock-class-001", subject: "Mathematics",      teacherName: "Mrs. Priya Mehta",  dueDate: _csISO(2) },
+  { id: "as2", title: "Science Lab Report — Photosynthesis",    classId: "mock-class-001", subject: "Science",          teacherName: "Dr. Anil Reddy",    dueDate: _csISO(3) },
+  { id: "as3", title: "English Essay — My Hero",                classId: "mock-class-001", subject: "English",          teacherName: "Mr. Kiran Patel",   dueDate: _csISO(5) },
+  { id: "as4", title: "Hindi Vyakaran Exercise",                classId: "mock-class-001", subject: "Hindi",            teacherName: "Mrs. Sunita Verma", dueDate: _csISO(-2) },
+  { id: "as5", title: "Social Studies Map Work",                classId: "mock-class-001", subject: "Social Studies",   teacherName: "Mr. Rahul Khanna",  dueDate: _csISO(1) },
+  { id: "as6", title: "Computer Science Project — HTML Resume", classId: "mock-class-001", subject: "Computer Science", teacherName: "Ms. Neha Iyer",     dueDate: _csISO(-7) },
+  { id: "as7", title: "Mathematics Practice Set — Mensuration", classId: "mock-class-001", subject: "Mathematics",      teacherName: "Mrs. Priya Mehta",  dueDate: _csISO(4) },
+];
+
+// AI mastery analysis fallback
+const MOCK_AI_ANALYSIS = {
+  recommended_focus:
+    "Spend extra time on Probability Basics in Mathematics (65%) and Acids, Bases & Salts in Science (65%) — these are the weakest concept areas. 20 minutes of focused practice on each, twice a week, should lift them above 80% within a month.",
+  overall_assessment:
+    "Aarav shows strong conceptual mastery across most subjects (avg 84%). Mathematics fundamentals, Hindi grammar and Computer Science are clear strengths. Areas that need attention: English Poetry, Probability and Acids/Bases — all currently in the 60-70% range.",
+  strengths_summary: [
+    "Excellent grasp of Mensuration & Mental Math in Mathematics (95-96%)",
+    "Strong Hindi Vyakaran and Patra Lekhan (88-90%)",
+    "HTML Basics and Cyber Safety mastered in Computer Science (90-95%)",
+    "Sound & Light concepts well understood in Science (90%)",
+  ],
+  weakness_summary: [
+    "Probability Basics — 65% (needs concept clarity)",
+    "Acids, Bases & Salts — 65% (revise pH and reactions)",
+    "Poetry Analysis — 60% (work on figurative language)",
+    "World Geography — 65% (continent + country mapping)",
+  ],
+  next_steps: [
+    "Tackle 5 probability tree problems daily this week",
+    "Review pH scale + acid-base indicators with Dr. Reddy",
+    "Read 1 short poem daily and identify literary devices",
+  ],
+};
+
+// Pre-loaded 2-day study plan — user can re-generate but page is rich on first load
+const MOCK_STUDY_PLAN = {
+  today: [
+    { slot: "Morning",   time: "7:00 – 8:00 AM",  topic: "Probability Basics",        activity: "Read NCERT chapter 14 + solve 5 introductory examples", duration: "60 min", reason: "Tackle the weakest topic when the mind is freshest." },
+    { slot: "Afternoon", time: "2:00 – 3:00 PM",  topic: "Acids, Bases & Salts",      activity: "Review pH scale notes + draw the indicator colour chart", duration: "45 min", reason: "Visual recall strengthens chemistry retention." },
+    { slot: "Evening",   time: "7:00 – 8:00 PM",  topic: "Mathematics — Mixed",       activity: "Solve 8 word problems mixing fractions and probability", duration: "45 min", reason: "Mixed practice prevents siloed thinking." },
+  ],
+  tomorrow: [
+    { slot: "Morning",   time: "7:00 – 8:00 AM",  topic: "English Poetry",            activity: "Read 1 short poem + identify metaphor, simile, alliteration", duration: "30 min", reason: "Daily contact with literary devices builds fluency." },
+    { slot: "Afternoon", time: "2:00 – 3:00 PM",  topic: "World Geography",           activity: "Label all 7 continents and 10 major countries on outline map", duration: "30 min", reason: "Spatial memory needs repeated map drawing." },
+    { slot: "Evening",   time: "7:00 – 8:00 PM",  topic: "Probability — Recall",      activity: "Re-attempt yesterday's 5 problems without notes", duration: "40 min", reason: "Active recall is the strongest study method." },
+  ],
+};
+
+// Pre-loaded sample explanation (default topic = Probability Basics, the weakest area)
+const MOCK_EXPLAIN_TOPIC = "Probability Basics";
+const MOCK_EXPLANATION = {
+  simple_explanation:
+    "Probability is just a way of measuring how likely something is to happen. We give it a number between 0 and 1 — where 0 means it definitely won't happen, and 1 means it definitely will. Anything in between is our level of confidence.",
+  real_world_example:
+    "Think of flipping a coin. There are 2 outcomes — heads or tails — and each is equally likely. So the probability of heads is 1 out of 2, which we write as 1/2 or 0.5 or 50%. The same idea works for rolling a dice, picking a card, or guessing tomorrow's weather.",
+  emoji: "🎲",
+  remember_points: [
+    "Probability = (number of favourable outcomes) ÷ (total possible outcomes)",
+    "All probabilities are always between 0 and 1 — no negatives, never above 1",
+    "When events are independent, multiply their probabilities to get the combined chance",
+    "P(event won't happen) = 1 − P(event happens)",
+  ],
+};
+
+// Pre-loaded practice questions (default topic — Mathematics weak area)
+const MOCK_PRACTICE_TOPIC = "Probability Basics";
+const MOCK_PRACTICE_QUESTIONS = [
+  {
+    question: "If you toss a fair coin once, what is the probability of getting heads?",
+    options: ["A. 0", "B. 0.25", "C. 0.5", "D. 1"],
+    correct: "C",
+    explanation: "A fair coin has 2 equally likely outcomes — heads or tails. So P(heads) = 1/2 = 0.5.",
+  },
+  {
+    question: "A bag contains 3 red and 7 blue marbles. What is the probability of drawing a red marble?",
+    options: ["A. 3/10", "B. 7/10", "C. 1/2", "D. 1/3"],
+    correct: "A",
+    explanation: "Favourable outcomes = 3 (red), total outcomes = 10. So probability = 3/10.",
+  },
+  {
+    question: "What is the probability of an impossible event?",
+    options: ["A. -1", "B. 0", "C. 0.5", "D. 1"],
+    correct: "B",
+    explanation: "An impossible event can never happen, so its probability is exactly 0.",
+  },
+  {
+    question: "If P(rain tomorrow) = 0.7, what is P(no rain tomorrow)?",
+    options: ["A. 0.7", "B. 0.5", "C. 0.3", "D. 1.0"],
+    correct: "C",
+    explanation: "P(not A) = 1 − P(A). So P(no rain) = 1 − 0.7 = 0.3.",
+  },
+  {
+    question: "A dice is rolled once. What is the probability of getting an even number?",
+    options: ["A. 1/6", "B. 1/3", "C. 1/2", "D. 2/3"],
+    correct: "C",
+    explanation: "Even numbers on a dice = {2, 4, 6} — that's 3 favourable out of 6 total = 1/2.",
+  },
+];
+
+// Pre-loaded doubt + Socratic hints (so the doubt-solver tab is non-empty on first load)
+const MOCK_DOUBT_TEXT = "How do I find the probability of getting a sum of 7 when rolling two dice?";
+const MOCK_DOUBT_HINTS = [
+  "Start by listing every possible outcome when you roll two dice — how many total combinations are there?",
+  "Now think about which of those combinations actually add up to 7. Try writing them out as pairs (1,6), (2,5)…",
+  "How many such pairs did you find? Be careful — (1,6) and (6,1) count as different outcomes when you have two distinct dice.",
+  "Once you have the count of favourable outcomes, what's the formula? Probability = favourable ÷ total.",
+  "You're almost there! You should have 6 favourable pairs out of 36 total — what fraction does that simplify to?",
+];
+
+// ── Main Component ────────────────────────────────────────────────────────────
+const ConceptStrengthsPage = () => {
+  const { studentData: _liveStudentData } = useAuth();
+  const studentData = USE_MOCK_DATA ? MOCK_STUDENT_DATA : _liveStudentData;
+  const isMobile = useIsMobile();
+
+  // ── Firestore data ──
+  const [enrollments, setEnrollments] = useState<any[]>(USE_MOCK_DATA ? MOCK_ENROLLMENTS : []);
+  const [allScores, setAllScores] = useState<any[]>(USE_MOCK_DATA ? MOCK_ALL_SCORES : []);
+  const [attendance, setAttendance] = useState<any[]>(USE_MOCK_DATA ? MOCK_ATTENDANCE : []);
+  const [assignments, setAssignments] = useState<any[]>(USE_MOCK_DATA ? MOCK_ASSIGNMENTS : []);
+  const [aiAnalysis, setAiAnalysis] = useState<any>(USE_MOCK_DATA ? MOCK_AI_ANALYSIS : null);
+  // Default active subject = first enrollment so the strengths panel populates immediately.
+  const [activeSubject, setActiveSubject] = useState<string>(USE_MOCK_DATA ? (MOCK_ENROLLMENTS[0]?.subject || "") : "");
+  const [loading, setLoading] = useState(USE_MOCK_DATA ? false : true);
+  const [analyzing, setAnalyzing] = useState(false);
+
+  // ── Feature state ──
+  const [activeFeature, setActiveFeature] = useState<FeatureTab>("strengths");
+
+  // Study Plan
+  const [studyPlan, setStudyPlan] = useState<any>(USE_MOCK_DATA ? MOCK_STUDY_PLAN : null);
+  const [generatingPlan, setGeneratingPlan] = useState(false);
+
+  // Concept Explainer
+  const [explainTopic, setExplainTopic] = useState(USE_MOCK_DATA ? MOCK_EXPLAIN_TOPIC : "");
+  const [explanation, setExplanation] = useState<any>(USE_MOCK_DATA ? MOCK_EXPLANATION : null);
+  const [generatingExplanation, setGeneratingExplanation] = useState(false);
+
+  // Practice Problems
+  const [practiceTopic, setPracticeTopic] = useState(USE_MOCK_DATA ? MOCK_PRACTICE_TOPIC : "");
+  const [questions, setQuestions] = useState<any[]>(USE_MOCK_DATA ? MOCK_PRACTICE_QUESTIONS : []);
+  const [generatingQuestions, setGeneratingQuestions] = useState(false);
+  const [selectedAnswers, setSelectedAnswers] = useState<Record<number, string>>({});
+  const [revealedAnswers, setRevealedAnswers] = useState<Set<number>>(new Set());
+
+  // Doubt Solver
+  const [doubtText, setDoubtText] = useState(USE_MOCK_DATA ? MOCK_DOUBT_TEXT : "");
+  const [doubtImageB64, setDoubtImageB64] = useState<string | null>(null);
+  const [doubtImagePreview, setDoubtImagePreview] = useState<string | null>(null);
+  const [doubtHints, setDoubtHints] = useState<string[]>(USE_MOCK_DATA ? MOCK_DOUBT_HINTS : []);
+  const [hintIndex, setHintIndex] = useState(0);
+  const [generatingDoubt, setGeneratingDoubt] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // ── Firestore listeners ──────────────────────────────────────────────────
+  useEffect(() => {
+    if (USE_MOCK_DATA) return; // Mock mode: enrollments/scores/attendance/assignments pre-seeded above
+    if (!studentData?.id || !studentData?.schoolId) return;
+    const schoolId = studentData.schoolId;
+    setLoading(true);
+    const studentEmail = studentData.email?.toLowerCase() || "";
+
+    let snap1Cache: any = null, snap2Cache: any = null;
+    let assignUnsub: (() => void) | null = null;
+
+    const onListenerError = (label: string) => (err: Error) => {
+      console.error(`[ConceptStrengths] ${label} listener error:`, err);
+      setLoading(false);
+    };
+
+    const subscribeAssignments = (classIds: string[]) => {
+      if (assignUnsub) { assignUnsub(); assignUnsub = null; }
+      if (classIds.length === 0) { setLoading(false); return; }
+      assignUnsub = onSnapshot(
+        query(
+          collection(db, "assignments"),
+          where("schoolId", "==", schoolId),
+          where("classId", "in", classIds.slice(0, 10)),
+        ),
+        (snap) => { setAssignments(snap.docs.map(d => ({ id: d.id, ...d.data() } as any))); setLoading(false); },
+        onListenerError("assignments"),
+      );
+    };
+
+    const mergeEnrollments = () => {
+      const enrollMap = new Map();
+      [...(snap1Cache?.docs || []), ...(snap2Cache?.docs || [])].forEach((d: any) => {
+        if (!enrollMap.has(d.id)) enrollMap.set(d.id, { id: d.id, ...d.data() });
+      });
+      const data = Array.from(enrollMap.values()) as any[];
+      const filtered = data.filter((en: any) => (en.subject || en.className || "").toLowerCase() !== "general");
+      const sorted = filtered.sort((a: any, b: any) => (a.subject || "").localeCompare(b.subject || ""));
+      setEnrollments(sorted);
+      setActiveSubject(prev => prev || (sorted[0]?.subject || sorted[0]?.className || ""));
+      const classIds = [...new Set([...(snap1Cache?.docs || []), ...(snap2Cache?.docs || [])].map((d: any) => d.data().classId).filter(Boolean))] as string[];
+      subscribeAssignments(classIds);
+    };
+
+    const u1 = onSnapshot(query(collection(db, "enrollments"), where("schoolId", "==", schoolId), where("studentId", "==", studentData.id)), s => { snap1Cache = s; mergeEnrollments(); }, onListenerError("enrollments (by id)"));
+    const u2 = studentEmail ? onSnapshot(query(collection(db, "enrollments"), where("schoolId", "==", schoolId), where("studentEmail", "==", studentEmail)), s => { snap2Cache = s; mergeEnrollments(); }, onListenerError("enrollments (by email)")) : () => {};
+
+    let s1: any = null, s2: any = null, g1: any = null, g2: any = null;
+    const processScores = () => {
+      const combined = [...(s1?.docs || []), ...(s2?.docs || [])].map(d => ({ id: d.id, ...d.data() as any }));
+      const gb = [...(g1?.docs || []), ...(g2?.docs || [])].map(d => {
+        const data = d.data();
+        return { id: d.id, ...data, testName: data.columnName || "Class Assessment", score: data.mark, maxScore: data.maxMarks || 100, type: "gradebook" };
+      });
+      setAllScores(Array.from(new Map([...combined, ...gb].map(d => [d.id, d])).values()));
+    };
+
+    const u3 = onSnapshot(query(collection(db, "test_scores"), where("schoolId", "==", schoolId), where("studentId", "==", studentData.id)), snap => { s1 = snap; processScores(); }, onListenerError("test_scores (by id)"));
+    const u4 = studentEmail ? onSnapshot(query(collection(db, "test_scores"), where("schoolId", "==", schoolId), where("studentEmail", "==", studentEmail)), snap => { s2 = snap; processScores(); }, onListenerError("test_scores (by email)")) : () => {};
+    const u5 = onSnapshot(query(collection(db, "gradebook_scores"), where("schoolId", "==", schoolId), where("studentId", "==", studentData.id)), snap => { g1 = snap; processScores(); }, onListenerError("gradebook_scores (by id)"));
+    const u6 = studentEmail ? onSnapshot(query(collection(db, "gradebook_scores"), where("schoolId", "==", schoolId), where("studentEmail", "==", studentEmail)), snap => { g2 = snap; processScores(); }, onListenerError("gradebook_scores (by email)")) : () => {};
+
+    let a1: any = null, a2: any = null;
+    const processAtt = () => setAttendance(Array.from(new Map([...(a1?.docs || []), ...(a2?.docs || [])].map(d => [d.id, { id: d.id, ...d.data() as any }])).values()));
+    const u7 = onSnapshot(query(collection(db, "attendance"), where("schoolId", "==", schoolId), where("studentId", "==", studentData.id)), snap => { a1 = snap; processAtt(); }, onListenerError("attendance (by id)"));
+    const u8 = studentEmail ? onSnapshot(query(collection(db, "attendance"), where("schoolId", "==", schoolId), where("studentEmail", "==", studentEmail)), snap => { a2 = snap; processAtt(); }, onListenerError("attendance (by email)")) : () => {};
+
+    return () => { u1(); u2(); u3(); u4(); u5(); u6(); u7(); u8(); if (assignUnsub) assignUnsub(); };
+  }, [studentData?.id, studentData?.schoolId]);
+
+  useEffect(() => {
+    if (USE_MOCK_DATA) return; // Mock mode: aiAnalysis pre-seeded above
+    const fetchAI = async () => {
+      if (enrollments.length > 0 && !aiAnalysis && !analyzing) {
+        setAnalyzing(true);
+        try {
+          const context = { scores: allScores, assignments, attendance, enrolled_subjects: Array.from(new Set(enrollments.map(e => e.subject || e.className || "General"))) };
+          const result = await ParentAIController.getRealConceptMastery(studentData?.name || "Student", context);
+          if (result.status === "success") setAiAnalysis(result.data);
+        } finally { setAnalyzing(false); }
+      }
+    };
+    fetchAI();
+  }, [enrollments, allScores, assignments, attendance]);
+
+  // ── Derived data ──────────────────────────────────────────────────────────
+  const studentName = studentData?.name?.split(" ")[0] || "Student";
+
+  const getLocalMasteryData = () => {
+    const subjectScores = allScores.filter(s => {
+      if (!activeSubject) return true;
+      const sub = (s.subject || s.className || "General").toLowerCase();
+      const active = activeSubject.toLowerCase();
+      return sub === active || sub.includes(active) || active.includes(sub) || sub === "general";
+    });
+    const strong: { title: string; pct: number }[] = [];
+    const developing: { title: string; pct: number }[] = [];
+    const attention: { title: string; pct: number }[] = [];
+    subjectScores.forEach(s => {
+      const pct = s.percentage ?? (s.maxScore ? (s.score / s.maxScore * 100) : 0);
+      const item = { title: s.testName || s.title || "Assessment", pct: Math.round(pct) };
+      if (pct >= 85) strong.push(item);
+      else if (pct >= 70) developing.push(item);
+      else attention.push(item);
+    });
+    return { strong, developing, attention };
+  };
+
+  const currentData = getLocalMasteryData();
+  const weakTopics = currentData.attention.map(a => a.title);
+
+  const getChartData = () => {
+    if (allScores.length === 0) return [];
+    const dates = allScores.map(s => {
+      const d = s.timestamp?.toDate ? s.timestamp.toDate() : new Date(s.timestamp || s.createdAt || Date.now());
+      return d.getTime();
+    }).filter(t => !isNaN(t));
+    if (dates.length === 0) dates.push(Date.now());
+    const minD = new Date(Math.min(...dates));
+    const maxD = new Date();
+    let startD = new Date(minD.getFullYear(), minD.getMonth(), 1);
+    const endD = new Date(maxD.getFullYear(), maxD.getMonth(), 1);
+    const diff = (endD.getFullYear() - startD.getFullYear()) * 12 + (endD.getMonth() - startD.getMonth());
+    if (diff > 11) startD = new Date(endD.getFullYear(), endD.getMonth() - 11, 1);
+    else if (diff === 0) startD = new Date(endD.getFullYear(), endD.getMonth() - 3, 1);
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const displayMonths: any[] = [];
+    let curr = new Date(startD);
+    while (curr <= endD) {
+      displayMonths.push({ name: monthNames[curr.getMonth()], index: curr.getMonth(), year: curr.getFullYear() });
+      curr.setMonth(curr.getMonth() + 1);
+    }
+    const subjectList = enrollments.map(e => e.subject || e.className || "General");
+    return displayMonths.map(m => {
+      const entry: any = { month: m.name };
+      subjectList.forEach(sub => {
+        const subScores = allScores.filter(s => {
+          const sDate = s.timestamp?.toDate ? s.timestamp.toDate() : new Date(s.timestamp || s.createdAt || Date.now());
+          const scoreSub = (s.subject || s.className || "General").toLowerCase();
+          const activeSub = sub.toLowerCase();
+          return sDate.getMonth() === m.index && sDate.getFullYear() === m.year &&
+            (scoreSub.includes(activeSub) || activeSub.includes(scoreSub) || scoreSub === "general");
+        });
+        entry[sub] = subScores.length > 0 ? Math.round(subScores.reduce((a, s) => a + (s.percentage ?? (s.maxScore ? s.score / s.maxScore * 100 : 0)), 0) / subScores.length) : null;
+      });
+      return entry;
+    });
+  };
+
+  const chartData = getChartData();
+  const subjectList = enrollments.map(e => e.subject || e.className || "General");
+  const lineColors = ["#16a34a", "#1e3a8a", "#ef4444", "#f59e0b", "#8b5cf6"];
+  const recommendedFocus = currentData.attention[0]?.title
+    ? `Spend extra time on ${currentData.attention[0].title.toLowerCase()} and practice problems.`
+    : aiAnalysis?.recommended_focus || null;
+
+  // ── AI Feature Handlers ───────────────────────────────────────────────────
+  const handleGeneratePlan = async () => {
+    setGeneratingPlan(true);
+    try {
+      const prompt = `Generate a 2-day study plan for a school student named ${studentName}.
+Subject focus: ${activeSubject || "General"}
+Weak topics: ${weakTopics.slice(0, 4).join(", ") || "General revision"}
+Return JSON with keys "today" and "tomorrow", each an array of 3 objects with: slot ("Morning"/"Afternoon"/"Evening"), time, topic, activity, duration, reason.`;
+      const result = await callAI(prompt);
+      setStudyPlan(result);
+    } catch {
+      setStudyPlan(makeStudyPlanFallback(weakTopics, activeSubject));
+    } finally { setGeneratingPlan(false); }
+  };
+
+  const handleExplain = async (topicOverride?: string) => {
+    const topic = topicOverride || explainTopic.trim();
+    if (!topic) return;
+    setExplainTopic(topic);
+    setGeneratingExplanation(true);
+    setExplanation(null);
+    try {
+      const prompt = `Explain "${topic}" to a school student (age 10-16) in very simple language.
+Use a real-world example they can relate to.
+Return JSON: { simple_explanation: "...", real_world_example: "...", emoji: "one emoji", remember_points: ["point1", "point2", "point3"] }`;
+      const result = await callAI(prompt);
+      setExplanation(result);
+    } catch {
+      setExplanation(makeExplanationFallback(topic));
+    } finally { setGeneratingExplanation(false); }
+  };
+
+  const handleGenerateQuestions = async () => {
+    const topic = practiceTopic.trim() || activeSubject || "General";
+    setGeneratingQuestions(true);
+    setQuestions([]);
+    setSelectedAnswers({});
+    setRevealedAnswers(new Set());
+    try {
+      const prompt = `Generate exactly 5 multiple-choice questions about "${topic}" for a school student.
+Make questions progressively harder (easy → medium → hard).
+Return JSON: { questions: [{ question: "...", options: ["A. ...", "B. ...", "C. ...", "D. ..."], correct: "A", explanation: "..." }] }`;
+      const result = await callAI(prompt);
+      setQuestions(result.questions || []);
+    } catch {
+      setQuestions(makePracticeFallback(topic).questions);
+    } finally { setGeneratingQuestions(false); }
+  };
+
+  const handleDoubtSubmit = async () => {
+    if (!doubtText.trim() && !doubtImageB64) return;
+    setGeneratingDoubt(true);
+    setDoubtHints([]);
+    setHintIndex(0);
+    try {
+      if (doubtImageB64) {
+        const prompt = `This student has a homework or exam question. Guide them step by step WITHOUT directly solving it. Use the Socratic method — ask leading questions and give progressive hints. Format as numbered hints (1. ... 2. ... 3. ... 4. ... 5. ...)`;
+        const text = await callAI(prompt, { jsonMode: false, imageBase64: doubtImageB64 });
+        const hints = text.split(/\n+/).filter((l: string) => /^\d+\./.test(l.trim())).map((l: string) => l.replace(/^\d+\.\s*/, ""));
+        setDoubtHints(hints.length > 0 ? hints : [text]);
+      } else {
+        const prompt = `A school student has this doubt: "${doubtText}"
+Guide them step by step WITHOUT giving the final answer. Use progressive hints (Socratic method).
+Return JSON: { hints: ["hint1 (gentle nudge)", "hint2", "hint3", "hint4", "hint5 (near solution)"] }`;
+        const result = await callAI(prompt);
+        setDoubtHints(result.hints || []);
+      }
+    } catch {
+      setDoubtHints(makeDoubtFallback(doubtText).hints);
+    } finally { setGeneratingDoubt(false); }
+  };
+
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    // Reject files > 4MB — OpenAI token limit and network protection
+    const MAX_SIZE_MB = 4;
+    if (file.size > MAX_SIZE_MB * 1024 * 1024) {
+      toast.error(`Image too large. Please upload a photo under ${MAX_SIZE_MB}MB.`);
+      e.target.value = "";
+      return;
+    }
+    // Only allow image types
+    if (!file.type.startsWith("image/")) {
+      toast.error("Only image files are supported.");
+      e.target.value = "";
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      const result = ev.target?.result as string;
+      setDoubtImagePreview(result);
+      setDoubtImageB64(result.split(",")[1]);
+      setDoubtText("");
+    };
+    reader.readAsDataURL(file);
+  };
+
+  // ── Loading ───────────────────────────────────────────────────────────────
+  if (loading) {
+    return (
+      <div className="h-[70vh] flex flex-col items-center justify-center">
+        <Loader2 className="w-10 h-10 text-indigo-500 animate-spin mb-3" />
+        <p className="text-xs text-slate-400 font-semibold">Loading concept data...</p>
+      </div>
+    );
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     MOBILE — Bright Blue Apple UI
+     ═══════════════════════════════════════════════════════════════ */
+  if (isMobile) {
+    const B1 = "#0055FF", B2 = "#1166FF", B3 = "#2277FF";
+    const BG = "#EEF4FF", BG2 = "#E0ECFF";
+    const GREEN = "#00C853", GREEN2 = "#00A040";
+    const ORANGE = "#FF8800";
+    const RED = "#FF3355";
+    const TEAL = "#00C4B4";
+    const PINK = "#FF3BA8";
+    const T1 = "#001040", T2 = "#002080", T3 = "#5070B0", T4 = "#99AACC";
+    const SEP = "rgba(0,85,255,0.07)";
+    const BLUE_BDR = "rgba(0,85,255,0.12)";
+    const SH = "0 0 0 0.5px rgba(0,85,255,0.08), 0 2px 8px rgba(0,85,255,0.08), 0 10px 24px rgba(0,85,255,0.10)";
+    const SH_LG = "0 0 0 0.5px rgba(0,85,255,0.10), 0 4px 16px rgba(0,85,255,0.11), 0 18px 44px rgba(0,85,255,0.13)";
+    const SH_BTN = "0 6px 20px rgba(0,85,255,0.40), 0 2px 5px rgba(0,85,255,0.22)";
+
+    const tabStyles: Record<FeatureTab, { gradient: string; shadow: string; icon: any; label: string }> = {
+      "strengths":  { gradient: `linear-gradient(135deg, ${GREEN}, #22EE66)`, shadow: "0 3px 12px rgba(0,200,83,0.30)", icon: CheckCircle2, label: "Strengths" },
+      "study-plan": { gradient: `linear-gradient(135deg, ${B1}, ${B2})`,       shadow: SH_BTN,                            icon: CalendarDays, label: "Study Plan" },
+      "explainer":  { gradient: `linear-gradient(135deg, ${TEAL}, #22DDCC)`,   shadow: "0 3px 12px rgba(0,196,180,0.30)", icon: BookOpenText, label: "Explain" },
+      "practice":   { gradient: `linear-gradient(135deg, ${ORANGE}, #FFAA22)`, shadow: "0 3px 12px rgba(255,136,0,0.30)", icon: FlaskConical, label: "Practice" },
+      "doubt":      { gradient: `linear-gradient(135deg, ${PINK}, #FF77CC)`,   shadow: "0 3px 12px rgba(255,59,168,0.30)", icon: HelpCircle,  label: "Doubt Solver" },
+    };
+
+    return (
+      <div className="animate-in fade-in duration-500 -mx-3 -mt-3 md:mx-0 md:mt-0"
+        style={{ fontFamily: "'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif", background: BG, minHeight: "100vh" }}>
+
+        {/* Page Head */}
+        <div className="px-5 pt-4">
+          <div className="text-[9px] font-bold uppercase tracking-[0.10em] mb-1 flex items-center gap-[6px]" style={{ color: T4 }}>
+            <span className="w-[5px] h-[5px] rounded-full" style={{ background: GREEN, boxShadow: "0 0 0 2px rgba(0,200,83,0.2)" }} />
+            Parent Dashboard
+          </div>
+          <div className="text-[24px] font-bold" style={{ color: T1, letterSpacing: "-0.6px" }}>Concept Strengths</div>
+          <div className="text-[12px] mt-[2px] font-normal" style={{ color: T3 }}>
+            AI-powered learning tools for <strong style={{ color: B1, fontWeight: 700 }}>{studentName}</strong>
+          </div>
+        </div>
+
+        {/* Horizontal Feature Tabs */}
+        <div className="pt-[14px]">
+          <div className="flex gap-[6px] px-5 overflow-x-auto" style={{ scrollbarWidth: "none" }}>
+            {FEATURE_TABS.map(tab => {
+              const ts = tabStyles[tab.key];
+              const Icon = ts.icon;
+              const isActive = activeFeature === tab.key;
+              return (
+                <button key={tab.key} onClick={() => setActiveFeature(tab.key)}
+                  className="flex items-center gap-[5px] px-[14px] py-[8px] rounded-[14px] text-[12px] font-bold whitespace-nowrap shrink-0 active:scale-[0.94] transition-transform"
+                  style={isActive ? {
+                    background: ts.gradient, color: "#fff",
+                    boxShadow: ts.shadow,
+                    letterSpacing: "-0.1px",
+                    transitionTimingFunction: "cubic-bezier(0.34,1.56,0.64,1)"
+                  } : {
+                    background: "#fff", color: T3,
+                    border: `0.5px solid ${BLUE_BDR}`,
+                    boxShadow: SH,
+                    letterSpacing: "-0.1px",
+                    transitionTimingFunction: "cubic-bezier(0.34,1.56,0.64,1)"
+                  }}>
+                  <Icon className="w-[13px] h-[13px]" strokeWidth={isActive ? 2.5 : 2.2} />
+                  {ts.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {analyzing && (
+          <div className="mx-5 mt-3 flex items-center gap-2 px-4 py-2 rounded-[12px]" style={{ background: "rgba(0,85,255,0.08)", border: "0.5px solid rgba(0,85,255,0.18)" }}>
+            <Loader2 className="w-[14px] h-[14px] animate-spin" style={{ color: B1 }} />
+            <span className="text-[11px] font-bold" style={{ color: B1 }}>AI syncing...</span>
+          </div>
+        )}
+
+        {/* ═══ TAB 1: STRENGTHS ═══ */}
+        {activeFeature === "strengths" && (
+          <>
+            {/* Teacher / Subject Pills */}
+            {enrollments.length > 0 && (
+              <div className="flex gap-2 px-5 pt-[12px] overflow-x-auto" style={{ scrollbarWidth: "none" }}>
+                {enrollments.map(en => {
+                  const name = en.subject || en.className || "General";
+                  const isActive = activeSubject === name;
+                  return (
+                    <button key={en.id || name} onClick={() => setActiveSubject(name)}
+                      className="px-4 py-[8px] rounded-[14px] text-[12px] font-bold whitespace-nowrap shrink-0 active:scale-[0.92] transition-transform"
+                      style={isActive ? {
+                        background: `linear-gradient(135deg, ${B1}, ${B2})`, color: "#fff",
+                        boxShadow: SH_BTN,
+                        transitionTimingFunction: "cubic-bezier(0.34,1.56,0.64,1)"
+                      } : {
+                        background: "#fff", color: T3,
+                        border: `0.5px solid ${BLUE_BDR}`,
+                        boxShadow: SH,
+                        transitionTimingFunction: "cubic-bezier(0.34,1.56,0.64,1)"
+                      }}>
+                      {name}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+
+            {/* Strong Card */}
+            {currentData.strong.length > 0 && (
+              <div className="mx-5 mt-4 bg-white rounded-[22px] px-[18px] py-[18px] relative overflow-hidden"
+                style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                <div className="absolute -top-[30px] -right-5 w-[110px] h-[110px] rounded-full pointer-events-none"
+                  style={{ background: "radial-gradient(circle, rgba(0,200,83,0.05) 0%, transparent 70%)" }} />
+                <div className="flex items-center justify-between mb-4 relative z-10">
+                  <div className="flex items-center gap-2">
+                    <div className="w-[30px] h-[30px] rounded-[10px] flex items-center justify-center"
+                      style={{ background: "rgba(0,200,83,0.10)", border: "0.5px solid rgba(0,200,83,0.22)" }}>
+                      <CheckCircle2 className="w-[14px] h-[14px]" style={{ color: GREEN }} strokeWidth={2.5} />
+                    </div>
+                    <span className="text-[15px] font-bold" style={{ color: T1, letterSpacing: "-0.2px" }}>Strong</span>
+                  </div>
+                  <div className="w-7 h-7 rounded-[9px] flex items-center justify-center text-[13px] font-bold text-white"
+                    style={{ background: `linear-gradient(135deg, ${GREEN2}, ${GREEN})`, boxShadow: "0 2px 8px rgba(0,200,83,0.30)" }}>
+                    {currentData.strong.length}
+                  </div>
+                </div>
+                {currentData.strong.slice(0, 5).map((item, i, arr) => (
+                  <div key={i} className={i < arr.length - 1 ? "mb-3" : ""}>
+                    <div className="flex items-center justify-between mb-[6px]">
+                      <span className="text-[12px] font-bold" style={{ color: T2, letterSpacing: "-0.1px" }}>{item.title}</span>
+                      <span className="text-[13px] font-bold" style={{ color: GREEN2 }}>{item.pct}%</span>
+                    </div>
+                    <div className="h-[7px] rounded-[4px] overflow-hidden" style={{ background: BG2 }}>
+                      <div className="h-full rounded-[4px]" style={{ width: `${item.pct}%`, background: `linear-gradient(90deg, ${GREEN}, #66EE88)`, transition: "width 1s cubic-bezier(0.4,0,0.2,1)" }} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Developing Card */}
+            {currentData.developing.length > 0 && (
+              <div className="mx-5 mt-3 bg-white rounded-[22px] px-[18px] py-[18px] relative overflow-hidden"
+                style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                <div className="absolute -top-[30px] -right-5 w-[110px] h-[110px] rounded-full pointer-events-none"
+                  style={{ background: "radial-gradient(circle, rgba(255,136,0,0.05) 0%, transparent 70%)" }} />
+                <div className="flex items-center justify-between mb-4 relative z-10">
+                  <div className="flex items-center gap-2">
+                    <div className="w-[30px] h-[30px] rounded-[10px] flex items-center justify-center"
+                      style={{ background: "rgba(255,136,0,0.10)", border: "0.5px solid rgba(255,136,0,0.22)" }}>
+                      <CircleDashed className="w-[14px] h-[14px]" style={{ color: ORANGE }} strokeWidth={2.5} />
+                    </div>
+                    <span className="text-[15px] font-bold" style={{ color: T1, letterSpacing: "-0.2px" }}>Developing</span>
+                  </div>
+                  <div className="w-7 h-7 rounded-[9px] flex items-center justify-center text-[13px] font-bold text-white"
+                    style={{ background: `linear-gradient(135deg, ${ORANGE}, #FFAA22)`, boxShadow: "0 2px 8px rgba(255,136,0,0.30)" }}>
+                    {currentData.developing.length}
+                  </div>
+                </div>
+                {currentData.developing.slice(0, 5).map((item, i, arr) => (
+                  <div key={i} className={i < arr.length - 1 ? "mb-3" : ""}>
+                    <div className="flex items-center justify-between mb-[6px]">
+                      <span className="text-[12px] font-bold" style={{ color: T2, letterSpacing: "-0.1px" }}>{item.title}</span>
+                      <span className="text-[13px] font-bold" style={{ color: ORANGE }}>{item.pct}%</span>
+                    </div>
+                    <div className="h-[7px] rounded-[4px] overflow-hidden" style={{ background: BG2 }}>
+                      <div className="h-full rounded-[4px]" style={{ width: `${item.pct}%`, background: `linear-gradient(90deg, ${ORANGE}, #FFCC44)`, transition: "width 1s cubic-bezier(0.4,0,0.2,1)" }} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Needs Work Card */}
+            {currentData.attention.length > 0 && (
+              <div className="mx-5 mt-3 bg-white rounded-[22px] px-[18px] py-[18px] relative overflow-hidden"
+                style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                <div className="absolute -top-[30px] -right-5 w-[110px] h-[110px] rounded-full pointer-events-none"
+                  style={{ background: "radial-gradient(circle, rgba(255,51,85,0.05) 0%, transparent 70%)" }} />
+                <div className="flex items-center justify-between mb-4 relative z-10">
+                  <div className="flex items-center gap-2">
+                    <div className="w-[30px] h-[30px] rounded-[10px] flex items-center justify-center"
+                      style={{ background: "rgba(255,51,85,0.10)", border: "0.5px solid rgba(255,51,85,0.22)" }}>
+                      <AlertCircle className="w-[14px] h-[14px]" style={{ color: RED }} strokeWidth={2.5} />
+                    </div>
+                    <span className="text-[15px] font-bold" style={{ color: T1, letterSpacing: "-0.2px" }}>Needs Work</span>
+                  </div>
+                  <div className="w-7 h-7 rounded-[9px] flex items-center justify-center text-[13px] font-bold text-white"
+                    style={{ background: `linear-gradient(135deg, ${RED}, #FF6688)`, boxShadow: "0 2px 8px rgba(255,51,85,0.30)" }}>
+                    {currentData.attention.length}
+                  </div>
+                </div>
+                {currentData.attention.slice(0, 5).map((item, i, arr) => (
+                  <div key={i} className={i < arr.length - 1 ? "mb-3" : ""}>
+                    <div className="flex items-center justify-between mb-[6px]">
+                      <span className="text-[12px] font-bold" style={{ color: T2, letterSpacing: "-0.1px" }}>{item.title}</span>
+                      <span className="text-[13px] font-bold" style={{ color: RED }}>{item.pct}%</span>
+                    </div>
+                    <div className="h-[7px] rounded-[4px] overflow-hidden" style={{ background: BG2 }}>
+                      <div className="h-full rounded-[4px]" style={{ width: `${item.pct}%`, background: `linear-gradient(90deg, ${RED}, #FF88AA)`, transition: "width 1s cubic-bezier(0.4,0,0.2,1)" }} />
+                    </div>
+                  </div>
+                ))}
+                {recommendedFocus && (
+                  <div className="mt-[14px] px-[14px] py-3 rounded-[16px] flex items-start gap-2"
+                    style={{ background: "rgba(255,136,0,0.07)", border: "0.5px solid rgba(255,136,0,0.20)" }}>
+                    <div className="w-[22px] h-[22px] rounded-[7px] flex items-center justify-center shrink-0 mt-[1px]"
+                      style={{ background: "rgba(255,136,0,0.15)", border: "0.5px solid rgba(255,136,0,0.25)" }}>
+                      <Lightbulb className="w-[12px] h-[12px]" style={{ color: ORANGE }} strokeWidth={2.5} />
+                    </div>
+                    <div>
+                      <div className="text-[12px] font-bold mb-[3px]" style={{ color: ORANGE, letterSpacing: "-0.1px" }}>Recommended Focus</div>
+                      <div className="text-[11px] leading-[1.55] font-normal" style={{ color: "#884400" }}>{recommendedFocus}</div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {currentData.strong.length === 0 && currentData.developing.length === 0 && currentData.attention.length === 0 && (
+              <div className="mx-5 mt-5 bg-white rounded-[22px] text-center py-8 px-5"
+                style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                <p className="text-[13px]" style={{ color: T3 }}>No assessment data yet.</p>
+              </div>
+            )}
+
+            {/* Chart */}
+            {chartData.length > 0 && subjectList.length > 0 && (
+              <>
+                <div className="flex items-center gap-2 px-5 pt-[18px] text-[9px] font-bold uppercase tracking-[0.10em]" style={{ color: T4 }}>
+                  Mastery Progress
+                  <div className="flex-1 h-[0.5px]" style={{ background: BLUE_BDR }} />
+                </div>
+                <div className="mx-5 mt-3 bg-white rounded-[22px] px-[18px] py-[18px]"
+                  style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                  <div className="text-[15px] font-bold mb-4" style={{ color: T1, letterSpacing: "-0.3px" }}>Concept Mastery Progress</div>
+                  <div style={{ height: 180 }}>
+                    <ResponsiveContainer width="100%" height="100%">
+                      <LineChart data={chartData} margin={{ top: 5, right: 5, left: -20, bottom: 5 }}>
+                        <CartesianGrid strokeDasharray="0" vertical={false} stroke="rgba(0,85,255,0.07)" />
+                        <XAxis dataKey="month" tick={{ fontSize: 10, fill: T4 }} axisLine={false} tickLine={false} />
+                        <YAxis tick={{ fontSize: 10, fill: T4 }} domain={[0, 100]} axisLine={false} tickLine={false} />
+                        <Tooltip contentStyle={{ fontSize: 11, borderRadius: 8, border: `0.5px solid ${BLUE_BDR}`, fontFamily: "DM Sans", boxShadow: "0 4px 20px rgba(0,85,255,0.12)" }} />
+                        <Legend wrapperStyle={{ fontSize: 11 }} />
+                        {subjectList.slice(0, 3).map((sub, i) => (
+                          <Line key={sub} type="monotone" dataKey={sub} stroke={[GREEN, B1, RED, ORANGE, TEAL][i]} strokeWidth={2.5} dot={{ r: 4, strokeWidth: 2, fill: "#fff" }} connectNulls />
+                        ))}
+                      </LineChart>
+                    </ResponsiveContainer>
+                  </div>
+                </div>
+              </>
+            )}
+          </>
+        )}
+
+        {/* ═══ TAB 2: STUDY PLAN ═══ */}
+        {activeFeature === "study-plan" && (
+          <>
+            <div className="mx-5 mt-[18px] bg-white rounded-[22px] p-[18px] relative overflow-hidden"
+              style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+              <div className="absolute -top-[30px] -right-5 w-[120px] h-[120px] rounded-full pointer-events-none"
+                style={{ background: "radial-gradient(circle, rgba(0,85,255,0.05) 0%, transparent 70%)" }} />
+              <div className="flex items-center gap-3 mb-3 relative z-10">
+                <div className="w-[44px] h-[44px] rounded-[14px] flex items-center justify-center shrink-0"
+                  style={{ background: `linear-gradient(135deg, ${B1}, ${B3})`, boxShadow: "0 3px 12px rgba(0,85,255,0.28)" }}>
+                  <CalendarDays className="w-[22px] h-[22px] text-white" strokeWidth={2.2} />
+                </div>
+                <div>
+                  <div className="text-[16px] font-bold mb-[2px]" style={{ color: T1, letterSpacing: "-0.3px" }}>AI Study Plan Maker</div>
+                  <div className="text-[11px] leading-[1.5] font-normal" style={{ color: T3 }}>
+                    Based on {studentName}'s weak topics — personalised schedule for today &amp; tomorrow.
+                  </div>
+                </div>
+              </div>
+
+              {weakTopics.length > 0 && (
+                <>
+                  <div className="text-[9px] font-bold uppercase tracking-[0.10em] mb-2 relative z-10" style={{ color: T4 }}>Weak Topics Detected</div>
+                  <div className="flex flex-wrap gap-[7px] mb-4 relative z-10">
+                    {weakTopics.slice(0, 4).map((t, i) => (
+                      <div key={i} className="px-[13px] py-[5px] rounded-full text-[11px] font-bold"
+                        style={{
+                          background: i === 0 ? "rgba(255,51,85,0.10)" : "rgba(255,136,0,0.10)",
+                          color: i === 0 ? RED : "#884400",
+                          border: `0.5px solid ${i === 0 ? "rgba(255,51,85,0.22)" : "rgba(255,136,0,0.22)"}`
+                        }}>
+                        {t}
+                      </div>
+                    ))}
+                  </div>
+                </>
+              )}
+
+              <button onClick={handleGeneratePlan} disabled={generatingPlan}
+                className="w-full h-12 rounded-[15px] flex items-center justify-center gap-2 text-[14px] font-bold text-white disabled:opacity-60 active:scale-[0.97] transition-transform relative overflow-hidden"
+                style={{
+                  background: `linear-gradient(135deg, ${B1}, ${B2})`,
+                  boxShadow: SH_BTN,
+                  letterSpacing: "-0.1px",
+                  transitionTimingFunction: "cubic-bezier(0.34,1.56,0.64,1)"
+                }}>
+                <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.14) 0%, transparent 52%)" }} />
+                {generatingPlan
+                  ? <Loader2 className="relative z-10 w-4 h-4 animate-spin" />
+                  : studyPlan
+                    ? <RefreshCw className="relative z-10 w-4 h-4" strokeWidth={2.2} />
+                    : <Sparkles className="relative z-10 w-4 h-4" strokeWidth={2.2} />}
+                <span className="relative z-10">{generatingPlan ? "Generating..." : studyPlan ? "Regenerate Plan" : "Generate Today's Plan"}</span>
+              </button>
+            </div>
+
+            {/* Today's Plan */}
+            {studyPlan?.today && (
+              <>
+                <div className="flex items-center gap-2 px-5 pt-[18px] text-[9px] font-bold uppercase tracking-[0.10em]" style={{ color: T4 }}>
+                  Today's Plan
+                  <div className="flex-1 h-[0.5px]" style={{ background: BLUE_BDR }} />
+                </div>
+                <div className="mx-5 mt-3 flex flex-col gap-2">
+                  {studyPlan.today.map((slot: any, i: number) => {
+                    const isFirst = i === 0, isLast = i === studyPlan.today.length - 1;
+                    const priority = isFirst ? "High" : isLast ? "Low" : "Med";
+                    const pColor = priority === "High" ? RED : priority === "Med" ? ORANGE : GREEN;
+                    const pBg = priority === "High" ? "rgba(255,51,85,0.07)" : priority === "Med" ? "rgba(255,136,0,0.07)" : "rgba(0,200,83,0.10)";
+                    const pBdr = priority === "High" ? "rgba(255,51,85,0.16)" : priority === "Med" ? "rgba(255,136,0,0.16)" : "rgba(0,200,83,0.22)";
+                    const pIcoBg = priority === "High" ? "rgba(255,51,85,0.10)" : priority === "Med" ? "rgba(255,136,0,0.10)" : "rgba(0,200,83,0.10)";
+                    const pTagBg = priority === "High" ? "rgba(255,51,85,0.10)" : priority === "Med" ? "rgba(255,136,0,0.10)" : "rgba(0,200,83,0.10)";
+                    const pTagColor = priority === "High" ? RED : priority === "Med" ? "#884400" : "#007830";
+                    const pTagBdr = priority === "High" ? "rgba(255,51,85,0.22)" : priority === "Med" ? "rgba(255,136,0,0.22)" : "rgba(0,200,83,0.22)";
+                    return (
+                      <div key={i} className="flex items-center gap-[11px] px-[14px] py-3 rounded-[16px] active:scale-[0.97] transition-transform cursor-pointer"
+                        style={{ background: pBg, border: `0.5px solid ${pBdr}`, transitionTimingFunction: "cubic-bezier(0.34,1.56,0.64,1)" }}>
+                        <div className="w-8 h-8 rounded-[10px] flex items-center justify-center shrink-0"
+                          style={{ background: pIcoBg, border: `0.5px solid ${pBdr}` }}>
+                          <Clock className="w-[14px] h-[14px]" style={{ color: pColor }} strokeWidth={2.3} />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="text-[13px] font-bold mb-[3px]" style={{ color: T1, letterSpacing: "-0.2px" }}>
+                            {slot.topic} — {slot.activity?.split(" ").slice(0, 3).join(" ")}
+                          </div>
+                          <div className="text-[10px]" style={{ color: T3 }}>{slot.time} · {slot.duration}</div>
+                        </div>
+                        <div className="px-[10px] py-1 rounded-full text-[10px] font-bold shrink-0"
+                          style={{ background: pTagBg, color: pTagColor, border: `0.5px solid ${pTagBdr}` }}>
+                          {priority}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </>
+            )}
+          </>
+        )}
+
+        {/* ═══ TAB 3: EXPLAINER ═══ */}
+        {activeFeature === "explainer" && (
+          <>
+            <div className="mx-5 mt-[18px] bg-white rounded-[22px] p-[18px] relative overflow-hidden"
+              style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+              <div className="absolute -top-[30px] -right-5 w-[120px] h-[120px] rounded-full pointer-events-none"
+                style={{ background: "radial-gradient(circle, rgba(0,196,180,0.05) 0%, transparent 70%)" }} />
+              <div className="flex items-center gap-3 mb-3 relative z-10">
+                <div className="w-[44px] h-[44px] rounded-[14px] flex items-center justify-center shrink-0"
+                  style={{ background: `linear-gradient(135deg, ${TEAL}, #22DDCC)`, boxShadow: "0 3px 12px rgba(0,196,180,0.28)" }}>
+                  <BookOpenText className="w-[22px] h-[22px] text-white" strokeWidth={2.2} />
+                </div>
+                <div>
+                  <div className="text-[16px] font-bold mb-[2px]" style={{ color: T1, letterSpacing: "-0.3px" }}>24/7 Concept Explainer</div>
+                  <div className="text-[11px] leading-[1.5] font-normal" style={{ color: T3 }}>
+                    Type any concept — AI explains it in simple language with a real-world example.
+                  </div>
+                </div>
+              </div>
+
+              <div className="relative mb-[14px] z-10">
+                <input type="text" value={explainTopic} onChange={e => setExplainTopic(e.target.value)}
+                  onKeyDown={e => e.key === "Enter" && handleExplain()}
+                  placeholder="e.g. Photosynthesis, Fractions, Newton's Law..."
+                  className="w-full py-[13px] pl-[14px] pr-[48px] rounded-[15px] text-[13px] font-normal outline-none"
+                  style={{
+                    background: BG, border: `0.5px solid ${BLUE_BDR}`,
+                    color: T1, fontFamily: "DM Sans, sans-serif",
+                    letterSpacing: "-0.1px"
+                  }} />
+                <button onClick={() => handleExplain()} disabled={generatingExplanation}
+                  className="absolute right-[6px] top-1/2 -translate-y-1/2 w-[34px] h-[34px] rounded-[10px] flex items-center justify-center disabled:opacity-50 active:scale-[0.88] transition-transform"
+                  style={{
+                    background: `linear-gradient(135deg, ${TEAL}, #22DDCC)`,
+                    boxShadow: "0 2px 8px rgba(0,196,180,0.32)",
+                    transitionTimingFunction: "cubic-bezier(0.34,1.56,0.64,1)"
+                  }}>
+                  {generatingExplanation ? <Loader2 className="w-4 h-4 text-white animate-spin" /> : <Send className="w-[14px] h-[14px] text-white" strokeWidth={2.5} />}
+                </button>
+              </div>
+
+              {weakTopics.length > 0 && (
+                <div className="relative z-10">
+                  <div className="text-[9px] font-bold uppercase tracking-[0.10em] mb-2" style={{ color: T4 }}>Quick Picks — Your Weak Topics</div>
+                  <div className="flex flex-wrap gap-[7px]">
+                    {weakTopics.slice(0, 3).map((t, i) => (
+                      <button key={i} onClick={() => handleExplain(t)}
+                        className="px-[13px] py-[5px] rounded-full text-[11px] font-bold active:scale-[0.94] transition-transform"
+                        style={{
+                          background: i === 0 ? "rgba(255,51,85,0.10)" : i === 1 ? "rgba(255,136,0,0.10)" : "rgba(0,85,255,0.10)",
+                          color: i === 0 ? RED : i === 1 ? "#884400" : B1,
+                          border: `0.5px solid ${i === 0 ? "rgba(255,51,85,0.22)" : i === 1 ? "rgba(255,136,0,0.22)" : "rgba(0,85,255,0.20)"}`,
+                          transitionTimingFunction: "cubic-bezier(0.34,1.56,0.64,1)"
+                        }}>
+                        {t}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Explanation Result (dark blue) */}
+            {explanation && (
+              <div className="mx-5 mt-3 rounded-[22px] p-[18px] relative overflow-hidden"
+                style={{
+                  background: "linear-gradient(140deg, #001888 0%, #0033CC 48%, #0055FF 100%)",
+                  boxShadow: "0 8px 28px rgba(0,51,204,0.32), 0 0 0 0.5px rgba(255,255,255,0.14)",
+                }}>
+                <div className="absolute -top-[28px] -right-[18px] w-[120px] h-[120px] rounded-full pointer-events-none"
+                  style={{ background: "radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 65%)" }} />
+                <div className="absolute inset-0 pointer-events-none" style={{
+                  backgroundImage: "linear-gradient(rgba(255,255,255,0.014) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.014) 1px, transparent 1px)",
+                  backgroundSize: "24px 24px"
+                }} />
+                <div className="flex items-center gap-[6px] mb-2 relative z-10">
+                  <span className="text-[18px]">{explanation.emoji || "💡"}</span>
+                  <div className="text-[9px] font-bold uppercase tracking-[0.12em]" style={{ color: "rgba(255,255,255,0.55)" }}>AI Explanation Ready</div>
+                </div>
+                <p className="text-[14px] leading-[1.7] font-normal relative z-10" style={{ color: "rgba(255,255,255,0.92)", letterSpacing: "-0.1px" }}>
+                  {explanation.simple_explanation}
+                </p>
+                {explanation.real_world_example && (
+                  <div className="mt-3 px-[14px] py-3 rounded-[14px] relative z-10"
+                    style={{ background: "rgba(255,255,255,0.08)", border: "0.5px solid rgba(255,255,255,0.14)" }}>
+                    <div className="text-[9px] font-bold uppercase tracking-[0.10em] mb-1" style={{ color: "rgba(255,255,255,0.55)" }}>Real-world Example</div>
+                    <p className="text-[12px] leading-[1.55]" style={{ color: "rgba(255,255,255,0.85)" }}>{explanation.real_world_example}</p>
+                  </div>
+                )}
+                {explanation.remember_points?.length > 0 && (
+                  <div className="mt-3 relative z-10">
+                    <div className="text-[9px] font-bold uppercase tracking-[0.10em] mb-2" style={{ color: "rgba(255,255,255,0.55)" }}>Remember</div>
+                    {explanation.remember_points.map((p: string, i: number) => (
+                      <div key={i} className="flex items-start gap-2 mb-2 last:mb-0">
+                        <div className="w-[18px] h-[18px] rounded-full flex items-center justify-center text-[10px] font-bold text-white shrink-0 mt-[1px]"
+                          style={{ background: "rgba(255,255,255,0.18)", border: "0.5px solid rgba(255,255,255,0.26)" }}>{i + 1}</div>
+                        <p className="text-[12px] leading-[1.55]" style={{ color: "rgba(255,255,255,0.82)" }}>{p}</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+          </>
+        )}
+
+        {/* ═══ TAB 4: PRACTICE ═══ */}
+        {activeFeature === "practice" && (
+          <>
+            <div className="mx-5 mt-[18px] bg-white rounded-[22px] p-[18px] relative overflow-hidden"
+              style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+              <div className="absolute -top-[30px] -right-5 w-[120px] h-[120px] rounded-full pointer-events-none"
+                style={{ background: "radial-gradient(circle, rgba(255,136,0,0.05) 0%, transparent 70%)" }} />
+              <div className="flex items-center gap-3 mb-3 relative z-10">
+                <div className="w-[44px] h-[44px] rounded-[14px] flex items-center justify-center shrink-0"
+                  style={{ background: `linear-gradient(135deg, ${ORANGE}, #FFAA22)`, boxShadow: "0 3px 12px rgba(255,136,0,0.28)" }}>
+                  <FlaskConical className="w-[22px] h-[22px] text-white" strokeWidth={2.2} />
+                </div>
+                <div>
+                  <div className="text-[16px] font-bold mb-[2px]" style={{ color: T1, letterSpacing: "-0.3px" }}>Practice Problem Generator</div>
+                  <div className="text-[11px] leading-[1.5] font-normal" style={{ color: T3 }}>
+                    AI generates 5 dynamic questions on any topic — with answers you can reveal one at a time.
+                  </div>
+                </div>
+              </div>
+              <div className="flex gap-2 items-center relative z-10">
+                <input type="text" value={practiceTopic} onChange={e => setPracticeTopic(e.target.value)}
+                  placeholder={`Topic (e.g. ${activeSubject || "Islamic Read"})`}
+                  className="flex-1 py-3 px-[14px] rounded-[14px] text-[13px] outline-none"
+                  style={{ background: BG, border: `0.5px solid ${BLUE_BDR}`, color: T1, fontFamily: "DM Sans, sans-serif" }} />
+                <button onClick={handleGenerateQuestions} disabled={generatingQuestions}
+                  className="py-3 px-[18px] rounded-[14px] text-[13px] font-bold text-white flex items-center gap-[5px] shrink-0 whitespace-nowrap disabled:opacity-60 active:scale-[0.93] transition-transform"
+                  style={{
+                    background: `linear-gradient(135deg, ${ORANGE}, #FFAA22)`,
+                    boxShadow: "0 3px 12px rgba(255,136,0,0.32)",
+                    transitionTimingFunction: "cubic-bezier(0.34,1.56,0.64,1)"
+                  }}>
+                  {generatingQuestions ? <Loader2 className="w-[14px] h-[14px] animate-spin" /> : <RefreshCw className="w-[14px] h-[14px]" strokeWidth={2.2} />}
+                  Generate
+                </button>
+              </div>
+            </div>
+
+            {/* Questions */}
+            {questions.length > 0 && (
+              <div className="mx-5 mt-3 flex flex-col gap-3">
+                {questions.map((q: any, qi: number) => {
+                  const selected = selectedAnswers[qi];
+                  const revealed = revealedAnswers.has(qi);
+                  return (
+                    <div key={qi} className="bg-white rounded-[18px] p-4"
+                      style={{ boxShadow: SH, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                      <div className="flex items-start gap-2 mb-3">
+                        <div className="w-6 h-6 rounded-[8px] flex items-center justify-center text-[11px] font-bold text-white shrink-0"
+                          style={{ background: `linear-gradient(135deg, ${ORANGE}, #FFAA22)`, boxShadow: "0 2px 6px rgba(255,136,0,0.28)" }}>
+                          {qi + 1}
+                        </div>
+                        <p className="text-[13px] font-semibold leading-[1.5]" style={{ color: T1 }}>{q.question}</p>
+                      </div>
+                      <div className="flex flex-col gap-[6px]">
+                        {q.options?.map((opt: string, oi: number) => {
+                          const letter = opt.charAt(0);
+                          const isSelected = selected === letter;
+                          const isCorrect = revealed && letter === q.correct;
+                          const isWrong = revealed && isSelected && letter !== q.correct;
+                          return (
+                            <button key={oi} onClick={() => setSelectedAnswers({ ...selectedAnswers, [qi]: letter })} disabled={revealed}
+                              className="text-left px-3 py-[10px] rounded-[10px] text-[12px] font-medium transition-colors"
+                              style={{
+                                background: isCorrect ? "rgba(0,200,83,0.12)" : isWrong ? "rgba(255,51,85,0.12)" : isSelected ? "rgba(255,136,0,0.10)" : BG,
+                                color: isCorrect ? GREEN2 : isWrong ? RED : T2,
+                                border: `0.5px solid ${isCorrect ? "rgba(0,200,83,0.25)" : isWrong ? "rgba(255,51,85,0.25)" : isSelected ? "rgba(255,136,0,0.25)" : BLUE_BDR}`,
+                              }}>
+                              {opt}
+                            </button>
+                          );
+                        })}
+                      </div>
+                      {!revealed && selected && (
+                        <button onClick={() => setRevealedAnswers(new Set([...revealedAnswers, qi]))}
+                          className="mt-3 w-full py-[10px] rounded-[12px] text-[12px] font-bold flex items-center justify-center gap-2"
+                          style={{ background: BG, color: T2, border: `0.5px solid ${BLUE_BDR}` }}>
+                          <Eye className="w-[13px] h-[13px]" /> Reveal Answer
+                        </button>
+                      )}
+                      {revealed && q.explanation && (
+                        <div className="mt-3 px-3 py-[10px] rounded-[10px]"
+                          style={{ background: "rgba(0,196,180,0.06)", border: "0.5px solid rgba(0,196,180,0.18)" }}>
+                          <div className="text-[10px] font-bold uppercase tracking-[0.09em] mb-1" style={{ color: TEAL }}>Explanation</div>
+                          <p className="text-[12px] leading-[1.5]" style={{ color: T2 }}>{q.explanation}</p>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </>
+        )}
+
+        {/* ═══ TAB 5: DOUBT SOLVER ═══ */}
+        {activeFeature === "doubt" && (
+          <>
+            <div className="mx-5 mt-[18px] bg-white rounded-[22px] p-[18px] relative overflow-hidden"
+              style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+              <div className="absolute -top-[30px] -right-5 w-[120px] h-[120px] rounded-full pointer-events-none"
+                style={{ background: "radial-gradient(circle, rgba(255,59,168,0.05) 0%, transparent 70%)" }} />
+              <div className="flex items-center gap-3 mb-3 relative z-10">
+                <div className="w-[44px] h-[44px] rounded-[14px] flex items-center justify-center shrink-0"
+                  style={{ background: `linear-gradient(135deg, ${PINK}, #FF77CC)`, boxShadow: "0 3px 12px rgba(255,59,168,0.28)" }}>
+                  <HelpCircle className="w-[22px] h-[22px] text-white" strokeWidth={2.2} />
+                </div>
+                <div>
+                  <div className="text-[16px] font-bold mb-[2px]" style={{ color: T1, letterSpacing: "-0.3px" }}>AI Doubt Solver</div>
+                  <div className="text-[11px] leading-[1.5] font-normal" style={{ color: T3 }}>
+                    Type your doubt OR upload a photo. AI guides step by step — teaches, doesn't just answer.
+                  </div>
+                </div>
+              </div>
+
+              {doubtImagePreview && (
+                <div className="mb-3 relative rounded-[14px] overflow-hidden z-10" style={{ border: `0.5px solid ${BLUE_BDR}` }}>
+                  <img src={doubtImagePreview} alt="Doubt" className="w-full h-auto max-h-52 object-cover" />
+                  <button onClick={() => { setDoubtImagePreview(""); setDoubtImageB64(""); }}
+                    className="absolute top-2 right-2 w-7 h-7 rounded-full bg-black/60 text-white text-xs font-bold">×</button>
+                </div>
+              )}
+
+              <textarea value={doubtText} onChange={e => setDoubtText(e.target.value)}
+                placeholder="Type your doubt here... e.g. 'I don't understand how to solve simultaneous equations'"
+                className="w-full py-[13px] px-[14px] rounded-[15px] text-[13px] outline-none resize-none min-h-[100px] leading-[1.6] relative z-10"
+                style={{
+                  background: BG,
+                  border: `0.5px solid ${BLUE_BDR}`,
+                  color: T1,
+                  fontFamily: "DM Sans, sans-serif",
+                  letterSpacing: "-0.1px"
+                }} />
+
+              <div className="flex gap-2 mt-[14px] relative z-10">
+                <input ref={fileInputRef} type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
+                <button onClick={() => fileInputRef.current?.click()}
+                  className="flex-1 h-11 rounded-[13px] text-[13px] font-bold flex items-center justify-center gap-[6px] active:scale-[0.96] transition-transform"
+                  style={{
+                    background: BG,
+                    color: T2,
+                    border: `0.5px solid ${BLUE_BDR}`,
+                    boxShadow: SH,
+                    transitionTimingFunction: "cubic-bezier(0.34,1.56,0.64,1)"
+                  }}>
+                  <Camera className="w-[15px] h-[15px]" strokeWidth={2} />
+                  Upload Photo
+                </button>
+                <button onClick={handleDoubtSubmit} disabled={generatingDoubt || (!doubtText.trim() && !doubtImageB64)}
+                  className="flex-[1.3] h-11 rounded-[13px] text-[13px] font-bold text-white flex items-center justify-center gap-[6px] disabled:opacity-50 active:scale-[0.96] transition-transform"
+                  style={{
+                    background: `linear-gradient(135deg, ${PINK}, #FF77CC)`,
+                    boxShadow: "0 4px 14px rgba(255,59,168,0.30)",
+                    transitionTimingFunction: "cubic-bezier(0.34,1.56,0.64,1)"
+                  }}>
+                  {generatingDoubt ? <Loader2 className="w-[15px] h-[15px] animate-spin" /> : <Zap className="w-[15px] h-[15px]" strokeWidth={2.2} />}
+                  Get Help
+                </button>
+              </div>
+            </div>
+
+            {/* Hints */}
+            {doubtHints.length > 0 && (
+              <div className="mx-5 mt-3 flex flex-col gap-[10px]">
+                {doubtHints.slice(0, hintIndex + 1).map((hint, i) => (
+                  <div key={i} className="bg-white rounded-[18px] p-4 flex items-start gap-3"
+                    style={{ boxShadow: SH, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                    <div className="w-7 h-7 rounded-[9px] flex items-center justify-center shrink-0 text-[12px] font-bold text-white"
+                      style={{ background: `linear-gradient(135deg, ${PINK}, #FF77CC)`, boxShadow: "0 2px 8px rgba(255,59,168,0.28)" }}>
+                      {i + 1}
+                    </div>
+                    <p className="text-[13px] leading-[1.55]" style={{ color: T2 }}>{hint}</p>
+                  </div>
+                ))}
+                {hintIndex < doubtHints.length - 1 && (
+                  <button onClick={() => setHintIndex(hintIndex + 1)}
+                    className="mx-auto mt-2 px-4 py-2 rounded-full text-[12px] font-bold flex items-center gap-2 active:scale-[0.94] transition-transform"
+                    style={{
+                      background: "rgba(255,59,168,0.10)",
+                      color: PINK,
+                      border: `0.5px solid rgba(255,59,168,0.22)`,
+                      transitionTimingFunction: "cubic-bezier(0.34,1.56,0.64,1)"
+                    }}>
+                    <ChevronRight className="w-[13px] h-[13px]" />
+                    Next Hint ({hintIndex + 2}/{doubtHints.length})
+                  </button>
+                )}
+              </div>
+            )}
+          </>
+        )}
+
+        <div className="h-6" />
+      </div>
+    );
+  }
+
+  // ── Render (Desktop) — Bright Blue Apple UI ──────────────────────────────
+  const B1 = "#0055FF", B2 = "#1166FF", B3 = "#2277FF";
+  const BG = "#EEF4FF", BG2 = "#E0ECFF";
+  const GREEN = "#00C853", GREEN2 = "#00A040";
+  const ORANGE = "#FF8800";
+  const RED = "#FF3355";
+  const TEAL = "#00C4B4";
+  const PINK = "#FF3BA8";
+  const T1 = "#001040", T2 = "#002080", T3 = "#5070B0", T4 = "#99AACC";
+  const BLUE_BDR = "rgba(0,85,255,0.12)";
+  const SH = "0 0 0 0.5px rgba(0,85,255,0.08), 0 2px 8px rgba(0,85,255,0.09), 0 10px 28px rgba(0,85,255,0.11)";
+  const SH_LG = "0 0 0 0.5px rgba(0,85,255,0.10), 0 4px 16px rgba(0,85,255,0.12), 0 18px 44px rgba(0,85,255,0.14)";
+  const SH_BTN = "0 6px 22px rgba(0,85,255,0.42), 0 2px 6px rgba(0,85,255,0.22)";
+
+  const tabStylesD: Record<FeatureTab, { gradient: string; shadow: string; icon: any; label: string; dot: string }> = {
+    "strengths":  { gradient: `linear-gradient(135deg, ${GREEN}, #22EE66)`, shadow: "0 3px 12px rgba(0,200,83,0.30)", icon: CheckCircle2, label: "Strengths",    dot: GREEN },
+    "study-plan": { gradient: `linear-gradient(135deg, ${B1}, ${B2})`,       shadow: SH_BTN,                            icon: CalendarDays, label: "Study Plan",   dot: B1 },
+    "explainer":  { gradient: `linear-gradient(135deg, ${TEAL}, #22DDCC)`,   shadow: "0 3px 12px rgba(0,196,180,0.30)", icon: BookOpenText, label: "Explainer",    dot: TEAL },
+    "practice":   { gradient: `linear-gradient(135deg, ${ORANGE}, #FFAA22)`, shadow: "0 3px 12px rgba(255,136,0,0.30)", icon: FlaskConical, label: "Practice",     dot: ORANGE },
+    "doubt":      { gradient: `linear-gradient(135deg, ${PINK}, #FF77CC)`,   shadow: "0 3px 12px rgba(255,59,168,0.30)", icon: HelpCircle,  label: "Doubt Solver", dot: PINK },
+  };
+
+  return (
+    <div className="animate-in fade-in duration-500 -m-4 sm:-m-6 md:-m-8 min-h-[calc(100vh-64px)]"
+      style={{ fontFamily: "'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif", background: BG }}>
+      <div className="w-full px-6 pt-8 pb-12">
+
+        {/* ── Toolbar ── */}
+        <div className="flex items-center justify-between mb-6">
+          <div>
+            <div className="text-[10px] font-bold uppercase tracking-[0.12em] mb-1 flex items-center gap-[7px]" style={{ color: T4 }}>
+              <span className="w-[6px] h-[6px] rounded-full" style={{ background: GREEN, boxShadow: "0 0 0 3px rgba(0,200,83,0.2)" }} />
+              Parent Dashboard · Concept Strengths
+            </div>
+            <h1 className="text-[32px] font-bold leading-none" style={{ color: T1, letterSpacing: "-0.8px" }}>Concept Strengths</h1>
+            <div className="text-[13px] font-normal mt-[6px]" style={{ color: T3 }}>
+              AI-powered learning tools for <strong style={{ color: B1, fontWeight: 700 }}>{studentName}</strong>
+            </div>
+          </div>
+          <div className="flex items-center gap-[10px]">
+            {analyzing && (
+              <div className="flex items-center gap-2 px-4 py-[8px] rounded-full" style={{ background: "rgba(0,85,255,0.08)", border: `0.5px solid ${BLUE_BDR}` }}>
+                <Loader2 className="w-[14px] h-[14px] animate-spin" style={{ color: B1 }} />
+                <span className="text-[11px] font-bold" style={{ color: B1 }}>AI syncing…</span>
+              </div>
+            )}
+            <div className="w-10 h-10 rounded-full flex items-center justify-center text-[14px] font-bold text-white"
+              style={{ background: `linear-gradient(140deg, ${B1}, ${B2})`, boxShadow: "0 3px 12px rgba(0,85,255,0.36), 0 0 0 2px rgba(255,255,255,0.8)" }}>
+              {studentName?.[0]?.toUpperCase() || "S"}
+            </div>
+          </div>
+        </div>
+
+        {/* ── Feature Tabs (horizontal pills) ── */}
+        <div className="flex gap-2 flex-wrap mb-6">
+          {FEATURE_TABS.map(tab => {
+            const ts = tabStylesD[tab.key];
+            const Icon = ts.icon;
+            const isActive = activeFeature === tab.key;
+            return (
+              <button key={tab.key} onClick={() => setActiveFeature(tab.key)}
+                className="flex items-center gap-2 px-5 py-[10px] rounded-[16px] text-[13px] font-bold transition-transform hover:scale-[1.02]"
+                style={isActive ? {
+                  background: ts.gradient, color: "#fff",
+                  boxShadow: ts.shadow,
+                  letterSpacing: "-0.1px",
+                } : {
+                  background: "#fff", color: T3,
+                  border: `0.5px solid ${BLUE_BDR}`,
+                  boxShadow: SH,
+                  letterSpacing: "-0.1px",
+                }}>
+                <Icon className="w-4 h-4" strokeWidth={isActive ? 2.5 : 2.2} />
+                {ts.label}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* ══════════════════════════════════════════════════════════════════════
+            TAB 1: STRENGTHS
+        ══════════════════════════════════════════════════════════════════════ */}
+        {activeFeature === "strengths" && (
+          <>
+            {/* Subject Pills */}
+            {enrollments.length > 0 && (
+              <div className="flex gap-2 flex-wrap mb-5">
+                {enrollments.map(en => {
+                  const name = en.subject || en.className || "General";
+                  const isActive = activeSubject === name;
+                  return (
+                    <button key={en.id || name} onClick={() => setActiveSubject(name)}
+                      className="px-4 py-[8px] rounded-[14px] text-[12px] font-bold transition-transform hover:scale-[1.02]"
+                      style={isActive ? {
+                        background: `linear-gradient(135deg, ${B1}, ${B2})`, color: "#fff",
+                        boxShadow: SH_BTN,
+                      } : {
+                        background: "#fff", color: T3,
+                        border: `0.5px solid ${BLUE_BDR}`,
+                        boxShadow: SH,
+                      }}>
+                      {name}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+
+            {/* 3-col Mastery Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
+              {[
+                { label: "Strong", icon: CheckCircle2, color: GREEN, color2: GREEN2, glow: "rgba(0,200,83,0.05)", iconBg: "rgba(0,200,83,0.10)", iconBdr: "rgba(0,200,83,0.22)", bar: `linear-gradient(90deg, ${GREEN}, #66EE88)`, items: currentData.strong },
+                { label: "Developing", icon: CircleDashed, color: ORANGE, color2: "#884400", glow: "rgba(255,136,0,0.05)", iconBg: "rgba(255,136,0,0.10)", iconBdr: "rgba(255,136,0,0.22)", bar: `linear-gradient(90deg, ${ORANGE}, #FFCC44)`, items: currentData.developing },
+                { label: "Needs Work", icon: AlertCircle, color: RED, color2: RED, glow: "rgba(255,51,85,0.05)", iconBg: "rgba(255,51,85,0.10)", iconBdr: "rgba(255,51,85,0.22)", bar: `linear-gradient(90deg, ${RED}, #FF88AA)`, items: currentData.attention },
+              ].map(({ label, icon: Icon, color, color2, glow, iconBg, iconBdr, bar, items }) => (
+                <div key={label} className="bg-white rounded-[22px] px-6 py-5 relative overflow-hidden"
+                  style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                  <div className="absolute -top-[40px] -right-[15px] w-[140px] h-[140px] rounded-full pointer-events-none"
+                    style={{ background: `radial-gradient(circle, ${glow} 0%, transparent 70%)` }} />
+                  <div className="flex items-center justify-between mb-5 relative z-10">
+                    <div className="flex items-center gap-2">
+                      <div className="w-9 h-9 rounded-[12px] flex items-center justify-center"
+                        style={{ background: iconBg, border: `0.5px solid ${iconBdr}` }}>
+                        <Icon className="w-[16px] h-[16px]" style={{ color }} strokeWidth={2.5} />
+                      </div>
+                      <span className="text-[16px] font-bold" style={{ color: T1, letterSpacing: "-0.2px" }}>{label}</span>
+                    </div>
+                    <div className="w-8 h-8 rounded-[10px] flex items-center justify-center text-[14px] font-bold text-white"
+                      style={{ background: `linear-gradient(135deg, ${color2}, ${color})`, boxShadow: `0 2px 8px ${iconBg}` }}>
+                      {items.length}
+                    </div>
+                  </div>
+                  <div className="space-y-3 relative z-10">
+                    {items.length === 0 ? (
+                      <p className="text-[12px] py-5 text-center" style={{ color: T4 }}>No data yet</p>
+                    ) : items.slice(0, 5).map((c, i) => (
+                      <div key={i}>
+                        <div className="flex items-center justify-between mb-[6px]">
+                          <span className="text-[12px] font-bold truncate pr-2" style={{ color: T2 }}>{c.title}</span>
+                          <span className="text-[13px] font-bold" style={{ color: color2 }}>{c.pct}%</span>
+                        </div>
+                        <div className="h-[7px] rounded-[4px] overflow-hidden" style={{ background: BG2 }}>
+                          <div className="h-full rounded-[4px]" style={{ width: `${c.pct}%`, background: bar, transition: "width 1s cubic-bezier(0.4,0,0.2,1)" }} />
+                        </div>
+                      </div>
+                    ))}
+                    {label === "Needs Work" && recommendedFocus && (
+                      <div className="mt-4 px-4 py-3 rounded-[14px] flex items-start gap-2"
+                        style={{ background: "rgba(255,136,0,0.07)", border: "0.5px solid rgba(255,136,0,0.20)" }}>
+                        <div className="w-[22px] h-[22px] rounded-[7px] flex items-center justify-center shrink-0 mt-[1px]"
+                          style={{ background: "rgba(255,136,0,0.15)", border: "0.5px solid rgba(255,136,0,0.25)" }}>
+                          <Lightbulb className="w-[12px] h-[12px]" style={{ color: ORANGE }} strokeWidth={2.5} />
+                        </div>
+                        <div>
+                          <div className="text-[12px] font-bold mb-[3px]" style={{ color: ORANGE, letterSpacing: "-0.1px" }}>Recommended Focus</div>
+                          <div className="text-[11px] leading-[1.55]" style={{ color: "#884400" }}>{recommendedFocus}</div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Trend Chart */}
+            <div className="bg-white rounded-[22px] px-6 py-6"
+              style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+              <div className="flex items-center justify-between mb-5">
+                <div className="text-[17px] font-bold" style={{ color: T1, letterSpacing: "-0.3px" }}>Concept Mastery Progress</div>
+                <div className="text-[11px] font-medium" style={{ color: T4 }}>{chartData.length} months</div>
+              </div>
+              {chartData.length === 0 ? (
+                <div className="h-56 flex items-center justify-center text-[13px]" style={{ color: T4 }}>No score data yet</div>
+              ) : (
+                <div className="h-80 w-full">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <LineChart data={chartData} margin={{ top: 10, right: 20, left: -10, bottom: 5 }}>
+                      <CartesianGrid strokeDasharray="0" vertical={false} stroke="rgba(0,85,255,0.07)" />
+                      <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fill: T4, fontSize: 11 }} />
+                      <YAxis axisLine={false} tickLine={false} tick={{ fill: T4, fontSize: 11 }} domain={[0, 100]} />
+                      <Tooltip contentStyle={{ borderRadius: "12px", border: `0.5px solid ${BLUE_BDR}`, fontSize: 12, fontFamily: "DM Sans", boxShadow: "0 4px 20px rgba(0,85,255,0.12)" }} formatter={(v: any, n: string) => [`${v}%`, n]} />
+                      <Legend iconType="circle" iconSize={8} wrapperStyle={{ fontSize: 12, paddingTop: 16, color: T3 }} />
+                      {subjectList.slice(0, 5).map((sub, i) => {
+                        const colors = [B1, GREEN, ORANGE, PINK, TEAL];
+                        return (
+                          <Line key={i} type="monotone" dataKey={sub} stroke={colors[i % colors.length]} strokeWidth={2.5}
+                            dot={{ r: 4, fill: colors[i % colors.length], strokeWidth: 2, stroke: "#fff" }} activeDot={{ r: 6, strokeWidth: 0 }} connectNulls />
+                        );
+                      })}
+                    </LineChart>
+                  </ResponsiveContainer>
+                </div>
+              )}
+            </div>
+          </>
+        )}
+
+        {/* ══════════════════════════════════════════════════════════════════════
+            TAB 2: AI STUDY PLAN MAKER
+        ══════════════════════════════════════════════════════════════════════ */}
+        {activeFeature === "study-plan" && (
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+
+            {/* Generate card — col-1 */}
+            <div className="bg-white rounded-[22px] p-6 relative overflow-hidden"
+              style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+              <div className="absolute -top-[30px] -right-5 w-[140px] h-[140px] rounded-full pointer-events-none"
+                style={{ background: "radial-gradient(circle, rgba(0,85,255,0.05) 0%, transparent 70%)" }} />
+              <div className="flex items-center gap-3 mb-3 relative z-10">
+                <div className="w-[48px] h-[48px] rounded-[15px] flex items-center justify-center shrink-0"
+                  style={{ background: `linear-gradient(135deg, ${B1}, ${B3})`, boxShadow: "0 3px 12px rgba(0,85,255,0.28)" }}>
+                  <CalendarDays className="w-6 h-6 text-white" strokeWidth={2.2} />
+                </div>
+                <div>
+                  <div className="text-[17px] font-bold mb-[2px]" style={{ color: T1, letterSpacing: "-0.3px" }}>AI Study Plan Maker</div>
+                  <div className="text-[11px] font-normal leading-[1.5]" style={{ color: T3 }}>Based on {studentName}'s weak topics</div>
+                </div>
+              </div>
+
+              {weakTopics.length > 0 && (
+                <>
+                  <div className="text-[10px] font-bold uppercase tracking-[0.10em] mb-2 mt-4 relative z-10" style={{ color: T4 }}>Weak Topics Detected</div>
+                  <div className="flex flex-wrap gap-[7px] mb-4 relative z-10">
+                    {weakTopics.slice(0, 5).map((t, i) => (
+                      <div key={i} className="px-[13px] py-[5px] rounded-full text-[11px] font-bold"
+                        style={{
+                          background: i === 0 ? "rgba(255,51,85,0.10)" : "rgba(255,136,0,0.10)",
+                          color: i === 0 ? RED : "#884400",
+                          border: `0.5px solid ${i === 0 ? "rgba(255,51,85,0.22)" : "rgba(255,136,0,0.22)"}`
+                        }}>
+                        {t}
+                      </div>
+                    ))}
+                  </div>
+                </>
+              )}
+
+              <button onClick={handleGeneratePlan} disabled={generatingPlan}
+                className="w-full h-12 rounded-[15px] flex items-center justify-center gap-2 text-[14px] font-bold text-white disabled:opacity-60 transition-transform hover:scale-[1.02] relative overflow-hidden"
+                style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: SH_BTN, letterSpacing: "-0.1px" }}>
+                <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.14) 0%, transparent 52%)" }} />
+                {generatingPlan ? <Loader2 className="relative z-10 w-4 h-4 animate-spin" />
+                  : studyPlan ? <RefreshCw className="relative z-10 w-4 h-4" strokeWidth={2.2} />
+                  : <Sparkles className="relative z-10 w-4 h-4" strokeWidth={2.2} />}
+                <span className="relative z-10">{generatingPlan ? "Generating…" : studyPlan ? "Regenerate Plan" : "Generate Today's Plan"}</span>
+              </button>
+            </div>
+
+            {/* Plan result — spans 2 cols */}
+            {studyPlan ? (
+              <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+                {[
+                  { key: "today", label: "Today", grad: `linear-gradient(135deg, ${B1}, ${B3})`, sh: SH_BTN },
+                  { key: "tomorrow", label: "Tomorrow", grad: `linear-gradient(135deg, ${TEAL}, #22DDCC)`, sh: "0 3px 12px rgba(0,196,180,0.30)" },
+                ].map(({ key, label, grad, sh }) => (
+                  <div key={key} className="bg-white rounded-[22px] overflow-hidden"
+                    style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                    <div className="px-5 py-4 flex items-center gap-2" style={{ background: grad, boxShadow: sh }}>
+                      <CalendarDays className="w-4 h-4 text-white" strokeWidth={2.5} />
+                      <h3 className="text-[14px] font-bold text-white" style={{ letterSpacing: "-0.2px" }}>{label}'s Schedule</h3>
+                    </div>
+                    <div className="p-4 space-y-2">
+                      {(studyPlan[key] || []).map((slot: any, i: number) => {
+                        const isFirst = i === 0;
+                        const isLast = i === (studyPlan[key].length - 1);
+                        const priority = isFirst ? "High" : isLast ? "Low" : "Med";
+                        const pColor = priority === "High" ? RED : priority === "Med" ? ORANGE : GREEN;
+                        const pBg = priority === "High" ? "rgba(255,51,85,0.07)" : priority === "Med" ? "rgba(255,136,0,0.07)" : "rgba(0,200,83,0.08)";
+                        const pBdr = priority === "High" ? "rgba(255,51,85,0.16)" : priority === "Med" ? "rgba(255,136,0,0.16)" : "rgba(0,200,83,0.22)";
+                        return (
+                          <div key={i} className="flex items-start gap-3 px-4 py-3 rounded-[14px]"
+                            style={{ background: pBg, border: `0.5px solid ${pBdr}` }}>
+                            <div className="w-9 h-9 rounded-[11px] flex items-center justify-center shrink-0"
+                              style={{ background: "rgba(255,255,255,0.7)", border: `0.5px solid ${pBdr}` }}>
+                              <Clock className="w-[15px] h-[15px]" style={{ color: pColor }} strokeWidth={2.3} />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-2 flex-wrap mb-[2px]">
+                                <span className="text-[10px] font-bold uppercase tracking-[0.10em]" style={{ color: T4 }}>{slot.slot}</span>
+                                <span className="text-[10px]" style={{ color: T4 }}>{slot.time}</span>
+                                <span className="ml-auto text-[10px] font-bold px-[8px] py-[2px] rounded-full"
+                                  style={{ background: "rgba(0,85,255,0.06)", color: T3, border: `0.5px solid ${BLUE_BDR}` }}>
+                                  {slot.duration}
+                                </span>
+                              </div>
+                              <p className="text-[13px] font-bold mt-1" style={{ color: T1, letterSpacing: "-0.15px" }}>{slot.topic}</p>
+                              <p className="text-[11px] mt-[2px]" style={{ color: T3 }}>{slot.activity}</p>
+                              {slot.reason && <p className="text-[10px] italic mt-[4px]" style={{ color: T4 }}>{slot.reason}</p>}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="lg:col-span-2 bg-white rounded-[22px] p-10 flex flex-col items-center justify-center text-center relative overflow-hidden"
+                style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                <div className="absolute -top-[50px] -right-[30px] w-[180px] h-[180px] rounded-full pointer-events-none"
+                  style={{ background: "radial-gradient(circle, rgba(0,85,255,0.05) 0%, transparent 70%)" }} />
+                <div className="w-[72px] h-[72px] rounded-[22px] flex items-center justify-center mb-4 relative z-10"
+                  style={{ background: `linear-gradient(135deg, ${B1}, ${B3})`, boxShadow: SH_BTN }}>
+                  <CalendarDays className="w-[32px] h-[32px] text-white" strokeWidth={2.2} />
+                </div>
+                <div className="text-[19px] font-bold mb-1 relative z-10" style={{ color: T1, letterSpacing: "-0.4px" }}>Ready to Plan?</div>
+                <div className="text-[13px] font-normal leading-[1.55] max-w-[360px] relative z-10" style={{ color: T3 }}>
+                  Click "Generate Today's Plan" to get a personalised study schedule for today &amp; tomorrow based on your weak topics.
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* ══════════════════════════════════════════════════════════════════════
+            TAB 3: CONCEPT EXPLAINER
+        ══════════════════════════════════════════════════════════════════════ */}
+        {activeFeature === "explainer" && (
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
+
+            {/* Input — col-2 */}
+            <div className="lg:col-span-2 bg-white rounded-[22px] p-6 relative overflow-hidden"
+              style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+              <div className="absolute -top-[30px] -right-5 w-[140px] h-[140px] rounded-full pointer-events-none"
+                style={{ background: "radial-gradient(circle, rgba(0,196,180,0.05) 0%, transparent 70%)" }} />
+              <div className="flex items-center gap-3 mb-3 relative z-10">
+                <div className="w-[48px] h-[48px] rounded-[15px] flex items-center justify-center shrink-0"
+                  style={{ background: `linear-gradient(135deg, ${TEAL}, #22DDCC)`, boxShadow: "0 3px 12px rgba(0,196,180,0.28)" }}>
+                  <BookOpenText className="w-6 h-6 text-white" strokeWidth={2.2} />
+                </div>
+                <div>
+                  <div className="text-[17px] font-bold mb-[2px]" style={{ color: T1, letterSpacing: "-0.3px" }}>Concept Explainer</div>
+                  <div className="text-[11px] font-normal leading-[1.5]" style={{ color: T3 }}>AI explains any topic simply</div>
+                </div>
+              </div>
+
+              <div className="relative mb-4 mt-4 z-10">
+                <input type="text" value={explainTopic} onChange={e => setExplainTopic(e.target.value)}
+                  onKeyDown={e => e.key === "Enter" && handleExplain()}
+                  placeholder="e.g. Photosynthesis, Newton's Law…"
+                  className="w-full py-3 pl-4 pr-[52px] rounded-[14px] text-[13px] outline-none"
+                  style={{ background: BG, border: `0.5px solid ${BLUE_BDR}`, color: T1, fontFamily: "DM Sans, sans-serif", letterSpacing: "-0.1px" }} />
+                <button onClick={() => handleExplain()} disabled={generatingExplanation}
+                  className="absolute right-[6px] top-1/2 -translate-y-1/2 w-9 h-9 rounded-[11px] flex items-center justify-center disabled:opacity-50 transition-transform hover:scale-105"
+                  style={{ background: `linear-gradient(135deg, ${TEAL}, #22DDCC)`, boxShadow: "0 2px 8px rgba(0,196,180,0.32)" }}>
+                  {generatingExplanation ? <Loader2 className="w-4 h-4 text-white animate-spin" /> : <Send className="w-[15px] h-[15px] text-white" strokeWidth={2.5} />}
+                </button>
+              </div>
+
+              {weakTopics.length > 0 && (
+                <div className="relative z-10">
+                  <div className="text-[10px] font-bold uppercase tracking-[0.10em] mb-2" style={{ color: T4 }}>Quick Picks — Weak Topics</div>
+                  <div className="flex flex-wrap gap-[7px]">
+                    {weakTopics.slice(0, 6).map((t, i) => (
+                      <button key={i} onClick={() => handleExplain(t)}
+                        className="px-[13px] py-[6px] rounded-full text-[11px] font-bold transition-transform hover:scale-105"
+                        style={{
+                          background: i % 3 === 0 ? "rgba(255,51,85,0.10)" : i % 3 === 1 ? "rgba(255,136,0,0.10)" : "rgba(0,196,180,0.10)",
+                          color: i % 3 === 0 ? RED : i % 3 === 1 ? "#884400" : TEAL,
+                          border: `0.5px solid ${i % 3 === 0 ? "rgba(255,51,85,0.22)" : i % 3 === 1 ? "rgba(255,136,0,0.22)" : "rgba(0,196,180,0.22)"}`
+                        }}>
+                        {t}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Result — col-3 */}
+            <div className="lg:col-span-3">
+              {generatingExplanation ? (
+                <div className="bg-white rounded-[22px] py-16 flex flex-col items-center"
+                  style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                  <Loader2 className="w-10 h-10 animate-spin" style={{ color: TEAL }} />
+                  <p className="text-[13px] font-medium mt-3" style={{ color: T3 }}>Explaining "{explainTopic}"…</p>
+                </div>
+              ) : explanation ? (
+                <div className="space-y-4">
+                  {/* Simple explanation — dark blue */}
+                  <div className="rounded-[22px] p-6 relative overflow-hidden"
+                    style={{
+                      background: "linear-gradient(140deg, #001888 0%, #0033CC 48%, #0055FF 100%)",
+                      boxShadow: "0 8px 28px rgba(0,51,204,0.32), 0 0 0 0.5px rgba(255,255,255,0.14)",
+                    }}>
+                    <div className="absolute -top-7 -right-5 w-[140px] h-[140px] rounded-full pointer-events-none"
+                      style={{ background: "radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 65%)" }} />
+                    <div className="absolute inset-0 pointer-events-none" style={{
+                      backgroundImage: "linear-gradient(rgba(255,255,255,0.014) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.014) 1px, transparent 1px)",
+                      backgroundSize: "24px 24px"
+                    }} />
+                    <div className="flex items-center gap-2 mb-3 relative z-10">
+                      <span className="text-[24px]">{explanation.emoji || "💡"}</span>
+                      <div className="text-[10px] font-bold uppercase tracking-[0.12em]" style={{ color: "rgba(255,255,255,0.55)" }}>AI Explanation Ready</div>
+                    </div>
+                    <p className="text-[15px] leading-[1.7] font-normal relative z-10" style={{ color: "rgba(255,255,255,0.92)", letterSpacing: "-0.1px" }}>
+                      {explanation.simple_explanation}
+                    </p>
+                  </div>
+
+                  {/* Real-world Example */}
+                  {explanation.real_world_example && (
+                    <div className="bg-white rounded-[22px] p-5"
+                      style={{ boxShadow: SH, border: "0.5px solid rgba(0,196,180,0.18)" }}>
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-9 h-9 rounded-[12px] flex items-center justify-center"
+                          style={{ background: "rgba(0,196,180,0.10)", border: "0.5px solid rgba(0,196,180,0.22)" }}>
+                          <Zap className="w-[15px] h-[15px]" style={{ color: TEAL }} strokeWidth={2.5} />
+                        </div>
+                        <span className="text-[13px] font-bold uppercase tracking-[0.10em]" style={{ color: TEAL }}>Real-World Example</span>
+                      </div>
+                      <p className="text-[14px] leading-[1.6]" style={{ color: T2 }}>{explanation.real_world_example}</p>
+                    </div>
+                  )}
+
+                  {/* Remember points */}
+                  {explanation.remember_points?.length > 0 && (
+                    <div className="bg-white rounded-[22px] p-5"
+                      style={{ boxShadow: SH, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                      <div className="flex items-center gap-2 mb-4">
+                        <div className="w-9 h-9 rounded-[12px] flex items-center justify-center"
+                          style={{ background: "rgba(107,33,232,0.10)", border: "0.5px solid rgba(107,33,232,0.22)" }}>
+                          <ClipboardList className="w-[15px] h-[15px]" style={{ color: "#6B21E8" }} strokeWidth={2.5} />
+                        </div>
+                        <span className="text-[13px] font-bold uppercase tracking-[0.10em]" style={{ color: "#6B21E8" }}>Remember These Points</span>
+                      </div>
+                      <div className="space-y-3">
+                        {explanation.remember_points.map((point: string, i: number) => (
+                          <div key={i} className="flex gap-3 items-start">
+                            <div className="w-[22px] h-[22px] rounded-full flex items-center justify-center shrink-0 mt-[2px]"
+                              style={{ background: "rgba(107,33,232,0.10)", border: "0.5px solid rgba(107,33,232,0.22)" }}>
+                              <span className="text-[10px] font-bold" style={{ color: "#6B21E8" }}>{i + 1}</span>
+                            </div>
+                            <p className="text-[13px] leading-[1.55]" style={{ color: T2 }}>{point}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="bg-white rounded-[22px] p-10 flex flex-col items-center justify-center text-center h-full relative overflow-hidden"
+                  style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                  <div className="absolute -top-[50px] -right-[30px] w-[180px] h-[180px] rounded-full pointer-events-none"
+                    style={{ background: "radial-gradient(circle, rgba(0,196,180,0.05) 0%, transparent 70%)" }} />
+                  <div className="w-[72px] h-[72px] rounded-[22px] flex items-center justify-center mb-4 relative z-10"
+                    style={{ background: `linear-gradient(135deg, ${TEAL}, #22DDCC)`, boxShadow: "0 6px 22px rgba(0,196,180,0.42)" }}>
+                    <BookOpenText className="w-[32px] h-[32px] text-white" strokeWidth={2.2} />
+                  </div>
+                  <div className="text-[19px] font-bold mb-1 relative z-10" style={{ color: T1, letterSpacing: "-0.4px" }}>Type Any Concept</div>
+                  <div className="text-[13px] font-normal leading-[1.55] max-w-[360px] relative z-10" style={{ color: T3 }}>
+                    Enter a topic on the left and AI will explain it in simple language with a real-world example.
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* ══════════════════════════════════════════════════════════════════════
+            TAB 4: PRACTICE PROBLEM GENERATOR
+        ══════════════════════════════════════════════════════════════════════ */}
+        {activeFeature === "practice" && (
+          <>
+            {/* Input bar */}
+            <div className="bg-white rounded-[22px] p-6 mb-5 relative overflow-hidden"
+              style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+              <div className="absolute -top-[30px] -right-5 w-[180px] h-[180px] rounded-full pointer-events-none"
+                style={{ background: "radial-gradient(circle, rgba(255,136,0,0.05) 0%, transparent 70%)" }} />
+              <div className="flex items-center gap-4 flex-wrap relative z-10">
+                <div className="w-[52px] h-[52px] rounded-[16px] flex items-center justify-center shrink-0"
+                  style={{ background: `linear-gradient(135deg, ${ORANGE}, #FFAA22)`, boxShadow: "0 3px 12px rgba(255,136,0,0.28)" }}>
+                  <FlaskConical className="w-[26px] h-[26px] text-white" strokeWidth={2.2} />
+                </div>
+                <div className="flex-1 min-w-[220px]">
+                  <div className="text-[17px] font-bold" style={{ color: T1, letterSpacing: "-0.3px" }}>Practice Problem Generator</div>
+                  <div className="text-[12px] font-normal" style={{ color: T3 }}>5 AI questions on any topic — reveal answers one by one</div>
+                </div>
+                <input type="text" value={practiceTopic} onChange={e => setPracticeTopic(e.target.value)}
+                  onKeyDown={e => e.key === "Enter" && handleGenerateQuestions()}
+                  placeholder={`Topic (e.g. ${activeSubject || "Fractions"})`}
+                  className="flex-1 min-w-[220px] h-12 px-4 rounded-[14px] text-[13px] outline-none"
+                  style={{ background: BG, border: `0.5px solid ${BLUE_BDR}`, color: T1, fontFamily: "DM Sans, sans-serif" }} />
+                <button onClick={handleGenerateQuestions} disabled={generatingQuestions}
+                  className="h-12 px-6 rounded-[14px] text-[13px] font-bold text-white flex items-center gap-2 disabled:opacity-60 transition-transform hover:scale-[1.02]"
+                  style={{ background: `linear-gradient(135deg, ${ORANGE}, #FFAA22)`, boxShadow: "0 3px 12px rgba(255,136,0,0.32)" }}>
+                  {generatingQuestions ? <Loader2 className="w-4 h-4 animate-spin" /> : <RefreshCw className="w-4 h-4" strokeWidth={2.3} />}
+                  {generatingQuestions ? "Generating…" : "Generate"}
+                </button>
+              </div>
+            </div>
+
+            {/* Questions grid (2 col on lg) */}
+            {questions.length > 0 && !generatingQuestions ? (
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                {questions.map((q: any, qi: number) => {
+                  const selected = selectedAnswers[qi];
+                  const revealed = revealedAnswers.has(qi);
+                  return (
+                    <div key={qi} className="bg-white rounded-[20px] p-5"
+                      style={{ boxShadow: SH, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                      <div className="flex items-start gap-3 mb-4">
+                        <div className="w-8 h-8 rounded-[10px] flex items-center justify-center text-[13px] font-bold text-white shrink-0"
+                          style={{ background: `linear-gradient(135deg, ${ORANGE}, #FFAA22)`, boxShadow: "0 2px 6px rgba(255,136,0,0.28)" }}>
+                          {qi + 1}
+                        </div>
+                        <p className="text-[14px] font-semibold leading-[1.5]" style={{ color: T1 }}>{q.question}</p>
+                      </div>
+                      <div className="flex flex-col gap-2">
+                        {q.options?.map((opt: string, oi: number) => {
+                          const letter = opt.charAt(0);
+                          const isSelected = selected === letter;
+                          const isCorrect = revealed && letter === q.correct;
+                          const isWrong = revealed && isSelected && letter !== q.correct;
+                          return (
+                            <button key={oi} onClick={() => setSelectedAnswers({ ...selectedAnswers, [qi]: letter })} disabled={revealed}
+                              className="text-left px-4 py-[11px] rounded-[12px] text-[12px] font-medium transition-colors"
+                              style={{
+                                background: isCorrect ? "rgba(0,200,83,0.12)" : isWrong ? "rgba(255,51,85,0.12)" : isSelected ? "rgba(255,136,0,0.10)" : BG,
+                                color: isCorrect ? GREEN2 : isWrong ? RED : T2,
+                                border: `0.5px solid ${isCorrect ? "rgba(0,200,83,0.25)" : isWrong ? "rgba(255,51,85,0.25)" : isSelected ? "rgba(255,136,0,0.25)" : BLUE_BDR}`,
+                              }}>
+                              {opt}
+                            </button>
+                          );
+                        })}
+                      </div>
+                      {!revealed && selected && (
+                        <button onClick={() => setRevealedAnswers(new Set([...revealedAnswers, qi]))}
+                          className="mt-3 w-full py-[11px] rounded-[12px] text-[12px] font-bold flex items-center justify-center gap-2"
+                          style={{ background: BG, color: T2, border: `0.5px solid ${BLUE_BDR}` }}>
+                          <Eye className="w-[14px] h-[14px]" /> Reveal Answer
+                        </button>
+                      )}
+                      {revealed && q.explanation && (
+                        <div className="mt-3 px-4 py-3 rounded-[12px]"
+                          style={{ background: "rgba(0,196,180,0.06)", border: "0.5px solid rgba(0,196,180,0.18)" }}>
+                          <div className="text-[10px] font-bold uppercase tracking-[0.09em] mb-1" style={{ color: TEAL }}>Explanation</div>
+                          <p className="text-[12px] leading-[1.55]" style={{ color: T2 }}>{q.explanation}</p>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            ) : generatingQuestions ? (
+              <div className="bg-white rounded-[22px] py-16 flex flex-col items-center"
+                style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                <Loader2 className="w-10 h-10 animate-spin" style={{ color: ORANGE }} />
+                <p className="text-[13px] font-medium mt-3" style={{ color: T3 }}>Generating 5 questions…</p>
+              </div>
+            ) : (
+              <div className="bg-white rounded-[22px] p-12 flex flex-col items-center justify-center text-center relative overflow-hidden"
+                style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                <div className="absolute -top-[50px] -right-[30px] w-[200px] h-[200px] rounded-full pointer-events-none"
+                  style={{ background: "radial-gradient(circle, rgba(255,136,0,0.05) 0%, transparent 70%)" }} />
+                <div className="w-[80px] h-[80px] rounded-[24px] flex items-center justify-center mb-4 relative z-10"
+                  style={{ background: `linear-gradient(135deg, ${ORANGE}, #FFAA22)`, boxShadow: "0 6px 22px rgba(255,136,0,0.42)" }}>
+                  <FlaskConical className="w-[36px] h-[36px] text-white" strokeWidth={2.2} />
+                </div>
+                <div className="text-[22px] font-bold mb-1 relative z-10" style={{ color: T1, letterSpacing: "-0.5px" }}>Ready to Practice?</div>
+                <div className="text-[14px] font-normal leading-[1.55] max-w-[420px] relative z-10" style={{ color: T3 }}>
+                  Enter a topic above and generate AI-powered practice problems. Each question comes with a detailed explanation.
+                </div>
+              </div>
+            )}
+          </>
+        )}
+
+        {/* ══════════════════════════════════════════════════════════════════════
+            TAB 5: AI DOUBT SOLVER
+        ══════════════════════════════════════════════════════════════════════ */}
+        {activeFeature === "doubt" && (
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
+
+            {/* Input — col-2 */}
+            <div className="lg:col-span-2 bg-white rounded-[22px] p-6 relative overflow-hidden"
+              style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+              <div className="absolute -top-[30px] -right-5 w-[140px] h-[140px] rounded-full pointer-events-none"
+                style={{ background: "radial-gradient(circle, rgba(255,59,168,0.05) 0%, transparent 70%)" }} />
+              <div className="flex items-center gap-3 mb-3 relative z-10">
+                <div className="w-[48px] h-[48px] rounded-[15px] flex items-center justify-center shrink-0"
+                  style={{ background: `linear-gradient(135deg, ${PINK}, #FF77CC)`, boxShadow: "0 3px 12px rgba(255,59,168,0.28)" }}>
+                  <HelpCircle className="w-6 h-6 text-white" strokeWidth={2.2} />
+                </div>
+                <div>
+                  <div className="text-[17px] font-bold mb-[2px]" style={{ color: T1, letterSpacing: "-0.3px" }}>AI Doubt Solver</div>
+                  <div className="text-[11px] font-normal leading-[1.5]" style={{ color: T3 }}>Get step-by-step guidance — not answers</div>
+                </div>
+              </div>
+
+              {doubtImagePreview && (
+                <div className="mb-3 relative rounded-[14px] overflow-hidden z-10" style={{ border: `0.5px solid ${BLUE_BDR}` }}>
+                  <img src={doubtImagePreview} alt="Doubt" className="w-full h-auto max-h-64 object-cover" />
+                  <button onClick={() => { setDoubtImagePreview(null); setDoubtImageB64(null); }}
+                    className="absolute top-2 right-2 w-8 h-8 rounded-full bg-black/60 text-white text-sm font-bold">×</button>
+                </div>
+              )}
+
+              <textarea value={doubtText} onChange={e => setDoubtText(e.target.value)}
+                placeholder="Type your doubt… e.g. 'I don't understand simultaneous equations'"
+                className="w-full py-3 px-4 rounded-[14px] text-[13px] outline-none resize-none min-h-[120px] leading-[1.6] relative z-10"
+                style={{ background: BG, border: `0.5px solid ${BLUE_BDR}`, color: T1, fontFamily: "DM Sans, sans-serif", letterSpacing: "-0.1px" }} />
+
+              <div className="flex gap-2 mt-4 relative z-10">
+                <input ref={fileInputRef} type="file" accept="image/*" capture="environment" onChange={handleImageUpload} className="hidden" />
+                <button onClick={() => fileInputRef.current?.click()}
+                  className="flex-1 h-12 rounded-[14px] text-[13px] font-bold flex items-center justify-center gap-2 transition-transform hover:scale-[1.02]"
+                  style={{ background: BG, color: T2, border: `0.5px solid ${BLUE_BDR}`, boxShadow: SH }}>
+                  <Camera className="w-4 h-4" strokeWidth={2} />
+                  Upload Photo
+                </button>
+                <button onClick={handleDoubtSubmit} disabled={generatingDoubt || (!doubtText.trim() && !doubtImageB64)}
+                  className="flex-[1.3] h-12 rounded-[14px] text-[13px] font-bold text-white flex items-center justify-center gap-2 disabled:opacity-50 transition-transform hover:scale-[1.02]"
+                  style={{ background: `linear-gradient(135deg, ${PINK}, #FF77CC)`, boxShadow: "0 4px 14px rgba(255,59,168,0.30)" }}>
+                  {generatingDoubt ? <Loader2 className="w-4 h-4 animate-spin" /> : <Zap className="w-4 h-4" strokeWidth={2.3} />}
+                  Get Help
+                </button>
+              </div>
+            </div>
+
+            {/* Hints — col-3 */}
+            <div className="lg:col-span-3">
+              {generatingDoubt ? (
+                <div className="bg-white rounded-[22px] py-16 flex flex-col items-center"
+                  style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                  <Loader2 className="w-10 h-10 animate-spin" style={{ color: PINK }} />
+                  <p className="text-[13px] font-medium mt-3" style={{ color: T3 }}>Preparing your hints…</p>
+                </div>
+              ) : doubtHints.length > 0 ? (
+                <div className="space-y-3">
+                  <div className="bg-white rounded-[18px] px-5 py-3 flex items-center justify-between"
+                    style={{ boxShadow: SH, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                    <div className="flex items-center gap-2">
+                      <Sparkles className="w-4 h-4" style={{ color: PINK }} strokeWidth={2.3} />
+                      <span className="text-[12px] font-bold" style={{ color: T2 }}>Hints revealed: {Math.min(hintIndex + 1, doubtHints.length)} / {doubtHints.length}</span>
+                    </div>
+                    <button onClick={() => { setDoubtHints([]); setHintIndex(0); setDoubtText(""); setDoubtImagePreview(null); setDoubtImageB64(null); }}
+                      className="text-[11px] font-bold" style={{ color: PINK }}>Ask another</button>
+                  </div>
+                  {doubtHints.slice(0, hintIndex + 1).map((hint, i) => (
+                    <div key={i} className="bg-white rounded-[18px] p-5 flex items-start gap-3"
+                      style={{ boxShadow: SH, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                      <div className="w-9 h-9 rounded-[11px] flex items-center justify-center shrink-0 text-[14px] font-bold text-white"
+                        style={{ background: `linear-gradient(135deg, ${PINK}, #FF77CC)`, boxShadow: "0 2px 8px rgba(255,59,168,0.28)" }}>
+                        {i + 1}
+                      </div>
+                      <p className="text-[14px] leading-[1.6]" style={{ color: T2 }}>{hint}</p>
+                    </div>
+                  ))}
+                  {hintIndex < doubtHints.length - 1 && (
+                    <button onClick={() => setHintIndex(hintIndex + 1)}
+                      className="w-full h-12 rounded-[14px] border-2 border-dashed text-[13px] font-bold flex items-center justify-center gap-2 transition-transform hover:scale-[1.01]"
+                      style={{ borderColor: "rgba(255,59,168,0.30)", color: PINK, background: "rgba(255,59,168,0.04)" }}>
+                      <ChevronRight className="w-4 h-4" />
+                      Next Hint ({hintIndex + 2}/{doubtHints.length})
+                    </button>
+                  )}
+                </div>
+              ) : (
+                <div className="bg-white rounded-[22px] p-10 flex flex-col items-center justify-center text-center h-full relative overflow-hidden"
+                  style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                  <div className="absolute -top-[50px] -right-[30px] w-[180px] h-[180px] rounded-full pointer-events-none"
+                    style={{ background: "radial-gradient(circle, rgba(255,59,168,0.05) 0%, transparent 70%)" }} />
+                  <div className="w-[72px] h-[72px] rounded-[22px] flex items-center justify-center mb-4 relative z-10"
+                    style={{ background: `linear-gradient(135deg, ${PINK}, #FF77CC)`, boxShadow: "0 6px 22px rgba(255,59,168,0.42)" }}>
+                    <HelpCircle className="w-[32px] h-[32px] text-white" strokeWidth={2.2} />
+                  </div>
+                  <div className="text-[19px] font-bold mb-1 relative z-10" style={{ color: T1, letterSpacing: "-0.4px" }}>Stuck on Something?</div>
+                  <div className="text-[13px] font-normal leading-[1.55] max-w-[360px] relative z-10" style={{ color: T3 }}>
+                    Type your doubt or upload a photo. AI uses the Socratic method — guiding with progressive hints, never giving the direct answer.
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+      </div>
+    </div>
+  );
+};
+
+export default ConceptStrengthsPage;

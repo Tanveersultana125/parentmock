@@ -1,0 +1,193 @@
+/* Google Fonts loaded via <link> in index.html for non-blocking render */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════════════════════
+   NATIVE APP FEEL — Global overrides
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* 1. Prevent pull-to-refresh rubber-banding (does NOT block scroll) */
+html, body {
+  overscroll-behavior: none;
+  overscroll-behavior-y: none;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  /* touch-action intentionally omitted — setting it here breaks native scroll
+     on many Android browsers. overscroll-behavior alone handles pull-to-refresh. */
+}
+
+/* 2. Remove tap flash highlight everywhere */
+*, *::before, *::after {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+/* 3. Momentum scroll on scrollable areas */
+.overflow-auto,
+.overflow-y-auto,
+.overflow-x-auto,
+[data-scroll],
+main {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 4. Smooth font rendering (looks crisper on mobile OLED screens) */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Inter', sans-serif;
+}
+
+/* 5. Native-like button/interactive feedback */
+button, a, [role="button"], label {
+  touch-action: manipulation;   /* kills 300ms tap delay */
+  cursor: pointer;
+}
+
+/* 6. Prevent text selection on UI chrome (not on content) */
+nav, header, footer, [data-no-select] {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* 7. Safe area utilities — use these classes on fixed bottom bars */
+.safe-bottom {
+  padding-bottom: max(env(safe-area-inset-bottom), 0.5rem);
+}
+.safe-top {
+  padding-top: env(safe-area-inset-top);
+}
+.pb-safe {
+  padding-bottom: calc(env(safe-area-inset-bottom) + 4rem);
+}
+
+/* 8. Page transition animation */
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+.page-enter {
+  animation: page-enter 0.22s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* 9. Native bottom navigation bar safe area */
+.bottom-nav-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* 10. Prevent callout on images (iOS long-press menu) */
+img, video {
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  pointer-events: auto;
+}
+
+@layer base {
+  :root {
+    --background: 220 20% 97%;
+    --foreground: 220 30% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 30% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 30% 15%;
+
+    --primary: 220 60% 25%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 220 30% 15%;
+
+    --muted: 220 15% 92%;
+    --muted-foreground: 220 10% 50%;
+
+    --accent: 220 60% 25%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 90%;
+    --input: 220 15% 90%;
+    --ring: 220 60% 25%;
+
+    --radius: 0.75rem;
+
+    /* Edullent custom tokens */
+    --edu-navy: 220 60% 25%;
+    --edu-navy-light: 220 50% 35%;
+    --edu-green: 142 70% 45%;
+    --edu-green-light: 142 60% 95%;
+    --edu-orange: 30 90% 55%;
+    --edu-orange-light: 35 90% 95%;
+    --edu-red: 0 72% 51%;
+    --edu-red-light: 0 80% 95%;
+    --edu-blue: 215 80% 55%;
+    --edu-blue-light: 215 80% 95%;
+    --edu-yellow: 45 90% 55%;
+    --edu-yellow-light: 45 90% 95%;
+    --edu-purple: 270 60% 55%;
+    --edu-purple-light: 270 60% 95%;
+
+    --sidebar-background: 220 60% 25%;
+    --sidebar-foreground: 220 20% 80%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 220 60% 25%;
+    --sidebar-accent: 220 55% 32%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 220 50% 30%;
+    --sidebar-ring: 220 60% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', sans-serif;
+    /* Native app: prevent overscroll rubber-banding */
+    overscroll-behavior: none;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 3px;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+.glass-card {
+  @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+

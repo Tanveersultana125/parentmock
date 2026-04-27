@@ -1,0 +1,195 @@
+rules_version = '2';
+
+// ═══════════════════════════════════════════════════════════════════════════
+// EDULLENT — Production Firebase Storage Rules (SECURE baseline)
+// ───────────────────────────────────────────────────────────────────────────
+// Hardened 2026-04-18 — closes cross-tenant read/delete on syllabi,
+// submissions, schools, profiles.
+//
+// Storage layout:
+//   syllabi/{schoolId}/{branchId}/{classId}/{titleSlug}/{timestamp}_{fileName}
+//   submissions/{schoolId}/{studentId}/{assignmentId}/{fileName}
+//   schools/{schoolId}/** (logos, profile photos uploaded by owner)
+//   profiles/{userId}/{fileName}
+//
+// Tenant check uses the schoolId segment from the path, compared against the
+// caller's custom claim schoolId (set by syncUserClaims Cloud Function).
+// ═══════════════════════════════════════════════════════════════════════════
+
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // ── Helpers ──────────────────────────────────────────────────────────
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function uid() {
+      return request.auth.uid;
+    }
+
+    function claimSchoolId() {
+      return request.auth.token.schoolId;
+    }
+
+    function claimRole() {
+      return request.auth.token.role;
+    }
+
+    function hasOwnerRole() {
+      return signedIn() && claimRole() == 'owner';
+    }
+
+    function hasStaffRole() {
+      return signedIn() && claimRole() in ['owner', 'principal', 'teacher', 'data_entry'];
+    }
+
+    function hasAdminRole() {
+      return signedIn() && claimRole() in ['owner', 'principal'];
+    }
+
+    // Caller's claimed school matches the {schoolId} segment of the path
+    function sameSchool(schoolId) {
+      return signedIn() && claimSchoolId() == schoolId;
+    }
+
+    function isOwnerOf(schoolId) {
+      return signedIn() && uid() == schoolId;
+    }
+
+    // File type / size guards
+    function isPdf() {
+      return request.resource != null
+          && request.resource.size < 50 * 1024 * 1024
+          && request.resource.contentType == 'application/pdf';
+    }
+
+    function isAllowedSubmissionType() {
+      return request.resource != null
+          && request.resource.size < 50 * 1024 * 1024
+          && request.resource.contentType in [
+               'application/pdf',
+               'image/jpeg', 'image/png', 'image/webp',
+               'application/msword',
+               'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+               'text/plain'
+             ];
+    }
+
+    // Used by teacher assignment attachments + test blueprints.
+    // 10 MB cap aligns with the client-side validator in CreateAssignment.tsx
+    // and CreateTest.tsx (MAX_UPLOAD_BYTES = 10 MB).
+    function isAllowedTeacherUploadType() {
+      return request.resource != null
+          && request.resource.size < 10 * 1024 * 1024
+          && request.resource.contentType in [
+               'application/pdf',
+               'image/jpeg', 'image/png',
+               'application/msword',
+               'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+             ];
+    }
+
+    function isImage() {
+      return request.resource != null
+          && request.resource.contentType.matches('image/(jpeg|png|webp|gif)');
+    }
+
+
+    // ═════════════════════════════════════════════════════════════════════
+    // ── Syllabus / class documents (teacher upload) ──────────────────────
+    //   Read: any signed-in user in same school.
+    //   Write: staff role in same school, PDF only, 50 MB cap.
+    //   Delete: staff role in same school.
+    // ═════════════════════════════════════════════════════════════════════
+    match /syllabi/{schoolId}/{branchId}/{classId}/{titleSlug}/{fileName} {
+      allow read:   if sameSchool(schoolId);
+      allow write:  if sameSchool(schoolId) && hasStaffRole() && isPdf();
+      allow delete: if sameSchool(schoolId) && hasStaffRole();
+    }
+
+
+    // ═════════════════════════════════════════════════════════════════════
+    // ── Assignment submissions ──────────────────────────────────────────
+    //   Read: signed-in same-school (students submit, teachers grade).
+    //   Write: same-school + allowed mime types + 50 MB cap.
+    //   Delete: staff role in same school, or the uploader themselves.
+    // ═════════════════════════════════════════════════════════════════════
+    match /submissions/{schoolId}/{allPaths=**} {
+      allow read:   if sameSchool(schoolId);
+      allow write:  if sameSchool(schoolId) && isAllowedSubmissionType();
+      allow delete: if sameSchool(schoolId) && hasStaffRole();
+    }
+
+
+    // ═════════════════════════════════════════════════════════════════════
+    // ── Owner / school assets (logos, branding) ─────────────────────────
+    //   Read: any signed-in user in same school (logos shown in header).
+    //   Write/Delete: owner of that school only, 10 MB cap, images only.
+    // ═════════════════════════════════════════════════════════════════════
+    match /schools/{schoolId}/{allPaths=**} {
+      allow read:   if sameSchool(schoolId);
+      allow write:  if isOwnerOf(schoolId)
+                    && request.resource.size < 10 * 1024 * 1024
+                    && isImage();
+      allow delete: if isOwnerOf(schoolId);
+    }
+
+
+    // ═════════════════════════════════════════════════════════════════════
+    // ── Assignment attachments (teacher creates) ────────────────────────
+    //   Path: assignments/{teacherId}_{timestamp}_{fileName}
+    //   Write: staff role only, and the filename MUST start with the
+    //          uploader's UID — prevents one teacher from impersonating
+    //          another teacher's file attribution.
+    //   Read: any signed-in user (students/parents need to download) —
+    //         actual file access goes through tokenized download URLs
+    //         anyway, so this is defense in depth.
+    //   Delete: staff role only.
+    // ═════════════════════════════════════════════════════════════════════
+    match /assignments/{fileName} {
+      allow read:   if signedIn();
+      allow write:  if hasStaffRole()
+                    && fileName.matches(uid() + '_.*')
+                    && isAllowedTeacherUploadType();
+      allow delete: if hasStaffRole();
+    }
+
+
+    // ═════════════════════════════════════════════════════════════════════
+    // ── Test blueprints (teacher creates) ───────────────────────────────
+    //   Path: test_blueprints/{teacherId}_{timestamp}_{fileName}
+    //   Same model as /assignments/ — uploader-scoped write, signed-in read.
+    // ═════════════════════════════════════════════════════════════════════
+    match /test_blueprints/{fileName} {
+      allow read:   if signedIn();
+      allow write:  if hasStaffRole()
+                    && fileName.matches(uid() + '_.*')
+                    && isAllowedTeacherUploadType();
+      allow delete: if hasStaffRole();
+    }
+
+
+    // ═════════════════════════════════════════════════════════════════════
+    // ── Profile photos ──────────────────────────────────────────────────
+    //   Read: signed-in users (profile photos are displayed in directories,
+    //         principals/teachers/parents need to see each other's avatars).
+    //   Write/Delete: only the owner of that profile.
+    // ═════════════════════════════════════════════════════════════════════
+    match /profiles/{userId}/{fileName} {
+      allow read:   if signedIn();
+      allow write:  if signedIn() && uid() == userId
+                    && request.resource.size < 5 * 1024 * 1024
+                    && isImage();
+      allow delete: if signedIn() && uid() == userId;
+    }
+
+
+    // ═════════════════════════════════════════════════════════════════════
+    // ── CATCH-ALL — deny unknown paths ──────────────────────────────────
+    // ═════════════════════════════════════════════════════════════════════
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

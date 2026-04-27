@@ -1,0 +1,866 @@
+import { useState, useEffect } from "react";
+import {
+  Clock, School,
+  ShieldCheck, Loader2, Target, MessageSquare,
+  BookOpen, ChevronRight, Layers,
+  GraduationCap, BookText, Library, BookMarked
+} from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../lib/AuthContext";
+import { db } from "../lib/firebase";
+import { doc as fbDoc, getDoc as fbGetDoc } from "firebase/firestore";
+import { subscribeEnrollments } from "../lib/enrollmentQuery";
+import { useSchoolSettings, resolveAcademicYear } from "@/hooks/useSchoolSettings";
+import { useIsMobile } from "@/hooks/use-mobile";
+
+// Index-based vibrant fallback colors (so every card is colorful even if subject unknown)
+const INDEX_THEMES = [
+  { bg: "from-violet-500 to-purple-700",  light: "bg-violet-50",  text: "text-violet-700",  iconBg: "bg-violet-600"  },
+  { bg: "from-rose-500 to-pink-600",      light: "bg-rose-50",    text: "text-rose-700",    iconBg: "bg-rose-500"    },
+  { bg: "from-amber-500 to-orange-600",   light: "bg-amber-50",   text: "text-amber-700",   iconBg: "bg-amber-500"   },
+  { bg: "from-sky-500 to-cyan-600",       light: "bg-sky-50",     text: "text-sky-700",     iconBg: "bg-sky-600"     },
+  { bg: "from-teal-500 to-emerald-600",   light: "bg-teal-50",    text: "text-teal-700",    iconBg: "bg-teal-600"    },
+  { bg: "from-blue-500 to-indigo-600",    light: "bg-blue-50",    text: "text-blue-700",    iconBg: "bg-blue-600"    },
+];
+
+// Subject → color theme (matches by keyword, fallback is index-based)
+const subjectTheme = (subject: string, idx: number) => {
+  const s = subject?.toLowerCase() || "";
+  if (s.includes("math"))     return { bg: "from-blue-500 to-indigo-600",   light: "bg-blue-50",    text: "text-blue-700",    iconBg: "bg-blue-600"    };
+  if (s.includes("english"))  return { bg: "from-emerald-500 to-teal-600",  light: "bg-emerald-50", text: "text-emerald-700",  iconBg: "bg-emerald-600" };
+  if (s.includes("hindi"))    return { bg: "from-orange-500 to-amber-600",  light: "bg-orange-50",  text: "text-orange-700",  iconBg: "bg-orange-500"  };
+  if (s.includes("science"))  return { bg: "from-cyan-500 to-sky-600",      light: "bg-cyan-50",    text: "text-cyan-700",    iconBg: "bg-cyan-600"    };
+  if (s.includes("social") || s.includes("sst") || s.includes("history") || s.includes("geo"))
+                               return { bg: "from-purple-500 to-violet-700", light: "bg-purple-50",  text: "text-purple-700",  iconBg: "bg-purple-600"  };
+  if (s.includes("computer") || s.includes("it"))
+                               return { bg: "from-rose-500 to-pink-600",     light: "bg-rose-50",    text: "text-rose-700",    iconBg: "bg-rose-500"    };
+  if (s.includes("physics"))  return { bg: "from-sky-500 to-blue-600",      light: "bg-sky-50",     text: "text-sky-700",     iconBg: "bg-sky-600"     };
+  if (s.includes("chem"))     return { bg: "from-lime-500 to-green-600",    light: "bg-lime-50",    text: "text-lime-700",    iconBg: "bg-lime-600"    };
+  if (s.includes("urdu") || s.includes("arabic"))
+                               return { bg: "from-teal-500 to-emerald-600",  light: "bg-teal-50",    text: "text-teal-700",    iconBg: "bg-teal-600"    };
+  // Vibrant index-based fallback — never dull!
+  return INDEX_THEMES[idx % INDEX_THEMES.length];
+};
+
+// Resolve the actual subject name from any field Firestore might use
+const resolveSubject = (en: any): string =>
+  en.subject || en.subjectName || en.Subject || en.name || en.title || en.courseName || en.course || "";
+
+// ── Mobile bright-blue palette — all shades of blue, rotated per-card ──
+const BLUE_HEROES = [
+  "linear-gradient(140deg, #0044EE 0%, #1166FF 48%, #44AAFF 100%)",
+  "linear-gradient(140deg, #002DBB 0%, #004FFF 48%, #2277FF 100%)",
+  "linear-gradient(140deg, #003399 0%, #0055FF 48%, #3388FF 100%)",
+  "linear-gradient(140deg, #0022AA 0%, #0044DD 48%, #2266EE 100%)",
+];
+const BLUE_AVATARS = [
+  { bg: "linear-gradient(140deg,#0044EE,#2277FF)", shadow: "0 3px 12px rgba(0,68,238,0.32)" },
+  { bg: "linear-gradient(140deg,#002DBB,#0055FF)", shadow: "0 3px 12px rgba(0,45,187,0.32)" },
+  { bg: "linear-gradient(140deg,#003399,#3388FF)", shadow: "0 3px 12px rgba(0,51,153,0.32)" },
+  { bg: "linear-gradient(140deg,#0022AA,#2266EE)", shadow: "0 3px 12px rgba(0,34,170,0.32)" },
+];
+
+// ── Soft tinted card themes (match dashboard stat card vibe) — rotated per-card ──
+const CARD_THEMES = [
+  // 1 · Green
+  {
+    hero: "linear-gradient(135deg, rgba(0,200,83,0.18) 0%, rgba(0,200,83,0.05) 100%)",
+    heroBdr: "rgba(0,200,83,0.18)",
+    accent: "#00A040",
+    accentSolid: "#00C853",
+    iconBoxBg: "rgba(0,200,83,0.18)",
+    iconBoxBdr: "rgba(0,200,83,0.32)",
+    pillBg: "rgba(0,200,83,0.18)",
+    pillBdr: "rgba(0,200,83,0.34)",
+    chipBg: "rgba(0,200,83,0.16)",
+    chipBdr: "rgba(0,200,83,0.30)",
+    btnGrad: "linear-gradient(135deg, #00C853 0%, #00A040 100%)",
+    btnShadow: "0 4px 18px rgba(0,200,83,0.34), 0 1px 4px rgba(0,200,83,0.20)",
+    avatar: { bg: "linear-gradient(140deg,#00C853,#00A040)", shadow: "0 3px 12px rgba(0,200,83,0.32)" },
+    decorIcon: GraduationCap,
+  },
+  // 2 · Orange
+  {
+    hero: "linear-gradient(135deg, rgba(255,136,0,0.18) 0%, rgba(255,136,0,0.05) 100%)",
+    heroBdr: "rgba(255,136,0,0.20)",
+    accent: "#CC6A00",
+    accentSolid: "#FF8800",
+    iconBoxBg: "rgba(255,136,0,0.18)",
+    iconBoxBdr: "rgba(255,136,0,0.34)",
+    pillBg: "rgba(255,136,0,0.18)",
+    pillBdr: "rgba(255,136,0,0.34)",
+    chipBg: "rgba(255,136,0,0.16)",
+    chipBdr: "rgba(255,136,0,0.32)",
+    btnGrad: "linear-gradient(135deg, #FF8800 0%, #E07000 100%)",
+    btnShadow: "0 4px 18px rgba(255,136,0,0.34), 0 1px 4px rgba(255,136,0,0.20)",
+    avatar: { bg: "linear-gradient(140deg,#FF8800,#E07000)", shadow: "0 3px 12px rgba(255,136,0,0.32)" },
+    decorIcon: BookText,
+  },
+  // 3 · Blue
+  {
+    hero: "linear-gradient(135deg, rgba(0,85,255,0.14) 0%, rgba(0,85,255,0.04) 100%)",
+    heroBdr: "rgba(0,85,255,0.20)",
+    accent: "#0033AA",
+    accentSolid: "#0055FF",
+    iconBoxBg: "rgba(0,85,255,0.14)",
+    iconBoxBdr: "rgba(0,85,255,0.28)",
+    pillBg: "rgba(0,85,255,0.14)",
+    pillBdr: "rgba(0,85,255,0.28)",
+    chipBg: "rgba(0,85,255,0.12)",
+    chipBdr: "rgba(0,85,255,0.26)",
+    btnGrad: "linear-gradient(135deg, #0055FF 0%, #1166FF 100%)",
+    btnShadow: "0 4px 18px rgba(0,85,255,0.34), 0 1px 4px rgba(0,85,255,0.20)",
+    avatar: { bg: "linear-gradient(140deg,#0055FF,#1166FF)", shadow: "0 3px 12px rgba(0,85,255,0.32)" },
+    decorIcon: Library,
+  },
+  // 4 · Rose
+  {
+    hero: "linear-gradient(135deg, rgba(255,51,85,0.16) 0%, rgba(255,51,85,0.05) 100%)",
+    heroBdr: "rgba(255,51,85,0.20)",
+    accent: "#CC2244",
+    accentSolid: "#FF3355",
+    iconBoxBg: "rgba(255,51,85,0.16)",
+    iconBoxBdr: "rgba(255,51,85,0.32)",
+    pillBg: "rgba(255,51,85,0.16)",
+    pillBdr: "rgba(255,51,85,0.32)",
+    chipBg: "rgba(255,51,85,0.14)",
+    chipBdr: "rgba(255,51,85,0.30)",
+    btnGrad: "linear-gradient(135deg, #FF3355 0%, #CC2244 100%)",
+    btnShadow: "0 4px 18px rgba(255,51,85,0.34), 0 1px 4px rgba(255,51,85,0.20)",
+    avatar: { bg: "linear-gradient(140deg,#FF3355,#CC2244)", shadow: "0 3px 12px rgba(255,51,85,0.32)" },
+    decorIcon: BookMarked,
+  },
+];
+
+// ═══════════════════════════════════════════════════════════════════════
+// MOCK DATA — flip USE_MOCK_DATA to false to restore live Firestore data
+// ═══════════════════════════════════════════════════════════════════════
+const USE_MOCK_DATA = true;
+
+const MOCK_STUDENT_DATA: any = {
+  id: "mock-student-001",
+  name: "Aarav Sharma",
+  grade: "8B",
+  rollNo: "23",
+  schoolId: "mock-school-001",
+  email: "aarav.sharma@example.com",
+  status: "Active",
+};
+
+const MOCK_ENROLLMENTS: any[] = [
+  {
+    id: "en-math",
+    subject: "Mathematics",
+    className: "Grade 8B",
+    schedule: "Mon–Fri · 08:30 – 09:15 AM",
+    academicYear: "2025 – 26",
+    teacherId: "t-priya",
+    teacherName: "Mrs. Priya Mehta",
+    isClassTeacher: true,
+    initials: "PM",
+  },
+  {
+    id: "en-eng",
+    subject: "English",
+    className: "Grade 8B",
+    schedule: "Mon–Fri · 09:20 – 10:05 AM",
+    academicYear: "2025 – 26",
+    teacherId: "t-kiran",
+    teacherName: "Mr. Kiran Patel",
+    isClassTeacher: false,
+    initials: "KP",
+  },
+  {
+    id: "en-hindi",
+    subject: "Hindi",
+    className: "Grade 8B",
+    schedule: "Mon–Fri · 10:10 – 10:55 AM",
+    academicYear: "2025 – 26",
+    teacherId: "t-sunita",
+    teacherName: "Mrs. Sunita Verma",
+    isClassTeacher: false,
+    initials: "SV",
+  },
+  {
+    id: "en-sci",
+    subject: "Science",
+    className: "Grade 8B",
+    schedule: "Mon–Fri · 11:30 AM – 12:15 PM",
+    academicYear: "2025 – 26",
+    teacherId: "t-anil",
+    teacherName: "Dr. Anil Reddy",
+    isClassTeacher: false,
+    initials: "AR",
+  },
+  {
+    id: "en-social",
+    subject: "Social Studies",
+    className: "Grade 8B",
+    schedule: "Mon–Fri · 12:20 – 01:05 PM",
+    academicYear: "2025 – 26",
+    teacherId: "t-rahul",
+    teacherName: "Mr. Rahul Khanna",
+    isClassTeacher: false,
+    initials: "RK",
+  },
+  {
+    id: "en-cs",
+    subject: "Computer Science",
+    className: "Grade 8B",
+    schedule: "Tue / Thu · 02:00 – 03:30 PM",
+    academicYear: "2025 – 26",
+    teacherId: "t-neha",
+    teacherName: "Ms. Neha Iyer",
+    isClassTeacher: false,
+    initials: "NI",
+  },
+];
+
+const ClassesPage = () => {
+  const { studentData: _liveStudentData } = useAuth();
+  const studentData = USE_MOCK_DATA ? MOCK_STUDENT_DATA : _liveStudentData;
+  const navigate = useNavigate();
+  const isMobile = useIsMobile();
+  const settings = useSchoolSettings();
+  // Real academic year: school's configured value first, then date-derived.
+  // Was hardcoded as "2025 – 26" / "2025-26" in two places — same year for
+  // every parent, every year. Now resolves correctly per school.
+  const academicYear = resolveAcademicYear(settings);
+  const [enrollments, setEnrollments] = useState<any[]>(USE_MOCK_DATA ? MOCK_ENROLLMENTS : []);
+  const [loading, setLoading] = useState(USE_MOCK_DATA ? false : true);
+
+  useEffect(() => {
+    if (USE_MOCK_DATA) return; // Mock mode: enrollments pre-seeded above
+    if (!studentData?.id) return;
+    setLoading(true);
+
+    const processEnrollments = async (docs: { id: string; data: () => any }[]) => {
+      const raw = docs.map((d) => ({ id: d.id, ...(d.data() as any) }));
+
+      const enriched = await Promise.all(raw.map(async (en: any) => {
+        // Don't substitute a fake-looking "Faculty" string when the teacher
+        // hasn't been resolved yet — render an honest "Teacher unassigned"
+        // (downstream UI shows initials "—" instead of garbage).
+        let teacherName: string | null = en.teacherName || null;
+        if (en.teacherId) {
+          try {
+            const snap = await fbGetDoc(fbDoc(db, "teachers", en.teacherId));
+            if (snap.exists()) teacherName = snap.data().name || teacherName;
+          } catch (err) {
+            // Keep existing teacherName on failure, but log so we can catch
+            // systematic permission errors across multiple class cards.
+            console.error("[Classes] teacher doc fetch error:", err);
+          }
+        }
+        const initials = (teacherName || "")
+          .split(" ").map((n: string) => n[0]).join("").toUpperCase().substring(0, 2) || "—";
+        return { ...en, teacherName: teacherName || "Teacher unassigned", initials };
+      }));
+
+      setEnrollments(enriched);
+      setLoading(false);
+    };
+
+    // Dual-listener helper — matches enrollments by either studentId OR
+    // studentEmail so legacy enrollments (where studentId was set to email
+    // by older teacher/principal-dashboard code) still appear here.
+    const unsub = subscribeEnrollments(studentData, processEnrollments);
+    return () => unsub();
+  }, [studentData?.id, studentData?.schoolId, studentData?.email]);
+
+  const childFirstName = studentData?.name?.split(" ")[0] || "your child";
+  const uniqueTeacherCount = new Set(enrollments.map(e => e.teacherId).filter(Boolean)).size;
+
+  /* ═══════════════════════════════════════════════════════════════
+     MOBILE — Bright Blue Apple UI
+     ═══════════════════════════════════════════════════════════════ */
+  if (isMobile) {
+    const B1 = "#0055FF";
+    const B2 = "#1166FF";
+    const BG = "#EEF4FF";
+    const BG2 = "#E0ECFF";
+    const T1 = "#001040";
+    const T3 = "#5070B0";
+    const T4 = "#99AACC";
+    const SEP = "rgba(0,85,255,0.07)";
+    const SH = "0 0 0 0.5px rgba(0,85,255,0.08), 0 2px 8px rgba(0,85,255,0.10), 0 10px 28px rgba(0,85,255,0.12)";
+    const SH_LG = "0 0 0 0.5px rgba(0,85,255,0.10), 0 4px 16px rgba(0,85,255,0.12), 0 18px 44px rgba(0,85,255,0.15)";
+    const SH_BTN = "0 6px 22px rgba(0,85,255,0.42), 0 2px 6px rgba(0,85,255,0.24)";
+
+    return (
+      <div className="animate-in fade-in duration-500 -mx-3 -mt-3 md:mx-0 md:mt-0"
+        style={{ fontFamily: "'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif", background: BG, minHeight: "100vh" }}>
+
+        {/* ── Page Head ── */}
+        <div className="px-[22px] pt-[18px] pb-0">
+          <div className="text-[9px] font-bold uppercase tracking-[0.12em] mb-1" style={{ color: T4 }}>Parent Dashboard</div>
+          <h1 className="text-[28px] font-bold leading-[1.12]" style={{ color: T1, letterSpacing: "-0.7px" }}>My Classes</h1>
+          <p className="text-[13px] mt-1 font-normal" style={{ color: T3 }}>
+            Enrolled subjects &amp; schedules for {childFirstName}
+          </p>
+        </div>
+
+        {/* ── Top Message CTA ── */}
+        <button
+          onClick={() => navigate("/teacher-notes")}
+          className="w-[calc(100%-40px)] mx-5 mt-[18px] rounded-[20px] px-5 py-[17px] flex items-center justify-between relative overflow-hidden active:scale-[0.97] transition-transform"
+          style={{ background: `linear-gradient(135deg, ${B1} 0%, ${B2} 100%)`, boxShadow: SH_BTN }}
+        >
+          <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.16) 0%, transparent 52%)" }} />
+          <div className="absolute inset-0 pointer-events-none" style={{
+            backgroundImage: "linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px)",
+            backgroundSize: "24px 24px"
+          }} />
+          <div className="flex items-center gap-3 relative z-10">
+            <div className="w-11 h-11 rounded-[14px] flex items-center justify-center shrink-0"
+              style={{ background: "rgba(255,255,255,0.20)", border: "0.5px solid rgba(255,255,255,0.30)" }}>
+              <MessageSquare className="w-[22px] h-[22px]" style={{ color: "rgba(255,255,255,0.95)" }} strokeWidth={2.2} />
+            </div>
+            <div className="text-left">
+              <div className="text-[16px] font-bold text-white" style={{ letterSpacing: "-0.2px" }}>Message Teacher</div>
+              <div className="text-[11px]" style={{ color: "rgba(255,255,255,0.55)" }}>Send a direct message to faculty</div>
+            </div>
+          </div>
+          <div className="w-9 h-9 rounded-[12px] flex items-center justify-center shrink-0 relative z-10"
+            style={{ background: "rgba(255,255,255,0.18)", border: "0.5px solid rgba(255,255,255,0.26)" }}>
+            <ChevronRight className="w-[14px] h-[14px]" style={{ color: "rgba(255,255,255,0.90)" }} strokeWidth={2.5} />
+          </div>
+        </button>
+
+        {/* ── Loading / Empty / Content ── */}
+        {loading ? (
+          <div className="flex flex-col items-center justify-center py-24 gap-4">
+            <div className="w-14 h-14 rounded-2xl flex items-center justify-center" style={{ background: BG2, border: `0.5px solid ${SEP}` }}>
+              <Loader2 className="w-7 h-7 animate-spin" style={{ color: B1 }} />
+            </div>
+            <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: T4 }}>Loading classes…</p>
+          </div>
+        ) : enrollments.length === 0 ? (
+          <div className="mx-5 mt-5 py-16 rounded-[26px] flex flex-col items-center text-center border-2 border-dashed" style={{ borderColor: "rgba(0,85,255,0.22)" }}>
+            <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-4" style={{ background: BG2 }}>
+              <Target className="w-8 h-8" style={{ color: T4 }} />
+            </div>
+            <h3 className="text-base font-bold" style={{ color: T3 }}>No Classes Found</h3>
+            <p className="text-sm mt-1" style={{ color: T4 }}>No subject enrollments yet.</p>
+          </div>
+        ) : (
+          <>
+            {/* ── Per-class cards ── */}
+            {enrollments.map((en, idx) => {
+              const subject = resolveSubject(en);
+              const theme = CARD_THEMES[2];
+              const DecorIcon = theme.decorIcon;
+              const avatar = theme.avatar;
+              const className = en.className || en.classGroup || en.classSection || en.class || en.section || null;
+              // Real schedule from Firestore — was hardcoded "08:30 – 09:30 AM"
+              // for every card, every subject. Now shows "—" until the school
+              // populates the schedule field on the enrollment/class doc.
+              const schedule = en.schedule || "—";
+              const year = en.academicYear || academicYear;
+              const isClassTeacher = !!en.isClassTeacher || !!en.classTeacher;
+
+              return (
+                <div
+                  key={en.id}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`Open ${subject || "class"} teacher notes`}
+                  onClick={() => navigate("/teacher-notes", { state: { teacherId: en.teacherId } })}
+                  onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/teacher-notes", { state: { teacherId: en.teacherId } }); } }}
+                  className="mx-5 mt-[14px] rounded-[26px] overflow-hidden bg-white cursor-pointer active:scale-[0.98] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF]/50"
+                  style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+
+                  {/* Hero */}
+                  <div className="relative overflow-hidden px-5 pt-5 pb-[22px]" style={{ background: theme.hero, borderBottom: `0.5px solid ${theme.heroBdr}` }}>
+                    {/* Decorative bottom-right icon (matches dashboard cards) */}
+                    <div className="absolute pointer-events-none" style={{ bottom: 12, right: 12 }}>
+                      <DecorIcon style={{ width: 72, height: 72, color: theme.accentSolid, opacity: 0.20, strokeWidth: 1.6 }} />
+                    </div>
+
+                    {/* Active pill */}
+                    <div className="absolute top-4 right-4 z-[2] flex items-center gap-[5px] px-[12px] py-[5px] rounded-full text-[10px] font-bold tracking-[0.06em]"
+                      style={{ background: theme.pillBg, border: `0.5px solid ${theme.pillBdr}`, color: theme.accent }}>
+                      <span className="w-[6px] h-[6px] rounded-full animate-pulse" style={{ background: theme.accentSolid, boxShadow: `0 0 0 2.5px ${theme.pillBg}` }} />
+                      Active
+                    </div>
+
+                    <div className="w-12 h-12 rounded-[16px] flex items-center justify-center mb-4 relative z-10"
+                      style={{ background: theme.iconBoxBg, border: `0.5px solid ${theme.iconBoxBdr}` }}>
+                      <BookOpen className="w-6 h-6" style={{ color: theme.accentSolid }} strokeWidth={2.1} />
+                    </div>
+
+                    <div className="text-[9px] font-bold uppercase tracking-[0.12em] mb-[6px] relative z-10" style={{ color: T4 }}>
+                      Subject
+                    </div>
+                    <h2 className="text-[28px] font-bold mb-[14px] relative z-10 leading-[1.08]" style={{ color: T1, letterSpacing: "-0.7px" }}>
+                      {subject || "Class"}
+                    </h2>
+
+                    {/* Class / section tag */}
+                    {className ? (
+                      <div className="inline-flex items-center gap-[6px] px-[14px] py-[7px] rounded-full relative z-10 text-[12px] font-bold"
+                        style={{ background: theme.chipBg, border: `0.5px solid ${theme.chipBdr}`, color: theme.accent }}>
+                        <Layers className="w-3 h-3" style={{ color: theme.accentSolid }} strokeWidth={2.2} />
+                        {className}
+                      </div>
+                    ) : (
+                      <div className="inline-flex items-center gap-[6px] px-[14px] py-[7px] rounded-full relative z-10 text-[11px] font-medium"
+                        style={{ background: "rgba(0,0,0,0.04)", color: T3 }}>
+                        <Layers className="w-3 h-3" style={{ color: T4 }} />
+                        Class not assigned
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Body */}
+                  <div className="p-5">
+                    {/* Teacher row */}
+                    <div className="flex items-center gap-[13px] px-4 py-[14px] rounded-[18px] mb-[14px]"
+                      style={{ background: BG, border: "0.5px solid rgba(0,85,255,0.12)" }}>
+                      <div className="w-11 h-11 rounded-[14px] flex items-center justify-center text-[15px] font-bold text-white shrink-0"
+                        style={{ background: avatar.bg, boxShadow: avatar.shadow }}>
+                        {en.initials}
+                      </div>
+                      <div>
+                        <div className="text-[9px] font-bold uppercase tracking-[0.09em] mb-[3px]" style={{ color: T4 }}>
+                          {isClassTeacher ? "Class Teacher" : "Subject Teacher"}
+                        </div>
+                        <div className="text-[15px] font-bold" style={{ color: T1, letterSpacing: "-0.2px" }}>
+                          {en.teacherName}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Meta grid */}
+                    <div className="grid grid-cols-2 gap-[10px] mb-4">
+                      <div className="flex items-center gap-[10px] px-[14px] py-[13px] rounded-[16px]"
+                        style={{ background: BG, border: "0.5px solid rgba(0,85,255,0.12)" }}>
+                        <div className="w-8 h-8 rounded-[10px] flex items-center justify-center shrink-0"
+                          style={{ background: "rgba(0,85,255,0.10)", border: "0.5px solid rgba(0,85,255,0.18)" }}>
+                          <Clock className="w-[14px] h-[14px]" style={{ color: B1 }} strokeWidth={2.2} />
+                        </div>
+                        <div className="min-w-0">
+                          <div className="text-[9px] font-bold uppercase tracking-[0.08em] mb-[3px]" style={{ color: T4 }}>Schedule</div>
+                          <div className="text-[13px] font-bold truncate" style={{ color: T1, letterSpacing: "-0.1px" }}>{schedule}</div>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-[10px] px-[14px] py-[13px] rounded-[16px]"
+                        style={{ background: BG, border: "0.5px solid rgba(0,85,255,0.12)" }}>
+                        <div className="w-8 h-8 rounded-[10px] flex items-center justify-center shrink-0"
+                          style={{ background: "rgba(0,85,255,0.10)", border: "0.5px solid rgba(0,85,255,0.18)" }}>
+                          <School className="w-[14px] h-[14px]" style={{ color: B1 }} strokeWidth={2.2} />
+                        </div>
+                        <div className="min-w-0">
+                          <div className="text-[9px] font-bold uppercase tracking-[0.08em] mb-[3px]" style={{ color: T4 }}>Year</div>
+                          <div className="text-[13px] font-bold truncate" style={{ color: T1, letterSpacing: "-0.1px" }}>{year}</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Message button */}
+                    <button
+                      onClick={(e) => { e.stopPropagation(); navigate("/teacher-notes", { state: { teacherId: en.teacherId } }); }}
+                      className="w-full rounded-[16px] px-[18px] py-[14px] flex items-center justify-between relative overflow-hidden active:scale-[0.97] transition-transform"
+                      style={{ background: theme.btnGrad, boxShadow: theme.btnShadow }}
+                    >
+                      <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 52%)" }} />
+                      <div className="flex items-center gap-[10px] relative z-10">
+                        <MessageSquare className="w-[17px] h-[17px] text-white" strokeWidth={2.2} />
+                        <span className="text-[14px] font-bold text-white" style={{ letterSpacing: "-0.1px" }}>Message Teacher</span>
+                      </div>
+                      <div className="w-[30px] h-[30px] rounded-[10px] flex items-center justify-center relative z-10"
+                        style={{ background: "rgba(255,255,255,0.18)", border: "0.5px solid rgba(255,255,255,0.26)" }}>
+                        <ChevronRight className="w-[13px] h-[13px]" style={{ color: "rgba(255,255,255,0.85)" }} strokeWidth={2.5} />
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+
+            {/* ── Enrollment verified card ── */}
+            <div
+              role="button"
+              tabIndex={0}
+              aria-label="Open my child profile"
+              onClick={() => navigate("/my-child")}
+              onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/my-child"); } }}
+              className="mx-5 mt-[14px] rounded-[24px] p-[22px] relative overflow-hidden cursor-pointer active:scale-[0.98] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+              style={{
+                background: "linear-gradient(140deg, #001888 0%, #0033CC 48%, #0055FF 100%)",
+                boxShadow: "0 10px 36px rgba(0,51,204,0.38), 0 0 0 0.5px rgba(255,255,255,0.16)",
+                border: "0.5px solid rgba(255,255,255,0.16)"
+              }}>
+              <div className="absolute -top-[42px] -right-[30px] w-[200px] h-[200px] rounded-full pointer-events-none"
+                style={{ background: "radial-gradient(circle, rgba(255,255,255,0.16) 0%, transparent 65%)" }} />
+              <div className="absolute inset-0 pointer-events-none" style={{
+                backgroundImage: "linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px)",
+                backgroundSize: "24px 24px"
+              }} />
+
+              <div className="flex items-center gap-[13px] mb-5 relative z-10">
+                <div className="w-12 h-12 rounded-[16px] flex items-center justify-center shrink-0"
+                  style={{ background: "rgba(255,255,255,0.18)", border: "0.5px solid rgba(255,255,255,0.28)" }}>
+                  <ShieldCheck className="w-6 h-6 text-white" strokeWidth={2.2} />
+                </div>
+                <div>
+                  <div className="text-[9px] font-bold uppercase tracking-[0.12em] mb-1" style={{ color: "rgba(255,255,255,0.45)" }}>Enrollment Verified</div>
+                  <div className="text-[17px] font-bold text-white" style={{ letterSpacing: "-0.3px" }}>Academic Registry Active</div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 rounded-[18px] overflow-hidden relative z-10" style={{ gap: "1px", background: "rgba(255,255,255,0.14)" }}>
+                <div className="py-[18px] flex flex-col items-center gap-[5px]" style={{ background: "rgba(255,255,255,0.09)" }}>
+                  <div className="text-[34px] font-bold text-white leading-none" style={{ letterSpacing: "-1.5px" }}>{enrollments.length}</div>
+                  <div className="text-[9px] font-bold uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.42)" }}>Subjects</div>
+                </div>
+                <div className="py-[18px] flex flex-col items-center gap-[5px]" style={{ background: "rgba(255,255,255,0.09)" }}>
+                  <div className="text-[34px] font-bold text-white leading-none" style={{ letterSpacing: "-1.5px" }}>{uniqueTeacherCount}</div>
+                  <div className="text-[9px] font-bold uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.42)" }}>Teachers</div>
+                </div>
+              </div>
+            </div>
+
+            {/* ── All Subjects Section ── */}
+            <div className="px-[22px] pt-5 text-[9px] font-bold uppercase tracking-[0.10em] flex items-center gap-2"
+              style={{ color: T4 }}>
+              <span>All Subjects</span>
+              <span className="flex-1 h-px" style={{ background: "rgba(0,85,255,0.14)" }} />
+            </div>
+
+            <div className="mx-5 mt-[14px] bg-white rounded-[22px] overflow-hidden"
+              style={{ boxShadow: SH, border: "0.5px solid rgba(0,85,255,0.12)" }}>
+              <div className="flex items-center justify-between px-[18px] pt-4 pb-3" style={{ borderBottom: `0.5px solid ${SEP}` }}>
+                <div className="text-[16px] font-bold" style={{ color: T1, letterSpacing: "-0.3px" }}>Enrolled Subjects</div>
+                <div className="px-[11px] py-[4px] rounded-full text-[11px] font-bold"
+                  style={{ background: "rgba(0,85,255,0.10)", border: "0.5px solid rgba(0,85,255,0.18)", color: B1 }}>
+                  {enrollments.length} Active
+                </div>
+              </div>
+              {enrollments.map((en, idx, arr) => {
+                const subject = resolveSubject(en);
+                const avatar = BLUE_AVATARS[idx % BLUE_AVATARS.length];
+                const schedule = en.schedule || "—";
+                return (
+                  <div
+                    key={en.id}
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`Open ${subject || "class"} teacher notes`}
+                    className="flex items-center gap-[13px] px-[18px] py-[14px] cursor-pointer active:bg-[#EEF4FF] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#0055FF]/40"
+                    style={{ borderBottom: idx < arr.length - 1 ? `0.5px solid ${SEP}` : "none" }}
+                    onClick={() => navigate("/teacher-notes", { state: { teacherId: en.teacherId } })}
+                    onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/teacher-notes", { state: { teacherId: en.teacherId } }); } }}>
+                    <div className="w-11 h-11 rounded-[14px] flex items-center justify-center shrink-0"
+                      style={{ background: avatar.bg, boxShadow: avatar.shadow }}>
+                      <BookOpen className="w-5 h-5 text-white" strokeWidth={2.2} />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-[14px] font-bold truncate" style={{ color: T1, letterSpacing: "-0.2px" }}>{subject || "Class"}</div>
+                      <div className="text-[11px] mt-0.5 truncate" style={{ color: T3 }}>{en.teacherName} · {schedule}</div>
+                    </div>
+                    <div className="px-[11px] py-1 rounded-full text-[10px] font-bold shrink-0"
+                      style={{ background: "rgba(0,85,255,0.10)", color: "#0033AA", border: "0.5px solid rgba(0,85,255,0.22)" }}>
+                      Active
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </>
+        )}
+
+        <div className="h-6" />
+      </div>
+    );
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     DESKTOP — Bright Blue Apple UI (matches mobile)
+     ═══════════════════════════════════════════════════════════════ */
+  const B1 = "#0055FF";
+  const B2 = "#1166FF";
+  const BG = "#EEF4FF";
+  const T1 = "#001040";
+  const T3 = "#5070B0";
+  const T4 = "#99AACC";
+  const SEP = "rgba(0,85,255,0.07)";
+  const SH = "0 0 0 0.5px rgba(0,85,255,0.08), 0 2px 8px rgba(0,85,255,0.10), 0 10px 28px rgba(0,85,255,0.12)";
+  const SH_LG = "0 0 0 0.5px rgba(0,85,255,0.10), 0 4px 16px rgba(0,85,255,0.12), 0 18px 44px rgba(0,85,255,0.15)";
+  const SH_BTN = "0 6px 22px rgba(0,85,255,0.42), 0 2px 6px rgba(0,85,255,0.24)";
+
+  return (
+    <div className="animate-in fade-in duration-500 -m-4 sm:-m-6 md:-m-8 min-h-[calc(100vh-64px)]"
+      style={{ fontFamily: "'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif", background: BG }}>
+      <div className="w-full px-6 pt-8 pb-12">
+
+        {/* ── Toolbar row ── */}
+        <div className="flex items-start justify-between gap-6 flex-wrap mb-8">
+          <div>
+            <div className="text-[10px] font-bold uppercase tracking-[0.14em] mb-2" style={{ color: T4 }}>Parent Dashboard</div>
+            <h1 className="text-[38px] font-bold leading-[1.05]" style={{ color: T1, letterSpacing: "-1.1px" }}>My Classes</h1>
+            <p className="text-[14px] mt-2 font-normal" style={{ color: T3 }}>
+              Enrolled subjects & schedules for <span style={{ color: T1, fontWeight: 700 }}>{studentData?.name}</span>
+            </p>
+          </div>
+          <button
+            onClick={() => navigate("/teacher-notes")}
+            className="h-12 px-5 rounded-[14px] flex items-center gap-3 text-white relative overflow-hidden transition-transform hover:scale-[1.02]"
+            style={{ background: `linear-gradient(135deg, ${B1} 0%, ${B2} 100%)`, boxShadow: SH_BTN }}>
+            <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.14) 0%, transparent 52%)" }} />
+            <MessageSquare className="w-[18px] h-[18px] relative z-10" strokeWidth={2.2} />
+            <span className="text-[14px] font-bold relative z-10">Message Teacher</span>
+            <div className="w-8 h-8 rounded-[10px] flex items-center justify-center relative z-10"
+              style={{ background: "rgba(255,255,255,0.18)", border: "0.5px solid rgba(255,255,255,0.26)" }}>
+              <ChevronRight className="w-[13px] h-[13px]" strokeWidth={2.5} />
+            </div>
+          </button>
+        </div>
+
+        {/* ── Content ── */}
+        {loading ? (
+          <div className="py-40 flex flex-col items-center gap-4">
+            <div className="w-14 h-14 rounded-2xl flex items-center justify-center"
+              style={{ background: "rgba(0,85,255,0.08)", border: `0.5px solid ${SEP}` }}>
+              <Loader2 className="w-7 h-7 animate-spin" style={{ color: B1 }} />
+            </div>
+            <p className="text-xs font-bold uppercase tracking-widest" style={{ color: T4 }}>Loading classes…</p>
+          </div>
+        ) : enrollments.length === 0 ? (
+          <div className="py-32 rounded-[26px] flex flex-col items-center text-center border-2 border-dashed" style={{ borderColor: "rgba(0,85,255,0.22)" }}>
+            <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-4" style={{ background: "rgba(0,85,255,0.08)" }}>
+              <Target className="w-8 h-8" style={{ color: T4 }} />
+            </div>
+            <h3 className="text-base font-bold" style={{ color: T3 }}>No Classes Found</h3>
+            <p className="text-sm mt-1" style={{ color: T4 }}>No subject enrollments yet.</p>
+          </div>
+        ) : (
+          <>
+            {/* ── Per-class cards grid ── */}
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+              {enrollments.map((en, idx) => {
+                const subject = resolveSubject(en);
+                const theme = CARD_THEMES[2];
+                const DecorIcon = theme.decorIcon;
+                const avatar = theme.avatar;
+                const className = en.className || en.classGroup || en.classSection || en.class || en.section || null;
+                const schedule = en.schedule || "—";
+                const year = en.academicYear || academicYear;
+                const isClassTeacher = !!en.isClassTeacher || !!en.classTeacher;
+
+                return (
+                  <div
+                    key={en.id}
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`Open ${subject || "class"} teacher notes`}
+                    onClick={() => navigate("/teacher-notes", { state: { teacherId: en.teacherId } })}
+                    onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/teacher-notes", { state: { teacherId: en.teacherId } }); } }}
+                    className="rounded-[26px] overflow-hidden bg-white flex flex-col cursor-pointer transition-all hover:-translate-y-1 hover:scale-[1.02] hover:shadow-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF]/50"
+                    style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+
+                    {/* Hero */}
+                    <div className="relative overflow-hidden px-6 pt-6 pb-7" style={{ background: theme.hero, borderBottom: `0.5px solid ${theme.heroBdr}` }}>
+                      {/* Decorative bottom-right icon (matches dashboard cards) */}
+                      <div className="absolute pointer-events-none" style={{ bottom: 14, right: 14 }}>
+                        <DecorIcon style={{ width: 88, height: 88, color: theme.accentSolid, opacity: 0.20, strokeWidth: 1.6 }} />
+                      </div>
+
+                      <div className="flex items-start justify-between relative z-10 mb-4">
+                        <div className="w-12 h-12 rounded-[16px] flex items-center justify-center"
+                          style={{ background: theme.iconBoxBg, border: `0.5px solid ${theme.iconBoxBdr}` }}>
+                          <BookOpen className="w-6 h-6" style={{ color: theme.accentSolid }} strokeWidth={2.1} />
+                        </div>
+                        <div className="flex items-center gap-[5px] px-[13px] py-[5px] rounded-full text-[10px] font-bold tracking-[0.06em]"
+                          style={{ background: theme.pillBg, border: `0.5px solid ${theme.pillBdr}`, color: theme.accent }}>
+                          <span className="w-[6px] h-[6px] rounded-full animate-pulse" style={{ background: theme.accentSolid, boxShadow: `0 0 0 2.5px ${theme.pillBg}` }} />
+                          Active
+                        </div>
+                      </div>
+
+                      <div className="text-[9px] font-bold uppercase tracking-[0.12em] mb-[6px] relative z-10" style={{ color: T4 }}>
+                        Subject
+                      </div>
+                      <h2 className="text-[26px] font-bold mb-[14px] relative z-10 leading-[1.08]" style={{ color: T1, letterSpacing: "-0.6px" }}>
+                        {subject || "Class"}
+                      </h2>
+
+                      {className ? (
+                        <div className="inline-flex items-center gap-[6px] px-[14px] py-[7px] rounded-full relative z-10 text-[12px] font-bold"
+                          style={{ background: theme.chipBg, border: `0.5px solid ${theme.chipBdr}`, color: theme.accent }}>
+                          <Layers className="w-3 h-3" style={{ color: theme.accentSolid }} strokeWidth={2.2} />
+                          {className}
+                        </div>
+                      ) : (
+                        <div className="inline-flex items-center gap-[6px] px-[14px] py-[7px] rounded-full relative z-10 text-[11px] font-medium"
+                          style={{ background: "rgba(0,0,0,0.04)", color: T3 }}>
+                          <Layers className="w-3 h-3" style={{ color: T4 }} />
+                          Class not assigned
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Body */}
+                    <div className="p-5 flex flex-col flex-1">
+                      {/* Teacher row */}
+                      <div className="flex items-center gap-[13px] px-4 py-[14px] rounded-[18px] mb-[14px]"
+                        style={{ background: BG, border: "0.5px solid rgba(0,85,255,0.12)" }}>
+                        <div className="w-11 h-11 rounded-[14px] flex items-center justify-center text-[15px] font-bold text-white shrink-0"
+                          style={{ background: avatar.bg, boxShadow: avatar.shadow }}>
+                          {en.initials}
+                        </div>
+                        <div>
+                          <div className="text-[9px] font-bold uppercase tracking-[0.09em] mb-[3px]" style={{ color: T4 }}>
+                            {isClassTeacher ? "Class Teacher" : "Subject Teacher"}
+                          </div>
+                          <div className="text-[15px] font-bold" style={{ color: T1, letterSpacing: "-0.2px" }}>
+                            {en.teacherName}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Meta grid */}
+                      <div className="grid grid-cols-2 gap-[10px] mb-4">
+                        <div className="flex items-center gap-[10px] px-[14px] py-[13px] rounded-[16px]"
+                          style={{ background: BG, border: "0.5px solid rgba(0,85,255,0.12)" }}>
+                          <div className="w-8 h-8 rounded-[10px] flex items-center justify-center shrink-0"
+                            style={{ background: "rgba(0,85,255,0.10)", border: "0.5px solid rgba(0,85,255,0.18)" }}>
+                            <Clock className="w-[14px] h-[14px]" style={{ color: B1 }} strokeWidth={2.2} />
+                          </div>
+                          <div className="min-w-0">
+                            <div className="text-[9px] font-bold uppercase tracking-[0.08em] mb-[3px]" style={{ color: T4 }}>Schedule</div>
+                            <div className="text-[13px] font-bold truncate" style={{ color: T1, letterSpacing: "-0.1px" }}>{schedule}</div>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-[10px] px-[14px] py-[13px] rounded-[16px]"
+                          style={{ background: BG, border: "0.5px solid rgba(0,85,255,0.12)" }}>
+                          <div className="w-8 h-8 rounded-[10px] flex items-center justify-center shrink-0"
+                            style={{ background: "rgba(0,85,255,0.10)", border: "0.5px solid rgba(0,85,255,0.18)" }}>
+                            <School className="w-[14px] h-[14px]" style={{ color: B1 }} strokeWidth={2.2} />
+                          </div>
+                          <div className="min-w-0">
+                            <div className="text-[9px] font-bold uppercase tracking-[0.08em] mb-[3px]" style={{ color: T4 }}>Year</div>
+                            <div className="text-[13px] font-bold truncate" style={{ color: T1, letterSpacing: "-0.1px" }}>{year}</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* CTA */}
+                      <div className="mt-auto">
+                        <button
+                          onClick={(e) => { e.stopPropagation(); navigate("/teacher-notes", { state: { teacherId: en.teacherId } }); }}
+                          className="w-full rounded-[16px] px-5 py-[14px] flex items-center justify-between relative overflow-hidden transition-transform hover:scale-[1.01]"
+                          style={{ background: theme.btnGrad, boxShadow: theme.btnShadow }}>
+                          <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 52%)" }} />
+                          <div className="flex items-center gap-[10px] relative z-10">
+                            <MessageSquare className="w-[17px] h-[17px] text-white" strokeWidth={2.2} />
+                            <span className="text-[14px] font-bold text-white" style={{ letterSpacing: "-0.1px" }}>Message Teacher</span>
+                          </div>
+                          <div className="w-[30px] h-[30px] rounded-[10px] flex items-center justify-center relative z-10"
+                            style={{ background: "rgba(255,255,255,0.18)", border: "0.5px solid rgba(255,255,255,0.26)" }}>
+                            <ChevronRight className="w-[13px] h-[13px]" style={{ color: "rgba(255,255,255,0.85)" }} strokeWidth={2.5} />
+                          </div>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* ── Row: Enrollment Verified + All Subjects list ── */}
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-5 mt-5">
+
+              {/* Enrollment Verified (lg:col-span-2) */}
+              <div
+                role="button"
+                tabIndex={0}
+                aria-label="Open my child profile"
+                onClick={() => navigate("/my-child")}
+                onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/my-child"); } }}
+                className="lg:col-span-2 rounded-[24px] p-7 relative overflow-hidden cursor-pointer transition-all hover:-translate-y-1 hover:scale-[1.02] hover:shadow-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+                style={{
+                  background: "linear-gradient(140deg, #001888 0%, #0033CC 48%, #0055FF 100%)",
+                  boxShadow: "0 10px 36px rgba(0,51,204,0.38), 0 0 0 0.5px rgba(255,255,255,0.16)",
+                  border: "0.5px solid rgba(255,255,255,0.16)"
+                }}>
+                <div className="absolute -top-[42px] -right-[30px] w-[240px] h-[240px] rounded-full pointer-events-none"
+                  style={{ background: "radial-gradient(circle, rgba(255,255,255,0.16) 0%, transparent 65%)" }} />
+                <div className="absolute inset-0 pointer-events-none" style={{
+                  backgroundImage: "linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px)",
+                  backgroundSize: "24px 24px"
+                }} />
+
+                <div className="flex items-center gap-[13px] mb-6 relative z-10">
+                  <div className="w-14 h-14 rounded-[18px] flex items-center justify-center shrink-0"
+                    style={{ background: "rgba(255,255,255,0.18)", border: "0.5px solid rgba(255,255,255,0.28)" }}>
+                    <ShieldCheck className="w-7 h-7 text-white" strokeWidth={2.2} />
+                  </div>
+                  <div>
+                    <div className="text-[10px] font-bold uppercase tracking-[0.12em] mb-1" style={{ color: "rgba(255,255,255,0.45)" }}>Enrollment Verified</div>
+                    <div className="text-[20px] font-bold text-white" style={{ letterSpacing: "-0.4px" }}>Academic Registry Active</div>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 rounded-[18px] overflow-hidden relative z-10" style={{ gap: "1px", background: "rgba(255,255,255,0.14)" }}>
+                  <div className="py-5 flex flex-col items-center gap-[5px]" style={{ background: "rgba(255,255,255,0.09)" }}>
+                    <div className="text-[42px] font-bold text-white leading-none" style={{ letterSpacing: "-2px" }}>{enrollments.length}</div>
+                    <div className="text-[10px] font-bold uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.42)" }}>Subjects</div>
+                  </div>
+                  <div className="py-5 flex flex-col items-center gap-[5px]" style={{ background: "rgba(255,255,255,0.09)" }}>
+                    <div className="text-[42px] font-bold text-white leading-none" style={{ letterSpacing: "-2px" }}>{uniqueTeacherCount}</div>
+                    <div className="text-[10px] font-bold uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.42)" }}>Teachers</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* All Subjects list (lg:col-span-3) */}
+              <div className="lg:col-span-3 bg-white rounded-[22px] overflow-hidden"
+                style={{ boxShadow: SH, border: "0.5px solid rgba(0,85,255,0.12)" }}>
+                <div className="flex items-center justify-between px-6 py-4" style={{ borderBottom: `0.5px solid ${SEP}` }}>
+                  <div className="text-[17px] font-bold" style={{ color: T1, letterSpacing: "-0.3px" }}>Enrolled Subjects</div>
+                  <div className="px-3 py-[4px] rounded-full text-[11px] font-bold"
+                    style={{ background: "rgba(0,85,255,0.10)", border: "0.5px solid rgba(0,85,255,0.18)", color: B1 }}>
+                    {enrollments.length} Active
+                  </div>
+                </div>
+                {enrollments.map((en, idx, arr) => {
+                  const subject = resolveSubject(en);
+                  const avatar = BLUE_AVATARS[idx % BLUE_AVATARS.length];
+                  const schedule = en.schedule || "—";
+                  return (
+                    <div
+                      key={en.id}
+                      role="button"
+                      tabIndex={0}
+                      aria-label={`Open ${subject || "class"} teacher notes`}
+                      className="flex items-center gap-[13px] px-6 py-4 cursor-pointer transition-colors hover:bg-[#F5F9FF] focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#0055FF]/40"
+                      style={{ borderBottom: idx < arr.length - 1 ? `0.5px solid ${SEP}` : "none" }}
+                      onClick={() => navigate("/teacher-notes", { state: { teacherId: en.teacherId } })}
+                      onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/teacher-notes", { state: { teacherId: en.teacherId } }); } }}>
+                      <div className="w-11 h-11 rounded-[14px] flex items-center justify-center shrink-0"
+                        style={{ background: avatar.bg, boxShadow: avatar.shadow }}>
+                        <BookOpen className="w-5 h-5 text-white" strokeWidth={2.2} />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="text-[14px] font-bold truncate" style={{ color: T1, letterSpacing: "-0.2px" }}>{subject || "Class"}</div>
+                        <div className="text-[11px] mt-0.5 truncate" style={{ color: T3 }}>{en.teacherName} · {schedule}</div>
+                      </div>
+                      <div className="px-3 py-[5px] rounded-full text-[10px] font-bold shrink-0"
+                        style={{ background: "rgba(0,85,255,0.10)", color: "#0033AA", border: "0.5px solid rgba(0,85,255,0.22)" }}>
+                        Active
+                      </div>
+                      <ChevronRight className="w-[14px] h-[14px] shrink-0" style={{ color: T4 }} strokeWidth={2.3} />
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default ClassesPage;
