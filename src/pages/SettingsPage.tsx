@@ -100,7 +100,7 @@ const SettingsPage = () => {
      ═══════════════════════════════════════════════════════════════ */
   if (isMobile) {
     const B1 = "#0A84FF", B2 = "#3395FF", B3 = "#5BA9FF", B4 = "#7CBBFF";
-    const BG = "#F5F5F7";
+    const BG = "#EEF4FF";
     const T1 = "#1D1D1F", T2 = "#3A3A3C", T3 = "#6E6E73", T4 = "#A1A1A6";
     const SEP = "rgba(10,132,255,0.07)";
     const GREEN = "#34C759", GREEN_D = "#248A3D", GREEN_S = "rgba(52,199,89,0.10)", GREEN_B = "rgba(52,199,89,0.22)";
@@ -473,7 +473,7 @@ const SettingsPage = () => {
      DESKTOP — Bright Blue Apple UI + 3D hover cards
      ═══════════════════════════════════════════════════════════════ */
   const B1 = "#0A84FF", B2 = "#3395FF", B3 = "#5BA9FF";
-  const BG_D = "#F5F5F7";
+  const BG_D = "#EEF4FF";
   const T1 = "#1D1D1F", T2 = "#3A3A3C", T3 = "#6E6E73", T4 = "#A1A1A6";
   const GREEN = "#34C759", GREEN_D_COL = "#248A3D";
   const RED = "#FF3B30";

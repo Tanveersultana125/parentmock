@@ -250,7 +250,7 @@ export default function BehaviourPage() {
      ═══════════════════════════════════════════════════════════════ */
   if (isMobile) {
     const B1 = "#0A84FF", B2 = "#3395FF", B3 = "#5BA9FF", B4 = "#7CBBFF";
-    const BG = "#F5F5F7", BG2 = "#EBEBF0";
+    const BG = "#EEF4FF", BG2 = "#EBEBF0";
     const T1 = "#1D1D1F", T3 = "#6E6E73", T4 = "#A1A1A6";
     const SEP = "rgba(10,132,255,0.07)";
     const GREEN = "#34C759", GREEN_D = "#248A3D";
@@ -608,7 +608,7 @@ export default function BehaviourPage() {
      DESKTOP — Bright Blue Apple UI
      ═══════════════════════════════════════════════════════════════ */
   const B1 = "#0A84FF", B2 = "#3395FF", B3 = "#5BA9FF", B4 = "#7CBBFF";
-  const BG_D = "#F5F5F7", BG2_D = "#EBEBF0";
+  const BG_D = "#EEF4FF", BG2_D = "#EBEBF0";
   const T1 = "#1D1D1F", T3 = "#6E6E73", T4 = "#A1A1A6";
   const SEP_D = "rgba(10,132,255,0.07)";
   const GREEN = "#34C759", GREEN_D = "#248A3D";

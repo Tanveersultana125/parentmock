@@ -277,7 +277,7 @@ const ClassesPage = () => {
   if (isMobile) {
     const B1 = "#0A84FF";
     const B2 = "#3395FF";
-    const BG = "#F5F5F7";
+    const BG = "#EEF4FF";
     const BG2 = "#EBEBF0";
     const T1 = "#1D1D1F";
     const T3 = "#6E6E73";
@@ -547,7 +547,7 @@ const ClassesPage = () => {
                     role="button"
                     tabIndex={0}
                     aria-label={`Open ${subject || "class"} teacher notes`}
-                    className="flex items-center gap-[12px] px-[16px] py-[16px] cursor-pointer active:bg-[#F5F5F7] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#0A84FF]/40"
+                    className="flex items-center gap-[12px] px-[16px] py-[16px] cursor-pointer active:bg-[#EEF4FF] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#0A84FF]/40"
                     style={{ borderBottom: idx < arr.length - 1 ? `0.5px solid ${SEP}` : "none" }}
                     onClick={() => navigate("/teacher-notes", { state: { teacherId: en.teacherId } })}
                     onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/teacher-notes", { state: { teacherId: en.teacherId } }); } }}>
@@ -580,7 +580,7 @@ const ClassesPage = () => {
      ═══════════════════════════════════════════════════════════════ */
   const B1 = "#0A84FF";
   const B2 = "#3395FF";
-  const BG = "#F5F5F7";
+  const BG = "#EEF4FF";
   const T1 = "#1D1D1F";
   const T3 = "#6E6E73";
   const T4 = "#A1A1A6";
@@ -834,7 +834,7 @@ const ClassesPage = () => {
                       role="button"
                       tabIndex={0}
                       aria-label={`Open ${subject || "class"} teacher notes`}
-                      className="flex items-center gap-[12px] px-6 py-4 cursor-pointer transition-colors hover:bg-[#F5F5F7] focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#0A84FF]/40"
+                      className="flex items-center gap-[12px] px-6 py-4 cursor-pointer transition-colors hover:bg-[#EEF4FF] focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#0A84FF]/40"
                       style={{ borderBottom: idx < arr.length - 1 ? `0.5px solid ${SEP}` : "none" }}
                       onClick={() => navigate("/teacher-notes", { state: { teacherId: en.teacherId } })}
                       onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/teacher-notes", { state: { teacherId: en.teacherId } }); } }}>

@@ -15,14 +15,14 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjsLi
 
 // ── Design tokens ─────────────────────────────────────────────────────────────
 const C = {
-  bg: "#F5F5F7", white: "#fff", ink: "#1D1D1F", ink2: "#6E6E73", ink3: "#A1A1A6",
-  bdr: "#EBEBF0", s1: "#F5F5F7", s2: "#EBEBF0",
-  blue: "#0A84FF", blBg: "#F5F5F7",
-  pur: "#AF52DE", plBg: "#F5F5F7", plBdr: "#E5D5FF",
-  grn: "#34C759", glBg: "#F5F5F7",
+  bg: "#EEF4FF", white: "#fff", ink: "#1D1D1F", ink2: "#6E6E73", ink3: "#A1A1A6",
+  bdr: "#EBEBF0", s1: "#EEF4FF", s2: "#EBEBF0",
+  blue: "#0A84FF", blBg: "#EEF4FF",
+  pur: "#AF52DE", plBg: "#EEF4FF", plBdr: "#E5D5FF",
+  grn: "#34C759", glBg: "#EEF4FF",
   red: "#FF3B30", rlBg: "#FFF5F4",
   amb: "#86310C", alBg: "#FFFAEB",
-  tea: "#0A7FA8", tlBg: "#F5F5F7",
+  tea: "#0A7FA8", tlBg: "#EEF4FF",
 };
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -455,7 +455,7 @@ const AIPracticePage = () => {
   if (view === "home" && isMobile) {
     // Blue theme tokens matching EduIntellect mobile design
     const B1 = "#0A84FF", B2 = "#3395FF";
-    const BG = "#F5F5F7", BG2 = "#EBEBF0", CARD = "#FFFFFF";
+    const BG = "#EEF4FF", BG2 = "#EBEBF0", CARD = "#FFFFFF";
     const T1 = "#1D1D1F", T3 = "#6E6E73", T4 = "#A1A1A6";
     const ORANGE = "#FF9500", GOLD = "#FFCC00";
     const SEP = "rgba(10,132,255,0.07)";
@@ -717,7 +717,7 @@ const AIPracticePage = () => {
      ═══════════════════════════════════════════════════════════════ */
   if (view === "upload" && isMobile) {
     const B1 = "#0A84FF", B2 = "#3395FF", B3 = "#5BA9FF";
-    const BG = "#F5F5F7", BG2 = "#EBEBF0", CARD = "#FFFFFF";
+    const BG = "#EEF4FF", BG2 = "#EBEBF0", CARD = "#FFFFFF";
     const T1 = "#1D1D1F", T3 = "#6E6E73", T4 = "#A1A1A6";
     const SH = "0 0 0 0.5px rgba(10,132,255,0.08), 0 2px 8px rgba(10,132,255,0.08), 0 10px 24px rgba(10,132,255,0.10)";
     const SH_BTN = "0 6px 22px rgba(10,132,255,0.42), 0 2px 6px rgba(10,132,255,0.22)";
@@ -887,7 +887,7 @@ const AIPracticePage = () => {
 
   // ── DESKTOP — Bright Blue Apple UI ───────────────────────────────────────
   const B1 = "#0A84FF", B2 = "#3395FF", B3 = "#5BA9FF", B4 = "#7CBBFF";
-  const BG_D = "#F5F5F7", BG2_D = "#EBEBF0";
+  const BG_D = "#EEF4FF", BG2_D = "#EBEBF0";
   const T1 = "#1D1D1F", T2 = "#3A3A3C", T3 = "#6E6E73", T4 = "#A1A1A6";
   const GREEN_D = "#34C759", RED_D = "#FF3B30", ORANGE_D = "#FF9500", GOLD_D = "#FFCC00", PINK_D = "#FF2D55", VIOLET_D = "#AF52DE";
   const BLUE_BDR_D = "rgba(10,132,255,0.12)";

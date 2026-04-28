@@ -10,10 +10,10 @@ import { useIsMobile } from "../hooks/use-mobile";
 
 // ── Tokens ───────────────────────────────────────────────────────────────────
 const T = {
-  bg: "#F5F5F7", white: "#ffffff", ink: "#0f172a", ink2: "#6E6E73", ink3: "#A1A1A6",
-  bdr: "#EBEBF0", s1: "#F5F5F7", s2: "#EBEBF0",
-  blue: "#0A84FF", blBg: "#F5F5F7", blBdr: "#BAC8FF",
-  grn: "#34C759", glBg: "#F5F5F7", red: "#FF3B30", rlBg: "#FFF5F4",
+  bg: "#EEF4FF", white: "#ffffff", ink: "#0f172a", ink2: "#6E6E73", ink3: "#A1A1A6",
+  bdr: "#EBEBF0", s1: "#EEF4FF", s2: "#EBEBF0",
+  blue: "#0A84FF", blBg: "#EEF4FF", blBdr: "#BAC8FF",
+  grn: "#34C759", glBg: "#EEF4FF", red: "#FF3B30", rlBg: "#FFF5F4",
   amb: "#86310C", alBg: "#FFFAEB", pur: "#7c3aed",
 };
 

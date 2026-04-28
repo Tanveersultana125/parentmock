@@ -127,7 +127,7 @@ const PrincipalNotesPage = () => {
   if (isMobile) {
     const WA_GREEN = "#34C759";
     const WA_HEADER_BG = "#F0F0F2";
-    const WA_CHAT_BG = "#F5F5F7";
+    const WA_CHAT_BG = "#EEF4FF";
     const WA_BUBBLE_OUT = "#F0F8F1";
     const WA_TICK_READ = "#5AC8FA";
     const WA_T1 = "#1D1D1F", WA_T3 = "#6E6E73";
@@ -263,7 +263,7 @@ const PrincipalNotesPage = () => {
      DESKTOP — Bright Blue Apple UI
      ═══════════════════════════════════════════════════════════════ */
   const B1 = "#0A84FF", B2 = "#3395FF", B3 = "#5BA9FF";
-  const BG_D = "#F5F5F7";
+  const BG_D = "#EEF4FF";
   const T1 = "#1D1D1F", T3 = "#6E6E73", T4 = "#A1A1A6";
   const ORANGE = "#FF9500", GREEN = "#34C759", RED = "#FF3B30";
   const BLUE_BDR = "rgba(10,132,255,0.12)";
@@ -274,7 +274,7 @@ const PrincipalNotesPage = () => {
   // ── WhatsApp Web palette (used inside the chat card) ──
   const WA_GREEN = "#34C759", WA_GREEN_DEEP = "#248A3D";
   const WA_HEADER_BG = "#F0F0F2";
-  const WA_CHAT_BG = "#F5F5F7";
+  const WA_CHAT_BG = "#EEF4FF";
   const WA_BUBBLE_OUT = "#F0F8F1";
   const WA_TICK_READ = "#5AC8FA";
   const WA_SEP = "#EBEBF0";

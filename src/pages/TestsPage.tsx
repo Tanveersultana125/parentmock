@@ -189,7 +189,7 @@ const TestsPage = () => {
      ═══════════════════════════════════════════════════════════════ */
   if (isMobile) {
     const B1 = "#0A84FF", B2 = "#3395FF", B4 = "#7CBBFF";
-    const BG = "#F5F5F7", BG2 = "#EBEBF0";
+    const BG = "#EEF4FF", BG2 = "#EBEBF0";
     const T1 = "#1D1D1F", T3 = "#6E6E73", T4 = "#A1A1A6";
     const GREEN = "#34C759";
     const RED = "#FF3B30";
@@ -555,7 +555,7 @@ const TestsPage = () => {
      DESKTOP — Bright Blue Apple UI (matches mobile)
      ═══════════════════════════════════════════════════════════════ */
   const B1 = "#0A84FF", B2 = "#3395FF", B4 = "#7CBBFF";
-  const BG = "#F5F5F7";
+  const BG = "#EEF4FF";
   const T1 = "#1D1D1F", T3 = "#6E6E73", T4 = "#A1A1A6";
   const GREEN = "#34C759";
   const RED = "#FF3B30";

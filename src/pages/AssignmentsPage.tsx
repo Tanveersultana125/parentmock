@@ -344,7 +344,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
      ═══════════════════════════════════════════════════════════════ */
   if (isMobile) {
     const B1 = "#0A84FF", B2 = "#3395FF", B4 = "#7CBBFF";
-    const BG = "#F5F5F7", BG2 = "#EBEBF0";
+    const BG = "#EEF4FF", BG2 = "#EBEBF0";
     const T1 = "#1D1D1F", T2 = "#3A3A3C", T3 = "#6E6E73", T4 = "#A1A1A6";
     const SEP = "rgba(10,132,255,0.07)";
     const GREEN = "#34C759";
@@ -625,7 +625,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                     role="button"
                     tabIndex={0}
                     aria-label={`Submit ${a.title || "assignment"}, due in ${days} days`}
-                    className="flex items-center gap-3 py-3 cursor-pointer active:bg-[#F5F5F7] transition-colors rounded-[12px] -mx-2 px-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
+                    className="flex items-center gap-3 py-3 cursor-pointer active:bg-[#EEF4FF] transition-colors rounded-[12px] -mx-2 px-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
                     style={{ borderBottom: i < arr.length - 1 ? `0.5px solid ${SEP}` : "none" }}
                     onClick={() => openSubmit(a)}
                     onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openSubmit(a); } }}>
@@ -954,7 +954,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
      DESKTOP — Bright Blue Apple UI
      ═══════════════════════════════════════════════════════════════ */
   const B1 = "#0A84FF", B2 = "#3395FF", B4 = "#7CBBFF";
-  const BG = "#F5F5F7", BG2 = "#EBEBF0";
+  const BG = "#EEF4FF", BG2 = "#EBEBF0";
   const T1 = "#1D1D1F", T2 = "#3A3A3C", T3 = "#6E6E73", T4 = "#A1A1A6";
   const SEP = "rgba(10,132,255,0.07)";
   const GREEN = "#34C759", RED = "#FF3B30", ORANGE = "#FF9500", VIOLET = "#AF52DE";
@@ -1240,7 +1240,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                       role="button"
                       tabIndex={0}
                       aria-label={`Submit ${a.title || "assignment"}, due in ${days} days`}
-                      className="flex items-center gap-3 py-3 cursor-pointer transition-colors hover:bg-[#F5F5F7] rounded-[12px] -mx-2 px-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
+                      className="flex items-center gap-3 py-3 cursor-pointer transition-colors hover:bg-[#EEF4FF] rounded-[12px] -mx-2 px-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
                       style={{ borderBottom: i < arr.length - 1 ? `0.5px solid ${SEP}` : "none" }}
                       onClick={openSubmitDesktop}
                       onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openSubmitDesktop(); } }}>

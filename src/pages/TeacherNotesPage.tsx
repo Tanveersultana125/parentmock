@@ -317,7 +317,7 @@ const TeacherNotesPage = () => {
   if (isMobile) {
     // ── WhatsApp palette ──
     const B1 = "#34C759", B2 = "#248A3D", B3 = "#25D366";   // green primary / deep / bright
-    const BG = "#FFFFFF", BG2 = "#F5F5F7", BG3 = "#F5F5F7", CARD = "#FFFFFF"; // page / hover / chat-bg / surface
+    const BG = "#FFFFFF", BG2 = "#EEF4FF", BG3 = "#EEF4FF", CARD = "#FFFFFF"; // page / hover / chat-bg / surface
     const T1 = "#1D1D1F", T2 = "#3B4A54", T3 = "#6E6E73", T4 = "#8696A0";
     const ORANGE = "#FF9500", GOLD = "#FFCC00", GREEN = "#25D366", RED = "#FF3B30";
     const SEP = "#EBEBF0";
@@ -658,7 +658,7 @@ const TeacherNotesPage = () => {
                   setSelectedTeacher({ teacherId: t.id, teacherName: t.name, subject: t.subject || "General" });
                   setShowNewChat(false);
                 }}
-                  className="flex items-center gap-[16px] px-4 py-[12px] cursor-pointer active:bg-[#F5F5F7] transition-colors">
+                  className="flex items-center gap-[16px] px-4 py-[12px] cursor-pointer active:bg-[#EEF4FF] transition-colors">
                   <div className="w-[48px] h-[48px] rounded-full flex items-center justify-center text-white text-[16px] font-normal shrink-0"
                     style={{ background: gradFor(t.name) }}>
                     {t.name?.substring(0, 2).toUpperCase()}
@@ -795,7 +795,7 @@ const TeacherNotesPage = () => {
      DESKTOP — Bright Blue Apple UI
      ═══════════════════════════════════════════════════════════════ */
   const B1 = "#0A84FF", B2 = "#3395FF", B3 = "#5BA9FF";
-  const BG_D = "#F5F5F7", BG2_D = "#EBEBF0";
+  const BG_D = "#EEF4FF", BG2_D = "#EBEBF0";
   const T1 = "#1D1D1F", T3 = "#6E6E73", T4 = "#A1A1A6";
   const ORANGE = "#FF9500", GOLD = "#FFCC00", GREEN = "#34C759", RED = "#FF3B30";
   const BLUE_BDR = "rgba(10,132,255,0.12)";
@@ -807,7 +807,7 @@ const TeacherNotesPage = () => {
   // ── WhatsApp Web palette (used inside the chat container) ──
   const WA_GREEN = "#34C759", WA_GREEN_DEEP = "#248A3D";
   const WA_HEADER_BG = "#F0F0F2";
-  const WA_CHAT_BG = "#F5F5F7";
+  const WA_CHAT_BG = "#EEF4FF";
   const WA_BUBBLE_OUT = "#F0F8F1";
   const WA_TICK_READ = "#5AC8FA";
   const WA_SEP = "#EBEBF0";
@@ -944,7 +944,7 @@ const TeacherNotesPage = () => {
                           setSelectedTeacher({ teacherId: t.id, teacherName: t.name, subject: t.subject || "General" });
                           setShowNewChat(false);
                         }}
-                          className="w-full flex items-center gap-3 px-4 py-[12px] transition-colors hover:bg-[#F5F5F7]">
+                          className="w-full flex items-center gap-3 px-4 py-[12px] transition-colors hover:bg-[#EEF4FF]">
                           <div className="w-12 h-12 rounded-full flex items-center justify-center text-white text-[14px] font-normal shrink-0"
                             style={{ background: g.bg }}>
                             {t.name?.substring(0, 2).toUpperCase()}
@@ -974,7 +974,7 @@ const TeacherNotesPage = () => {
                   const g = gradForName(t.teacherName);
                   return (
                     <button key={t.teacherId} onClick={() => setSelectedTeacher(t)}
-                      className="w-full flex items-center gap-3 pl-[16px] pr-3 py-[12px] transition-colors hover:bg-[#F5F5F7]"
+                      className="w-full flex items-center gap-3 pl-[16px] pr-3 py-[12px] transition-colors hover:bg-[#EEF4FF]"
                       style={{ background: active ? "#F0F0F2" : "transparent" }}>
                       <div className="w-12 h-12 rounded-full flex items-center justify-center text-white text-[14px] font-normal shrink-0"
                         style={{ background: g.bg }}>

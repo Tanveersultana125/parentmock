@@ -258,7 +258,7 @@ const ReportsPage = () => {
      ═══════════════════════════════════════════════════════════════ */
   if (isMobile) {
     const B1 = "#0A84FF", B2 = "#3395FF", B3 = "#5BA9FF";
-    const BG = "#F5F5F7";
+    const BG = "#EEF4FF";
     const T1 = "#1D1D1F", T2 = "#3A3A3C", T3 = "#6E6E73", T4 = "#A1A1A6";
     const SH = "0 0 0 0.5px rgba(10,132,255,0.08), 0 2px 8px rgba(10,132,255,0.08), 0 10px 28px rgba(10,132,255,0.10)";
     const SH_LG = "0 0 0 0.5px rgba(10,132,255,0.10), 0 4px 16px rgba(10,132,255,0.11), 0 20px 48px rgba(10,132,255,0.13)";
@@ -552,7 +552,7 @@ const ReportsPage = () => {
      DESKTOP — Bright Blue Apple UI + 3D hover cards
      ═══════════════════════════════════════════════════════════════ */
   const B1 = "#0A84FF", B2 = "#3395FF", B3 = "#5BA9FF";
-  const BG_D = "#F5F5F7";
+  const BG_D = "#EEF4FF";
   const T1 = "#1D1D1F", T2 = "#3A3A3C", T3 = "#6E6E73", T4 = "#A1A1A6";
   const GREEN = "#34C759", ORANGE = "#FF9500";
   const BLUE_BDR = "rgba(10,132,255,0.12)";

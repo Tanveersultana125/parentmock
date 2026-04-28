@@ -101,7 +101,7 @@ export const ParentTopbar = ({ onMenuClick }: ParentTopbarProps) => {
   // DESKTOP — unchanged
   // ══════════════════════════════
   return (
-    <header className="h-16 bg-[#F5F5F7]/80 backdrop-blur-md border-b border-slate-100 flex items-center justify-between px-4 md:px-8 sticky top-0 z-[60]">
+    <header className="h-16 bg-[#EEF4FF]/80 backdrop-blur-md border-b border-slate-100 flex items-center justify-between px-4 md:px-8 sticky top-0 z-[60]">
       <div className="flex items-center gap-3 min-w-0">
         <button
           onClick={onMenuClick}
