@@ -15,14 +15,14 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjsLi
 
 // ── Design tokens ─────────────────────────────────────────────────────────────
 const C = {
-  bg: "#F5F6FA", white: "#fff", ink: "#0B1F3A", ink2: "#475569", ink3: "#94a3b8",
-  bdr: "#e2e8f0", s1: "#f1f5f9", s2: "#e2e8f0",
-  blue: "#3B5BDB", blBg: "#EDF2FF",
-  pur: "#6741D9", plBg: "#F3F0FF", plBdr: "#D0BFFF",
-  grn: "#16a34a", glBg: "#f0fdf4",
-  red: "#dc2626", rlBg: "#fef2f2",
-  amb: "#d97706", alBg: "#fffbeb",
-  tea: "#0891b2", tlBg: "#ecfeff",
+  bg: "#F5F5F7", white: "#fff", ink: "#1D1D1F", ink2: "#6E6E73", ink3: "#A1A1A6",
+  bdr: "#EBEBF0", s1: "#F5F5F7", s2: "#EBEBF0",
+  blue: "#0A84FF", blBg: "#F5F5F7",
+  pur: "#AF52DE", plBg: "#F5F5F7", plBdr: "#E5D5FF",
+  grn: "#34C759", glBg: "#F5F5F7",
+  red: "#FF3B30", rlBg: "#FFF5F4",
+  amb: "#86310C", alBg: "#FFFAEB",
+  tea: "#0A7FA8", tlBg: "#F5F5F7",
 };
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -454,14 +454,14 @@ const AIPracticePage = () => {
      ═══════════════════════════════════════════════════════════════ */
   if (view === "home" && isMobile) {
     // Blue theme tokens matching EduIntellect mobile design
-    const B1 = "#0055FF", B2 = "#1166FF";
-    const BG = "#EEF4FF", BG2 = "#E0ECFF", CARD = "#FFFFFF";
-    const T1 = "#001040", T3 = "#5070B0", T4 = "#99AACC";
-    const ORANGE = "#FF8800", GOLD = "#FFCC22";
-    const SEP = "rgba(0,85,255,0.07)";
-    const SH = "0 0 0 0.5px rgba(0,85,255,0.08), 0 2px 8px rgba(0,85,255,0.08), 0 10px 24px rgba(0,85,255,0.10)";
-    const SH_LG = "0 0 0 0.5px rgba(0,85,255,0.10), 0 4px 16px rgba(0,85,255,0.11), 0 18px 44px rgba(0,85,255,0.13)";
-    const SH_BTN = "0 6px 22px rgba(0,85,255,0.42), 0 2px 6px rgba(0,85,255,0.22)";
+    const B1 = "#0A84FF", B2 = "#3395FF";
+    const BG = "#F5F5F7", BG2 = "#EBEBF0", CARD = "#FFFFFF";
+    const T1 = "#1D1D1F", T3 = "#6E6E73", T4 = "#A1A1A6";
+    const ORANGE = "#FF9500", GOLD = "#FFCC00";
+    const SEP = "rgba(10,132,255,0.07)";
+    const SH = "0 0 0 0.5px rgba(10,132,255,0.08), 0 2px 8px rgba(10,132,255,0.08), 0 10px 24px rgba(10,132,255,0.10)";
+    const SH_LG = "0 0 0 0.5px rgba(10,132,255,0.10), 0 4px 16px rgba(10,132,255,0.11), 0 18px 44px rgba(10,132,255,0.13)";
+    const SH_BTN = "0 6px 22px rgba(10,132,255,0.42), 0 2px 6px rgba(10,132,255,0.22)";
 
     // Build flat heatmap cells from weeks (18 cols × 7 rows = 126 cells)
     const flatDays = weeks.flat();
@@ -479,55 +479,55 @@ const AIPracticePage = () => {
 
         {/* ── Header ── */}
         <div className="flex items-center justify-between px-5 pt-3">
-          <div className="flex items-center gap-[7px]">
-            <div className="w-[7px] h-[7px] rounded-full animate-pulse" style={{ background: "#00CC55", boxShadow: "0 0 0 2.5px rgba(0,204,85,0.2)" }} />
+          <div className="flex items-center gap-[8px]">
+            <div className="w-[7px] h-[7px] rounded-full animate-pulse" style={{ background: "#34C759", boxShadow: "0 0 0 2.5px rgba(0,204,85,0.2)" }} />
             <span className="text-[15px] font-bold" style={{ color: B1 }}>EduIntellect</span>
           </div>
-          <div className="flex items-center gap-[9px]">
+          <div className="flex items-center gap-[8px]">
             <div className="w-[34px] h-[34px] rounded-full flex items-center justify-center relative"
-              style={{ background: "rgba(255,255,255,0.88)", border: "0.5px solid rgba(0,85,255,0.16)", boxShadow: SH }}>
-              <Bell className="w-4 h-4" style={{ color: "rgba(0,85,255,0.60)" }} strokeWidth={1.8} />
-              <span className="absolute top-0 right-0 w-2 h-2 rounded-full" style={{ background: "#FF3355", border: "1.5px solid white" }} />
+              style={{ background: "rgba(255,255,255,0.88)", border: "0.5px solid rgba(10,132,255,0.16)", boxShadow: SH }}>
+              <Bell className="w-4 h-4" style={{ color: "rgba(10,132,255,0.60)" }} strokeWidth={1.8} />
+              <span className="absolute top-0 right-0 w-2 h-2 rounded-full" style={{ background: "#FF3B30", border: "1.5px solid white" }} />
             </div>
             <div className="w-[34px] h-[34px] rounded-full flex items-center justify-center text-[13px] font-bold text-white"
-              style={{ background: `linear-gradient(140deg, ${B1}, ${B2})`, boxShadow: "0 3px 12px rgba(0,85,255,0.36), 0 0 0 2px rgba(255,255,255,0.8)" }}>
+              style={{ background: `linear-gradient(140deg, ${B1}, ${B2})`, boxShadow: "0 3px 12px rgba(10,132,255,0.36), 0 0 0 2px rgba(255,255,255,0.8)" }}>
               {studentName?.[0]?.toUpperCase() || "S"}
             </div>
           </div>
         </div>
 
         {/* ── AI Hero Card (dashboard 4-stat-card vibe) ── */}
-        <div className="mx-[18px] mt-[14px] rounded-[22px] px-5 pt-[18px] pb-[20px] relative overflow-hidden"
+        <div className="mx-[16px] mt-[16px] rounded-[22px] px-5 pt-[16px] pb-[20px] relative overflow-hidden"
           style={{
-            background: "linear-gradient(135deg, rgba(0,85,255,0.10) 0%, rgba(0,85,255,0.03) 100%)",
+            background: "linear-gradient(135deg, rgba(10,132,255,0.10) 0%, rgba(10,132,255,0.03) 100%)",
             boxShadow: SH,
-            border: "0.5px solid rgba(0,85,255,0.20)",
+            border: "0.5px solid rgba(10,132,255,0.20)",
           }}>
           <div className="absolute pointer-events-none" style={{ top: 12, right: 12 }}>
             <Sparkles style={{ width: 70, height: 70, color: B1, opacity: 0.16, strokeWidth: 1.6 }} />
           </div>
 
           <div className="relative z-10">
-            <div className="inline-flex items-center gap-[5px] px-3 py-[5px] rounded-full mb-[14px] text-[9px] font-bold uppercase tracking-[0.10em]"
-              style={{ background: "rgba(0,85,255,0.10)", border: "0.5px solid rgba(0,85,255,0.22)", color: B1 }}>
+            <div className="inline-flex items-center gap-[4px] px-3 py-[4px] rounded-full mb-[16px] text-[9px] font-bold uppercase tracking-[0.10em]"
+              style={{ background: "rgba(10,132,255,0.10)", border: "0.5px solid rgba(10,132,255,0.22)", color: B1 }}>
               <Sparkles className="w-[11px] h-[11px]" strokeWidth={2.5} />
               AI Powered · USP Feature
             </div>
             <h1 className="text-[30px] font-bold leading-[1.08] mb-2" style={{ color: T1, letterSpacing: "-0.8px" }}>
               AI Practice<br />Exams
             </h1>
-            <p className="text-[12px] leading-[1.6] font-normal mb-[18px]" style={{ color: T3 }}>
+            <p className="text-[12px] leading-[1.6] font-normal mb-[16px]" style={{ color: T3 }}>
               Upload syllabus, take AI exams,<br />learn from mistakes.
             </p>
 
             {/* Stat chips */}
             <div className="grid grid-cols-3 gap-2">
               {[
-                { icon: "🔥", val: `${streak}d`, label: "Streak", tint: "rgba(255,136,0,0.10)", bdr: "rgba(255,136,0,0.22)", color: ORANGE },
-                { icon: <BarChart3 className="w-[18px] h-[18px]" style={{ color: B1 }} strokeWidth={2.2} />, val: `${attempts.length}`, label: "Exams", tint: "rgba(0,85,255,0.08)", bdr: "rgba(0,85,255,0.20)", color: B1 },
+                { icon: "🔥", val: `${streak}d`, label: "Streak", tint: "rgba(255,149,0,0.10)", bdr: "rgba(255,149,0,0.22)", color: ORANGE },
+                { icon: <BarChart3 className="w-[18px] h-[18px]" style={{ color: B1 }} strokeWidth={2.2} />, val: `${attempts.length}`, label: "Exams", tint: "rgba(10,132,255,0.08)", bdr: "rgba(10,132,255,0.20)", color: B1 },
                 { icon: "⭐", val: bestScore > 0 ? `${bestScore}%` : "—", label: "Best", tint: "rgba(255,204,34,0.12)", bdr: "rgba(255,204,34,0.28)", color: GOLD },
               ].map(({ icon, val, label, tint, bdr, color }) => (
-                <div key={label} className="rounded-[16px] py-[13px] px-[10px] flex flex-col items-center gap-[5px]"
+                <div key={label} className="rounded-[16px] py-[12px] px-[12px] flex flex-col items-center gap-[4px]"
                   style={{ background: tint, border: `0.5px solid ${bdr}` }}>
                   <div className="h-[22px] flex items-center justify-center text-[18px] leading-none mb-[2px]">
                     {typeof icon === "string" ? icon : icon}
@@ -541,13 +541,13 @@ const AIPracticePage = () => {
         </div>
 
         {/* ── Streak Card ── */}
-        <div className="mx-[18px] mt-3 flex items-center justify-between rounded-[20px] px-[18px] py-[15px] relative overflow-hidden"
-          style={{ background: CARD, boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+        <div className="mx-[16px] mt-3 flex items-center justify-between rounded-[20px] px-[16px] py-[16px] relative overflow-hidden"
+          style={{ background: CARD, boxShadow: SH_LG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
           <div className="absolute -top-5 -right-4 w-[90px] h-[90px] rounded-full pointer-events-none"
-            style={{ background: "radial-gradient(circle, rgba(255,136,0,0.07) 0%, transparent 70%)" }} />
+            style={{ background: "radial-gradient(circle, rgba(255,149,0,0.07) 0%, transparent 70%)" }} />
           <div className="flex items-center gap-3 relative z-10">
             <div className="w-11 h-11 rounded-[14px] flex items-center justify-center text-[20px] shrink-0"
-              style={{ background: `linear-gradient(135deg, ${ORANGE}, ${GOLD})`, boxShadow: "0 3px 12px rgba(255,136,0,0.30)" }}>
+              style={{ background: `linear-gradient(135deg, ${ORANGE}, ${GOLD})`, boxShadow: "0 3px 12px rgba(255,149,0,0.30)" }}>
               🔥
             </div>
             <div>
@@ -561,13 +561,13 @@ const AIPracticePage = () => {
         </div>
 
         {/* ── Practice Calendar ── */}
-        <div className="mx-[18px] mt-3 rounded-[22px] px-[18px] py-[18px]"
-          style={{ background: CARD, boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+        <div className="mx-[16px] mt-3 rounded-[22px] px-[16px] py-[16px]"
+          style={{ background: CARD, boxShadow: SH_LG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
           <div className="text-[15px] font-bold" style={{ color: T1, letterSpacing: "-0.3px" }}>Practice Calendar</div>
-          <div className="text-[11px] font-normal mt-[3px] mb-[14px]" style={{ color: T3 }}>{practiceDates.size} days practiced this year</div>
+          <div className="text-[11px] font-normal mt-[4px] mb-[16px]" style={{ color: T3 }}>{practiceDates.size} days practiced this year</div>
 
           {/* Heatmap 18×7 grid */}
-          <div className="grid gap-[3px] mb-[10px]" style={{ gridTemplateColumns: "repeat(18, 1fr)" }}>
+          <div className="grid gap-[4px] mb-[12px]" style={{ gridTemplateColumns: "repeat(18, 1fr)" }}>
             {recentDays.map((day, idx) => {
               const dateStr = toLocalDateStr(day.date);
               const isToday = dateStr === todayStr;
@@ -582,16 +582,16 @@ const AIPracticePage = () => {
               };
               if (isToday) {
                 cellStyle.background = B1;
-                cellStyle.boxShadow = "0 0 0 2px rgba(0,85,255,0.30), 0 0 0 4px rgba(0,85,255,0.10)";
+                cellStyle.boxShadow = "0 0 0 2px rgba(10,132,255,0.30), 0 0 0 4px rgba(10,132,255,0.10)";
               }
               return <div key={idx} style={cellStyle} title={day.date.toLocaleDateString()} />;
             })}
           </div>
 
           {/* Legend */}
-          <div className="flex items-center gap-[6px] text-[10px] font-semibold" style={{ color: T4 }}>
+          <div className="flex items-center gap-[8px] text-[10px] font-semibold" style={{ color: T4 }}>
             <span>Less</span>
-            {[BG2, "rgba(0,85,255,0.15)", "rgba(0,85,255,0.30)", "rgba(0,85,255,0.55)", B1].map((c, i) => (
+            {[BG2, "rgba(10,132,255,0.15)", "rgba(10,132,255,0.30)", "rgba(10,132,255,0.55)", B1].map((c, i) => (
               <div key={i} className="w-3 h-3 rounded-[3px]" style={{ background: c }} />
             ))}
             <span>More</span>
@@ -600,7 +600,7 @@ const AIPracticePage = () => {
 
         {/* ── New Practice Exam CTA ── */}
         <button onClick={() => setView("upload")}
-          className="mx-[18px] mt-[14px] w-[calc(100%-36px)] h-[52px] rounded-[18px] flex items-center justify-center gap-2 text-[15px] font-bold text-white active:scale-[0.97] transition-transform relative overflow-hidden"
+          className="mx-[16px] mt-[16px] w-[calc(100%-36px)] h-[52px] rounded-[18px] flex items-center justify-center gap-2 text-[15px] font-bold text-white active:scale-[0.97] transition-transform relative overflow-hidden"
           style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: SH_BTN, letterSpacing: "-0.1px" }}>
           <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 52%)" }} />
           <Plus className="relative z-10 w-4 h-4" strokeWidth={2.5} />
@@ -609,7 +609,7 @@ const AIPracticePage = () => {
 
         {/* ── Empty state hint ── */}
         {attempts.length === 0 && documents.length === 0 && (
-          <div className="px-5 pt-[14px] text-center text-[13px] leading-[1.6] font-normal" style={{ color: T3 }}>
+          <div className="px-5 pt-[16px] text-center text-[13px] leading-[1.6] font-normal" style={{ color: T3 }}>
             No exams yet. Tap <strong style={{ color: B1, fontWeight: 700 }}>New Practice Exam</strong> to begin!
           </div>
         )}
@@ -617,17 +617,17 @@ const AIPracticePage = () => {
         {/* ── Your Documents ── */}
         {documents.length > 0 && (
           <>
-            <div className="flex items-center gap-2 px-5 pt-[18px] text-[9px] font-bold uppercase tracking-[0.1em]" style={{ color: "rgba(0,85,255,0.40)" }}>
+            <div className="flex items-center gap-2 px-5 pt-[16px] text-[9px] font-bold uppercase tracking-[0.1em]" style={{ color: "rgba(10,132,255,0.40)" }}>
               Your Documents
               <div className="flex-1 h-[0.5px]" style={{ background: SEP }} />
             </div>
-            <div className="mx-[18px] mt-[10px] flex flex-col gap-[9px]">
+            <div className="mx-[16px] mt-[12px] flex flex-col gap-[8px]">
               {documents.slice(0, 3).map(doc => (
                 <div key={doc.id} onClick={() => useDocument(doc)}
-                  className="rounded-[18px] px-4 py-[14px] flex items-center gap-[13px] active:scale-[0.97] transition-transform cursor-pointer"
-                  style={{ background: CARD, boxShadow: SH, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                  className="rounded-[18px] px-4 py-[16px] flex items-center gap-[12px] active:scale-[0.97] transition-transform cursor-pointer"
+                  style={{ background: CARD, boxShadow: SH, border: "0.5px solid rgba(10,132,255,0.10)" }}>
                   <div className="w-[42px] h-[42px] rounded-[13px] flex items-center justify-center shrink-0"
-                    style={{ background: "rgba(0,85,255,0.10)", border: "0.5px solid rgba(0,85,255,0.20)" }}>
+                    style={{ background: "rgba(10,132,255,0.10)", border: "0.5px solid rgba(10,132,255,0.20)" }}>
                     <FileText className="w-5 h-5" style={{ color: B1 }} strokeWidth={2} />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -643,22 +643,22 @@ const AIPracticePage = () => {
         {/* ── Recent Exams ── */}
         {attempts.length > 0 && (
           <>
-            <div className="flex items-center gap-2 px-5 pt-[18px] text-[9px] font-bold uppercase tracking-[0.1em]" style={{ color: "rgba(0,85,255,0.40)" }}>
+            <div className="flex items-center gap-2 px-5 pt-[16px] text-[9px] font-bold uppercase tracking-[0.1em]" style={{ color: "rgba(10,132,255,0.40)" }}>
               Recent Exams
               <div className="flex-1 h-[0.5px]" style={{ background: SEP }} />
             </div>
-            <div className="mx-[18px] mt-[10px] flex flex-col gap-[9px]">
+            <div className="mx-[16px] mt-[12px] flex flex-col gap-[8px]">
               {attempts.slice(0, 5).map(a => {
                 const pct = a.percentage || 0;
                 const passed = pct >= 80;
                 const review = pct >= 50 && pct < 80;
-                const iconBg = passed ? "rgba(0,200,83,0.10)" : review ? "rgba(255,136,0,0.10)" : "rgba(255,51,85,0.10)";
-                const iconBdr = passed ? "rgba(0,200,83,0.22)" : review ? "rgba(255,136,0,0.22)" : "rgba(255,51,85,0.22)";
-                const iconColor = passed ? "#00C853" : review ? ORANGE : "#FF3355";
+                const iconBg = passed ? "rgba(52,199,89,0.10)" : review ? "rgba(255,149,0,0.10)" : "rgba(255,59,48,0.10)";
+                const iconBdr = passed ? "rgba(52,199,89,0.22)" : review ? "rgba(255,149,0,0.22)" : "rgba(255,59,48,0.22)";
+                const iconColor = passed ? "#34C759" : review ? ORANGE : "#FF3B30";
                 const chipText = passed ? "Passed" : review ? "Review" : "Retry";
                 return (
-                  <div key={a.id} className="rounded-[18px] px-4 py-[14px] flex items-center gap-[13px] active:scale-[0.97] transition-transform"
-                    style={{ background: CARD, boxShadow: SH, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                  <div key={a.id} className="rounded-[18px] px-4 py-[16px] flex items-center gap-[12px] active:scale-[0.97] transition-transform"
+                    style={{ background: CARD, boxShadow: SH, border: "0.5px solid rgba(10,132,255,0.10)" }}>
                     <div className="w-[42px] h-[42px] rounded-[13px] flex items-center justify-center shrink-0"
                       style={{ background: iconBg, border: `0.5px solid ${iconBdr}` }}>
                       <BarChart3 className="w-5 h-5" style={{ color: iconColor }} strokeWidth={2} />
@@ -669,9 +669,9 @@ const AIPracticePage = () => {
                         {a.submittedAt?.toDate?.().toLocaleDateString(undefined, { month: "short", day: "numeric" }) || "—"} · {a.total || a.questionCount || 0} questions
                       </div>
                     </div>
-                    <div className="flex flex-col items-end gap-[3px]">
+                    <div className="flex flex-col items-end gap-[4px]">
                       <div className="text-[17px] font-bold" style={{ color: iconColor, letterSpacing: "-0.4px" }}>{pct}%</div>
-                      <div className="px-[9px] py-[3px] rounded-full text-[10px] font-bold"
+                      <div className="px-[8px] py-[4px] rounded-full text-[10px] font-bold"
                         style={{ background: iconBg, color: iconColor, border: `0.5px solid ${iconBdr}` }}>
                         {chipText}
                       </div>
@@ -685,8 +685,8 @@ const AIPracticePage = () => {
 
         {/* ── Exam History Summary (deep blue card) ── */}
         {attempts.length > 0 && (
-          <div className="mx-[18px] mt-[14px] rounded-[22px] px-5 py-[18px] relative overflow-hidden"
-            style={{ background: "linear-gradient(140deg, #001888 0%, #0033CC 48%, #0055FF 100%)", boxShadow: "0 8px 28px rgba(0,51,204,0.32), 0 0 0 0.5px rgba(255,255,255,0.14)" }}>
+          <div className="mx-[16px] mt-[16px] rounded-[22px] px-5 py-[16px] relative overflow-hidden"
+            style={{ background: "linear-gradient(140deg, #0A84FF 0%, #0A84FF 48%, #0A84FF 100%)", boxShadow: "0 8px 28px rgba(0,51,204,0.32), 0 0 0 0.5px rgba(255,255,255,0.14)" }}>
             <div className="absolute -top-8 -right-5 w-[130px] h-[130px] rounded-full pointer-events-none"
               style={{ background: "radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 65%)" }} />
             <div className="text-[9px] font-bold uppercase tracking-[0.12em] mb-3 relative z-10" style={{ color: "rgba(255,255,255,0.48)" }}>
@@ -698,7 +698,7 @@ const AIPracticePage = () => {
                 { val: avgScore > 0 ? `${avgScore}%` : "—", label: "Avg Score" },
                 { val: `${streak}d`, label: "Streak" },
               ].map(({ val, label }) => (
-                <div key={label} className="py-[14px] px-3 text-center" style={{ background: "rgba(255,255,255,0.08)" }}>
+                <div key={label} className="py-[16px] px-3 text-center" style={{ background: "rgba(255,255,255,0.08)" }}>
                   <div className="text-[26px] font-bold text-white leading-none mb-1" style={{ letterSpacing: "-0.8px" }}>{val}</div>
                   <div className="text-[9px] font-bold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.40)" }}>{label}</div>
                 </div>
@@ -716,11 +716,11 @@ const AIPracticePage = () => {
      MOBILE — Blue Premium UI (UPLOAD view)
      ═══════════════════════════════════════════════════════════════ */
   if (view === "upload" && isMobile) {
-    const B1 = "#0055FF", B2 = "#1166FF", B3 = "#2277FF";
-    const BG = "#EEF4FF", BG2 = "#E0ECFF", CARD = "#FFFFFF";
-    const T1 = "#001040", T3 = "#5070B0", T4 = "#99AACC";
-    const SH = "0 0 0 0.5px rgba(0,85,255,0.08), 0 2px 8px rgba(0,85,255,0.08), 0 10px 24px rgba(0,85,255,0.10)";
-    const SH_BTN = "0 6px 22px rgba(0,85,255,0.42), 0 2px 6px rgba(0,85,255,0.22)";
+    const B1 = "#0A84FF", B2 = "#3395FF", B3 = "#5BA9FF";
+    const BG = "#F5F5F7", BG2 = "#EBEBF0", CARD = "#FFFFFF";
+    const T1 = "#1D1D1F", T3 = "#6E6E73", T4 = "#A1A1A6";
+    const SH = "0 0 0 0.5px rgba(10,132,255,0.08), 0 2px 8px rgba(10,132,255,0.08), 0 10px 24px rgba(10,132,255,0.10)";
+    const SH_BTN = "0 6px 22px rgba(10,132,255,0.42), 0 2px 6px rgba(10,132,255,0.22)";
 
     const hasFile = !!file || !!extractedText;
 
@@ -742,10 +742,10 @@ const AIPracticePage = () => {
         style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif", background: BG, minHeight: "100vh" }}>
 
         {/* ── Back ── */}
-        <div className="flex items-center gap-2 px-5 pt-[14px] cursor-pointer active:opacity-60 w-fit" onClick={() => setView("home")}>
+        <div className="flex items-center gap-2 px-5 pt-[16px] cursor-pointer active:opacity-60 w-fit" onClick={() => setView("home")}>
           <div className="w-8 h-8 rounded-[11px] flex items-center justify-center"
-            style={{ background: "rgba(255,255,255,0.88)", border: "0.5px solid rgba(0,85,255,0.14)", boxShadow: SH }}>
-            <ChevronLeft className="w-[13px] h-[13px]" style={{ color: "rgba(0,85,255,0.7)" }} strokeWidth={2.5} />
+            style={{ background: "rgba(255,255,255,0.88)", border: "0.5px solid rgba(10,132,255,0.14)", boxShadow: SH }}>
+            <ChevronLeft className="w-[13px] h-[13px]" style={{ color: "rgba(10,132,255,0.7)" }} strokeWidth={2.5} />
           </div>
           <span className="text-[14px] font-bold" style={{ color: B1, letterSpacing: "-0.1px" }}>Back</span>
         </div>
@@ -753,7 +753,7 @@ const AIPracticePage = () => {
         {/* ── Page head ── */}
         <div className="px-5 pt-4">
           <h2 className="text-[24px] font-bold" style={{ color: T1, letterSpacing: "-0.6px" }}>Upload Syllabus</h2>
-          <p className="text-[12px] mt-[3px] font-normal" style={{ color: T3 }}>Upload a PDF of your chapter, notes, or syllabus.</p>
+          <p className="text-[12px] mt-[4px] font-normal" style={{ color: T3 }}>Upload a PDF of your chapter, notes, or syllabus.</p>
         </div>
 
         {/* ── Drop Zone ── */}
@@ -761,22 +761,22 @@ const AIPracticePage = () => {
           onDragOver={e => e.preventDefault()}
           onDrop={handleDrop}
           onClick={() => !extracting && fileInputRef.current?.click()}
-          className="mx-[18px] mt-4 rounded-[22px] px-5 py-[30px] flex flex-col items-center gap-[10px] cursor-pointer transition-all"
+          className="mx-[16px] mt-4 rounded-[22px] px-5 py-[32px] flex flex-col items-center gap-[12px] cursor-pointer transition-all"
           style={{
-            border: `2px dashed ${hasFile ? "rgba(0,85,255,0.40)" : "rgba(0,85,255,0.25)"}`,
-            background: hasFile ? "rgba(0,85,255,0.04)" : "rgba(255,255,255,0.70)",
-            boxShadow: "0 0 0 6px rgba(0,85,255,0.04)",
+            border: `2px dashed ${hasFile ? "rgba(10,132,255,0.40)" : "rgba(10,132,255,0.25)"}`,
+            background: hasFile ? "rgba(10,132,255,0.04)" : "rgba(255,255,255,0.70)",
+            boxShadow: "0 0 0 6px rgba(10,132,255,0.04)",
           }}>
           {extracting ? (
             <Loader2 className="w-[60px] h-[60px] animate-spin" style={{ color: B1 }} />
           ) : (
-            <div className="w-[60px] h-[60px] rounded-[20px] flex items-center justify-center mb-[6px]"
+            <div className="w-[60px] h-[60px] rounded-[20px] flex items-center justify-center mb-[8px]"
               style={{
                 background: hasFile ? `linear-gradient(135deg, ${B1}, ${B3})` : `linear-gradient(135deg, ${BG}, ${BG2})`,
-                border: hasFile ? "none" : "0.5px solid rgba(0,85,255,0.18)",
+                border: hasFile ? "none" : "0.5px solid rgba(10,132,255,0.18)",
                 boxShadow: hasFile ? SH_BTN : SH,
               }}>
-              <Upload className="w-[26px] h-[26px]" style={{ color: hasFile ? "#fff" : "rgba(0,85,255,0.55)" }} strokeWidth={2.2} />
+              <Upload className="w-[26px] h-[26px]" style={{ color: hasFile ? "#fff" : "rgba(10,132,255,0.55)" }} strokeWidth={2.2} />
             </div>
           )}
           <div className="text-[16px] font-bold text-center px-2" style={{ color: T1, letterSpacing: "-0.3px" }}>
@@ -789,16 +789,16 @@ const AIPracticePage = () => {
         </div>
 
         {/* ── Method Grid ── */}
-        <div className="grid grid-cols-2 gap-[10px] mx-[18px] mt-[14px]">
+        <div className="grid grid-cols-2 gap-[12px] mx-[16px] mt-[16px]">
           {[
-            { icon: FileText, gradient: "linear-gradient(135deg, #FF3355, #FF6688)", shadow: "0 3px 10px rgba(255,51,85,0.26)", label: "PDF File", sub: "Chapter or notes", action: () => !extracting && fileInputRef.current?.click() },
-            { icon: ImageIcon, gradient: `linear-gradient(135deg, ${B1}, ${B3})`, shadow: "0 3px 10px rgba(0,85,255,0.26)", label: "Scan Photo", sub: "Camera or gallery", action: () => toast.info("Photo scan coming soon") },
-            { icon: MessageSquare, gradient: "linear-gradient(135deg, #00C853, #66EE88)", shadow: "0 3px 10px rgba(0,200,83,0.24)", label: "Type Topic", sub: "Enter manually", action: handleTypeTopic },
-            { icon: HardDrive, gradient: "linear-gradient(135deg, #FF8800, #FFCC22)", shadow: "0 3px 10px rgba(255,136,0,0.24)", label: "From Drive", sub: "Google Drive", action: () => toast.info("Google Drive coming soon") },
+            { icon: FileText, gradient: "linear-gradient(135deg, #FF3B30, #FF5E55)", shadow: "0 3px 10px rgba(255,59,48,0.26)", label: "PDF File", sub: "Chapter or notes", action: () => !extracting && fileInputRef.current?.click() },
+            { icon: ImageIcon, gradient: `linear-gradient(135deg, ${B1}, ${B3})`, shadow: "0 3px 10px rgba(10,132,255,0.26)", label: "Scan Photo", sub: "Camera or gallery", action: () => toast.info("Photo scan coming soon") },
+            { icon: MessageSquare, gradient: "linear-gradient(135deg, #34C759, #34C759)", shadow: "0 3px 10px rgba(52,199,89,0.24)", label: "Type Topic", sub: "Enter manually", action: handleTypeTopic },
+            { icon: HardDrive, gradient: "linear-gradient(135deg, #FF9500, #FFCC00)", shadow: "0 3px 10px rgba(255,149,0,0.24)", label: "From Drive", sub: "Google Drive", action: () => toast.info("Google Drive coming soon") },
           ].map(({ icon: Icon, gradient, shadow, label, sub, action }) => (
             <div key={label} onClick={action}
-              className="rounded-[20px] px-4 py-[18px] flex flex-col items-center gap-2 cursor-pointer active:scale-[0.96] transition-transform text-center"
-              style={{ background: CARD, boxShadow: SH, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+              className="rounded-[20px] px-4 py-[16px] flex flex-col items-center gap-2 cursor-pointer active:scale-[0.96] transition-transform text-center"
+              style={{ background: CARD, boxShadow: SH, border: "0.5px solid rgba(10,132,255,0.10)" }}>
               <div className="w-[46px] h-[46px] rounded-[15px] flex items-center justify-center mb-[2px]"
                 style={{ background: gradient, boxShadow: shadow }}>
                 <Icon className="w-[22px] h-[22px] text-white" strokeWidth={2.2} />
@@ -810,14 +810,14 @@ const AIPracticePage = () => {
         </div>
 
         {/* ── Format Pills ── */}
-        <div className="flex flex-wrap gap-[7px] px-[18px] pt-[14px]">
+        <div className="flex flex-wrap gap-[8px] px-[16px] pt-[16px]">
           {[
-            { label: "PDF", color: "#FF3355", bg: "rgba(255,51,85,0.10)", bdr: "rgba(255,51,85,0.22)" },
-            { label: "DOCX", color: B1, bg: "rgba(0,85,255,0.10)", bdr: "rgba(0,85,255,0.20)" },
-            { label: "JPG / PNG", color: "#007830", bg: "rgba(0,200,83,0.10)", bdr: "rgba(0,200,83,0.22)" },
-            { label: "TXT", color: "#002080", bg: "rgba(0,85,255,0.08)", bdr: "rgba(0,85,255,0.14)" },
+            { label: "PDF", color: "#FF3B30", bg: "rgba(255,59,48,0.10)", bdr: "rgba(255,59,48,0.22)" },
+            { label: "DOCX", color: B1, bg: "rgba(10,132,255,0.10)", bdr: "rgba(10,132,255,0.20)" },
+            { label: "JPG / PNG", color: "#248A3D", bg: "rgba(52,199,89,0.10)", bdr: "rgba(52,199,89,0.22)" },
+            { label: "TXT", color: "#3A3A3C", bg: "rgba(10,132,255,0.08)", bdr: "rgba(10,132,255,0.14)" },
           ].map(({ label, color, bg, bdr }) => (
-            <div key={label} className="flex items-center gap-[5px] px-[13px] py-[6px] rounded-full text-[11px] font-bold"
+            <div key={label} className="flex items-center gap-[4px] px-[12px] py-[8px] rounded-full text-[11px] font-bold"
               style={{ background: bg, color, border: `0.5px solid ${bdr}` }}>
               <FileText className="w-[11px] h-[11px]" strokeWidth={2.5} />
               {label}
@@ -832,7 +832,7 @@ const AIPracticePage = () => {
             else if (!extracting) fileInputRef.current?.click();
           }}
           disabled={extracting}
-          className="mx-[18px] mt-[14px] w-[calc(100%-36px)] h-[52px] rounded-[18px] flex items-center justify-center gap-2 text-[15px] font-bold text-white active:scale-[0.97] disabled:opacity-60 transition-transform relative overflow-hidden"
+          className="mx-[16px] mt-[16px] w-[calc(100%-36px)] h-[52px] rounded-[18px] flex items-center justify-center gap-2 text-[15px] font-bold text-white active:scale-[0.97] disabled:opacity-60 transition-transform relative overflow-hidden"
           style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: SH_BTN, letterSpacing: "-0.1px" }}>
           <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 52%)" }} />
           {extracting ? (
@@ -843,10 +843,10 @@ const AIPracticePage = () => {
         </button>
 
         {/* ── AI hint card ── */}
-        <div className="mx-[18px] mt-[14px] rounded-[20px] px-[18px] py-4 flex items-center gap-3"
-          style={{ background: CARD, boxShadow: SH, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+        <div className="mx-[16px] mt-[16px] rounded-[20px] px-[16px] py-4 flex items-center gap-3"
+          style={{ background: CARD, boxShadow: SH, border: "0.5px solid rgba(10,132,255,0.10)" }}>
           <div className="w-10 h-10 rounded-[13px] flex items-center justify-center shrink-0"
-            style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: "0 3px 10px rgba(0,85,255,0.28)" }}>
+            style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: "0 3px 10px rgba(10,132,255,0.28)" }}>
             <Sparkles className="w-[18px] h-[18px] text-white" strokeWidth={2.2} />
           </div>
           <div>
@@ -858,16 +858,16 @@ const AIPracticePage = () => {
         {/* ── Previously uploaded docs ── */}
         {documents.length > 0 && (
           <>
-            <div className="px-5 pt-[18px] text-[10px] font-bold uppercase tracking-[0.1em]" style={{ color: "rgba(0,85,255,0.45)" }}>
+            <div className="px-5 pt-[16px] text-[10px] font-bold uppercase tracking-[0.1em]" style={{ color: "rgba(10,132,255,0.45)" }}>
               Or use a saved document
             </div>
-            <div className="mx-[18px] mt-[10px] flex flex-col gap-[9px]">
+            <div className="mx-[16px] mt-[12px] flex flex-col gap-[8px]">
               {documents.map(doc => (
                 <div key={doc.id} onClick={() => useDocument(doc)}
-                  className="rounded-[18px] px-4 py-[14px] flex items-center gap-[13px] cursor-pointer active:scale-[0.97] transition-transform"
-                  style={{ background: CARD, boxShadow: SH, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                  className="rounded-[18px] px-4 py-[16px] flex items-center gap-[12px] cursor-pointer active:scale-[0.97] transition-transform"
+                  style={{ background: CARD, boxShadow: SH, border: "0.5px solid rgba(10,132,255,0.10)" }}>
                   <div className="w-9 h-9 rounded-[11px] flex items-center justify-center shrink-0"
-                    style={{ background: "rgba(0,85,255,0.10)", border: "0.5px solid rgba(0,85,255,0.20)" }}>
+                    style={{ background: "rgba(10,132,255,0.10)", border: "0.5px solid rgba(10,132,255,0.20)" }}>
                     <FileText className="w-[18px] h-[18px]" style={{ color: B1 }} strokeWidth={2} />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -886,14 +886,14 @@ const AIPracticePage = () => {
   }
 
   // ── DESKTOP — Bright Blue Apple UI ───────────────────────────────────────
-  const B1 = "#0055FF", B2 = "#1166FF", B3 = "#2277FF", B4 = "#4499FF";
-  const BG_D = "#EEF4FF", BG2_D = "#E0ECFF";
-  const T1 = "#001040", T2 = "#002080", T3 = "#5070B0", T4 = "#99AACC";
-  const GREEN_D = "#00C853", RED_D = "#FF3355", ORANGE_D = "#FF8800", GOLD_D = "#FFCC22", PINK_D = "#FF3BA8", VIOLET_D = "#6B21E8";
-  const BLUE_BDR_D = "rgba(0,85,255,0.12)";
-  const SH_D = "0 0 0 0.5px rgba(0,85,255,0.08), 0 2px 8px rgba(0,85,255,0.09), 0 10px 28px rgba(0,85,255,0.11)";
-  const SH_LG_D = "0 0 0 0.5px rgba(0,85,255,0.10), 0 4px 16px rgba(0,85,255,0.12), 0 18px 44px rgba(0,85,255,0.14)";
-  const SH_BTN_D = "0 6px 22px rgba(0,85,255,0.42), 0 2px 6px rgba(0,85,255,0.22)";
+  const B1 = "#0A84FF", B2 = "#3395FF", B3 = "#5BA9FF", B4 = "#7CBBFF";
+  const BG_D = "#F5F5F7", BG2_D = "#EBEBF0";
+  const T1 = "#1D1D1F", T2 = "#3A3A3C", T3 = "#6E6E73", T4 = "#A1A1A6";
+  const GREEN_D = "#34C759", RED_D = "#FF3B30", ORANGE_D = "#FF9500", GOLD_D = "#FFCC00", PINK_D = "#FF2D55", VIOLET_D = "#AF52DE";
+  const BLUE_BDR_D = "rgba(10,132,255,0.12)";
+  const SH_D = "0 0 0 0.5px rgba(10,132,255,0.08), 0 2px 8px rgba(10,132,255,0.09), 0 10px 28px rgba(10,132,255,0.11)";
+  const SH_LG_D = "0 0 0 0.5px rgba(10,132,255,0.10), 0 4px 16px rgba(10,132,255,0.12), 0 18px 44px rgba(10,132,255,0.14)";
+  const SH_BTN_D = "0 6px 22px rgba(10,132,255,0.42), 0 2px 6px rgba(10,132,255,0.22)";
 
   const avgScoreD = attempts.length > 0
     ? Math.round(attempts.reduce((s, a) => s + (a.percentage || 0), 0) / attempts.length)
@@ -902,7 +902,7 @@ const AIPracticePage = () => {
   const DesktopShell = ({ children }: { children: any }) => (
     <div data-sfpro className="animate-in fade-in duration-500 -m-4 sm:-m-6 md:-m-8 min-h-[calc(100vh-64px)]"
       style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif", background: BG_D }}>
-      <div className="w-full px-6 pt-8 pb-12">{children}</div>
+      <div className="w-full px-6 pt-8 pb-10">{children}</div>
     </div>
   );
 
@@ -912,20 +912,20 @@ const AIPracticePage = () => {
       {/* ── Toolbar ── */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <div className="text-[10px] font-bold uppercase tracking-[0.12em] mb-1 flex items-center gap-[7px]" style={{ color: T4 }}>
-            <span className="w-[6px] h-[6px] rounded-full" style={{ background: GREEN_D, boxShadow: "0 0 0 3px rgba(0,200,83,0.2)" }} />
+          <div className="text-[10px] font-bold uppercase tracking-[0.12em] mb-1 flex items-center gap-[8px]" style={{ color: T4 }}>
+            <span className="w-[6px] h-[6px] rounded-full" style={{ background: GREEN_D, boxShadow: "0 0 0 3px rgba(52,199,89,0.2)" }} />
             Parent Dashboard · AI Practice
           </div>
           <h1 className="text-[32px] font-bold leading-none" style={{ color: T1, letterSpacing: "-0.8px" }}>AI Practice Exams</h1>
-          <div className="text-[13px] font-normal mt-[6px]" style={{ color: T3 }}>Upload syllabus, take AI exams, learn from mistakes.</div>
+          <div className="text-[13px] font-normal mt-[8px]" style={{ color: T3 }}>Upload syllabus, take AI exams, learn from mistakes.</div>
         </div>
-        <div className="flex items-center gap-[10px]">
-          <div className="px-[14px] py-[8px] rounded-full text-[12px] font-bold flex items-center gap-[6px]" style={{ background: "rgba(0,85,255,0.08)", color: B1, border: `0.5px solid ${BLUE_BDR_D}` }}>
+        <div className="flex items-center gap-[12px]">
+          <div className="px-[16px] py-[8px] rounded-full text-[12px] font-bold flex items-center gap-[8px]" style={{ background: "rgba(10,132,255,0.08)", color: B1, border: `0.5px solid ${BLUE_BDR_D}` }}>
             <Sparkles className="w-[12px] h-[12px]" strokeWidth={2.5} />
             USP Feature
           </div>
           <div className="w-10 h-10 rounded-full flex items-center justify-center text-[14px] font-bold text-white"
-            style={{ background: `linear-gradient(140deg, ${B1}, ${B2})`, boxShadow: "0 3px 12px rgba(0,85,255,0.36), 0 0 0 2px rgba(255,255,255,0.8)" }}>
+            style={{ background: `linear-gradient(140deg, ${B1}, ${B2})`, boxShadow: "0 3px 12px rgba(10,132,255,0.36), 0 0 0 2px rgba(255,255,255,0.8)" }}>
             {studentName?.[0]?.toUpperCase() || "S"}
           </div>
         </div>
@@ -936,17 +936,17 @@ const AIPracticePage = () => {
         {/* Hero (col-2) */}
         <div className="lg:col-span-2 rounded-[24px] px-8 py-8 relative overflow-hidden"
           style={{
-            background: "linear-gradient(135deg, rgba(0,85,255,0.10) 0%, rgba(0,85,255,0.03) 100%)",
+            background: "linear-gradient(135deg, rgba(10,132,255,0.10) 0%, rgba(10,132,255,0.03) 100%)",
             boxShadow: SH_LG_D,
-            border: "0.5px solid rgba(0,85,255,0.20)",
+            border: "0.5px solid rgba(10,132,255,0.20)",
           }}>
           <div className="absolute pointer-events-none" style={{ top: 18, right: 22 }}>
             <Sparkles style={{ width: 110, height: 110, color: B1, opacity: 0.14, strokeWidth: 1.6 }} />
           </div>
           <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
             <div>
-              <div className="inline-flex items-center gap-[5px] px-3 py-[5px] rounded-full mb-4 text-[10px] font-bold uppercase tracking-[0.12em]"
-                style={{ background: "rgba(0,85,255,0.10)", border: "0.5px solid rgba(0,85,255,0.22)", color: B1 }}>
+              <div className="inline-flex items-center gap-[4px] px-3 py-[4px] rounded-full mb-4 text-[10px] font-bold uppercase tracking-[0.12em]"
+                style={{ background: "rgba(10,132,255,0.10)", border: "0.5px solid rgba(10,132,255,0.22)", color: B1 }}>
                 <Sparkles className="w-[12px] h-[12px]" strokeWidth={2.5} />
                 AI Powered
               </div>
@@ -964,8 +964,8 @@ const AIPracticePage = () => {
             </div>
             <div className="grid grid-cols-3 gap-3">
               {[
-                { icon: "🔥", val: `${streak}d`, label: "Streak", tint: "rgba(255,136,0,0.10)", bdr: "rgba(255,136,0,0.22)", color: ORANGE_D },
-                { icon: <BarChart3 className="w-[20px] h-[20px]" style={{ color: B1 }} strokeWidth={2.2} />, val: `${attempts.length}`, label: "Exams", tint: "rgba(0,85,255,0.08)", bdr: "rgba(0,85,255,0.20)", color: B1 },
+                { icon: "🔥", val: `${streak}d`, label: "Streak", tint: "rgba(255,149,0,0.10)", bdr: "rgba(255,149,0,0.22)", color: ORANGE_D },
+                { icon: <BarChart3 className="w-[20px] h-[20px]" style={{ color: B1 }} strokeWidth={2.2} />, val: `${attempts.length}`, label: "Exams", tint: "rgba(10,132,255,0.08)", bdr: "rgba(10,132,255,0.20)", color: B1 },
                 { icon: "⭐", val: bestScore > 0 ? `${bestScore}%` : "—", label: "Best", tint: "rgba(255,204,34,0.12)", bdr: "rgba(255,204,34,0.30)", color: GOLD_D },
               ].map(({ icon, val, label, tint, bdr, color }) => (
                 <div key={label} className="rounded-[18px] py-5 px-3 flex flex-col items-center gap-1"
@@ -983,13 +983,13 @@ const AIPracticePage = () => {
 
         {/* Streak / Progress (col-1) */}
         <div className="bg-white rounded-[22px] p-6 relative overflow-hidden"
-          style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(0,85,255,0.10)" }}>
-          <div className="absolute -top-[30px] -right-[20px] w-[140px] h-[140px] rounded-full pointer-events-none"
-            style={{ background: "radial-gradient(circle, rgba(255,136,0,0.08) 0%, transparent 70%)" }} />
+          style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(10,132,255,0.10)" }}>
+          <div className="absolute -top-[32px] -right-[20px] w-[140px] h-[140px] rounded-full pointer-events-none"
+            style={{ background: "radial-gradient(circle, rgba(255,149,0,0.08) 0%, transparent 70%)" }} />
           <div className="relative z-10">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-12 h-12 rounded-[15px] flex items-center justify-center text-[24px] shrink-0"
-                style={{ background: `linear-gradient(135deg, ${ORANGE_D}, ${GOLD_D})`, boxShadow: "0 3px 12px rgba(255,136,0,0.30)" }}>
+                style={{ background: `linear-gradient(135deg, ${ORANGE_D}, ${GOLD_D})`, boxShadow: "0 3px 12px rgba(255,149,0,0.30)" }}>
                 🔥
               </div>
               <div>
@@ -1020,23 +1020,23 @@ const AIPracticePage = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-5">
         {/* Calendar */}
         <div className="lg:col-span-2 bg-white rounded-[22px] p-6"
-          style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+          style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(10,132,255,0.10)" }}>
           <div className="flex items-center justify-between mb-5">
             <div>
               <div className="text-[17px] font-bold" style={{ color: T1, letterSpacing: "-0.3px" }}>Practice Calendar</div>
-              <div className="text-[11px] font-normal mt-[3px]" style={{ color: T3 }}>{practiceDates.size} days practiced this year</div>
+              <div className="text-[11px] font-normal mt-[4px]" style={{ color: T3 }}>{practiceDates.size} days practiced this year</div>
             </div>
             {streak > 0 && (
-              <div className="px-[10px] py-[5px] rounded-full text-[11px] font-bold flex items-center gap-[5px]"
-                style={{ background: "rgba(255,136,0,0.10)", color: "#884400", border: "0.5px solid rgba(255,136,0,0.22)" }}>
+              <div className="px-[12px] py-[4px] rounded-full text-[11px] font-bold flex items-center gap-[4px]"
+                style={{ background: "rgba(255,149,0,0.10)", color: "#86310C", border: "0.5px solid rgba(255,149,0,0.22)" }}>
                 🔥 {streak} day streak
               </div>
             )}
           </div>
           <div className="overflow-x-auto">
-            <div className="flex gap-[3px] min-w-[700px]">
+            <div className="flex gap-[4px] min-w-[700px]">
               {weeks.map((week, wi) => (
-                <div key={wi} className="flex flex-col gap-[3px]">
+                <div key={wi} className="flex flex-col gap-[4px]">
                   {week.map((day, di) => {
                     const today = new Date();
                     const isToday = day.date.toDateString() === today.toDateString();
@@ -1047,7 +1047,7 @@ const AIPracticePage = () => {
                         style={{
                           width: 14, height: 14, borderRadius: 3,
                           background: isFuture ? "transparent" : day.level > 0 ? B1 : BG2_D,
-                          boxShadow: isToday ? "0 0 0 2px rgba(0,85,255,0.30), 0 0 0 4px rgba(0,85,255,0.10)" : "none",
+                          boxShadow: isToday ? "0 0 0 2px rgba(10,132,255,0.30), 0 0 0 4px rgba(10,132,255,0.10)" : "none",
                           opacity: isFuture ? 0.15 : 1,
                         }} />
                     );
@@ -1057,7 +1057,7 @@ const AIPracticePage = () => {
             </div>
             <div className="flex items-center gap-2 mt-4 text-[11px] font-semibold" style={{ color: T4 }}>
               <span>Less</span>
-              {[BG2_D, "rgba(0,85,255,0.15)", "rgba(0,85,255,0.30)", "rgba(0,85,255,0.55)", B1].map((c, i) => (
+              {[BG2_D, "rgba(10,132,255,0.15)", "rgba(10,132,255,0.30)", "rgba(10,132,255,0.55)", B1].map((c, i) => (
                 <div key={i} className="w-[12px] h-[12px] rounded-[3px]" style={{ background: c }} />
               ))}
               <span>More</span>
@@ -1067,20 +1067,20 @@ const AIPracticePage = () => {
 
         {/* Recent Attempts sidebar */}
         <div className="bg-white rounded-[22px] p-5"
-          style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+          style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(10,132,255,0.10)" }}>
           <div className="text-[16px] font-bold mb-4" style={{ color: T1, letterSpacing: "-0.3px" }}>Recent Exams</div>
           {attempts.length === 0 ? (
             <div className="py-8 text-center text-[12px]" style={{ color: T4 }}>
               No exams yet. Start your first one.
             </div>
           ) : (
-            <div className="space-y-[10px]">
+            <div className="space-y-[12px]">
               {attempts.slice(0, 5).map(a => {
                 const pct = a.percentage || 0;
                 const passed = pct >= 80;
                 const review = pct >= 50 && pct < 80;
-                const iconBg = passed ? "rgba(0,200,83,0.10)" : review ? "rgba(255,136,0,0.10)" : "rgba(255,51,85,0.10)";
-                const iconBdr = passed ? "rgba(0,200,83,0.22)" : review ? "rgba(255,136,0,0.22)" : "rgba(255,51,85,0.22)";
+                const iconBg = passed ? "rgba(52,199,89,0.10)" : review ? "rgba(255,149,0,0.10)" : "rgba(255,59,48,0.10)";
+                const iconBdr = passed ? "rgba(52,199,89,0.22)" : review ? "rgba(255,149,0,0.22)" : "rgba(255,59,48,0.22)";
                 const iconColor = passed ? GREEN_D : review ? ORANGE_D : RED_D;
                 return (
                   <div key={a.id} className="rounded-[14px] px-3 py-3 flex items-center gap-3"
@@ -1108,14 +1108,14 @@ const AIPracticePage = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {/* Documents */}
         <div className="lg:col-span-2 bg-white rounded-[22px] p-6"
-          style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+          style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(10,132,255,0.10)" }}>
           <div className="flex items-center justify-between mb-5">
             <div>
               <div className="text-[17px] font-bold" style={{ color: T1, letterSpacing: "-0.3px" }}>Your Documents</div>
-              <div className="text-[11px] font-normal mt-[3px]" style={{ color: T3 }}>Tap to practice from a saved syllabus</div>
+              <div className="text-[11px] font-normal mt-[4px]" style={{ color: T3 }}>Tap to practice from a saved syllabus</div>
             </div>
             <button onClick={() => setView("upload")}
-              className="px-4 py-[8px] rounded-[12px] text-[12px] font-bold text-white flex items-center gap-[5px] transition-transform hover:scale-[1.02]"
+              className="px-4 py-[8px] rounded-[12px] text-[12px] font-bold text-white flex items-center gap-[4px] transition-transform hover:scale-[1.02]"
               style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: SH_BTN_D }}>
               <Upload className="w-[12px] h-[12px]" strokeWidth={2.5} /> Upload New
             </button>
@@ -1123,7 +1123,7 @@ const AIPracticePage = () => {
           {documents.length === 0 ? (
             <div className="py-10 text-center">
               <div className="w-[64px] h-[64px] rounded-[20px] mx-auto mb-3 flex items-center justify-center"
-                style={{ background: "rgba(0,85,255,0.06)", border: `0.5px solid ${BLUE_BDR_D}` }}>
+                style={{ background: "rgba(10,132,255,0.06)", border: `0.5px solid ${BLUE_BDR_D}` }}>
                 <FileText className="w-[28px] h-[28px]" style={{ color: B1 }} strokeWidth={1.8} />
               </div>
               <div className="text-[14px] font-bold mb-1" style={{ color: T1 }}>No documents yet</div>
@@ -1136,7 +1136,7 @@ const AIPracticePage = () => {
                   className="rounded-[14px] px-4 py-3 flex items-center gap-3 cursor-pointer transition-transform hover:-translate-y-[1px]"
                   style={{ background: BG_D, border: `0.5px solid ${BLUE_BDR_D}` }}>
                   <div className="w-11 h-11 rounded-[12px] flex items-center justify-center shrink-0"
-                    style={{ background: "rgba(0,85,255,0.10)", border: "0.5px solid rgba(0,85,255,0.20)" }}>
+                    style={{ background: "rgba(10,132,255,0.10)", border: "0.5px solid rgba(10,132,255,0.20)" }}>
                     <FileText className="w-5 h-5" style={{ color: B1 }} strokeWidth={2} />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -1152,7 +1152,7 @@ const AIPracticePage = () => {
         {/* Summary Dark Card */}
         <div className="rounded-[22px] px-6 py-6 relative overflow-hidden"
           style={{
-            background: "linear-gradient(140deg, #001888 0%, #0033CC 48%, #0055FF 100%)",
+            background: "linear-gradient(140deg, #0A84FF 0%, #0A84FF 48%, #0A84FF 100%)",
             boxShadow: "0 8px 30px rgba(0,51,204,0.34), 0 0 0 0.5px rgba(255,255,255,0.14)",
           }}>
           <div className="absolute -top-10 -right-7 w-[200px] h-[200px] rounded-full pointer-events-none"
@@ -1195,7 +1195,7 @@ const AIPracticePage = () => {
 
       <div className="mb-6">
         <h1 className="text-[32px] font-bold leading-none" style={{ color: T1, letterSpacing: "-0.8px" }}>Upload Syllabus</h1>
-        <div className="text-[13px] font-normal mt-[6px]" style={{ color: T3 }}>Upload a PDF of your chapter, notes, or syllabus. AI will generate a practice exam.</div>
+        <div className="text-[13px] font-normal mt-[8px]" style={{ color: T3 }}>Upload a PDF of your chapter, notes, or syllabus. AI will generate a practice exam.</div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 mb-5">
@@ -1205,11 +1205,11 @@ const AIPracticePage = () => {
             onDragOver={e => e.preventDefault()}
             onDrop={handleDrop}
             onClick={() => !extracting && fileInputRef.current?.click()}
-            className="rounded-[22px] px-6 py-16 flex flex-col items-center gap-3 cursor-pointer transition-all"
+            className="rounded-[22px] px-6 py-10 flex flex-col items-center gap-3 cursor-pointer transition-all"
             style={{
-              border: `2px dashed ${(!!file || !!extractedText) ? "rgba(0,85,255,0.40)" : "rgba(0,85,255,0.25)"}`,
-              background: (!!file || !!extractedText) ? "rgba(0,85,255,0.04)" : "rgba(255,255,255,0.70)",
-              boxShadow: "0 0 0 6px rgba(0,85,255,0.04)",
+              border: `2px dashed ${(!!file || !!extractedText) ? "rgba(10,132,255,0.40)" : "rgba(10,132,255,0.25)"}`,
+              background: (!!file || !!extractedText) ? "rgba(10,132,255,0.04)" : "rgba(255,255,255,0.70)",
+              boxShadow: "0 0 0 6px rgba(10,132,255,0.04)",
             }}>
             {extracting ? (
               <Loader2 className="w-[80px] h-[80px] animate-spin" style={{ color: B1 }} />
@@ -1217,10 +1217,10 @@ const AIPracticePage = () => {
               <div className="w-[80px] h-[80px] rounded-[24px] flex items-center justify-center mb-2"
                 style={{
                   background: (!!file || !!extractedText) ? `linear-gradient(135deg, ${B1}, ${B3})` : `linear-gradient(135deg, ${BG_D}, ${BG2_D})`,
-                  border: (!!file || !!extractedText) ? "none" : "0.5px solid rgba(0,85,255,0.18)",
+                  border: (!!file || !!extractedText) ? "none" : "0.5px solid rgba(10,132,255,0.18)",
                   boxShadow: (!!file || !!extractedText) ? SH_BTN_D : SH_D,
                 }}>
-                <Upload className="w-[34px] h-[34px]" style={{ color: (!!file || !!extractedText) ? "#fff" : "rgba(0,85,255,0.55)" }} strokeWidth={2.2} />
+                <Upload className="w-[34px] h-[34px]" style={{ color: (!!file || !!extractedText) ? "#fff" : "rgba(10,132,255,0.55)" }} strokeWidth={2.2} />
               </div>
             )}
             <div className="text-[20px] font-bold text-center px-3" style={{ color: T1, letterSpacing: "-0.4px" }}>
@@ -1254,12 +1254,12 @@ const AIPracticePage = () => {
         <div className="lg:col-span-2 space-y-4">
           {/* AI hint card */}
           <div className="bg-white rounded-[22px] p-5 relative overflow-hidden"
-            style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+            style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(10,132,255,0.10)" }}>
             <div className="absolute -top-[20px] -right-[20px] w-[120px] h-[120px] rounded-full pointer-events-none"
-              style={{ background: "radial-gradient(circle, rgba(0,85,255,0.06) 0%, transparent 70%)" }} />
+              style={{ background: "radial-gradient(circle, rgba(10,132,255,0.06) 0%, transparent 70%)" }} />
             <div className="flex items-center gap-3 mb-3 relative z-10">
               <div className="w-11 h-11 rounded-[14px] flex items-center justify-center"
-                style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: "0 3px 10px rgba(0,85,255,0.28)" }}>
+                style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: "0 3px 10px rgba(10,132,255,0.28)" }}>
                 <Sparkles className="w-5 h-5 text-white" strokeWidth={2.3} />
               </div>
               <div className="text-[15px] font-bold" style={{ color: T1, letterSpacing: "-0.2px" }}>AI Generates 15-30 MCQs</div>
@@ -1271,16 +1271,16 @@ const AIPracticePage = () => {
 
           {/* Supported formats */}
           <div className="bg-white rounded-[22px] p-5"
-            style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+            style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(10,132,255,0.10)" }}>
             <div className="text-[10px] font-bold uppercase tracking-[0.10em] mb-3" style={{ color: T4 }}>Supported Formats</div>
             <div className="flex flex-wrap gap-2">
               {[
-                { label: "PDF", color: RED_D, bg: "rgba(255,51,85,0.10)", bdr: "rgba(255,51,85,0.22)" },
-                { label: "DOCX", color: B1, bg: "rgba(0,85,255,0.10)", bdr: "rgba(0,85,255,0.20)" },
-                { label: "JPG / PNG", color: "#007830", bg: "rgba(0,200,83,0.10)", bdr: "rgba(0,200,83,0.22)" },
-                { label: "TXT", color: T2, bg: "rgba(0,85,255,0.08)", bdr: "rgba(0,85,255,0.14)" },
+                { label: "PDF", color: RED_D, bg: "rgba(255,59,48,0.10)", bdr: "rgba(255,59,48,0.22)" },
+                { label: "DOCX", color: B1, bg: "rgba(10,132,255,0.10)", bdr: "rgba(10,132,255,0.20)" },
+                { label: "JPG / PNG", color: "#248A3D", bg: "rgba(52,199,89,0.10)", bdr: "rgba(52,199,89,0.22)" },
+                { label: "TXT", color: T2, bg: "rgba(10,132,255,0.08)", bdr: "rgba(10,132,255,0.14)" },
               ].map(({ label, color, bg, bdr }) => (
-                <div key={label} className="flex items-center gap-[5px] px-3 py-[6px] rounded-full text-[11px] font-bold"
+                <div key={label} className="flex items-center gap-[4px] px-3 py-[8px] rounded-full text-[11px] font-bold"
                   style={{ background: bg, color, border: `0.5px solid ${bdr}` }}>
                   <FileText className="w-[11px] h-[11px]" strokeWidth={2.5} />
                   {label}
@@ -1292,15 +1292,15 @@ const AIPracticePage = () => {
           {/* Saved documents */}
           {documents.length > 0 && (
             <div className="bg-white rounded-[22px] p-5"
-              style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+              style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(10,132,255,0.10)" }}>
               <div className="text-[15px] font-bold mb-3" style={{ color: T1, letterSpacing: "-0.3px" }}>Saved Documents</div>
               <div className="space-y-2">
                 {documents.slice(0, 4).map(doc => (
                   <div key={doc.id} onClick={() => useDocument(doc)}
-                    className="rounded-[13px] px-3 py-[10px] flex items-center gap-3 cursor-pointer transition-transform hover:-translate-y-[1px]"
+                    className="rounded-[13px] px-3 py-[12px] flex items-center gap-3 cursor-pointer transition-transform hover:-translate-y-[1px]"
                     style={{ background: BG_D, border: `0.5px solid ${BLUE_BDR_D}` }}>
                     <div className="w-9 h-9 rounded-[11px] flex items-center justify-center shrink-0"
-                      style={{ background: "rgba(0,85,255,0.10)", border: "0.5px solid rgba(0,85,255,0.20)" }}>
+                      style={{ background: "rgba(10,132,255,0.10)", border: "0.5px solid rgba(10,132,255,0.20)" }}>
                       <FileText className="w-[16px] h-[16px]" style={{ color: B1 }} strokeWidth={2} />
                     </div>
                     <div className="flex-1 min-w-0">
@@ -1329,7 +1329,7 @@ const AIPracticePage = () => {
 
       <div className="mb-6">
         <h1 className="text-[32px] font-bold leading-none" style={{ color: T1, letterSpacing: "-0.8px" }}>Configure Exam</h1>
-        <div className="text-[13px] font-normal mt-[6px]" style={{ color: T3 }}>
+        <div className="text-[13px] font-normal mt-[8px]" style={{ color: T3 }}>
           <strong style={{ color: B1 }}>{file?.name || "Saved document"}</strong> · {pageCount} pages · {extractedTopics.length} topics
         </div>
       </div>
@@ -1337,7 +1337,7 @@ const AIPracticePage = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {/* Config Card (col-2) */}
         <div className="lg:col-span-2 bg-white rounded-[22px] p-6 space-y-6"
-          style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+          style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(10,132,255,0.10)" }}>
 
           {/* Topic */}
           <div>
@@ -1395,7 +1395,7 @@ const AIPracticePage = () => {
                 const isActive = questionType === q.id;
                 return (
                   <button key={q.id} onClick={() => setQuestionType(q.id)}
-                    className="px-5 py-[10px] rounded-[12px] text-[12px] font-bold transition-transform hover:scale-[1.02]"
+                    className="px-5 py-[12px] rounded-[12px] text-[12px] font-bold transition-transform hover:scale-[1.02]"
                     style={isActive ? {
                       background: `linear-gradient(135deg, ${B1}, ${B2})`, color: "#fff",
                       boxShadow: SH_BTN_D,
@@ -1420,8 +1420,8 @@ const AIPracticePage = () => {
                   <button key={n} onClick={() => setQuestionCount(n)}
                     className="h-12 rounded-[14px] text-[15px] font-bold transition-transform hover:scale-[1.02]"
                     style={isActive ? {
-                      background: "linear-gradient(135deg, #001040, #002080)", color: "#fff",
-                      boxShadow: "0 4px 14px rgba(0,16,64,0.32)",
+                      background: "linear-gradient(135deg, #1D1D1F, #3A3A3C)", color: "#fff",
+                      boxShadow: "0 4px 14px rgba(29,29,31,0.32)",
                     } : {
                       background: BG_D, color: T3,
                       border: `0.5px solid ${BLUE_BDR_D}`,
@@ -1441,10 +1441,10 @@ const AIPracticePage = () => {
                 const isActive = timeLimit === t.val;
                 return (
                   <button key={t.val} onClick={() => setTimeLimit(t.val)}
-                    className="px-4 py-[10px] rounded-[12px] text-[12px] font-bold flex items-center gap-[5px] transition-transform hover:scale-[1.02]"
+                    className="px-4 py-[12px] rounded-[12px] text-[12px] font-bold flex items-center gap-[4px] transition-transform hover:scale-[1.02]"
                     style={isActive ? {
-                      background: "linear-gradient(135deg, #00C4B4, #22DDCC)", color: "#fff",
-                      boxShadow: "0 3px 12px rgba(0,196,180,0.32)",
+                      background: "linear-gradient(135deg, #5AC8FA, #5AC8FA)", color: "#fff",
+                      boxShadow: "0 3px 12px rgba(90,200,250,0.32)",
                     } : {
                       background: BG_D, color: T3,
                       border: `0.5px solid ${BLUE_BDR_D}`,
@@ -1463,10 +1463,10 @@ const AIPracticePage = () => {
           {/* Summary dark card */}
           <div className="rounded-[22px] px-5 py-6 relative overflow-hidden"
             style={{
-              background: "linear-gradient(140deg, #001888 0%, #0033CC 48%, #0055FF 100%)",
+              background: "linear-gradient(140deg, #0A84FF 0%, #0A84FF 48%, #0A84FF 100%)",
               boxShadow: "0 8px 30px rgba(0,51,204,0.34), 0 0 0 0.5px rgba(255,255,255,0.14)",
             }}>
-            <div className="absolute -top-[30px] -right-[20px] w-[160px] h-[160px] rounded-full pointer-events-none"
+            <div className="absolute -top-[32px] -right-[20px] w-[160px] h-[160px] rounded-full pointer-events-none"
               style={{ background: "radial-gradient(circle, rgba(255,255,255,0.14) 0%, transparent 65%)" }} />
             <div className="relative z-10">
               <div className="text-[10px] font-bold uppercase tracking-[0.12em] mb-3" style={{ color: "rgba(255,255,255,0.50)" }}>Exam Preview</div>
@@ -1497,7 +1497,7 @@ const AIPracticePage = () => {
           </button>
 
           <div className="bg-white rounded-[16px] p-4 text-[11px] leading-[1.55] font-normal flex items-start gap-2"
-            style={{ boxShadow: SH_D, border: "0.5px solid rgba(0,85,255,0.10)", color: T3 }}>
+            style={{ boxShadow: SH_D, border: "0.5px solid rgba(10,132,255,0.10)", color: T3 }}>
             <Sparkles className="w-[12px] h-[12px] shrink-0 mt-[2px]" style={{ color: B1 }} strokeWidth={2.3} />
             AI tailors the question difficulty and mixes topics based on what you configured.
           </div>
@@ -1519,11 +1519,11 @@ const AIPracticePage = () => {
         <div className="rounded-[26px] px-8 py-6 mb-5 relative overflow-hidden"
           style={{
             background: timerLow && timerStr
-              ? "linear-gradient(140deg, #661122 0%, #991133 50%, #CC1144 100%)"
-              : "linear-gradient(140deg, #001888 0%, #0033CC 48%, #0055FF 100%)",
+              ? "linear-gradient(140deg, #86170E 0%, #86170E 50%, #FF3B30 100%)"
+              : "linear-gradient(140deg, #0A84FF 0%, #0A84FF 48%, #0A84FF 100%)",
             boxShadow: "0 8px 30px rgba(0,51,204,0.34), 0 0 0 0.5px rgba(255,255,255,0.14)",
           }}>
-          <div className="absolute -top-[40px] -right-[30px] w-[260px] h-[260px] rounded-full pointer-events-none"
+          <div className="absolute -top-[40px] -right-[32px] w-[260px] h-[260px] rounded-full pointer-events-none"
             style={{ background: "radial-gradient(circle, rgba(255,255,255,0.14) 0%, transparent 65%)" }} />
           <div className="relative z-10 flex items-center justify-between flex-wrap gap-4">
             <div>
@@ -1555,12 +1555,12 @@ const AIPracticePage = () => {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
           {/* Question Card (col-3) */}
           <div className="lg:col-span-3 bg-white rounded-[22px] p-8"
-            style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+            style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(10,132,255,0.10)" }}>
             {q && (
               <>
                 <div className="flex items-center gap-2 mb-5">
-                  <div className="px-[10px] py-[5px] rounded-full text-[10px] font-bold uppercase tracking-[0.10em]"
-                    style={{ background: "rgba(0,85,255,0.10)", color: B1, border: `0.5px solid ${BLUE_BDR_D}` }}>
+                  <div className="px-[12px] py-[4px] rounded-full text-[10px] font-bold uppercase tracking-[0.10em]"
+                    style={{ background: "rgba(10,132,255,0.10)", color: B1, border: `0.5px solid ${BLUE_BDR_D}` }}>
                     {q.type.replace("_", " ")}
                   </div>
                   <div className="text-[11px] font-medium" style={{ color: T4 }}>{difficulty}</div>
@@ -1635,7 +1635,7 @@ const AIPracticePage = () => {
               ) : (
                 <button onClick={handleSubmitExam}
                   className="flex-1 h-12 rounded-[14px] flex items-center justify-center gap-2 text-[13px] font-bold text-white transition-transform hover:scale-[1.01]"
-                  style={{ background: `linear-gradient(135deg, ${GREEN_D}, #22EE66)`, boxShadow: "0 4px 14px rgba(0,200,83,0.36)", letterSpacing: "-0.1px" }}>
+                  style={{ background: `linear-gradient(135deg, ${GREEN_D}, #34C759)`, boxShadow: "0 4px 14px rgba(52,199,89,0.36)", letterSpacing: "-0.1px" }}>
                   ✓ Submit Exam
                 </button>
               )}
@@ -1644,7 +1644,7 @@ const AIPracticePage = () => {
 
           {/* Question dots (col-1) */}
           <div className="bg-white rounded-[22px] p-6"
-            style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+            style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(10,132,255,0.10)" }}>
             <div className="text-[15px] font-bold mb-4" style={{ color: T1, letterSpacing: "-0.3px" }}>All Questions</div>
             <div className="grid grid-cols-5 gap-2">
               {questions.map((_, i) => {
@@ -1657,8 +1657,8 @@ const AIPracticePage = () => {
                       background: `linear-gradient(135deg, ${B1}, ${B2})`, color: "#fff",
                       boxShadow: SH_BTN_D,
                     } : isAnswered ? {
-                      background: `linear-gradient(135deg, ${GREEN_D}, #22EE66)`, color: "#fff",
-                      boxShadow: "0 2px 8px rgba(0,200,83,0.28)",
+                      background: `linear-gradient(135deg, ${GREEN_D}, #34C759)`, color: "#fff",
+                      boxShadow: "0 2px 8px rgba(52,199,89,0.28)",
                     } : {
                       background: BG_D, color: T3,
                       border: `0.5px solid ${BLUE_BDR_D}`,
@@ -1675,7 +1675,7 @@ const AIPracticePage = () => {
                 Current
               </div>
               <div className="flex items-center gap-2 text-[11px] font-semibold" style={{ color: T3 }}>
-                <div className="w-3 h-3 rounded-[4px]" style={{ background: `linear-gradient(135deg, ${GREEN_D}, #22EE66)` }} />
+                <div className="w-3 h-3 rounded-[4px]" style={{ background: `linear-gradient(135deg, ${GREEN_D}, #34C759)` }} />
                 Answered
               </div>
               <div className="flex items-center gap-2 text-[11px] font-semibold" style={{ color: T3 }}>
@@ -1696,12 +1696,12 @@ const AIPracticePage = () => {
     const review = pct >= 50 && pct < 80;
     const scoreColor = passed ? GREEN_D : review ? ORANGE_D : RED_D;
     const heroGrad = evaluating
-      ? "linear-gradient(140deg, #001888 0%, #0033CC 48%, #0055FF 100%)"
+      ? "linear-gradient(140deg, #0A84FF 0%, #0A84FF 48%, #0A84FF 100%)"
       : passed
-        ? "linear-gradient(140deg, #005A22 0%, #00A040 50%, #00C853 100%)"
+        ? "linear-gradient(140deg, #248A3D 0%, #248A3D 50%, #34C759 100%)"
         : review
-          ? "linear-gradient(140deg, #663300 0%, #CC6600 50%, #FF8800 100%)"
-          : "linear-gradient(140deg, #661122 0%, #AA1144 50%, #FF3355 100%)";
+          ? "linear-gradient(140deg, #86310C 0%, #86310C 50%, #FF9500 100%)"
+          : "linear-gradient(140deg, #86170E 0%, #86170E 50%, #FF3B30 100%)";
 
     return (
       <DesktopShell>
@@ -1764,10 +1764,10 @@ const AIPracticePage = () => {
               {/* Weak topics */}
               {result.weakTopics?.length > 0 ? (
                 <div className="lg:col-span-2 bg-white rounded-[22px] p-6"
-                  style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                  style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(10,132,255,0.10)" }}>
                   <div className="flex items-center gap-2 mb-4">
                     <div className="w-10 h-10 rounded-[12px] flex items-center justify-center"
-                      style={{ background: "rgba(255,51,85,0.10)", border: "0.5px solid rgba(255,51,85,0.22)" }}>
+                      style={{ background: "rgba(255,59,48,0.10)", border: "0.5px solid rgba(255,59,48,0.22)" }}>
                       <Lightbulb className="w-5 h-5" style={{ color: RED_D }} strokeWidth={2.3} />
                     </div>
                     <div>
@@ -1778,7 +1778,7 @@ const AIPracticePage = () => {
                   <div className="flex flex-wrap gap-2">
                     {result.weakTopics.map((t: string, i: number) => (
                       <div key={i} className="px-4 py-[8px] rounded-full text-[12px] font-bold"
-                        style={{ background: "rgba(255,51,85,0.08)", color: RED_D, border: "0.5px solid rgba(255,51,85,0.22)" }}>
+                        style={{ background: "rgba(255,59,48,0.08)", color: RED_D, border: "0.5px solid rgba(255,59,48,0.22)" }}>
                         {t}
                       </div>
                     ))}
@@ -1786,7 +1786,7 @@ const AIPracticePage = () => {
                 </div>
               ) : (
                 <div className="lg:col-span-2 bg-white rounded-[22px] p-6"
-                  style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                  style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(10,132,255,0.10)" }}>
                   <div className="flex items-center gap-2 mb-2">
                     <CheckCircle2 className="w-5 h-5" style={{ color: GREEN_D }} strokeWidth={2.3} />
                     <div className="text-[17px] font-bold" style={{ color: T1, letterSpacing: "-0.3px" }}>Great Performance!</div>
@@ -1820,16 +1820,16 @@ const AIPracticePage = () => {
                 const correct = !!ev.correct;
                 return (
                   <div key={i} className="bg-white rounded-[18px] p-5 relative overflow-hidden"
-                    style={{ boxShadow: SH_D, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                    style={{ boxShadow: SH_D, border: "0.5px solid rgba(10,132,255,0.10)" }}>
                     <div className="absolute left-0 top-0 bottom-0 w-[4px] rounded-l-[2px]"
-                      style={{ background: correct ? `linear-gradient(180deg, ${GREEN_D}, #66EE88)` : `linear-gradient(180deg, ${RED_D}, #FF88AA)` }} />
+                      style={{ background: correct ? `linear-gradient(180deg, ${GREEN_D}, #34C759)` : `linear-gradient(180deg, ${RED_D}, #FF6961)` }} />
 
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-8 h-8 rounded-[10px] flex items-center justify-center"
-                        style={{ background: correct ? "rgba(0,200,83,0.10)" : "rgba(255,51,85,0.10)", border: `0.5px solid ${correct ? "rgba(0,200,83,0.22)" : "rgba(255,51,85,0.22)"}` }}>
+                        style={{ background: correct ? "rgba(52,199,89,0.10)" : "rgba(255,59,48,0.10)", border: `0.5px solid ${correct ? "rgba(52,199,89,0.22)" : "rgba(255,59,48,0.22)"}` }}>
                         {correct ? <CheckCircle2 className="w-[16px] h-[16px]" style={{ color: GREEN_D }} strokeWidth={2.5} /> : <XCircle className="w-[16px] h-[16px]" style={{ color: RED_D }} strokeWidth={2.5} />}
                       </div>
-                      <span className="text-[12px] font-bold" style={{ color: correct ? "#007830" : RED_D }}>
+                      <span className="text-[12px] font-bold" style={{ color: correct ? "#248A3D" : RED_D }}>
                         Q{q.questionNo} — {correct ? "Correct" : "Wrong"}
                       </span>
                     </div>
@@ -1839,20 +1839,20 @@ const AIPracticePage = () => {
                     {!correct && (
                       <>
                         <div className="grid grid-cols-2 gap-2 mb-3">
-                          <div className="px-3 py-[10px] rounded-[12px]"
-                            style={{ background: "rgba(255,51,85,0.06)", border: "0.5px solid rgba(255,51,85,0.18)" }}>
+                          <div className="px-3 py-[12px] rounded-[12px]"
+                            style={{ background: "rgba(255,59,48,0.06)", border: "0.5px solid rgba(255,59,48,0.18)" }}>
                             <div className="text-[9px] font-bold uppercase tracking-[0.10em] mb-[4px]" style={{ color: RED_D }}>Your Answer</div>
                             <div className="text-[12px]" style={{ color: RED_D }}>{ev.studentAnswer || "—"}</div>
                           </div>
-                          <div className="px-3 py-[10px] rounded-[12px]"
-                            style={{ background: "rgba(0,200,83,0.06)", border: "0.5px solid rgba(0,200,83,0.18)" }}>
-                            <div className="text-[9px] font-bold uppercase tracking-[0.10em] mb-[4px]" style={{ color: "#007830" }}>Correct</div>
-                            <div className="text-[12px]" style={{ color: "#007830" }}>{ev.correctAnswer || q.correctAnswer}</div>
+                          <div className="px-3 py-[12px] rounded-[12px]"
+                            style={{ background: "rgba(52,199,89,0.06)", border: "0.5px solid rgba(52,199,89,0.18)" }}>
+                            <div className="text-[9px] font-bold uppercase tracking-[0.10em] mb-[4px]" style={{ color: "#248A3D" }}>Correct</div>
+                            <div className="text-[12px]" style={{ color: "#248A3D" }}>{ev.correctAnswer || q.correctAnswer}</div>
                           </div>
                         </div>
                         {ev.explanation && (
-                          <div className="px-3 py-[10px] rounded-[12px]"
-                            style={{ background: "rgba(0,85,255,0.06)", border: "0.5px solid rgba(0,85,255,0.18)" }}>
+                          <div className="px-3 py-[12px] rounded-[12px]"
+                            style={{ background: "rgba(10,132,255,0.06)", border: "0.5px solid rgba(10,132,255,0.18)" }}>
                             <div className="text-[9px] font-bold uppercase tracking-[0.10em] mb-[4px] flex items-center gap-[4px]" style={{ color: B1 }}>
                               <Lightbulb className="w-[10px] h-[10px]" strokeWidth={2.5} /> Why?
                             </div>

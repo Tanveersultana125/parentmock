@@ -23,7 +23,7 @@ const getSubIcon = (name: string) => {
   return BookOpen;
 };
 
-const CHART_COLORS = ["#1e3a8a", "#10b981", "#f59e0b", "#6366f1", "#ef4444", "#06b6d4"];
+const CHART_COLORS = ["#1D1D1F", "#34C759", "#FF9500", "#0A84FF", "#FF3B30", "#5AC8FA"];
 
 // ═══════════════════════════════════════════════════════════════════════
 // MOCK DATA — flip USE_MOCK_DATA to false to restore live Firestore data
@@ -492,15 +492,15 @@ const PerformancePage = () => {
      MOBILE — Bright Blue Apple UI
      ═══════════════════════════════════════════════════════════════ */
   if (isMobile) {
-    const B1 = "#0055FF", B2 = "#1166FF", B3 = "#2277FF", B4 = "#4499FF";
-    const BG = "#EEF4FF", BG2 = "#E0ECFF";
-    const T1 = "#001040", T2 = "#002080", T3 = "#5070B0", T4 = "#99AACC";
-    const SEP = "rgba(0,85,255,0.07)";
-    const GREEN = "#00C853", GREEN_S = "rgba(0,200,83,0.12)", GREEN_B = "rgba(0,200,83,0.25)";
-    const RED = "#FF3355";
-    const ORANGE = "#FF8800";
-    const SH = "0 0 0 0.5px rgba(0,85,255,0.08), 0 2px 8px rgba(0,85,255,0.09), 0 10px 28px rgba(0,85,255,0.11)";
-    const SH_LG = "0 0 0 0.5px rgba(0,85,255,0.10), 0 4px 16px rgba(0,85,255,0.12), 0 20px 48px rgba(0,85,255,0.14)";
+    const B1 = "#0A84FF", B2 = "#3395FF", B3 = "#5BA9FF", B4 = "#7CBBFF";
+    const BG = "#F5F5F7", BG2 = "#EBEBF0";
+    const T1 = "#1D1D1F", T2 = "#3A3A3C", T3 = "#6E6E73", T4 = "#A1A1A6";
+    const SEP = "rgba(10,132,255,0.07)";
+    const GREEN = "#34C759", GREEN_S = "rgba(52,199,89,0.12)", GREEN_B = "rgba(52,199,89,0.25)";
+    const RED = "#FF3B30";
+    const ORANGE = "#FF9500";
+    const SH = "0 0 0 0.5px rgba(10,132,255,0.08), 0 2px 8px rgba(10,132,255,0.09), 0 10px 28px rgba(10,132,255,0.11)";
+    const SH_LG = "0 0 0 0.5px rgba(10,132,255,0.10), 0 4px 16px rgba(10,132,255,0.12), 0 20px 48px rgba(10,132,255,0.14)";
 
     // ── Overall monthly avg line (single series) ──
     const overallTrend = trendData.map((row: any) => {
@@ -513,7 +513,7 @@ const PerformancePage = () => {
 
     // Trend pill color
     const trendNum = parseInt(overallStats.trend.replace(/[^0-9-]/g, ""), 10) || 0;
-    const trendColor = trendNum > 0 ? GREEN : trendNum < 0 ? RED : "#008844";
+    const trendColor = trendNum > 0 ? GREEN : trendNum < 0 ? RED : "#248A3D";
 
     // Goal logic (same as desktop)
     const activeGoalSub = subjects.find(s => s.name === (goalSubject || subjects[0]?.name));
@@ -522,10 +522,10 @@ const PerformancePage = () => {
 
     // Per-card blue-only accent rotation
     const unitAccents = [
-      { icoBg: `linear-gradient(135deg, ${B1}, ${B3})`, icoShadow: "0 3px 10px rgba(0,85,255,0.28)" },
-      { icoBg: "linear-gradient(135deg, #0044EE, #2277FF)", icoShadow: "0 3px 10px rgba(0,68,238,0.28)" },
-      { icoBg: "linear-gradient(135deg, #002DBB, #0055FF)", icoShadow: "0 3px 10px rgba(0,45,187,0.28)" },
-      { icoBg: "linear-gradient(135deg, #1155EE, #44AAFF)", icoShadow: "0 3px 10px rgba(17,85,238,0.28)" },
+      { icoBg: `linear-gradient(135deg, ${B1}, ${B3})`, icoShadow: "0 3px 10px rgba(10,132,255,0.28)" },
+      { icoBg: "linear-gradient(135deg, #3395FF, #5BA9FF)", icoShadow: "0 3px 10px rgba(0,68,238,0.28)" },
+      { icoBg: "linear-gradient(135deg, #0A84FF, #0A84FF)", icoShadow: "0 3px 10px rgba(0,45,187,0.28)" },
+      { icoBg: "linear-gradient(135deg, #3395FF, #7CBBFF)", icoShadow: "0 3px 10px rgba(17,85,238,0.28)" },
     ];
 
     return (
@@ -533,13 +533,13 @@ const PerformancePage = () => {
         style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif", background: BG, minHeight: "100vh" }}>
 
         {/* ── Page Head ── */}
-        <div className="flex items-start justify-between px-[22px] pt-[18px]">
+        <div className="flex items-start justify-between px-[24px] pt-[16px]">
           <div>
             <div className="text-[24px] font-bold" style={{ color: T1, letterSpacing: "-0.6px" }}>Performance Analytics</div>
-            <div className="text-[12px] mt-[3px] font-normal" style={{ color: T3 }}>Detailed breakdown of academic progress</div>
+            <div className="text-[12px] mt-[4px] font-normal" style={{ color: T3 }}>Detailed breakdown of academic progress</div>
           </div>
-          <div className="w-8 h-8 rounded-[10px] flex items-center justify-center text-[14px] font-bold text-white mt-0.5 shrink-0"
-            style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: "0 3px 10px rgba(0,85,255,0.32)" }}>
+          <div className="w-8 h-8 rounded-[10px] flex items-center justify-center text-[14px] font-bold text-white mt-1 shrink-0"
+            style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: "0 3px 10px rgba(10,132,255,0.32)" }}>
             {overallStats.grade}
           </div>
         </div>
@@ -551,25 +551,25 @@ const PerformancePage = () => {
           aria-label="Open reports page"
           onClick={() => navigate("/reports")}
           onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/reports"); } }}
-          className="mx-5 mt-4 bg-white rounded-[24px] p-5 relative overflow-hidden cursor-pointer active:scale-[0.98] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF]/40"
-          style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
-          <div className="absolute -top-[50px] -right-[30px] w-[160px] h-[160px] rounded-full pointer-events-none"
-            style={{ background: "radial-gradient(circle, rgba(0,85,255,0.06) 0%, transparent 70%)" }} />
+          className="mx-5 mt-4 bg-white rounded-[24px] p-5 relative overflow-hidden cursor-pointer active:scale-[0.98] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
+          style={{ boxShadow: SH_LG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
+          <div className="absolute -top-[50px] -right-[32px] w-[160px] h-[160px] rounded-full pointer-events-none"
+            style={{ background: "radial-gradient(circle, rgba(10,132,255,0.06) 0%, transparent 70%)" }} />
           <div className="text-[16px] font-bold relative z-10" style={{ color: T1, letterSpacing: "-0.3px", marginBottom: 3 }}>Overall Performance</div>
           <div className="text-[11px] mb-4 relative z-10" style={{ color: T3 }}>Based on all assessments this term</div>
-          <div className="grid grid-cols-3 gap-[10px] relative z-10">
-            <div className="flex flex-col items-center gap-[5px] px-3 py-[14px] rounded-[16px]"
-              style={{ background: BG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+          <div className="grid grid-cols-3 gap-[12px] relative z-10">
+            <div className="flex flex-col items-center gap-[4px] px-3 py-[16px] rounded-[16px]"
+              style={{ background: BG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
               <div className="text-[22px] font-bold" style={{ color: B1, letterSpacing: "-0.5px" }}>{overallStats.grade}</div>
               <div className="text-[9px] font-bold uppercase tracking-[0.09em]" style={{ color: T4 }}>Grade</div>
             </div>
-            <div className="flex flex-col items-center gap-[5px] px-3 py-[14px] rounded-[16px]"
-              style={{ background: BG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+            <div className="flex flex-col items-center gap-[4px] px-3 py-[16px] rounded-[16px]"
+              style={{ background: BG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
               <div className="text-[22px] font-bold" style={{ color: T1, letterSpacing: "-0.5px" }}>{overallStats.avg > 0 ? `${overallStats.avg}%` : "—"}</div>
               <div className="text-[9px] font-bold uppercase tracking-[0.09em]" style={{ color: T4 }}>Average</div>
             </div>
-            <div className="flex flex-col items-center gap-[5px] px-3 py-[14px] rounded-[16px]"
-              style={{ background: BG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+            <div className="flex flex-col items-center gap-[4px] px-3 py-[16px] rounded-[16px]"
+              style={{ background: BG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
               <div className="text-[18px] font-bold" style={{ color: trendColor, letterSpacing: "-0.5px" }}>{overallStats.trend}</div>
               <div className="text-[9px] font-bold uppercase tracking-[0.09em]" style={{ color: T4 }}>Trend</div>
             </div>
@@ -578,15 +578,15 @@ const PerformancePage = () => {
 
         {/* ── Subject / Unit Cards ── */}
         {loading ? (
-          <div className="flex flex-col items-center gap-3 py-14" style={{ color: T4 }}>
+          <div className="flex flex-col items-center gap-3 py-10" style={{ color: T4 }}>
             <Loader2 className="w-8 h-8 animate-spin" style={{ color: B1 }} />
             <p className="text-sm">Loading performance data…</p>
           </div>
         ) : subjects.length === 0 ? (
           <div className="mx-5 mt-3 rounded-[22px] py-10 flex flex-col items-center text-center"
-            style={{ background: "white", border: "0.5px solid rgba(0,85,255,0.10)" }}>
+            style={{ background: "white", border: "0.5px solid rgba(10,132,255,0.10)" }}>
             <div className="w-14 h-14 rounded-[18px] flex items-center justify-center mb-3"
-              style={{ background: BG2, border: "0.5px solid rgba(0,85,255,0.14)" }}>
+              style={{ background: BG2, border: "0.5px solid rgba(10,132,255,0.14)" }}>
               <BookOpen className="w-7 h-7" style={{ color: T4 }} />
             </div>
             <div className="text-[15px] font-bold" style={{ color: T2 }}>No assessments yet</div>
@@ -598,9 +598,9 @@ const PerformancePage = () => {
             const Icon = getSubIcon(s.name);
             const needsAttention = s.progress < 60;
             const fill = needsAttention
-              ? `linear-gradient(90deg, ${RED}, #FF6688)`
+              ? `linear-gradient(90deg, ${RED}, #FF5E55)`
               : s.progress < 75
-                ? `linear-gradient(90deg, ${ORANGE}, #FFAA33)`
+                ? `linear-gradient(90deg, ${ORANGE}, #FF9500)`
                 : `linear-gradient(90deg, ${B1}, ${B4})`;
             return (
               <div key={i}
@@ -609,10 +609,10 @@ const PerformancePage = () => {
                 aria-label={`Open ${s.name} performance detail`}
                 onClick={() => setSelectedSubject(s.name)}
                 onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setSelectedSubject(s.name); } }}
-                className="mx-5 mt-3 bg-white rounded-[22px] px-5 py-[18px] relative overflow-hidden active:scale-[0.98] transition-transform cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF]/40"
-                style={{ boxShadow: SH, border: "0.5px solid rgba(0,85,255,0.10)", transitionTimingFunction: "cubic-bezier(0.34,1.56,0.64,1)" }}>
-                <div className="flex items-center justify-between mb-[14px]">
-                  <div className="flex items-center gap-[10px]">
+                className="mx-5 mt-3 bg-white rounded-[22px] px-5 py-[16px] relative overflow-hidden active:scale-[0.98] transition-transform cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
+                style={{ boxShadow: SH, border: "0.5px solid rgba(10,132,255,0.10)", transitionTimingFunction: "cubic-bezier(0.34,1.56,0.64,1)" }}>
+                <div className="flex items-center justify-between mb-[16px]">
+                  <div className="flex items-center gap-[12px]">
                     <div className="w-9 h-9 rounded-[12px] flex items-center justify-center"
                       style={{ background: acc.icoBg, boxShadow: acc.icoShadow }}>
                       <Icon className="w-[18px] h-[18px] text-white" strokeWidth={2.2} />
@@ -620,7 +620,7 @@ const PerformancePage = () => {
                     <span className="text-[15px] font-bold" style={{ color: T1, letterSpacing: "-0.2px" }}>{s.name}</span>
                   </div>
                   <div className="w-7 h-7 rounded-[9px] flex items-center justify-center text-[12px] font-bold text-white"
-                    style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: "0 2px 8px rgba(0,85,255,0.30)" }}>
+                    style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: "0 2px 8px rgba(10,132,255,0.30)" }}>
                     {s.grade}
                   </div>
                 </div>
@@ -628,24 +628,24 @@ const PerformancePage = () => {
                   <span className="text-[11px] font-bold" style={{ color: T2, letterSpacing: "-0.1px" }}>Progress</span>
                   <span className="text-[13px] font-bold" style={{ color: B1 }}>{s.progress}%</span>
                 </div>
-                <div className="h-[7px] rounded-[4px] overflow-hidden mb-[10px]" style={{ background: BG2 }}>
+                <div className="h-[7px] rounded-[4px] overflow-hidden mb-[12px]" style={{ background: BG2 }}>
                   <div className="h-full rounded-[4px] transition-all duration-700"
                     style={{ width: `${Math.max(s.progress, 3)}%`, background: fill }} />
                 </div>
                 {needsAttention ? (
-                  <div className="inline-flex items-center gap-[5px] px-[11px] py-1 rounded-full text-[10px] font-bold"
-                    style={{ background: "rgba(255,51,85,0.10)", color: RED, border: "0.5px solid rgba(255,51,85,0.22)" }}>
+                  <div className="inline-flex items-center gap-[4px] px-[12px] py-1 rounded-full text-[10px] font-bold"
+                    style={{ background: "rgba(255,59,48,0.10)", color: RED, border: "0.5px solid rgba(255,59,48,0.22)" }}>
                     <span className="w-[10px] h-[1.5px]" style={{ background: RED }} />
                     Needs Attention
                   </div>
                 ) : s.progress >= 75 ? (
-                  <div className="inline-flex items-center gap-[5px] px-[11px] py-1 rounded-full text-[10px] font-bold"
-                    style={{ background: GREEN_S, color: "#007830", border: `0.5px solid ${GREEN_B}` }}>
+                  <div className="inline-flex items-center gap-[4px] px-[12px] py-1 rounded-full text-[10px] font-bold"
+                    style={{ background: GREEN_S, color: "#248A3D", border: `0.5px solid ${GREEN_B}` }}>
                     ✓ On Track
                   </div>
                 ) : (
-                  <div className="inline-flex items-center gap-[5px] px-[11px] py-1 rounded-full text-[10px] font-bold"
-                    style={{ background: "rgba(255,136,0,0.12)", color: ORANGE, border: "0.5px solid rgba(255,136,0,0.25)" }}>
+                  <div className="inline-flex items-center gap-[4px] px-[12px] py-1 rounded-full text-[10px] font-bold"
+                    style={{ background: "rgba(255,149,0,0.12)", color: ORANGE, border: "0.5px solid rgba(255,149,0,0.25)" }}>
                     Stable
                   </div>
                 )}
@@ -662,8 +662,8 @@ const PerformancePage = () => {
             aria-label="Open reports page for detailed trend"
             onClick={() => navigate("/reports")}
             onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/reports"); } }}
-            className="mx-5 mt-3 bg-white rounded-[24px] px-5 pt-5 pb-4 cursor-pointer active:scale-[0.98] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF]/40"
-            style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+            className="mx-5 mt-3 bg-white rounded-[24px] px-5 pt-5 pb-4 cursor-pointer active:scale-[0.98] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
+            style={{ boxShadow: SH_LG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
             <div className="text-[16px] font-bold" style={{ color: T1, letterSpacing: "-0.3px", marginBottom: 4 }}>Performance Trend</div>
             <div className="text-[11px] mb-4" style={{ color: T3 }}>Score progression across months</div>
             <div className="h-[150px] w-full">
@@ -676,18 +676,18 @@ const PerformancePage = () => {
                     </linearGradient>
                     <linearGradient id="perfLineBlue" x1="0%" y1="0%" x2="100%" y2="0%">
                       <stop offset="0%" stopColor={B1} />
-                      <stop offset="100%" stopColor="#66BBFF" />
+                      <stop offset="100%" stopColor="#7CBBFF" />
                     </linearGradient>
                   </defs>
-                  <CartesianGrid strokeDasharray="0" vertical={false} stroke="rgba(0,85,255,0.07)" />
+                  <CartesianGrid strokeDasharray="0" vertical={false} stroke="rgba(10,132,255,0.07)" />
                   <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fontSize: 9, fill: T4, fontWeight: 600 }} />
                   <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 9, fill: T4, fontWeight: 600 }} domain={[0, 100]} width={30} />
-                  <Tooltip contentStyle={{ borderRadius: 12, border: "0.5px solid rgba(0,85,255,0.15)", boxShadow: "0 4px 20px rgba(0,85,255,0.12)", fontSize: 11, padding: "6px 10px" }} />
+                  <Tooltip contentStyle={{ borderRadius: 12, border: "0.5px solid rgba(10,132,255,0.15)", boxShadow: "0 4px 20px rgba(10,132,255,0.12)", fontSize: 11, padding: "6px 10px" }} />
                   <Area type="monotone" dataKey="score" stroke="url(#perfLineBlue)" strokeWidth={2.5} fill="url(#perfAreaBlue)" dot={{ r: 4, strokeWidth: 2, stroke: "#fff", fill: B1 }} activeDot={{ r: 6, strokeWidth: 2 }} />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
-            <div className="flex items-center justify-center gap-[6px] mt-2">
+            <div className="flex items-center justify-center gap-[8px] mt-2">
               <span className="w-6 h-[2.5px] rounded-[2px]" style={{ background: B1 }} />
               <span className="text-[11px] font-medium" style={{ color: T3 }}>Overall Average</span>
             </div>
@@ -702,9 +702,9 @@ const PerformancePage = () => {
             aria-label="Open reports page for full narrative"
             onClick={() => navigate("/reports")}
             onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/reports"); } }}
-            className="mx-5 mt-3 rounded-[24px] px-5 py-[18px] relative overflow-hidden cursor-pointer active:scale-[0.98] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+            className="mx-5 mt-3 rounded-[24px] px-5 py-[16px] relative overflow-hidden cursor-pointer active:scale-[0.98] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
             style={{
-              background: "linear-gradient(140deg, #001888 0%, #0033CC 48%, #0055FF 100%)",
+              background: "linear-gradient(140deg, #0A84FF 0%, #0A84FF 48%, #0A84FF 100%)",
               boxShadow: "0 8px 30px rgba(0,51,204,0.34), 0 0 0 0.5px rgba(255,255,255,0.14)",
               border: "0.5px solid rgba(255,255,255,0.14)"
             }}>
@@ -714,19 +714,19 @@ const PerformancePage = () => {
               backgroundImage: "linear-gradient(rgba(255,255,255,0.014) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.014) 1px, transparent 1px)",
               backgroundSize: "24px 24px"
             }} />
-            <div className="flex items-center gap-[7px] mb-[14px] relative z-10">
+            <div className="flex items-center gap-[8px] mb-[16px] relative z-10">
               <div className="w-[30px] h-[30px] rounded-[9px] flex items-center justify-center"
                 style={{ background: "rgba(255,255,255,0.18)", border: "0.5px solid rgba(255,255,255,0.26)" }}>
                 <Sparkles className="w-4 h-4" style={{ color: "rgba(255,255,255,0.9)" }} strokeWidth={2.2} />
               </div>
               <span className="text-[9px] font-bold uppercase tracking-[0.12em]" style={{ color: "rgba(255,255,255,0.55)" }}>AI Narrative Analysis</span>
             </div>
-            <p className="text-[13px] leading-[1.72] font-normal mb-[14px] relative z-10" style={{ color: "rgba(255,255,255,0.92)", letterSpacing: "-0.1px" }}>
+            <p className="text-[13px] leading-[1.72] font-normal mb-[16px] relative z-10" style={{ color: "rgba(255,255,255,0.92)", letterSpacing: "-0.1px" }}>
               <strong style={{ color: "#fff", fontWeight: 700 }}>{studentName}</strong>{" "}
               {generateNarrative().replace(new RegExp(`^${studentName}\\s*`), "")}
             </p>
-            <div className="flex items-center gap-[6px] pt-3 relative z-10" style={{ borderTop: "0.5px solid rgba(255,255,255,0.12)" }}>
-              <div className="w-[6px] h-[6px] rounded-full" style={{ background: B4, boxShadow: "0 0 0 2px rgba(68,153,255,0.25)" }} />
+            <div className="flex items-center gap-[8px] pt-3 relative z-10" style={{ borderTop: "0.5px solid rgba(255,255,255,0.12)" }}>
+              <div className="w-[6px] h-[6px] rounded-full" style={{ background: B4, boxShadow: "0 0 0 2px rgba(124,187,255,0.25)" }} />
               <span className="text-[9px] font-bold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.42)" }}>Generated from real-time assessment data</span>
             </div>
           </div>
@@ -735,15 +735,15 @@ const PerformancePage = () => {
         {/* ── Goal Setting AI ── */}
         {!loading && subjects.length > 0 && activeGoalSub && (
           <div className="mx-5 mt-3 bg-white rounded-[24px] p-5"
-            style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
-            <div className="flex items-center gap-3 mb-[18px]">
+            style={{ boxShadow: SH_LG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
+            <div className="flex items-center gap-3 mb-[16px]">
               <div className="w-11 h-11 rounded-[14px] flex items-center justify-center shrink-0"
-                style={{ background: `linear-gradient(135deg, ${ORANGE}, #FFAA33)`, boxShadow: "0 3px 12px rgba(255,136,0,0.30)" }}>
+                style={{ background: `linear-gradient(135deg, ${ORANGE}, #FF9500)`, boxShadow: "0 3px 12px rgba(255,149,0,0.30)" }}>
                 <Target className="w-[22px] h-[22px] text-white" strokeWidth={2.2} />
               </div>
               <div>
                 <div className="text-[16px] font-bold" style={{ color: T1, letterSpacing: "-0.3px" }}>Goal Setting AI</div>
-                <div className="text-[11px] mt-0.5" style={{ color: T3 }}>Set a target score and get a personalised plan</div>
+                <div className="text-[11px] mt-1" style={{ color: T3 }}>Set a target score and get a personalised plan</div>
               </div>
             </div>
 
@@ -751,9 +751,9 @@ const PerformancePage = () => {
             <select
               value={goalSubject || subjects[0]?.name || ""}
               onChange={e => setGoalSubject(e.target.value)}
-              className="w-full py-3 px-[14px] rounded-[14px] text-[14px] font-bold mb-4 cursor-pointer appearance-none"
+              className="w-full py-3 px-[16px] rounded-[14px] text-[14px] font-bold mb-4 cursor-pointer appearance-none"
               style={{
-                border: "0.5px solid rgba(0,85,255,0.16)",
+                border: "0.5px solid rgba(10,132,255,0.16)",
                 background: `${BG} url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%230055FF' stroke-width='2.5' stroke-linecap='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") right 14px center / auto no-repeat`,
                 color: T1,
                 fontFamily: "inherit",
@@ -764,7 +764,7 @@ const PerformancePage = () => {
               ))}
             </select>
 
-            <div className="flex items-center justify-between mb-[10px]">
+            <div className="flex items-center justify-between mb-[12px]">
               <span className="text-[11px] font-bold uppercase tracking-[0.08em]" style={{ color: T4 }}>Target Score</span>
               <span className="text-[16px] font-bold" style={{ color: ORANGE }}>{goalTarget}%</span>
             </div>
@@ -786,26 +786,26 @@ const PerformancePage = () => {
               }}
             />
             <style>{`
-              .perf-mobile-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: linear-gradient(135deg, #FF8800, #FFAA33); box-shadow: 0 2px 10px rgba(255,136,0,0.40); cursor: pointer; border: 2.5px solid #fff; }
-              input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: linear-gradient(135deg, #FF8800, #FFAA33); box-shadow: 0 2px 10px rgba(255,136,0,0.40); cursor: pointer; border: 2.5px solid #fff; }
-              input[type=range]::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: linear-gradient(135deg, #FF8800, #FFAA33); box-shadow: 0 2px 10px rgba(255,136,0,0.40); cursor: pointer; border: 2.5px solid #fff; }
+              .perf-mobile-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: linear-gradient(135deg, #FF9500, #FF9500); box-shadow: 0 2px 10px rgba(255,149,0,0.40); cursor: pointer; border: 2.5px solid #fff; }
+              input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: linear-gradient(135deg, #FF9500, #FF9500); box-shadow: 0 2px 10px rgba(255,149,0,0.40); cursor: pointer; border: 2.5px solid #fff; }
+              input[type=range]::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: linear-gradient(135deg, #FF9500, #FF9500); box-shadow: 0 2px 10px rgba(255,149,0,0.40); cursor: pointer; border: 2.5px solid #fff; }
             `}</style>
-            <div className="flex justify-between mt-[6px]">
+            <div className="flex justify-between mt-[8px]">
               <span className="text-[10px] font-semibold" style={{ color: T4 }}>50%</span>
               <span className="text-[10px] font-semibold" style={{ color: T4 }}>75%</span>
               <span className="text-[10px] font-semibold" style={{ color: T4 }}>100%</span>
             </div>
 
             {goalInsight && (
-              <div className="mt-[14px] rounded-[16px] px-4 py-[14px]"
+              <div className="mt-[16px] rounded-[16px] px-4 py-[16px]"
                 style={{
-                  background: goalGap > 25 ? "rgba(255,51,85,0.06)" : goalGap > 15 ? "rgba(255,136,0,0.07)" : "rgba(0,85,255,0.05)",
-                  border: `0.5px solid ${goalGap > 25 ? "rgba(255,51,85,0.18)" : goalGap > 15 ? "rgba(255,136,0,0.22)" : "rgba(0,85,255,0.18)"}`
+                  background: goalGap > 25 ? "rgba(255,59,48,0.06)" : goalGap > 15 ? "rgba(255,149,0,0.07)" : "rgba(10,132,255,0.05)",
+                  border: `0.5px solid ${goalGap > 25 ? "rgba(255,59,48,0.18)" : goalGap > 15 ? "rgba(255,149,0,0.22)" : "rgba(10,132,255,0.18)"}`
                 }}>
-                <div className="text-[14px] font-bold mb-[5px]" style={{ color: goalGap > 25 ? RED : goalGap > 15 ? ORANGE : B1, letterSpacing: "-0.2px" }}>
+                <div className="text-[14px] font-bold mb-[4px]" style={{ color: goalGap > 25 ? RED : goalGap > 15 ? ORANGE : B1, letterSpacing: "-0.2px" }}>
                   {goalInsight.line1}
                 </div>
-                <div className="text-[12px] leading-[1.6] font-normal" style={{ color: goalGap > 25 ? "#AA2233" : goalGap > 15 ? "#AA5500" : T3 }}>
+                <div className="text-[12px] leading-[1.6] font-normal" style={{ color: goalGap > 25 ? "#86170E" : goalGap > 15 ? "#86310C" : T3 }}>
                   {goalInsight.line2}
                 </div>
               </div>
@@ -816,15 +816,15 @@ const PerformancePage = () => {
         {/* ── Benchmark Insights ── */}
         {!loading && subjects.length > 0 && (
           <div className="mx-5 mt-3 mb-2 bg-white rounded-[24px] p-5"
-            style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
-            <div className="flex items-center gap-3 mb-[18px]">
+            style={{ boxShadow: SH_LG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
+            <div className="flex items-center gap-3 mb-[16px]">
               <div className="w-11 h-11 rounded-[14px] flex items-center justify-center shrink-0"
                 style={{ background: GREEN_S, border: `0.5px solid ${GREEN_B}` }}>
                 <Trophy className="w-[22px] h-[22px]" style={{ color: GREEN }} strokeWidth={2.2} />
               </div>
               <div>
                 <div className="text-[16px] font-bold" style={{ color: T1, letterSpacing: "-0.3px" }}>Benchmark Insights</div>
-                <div className="text-[11px] mt-0.5" style={{ color: T3 }}>Where {studentName} stands vs academic benchmarks</div>
+                <div className="text-[11px] mt-1" style={{ color: T3 }}>Where {studentName} stands vs academic benchmarks</div>
               </div>
             </div>
 
@@ -848,9 +848,9 @@ const PerformancePage = () => {
                     aria-label={`Open ${s.name} performance detail`}
                     onClick={() => setSelectedSubject(s.name)}
                     onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setSelectedSubject(s.name); } }}
-                    className="flex items-center justify-between px-4 py-[14px] rounded-[16px] cursor-pointer active:scale-[0.98] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF]/40"
-                    style={{ background: BG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
-                    <div className="flex items-center gap-[10px]">
+                    className="flex items-center justify-between px-4 py-[16px] rounded-[16px] cursor-pointer active:scale-[0.98] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
+                    style={{ background: BG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
+                    <div className="flex items-center gap-[12px]">
                       <div className="w-10 h-10 rounded-[13px] flex items-center justify-center shrink-0"
                         style={{ background: acc.icoBg, boxShadow: acc.icoShadow }}>
                         <Icon className="w-[18px] h-[18px] text-white" strokeWidth={2.2} />
@@ -859,22 +859,22 @@ const PerformancePage = () => {
                         <div className="text-[14px] font-bold" style={{ color: T1, letterSpacing: "-0.2px" }}>{s.name}</div>
                         <div className="flex items-center gap-2 mt-1">
                           {isOnTrack ? (
-                            <div className="px-[11px] py-1 rounded-full text-[10px] font-bold"
-                              style={{ background: GREEN_S, color: "#007830", border: `0.5px solid ${GREEN_B}` }}>
+                            <div className="px-[12px] py-1 rounded-full text-[10px] font-bold"
+                              style={{ background: GREEN_S, color: "#248A3D", border: `0.5px solid ${GREEN_B}` }}>
                               {tier.label}
                             </div>
                           ) : (
-                            <div className="px-[11px] py-1 rounded-full text-[10px] font-bold"
-                              style={{ background: "rgba(255,51,85,0.10)", color: RED, border: "0.5px solid rgba(255,51,85,0.20)" }}>
+                            <div className="px-[12px] py-1 rounded-full text-[10px] font-bold"
+                              style={{ background: "rgba(255,59,48,0.10)", color: RED, border: "0.5px solid rgba(255,59,48,0.20)" }}>
                               Needs Work
                             </div>
                           )}
                         </div>
-                        <div className="text-[12px] font-bold mt-[5px]" style={{ color: T3 }}>Score: {s.progress}%</div>
+                        <div className="text-[12px] font-bold mt-[4px]" style={{ color: T3 }}>Score: {s.progress}%</div>
                       </div>
                     </div>
-                    <div className="flex flex-col items-end gap-[6px]">
-                      <div className="flex items-end gap-[3px] h-8">
+                    <div className="flex flex-col items-end gap-[8px]">
+                      <div className="flex items-end gap-[4px] h-8">
                         {miniScores.map((val: number, k: number) => (
                           <div key={k}
                             style={{
@@ -890,12 +890,12 @@ const PerformancePage = () => {
                   </div>
 
                   {/* benchmark progress bar */}
-                  <div className="mt-[10px] px-1">
-                    <div className="flex justify-between mb-[7px]">
+                  <div className="mt-[12px] px-1">
+                    <div className="flex justify-between mb-[8px]">
                       <span className="text-[11px] font-bold" style={{ color: T3 }}>Your score</span>
                       <span className="text-[11px] font-bold" style={{ color: T3 }}>Benchmark</span>
                     </div>
-                    <div className="h-2 rounded-[4px] overflow-hidden relative mb-[5px]" style={{ background: BG2 }}>
+                    <div className="h-2 rounded-[4px] overflow-hidden relative mb-[4px]" style={{ background: BG2 }}>
                       <div className="h-full rounded-[4px]"
                         style={{
                           width: `${Math.min(s.progress, 100)}%`,
@@ -913,9 +913,9 @@ const PerformancePage = () => {
               );
             })}
 
-            <div className="flex items-start gap-[7px] pt-3" style={{ borderTop: `0.5px solid ${SEP}` }}>
-              <div className="w-4 h-4 rounded-[4px] flex items-center justify-center shrink-0 mt-0.5"
-                style={{ background: "rgba(0,85,255,0.10)", border: "0.5px solid rgba(0,85,255,0.16)" }}>
+            <div className="flex items-start gap-[8px] pt-3" style={{ borderTop: `0.5px solid ${SEP}` }}>
+              <div className="w-4 h-4 rounded-[4px] flex items-center justify-center shrink-0 mt-1"
+                style={{ background: "rgba(10,132,255,0.10)", border: "0.5px solid rgba(10,132,255,0.16)" }}>
                 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke={B1} strokeWidth={2.5} strokeLinecap="round"><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></svg>
               </div>
               <span className="text-[11px] italic leading-[1.6]" style={{ color: T4 }}>
@@ -933,15 +933,15 @@ const PerformancePage = () => {
   /* ═══════════════════════════════════════════════════════════════
      DESKTOP — Bright Blue Apple UI (matches mobile)
      ═══════════════════════════════════════════════════════════════ */
-  const B1 = "#0055FF", B2 = "#1166FF", B3 = "#2277FF", B4 = "#4499FF";
-  const BG = "#EEF4FF", BG2 = "#E0ECFF";
-  const T1 = "#001040", T2 = "#002080", T3 = "#5070B0", T4 = "#99AACC";
-  const SEP = "rgba(0,85,255,0.07)";
-  const GREEN = "#00C853", GREEN_S = "rgba(0,200,83,0.12)", GREEN_B = "rgba(0,200,83,0.25)";
-  const RED = "#FF3355";
-  const ORANGE = "#FF8800";
-  const SH = "0 0 0 0.5px rgba(0,85,255,0.08), 0 2px 8px rgba(0,85,255,0.09), 0 10px 28px rgba(0,85,255,0.11)";
-  const SH_LG = "0 0 0 0.5px rgba(0,85,255,0.10), 0 4px 16px rgba(0,85,255,0.12), 0 20px 48px rgba(0,85,255,0.14)";
+  const B1 = "#0A84FF", B2 = "#3395FF", B3 = "#5BA9FF", B4 = "#7CBBFF";
+  const BG = "#F5F5F7", BG2 = "#EBEBF0";
+  const T1 = "#1D1D1F", T2 = "#3A3A3C", T3 = "#6E6E73", T4 = "#A1A1A6";
+  const SEP = "rgba(10,132,255,0.07)";
+  const GREEN = "#34C759", GREEN_S = "rgba(52,199,89,0.12)", GREEN_B = "rgba(52,199,89,0.25)";
+  const RED = "#FF3B30";
+  const ORANGE = "#FF9500";
+  const SH = "0 0 0 0.5px rgba(10,132,255,0.08), 0 2px 8px rgba(10,132,255,0.09), 0 10px 28px rgba(10,132,255,0.11)";
+  const SH_LG = "0 0 0 0.5px rgba(10,132,255,0.10), 0 4px 16px rgba(10,132,255,0.12), 0 20px 48px rgba(10,132,255,0.14)";
 
   // Overall monthly avg trend (for the small area chart)
   const overallTrend = trendData.map((row: any) => {
@@ -953,23 +953,23 @@ const PerformancePage = () => {
   }).filter((d: any) => d.score != null);
 
   const trendNum = parseInt(overallStats.trend.replace(/[^0-9-]/g, ""), 10) || 0;
-  const trendColor = trendNum > 0 ? GREEN : trendNum < 0 ? RED : "#008844";
+  const trendColor = trendNum > 0 ? GREEN : trendNum < 0 ? RED : "#248A3D";
 
   const activeGoalSub = subjects.find(s => s.name === (goalSubject || subjects[0]?.name));
   const goalInsight = activeGoalSub ? getGoalInsight(activeGoalSub.progress, goalTarget, activeGoalSub.name) : null;
   const goalGap = activeGoalSub ? Math.max(0, goalTarget - activeGoalSub.progress) : 0;
 
   const unitAccents = [
-    { icoBg: `linear-gradient(135deg, ${B1}, ${B3})`, icoShadow: "0 3px 10px rgba(0,85,255,0.28)" },
-    { icoBg: "linear-gradient(135deg, #0044EE, #2277FF)", icoShadow: "0 3px 10px rgba(0,68,238,0.28)" },
-    { icoBg: "linear-gradient(135deg, #002DBB, #0055FF)", icoShadow: "0 3px 10px rgba(0,45,187,0.28)" },
-    { icoBg: "linear-gradient(135deg, #1155EE, #44AAFF)", icoShadow: "0 3px 10px rgba(17,85,238,0.28)" },
+    { icoBg: `linear-gradient(135deg, ${B1}, ${B3})`, icoShadow: "0 3px 10px rgba(10,132,255,0.28)" },
+    { icoBg: "linear-gradient(135deg, #3395FF, #5BA9FF)", icoShadow: "0 3px 10px rgba(0,68,238,0.28)" },
+    { icoBg: "linear-gradient(135deg, #0A84FF, #0A84FF)", icoShadow: "0 3px 10px rgba(0,45,187,0.28)" },
+    { icoBg: "linear-gradient(135deg, #3395FF, #7CBBFF)", icoShadow: "0 3px 10px rgba(17,85,238,0.28)" },
   ];
 
   return (
     <div data-sfpro className="animate-in fade-in duration-500 -m-4 sm:-m-6 md:-m-8 min-h-[calc(100vh-64px)]"
       style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif", background: BG }}>
-      <div className="w-full px-6 pt-8 pb-12">
+      <div className="w-full px-6 pt-8 pb-10">
 
         {/* ── Toolbar ── */}
         <div className="flex items-start justify-between gap-6 flex-wrap mb-6">
@@ -978,7 +978,7 @@ const PerformancePage = () => {
             <div className="text-[14px] mt-2 font-normal" style={{ color: T3 }}>Detailed breakdown of academic progress</div>
           </div>
           <div className="w-14 h-14 rounded-[16px] flex items-center justify-center text-[20px] font-bold text-white shrink-0"
-            style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: "0 4px 16px rgba(0,85,255,0.38)" }}>
+            style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: "0 4px 16px rgba(10,132,255,0.38)" }}>
             {overallStats.grade}
           </div>
         </div>
@@ -990,28 +990,28 @@ const PerformancePage = () => {
           aria-label="Open reports page"
           onClick={() => navigate("/reports")}
           onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/reports"); } }}
-          className="bg-white rounded-[24px] p-7 relative overflow-hidden mb-5 cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF]/40"
-          style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+          className="bg-white rounded-[24px] p-8 relative overflow-hidden mb-5 cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
+          style={{ boxShadow: SH_LG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
           <div className="absolute -top-[60px] -right-[40px] w-[240px] h-[240px] rounded-full pointer-events-none"
-            style={{ background: "radial-gradient(circle, rgba(0,85,255,0.06) 0%, transparent 70%)" }} />
+            style={{ background: "radial-gradient(circle, rgba(10,132,255,0.06) 0%, transparent 70%)" }} />
           <div className="flex items-center justify-between gap-6 flex-wrap relative z-10">
             <div>
               <div className="text-[20px] font-bold" style={{ color: T1, letterSpacing: "-0.4px" }}>Overall Performance</div>
               <div className="text-[13px] mt-1" style={{ color: T3 }}>Based on all assessments this term</div>
             </div>
             <div className="grid grid-cols-3 gap-3">
-              <div className="flex flex-col items-center gap-[6px] px-6 py-4 rounded-[18px] min-w-[140px]"
-                style={{ background: BG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+              <div className="flex flex-col items-center gap-[8px] px-6 py-4 rounded-[18px] min-w-[140px]"
+                style={{ background: BG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
                 <div className="text-[36px] font-bold" style={{ color: B1, letterSpacing: "-1px" }}>{overallStats.grade}</div>
                 <div className="text-[10px] font-bold uppercase tracking-[0.10em]" style={{ color: T4 }}>Grade</div>
               </div>
-              <div className="flex flex-col items-center gap-[6px] px-6 py-4 rounded-[18px] min-w-[140px]"
-                style={{ background: BG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+              <div className="flex flex-col items-center gap-[8px] px-6 py-4 rounded-[18px] min-w-[140px]"
+                style={{ background: BG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
                 <div className="text-[36px] font-bold" style={{ color: T1, letterSpacing: "-1px" }}>{overallStats.avg > 0 ? `${overallStats.avg}%` : "—"}</div>
                 <div className="text-[10px] font-bold uppercase tracking-[0.10em]" style={{ color: T4 }}>Average</div>
               </div>
-              <div className="flex flex-col items-center gap-[6px] px-6 py-4 rounded-[18px] min-w-[140px]"
-                style={{ background: BG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+              <div className="flex flex-col items-center gap-[8px] px-6 py-4 rounded-[18px] min-w-[140px]"
+                style={{ background: BG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
                 <div className="flex items-center gap-1">
                   {trendNum > 0 ? <ArrowUp className="w-5 h-5" style={{ color: trendColor }} /> : trendNum < 0 ? <ArrowDown className="w-5 h-5" style={{ color: trendColor }} /> : <Minus className="w-5 h-5" style={{ color: trendColor }} />}
                   <div className="text-[28px] font-bold" style={{ color: trendColor, letterSpacing: "-0.8px" }}>{overallStats.trend}</div>
@@ -1024,16 +1024,16 @@ const PerformancePage = () => {
 
         {/* ── Subject Cards Grid ── */}
         {loading ? (
-          <div className="bg-white rounded-[22px] py-20 flex flex-col items-center gap-3"
-            style={{ boxShadow: SH, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+          <div className="bg-white rounded-[22px] py-10 flex flex-col items-center gap-3"
+            style={{ boxShadow: SH, border: "0.5px solid rgba(10,132,255,0.10)" }}>
             <Loader2 className="w-10 h-10 animate-spin" style={{ color: B1 }} />
             <p className="text-[13px] font-bold uppercase tracking-widest" style={{ color: T4 }}>Loading performance data…</p>
           </div>
         ) : subjects.length === 0 ? (
-          <div className="bg-white rounded-[22px] py-20 flex flex-col items-center gap-3 text-center"
-            style={{ boxShadow: SH, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+          <div className="bg-white rounded-[22px] py-10 flex flex-col items-center gap-3 text-center"
+            style={{ boxShadow: SH, border: "0.5px solid rgba(10,132,255,0.10)" }}>
             <div className="w-16 h-16 rounded-[20px] flex items-center justify-center"
-              style={{ background: BG2, border: "0.5px solid rgba(0,85,255,0.14)" }}>
+              style={{ background: BG2, border: "0.5px solid rgba(10,132,255,0.14)" }}>
               <BookOpen className="w-8 h-8" style={{ color: T4 }} />
             </div>
             <div className="text-[16px] font-bold" style={{ color: T2 }}>No assessments yet</div>
@@ -1046,9 +1046,9 @@ const PerformancePage = () => {
               const Icon = getSubIcon(s.name);
               const needsAttention = s.progress < 60;
               const fill = needsAttention
-                ? `linear-gradient(90deg, ${RED}, #FF6688)`
+                ? `linear-gradient(90deg, ${RED}, #FF5E55)`
                 : s.progress < 75
-                  ? `linear-gradient(90deg, ${ORANGE}, #FFAA33)`
+                  ? `linear-gradient(90deg, ${ORANGE}, #FF9500)`
                   : `linear-gradient(90deg, ${B1}, ${B4})`;
               return (
                 <div key={i}
@@ -1057,10 +1057,10 @@ const PerformancePage = () => {
                   aria-label={`Open ${s.name} performance detail`}
                   onClick={() => setSelectedSubject(s.name)}
                   onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setSelectedSubject(s.name); } }}
-                  className="bg-white rounded-[22px] px-5 py-5 relative overflow-hidden transition-all hover:-translate-y-0.5 hover:shadow-lg cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF]/40"
-                  style={{ boxShadow: SH, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                  className="bg-white rounded-[22px] px-5 py-5 relative overflow-hidden transition-all hover:-translate-y-0.5 hover:shadow-lg cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
+                  style={{ boxShadow: SH, border: "0.5px solid rgba(10,132,255,0.10)" }}>
                   <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-[10px]">
+                    <div className="flex items-center gap-[12px]">
                       <div className="w-10 h-10 rounded-[13px] flex items-center justify-center"
                         style={{ background: acc.icoBg, boxShadow: acc.icoShadow }}>
                         <Icon className="w-5 h-5 text-white" strokeWidth={2.2} />
@@ -1068,7 +1068,7 @@ const PerformancePage = () => {
                       <span className="text-[16px] font-bold" style={{ color: T1, letterSpacing: "-0.2px" }}>{s.name}</span>
                     </div>
                     <div className="w-8 h-8 rounded-[10px] flex items-center justify-center text-[13px] font-bold text-white"
-                      style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: "0 2px 8px rgba(0,85,255,0.30)" }}>
+                      style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: "0 2px 8px rgba(10,132,255,0.30)" }}>
                       {s.grade}
                     </div>
                   </div>
@@ -1081,19 +1081,19 @@ const PerformancePage = () => {
                       style={{ width: `${Math.max(s.progress, 3)}%`, background: fill }} />
                   </div>
                   {needsAttention ? (
-                    <div className="inline-flex items-center gap-[5px] px-3 py-1 rounded-full text-[10px] font-bold"
-                      style={{ background: "rgba(255,51,85,0.10)", color: RED, border: "0.5px solid rgba(255,51,85,0.22)" }}>
+                    <div className="inline-flex items-center gap-[4px] px-3 py-1 rounded-full text-[10px] font-bold"
+                      style={{ background: "rgba(255,59,48,0.10)", color: RED, border: "0.5px solid rgba(255,59,48,0.22)" }}>
                       <span className="w-[10px] h-[1.5px]" style={{ background: RED }} />
                       Needs Attention
                     </div>
                   ) : s.progress >= 75 ? (
-                    <div className="inline-flex items-center gap-[5px] px-3 py-1 rounded-full text-[10px] font-bold"
-                      style={{ background: GREEN_S, color: "#007830", border: `0.5px solid ${GREEN_B}` }}>
+                    <div className="inline-flex items-center gap-[4px] px-3 py-1 rounded-full text-[10px] font-bold"
+                      style={{ background: GREEN_S, color: "#248A3D", border: `0.5px solid ${GREEN_B}` }}>
                       ✓ On Track
                     </div>
                   ) : (
-                    <div className="inline-flex items-center gap-[5px] px-3 py-1 rounded-full text-[10px] font-bold"
-                      style={{ background: "rgba(255,136,0,0.12)", color: ORANGE, border: "0.5px solid rgba(255,136,0,0.25)" }}>
+                    <div className="inline-flex items-center gap-[4px] px-3 py-1 rounded-full text-[10px] font-bold"
+                      style={{ background: "rgba(255,149,0,0.12)", color: ORANGE, border: "0.5px solid rgba(255,149,0,0.25)" }}>
                       Stable
                     </div>
                   )}
@@ -1115,8 +1115,8 @@ const PerformancePage = () => {
                 aria-label="Open reports page for detailed trend"
                 onClick={() => navigate("/reports")}
                 onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/reports"); } }}
-                className="lg:col-span-3 bg-white rounded-[24px] px-6 pt-6 pb-5 cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF]/40"
-                style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                className="lg:col-span-3 bg-white rounded-[24px] px-6 pt-6 pb-5 cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
+                style={{ boxShadow: SH_LG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
                 <div className="text-[18px] font-bold" style={{ color: T1, letterSpacing: "-0.3px" }}>Performance Trend</div>
                 <div className="text-[12px] mt-1 mb-4" style={{ color: T3 }}>Score progression across months</div>
                 <div className="h-[240px] w-full">
@@ -1129,18 +1129,18 @@ const PerformancePage = () => {
                         </linearGradient>
                         <linearGradient id="perfLineBlueD" x1="0%" y1="0%" x2="100%" y2="0%">
                           <stop offset="0%" stopColor={B1} />
-                          <stop offset="100%" stopColor="#66BBFF" />
+                          <stop offset="100%" stopColor="#7CBBFF" />
                         </linearGradient>
                       </defs>
-                      <CartesianGrid strokeDasharray="0" vertical={false} stroke="rgba(0,85,255,0.07)" />
+                      <CartesianGrid strokeDasharray="0" vertical={false} stroke="rgba(10,132,255,0.07)" />
                       <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: T4, fontWeight: 600 }} />
                       <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: T4, fontWeight: 600 }} domain={[0, 100]} width={36} />
-                      <Tooltip contentStyle={{ borderRadius: 12, border: "0.5px solid rgba(0,85,255,0.15)", boxShadow: "0 4px 20px rgba(0,85,255,0.12)", fontSize: 12, padding: "8px 12px" }} />
+                      <Tooltip contentStyle={{ borderRadius: 12, border: "0.5px solid rgba(10,132,255,0.15)", boxShadow: "0 4px 20px rgba(10,132,255,0.12)", fontSize: 12, padding: "8px 12px" }} />
                       <Area type="monotone" dataKey="score" stroke="url(#perfLineBlueD)" strokeWidth={3} fill="url(#perfAreaBlueD)" dot={{ r: 5, strokeWidth: 2, stroke: "#fff", fill: B1 }} activeDot={{ r: 7, strokeWidth: 2 }} />
                     </AreaChart>
                   </ResponsiveContainer>
                 </div>
-                <div className="flex items-center justify-center gap-[6px] mt-2">
+                <div className="flex items-center justify-center gap-[8px] mt-2">
                   <span className="w-7 h-[3px] rounded-[2px]" style={{ background: B1 }} />
                   <span className="text-[12px] font-medium" style={{ color: T3 }}>Overall Average</span>
                 </div>
@@ -1158,7 +1158,7 @@ const PerformancePage = () => {
               onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/reports"); } }}
               className="lg:col-span-2 rounded-[24px] px-6 py-6 relative overflow-hidden cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
               style={{
-                background: "linear-gradient(140deg, #001888 0%, #0033CC 48%, #0055FF 100%)",
+                background: "linear-gradient(140deg, #0A84FF 0%, #0A84FF 48%, #0A84FF 100%)",
                 boxShadow: "0 8px 30px rgba(0,51,204,0.34), 0 0 0 0.5px rgba(255,255,255,0.14)",
                 border: "0.5px solid rgba(255,255,255,0.14)"
               }}>
@@ -1179,8 +1179,8 @@ const PerformancePage = () => {
                 <strong style={{ color: "#fff", fontWeight: 700 }}>{studentName}</strong>{" "}
                 {generateNarrative().replace(new RegExp(`^${studentName}\\s*`), "")}
               </p>
-              <div className="flex items-center gap-[6px] pt-3 relative z-10" style={{ borderTop: "0.5px solid rgba(255,255,255,0.12)" }}>
-                <div className="w-[6px] h-[6px] rounded-full" style={{ background: B4, boxShadow: "0 0 0 2px rgba(68,153,255,0.25)" }} />
+              <div className="flex items-center gap-[8px] pt-3 relative z-10" style={{ borderTop: "0.5px solid rgba(255,255,255,0.12)" }}>
+                <div className="w-[6px] h-[6px] rounded-full" style={{ background: B4, boxShadow: "0 0 0 2px rgba(124,187,255,0.25)" }} />
                 <span className="text-[10px] font-bold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.42)" }}>Generated from real-time assessment data</span>
               </div>
             </div>
@@ -1194,15 +1194,15 @@ const PerformancePage = () => {
             {/* Goal Setting AI */}
             {activeGoalSub && (
               <div className="bg-white rounded-[24px] p-6"
-                style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                style={{ boxShadow: SH_LG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
                 <div className="flex items-center gap-3 mb-5">
                   <div className="w-12 h-12 rounded-[14px] flex items-center justify-center shrink-0"
-                    style={{ background: `linear-gradient(135deg, ${ORANGE}, #FFAA33)`, boxShadow: "0 3px 12px rgba(255,136,0,0.30)" }}>
+                    style={{ background: `linear-gradient(135deg, ${ORANGE}, #FF9500)`, boxShadow: "0 3px 12px rgba(255,149,0,0.30)" }}>
                     <Target className="w-[22px] h-[22px] text-white" strokeWidth={2.2} />
                   </div>
                   <div>
                     <div className="text-[17px] font-bold" style={{ color: T1, letterSpacing: "-0.3px" }}>Goal Setting AI</div>
-                    <div className="text-[12px] mt-0.5" style={{ color: T3 }}>Set a target score and get a personalised plan</div>
+                    <div className="text-[12px] mt-1" style={{ color: T3 }}>Set a target score and get a personalised plan</div>
                   </div>
                 </div>
 
@@ -1210,9 +1210,9 @@ const PerformancePage = () => {
                 <select
                   value={goalSubject || subjects[0]?.name || ""}
                   onChange={e => setGoalSubject(e.target.value)}
-                  className="w-full py-3 px-[14px] rounded-[14px] text-[14px] font-bold mb-5 cursor-pointer appearance-none"
+                  className="w-full py-3 px-[16px] rounded-[14px] text-[14px] font-bold mb-5 cursor-pointer appearance-none"
                   style={{
-                    border: "0.5px solid rgba(0,85,255,0.16)",
+                    border: "0.5px solid rgba(10,132,255,0.16)",
                     background: `${BG} url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%230055FF' stroke-width='2.5' stroke-linecap='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") right 14px center / auto no-repeat`,
                     color: T1,
                     fontFamily: "inherit",
@@ -1222,7 +1222,7 @@ const PerformancePage = () => {
                   ))}
                 </select>
 
-                <div className="flex items-center justify-between mb-[10px]">
+                <div className="flex items-center justify-between mb-[12px]">
                   <span className="text-[11px] font-bold uppercase tracking-[0.08em]" style={{ color: T4 }}>Target Score</span>
                   <span className="text-[18px] font-bold" style={{ color: ORANGE }}>{goalTarget}%</span>
                 </div>
@@ -1237,22 +1237,22 @@ const PerformancePage = () => {
                     background: `linear-gradient(90deg, ${ORANGE} ${((goalTarget - 50) / 50) * 100}%, ${BG2} ${((goalTarget - 50) / 50) * 100}%)`,
                     outline: "none",
                   }} />
-                <div className="flex justify-between mt-[6px]">
+                <div className="flex justify-between mt-[8px]">
                   <span className="text-[10px] font-semibold" style={{ color: T4 }}>50%</span>
                   <span className="text-[10px] font-semibold" style={{ color: T4 }}>75%</span>
                   <span className="text-[10px] font-semibold" style={{ color: T4 }}>100%</span>
                 </div>
 
                 {goalInsight && (
-                  <div className="mt-5 rounded-[16px] px-4 py-[14px]"
+                  <div className="mt-5 rounded-[16px] px-4 py-[16px]"
                     style={{
-                      background: goalGap > 25 ? "rgba(255,51,85,0.06)" : goalGap > 15 ? "rgba(255,136,0,0.07)" : "rgba(0,85,255,0.05)",
-                      border: `0.5px solid ${goalGap > 25 ? "rgba(255,51,85,0.18)" : goalGap > 15 ? "rgba(255,136,0,0.22)" : "rgba(0,85,255,0.18)"}`
+                      background: goalGap > 25 ? "rgba(255,59,48,0.06)" : goalGap > 15 ? "rgba(255,149,0,0.07)" : "rgba(10,132,255,0.05)",
+                      border: `0.5px solid ${goalGap > 25 ? "rgba(255,59,48,0.18)" : goalGap > 15 ? "rgba(255,149,0,0.22)" : "rgba(10,132,255,0.18)"}`
                     }}>
                     <div className="text-[15px] font-bold mb-1" style={{ color: goalGap > 25 ? RED : goalGap > 15 ? ORANGE : B1, letterSpacing: "-0.2px" }}>
                       {goalInsight.line1}
                     </div>
-                    <div className="text-[13px] leading-[1.6] font-normal" style={{ color: goalGap > 25 ? "#AA2233" : goalGap > 15 ? "#AA5500" : T3 }}>
+                    <div className="text-[13px] leading-[1.6] font-normal" style={{ color: goalGap > 25 ? "#86170E" : goalGap > 15 ? "#86310C" : T3 }}>
                       {goalInsight.line2}
                     </div>
                   </div>
@@ -1262,7 +1262,7 @@ const PerformancePage = () => {
 
             {/* Benchmark Insights */}
             <div className="bg-white rounded-[24px] p-6"
-              style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+              style={{ boxShadow: SH_LG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
               <div className="flex items-center gap-3 mb-5">
                 <div className="w-12 h-12 rounded-[14px] flex items-center justify-center shrink-0"
                   style={{ background: GREEN_S, border: `0.5px solid ${GREEN_B}` }}>
@@ -1270,7 +1270,7 @@ const PerformancePage = () => {
                 </div>
                 <div>
                   <div className="text-[17px] font-bold" style={{ color: T1, letterSpacing: "-0.3px" }}>Benchmark Insights</div>
-                  <div className="text-[12px] mt-0.5" style={{ color: T3 }}>Where {studentName} stands vs academic benchmarks</div>
+                  <div className="text-[12px] mt-1" style={{ color: T3 }}>Where {studentName} stands vs academic benchmarks</div>
                 </div>
               </div>
 
@@ -1294,9 +1294,9 @@ const PerformancePage = () => {
                         aria-label={`Open ${s.name} performance detail`}
                         onClick={() => setSelectedSubject(s.name)}
                         onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setSelectedSubject(s.name); } }}
-                        className="flex items-center justify-between px-4 py-3 rounded-[16px] cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF]/40"
-                        style={{ background: BG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
-                        <div className="flex items-center gap-[10px]">
+                        className="flex items-center justify-between px-4 py-3 rounded-[16px] cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
+                        style={{ background: BG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
+                        <div className="flex items-center gap-[12px]">
                           <div className="w-10 h-10 rounded-[13px] flex items-center justify-center shrink-0"
                             style={{ background: acc.icoBg, boxShadow: acc.icoShadow }}>
                             <Icon className="w-[18px] h-[18px] text-white" strokeWidth={2.2} />
@@ -1305,13 +1305,13 @@ const PerformancePage = () => {
                             <div className="text-[14px] font-bold" style={{ color: T1, letterSpacing: "-0.2px" }}>{s.name}</div>
                             <div className="flex items-center gap-2 mt-1">
                               {isOnTrack ? (
-                                <div className="px-[11px] py-[3px] rounded-full text-[10px] font-bold"
-                                  style={{ background: GREEN_S, color: "#007830", border: `0.5px solid ${GREEN_B}` }}>
+                                <div className="px-[12px] py-[4px] rounded-full text-[10px] font-bold"
+                                  style={{ background: GREEN_S, color: "#248A3D", border: `0.5px solid ${GREEN_B}` }}>
                                   {tier.label}
                                 </div>
                               ) : (
-                                <div className="px-[11px] py-[3px] rounded-full text-[10px] font-bold"
-                                  style={{ background: "rgba(255,51,85,0.10)", color: RED, border: "0.5px solid rgba(255,51,85,0.20)" }}>
+                                <div className="px-[12px] py-[4px] rounded-full text-[10px] font-bold"
+                                  style={{ background: "rgba(255,59,48,0.10)", color: RED, border: "0.5px solid rgba(255,59,48,0.20)" }}>
                                   Needs Work
                                 </div>
                               )}
@@ -1319,7 +1319,7 @@ const PerformancePage = () => {
                             </div>
                           </div>
                         </div>
-                        <div className="flex items-end gap-[3px] h-10">
+                        <div className="flex items-end gap-[4px] h-10">
                           {miniScores.map((val: number, k: number) => (
                             <div key={k}
                               style={{
@@ -1350,9 +1350,9 @@ const PerformancePage = () => {
                   );
                 })}
 
-                <div className="flex items-start gap-[7px] pt-3" style={{ borderTop: `0.5px solid ${SEP}` }}>
-                  <div className="w-4 h-4 rounded-[4px] flex items-center justify-center shrink-0 mt-0.5"
-                    style={{ background: "rgba(0,85,255,0.10)", border: "0.5px solid rgba(0,85,255,0.16)" }}>
+                <div className="flex items-start gap-[8px] pt-3" style={{ borderTop: `0.5px solid ${SEP}` }}>
+                  <div className="w-4 h-4 rounded-[4px] flex items-center justify-center shrink-0 mt-1"
+                    style={{ background: "rgba(10,132,255,0.10)", border: "0.5px solid rgba(10,132,255,0.16)" }}>
                     <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke={B1} strokeWidth={2.5} strokeLinecap="round"><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></svg>
                   </div>
                   <span className="text-[11px] italic leading-[1.6]" style={{ color: T4 }}>
