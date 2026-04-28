@@ -190,7 +190,7 @@ const TimetablePage = () => {
   if (isMobile) {
     const B1 = "#0A84FF";
     const B2 = "#3395FF";
-    const BG = "#F5F5F7";
+    const BG = "#EEF4FF";
     const BG2 = "#EBEBF0";
     const T1 = "#1D1D1F";
     const T2 = "#3A3A3C";
@@ -456,7 +456,7 @@ const TimetablePage = () => {
      ═══════════════════════════════════════════════════════════════ */
   const B1 = "#0A84FF";
   const B2 = "#3395FF";
-  const BG = "#F5F5F7";
+  const BG = "#EEF4FF";
   const BG2 = "#EBEBF0";
   const T1 = "#1D1D1F";
   const T2 = "#3A3A3C";

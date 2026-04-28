@@ -626,7 +626,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)", "hint2", "hint3", "hint4", "hint5
      ═══════════════════════════════════════════════════════════════ */
   if (isMobile) {
     const B1 = "#0A84FF", B2 = "#3395FF", B3 = "#5BA9FF";
-    const BG = "#F5F5F7", BG2 = "#EBEBF0";
+    const BG = "#EEF4FF", BG2 = "#EBEBF0";
     const GREEN = "#34C759", GREEN2 = "#248A3D";
     const ORANGE = "#FF9500";
     const RED = "#FF3B30";
@@ -1282,7 +1282,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)", "hint2", "hint3", "hint4", "hint5
 
   // ── Render (Desktop) — Bright Blue Apple UI ──────────────────────────────
   const B1 = "#0A84FF", B2 = "#3395FF", B3 = "#5BA9FF";
-  const BG = "#F5F5F7", BG2 = "#EBEBF0";
+  const BG = "#EEF4FF", BG2 = "#EBEBF0";
   const GREEN = "#34C759", GREEN2 = "#248A3D";
   const ORANGE = "#FF9500";
   const RED = "#FF3B30";
