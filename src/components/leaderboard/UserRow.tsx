@@ -32,7 +32,7 @@ export function UserRow({ user }: UserRowProps) {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          fontWeight: 600,
+          fontWeight: 400,
           fontSize: 14,
           flexShrink: 0,
           letterSpacing: '-0.4px',
@@ -55,7 +55,7 @@ export function UserRow({ user }: UserRowProps) {
         <p
           style={{
             fontSize: 15,
-            fontWeight: 600,
+            fontWeight: 400,
             margin: 0,
             color: T.T1,
             letterSpacing: '-0.3px',
@@ -66,7 +66,7 @@ export function UserRow({ user }: UserRowProps) {
         <span
           style={{
             fontSize: 9,
-            fontWeight: 600,
+            fontWeight: 400,
             letterSpacing: '0.1em',
             padding: '3px 8px',
             borderRadius: 999,
@@ -81,7 +81,7 @@ export function UserRow({ user }: UserRowProps) {
       <span
         style={{
           fontSize: 19,
-          fontWeight: 600,
+          fontWeight: 400,
           color: T.B1,
           letterSpacing: '-0.6px',
         }}

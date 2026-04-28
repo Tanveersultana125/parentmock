@@ -443,11 +443,11 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
     return (
       <>
         <div className="animate-in fade-in duration-500 -mx-3 -mt-3 md:mx-0 md:mt-0"
-          style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif", background: BG, minHeight: "100vh" }}>
+          style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif", background: BG, minHeight: "100vh" }}>
 
           {/* ── Page Head ── */}
           <div className="px-[24px] pt-[16px]">
-            <div className="text-[24px] font-semibold mb-[4px]" style={{ color: T1, letterSpacing: "-0.6px" }}>Assignments &amp; Coursework</div>
+            <div className="text-[24px] font-normal mb-[4px]" style={{ color: T1, letterSpacing: "-0.6px" }}>Assignments &amp; Coursework</div>
             <div className="text-[12px] font-normal" style={{ color: T3 }}>Manage submissions and track academic tasks</div>
           </div>
 
@@ -470,8 +470,8 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                 <div className="absolute pointer-events-none" style={{ bottom: 8, right: 8 }}>
                   <DecorIcon style={{ width: 52, height: 52, color, opacity: 0.20, strokeWidth: 1.6 }} />
                 </div>
-                <div className="text-[12px] font-semibold uppercase tracking-[0.10em] mb-[12px] relative" style={{ color: T4 }}>{label}</div>
-                <div className="text-[28px] font-semibold leading-none relative" style={{ color, letterSpacing: "-0.8px" }}>{value}</div>
+                <div className="text-[12px] font-normal uppercase tracking-[0.10em] mb-[12px] relative" style={{ color: T4 }}>{label}</div>
+                <div className="text-[28px] font-normal leading-none relative" style={{ color, letterSpacing: "-0.8px" }}>{value}</div>
               </div>
             ))}
           </div>
@@ -489,7 +489,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                 return (
                   <button key={label}
                     onClick={() => setActiveTab(idx)}
-                    className="flex-1 px-[12px] py-[8px] rounded-[12px] text-[12px] font-semibold tracking-[0.02em] flex items-center justify-center gap-[4px] transition-all"
+                    className="flex-1 px-[12px] py-[8px] rounded-[12px] text-[12px] font-normal tracking-[0.02em] flex items-center justify-center gap-[4px] transition-all"
                     style={{
                       background: isAct ? `linear-gradient(135deg, ${B1}, ${B2})` : "transparent",
                       color: isAct ? "#fff" : T4,
@@ -498,7 +498,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                     }}>
                     {label}
                     <span
-                      className="min-w-[18px] h-[18px] rounded-[6px] flex items-center justify-center px-[4px] text-[12px] font-semibold"
+                      className="min-w-[18px] h-[18px] rounded-[6px] flex items-center justify-center px-[4px] text-[12px] font-normal"
                       style={{
                         background: isAct ? "rgba(255,255,255,0.22)" : over && count > 0 ? "rgba(255,59,48,0.10)" : BG2,
                         color: isAct ? "#fff" : over && count > 0 ? RED : T3,
@@ -515,7 +515,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
           {loading ? (
             <div className="flex flex-col items-center gap-3 py-10">
               <Loader2 className="w-8 h-8 animate-spin" style={{ color: B1 }} />
-              <p className="text-xs font-medium" style={{ color: T4 }}>Loading assignments…</p>
+              <p className="text-xs font-normal" style={{ color: T4 }}>Loading assignments…</p>
             </div>
           ) : mobileList.length === 0 ? (
             <div className="mx-5 mt-[16px] bg-white rounded-[24px] py-8 px-5 flex flex-col items-center text-center relative overflow-hidden"
@@ -531,7 +531,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                 }}>
                 <FileCheck className="w-8 h-8" style={{ color: "rgba(255,255,255,0.95)" }} strokeWidth={2} />
               </div>
-              <div className="text-[18px] font-semibold mb-2 relative z-10" style={{ color: T1, letterSpacing: "-0.4px" }}>
+              <div className="text-[18px] font-normal mb-2 relative z-10" style={{ color: T1, letterSpacing: "-0.4px" }}>
                 {activeTab === 0 ? "All Caught Up! 🎉" :
                  activeTab === 1 ? "Nothing submitted yet" :
                                    "No overdue items ✓"}
@@ -571,16 +571,16 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                       <FileText className="w-[18px] h-[18px] text-white" strokeWidth={2.2} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="text-[14px] font-semibold mb-1 truncate" style={{ color: T1, letterSpacing: "-0.2px" }}>{a.title || "Assignment"}</div>
+                      <div className="text-[14px] font-normal mb-1 truncate" style={{ color: T1, letterSpacing: "-0.2px" }}>{a.title || "Assignment"}</div>
                       <div className="flex items-center gap-2 flex-wrap">
                         {a.teacherName && (
-                          <div className="flex items-center gap-[4px] text-[12px] font-medium" style={{ color: T3 }}>
+                          <div className="flex items-center gap-[4px] text-[12px] font-normal" style={{ color: T3 }}>
                             <User className="w-[10px] h-[10px]" strokeWidth={2.5} />
                             <span className="truncate max-w-[100px]">{a.teacherName}</span>
                           </div>
                         )}
                         {d && (
-                          <div className="flex items-center gap-[4px] text-[12px] font-medium" style={{ color: T3 }}>
+                          <div className="flex items-center gap-[4px] text-[12px] font-normal" style={{ color: T3 }}>
                             <Clock className="w-[10px] h-[10px]" strokeWidth={2.5} />
                             {formatDueShort(d)}
                           </div>
@@ -597,7 +597,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                         <Lightbulb className="w-[15px] h-[15px]" style={{ color: ORANGE }} strokeWidth={2.2} />
                       </button>
                     )}
-                    <div className="px-[12px] py-1 rounded-full text-[12px] font-semibold shrink-0 tracking-[0.02em]"
+                    <div className="px-[12px] py-1 rounded-full text-[12px] font-normal shrink-0 tracking-[0.02em]"
                       style={{ background: tag.bg, color: tag.color, border: `0.5px solid ${tag.border}` }}>
                       {tag.label}
                     </div>
@@ -612,8 +612,8 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
             <div className="mx-5 mt-3 bg-white rounded-[24px] px-5 py-[16px] transition-transform"
               style={{ boxShadow: SH_LG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
               <div className="flex items-center justify-between mb-[16px]">
-                <div className="text-[16px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>Upcoming Deadlines</div>
-                <button onClick={() => setActiveTab(0)} className="text-[12px] font-semibold" style={{ color: B1 }}>See all</button>
+                <div className="text-[16px] font-normal" style={{ color: T1, letterSpacing: "-0.3px" }}>Upcoming Deadlines</div>
+                <button onClick={() => setActiveTab(0)} className="text-[12px] font-normal" style={{ color: B1 }}>See all</button>
               </div>
               {upcoming.map((x: any, i: number, arr: any[]) => {
                 const a = x.a;
@@ -634,16 +634,16 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                         background: urgent ? "linear-gradient(135deg, #FF9500, #FF9500)" : `linear-gradient(135deg, ${B1}, ${B2})`,
                         boxShadow: urgent ? "0 3px 10px rgba(255,102,0,0.24)" : "0 3px 10px rgba(10,132,255,0.28)"
                       }}>
-                      <div className="text-[16px] font-semibold text-white leading-none">{d.getDate()}</div>
-                      <div className="text-[12px] font-semibold uppercase tracking-[0.08em]" style={{ color: "rgba(255,255,255,0.65)" }}>{MONTHS[d.getMonth()]}</div>
+                      <div className="text-[16px] font-normal text-white leading-none">{d.getDate()}</div>
+                      <div className="text-[12px] font-normal uppercase tracking-[0.08em]" style={{ color: "rgba(255,255,255,0.65)" }}>{MONTHS[d.getMonth()]}</div>
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="text-[13px] font-semibold truncate" style={{ color: T1, letterSpacing: "-0.2px" }}>{a.title || "Assignment"}</div>
+                      <div className="text-[13px] font-normal truncate" style={{ color: T1, letterSpacing: "-0.2px" }}>{a.title || "Assignment"}</div>
                       <div className="text-[12px] mt-1 truncate" style={{ color: T3 }}>
                         {a.teacherName ? a.teacherName : "Teacher"}{a.description ? ` · ${a.description.split(".")[0].slice(0, 40)}` : ""}
                       </div>
                     </div>
-                    <div className="px-[12px] py-1 rounded-full text-[12px] font-semibold shrink-0"
+                    <div className="px-[12px] py-1 rounded-full text-[12px] font-normal shrink-0"
                       style={{
                         background: urgent ? "rgba(255,149,0,0.10)" : "rgba(10,132,255,0.10)",
                         color: urgent ? "#86310C" : B1,
@@ -675,20 +675,20 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
               backgroundImage: "linear-gradient(rgba(255,255,255,0.014) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.014) 1px, transparent 1px)",
               backgroundSize: "24px 24px"
             }} />
-            <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-2 relative z-10" style={{ color: "rgba(255,255,255,0.50)" }}>Term Summary</div>
-            <div className="text-[18px] font-semibold mb-[16px] relative z-10 text-white" style={{ letterSpacing: "-0.3px" }}>Assignment Overview</div>
+            <div className="text-[12px] font-normal uppercase tracking-[0.12em] mb-2 relative z-10" style={{ color: "rgba(255,255,255,0.50)" }}>Term Summary</div>
+            <div className="text-[18px] font-normal mb-[16px] relative z-10 text-white" style={{ letterSpacing: "-0.3px" }}>Assignment Overview</div>
             <div className="grid grid-cols-3 rounded-[16px] overflow-hidden relative z-10" style={{ gap: "1px", background: "rgba(255,255,255,0.12)" }}>
               <div className="py-[12px] px-[16px] text-center" style={{ background: "rgba(255,255,255,0.08)" }}>
-                <div className="text-[22px] font-semibold text-white leading-none mb-1" style={{ letterSpacing: "-0.6px" }}>{pendingCount}</div>
-                <div className="text-[12px] font-semibold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.42)" }}>Pending</div>
+                <div className="text-[22px] font-normal text-white leading-none mb-1" style={{ letterSpacing: "-0.6px" }}>{pendingCount}</div>
+                <div className="text-[12px] font-normal uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.42)" }}>Pending</div>
               </div>
               <div className="py-[12px] px-[16px] text-center" style={{ background: "rgba(255,255,255,0.08)" }}>
-                <div className="text-[22px] font-semibold text-white leading-none mb-1" style={{ letterSpacing: "-0.6px" }}>{completedCount}</div>
-                <div className="text-[12px] font-semibold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.42)" }}>Done</div>
+                <div className="text-[22px] font-normal text-white leading-none mb-1" style={{ letterSpacing: "-0.6px" }}>{completedCount}</div>
+                <div className="text-[12px] font-normal uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.42)" }}>Done</div>
               </div>
               <div className="py-[12px] px-[16px] text-center" style={{ background: "rgba(255,255,255,0.08)" }}>
-                <div className="text-[22px] font-semibold text-white leading-none mb-1" style={{ letterSpacing: "-0.6px" }}>{overdueCount}</div>
-                <div className="text-[12px] font-semibold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.42)" }}>Overdue</div>
+                <div className="text-[22px] font-normal text-white leading-none mb-1" style={{ letterSpacing: "-0.6px" }}>{overdueCount}</div>
+                <div className="text-[12px] font-normal uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.42)" }}>Overdue</div>
               </div>
             </div>
           </div>
@@ -702,30 +702,30 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
             <div className="h-full flex flex-col">
               <div className="p-8 pb-6" style={{ background: "linear-gradient(135deg, #FF9500 0%, #f97316 100%)" }}>
                 <SheetHeader className="text-left">
-                  <SheetTitle className="text-white text-2xl font-semibold tracking-tight leading-none mb-1">AI Hints System</SheetTitle>
-                  <SheetDescription className="text-amber-100 font-semibold text-xs">Stuck? Get step-by-step clues — not the answer!</SheetDescription>
+                  <SheetTitle className="text-white text-2xl font-normal tracking-tight leading-none mb-1">AI Hints System</SheetTitle>
+                  <SheetDescription className="text-amber-100 font-normal text-xs">Stuck? Get step-by-step clues — not the answer!</SheetDescription>
                 </SheetHeader>
                 <div className="mt-4 bg-white/20 rounded-2xl px-4 py-3">
-                  <p className="text-[12px] font-semibold text-white/70 uppercase tracking-widest mb-1">Assignment</p>
-                  <p className="text-sm font-semibold text-white leading-tight">{hintsTask?.title}</p>
+                  <p className="text-[12px] font-normal text-white/70 uppercase tracking-widest mb-1">Assignment</p>
+                  <p className="text-sm font-normal text-white leading-tight">{hintsTask?.title}</p>
                 </div>
               </div>
 
               <div className="flex-1 overflow-y-auto p-6 space-y-5">
                 <div>
-                  <label className="text-[12px] font-semibold text-slate-400 uppercase tracking-widest block mb-2">What are you stuck on?</label>
+                  <label className="text-[12px] font-normal text-slate-400 uppercase tracking-widest block mb-2">What are you stuck on?</label>
                   <textarea
                     value={hintDoubt}
                     onChange={e => setHintDoubt(e.target.value)}
                     onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleGetHints(); } }}
                     rows={3}
                     placeholder="Describe the part you don't understand... e.g. 'I don't know how to start question 2'"
-                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-amber-300 resize-none"
+                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-normal text-slate-700 focus:outline-none focus:ring-2 focus:ring-amber-300 resize-none"
                   />
                   <button
                     onClick={handleGetHints}
                     disabled={generatingHints || !hintDoubt.trim()}
-                    className="mt-3 w-full h-11 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-semibold flex items-center justify-center gap-2 disabled:opacity-50 active:scale-95 transition-all"
+                    className="mt-3 w-full h-11 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-normal flex items-center justify-center gap-2 disabled:opacity-50 active:scale-95 transition-all"
                   >
                     {generatingHints ? <Loader2 className="w-4 h-4 animate-spin" /> : <Sparkles className="w-4 h-4" />}
                     {generatingHints ? "Thinking of hints..." : "Get Hints"}
@@ -735,7 +735,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                 {generatingHints && (
                   <div className="flex items-center gap-3 p-4 bg-amber-50 rounded-2xl border border-amber-100">
                     <Loader2 className="w-4 h-4 text-amber-500 animate-spin flex-shrink-0" />
-                    <p className="text-xs text-amber-700 font-semibold">Preparing your hints...</p>
+                    <p className="text-xs text-amber-700 font-normal">Preparing your hints...</p>
                   </div>
                 )}
 
@@ -743,12 +743,12 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                   <div className="space-y-3">
                     <div className="flex items-center gap-2">
                       <Lightbulb className="w-4 h-4 text-amber-500" />
-                      <p className="text-xs font-semibold text-slate-600">Hints revealed: {Math.min(hintIndex + 1, hints.length)} / {hints.length}</p>
+                      <p className="text-xs font-normal text-slate-600">Hints revealed: {Math.min(hintIndex + 1, hints.length)} / {hints.length}</p>
                     </div>
                     {hints.slice(0, hintIndex + 1).map((hint, i) => (
                       <div key={i} className={`rounded-2xl p-4 border ${i === hintIndex ? "bg-amber-50 border-amber-200" : "bg-slate-50 border-slate-100"}`}>
                         <div className="flex items-start gap-3">
-                          <div className={`w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-[12px] font-semibold ${i === hintIndex ? "bg-amber-500 text-white" : "bg-slate-200 text-slate-500"}`}>
+                          <div className={`w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-[12px] font-normal ${i === hintIndex ? "bg-amber-500 text-white" : "bg-slate-200 text-slate-500"}`}>
                             {i + 1}
                           </div>
                           <p className="text-sm text-slate-700 leading-relaxed">{hint}</p>
@@ -758,14 +758,14 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                     {hintIndex < hints.length - 1 ? (
                       <button
                         onClick={() => setHintIndex(prev => prev + 1)}
-                        className="w-full h-11 rounded-2xl border-2 border-dashed border-amber-200 text-amber-600 text-sm font-semibold flex items-center justify-center gap-2 hover:bg-amber-50 transition-all active:scale-95"
+                        className="w-full h-11 rounded-2xl border-2 border-dashed border-amber-200 text-amber-600 text-sm font-normal flex items-center justify-center gap-2 hover:bg-amber-50 transition-all active:scale-95"
                       >
                         <ChevronDown className="w-4 h-4" /> Next Hint
                       </button>
                     ) : (
                       <div className="rounded-2xl bg-emerald-50 border border-emerald-100 p-4 text-center">
-                        <p className="text-sm font-semibold text-emerald-700">All hints shown! Now try solving it yourself.</p>
-                        <button onClick={() => { setHints([]); setHintIndex(0); setHintDoubt(""); }} className="mt-2 text-xs text-emerald-600 font-semibold underline">Ask about something else</button>
+                        <p className="text-sm font-normal text-emerald-700">All hints shown! Now try solving it yourself.</p>
+                        <button onClick={() => { setHints([]); setHintIndex(0); setHintDoubt(""); }} className="mt-2 text-xs text-emerald-600 font-normal underline">Ask about something else</button>
                       </div>
                     )}
                   </div>
@@ -778,7 +778,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
         {/* ── SUBMISSION SHEET (Bright Blue Apple UI) ── */}
         <Sheet open={isSubmitOpen} onOpenChange={setIsSubmitOpen}>
           <SheetContent side="right" className="w-full sm:max-w-xl p-0 border-0" style={{ background: BG }}>
-            <div className="h-full flex flex-col" style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif" }}>
+            <div className="h-full flex flex-col" style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif" }}>
               {/* Hero header — dark navy gradient */}
               <div className="px-6 pt-8 pb-6 text-white text-left relative overflow-hidden"
                 style={{ background: "linear-gradient(140deg, #0A84FF 0%, #0A84FF 48%, #0A84FF 100%)" }}>
@@ -789,10 +789,10 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                   backgroundSize: "24px 24px"
                 }} />
                 <SheetHeader className="text-left relative z-10">
-                  <SheetTitle className="text-white text-[28px] font-semibold tracking-tight leading-none mb-2" style={{ letterSpacing: "-0.6px" }}>
+                  <SheetTitle className="text-white text-[28px] font-normal tracking-tight leading-none mb-2" style={{ letterSpacing: "-0.6px" }}>
                     Submit Assignment
                   </SheetTitle>
-                  <SheetDescription className="font-semibold uppercase tracking-[0.10em] text-[12px]" style={{ color: "rgba(255,255,255,0.55)" }}>
+                  <SheetDescription className="font-normal uppercase tracking-[0.10em] text-[12px]" style={{ color: "rgba(255,255,255,0.55)" }}>
                     ID: {studentData?.id?.substring(0, 10)}
                   </SheetDescription>
                 </SheetHeader>
@@ -802,13 +802,13 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                 {/* Target task card */}
                 <div className="bg-white rounded-[22px] px-5 py-[16px]"
                   style={{ boxShadow: SH, border: "0.5px solid rgba(10,132,255,0.10)" }}>
-                  <p className="text-[12px] font-semibold uppercase tracking-[0.10em] mb-2" style={{ color: T4 }}>Target Task</p>
-                  <h4 className="text-[18px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>{selectedTask?.title}</h4>
+                  <p className="text-[12px] font-normal uppercase tracking-[0.10em] mb-2" style={{ color: T4 }}>Target Task</p>
+                  <h4 className="text-[18px] font-normal" style={{ color: T1, letterSpacing: "-0.3px" }}>{selectedTask?.title}</h4>
                 </div>
 
                 {/* File upload */}
                 <div className="space-y-3 text-left">
-                  <label className="text-[12px] font-semibold uppercase tracking-[0.10em] ml-1 block" style={{ color: T4 }}>
+                  <label className="text-[12px] font-normal uppercase tracking-[0.10em] ml-1 block" style={{ color: T4 }}>
                     Academic Artifact (PDF/JPG)
                   </label>
                   <div
@@ -832,7 +832,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                           style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: "0 2px 8px rgba(10,132,255,0.30)" }}>
                           <FileText className="w-5 h-5 text-white" />
                         </div>
-                        <p className="text-[13px] font-semibold flex-1 truncate text-left" style={{ color: T1 }}>{uploadFile.name}</p>
+                        <p className="text-[13px] font-normal flex-1 truncate text-left" style={{ color: T1 }}>{uploadFile.name}</p>
                         <button onClick={(e) => { e.stopPropagation(); setUploadFile(null); }} className="p-2" style={{ color: RED }} aria-label="Remove file">
                           <X className="w-4 h-4" />
                         </button>
@@ -843,7 +843,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                           style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: "0 3px 12px rgba(10,132,255,0.32)" }}>
                           <Upload className="w-6 h-6 text-white" strokeWidth={2.2} />
                         </div>
-                        <p className="text-[14px] font-semibold" style={{ color: T2, letterSpacing: "-0.2px" }}>Tap to choose file</p>
+                        <p className="text-[14px] font-normal" style={{ color: T2, letterSpacing: "-0.2px" }}>Tap to choose file</p>
                         <p className="text-[12px]" style={{ color: T3 }}>PDF, JPG, PNG, DOC up to 10 MB</p>
                       </div>
                     )}
@@ -857,27 +857,27 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                     <div className="px-5 py-3 flex items-center gap-2 relative overflow-hidden"
                       style={{ background: "linear-gradient(135deg, #0A84FF 0%, #0A84FF 50%, #0A84FF 100%)" }}>
                       <Sparkles className="w-4 h-4 text-white relative z-10" />
-                      <span className="text-[12px] font-semibold text-white uppercase tracking-[0.12em] relative z-10">AI Pre-Submission Feedback</span>
+                      <span className="text-[12px] font-normal text-white uppercase tracking-[0.12em] relative z-10">AI Pre-Submission Feedback</span>
                     </div>
                     {generatingFeedback ? (
                       <div className="p-5 flex items-center gap-3 bg-white">
                         <Loader2 className="w-4 h-4 animate-spin flex-shrink-0" style={{ color: B1 }} />
-                        <p className="text-[12px] font-semibold" style={{ color: T2 }}>Analysing your submission...</p>
+                        <p className="text-[12px] font-normal" style={{ color: T2 }}>Analysing your submission...</p>
                       </div>
                     ) : instantFeedback?.error ? (
                       <div className="p-5 flex items-start gap-3 bg-white">
                         <Sparkles className="w-4 h-4 flex-shrink-0 mt-1" style={{ color: RED }} />
-                        <p className="text-[12px] font-semibold" style={{ color: RED }}>{instantFeedback.error}</p>
+                        <p className="text-[12px] font-normal" style={{ color: RED }}>{instantFeedback.error}</p>
                       </div>
                     ) : instantFeedback && (
                       <div className="p-5 space-y-4 bg-white">
                         <div className="flex items-center gap-3">
                           <span className="text-2xl">{instantFeedback.emoji || "✨"}</span>
-                          <p className="text-[14px] font-semibold" style={{ color: T1, letterSpacing: "-0.2px" }}>{instantFeedback.overall}</p>
+                          <p className="text-[14px] font-normal" style={{ color: T1, letterSpacing: "-0.2px" }}>{instantFeedback.overall}</p>
                         </div>
                         <div className="grid grid-cols-1 gap-3">
                           <div className="rounded-[16px] p-4" style={{ background: "rgba(52,199,89,0.08)", border: "0.5px solid rgba(52,199,89,0.20)" }}>
-                            <p className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-2" style={{ color: "#248A3D" }}>Strengths</p>
+                            <p className="text-[12px] font-normal uppercase tracking-[0.12em] mb-2" style={{ color: "#248A3D" }}>Strengths</p>
                             {(instantFeedback.strengths || []).map((s: string, i: number) => (
                               <div key={i} className="flex items-start gap-2 mb-1">
                                 <CheckCircle2 className="w-3.5 h-3.5 flex-shrink-0 mt-1" style={{ color: GREEN }} />
@@ -886,7 +886,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                             ))}
                           </div>
                           <div className="rounded-[16px] p-4" style={{ background: "rgba(255,149,0,0.08)", border: "0.5px solid rgba(255,149,0,0.22)" }}>
-                            <p className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-2" style={{ color: "#86310C" }}>Room to Improve</p>
+                            <p className="text-[12px] font-normal uppercase tracking-[0.12em] mb-2" style={{ color: "#86310C" }}>Room to Improve</p>
                             {(instantFeedback.improvements || []).map((s: string, i: number) => (
                               <div key={i} className="flex items-start gap-2 mb-1">
                                 <ChevronDown className="w-3.5 h-3.5 flex-shrink-0 mt-1" style={{ color: ORANGE }} />
@@ -908,14 +908,14 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
 
                 {/* Teacher notes */}
                 <div className="space-y-3 text-left">
-                  <label className="text-[12px] font-semibold uppercase tracking-[0.10em] ml-1 block" style={{ color: T4 }}>
+                  <label className="text-[12px] font-normal uppercase tracking-[0.10em] ml-1 block" style={{ color: T4 }}>
                     Teacher Notes (Optional)
                   </label>
                   <textarea
                     rows={4}
                     value={studentNote}
                     onChange={(e) => setStudentNote(e.target.value)}
-                    className="w-full p-4 rounded-[18px] text-[13px] font-medium outline-none transition-all resize-none focus:ring-2 focus:ring-[#0A84FF]/30"
+                    className="w-full p-4 rounded-[18px] text-[13px] font-normal outline-none transition-all resize-none focus:ring-2 focus:ring-[#0A84FF]/30"
                     style={{
                       background: "white",
                       color: T1,
@@ -932,7 +932,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                 <button
                   onClick={handleOfficialSubmission}
                   disabled={submittingFile || !uploadFile}
-                  className="w-full py-[16px] rounded-[20px] text-[13px] font-semibold uppercase tracking-[0.16em] transition-all active:scale-[0.97] disabled:opacity-40 flex items-center justify-center gap-3 text-white relative overflow-hidden">
+                  className="w-full py-[16px] rounded-[20px] text-[13px] font-normal uppercase tracking-[0.16em] transition-all active:scale-[0.97] disabled:opacity-40 flex items-center justify-center gap-3 text-white relative overflow-hidden">
                   <span className="absolute inset-0" style={{
                     background: "linear-gradient(135deg, #0A84FF 0%, #0A84FF 50%, #0A84FF 100%)",
                     boxShadow: "0 6px 22px rgba(10,132,255,0.42), 0 2px 6px rgba(10,132,255,0.22)"
@@ -1019,24 +1019,24 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
 
   return (
     <div className="animate-in fade-in duration-500 -m-4 sm:-m-6 md:-m-8 min-h-[calc(100vh-64px)]"
-      style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif", background: BG }}>
+      style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif", background: BG }}>
       <div className="w-full px-6 pt-8 pb-10">
 
         {/* ── Toolbar ── */}
         <div className="flex items-center justify-between mb-6">
           <div>
-            <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-1 flex items-center gap-[8px]" style={{ color: T4 }}>
+            <div className="text-[12px] font-normal uppercase tracking-[0.12em] mb-1 flex items-center gap-[8px]" style={{ color: T4 }}>
               <span className="w-[6px] h-[6px] rounded-full" style={{ background: GREEN, boxShadow: "0 0 0 3px rgba(52,199,89,0.2)" }} />
               Parent Dashboard · Assignments
             </div>
-            <h1 className="text-[28px] font-semibold leading-none" style={{ color: T1, letterSpacing: "-0.8px" }}>Assignments &amp; Coursework</h1>
+            <h1 className="text-[28px] font-normal leading-none" style={{ color: T1, letterSpacing: "-0.8px" }}>Assignments &amp; Coursework</h1>
             <div className="text-[13px] font-normal mt-[8px]" style={{ color: T3 }}>Manage submissions and track academic tasks</div>
           </div>
           <div className="flex items-center gap-[12px]">
-            <div className="px-[16px] py-[8px] rounded-full text-[12px] font-semibold" style={{ background: "rgba(10,132,255,0.08)", color: B1, border: `0.5px solid ${BLUE_BDR}` }}>
+            <div className="px-[16px] py-[8px] rounded-full text-[12px] font-normal" style={{ background: "rgba(10,132,255,0.08)", color: B1, border: `0.5px solid ${BLUE_BDR}` }}>
               {assignments.length} Total
             </div>
-            <div className="w-10 h-10 rounded-full flex items-center justify-center text-[14px] font-semibold text-white"
+            <div className="w-10 h-10 rounded-full flex items-center justify-center text-[14px] font-normal text-white"
               style={{ background: `linear-gradient(140deg, ${B1}, ${B2})`, boxShadow: "0 3px 12px rgba(10,132,255,0.36), 0 0 0 2px rgba(255,255,255,0.8)" }}>
               {studentData?.name?.[0]?.toUpperCase() || "S"}
             </div>
@@ -1063,8 +1063,8 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
               <div className="absolute pointer-events-none" style={{ bottom: 14, right: 14 }}>
                 <DecorIcon style={{ width: 80, height: 80, color, opacity: 0.20, strokeWidth: 1.6 }} />
               </div>
-              <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-3 relative" style={{ color: T4 }}>{label}</div>
-              <div className="text-[28px] font-semibold leading-none relative" style={{ color, letterSpacing: "-1px" }}>{value}</div>
+              <div className="text-[12px] font-normal uppercase tracking-[0.12em] mb-3 relative" style={{ color: T4 }}>{label}</div>
+              <div className="text-[28px] font-normal leading-none relative" style={{ color, letterSpacing: "-1px" }}>{value}</div>
             </div>
           ))}
         </div>
@@ -1080,14 +1080,14 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
             const isAct = activeTab === idx;
             return (
               <button key={label} onClick={() => setActiveTab(idx)}
-                className="px-5 py-[12px] rounded-[14px] text-[12px] font-semibold flex items-center gap-2 transition-all"
+                className="px-5 py-[12px] rounded-[14px] text-[12px] font-normal flex items-center gap-2 transition-all"
                 style={{
                   background: isAct ? `linear-gradient(135deg, ${B1}, ${B2})` : "transparent",
                   color: isAct ? "#fff" : T4,
                   boxShadow: isAct ? "0 3px 12px rgba(10,132,255,0.32), 0 1px 3px rgba(10,132,255,0.20)" : "none",
                 }}>
                 {label}
-                <span className="min-w-[22px] h-[22px] rounded-[7px] flex items-center justify-center px-[8px] text-[12px] font-semibold"
+                <span className="min-w-[22px] h-[22px] rounded-[7px] flex items-center justify-center px-[8px] text-[12px] font-normal"
                   style={{
                     background: isAct ? "rgba(255,255,255,0.22)" : over && count > 0 ? "rgba(255,59,48,0.10)" : BG2,
                     color: isAct ? "#fff" : over && count > 0 ? RED : T3,
@@ -1108,7 +1108,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
               <div className="bg-white rounded-[22px] py-10 flex flex-col items-center"
                 style={{ boxShadow: SH_LG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
                 <Loader2 className="w-10 h-10 animate-spin" style={{ color: B1 }} />
-                <p className="text-[13px] font-medium mt-3" style={{ color: T4 }}>Loading assignments…</p>
+                <p className="text-[13px] font-normal mt-3" style={{ color: T4 }}>Loading assignments…</p>
               </div>
             ) : desktopList.length === 0 ? (
               <div className="bg-white rounded-[26px] py-10 flex flex-col items-center text-center relative overflow-hidden px-6"
@@ -1119,7 +1119,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                   style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: "0 6px 22px rgba(10,132,255,0.42), 0 2px 6px rgba(10,132,255,0.22), 0 0 0 10px rgba(10,132,255,0.08)" }}>
                   <FileCheck className="w-10 h-10 text-white" strokeWidth={2} />
                 </div>
-                <div className="text-[22px] font-semibold mb-2 relative z-10" style={{ color: T1, letterSpacing: "-0.5px" }}>
+                <div className="text-[22px] font-normal mb-2 relative z-10" style={{ color: T1, letterSpacing: "-0.5px" }}>
                   {activeTab === 0 ? "All Caught Up!" : activeTab === 1 ? "Nothing submitted yet" : "No overdue items"}
                 </div>
                 <div className="text-[14px] font-normal leading-[1.6] max-w-[360px] relative z-10" style={{ color: T3 }}>
@@ -1159,8 +1159,8 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
 
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-3 mb-[8px]">
-                        <div className="text-[15px] font-semibold truncate" style={{ color: T1, letterSpacing: "-0.2px" }}>{a.title || "Assignment"}</div>
-                        <div className="px-[12px] py-[4px] rounded-full text-[12px] font-semibold shrink-0 tracking-[0.02em]"
+                        <div className="text-[15px] font-normal truncate" style={{ color: T1, letterSpacing: "-0.2px" }}>{a.title || "Assignment"}</div>
+                        <div className="px-[12px] py-[4px] rounded-full text-[12px] font-normal shrink-0 tracking-[0.02em]"
                           style={{ background: tag.bg, color: tag.color, border: `0.5px solid ${tag.border}` }}>
                           {tag.label}
                         </div>
@@ -1170,13 +1170,13 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                       )}
                       <div className="flex items-center gap-4 flex-wrap">
                         {a.teacherName && (
-                          <div className="flex items-center gap-[4px] text-[12px] font-medium" style={{ color: T3 }}>
+                          <div className="flex items-center gap-[4px] text-[12px] font-normal" style={{ color: T3 }}>
                             <User className="w-[12px] h-[12px]" strokeWidth={2.3} />
                             <span className="truncate max-w-[180px]">{a.teacherName}</span>
                           </div>
                         )}
                         {d && (
-                          <div className="flex items-center gap-[4px] text-[12px] font-medium" style={{ color: T3 }}>
+                          <div className="flex items-center gap-[4px] text-[12px] font-normal" style={{ color: T3 }}>
                             <Clock className="w-[12px] h-[12px]" strokeWidth={2.3} />
                             Due {MONTHS_D[d.getMonth()]} {d.getDate()}
                           </div>
@@ -1189,7 +1189,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                         <div className="flex items-center gap-2 px-4 py-[12px] rounded-[14px]"
                           style={{ background: "rgba(52,199,89,0.08)", border: "0.5px solid rgba(52,199,89,0.22)" }}>
                           <CheckCircle2 className="w-[14px] h-[14px]" style={{ color: GREEN }} strokeWidth={2.5} />
-                          <span className="text-[12px] font-semibold" style={{ color: "#248A3D" }}>Handed In</span>
+                          <span className="text-[12px] font-normal" style={{ color: "#248A3D" }}>Handed In</span>
                         </div>
                       ) : (
                         <>
@@ -1204,7 +1204,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                           </button>
                           <button
                             onClick={(e) => { e.stopPropagation(); setSelectedTask(a); setInstantFeedback(null); setUploadFile(null); setStudentNote(""); setIsSubmitOpen(true); }}
-                            className="h-10 px-5 rounded-[12px] flex items-center gap-2 text-[13px] font-semibold text-white transition-transform hover:scale-[1.02]"
+                            className="h-10 px-5 rounded-[12px] flex items-center gap-2 text-[13px] font-normal text-white transition-transform hover:scale-[1.02]"
                             style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: SH_BTN, letterSpacing: "-0.1px" }}
                           >
                             <Upload className="w-[14px] h-[14px]" strokeWidth={2.3} /> Submit
@@ -1226,8 +1226,8 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
               <div className="bg-white rounded-[22px] px-5 py-5"
                 style={{ boxShadow: SH_LG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
                 <div className="flex items-center justify-between mb-4">
-                  <div className="text-[15px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>Upcoming Deadlines</div>
-                  <button onClick={() => setActiveTab(0)} className="text-[12px] font-semibold" style={{ color: B1 }}>See all</button>
+                  <div className="text-[15px] font-normal" style={{ color: T1, letterSpacing: "-0.3px" }}>Upcoming Deadlines</div>
+                  <button onClick={() => setActiveTab(0)} className="text-[12px] font-normal" style={{ color: B1 }}>See all</button>
                 </div>
                 {upcomingD.map((x: any, i: number, arr: any[]) => {
                   const a = x.a;
@@ -1249,16 +1249,16 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                           background: urgent ? "linear-gradient(135deg, #FF9500, #FF9500)" : `linear-gradient(135deg, ${B1}, ${B2})`,
                           boxShadow: urgent ? "0 3px 10px rgba(255,102,0,0.24)" : "0 3px 10px rgba(10,132,255,0.28)"
                         }}>
-                        <div className="text-[18px] font-semibold text-white leading-none">{d.getDate()}</div>
-                        <div className="text-[12px] font-semibold uppercase tracking-[0.08em]" style={{ color: "rgba(255,255,255,0.65)" }}>{MONTHS_D[d.getMonth()]}</div>
+                        <div className="text-[18px] font-normal text-white leading-none">{d.getDate()}</div>
+                        <div className="text-[12px] font-normal uppercase tracking-[0.08em]" style={{ color: "rgba(255,255,255,0.65)" }}>{MONTHS_D[d.getMonth()]}</div>
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className="text-[13px] font-semibold truncate" style={{ color: T1, letterSpacing: "-0.2px" }}>{a.title || "Assignment"}</div>
+                        <div className="text-[13px] font-normal truncate" style={{ color: T1, letterSpacing: "-0.2px" }}>{a.title || "Assignment"}</div>
                         <div className="text-[12px] mt-1 truncate" style={{ color: T3 }}>
                           {a.teacherName || "Teacher"}
                         </div>
                       </div>
-                      <div className="px-[12px] py-1 rounded-full text-[12px] font-semibold shrink-0"
+                      <div className="px-[12px] py-1 rounded-full text-[12px] font-normal shrink-0"
                         style={{
                           background: urgent ? "rgba(255,149,0,0.10)" : "rgba(10,132,255,0.10)",
                           color: urgent ? "#86310C" : B1,
@@ -1290,20 +1290,20 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                 backgroundImage: "linear-gradient(rgba(255,255,255,0.014) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.014) 1px, transparent 1px)",
                 backgroundSize: "24px 24px"
               }} />
-              <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-2 relative z-10" style={{ color: "rgba(255,255,255,0.50)" }}>Term Summary</div>
-              <div className="text-[20px] font-semibold mb-5 relative z-10 text-white" style={{ letterSpacing: "-0.3px" }}>Assignment Overview</div>
+              <div className="text-[12px] font-normal uppercase tracking-[0.12em] mb-2 relative z-10" style={{ color: "rgba(255,255,255,0.50)" }}>Term Summary</div>
+              <div className="text-[20px] font-normal mb-5 relative z-10 text-white" style={{ letterSpacing: "-0.3px" }}>Assignment Overview</div>
               <div className="grid grid-cols-3 rounded-[16px] overflow-hidden relative z-10" style={{ gap: "1px", background: "rgba(255,255,255,0.12)" }}>
                 <div className="py-4 px-3 text-center" style={{ background: "rgba(255,255,255,0.08)" }}>
-                  <div className="text-[28px] font-semibold text-white leading-none mb-1" style={{ letterSpacing: "-0.6px" }}>{pendingListD.length}</div>
-                  <div className="text-[12px] font-semibold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.42)" }}>Pending</div>
+                  <div className="text-[28px] font-normal text-white leading-none mb-1" style={{ letterSpacing: "-0.6px" }}>{pendingListD.length}</div>
+                  <div className="text-[12px] font-normal uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.42)" }}>Pending</div>
                 </div>
                 <div className="py-4 px-3 text-center" style={{ background: "rgba(255,255,255,0.08)" }}>
-                  <div className="text-[28px] font-semibold text-white leading-none mb-1" style={{ letterSpacing: "-0.6px" }}>{completedListD.length}</div>
-                  <div className="text-[12px] font-semibold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.42)" }}>Done</div>
+                  <div className="text-[28px] font-normal text-white leading-none mb-1" style={{ letterSpacing: "-0.6px" }}>{completedListD.length}</div>
+                  <div className="text-[12px] font-normal uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.42)" }}>Done</div>
                 </div>
                 <div className="py-4 px-3 text-center" style={{ background: "rgba(255,255,255,0.08)" }}>
-                  <div className="text-[28px] font-semibold text-white leading-none mb-1" style={{ letterSpacing: "-0.6px" }}>{overdueListD.length}</div>
-                  <div className="text-[12px] font-semibold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.42)" }}>Overdue</div>
+                  <div className="text-[28px] font-normal text-white leading-none mb-1" style={{ letterSpacing: "-0.6px" }}>{overdueListD.length}</div>
+                  <div className="text-[12px] font-normal uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.42)" }}>Overdue</div>
                 </div>
               </div>
             </div>
@@ -1318,7 +1318,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                   style={{ background: `linear-gradient(135deg, ${ORANGE}, #FF9500)`, boxShadow: "0 3px 10px rgba(255,149,0,0.28)" }}>
                   <Sparkles className="w-4 h-4 text-white" strokeWidth={2.3} />
                 </div>
-                <div className="text-[14px] font-semibold" style={{ color: T1, letterSpacing: "-0.2px" }}>AI Hints Available</div>
+                <div className="text-[14px] font-normal" style={{ color: T1, letterSpacing: "-0.2px" }}>AI Hints Available</div>
               </div>
               <div className="text-[12px] leading-[1.55] font-normal relative z-10" style={{ color: T3 }}>
                 Stuck on an assignment? Tap the <Lightbulb className="w-3 h-3 inline mx-[2px]" style={{ color: ORANGE }} /> bulb icon next to any task to get Socratic-style AI hints — guides you without giving the answer.
@@ -1336,31 +1336,31 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
               {/* Header */}
               <div className="p-8 pb-6" style={{ background: "linear-gradient(135deg, #FF9500 0%, #f97316 100%)" }}>
                 <SheetHeader className="text-left">
-                  <SheetTitle className="text-white text-2xl font-semibold tracking-tight leading-none mb-1">AI Hints System</SheetTitle>
-                  <SheetDescription className="text-amber-100 font-semibold text-xs">Stuck? Get step-by-step clues — not the answer!</SheetDescription>
+                  <SheetTitle className="text-white text-2xl font-normal tracking-tight leading-none mb-1">AI Hints System</SheetTitle>
+                  <SheetDescription className="text-amber-100 font-normal text-xs">Stuck? Get step-by-step clues — not the answer!</SheetDescription>
                 </SheetHeader>
                 <div className="mt-4 bg-white/20 rounded-2xl px-4 py-3">
-                  <p className="text-[12px] font-semibold text-white/70 uppercase tracking-widest mb-1">Assignment</p>
-                  <p className="text-sm font-semibold text-white leading-tight">{hintsTask?.title}</p>
+                  <p className="text-[12px] font-normal text-white/70 uppercase tracking-widest mb-1">Assignment</p>
+                  <p className="text-sm font-normal text-white leading-tight">{hintsTask?.title}</p>
                 </div>
               </div>
 
               <div className="flex-1 overflow-y-auto p-6 space-y-5">
                 {/* Doubt input */}
                 <div>
-                  <label className="text-[12px] font-semibold text-slate-400 uppercase tracking-widest block mb-2">What are you stuck on?</label>
+                  <label className="text-[12px] font-normal text-slate-400 uppercase tracking-widest block mb-2">What are you stuck on?</label>
                   <textarea
                     value={hintDoubt}
                     onChange={e => setHintDoubt(e.target.value)}
                     onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleGetHints(); } }}
                     rows={3}
                     placeholder="Describe the part you don't understand... e.g. 'I don't know how to start question 2'"
-                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-amber-300 resize-none"
+                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-normal text-slate-700 focus:outline-none focus:ring-2 focus:ring-amber-300 resize-none"
                   />
                   <button
                     onClick={handleGetHints}
                     disabled={generatingHints || !hintDoubt.trim()}
-                    className="mt-3 w-full h-11 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-semibold flex items-center justify-center gap-2 disabled:opacity-50 active:scale-95 transition-all"
+                    className="mt-3 w-full h-11 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-normal flex items-center justify-center gap-2 disabled:opacity-50 active:scale-95 transition-all"
                   >
                     {generatingHints ? <Loader2 className="w-4 h-4 animate-spin" /> : <Sparkles className="w-4 h-4" />}
                     {generatingHints ? "Thinking of hints..." : "Get Hints"}
@@ -1371,7 +1371,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                 {generatingHints && (
                   <div className="flex items-center gap-3 p-4 bg-amber-50 rounded-2xl border border-amber-100">
                     <Loader2 className="w-4 h-4 text-amber-500 animate-spin flex-shrink-0" />
-                    <p className="text-xs text-amber-700 font-semibold">Preparing your hints...</p>
+                    <p className="text-xs text-amber-700 font-normal">Preparing your hints...</p>
                   </div>
                 )}
 
@@ -1379,13 +1379,13 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                   <div className="space-y-3">
                     <div className="flex items-center gap-2">
                       <Lightbulb className="w-4 h-4 text-amber-500" />
-                      <p className="text-xs font-semibold text-slate-600">Hints revealed: {Math.min(hintIndex + 1, hints.length)} / {hints.length}</p>
+                      <p className="text-xs font-normal text-slate-600">Hints revealed: {Math.min(hintIndex + 1, hints.length)} / {hints.length}</p>
                     </div>
 
                     {hints.slice(0, hintIndex + 1).map((hint, i) => (
                       <div key={i} className={`rounded-2xl p-4 border ${i === hintIndex ? "bg-amber-50 border-amber-200" : "bg-slate-50 border-slate-100"}`}>
                         <div className="flex items-start gap-3">
-                          <div className={`w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-[12px] font-semibold ${i === hintIndex ? "bg-amber-500 text-white" : "bg-slate-200 text-slate-500"}`}>
+                          <div className={`w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-[12px] font-normal ${i === hintIndex ? "bg-amber-500 text-white" : "bg-slate-200 text-slate-500"}`}>
                             {i + 1}
                           </div>
                           <p className="text-sm text-slate-700 leading-relaxed">{hint}</p>
@@ -1396,14 +1396,14 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                     {hintIndex < hints.length - 1 ? (
                       <button
                         onClick={() => setHintIndex(prev => prev + 1)}
-                        className="w-full h-11 rounded-2xl border-2 border-dashed border-amber-200 text-amber-600 text-sm font-semibold flex items-center justify-center gap-2 hover:bg-amber-50 transition-all active:scale-95"
+                        className="w-full h-11 rounded-2xl border-2 border-dashed border-amber-200 text-amber-600 text-sm font-normal flex items-center justify-center gap-2 hover:bg-amber-50 transition-all active:scale-95"
                       >
                         <ChevronDown className="w-4 h-4" /> Next Hint
                       </button>
                     ) : (
                       <div className="rounded-2xl bg-emerald-50 border border-emerald-100 p-4 text-center">
-                        <p className="text-sm font-semibold text-emerald-700">All hints shown! Now try solving it yourself.</p>
-                        <button onClick={() => { setHints([]); setHintIndex(0); setHintDoubt(""); }} className="mt-2 text-xs text-emerald-600 font-semibold underline">Ask about something else</button>
+                        <p className="text-sm font-normal text-emerald-700">All hints shown! Now try solving it yourself.</p>
+                        <button onClick={() => { setHints([]); setHintIndex(0); setHintDoubt(""); }} className="mt-2 text-xs text-emerald-600 font-normal underline">Ask about something else</button>
                       </div>
                     )}
                   </div>
@@ -1416,7 +1416,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
         {/* SUBMISSION CENTER PANEL — Bright Blue Apple UI */}
         <Sheet open={isSubmitOpen} onOpenChange={setIsSubmitOpen}>
           <SheetContent side="right" className="w-full sm:max-w-xl p-0 border-0" style={{ background: BG }}>
-            <div className="h-full flex flex-col" style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif" }}>
+            <div className="h-full flex flex-col" style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif" }}>
               {/* Hero header */}
               <div className="px-8 pt-8 pb-8 text-white text-left relative overflow-hidden"
                 style={{ background: "linear-gradient(140deg, #0A84FF 0%, #0A84FF 48%, #0A84FF 100%)" }}>
@@ -1427,10 +1427,10 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                   backgroundSize: "24px 24px"
                 }} />
                 <SheetHeader className="text-left relative z-10">
-                  <SheetTitle className="text-white text-[28px] font-semibold tracking-tight leading-none mb-2" style={{ letterSpacing: "-0.7px" }}>
+                  <SheetTitle className="text-white text-[28px] font-normal tracking-tight leading-none mb-2" style={{ letterSpacing: "-0.7px" }}>
                     Submit Assignment
                   </SheetTitle>
-                  <SheetDescription className="font-semibold uppercase tracking-[0.10em] text-[12px]" style={{ color: "rgba(255,255,255,0.55)" }}>
+                  <SheetDescription className="font-normal uppercase tracking-[0.10em] text-[12px]" style={{ color: "rgba(255,255,255,0.55)" }}>
                     ID: {studentData?.id?.substring(0, 10)}
                   </SheetDescription>
                 </SheetHeader>
@@ -1440,13 +1440,13 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                 {/* Target task */}
                 <div className="bg-white rounded-[24px] px-6 py-5"
                   style={{ boxShadow: SH, border: `0.5px solid ${BLUE_BDR}` }}>
-                  <p className="text-[12px] font-semibold uppercase tracking-[0.10em] mb-2" style={{ color: T4 }}>Target Task</p>
-                  <h4 className="text-[20px] font-semibold" style={{ color: T1, letterSpacing: "-0.4px" }}>{selectedTask?.title}</h4>
+                  <p className="text-[12px] font-normal uppercase tracking-[0.10em] mb-2" style={{ color: T4 }}>Target Task</p>
+                  <h4 className="text-[20px] font-normal" style={{ color: T1, letterSpacing: "-0.4px" }}>{selectedTask?.title}</h4>
                 </div>
 
                 {/* File upload */}
                 <div className="space-y-3 text-left">
-                  <label className="text-[12px] font-semibold uppercase tracking-[0.10em] ml-1 block" style={{ color: T4 }}>
+                  <label className="text-[12px] font-normal uppercase tracking-[0.10em] ml-1 block" style={{ color: T4 }}>
                     Academic Artifact (PDF/JPG)
                   </label>
                   <div
@@ -1470,7 +1470,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                           style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: "0 2px 8px rgba(10,132,255,0.30)" }}>
                           <FileText className="w-5 h-5 text-white" />
                         </div>
-                        <p className="text-[14px] font-semibold flex-1 truncate text-left" style={{ color: T1 }}>{uploadFile.name}</p>
+                        <p className="text-[14px] font-normal flex-1 truncate text-left" style={{ color: T1 }}>{uploadFile.name}</p>
                         <button onClick={(e) => { e.stopPropagation(); setUploadFile(null); }} className="p-2" style={{ color: RED }} aria-label="Remove file">
                           <X className="w-4 h-4" />
                         </button>
@@ -1481,7 +1481,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                           style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: "0 4px 14px rgba(10,132,255,0.34)" }}>
                           <Upload className="w-7 h-7 text-white" strokeWidth={2.2} />
                         </div>
-                        <p className="text-[15px] font-semibold" style={{ color: T2, letterSpacing: "-0.2px" }}>Click to choose file</p>
+                        <p className="text-[15px] font-normal" style={{ color: T2, letterSpacing: "-0.2px" }}>Click to choose file</p>
                         <p className="text-[12px]" style={{ color: T3 }}>PDF, JPG, PNG, DOC up to 10 MB</p>
                       </div>
                     )}
@@ -1495,27 +1495,27 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                     <div className="px-6 py-3 flex items-center gap-2"
                       style={{ background: "linear-gradient(135deg, #0A84FF 0%, #0A84FF 50%, #0A84FF 100%)" }}>
                       <Sparkles className="w-4 h-4 text-white" />
-                      <span className="text-[12px] font-semibold text-white uppercase tracking-[0.12em]">AI Pre-Submission Feedback</span>
+                      <span className="text-[12px] font-normal text-white uppercase tracking-[0.12em]">AI Pre-Submission Feedback</span>
                     </div>
                     {generatingFeedback ? (
                       <div className="p-5 flex items-center gap-3 bg-white">
                         <Loader2 className="w-4 h-4 animate-spin flex-shrink-0" style={{ color: B1 }} />
-                        <p className="text-[12px] font-semibold" style={{ color: T2 }}>Analysing your submission...</p>
+                        <p className="text-[12px] font-normal" style={{ color: T2 }}>Analysing your submission...</p>
                       </div>
                     ) : instantFeedback?.error ? (
                       <div className="p-5 bg-white flex items-start gap-3">
                         <Sparkles className="w-4 h-4 flex-shrink-0 mt-1" style={{ color: RED }} />
-                        <p className="text-[12px] font-semibold" style={{ color: RED }}>{instantFeedback.error}</p>
+                        <p className="text-[12px] font-normal" style={{ color: RED }}>{instantFeedback.error}</p>
                       </div>
                     ) : instantFeedback && (
                       <div className="p-5 space-y-4 bg-white">
                         <div className="flex items-center gap-3">
                           <span className="text-2xl">{instantFeedback.emoji || "✨"}</span>
-                          <p className="text-[14px] font-semibold" style={{ color: T1, letterSpacing: "-0.2px" }}>{instantFeedback.overall}</p>
+                          <p className="text-[14px] font-normal" style={{ color: T1, letterSpacing: "-0.2px" }}>{instantFeedback.overall}</p>
                         </div>
                         <div className="grid grid-cols-1 gap-3">
                           <div className="rounded-[16px] p-4" style={{ background: "rgba(52,199,89,0.08)", border: "0.5px solid rgba(52,199,89,0.20)" }}>
-                            <p className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-2" style={{ color: "#248A3D" }}>Strengths</p>
+                            <p className="text-[12px] font-normal uppercase tracking-[0.12em] mb-2" style={{ color: "#248A3D" }}>Strengths</p>
                             {(instantFeedback.strengths || []).map((s: string, i: number) => (
                               <div key={i} className="flex items-start gap-2 mb-1">
                                 <CheckCircle2 className="w-3.5 h-3.5 flex-shrink-0 mt-1" style={{ color: GREEN }} />
@@ -1524,7 +1524,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                             ))}
                           </div>
                           <div className="rounded-[16px] p-4" style={{ background: "rgba(255,149,0,0.08)", border: "0.5px solid rgba(255,149,0,0.22)" }}>
-                            <p className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-2" style={{ color: "#86310C" }}>Room to Improve</p>
+                            <p className="text-[12px] font-normal uppercase tracking-[0.12em] mb-2" style={{ color: "#86310C" }}>Room to Improve</p>
                             {(instantFeedback.improvements || []).map((s: string, i: number) => (
                               <div key={i} className="flex items-start gap-2 mb-1">
                                 <ChevronDown className="w-3.5 h-3.5 flex-shrink-0 mt-1" style={{ color: ORANGE }} />
@@ -1546,14 +1546,14 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
 
                 {/* Teacher notes */}
                 <div className="space-y-3 text-left">
-                  <label className="text-[12px] font-semibold uppercase tracking-[0.10em] ml-1 block" style={{ color: T4 }}>
+                  <label className="text-[12px] font-normal uppercase tracking-[0.10em] ml-1 block" style={{ color: T4 }}>
                     Teacher Notes (Optional)
                   </label>
                   <textarea
                     rows={4}
                     value={studentNote}
                     onChange={(e) => setStudentNote(e.target.value)}
-                    className="w-full p-5 rounded-[20px] text-[14px] font-medium outline-none transition-all resize-none focus:ring-2 focus:ring-[#0A84FF]/30"
+                    className="w-full p-5 rounded-[20px] text-[14px] font-normal outline-none transition-all resize-none focus:ring-2 focus:ring-[#0A84FF]/30"
                     style={{
                       background: "white",
                       color: T1,
@@ -1570,7 +1570,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)","hint2","hint3","hint4","hint5 (ne
                 <button
                   onClick={handleOfficialSubmission}
                   disabled={submittingFile || !uploadFile}
-                  className="w-full py-5 rounded-[22px] text-[13px] font-semibold uppercase tracking-[0.16em] transition-all hover:scale-[1.01] active:scale-[0.97] disabled:opacity-40 flex items-center justify-center gap-3 text-white relative overflow-hidden">
+                  className="w-full py-5 rounded-[22px] text-[13px] font-normal uppercase tracking-[0.16em] transition-all hover:scale-[1.01] active:scale-[0.97] disabled:opacity-40 flex items-center justify-center gap-3 text-white relative overflow-hidden">
                   <span className="absolute inset-0" style={{
                     background: "linear-gradient(135deg, #0A84FF 0%, #0A84FF 50%, #0A84FF 100%)",
                     boxShadow: SH_BTN

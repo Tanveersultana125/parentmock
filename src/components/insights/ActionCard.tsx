@@ -32,7 +32,7 @@ export function ActionCard({ action, index }: ActionCardProps) {
           style={{
             flexShrink: 0,
             fontSize: 30,
-            fontWeight: 600,
+            fontWeight: 400,
             letterSpacing: '-1.2px',
             color: T.B1,
             lineHeight: 1,
@@ -45,7 +45,7 @@ export function ActionCard({ action, index }: ActionCardProps) {
           <p
             style={{
               fontSize: 15,
-              fontWeight: 600,
+              fontWeight: 400,
               color: T.T1,
               margin: '0 0 4px',
               letterSpacing: '-0.2px',
@@ -57,7 +57,7 @@ export function ActionCard({ action, index }: ActionCardProps) {
           <p
             style={{
               fontSize: 12,
-              fontWeight: 500,
+              fontWeight: 400,
               color: T.T3,
               margin: 0,
               lineHeight: 1.5,
@@ -108,7 +108,7 @@ function CompletedCard({ action, numStr }: { action: ActionItem; numStr: string 
           style={{
             flexShrink: 0,
             fontSize: 30,
-            fontWeight: 600,
+            fontWeight: 400,
             letterSpacing: '-1.2px',
             color: T.B1,
             lineHeight: 1,
@@ -121,7 +121,7 @@ function CompletedCard({ action, numStr }: { action: ActionItem; numStr: string 
           <p
             style={{
               fontSize: 15,
-              fontWeight: 600,
+              fontWeight: 400,
               color: T.T1,
               margin: '0 0 4px',
               letterSpacing: '-0.2px',
@@ -133,7 +133,7 @@ function CompletedCard({ action, numStr }: { action: ActionItem; numStr: string 
           <p
             style={{
               fontSize: 12,
-              fontWeight: 600,
+              fontWeight: 400,
               color: T.GREEN,
               margin: 0,
               lineHeight: 1.5,
@@ -155,7 +155,7 @@ function CompletedCard({ action, numStr }: { action: ActionItem; numStr: string 
           <span
             style={{
               fontSize: 10,
-              fontWeight: 600,
+              fontWeight: 400,
               letterSpacing: '1.2px',
               color: T.GREEN,
               textTransform: 'uppercase',
@@ -173,7 +173,7 @@ function CompletedCard({ action, numStr }: { action: ActionItem; numStr: string 
             }}
           />
           {action.reward && (
-            <span style={{ fontSize: 11, fontWeight: 600, color: T.GREEN }}>
+            <span style={{ fontSize: 11, fontWeight: 400, color: T.GREEN }}>
               {action.reward}
             </span>
           )}
@@ -216,7 +216,7 @@ function InProgressTrack({ action }: { action: ActionItem }) {
           <span
             style={{
               fontSize: 10,
-              fontWeight: 600,
+              fontWeight: 400,
               letterSpacing: '1.2px',
               color: T.GREEN,
               textTransform: 'uppercase',
@@ -225,7 +225,7 @@ function InProgressTrack({ action }: { action: ActionItem }) {
             Live · Auto-tracked
           </span>
         </span>
-        <span style={{ fontSize: 12, fontWeight: 600, color: T.GREEN }}>
+        <span style={{ fontSize: 12, fontWeight: 400, color: T.GREEN }}>
           {current} / {target} done
         </span>
       </div>
@@ -305,7 +305,7 @@ function PendingAutoTrack({ action }: { action: ActionItem }) {
           <span
             style={{
               fontSize: 10,
-              fontWeight: 600,
+              fontWeight: 400,
               letterSpacing: '1.2px',
               color: T.B1,
               textTransform: 'uppercase',
@@ -314,14 +314,14 @@ function PendingAutoTrack({ action }: { action: ActionItem }) {
             Auto-tracked daily
           </span>
         </span>
-        <span style={{ fontSize: 12, fontWeight: 600, color: T.B1 }}>
+        <span style={{ fontSize: 12, fontWeight: 400, color: T.B1 }}>
           {current}
           {suffix} → {target}
           {suffix}
         </span>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-        <span style={{ fontSize: 11, fontWeight: 600, color: T.T3 }}>Now {current}</span>
+        <span style={{ fontSize: 11, fontWeight: 400, color: T.T3 }}>Now {current}</span>
         <div
           style={{
             flex: 1,
@@ -355,7 +355,7 @@ function PendingAutoTrack({ action }: { action: ActionItem }) {
             }}
           />
         </div>
-        <span style={{ fontSize: 11, fontWeight: 600, color: T.GREEN }}>Goal {target}</span>
+        <span style={{ fontSize: 11, fontWeight: 400, color: T.GREEN }}>Goal {target}</span>
       </div>
     </div>
   );
@@ -391,7 +391,7 @@ function ManualTrack({ action }: { action: ActionItem }) {
           <span
             style={{
               fontSize: 10,
-              fontWeight: 600,
+              fontWeight: 400,
               letterSpacing: '1.2px',
               color: T.VIOLET,
               textTransform: 'uppercase',
@@ -400,13 +400,13 @@ function ManualTrack({ action }: { action: ActionItem }) {
             Teacher-tracked
           </span>
         </span>
-        <span style={{ fontSize: 11, fontWeight: 600, color: T.VIOLET }}>Manual update</span>
+        <span style={{ fontSize: 11, fontWeight: 400, color: T.VIOLET }}>Manual update</span>
       </div>
       {action.hint && (
         <p
           style={{
             fontSize: 11,
-            fontWeight: 500,
+            fontWeight: 400,
             color: T.T3,
             margin: '4px 0 0',
             lineHeight: 1.5,

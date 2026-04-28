@@ -246,7 +246,7 @@ const TimetablePage = () => {
 
     return (
       <div className="animate-in fade-in duration-500 -mx-3 -mt-3 md:mx-0 md:mt-0"
-        style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif", background: BG, minHeight: "100vh" }}>
+        style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif", background: BG, minHeight: "100vh" }}>
 
         {/* ── Hero Banner ── */}
         <div className="mx-5 mt-4 rounded-[26px] px-[24px] pt-[24px] pb-6 relative overflow-hidden"
@@ -264,9 +264,9 @@ const TimetablePage = () => {
             backgroundSize: "24px 24px"
           }} />
 
-          <div className="text-[12px] font-semibold uppercase tracking-[0.14em] mb-2 relative z-10" style={{ color: "rgba(255,255,255,0.55)" }}>Weekly Schedule</div>
-          <div className="text-[28px] font-semibold text-white mb-[12px] relative z-10 leading-[1.05]" style={{ letterSpacing: "-0.9px" }}>Timetable</div>
-          <div className="text-[13px] font-medium flex items-center gap-[4px] relative z-10" style={{ color: "rgba(255,255,255,0.72)" }}>
+          <div className="text-[12px] font-normal uppercase tracking-[0.14em] mb-2 relative z-10" style={{ color: "rgba(255,255,255,0.55)" }}>Weekly Schedule</div>
+          <div className="text-[28px] font-normal text-white mb-[12px] relative z-10 leading-[1.05]" style={{ letterSpacing: "-0.9px" }}>Timetable</div>
+          <div className="text-[13px] font-normal flex items-center gap-[4px] relative z-10" style={{ color: "rgba(255,255,255,0.72)" }}>
             <User className="w-[13px] h-[13px]" style={{ color: "rgba(255,255,255,0.75)" }} strokeWidth={2.2} />
             <span className="truncate">{studentData?.name || "Student"}</span>
             {(studentData?.className || (studentData as any)?.class) && (
@@ -296,8 +296,8 @@ const TimetablePage = () => {
                     transitionTimingFunction: "cubic-bezier(0.34,1.56,0.64,1)",
                   }}
                 >
-                  <span className="text-[12px] font-semibold uppercase tracking-[0.06em]" style={{ color: isAct ? "#FFFFFF" : T3 }}>{lbl}</span>
-                  <span className="text-[18px] font-semibold" style={{ color: isAct ? "#FFFFFF" : T2, letterSpacing: "-0.3px" }}>{d.getDate()}</span>
+                  <span className="text-[12px] font-normal uppercase tracking-[0.06em]" style={{ color: isAct ? "#FFFFFF" : T3 }}>{lbl}</span>
+                  <span className="text-[18px] font-normal" style={{ color: isAct ? "#FFFFFF" : T2, letterSpacing: "-0.3px" }}>{d.getDate()}</span>
                   <span className="w-[5px] h-[5px] rounded-full mt-[1px]" style={{ background: isAct ? "rgba(255,255,255,0.55)" : "transparent" }} />
                 </button>
               );
@@ -313,13 +313,13 @@ const TimetablePage = () => {
 
         {/* ── Day Head ── */}
         <div className="flex items-center justify-between mx-5 mt-5">
-          <div className="text-[18px] font-semibold" style={{ color: T1, letterSpacing: "-0.4px" }}>
+          <div className="text-[18px] font-normal" style={{ color: T1, letterSpacing: "-0.4px" }}>
             {DAYS[selectedDay]}
-            <span className="text-[12px] font-medium ml-2" style={{ color: T4, letterSpacing: 0 }}>
+            <span className="text-[12px] font-normal ml-2" style={{ color: T4, letterSpacing: 0 }}>
               · {MONTH[weekDates[selectedDay].getMonth()]} {weekDates[selectedDay].getDate()}
             </span>
           </div>
-          <div className="text-[12px] font-semibold px-[12px] py-1 rounded-full tracking-[0.04em]"
+          <div className="text-[12px] font-normal px-[12px] py-1 rounded-full tracking-[0.04em]"
             style={{ color: B1, background: "rgba(10,132,255,0.10)", border: "0.5px solid rgba(10,132,255,0.18)" }}>
             {todaySlots.length} {todaySlots.length === 1 ? "Period" : "Periods"}
           </div>
@@ -332,7 +332,7 @@ const TimetablePage = () => {
               <div className="w-14 h-14 rounded-2xl flex items-center justify-center" style={{ background: BG2 }}>
                 <Loader2 className="w-7 h-7 animate-spin" style={{ color: B1 }} />
               </div>
-              <p className="text-[12px] font-semibold uppercase tracking-widest" style={{ color: T4 }}>Loading schedule…</p>
+              <p className="text-[12px] font-normal uppercase tracking-widest" style={{ color: T4 }}>Loading schedule…</p>
             </div>
           ) : timetable.length === 0 ? (
             <div className="flex flex-col items-center gap-[12px] py-10 text-center">
@@ -340,7 +340,7 @@ const TimetablePage = () => {
                 style={{ background: "rgba(10,132,255,0.08)", border: "0.5px solid rgba(10,132,255,0.14)", boxShadow: "0 0 0 8px rgba(10,132,255,0.04)" }}>
                 <CalendarDays className="w-7 h-7" style={{ color: T4 }} />
               </div>
-              <div className="text-[16px] font-semibold" style={{ color: T2, letterSpacing: "-0.2px" }}>No timetable yet</div>
+              <div className="text-[16px] font-normal" style={{ color: T2, letterSpacing: "-0.2px" }}>No timetable yet</div>
               <div className="text-[13px] max-w-[220px] leading-[1.55]" style={{ color: T4 }}>Your school hasn't set up the timetable.</div>
             </div>
           ) : todaySlots.length === 0 ? (
@@ -349,7 +349,7 @@ const TimetablePage = () => {
                 style={{ background: "rgba(10,132,255,0.08)", border: "0.5px solid rgba(10,132,255,0.14)", boxShadow: "0 0 0 8px rgba(10,132,255,0.04)" }}>
                 <CalendarDays className="w-7 h-7" style={{ color: T4 }} />
               </div>
-              <div className="text-[16px] font-semibold" style={{ color: T2, letterSpacing: "-0.2px" }}>No classes today</div>
+              <div className="text-[16px] font-normal" style={{ color: T2, letterSpacing: "-0.2px" }}>No classes today</div>
               <div className="text-[13px] max-w-[220px] leading-[1.55]" style={{ color: T4 }}>Enjoy the day off!</div>
             </div>
           ) : (
@@ -369,7 +369,7 @@ const TimetablePage = () => {
                     className="rounded-[20px] px-4 py-4 flex items-center gap-[16px] relative overflow-hidden bg-white cursor-pointer active:scale-[0.97] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
                     style={{ boxShadow: SH, border: "0.5px solid rgba(10,132,255,0.10)", transitionTimingFunction: "cubic-bezier(0.34,1.56,0.64,1)" }}>
                     <div className="absolute left-0 top-0 bottom-0 w-[3.5px] rounded-l-[2px]" style={{ background: accent.bar }} />
-                    <div className="w-8 h-8 rounded-[10px] flex items-center justify-center shrink-0 text-[12px] font-semibold"
+                    <div className="w-8 h-8 rounded-[10px] flex items-center justify-center shrink-0 text-[12px] font-normal"
                       style={{ background: "rgba(10,132,255,0.10)", border: "0.5px solid rgba(10,132,255,0.18)", color: B1, letterSpacing: "-0.2px" }}>
                       {periodNum}
                     </div>
@@ -378,23 +378,23 @@ const TimetablePage = () => {
                       <BookOpen className="w-5 h-5 text-white" strokeWidth={2.2} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="text-[15px] font-semibold mb-1 truncate" style={{ color: T1, letterSpacing: "-0.2px" }}>{subject}</div>
+                      <div className="text-[15px] font-normal mb-1 truncate" style={{ color: T1, letterSpacing: "-0.2px" }}>{subject}</div>
                       <div className="flex items-center gap-[12px] flex-wrap">
                         {slot.teacherName && (
-                          <div className="flex items-center gap-1 text-[12px] font-medium" style={{ color: T3 }}>
+                          <div className="flex items-center gap-1 text-[12px] font-normal" style={{ color: T3 }}>
                             <User className="w-[11px] h-[11px] opacity-70" strokeWidth={2.2} />
                             <span className="truncate max-w-[120px]">{slot.teacherName}</span>
                           </div>
                         )}
                         {slot.time && (
-                          <div className="flex items-center gap-1 text-[12px] font-medium" style={{ color: T3 }}>
+                          <div className="flex items-center gap-1 text-[12px] font-normal" style={{ color: T3 }}>
                             <Clock className="w-[11px] h-[11px] opacity-70" strokeWidth={2.2} />
                             {slot.time}
                           </div>
                         )}
                       </div>
                     </div>
-                    <div className="px-[12px] py-[4px] rounded-full text-[12px] font-semibold shrink-0 tracking-[0.02em]"
+                    <div className="px-[12px] py-[4px] rounded-full text-[12px] font-normal shrink-0 tracking-[0.02em]"
                       style={{ background: "rgba(10,132,255,0.10)", color: B1, border: "0.5px solid rgba(10,132,255,0.20)" }}>
                       {tag}
                     </div>
@@ -405,7 +405,7 @@ const TimetablePage = () => {
               {/* End divider */}
               <div className="flex items-center justify-center gap-2 py-[12px]">
                 <div className="flex-1 h-px" style={{ background: "rgba(10,132,255,0.10)" }} />
-                <div className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: "rgba(10,132,255,0.30)" }}>No more periods</div>
+                <div className="text-[12px] font-normal uppercase tracking-[0.10em]" style={{ color: "rgba(10,132,255,0.30)" }}>No more periods</div>
                 <div className="flex-1 h-px" style={{ background: "rgba(10,132,255,0.10)" }} />
               </div>
             </>
@@ -416,7 +416,7 @@ const TimetablePage = () => {
         {!loading && timetable.length > 0 && (
           <div className="mx-5 mt-4 bg-white rounded-[20px] px-[16px] py-4"
             style={{ boxShadow: SH, border: "0.5px solid rgba(10,132,255,0.10)" }}>
-            <div className="text-[12px] font-semibold uppercase tracking-[0.08em] mb-[16px]" style={{ color: T4 }}>This Week</div>
+            <div className="text-[12px] font-normal uppercase tracking-[0.08em] mb-[16px]" style={{ color: T4 }}>This Week</div>
             <div className="grid grid-cols-5 gap-2">
               {DAY_SHORT.slice(0, 5).map((lbl, i) => {
                 const isAct = selectedDay === i;
@@ -436,9 +436,9 @@ const TimetablePage = () => {
                           ? { background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: "0 3px 10px rgba(10,132,255,0.30)" }
                           : { background: BG, border: "0.5px solid rgba(10,132,255,0.12)" }
                       }>
-                      <span className="text-[12px] font-semibold" style={{ color: isAct ? "#FFFFFF" : T3 }}>{count}</span>
+                      <span className="text-[12px] font-normal" style={{ color: isAct ? "#FFFFFF" : T3 }}>{count}</span>
                     </div>
-                    <span className="text-[12px] font-semibold uppercase tracking-[0.06em]" style={{ color: isAct ? B1 : T4 }}>{lbl}</span>
+                    <span className="text-[12px] font-normal uppercase tracking-[0.06em]" style={{ color: isAct ? B1 : T4 }}>{lbl}</span>
                   </button>
                 );
               })}
@@ -507,7 +507,7 @@ const TimetablePage = () => {
 
   return (
     <div className="animate-in fade-in duration-500 -m-4 sm:-m-6 md:-m-8 min-h-[calc(100vh-64px)]"
-      style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif", background: BG }}>
+      style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif", background: BG }}>
       <div className="w-full px-6 pt-8 pb-10">
 
         {/* ── Hero Banner ── */}
@@ -527,9 +527,9 @@ const TimetablePage = () => {
           }} />
           <div className="flex items-end justify-between gap-6 flex-wrap relative z-10">
             <div>
-              <div className="text-[12px] font-semibold uppercase tracking-[0.14em] mb-2" style={{ color: "rgba(255,255,255,0.55)" }}>Weekly Schedule</div>
-              <div className="text-[28px] font-semibold text-white mb-3 leading-[1.02]" style={{ letterSpacing: "-1.4px" }}>Timetable</div>
-              <div className="text-[14px] font-medium flex items-center gap-[8px]" style={{ color: "rgba(255,255,255,0.78)" }}>
+              <div className="text-[12px] font-normal uppercase tracking-[0.14em] mb-2" style={{ color: "rgba(255,255,255,0.55)" }}>Weekly Schedule</div>
+              <div className="text-[28px] font-normal text-white mb-3 leading-[1.02]" style={{ letterSpacing: "-1.4px" }}>Timetable</div>
+              <div className="text-[14px] font-normal flex items-center gap-[8px]" style={{ color: "rgba(255,255,255,0.78)" }}>
                 <User className="w-[14px] h-[14px]" style={{ color: "rgba(255,255,255,0.75)" }} strokeWidth={2.2} />
                 <span className="truncate">{studentData?.name || "Student"}</span>
                 {(studentData?.className || (studentData as any)?.class) && (
@@ -543,15 +543,15 @@ const TimetablePage = () => {
             {!loading && timetable.length > 0 && (
               <div className="flex items-center gap-5">
                 <div className="text-right">
-                  <div className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.55)" }}>This Week</div>
-                  <div className="text-[28px] font-semibold text-white leading-none mt-1" style={{ letterSpacing: "-0.8px" }}>{totalPeriodsThisWeek}</div>
-                  <div className="text-[12px] font-medium" style={{ color: "rgba(255,255,255,0.60)" }}>periods</div>
+                  <div className="text-[12px] font-normal uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.55)" }}>This Week</div>
+                  <div className="text-[28px] font-normal text-white leading-none mt-1" style={{ letterSpacing: "-0.8px" }}>{totalPeriodsThisWeek}</div>
+                  <div className="text-[12px] font-normal" style={{ color: "rgba(255,255,255,0.60)" }}>periods</div>
                 </div>
                 <div className="w-px h-14" style={{ background: "rgba(255,255,255,0.22)" }} />
                 <div className="text-right">
-                  <div className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.55)" }}>Progress</div>
-                  <div className="text-[28px] font-semibold text-white leading-none mt-1" style={{ letterSpacing: "-0.8px" }}>{progressPct}%</div>
-                  <div className="text-[12px] font-medium" style={{ color: "rgba(255,255,255,0.60)" }}>through week</div>
+                  <div className="text-[12px] font-normal uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.55)" }}>Progress</div>
+                  <div className="text-[28px] font-normal text-white leading-none mt-1" style={{ letterSpacing: "-0.8px" }}>{progressPct}%</div>
+                  <div className="text-[12px] font-normal" style={{ color: "rgba(255,255,255,0.60)" }}>through week</div>
                 </div>
               </div>
             )}
@@ -575,9 +575,9 @@ const TimetablePage = () => {
                     border: "0.5px solid rgba(10,132,255,0.10)",
                     boxShadow: isAct ? "0 4px 16px rgba(10,132,255,0.36), 0 1px 4px rgba(10,132,255,0.22)" : SH,
                   }}>
-                  <span className="text-[12px] font-semibold uppercase tracking-[0.08em]" style={{ color: isAct ? "#FFFFFF" : T3 }}>{lbl}</span>
-                  <span className="text-[22px] font-semibold leading-none" style={{ color: isAct ? "#FFFFFF" : T2, letterSpacing: "-0.4px" }}>{d.getDate()}</span>
-                  <span className="text-[12px] font-semibold uppercase tracking-[0.08em]" style={{ color: isAct ? "rgba(255,255,255,0.75)" : isToday ? B1 : T4 }}>
+                  <span className="text-[12px] font-normal uppercase tracking-[0.08em]" style={{ color: isAct ? "#FFFFFF" : T3 }}>{lbl}</span>
+                  <span className="text-[22px] font-normal leading-none" style={{ color: isAct ? "#FFFFFF" : T2, letterSpacing: "-0.4px" }}>{d.getDate()}</span>
+                  <span className="text-[12px] font-normal uppercase tracking-[0.08em]" style={{ color: isAct ? "rgba(255,255,255,0.75)" : isToday ? B1 : T4 }}>
                     {isToday ? "Today" : `${perDayCount[i]} period${perDayCount[i] === 1 ? "" : "s"}`}
                   </span>
                 </button>
@@ -596,13 +596,13 @@ const TimetablePage = () => {
           {/* Today's periods (lg:col-span-2) */}
           <div className="lg:col-span-2">
             <div className="flex items-center justify-between mb-3">
-              <div className="text-[22px] font-semibold" style={{ color: T1, letterSpacing: "-0.5px" }}>
+              <div className="text-[22px] font-normal" style={{ color: T1, letterSpacing: "-0.5px" }}>
                 {DAYS[selectedDay]}
-                <span className="text-[14px] font-medium ml-3" style={{ color: T4, letterSpacing: 0 }}>
+                <span className="text-[14px] font-normal ml-3" style={{ color: T4, letterSpacing: 0 }}>
                   · {MONTH[weekDates[selectedDay].getMonth()]} {weekDates[selectedDay].getDate()}
                 </span>
               </div>
-              <div className="text-[12px] font-semibold px-3 py-[8px] rounded-full tracking-[0.04em]"
+              <div className="text-[12px] font-normal px-3 py-[8px] rounded-full tracking-[0.04em]"
                 style={{ color: B1, background: "rgba(10,132,255,0.10)", border: "0.5px solid rgba(10,132,255,0.18)" }}>
                 {todaySlots.length} {todaySlots.length === 1 ? "Period" : "Periods"}
               </div>
@@ -615,7 +615,7 @@ const TimetablePage = () => {
                   <div className="w-14 h-14 rounded-2xl flex items-center justify-center" style={{ background: BG2 }}>
                     <Loader2 className="w-7 h-7 animate-spin" style={{ color: B1 }} />
                   </div>
-                  <p className="text-[12px] font-semibold uppercase tracking-widest" style={{ color: T4 }}>Loading schedule…</p>
+                  <p className="text-[12px] font-normal uppercase tracking-widest" style={{ color: T4 }}>Loading schedule…</p>
                 </div>
               ) : timetable.length === 0 ? (
                 <div className="flex flex-col items-center gap-[12px] py-10 text-center bg-white rounded-[20px]"
@@ -624,7 +624,7 @@ const TimetablePage = () => {
                     style={{ background: "rgba(10,132,255,0.08)", border: "0.5px solid rgba(10,132,255,0.14)", boxShadow: "0 0 0 10px rgba(10,132,255,0.04)" }}>
                     <CalendarDays className="w-9 h-9" style={{ color: T4 }} />
                   </div>
-                  <div className="text-[18px] font-semibold" style={{ color: T2, letterSpacing: "-0.3px" }}>No timetable yet</div>
+                  <div className="text-[18px] font-normal" style={{ color: T2, letterSpacing: "-0.3px" }}>No timetable yet</div>
                   <div className="text-[14px] max-w-[300px] leading-[1.55]" style={{ color: T4 }}>Your school hasn't set up the timetable.</div>
                 </div>
               ) : todaySlots.length === 0 ? (
@@ -634,7 +634,7 @@ const TimetablePage = () => {
                     style={{ background: "rgba(10,132,255,0.08)", border: "0.5px solid rgba(10,132,255,0.14)", boxShadow: "0 0 0 10px rgba(10,132,255,0.04)" }}>
                     <CalendarDays className="w-9 h-9" style={{ color: T4 }} />
                   </div>
-                  <div className="text-[18px] font-semibold" style={{ color: T2, letterSpacing: "-0.3px" }}>No classes today</div>
+                  <div className="text-[18px] font-normal" style={{ color: T2, letterSpacing: "-0.3px" }}>No classes today</div>
                   <div className="text-[14px] max-w-[300px] leading-[1.55]" style={{ color: T4 }}>Enjoy the day off!</div>
                 </div>
               ) : (
@@ -654,7 +654,7 @@ const TimetablePage = () => {
                         className="rounded-[20px] px-5 py-4 flex items-center gap-4 relative overflow-hidden bg-white cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
                         style={{ boxShadow: SH, border: "0.5px solid rgba(10,132,255,0.10)" }}>
                         <div className="absolute left-0 top-0 bottom-0 w-[3.5px]" style={{ background: accent.bar }} />
-                        <div className="w-10 h-10 rounded-[12px] flex items-center justify-center shrink-0 text-[13px] font-semibold"
+                        <div className="w-10 h-10 rounded-[12px] flex items-center justify-center shrink-0 text-[13px] font-normal"
                           style={{ background: "rgba(10,132,255,0.10)", border: "0.5px solid rgba(10,132,255,0.18)", color: B1, letterSpacing: "-0.2px" }}>
                           {periodNum}
                         </div>
@@ -663,26 +663,26 @@ const TimetablePage = () => {
                           <BookOpen className="w-[22px] h-[22px] text-white" strokeWidth={2.2} />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <div className="text-[18px] font-semibold mb-1 truncate" style={{ color: T1, letterSpacing: "-0.3px" }}>{subject}</div>
+                          <div className="text-[18px] font-normal mb-1 truncate" style={{ color: T1, letterSpacing: "-0.3px" }}>{subject}</div>
                           <div className="flex items-center gap-4 flex-wrap">
                             {slot.teacherName && (
-                              <div className="flex items-center gap-1.5 text-[12px] font-medium" style={{ color: T3 }}>
+                              <div className="flex items-center gap-1.5 text-[12px] font-normal" style={{ color: T3 }}>
                                 <User className="w-[13px] h-[13px] opacity-70" strokeWidth={2.2} />
                                 <span className="truncate max-w-[200px]">{slot.teacherName}</span>
                               </div>
                             )}
                             {slot.time && (
-                              <div className="flex items-center gap-1.5 text-[12px] font-medium" style={{ color: T3 }}>
+                              <div className="flex items-center gap-1.5 text-[12px] font-normal" style={{ color: T3 }}>
                                 <Clock className="w-[13px] h-[13px] opacity-70" strokeWidth={2.2} />
                                 {slot.time}
                               </div>
                             )}
                             {slot.room && (
-                              <div className="text-[12px] font-medium" style={{ color: T3 }}>Room {slot.room}</div>
+                              <div className="text-[12px] font-normal" style={{ color: T3 }}>Room {slot.room}</div>
                             )}
                           </div>
                         </div>
-                        <div className="px-3 py-[8px] rounded-full text-[12px] font-semibold shrink-0 tracking-[0.02em]"
+                        <div className="px-3 py-[8px] rounded-full text-[12px] font-normal shrink-0 tracking-[0.02em]"
                           style={{ background: "rgba(10,132,255,0.10)", color: B1, border: "0.5px solid rgba(10,132,255,0.20)" }}>
                           {tag}
                         </div>
@@ -692,7 +692,7 @@ const TimetablePage = () => {
 
                   <div className="flex items-center justify-center gap-2 py-3">
                     <div className="flex-1 h-px" style={{ background: "rgba(10,132,255,0.10)" }} />
-                    <div className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: "rgba(10,132,255,0.30)" }}>No more periods</div>
+                    <div className="text-[12px] font-normal uppercase tracking-[0.10em]" style={{ color: "rgba(10,132,255,0.30)" }}>No more periods</div>
                     <div className="flex-1 h-px" style={{ background: "rgba(10,132,255,0.10)" }} />
                   </div>
                 </>
@@ -705,7 +705,7 @@ const TimetablePage = () => {
             <div className="flex flex-col gap-4">
               <div className="bg-white rounded-[22px] p-5"
                 style={{ boxShadow: SH, border: "0.5px solid rgba(10,132,255,0.10)" }}>
-                <div className="text-[13px] font-semibold uppercase tracking-[0.08em] mb-4" style={{ color: T4 }}>This Week Overview</div>
+                <div className="text-[13px] font-normal uppercase tracking-[0.08em] mb-4" style={{ color: T4 }}>This Week Overview</div>
                 <div className="flex flex-col gap-[12px]">
                   {DAY_SHORT.slice(0, 6).map((lbl, i) => {
                     const isAct = selectedDay === i;
@@ -727,13 +727,13 @@ const TimetablePage = () => {
                             boxShadow: isAct ? "0 3px 10px rgba(10,132,255,0.30)" : SH,
                             border: isAct ? "0.5px solid transparent" : "0.5px solid rgba(10,132,255,0.12)",
                           }}>
-                          <span className="text-[15px] font-semibold" style={{ color: isAct ? "#FFFFFF" : B1, letterSpacing: "-0.3px" }}>{count}</span>
+                          <span className="text-[15px] font-normal" style={{ color: isAct ? "#FFFFFF" : B1, letterSpacing: "-0.3px" }}>{count}</span>
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2">
-                            <span className="text-[13px] font-semibold" style={{ color: T1 }}>{DAYS[i]}</span>
+                            <span className="text-[13px] font-normal" style={{ color: T1 }}>{DAYS[i]}</span>
                             {isToday && (
-                              <span className="text-[12px] font-semibold px-[8px] py-[2px] rounded-full"
+                              <span className="text-[12px] font-normal px-[8px] py-[2px] rounded-full"
                                 style={{ background: "rgba(10,132,255,0.10)", color: B1, border: "0.5px solid rgba(10,132,255,0.22)" }}>
                                 TODAY
                               </span>
@@ -743,7 +743,7 @@ const TimetablePage = () => {
                             <div className="h-full rounded-[2px]"
                               style={{ width: `${(count / maxCount) * 100}%`, background: isAct ? `linear-gradient(90deg, ${B1}, #7CBBFF)` : "rgba(10,132,255,0.35)" }} />
                           </div>
-                          <div className="text-[12px] mt-1 font-medium" style={{ color: T4 }}>
+                          <div className="text-[12px] mt-1 font-normal" style={{ color: T4 }}>
                             {count === 0 ? "No classes" : `${count} ${count === 1 ? "period" : "periods"}`}
                           </div>
                         </div>

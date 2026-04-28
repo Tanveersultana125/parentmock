@@ -47,7 +47,7 @@ export function PodiumRow({ data, isFirst }: PodiumRowProps) {
         <p
           style={{
             fontSize: 15,
-            fontWeight: 600,
+            fontWeight: 400,
             margin: 0,
             color: T.T1,
             letterSpacing: '-0.3px',
@@ -57,13 +57,13 @@ export function PodiumRow({ data, isFirst }: PodiumRowProps) {
         </p>
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: 4, marginTop: 2 }}>
           <TrendArrow direction={data.trend} color={trendColor} />
-          <span style={{ fontSize: 11, fontWeight: 600, color: trendColor }}>{label}</span>
+          <span style={{ fontSize: 11, fontWeight: 400, color: trendColor }}>{label}</span>
         </div>
       </div>
       <span
         style={{
           fontSize: 19,
-          fontWeight: 600,
+          fontWeight: 400,
           color: T.T1,
           letterSpacing: '-0.6px',
         }}

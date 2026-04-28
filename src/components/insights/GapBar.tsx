@@ -31,14 +31,14 @@ export function GapBar({ label, userValue, topperValue, gap, isBiggest }: GapBar
         <span
           style={{
             fontSize: 11,
-            fontWeight: 600,
+            fontWeight: 400,
             color: T.T3,
             letterSpacing: '-0.1px',
           }}
         >
           {LABEL_MAP[label]}
         </span>
-        <span style={{ fontSize: 11, fontWeight: 600, color: gapColor }}>
+        <span style={{ fontSize: 11, fontWeight: 400, color: gapColor }}>
           −{gap}
           {label === 'attendance' ? '%' : ''} {isBiggest ? '· biggest gap' : 'gap'}
         </span>
@@ -48,7 +48,7 @@ export function GapBar({ label, userValue, topperValue, gap, isBiggest }: GapBar
           style={{
             flex: '0 0 30px',
             fontSize: 11,
-            fontWeight: 600,
+            fontWeight: 400,
             color: T.T1,
             textAlign: 'right',
           }}
@@ -91,7 +91,7 @@ export function GapBar({ label, userValue, topperValue, gap, isBiggest }: GapBar
           style={{
             flex: '0 0 30px',
             fontSize: 11,
-            fontWeight: 600,
+            fontWeight: 400,
             color: T.GOLD,
             textAlign: 'left',
           }}

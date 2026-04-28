@@ -42,7 +42,7 @@ export function DiagnosisCard({ items }: DiagnosisCardProps) {
           // without needing a stylesheet rule per type.
           style={{
             fontSize: 15,
-            fontWeight: 500,
+            fontWeight: 400,
             color: T.T1,
             margin: i === sanitized.length - 1 ? 0 : '0 0 14px',
             lineHeight: 1.65,

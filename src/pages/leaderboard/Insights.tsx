@@ -162,7 +162,7 @@ export default function Insights() {
           <span
             style={{
               fontSize: 12,
-              fontWeight: 600,
+              fontWeight: 400,
               color: T.B1,
               letterSpacing: '-0.1px',
             }}
@@ -177,7 +177,7 @@ export default function Insights() {
         <h1
           style={{
             fontSize: 34,
-            fontWeight: 600,
+            fontWeight: 400,
             letterSpacing: '-1.4px',
             color: T.T1,
             margin: '0 0 6px',
@@ -187,7 +187,7 @@ export default function Insights() {
         >
           Your deep dive
         </h1>
-        <p style={{ fontSize: 13, fontWeight: 500, color: T.T3, margin: 0 }}>
+        <p style={{ fontSize: 13, fontWeight: 400, color: T.T3, margin: 0 }}>
           Built from {trajectory.length} {trajectory.length === 1 ? 'week' : 'weeks'} of your data
         </p>
       </div>
@@ -348,7 +348,7 @@ export default function Insights() {
         style={{
           textAlign: 'center',
           fontSize: 10,
-          fontWeight: 500,
+          fontWeight: 400,
           color: T.T4,
           margin: '24px 0 0',
           letterSpacing: '0.2px',

@@ -131,7 +131,7 @@ const PrincipalNotesPage = () => {
     const WA_BUBBLE_OUT = "#F0F8F1";
     const WA_TICK_READ = "#5AC8FA";
     const WA_T1 = "#1D1D1F", WA_T3 = "#6E6E73";
-    const FONT = "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif";
+    const FONT = "'SF Pro Display', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif";
 
     return (
       <div className="flex-1 flex flex-col -mx-3 -mt-3 md:mx-0 md:mt-0 mb-[calc(-88px-env(safe-area-inset-bottom)-1rem)] md:mb-0 pb-[calc(88px+env(safe-area-inset-bottom)+0.5rem)] md:pb-0 animate-in fade-in duration-500"
@@ -151,7 +151,7 @@ const PrincipalNotesPage = () => {
             <School className="w-[20px] h-[20px]" strokeWidth={2.1} />
           </div>
           <div className="flex-1 min-w-0">
-            <div className="text-[16px] font-semibold text-white truncate" style={{ letterSpacing: "-0.1px" }}>{principalName}</div>
+            <div className="text-[16px] font-normal text-white truncate" style={{ letterSpacing: "-0.1px" }}>{principalName}</div>
             <div className="text-[12px] truncate" style={{ color: "rgba(255,255,255,0.78)" }}>
               School Administration · online
             </div>
@@ -159,7 +159,7 @@ const PrincipalNotesPage = () => {
           <div className="flex items-center gap-[4px] px-[12px] py-[4px] rounded-full shrink-0"
             style={{ background: "rgba(255,255,255,0.18)" }}>
             <Shield className="w-[11px] h-[11px] text-white" strokeWidth={2.5} />
-            <span className="text-[12px] font-semibold text-white tracking-[0.04em]">Official</span>
+            <span className="text-[12px] font-normal text-white tracking-[0.04em]">Official</span>
           </div>
         </div>
 
@@ -181,7 +181,7 @@ const PrincipalNotesPage = () => {
                 style={{ background: "rgba(0,168,132,0.10)" }}>
                 <School className="w-[26px] h-[26px]" style={{ color: WA_GREEN, opacity: 0.7 }} strokeWidth={2.1} />
               </div>
-              <div className="text-[15px] font-semibold text-center" style={{ color: WA_T1 }}>No messages from Principal yet</div>
+              <div className="text-[15px] font-normal text-center" style={{ color: WA_T1 }}>No messages from Principal yet</div>
               <div className="text-[12px] text-center max-w-[230px] leading-[1.5]" style={{ color: WA_T3 }}>
                 Messages from your school principal will appear here
               </div>
@@ -189,7 +189,7 @@ const PrincipalNotesPage = () => {
           ) : groupedMessages.map(group => (
             <div key={group.date}>
               <div className="flex justify-center my-3">
-                <span className="px-[12px] py-[4px] rounded-[6px] text-[12px] font-medium"
+                <span className="px-[12px] py-[4px] rounded-[6px] text-[12px] font-normal"
                   style={{ background: "#FFFFFF", color: WA_T3, boxShadow: "0 1px 1px rgba(11,20,26,0.08)" }}>
                   {group.date}
                 </span>
@@ -269,7 +269,7 @@ const PrincipalNotesPage = () => {
   const BLUE_BDR = "rgba(10,132,255,0.12)";
   const SH_D = "0 0 0 0.5px rgba(10,132,255,0.08), 0 2px 8px rgba(10,132,255,0.09), 0 10px 28px rgba(10,132,255,0.11)";
   const SH_LG_D = "0 0 0 0.5px rgba(10,132,255,0.10), 0 4px 16px rgba(10,132,255,0.12), 0 18px 44px rgba(10,132,255,0.14)";
-  const FONT_D = "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif";
+  const FONT_D = "'SF Pro Display', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif";
 
   // ── WhatsApp Web palette (used inside the chat card) ──
   const WA_GREEN = "#34C759", WA_GREEN_DEEP = "#248A3D";
@@ -288,20 +288,20 @@ const PrincipalNotesPage = () => {
         {/* ── Toolbar ── */}
         <div className="flex items-center justify-between mb-6">
           <div>
-            <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-1 flex items-center gap-[8px]" style={{ color: T4 }}>
+            <div className="text-[12px] font-normal uppercase tracking-[0.12em] mb-1 flex items-center gap-[8px]" style={{ color: T4 }}>
               <span className="w-[6px] h-[6px] rounded-full animate-pulse" style={{ background: GREEN, boxShadow: "0 0 0 3px rgba(52,199,89,0.2)" }} />
               Parent Dashboard · Principal
             </div>
-            <h1 className="text-[28px] font-semibold leading-none" style={{ color: T1, letterSpacing: "-0.8px" }}>Principal Messages</h1>
+            <h1 className="text-[28px] font-normal leading-none" style={{ color: T1, letterSpacing: "-0.8px" }}>Principal Messages</h1>
             <div className="text-[13px] font-normal mt-[8px]" style={{ color: T3 }}>Official communication from school administration</div>
           </div>
           <div className="flex items-center gap-[12px]">
-            <div className="px-[16px] py-[8px] rounded-full text-[12px] font-semibold flex items-center gap-[8px]"
+            <div className="px-[16px] py-[8px] rounded-full text-[12px] font-normal flex items-center gap-[8px]"
               style={{ background: "rgba(10,132,255,0.08)", color: B1, border: `0.5px solid ${BLUE_BDR}` }}>
               <Shield className="w-[12px] h-[12px]" strokeWidth={2.5} />
               Official
             </div>
-            <div className="w-10 h-10 rounded-full flex items-center justify-center text-[14px] font-semibold text-white"
+            <div className="w-10 h-10 rounded-full flex items-center justify-center text-[14px] font-normal text-white"
               style={{ background: `linear-gradient(140deg, ${B1}, ${B2})`, boxShadow: "0 3px 12px rgba(10,132,255,0.36), 0 0 0 2px rgba(255,255,255,0.8)" }}>
               {(studentData?.name?.[0] || "S").toUpperCase()}
             </div>
@@ -319,13 +319,13 @@ const PrincipalNotesPage = () => {
               <div className="absolute -top-[20px] -right-[20px] w-[120px] h-[120px] rounded-full pointer-events-none"
                 style={{ background: `radial-gradient(circle, ${glow} 0%, transparent 70%)` }} />
               <div className="flex items-center justify-between mb-3 relative">
-                <span className="text-[12px] font-semibold uppercase tracking-[0.12em]" style={{ color: T4 }}>{label}</span>
+                <span className="text-[12px] font-normal uppercase tracking-[0.12em]" style={{ color: T4 }}>{label}</span>
                 <div className="w-10 h-10 rounded-[12px] flex items-center justify-center"
                   style={{ background: grad, boxShadow: sh }}>
                   <Icon className="w-[18px] h-[18px] text-white" strokeWidth={2.3} />
                 </div>
               </div>
-              <div className="text-[28px] font-semibold leading-none relative" style={{ color, letterSpacing: "-1px" }}>{val}</div>
+              <div className="text-[28px] font-normal leading-none relative" style={{ color, letterSpacing: "-1px" }}>{val}</div>
             </div>
           ))}
         </div>
@@ -342,7 +342,7 @@ const PrincipalNotesPage = () => {
               <School className="w-5 h-5" strokeWidth={2.1} />
             </div>
             <div className="flex-1 min-w-0">
-              <div className="text-[16px] font-medium leading-tight" style={{ color: WA_T1, letterSpacing: "-0.1px" }}>{principalName}</div>
+              <div className="text-[16px] font-normal leading-tight" style={{ color: WA_T1, letterSpacing: "-0.1px" }}>{principalName}</div>
               <div className="text-[12px] mt-[2px]" style={{ color: WA_T3 }}>
                 School Administration · online
               </div>
@@ -350,7 +350,7 @@ const PrincipalNotesPage = () => {
             <div className="flex items-center gap-[4px] px-[12px] py-[8px] rounded-full"
               style={{ background: "rgba(0,168,132,0.10)", color: WA_GREEN_DEEP }}>
               <Shield className="w-[12px] h-[12px]" strokeWidth={2.5} />
-              <span className="text-[12px] font-semibold tracking-[0.04em]">Official</span>
+              <span className="text-[12px] font-normal tracking-[0.04em]">Official</span>
             </div>
           </div>
 
@@ -374,7 +374,7 @@ const PrincipalNotesPage = () => {
                     style={{ background: "rgba(0,168,132,0.10)" }}>
                     <School className="w-8 h-8" style={{ color: WA_GREEN, opacity: 0.7 }} strokeWidth={2.2} />
                   </div>
-                  <div className="text-[18px] font-semibold mb-1" style={{ color: WA_T1, letterSpacing: "-0.2px" }}>No messages yet</div>
+                  <div className="text-[18px] font-normal mb-1" style={{ color: WA_T1, letterSpacing: "-0.2px" }}>No messages yet</div>
                   <div className="text-[13px] max-w-[300px] leading-[1.5]" style={{ color: WA_T3 }}>
                     Messages from your school principal will appear here. Official notices and announcements will be delivered directly to this inbox.
                   </div>
@@ -383,7 +383,7 @@ const PrincipalNotesPage = () => {
             ) : groupedMessages.map(group => (
               <div key={group.date}>
                 <div className="flex justify-center my-3">
-                  <span className="px-[12px] py-[4px] rounded-[6px] text-[11.5px] font-medium"
+                  <span className="px-[12px] py-[4px] rounded-[6px] text-[11.5px] font-normal"
                     style={{ background: "#FFFFFF", color: WA_T3, boxShadow: "0 1px 1px rgba(11,20,26,0.08)" }}>
                     {group.date}
                   </span>
@@ -446,14 +446,14 @@ const PrincipalNotesPage = () => {
             <Shield className="w-5 h-5 text-white" strokeWidth={2.3} />
           </div>
           <div>
-            <div className="text-[13px] font-semibold mb-[4px]" style={{ color: T1, letterSpacing: "-0.2px" }}>Official Communication Channel</div>
+            <div className="text-[13px] font-normal mb-[4px]" style={{ color: T1, letterSpacing: "-0.2px" }}>Official Communication Channel</div>
             <div className="text-[12px] leading-[1.55]" style={{ color: T3 }}>
               All messages here are from your school's administration. Please reply professionally — this conversation is archived for school records.
               {!allMessages[0]?.principalId && <> You can reply once the principal has sent the first message.</>}
             </div>
           </div>
           {stats.unread > 0 && (
-            <div className="px-[12px] py-[4px] rounded-full text-[12px] font-semibold shrink-0"
+            <div className="px-[12px] py-[4px] rounded-full text-[12px] font-normal shrink-0"
               style={{ background: "rgba(255,59,48,0.10)", color: RED, border: "0.5px solid rgba(255,59,48,0.22)" }}>
               {stats.unread} new
             </div>

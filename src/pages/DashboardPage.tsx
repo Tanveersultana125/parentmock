@@ -190,7 +190,7 @@ function ScoreArc({ pct, color, size = 80 }: { pct: number; color: string; size?
           style={{ transition: "stroke-dashoffset 1s ease", filter: `drop-shadow(0 0 6px ${color}90)` }} />
       </svg>
       <div className="absolute bottom-0 left-0 right-0 flex flex-col items-center">
-        <span className="text-sm font-semibold text-white leading-none">{pct > 0 ? `${pct}%` : "N/A"}</span>
+        <span className="text-sm font-normal text-white leading-none">{pct > 0 ? `${pct}%` : "N/A"}</span>
       </div>
     </div>
   );
@@ -623,7 +623,7 @@ const DashboardPage = () => {
   if (studentData?.status === "Invited") return (
     <div className="h-[80vh] flex flex-col items-center justify-center p-10 text-center gap-4">
       <Loader2 className="w-12 h-12 text-[#1D1D1F] animate-spin opacity-40" />
-      <h2 className="text-xl font-semibold text-slate-700">Setting up your account...</h2>
+      <h2 className="text-xl font-normal text-slate-700">Setting up your account...</h2>
       <p className="text-sm text-slate-400">Your access is being provisioned. Please wait.</p>
     </div>
   );
@@ -684,11 +684,11 @@ const DashboardPage = () => {
     const trendStable = liveStats.trendPct === 0;
 
     return (
-      <div className="animate-in fade-in duration-500 -mx-3 -mt-3 md:mx-0 md:mt-0" style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif", background: BG, minHeight: "100vh" }}>
+      <div className="animate-in fade-in duration-500 -mx-3 -mt-3 md:mx-0 md:mt-0" style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif", background: BG, minHeight: "100vh" }}>
 
         {/* ── Greeting ── */}
         <div className="px-6 pt-6 pb-0">
-          <h1 className="text-[28px] font-semibold leading-[1.10]" style={{ color: T1, letterSpacing: "-0.8px" }}>
+          <h1 className="text-[28px] font-normal leading-[1.10]" style={{ color: T1, letterSpacing: "-0.8px" }}>
             {greeting},<br />
             <span style={{ background: `linear-gradient(130deg, ${IND} 0%, ${IND3} 100%)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
               {parentFirstName}
@@ -711,9 +711,9 @@ const DashboardPage = () => {
           <div className="absolute -bottom-[50px] left-5 w-[160px] h-[160px] rounded-full pointer-events-none"
             style={{ background: "radial-gradient(circle, rgba(10,132,255,0.03) 0%, transparent 70%)" }} />
           <div className="relative z-10">
-            <h3 className="text-[18px] font-semibold" style={{ color: T1, letterSpacing: "-0.4px" }}>Academic Health</h3>
+            <h3 className="text-[18px] font-normal" style={{ color: T1, letterSpacing: "-0.4px" }}>Academic Health</h3>
             <p className="text-[13px] mt-1" style={{ color: T3 }}>Overall performance indicator</p>
-            <div className="inline-flex items-center gap-[4px] mt-[16px] px-[12px] py-[4px] rounded-full text-[12px] font-semibold"
+            <div className="inline-flex items-center gap-[4px] mt-[16px] px-[12px] py-[4px] rounded-full text-[12px] font-normal"
               style={{
                 background: trendStable || isImproving ? GREEN_S : ORANGE_S,
                 color: trendStable || isImproving ? "#248A3D" : "#86310C",
@@ -725,10 +725,10 @@ const DashboardPage = () => {
             </div>
             <div className="flex items-end justify-between mt-[24px]">
               <div className="flex flex-col gap-1">
-                <div className="text-[56px] font-semibold leading-none" style={{ color: IND, letterSpacing: "-3px" }}>
+                <div className="text-[56px] font-normal leading-none" style={{ color: IND, letterSpacing: "-3px" }}>
                   {liveStats.avgScore > 0 ? `${liveStats.avgScore}%` : "—"}
                 </div>
-                <div className="text-[12px] font-semibold uppercase tracking-[0.09em] mt-1" style={{ color: T4 }}>
+                <div className="text-[12px] font-normal uppercase tracking-[0.09em] mt-1" style={{ color: T4 }}>
                   {liveStats.avgScore >= 75 ? "Good Standing" : liveStats.avgScore > 0 ? "Needs Attention" : "No data yet"}
                 </div>
               </div>
@@ -745,7 +745,7 @@ const DashboardPage = () => {
                     strokeDasharray={ringCirc} strokeDashoffset={ringOffset}
                     style={{ transition: "stroke-dashoffset 1s cubic-bezier(0.4,0,0.2,1)" }} />
                 </svg>
-                <div className="absolute inset-0 flex items-center justify-center text-[15px] font-semibold" style={{ color: T1, letterSpacing: "-0.4px" }}>
+                <div className="absolute inset-0 flex items-center justify-center text-[15px] font-normal" style={{ color: T1, letterSpacing: "-0.4px" }}>
                   {liveStats.avgScore > 0 ? `${liveStats.avgScore}%` : "—"}
                 </div>
               </div>
@@ -777,9 +777,9 @@ const DashboardPage = () => {
                 style={{ background: iconBoxBg, border: `0.5px solid ${iconBoxBdr}` }}>
                 <Icon className="w-[17px] h-[17px]" style={{ color: iconColor }} />
               </div>
-              <div className="text-[12px] font-semibold uppercase tracking-[0.08em] relative" style={{ color: T4 }}>{label}</div>
-              <div className="text-[28px] font-semibold mt-1 leading-none relative" style={{ color: T1, letterSpacing: "-0.8px" }}>{value}</div>
-              <div className="text-[12px] font-medium mt-[8px] relative truncate" style={{ color: statusColor }}>{status}</div>
+              <div className="text-[12px] font-normal uppercase tracking-[0.08em] relative" style={{ color: T4 }}>{label}</div>
+              <div className="text-[28px] font-normal mt-1 leading-none relative" style={{ color: T1, letterSpacing: "-0.8px" }}>{value}</div>
+              <div className="text-[12px] font-normal mt-[8px] relative truncate" style={{ color: statusColor }}>{status}</div>
             </div>
           ))}
         </div>
@@ -800,8 +800,8 @@ const DashboardPage = () => {
             <Trophy className="w-[19px] h-[19px] text-white" />
           </div>
           <div className="flex-1 min-w-0 relative">
-            <div className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: T4 }}>Class Leaderboard</div>
-            <div className="text-[15px] font-semibold mt-[2px] truncate" style={{ color: T1, letterSpacing: "-0.3px" }}>See where you stand this week</div>
+            <div className="text-[12px] font-normal uppercase tracking-[0.10em]" style={{ color: T4 }}>Class Leaderboard</div>
+            <div className="text-[15px] font-normal mt-[2px] truncate" style={{ color: T1, letterSpacing: "-0.3px" }}>See where you stand this week</div>
           </div>
           <ArrowRight className="w-[16px] h-[16px] flex-shrink-0 relative" style={{ color: IND }} />
         </div>
@@ -814,11 +814,11 @@ const DashboardPage = () => {
           <div className="flex items-center justify-between px-5 pt-[16px] pb-[12px]" style={{ borderBottom: `0.5px solid ${IND_BDR}` }}>
             <div className="flex items-center gap-2">
               <Sparkles className="w-[12px] h-[12px]" style={{ color: IND }} strokeWidth={2.4} />
-              <span className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: T4 }}>Edullent AI · Live Summary</span>
+              <span className="text-[12px] font-normal uppercase tracking-[0.10em]" style={{ color: T4 }}>Edullent AI · Live Summary</span>
             </div>
             <div className="flex items-center gap-[4px] px-[12px] py-[4px] rounded-full" style={{ background: GREEN_S, border: `0.5px solid ${GREEN_B}` }}>
               <div className="w-[5px] h-[5px] rounded-full animate-pulse" style={{ background: GREEN, boxShadow: `0 0 0 2px ${GREEN_S}` }} />
-              <span className="text-[12px] font-semibold tracking-[0.06em]" style={{ color: GREEN }}>LIVE</span>
+              <span className="text-[12px] font-normal tracking-[0.06em]" style={{ color: GREEN }}>LIVE</span>
             </div>
           </div>
 
@@ -889,9 +889,9 @@ const DashboardPage = () => {
                       style={{ background: iconBoxBg, border: `0.5px solid ${iconBoxBdr}` }}>
                       <Icon className="w-[15px] h-[15px]" style={{ color: iconColor }} strokeWidth={2.4} />
                     </div>
-                    <div className="text-[12px] font-semibold uppercase tracking-[0.08em]" style={{ color: T4 }}>{label}</div>
-                    <div className="text-[24px] font-semibold mt-[2px] leading-none" style={{ color: T1, letterSpacing: "-0.7px" }}>{value}</div>
-                    <div className="text-[12px] font-medium mt-[4px] truncate" style={{ color: statusColor }}>{status}</div>
+                    <div className="text-[12px] font-normal uppercase tracking-[0.08em]" style={{ color: T4 }}>{label}</div>
+                    <div className="text-[24px] font-normal mt-[2px] leading-none" style={{ color: T1, letterSpacing: "-0.7px" }}>{value}</div>
+                    <div className="text-[12px] font-normal mt-[4px] truncate" style={{ color: statusColor }}>{status}</div>
                   </div>
                 ))}
               </div>
@@ -901,7 +901,7 @@ const DashboardPage = () => {
                 <BrainCircuit className="w-4 h-4 shrink-0 mt-[1px]" style={{ color: IND }} />
                 {aiInsights?.child_summary_narrative ? (
                   <p className="text-[12px] leading-[1.65]" style={{ color: T3, letterSpacing: "-0.1px" }}>
-                    <strong style={{ color: T1, fontWeight: 600 }}>{studentData?.name}</strong>{" "}
+                    <strong style={{ color: T1, fontWeight: 400 }}>{studentData?.name}</strong>{" "}
                     {aiInsights.child_summary_narrative.replace(studentData?.name || "", "").trim()}
                   </p>
                 ) : (
@@ -936,23 +936,23 @@ const DashboardPage = () => {
           }} />
 
           <div className="relative z-10">
-            <div className="w-[68px] h-[68px] rounded-[22px] flex items-center justify-center text-[24px] font-semibold text-white mb-4"
+            <div className="w-[68px] h-[68px] rounded-[22px] flex items-center justify-center text-[24px] font-normal text-white mb-4"
               style={{ background: "rgba(255,255,255,0.18)", border: "0.5px solid rgba(255,255,255,0.26)", boxShadow: "0 4px 20px rgba(0,0,0,0.18)" }}>
               {studentInitials}
             </div>
-            <div className="text-[22px] font-semibold text-white" style={{ letterSpacing: "-0.6px" }}>{studentData?.name || "Student"}</div>
+            <div className="text-[22px] font-normal text-white" style={{ letterSpacing: "-0.6px" }}>{studentData?.name || "Student"}</div>
             <div className="text-[14px] mt-[4px]" style={{ color: "rgba(255,255,255,0.52)" }}>
               {studentMeta.className !== "—" ? `Grade ${studentMeta.className}` : studentData?.grade ? `Grade ${studentData.grade}` : "Grade —"}
               {teacherInfo.name !== "—" ? ` — ${teacherInfo.name}` : ""}
             </div>
             <div className="grid grid-cols-2 mt-5 rounded-[15px] overflow-hidden" style={{ gap: "1px", background: "rgba(255,255,255,0.10)" }}>
               <div className="px-[16px] py-[12px]" style={{ background: "rgba(255,255,255,0.07)" }}>
-                <div className="text-[12px] font-semibold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.38)" }}>Class Teacher</div>
-                <div className="text-[15px] font-semibold mt-1 text-white" style={{ letterSpacing: "-0.2px" }}>{teacherInfo.name}</div>
+                <div className="text-[12px] font-normal uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.38)" }}>Class Teacher</div>
+                <div className="text-[15px] font-normal mt-1 text-white" style={{ letterSpacing: "-0.2px" }}>{teacherInfo.name}</div>
               </div>
               <div className="px-[16px] py-[12px]" style={{ background: "rgba(255,255,255,0.07)" }}>
-                <div className="text-[12px] font-semibold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.38)" }}>Academic Year</div>
-                <div className="text-[15px] font-semibold mt-1 text-white" style={{ letterSpacing: "-0.2px" }}>{academicYear}</div>
+                <div className="text-[12px] font-normal uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.38)" }}>Academic Year</div>
+                <div className="text-[15px] font-normal mt-1 text-white" style={{ letterSpacing: "-0.2px" }}>{academicYear}</div>
               </div>
             </div>
           </div>
@@ -967,7 +967,7 @@ const DashboardPage = () => {
           onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/alerts"); } }}
           className="mx-5 mt-[16px] bg-white rounded-[22px] p-5 cursor-pointer active:scale-[0.98] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
           style={{ boxShadow: SH, border: `0.5px solid ${IND_BDR}` }}>
-          <h3 className="text-[18px] font-semibold mb-5" style={{ color: T1, letterSpacing: "-0.4px" }}>Recent Alerts</h3>
+          <h3 className="text-[18px] font-normal mb-5" style={{ color: T1, letterSpacing: "-0.4px" }}>Recent Alerts</h3>
           {recentAlerts.length > 0 ? (
             <div className="space-y-3">
               {recentAlerts.map(alert => (
@@ -978,7 +978,7 @@ const DashboardPage = () => {
                     {alert.urgent ? <Clock className="w-3.5 h-3.5" /> : <CheckCircle className="w-3.5 h-3.5" />}
                   </div>
                   <div>
-                    <p className="text-sm font-medium leading-snug" style={{ color: T1 }}>{alert.title}</p>
+                    <p className="text-sm font-normal leading-snug" style={{ color: T1 }}>{alert.title}</p>
                     <p className="text-xs mt-1" style={{ color: T3 }}>{timeAgo(alert.time)}</p>
                   </div>
                 </div>
@@ -1011,7 +1011,7 @@ const DashboardPage = () => {
                 <BookOpen className="w-[18px] h-[18px]" style={{ color: IND }} />
               </div>
               <div>
-                <div className="text-[15px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>Weekly AI Report</div>
+                <div className="text-[15px] font-normal" style={{ color: T1, letterSpacing: "-0.3px" }}>Weekly AI Report</div>
                 <div className="text-[12px] mt-1" style={{ color: T3 }}>
                   {isPrevWeekReport ? "Last week's report" : weekConfig.canGenerate ? (weeklyReport ? "This week's digest" : "Generate this week's report") : "New report available Friday"}
                 </div>
@@ -1019,13 +1019,13 @@ const DashboardPage = () => {
             </div>
             {weekConfig.canGenerate && !weeklyReport ? (
               <button onClick={(e) => { e.stopPropagation(); handleGenerateWeeklyReport(); }} disabled={weeklyLoading || dataLoading}
-                className="flex items-center gap-2 px-3 py-2 rounded-[12px] text-[12px] font-semibold text-white disabled:opacity-50"
+                className="flex items-center gap-2 px-3 py-2 rounded-[12px] text-[12px] font-normal text-white disabled:opacity-50"
                 style={{ background: IND, boxShadow: "0 2px 8px rgba(10,132,255,0.28)" }}>
                 {weeklyLoading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Sparkles className="w-3.5 h-3.5" />}
                 {weeklyLoading ? "..." : "Generate"}
               </button>
             ) : !weekConfig.canGenerate ? (
-              <div className="flex items-center gap-1 px-[12px] py-[8px] rounded-[12px] text-[12px] font-semibold whitespace-nowrap"
+              <div className="flex items-center gap-1 px-[12px] py-[8px] rounded-[12px] text-[12px] font-normal whitespace-nowrap"
                 style={{ background: "#E5E5EC", color: T3, border: `0.5px solid ${IND_BDR}` }}>
                 <Clock className="w-[11px] h-[11px]" />
                 Fri{weekConfig.daysLeft > 0 ? ` · ${weekConfig.daysLeft}d` : ""}
@@ -1076,7 +1076,7 @@ const DashboardPage = () => {
               backgroundSize: "26px 26px"
             }} />
             <div className="relative z-10">
-              <div className="flex items-center gap-[8px] text-[12px] font-semibold uppercase tracking-[0.10em] mb-3" style={{ color: "rgba(255,255,255,0.52)" }}>
+              <div className="flex items-center gap-[8px] text-[12px] font-normal uppercase tracking-[0.10em] mb-3" style={{ color: "rgba(255,255,255,0.52)" }}>
                 <Sparkles className="w-3 h-3" />
                 AI Message
               </div>
@@ -1097,7 +1097,7 @@ const DashboardPage = () => {
             ].map(({ tag, text }, i, arr) => (
               <div key={tag} className="px-[16px] py-[16px] flex flex-col gap-[4px]"
                 style={{ borderBottom: i < arr.length - 1 ? `0.5px solid ${SEP}` : "none" }}>
-                <span className="text-[12px] font-semibold uppercase tracking-[0.09em]" style={{ color: IND3 }}>{tag}</span>
+                <span className="text-[12px] font-normal uppercase tracking-[0.09em]" style={{ color: IND3 }}>{tag}</span>
                 <p className="text-[13px] leading-[1.58]" style={{ color: T2, letterSpacing: "-0.1px" }}>{text}</p>
               </div>
             ))}
@@ -1111,11 +1111,11 @@ const DashboardPage = () => {
             <div className="absolute -top-4 -right-4 w-[60px] h-[60px] rounded-full pointer-events-none"
               style={{ background: "radial-gradient(circle, rgba(245,160,0,0.10) 0%, transparent 70%)" }} />
             <div className="relative z-10">
-              <div className="text-[12px] font-semibold uppercase tracking-[0.09em] mb-[4px]" style={{ color: ORANGE }}>Overall Performance</div>
-              <div className="text-[18px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>{weeklyReport.overall_performance.verdict}</div>
+              <div className="text-[12px] font-normal uppercase tracking-[0.09em] mb-[4px]" style={{ color: ORANGE }}>Overall Performance</div>
+              <div className="text-[18px] font-normal" style={{ color: T1, letterSpacing: "-0.3px" }}>{weeklyReport.overall_performance.verdict}</div>
               <p className="text-[12px] mt-[4px] leading-[1.58]" style={{ color: T3, letterSpacing: "-0.1px" }}>{weeklyReport.overall_performance.score_context}</p>
             </div>
-            <div className="flex items-center gap-1 px-[16px] py-[8px] rounded-[14px] text-[12px] font-semibold shrink-0 relative z-10"
+            <div className="flex items-center gap-1 px-[16px] py-[8px] rounded-[14px] text-[12px] font-normal shrink-0 relative z-10"
               style={{
                 background: weeklyReport.overall_performance.trend === "Declining" ? ORANGE_S : GREEN_S,
                 border: `0.5px solid ${weeklyReport.overall_performance.trend === "Declining" ? ORANGE_B : GREEN_B}`,
@@ -1131,7 +1131,7 @@ const DashboardPage = () => {
         {/* ── AI Improvement Tips ── */}
         {weeklyReport?.improvement_tips?.length > 0 && (
           <>
-            <div className="px-6 pt-5 pb-0 text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: T4 }}>
+            <div className="px-6 pt-5 pb-0 text-[12px] font-normal uppercase tracking-[0.10em]" style={{ color: T4 }}>
               AI Improvement Tips
             </div>
             {weeklyReport.improvement_tips.map((t: { tip: string; reason: string }, i: number) => (
@@ -1145,7 +1145,7 @@ const DashboardPage = () => {
                   {i === 0 ? "💡" : "🎯"}
                 </div>
                 <div>
-                  <div className="text-[14px] font-semibold leading-[1.35]" style={{ color: T1, letterSpacing: "-0.2px" }}>{t.tip}</div>
+                  <div className="text-[14px] font-normal leading-[1.35]" style={{ color: T1, letterSpacing: "-0.2px" }}>{t.tip}</div>
                   <p className="text-[12px] mt-[4px] leading-[1.5]" style={{ color: T3, letterSpacing: "-0.1px" }}>{t.reason}</p>
                 </div>
               </div>
@@ -1156,7 +1156,7 @@ const DashboardPage = () => {
         {/* ── Download PDF Button ── */}
         {weeklyReport && !weeklyLoading && (
           <button onClick={handleDownloadPDF} disabled={pdfDownloading}
-            className="mx-5 mt-5 w-[calc(100%-40px)] rounded-[18px] py-[16px] flex items-center justify-center gap-[8px] text-[16px] font-semibold text-white disabled:opacity-50 active:scale-[0.97] transition-transform relative overflow-hidden"
+            className="mx-5 mt-5 w-[calc(100%-40px)] rounded-[18px] py-[16px] flex items-center justify-center gap-[8px] text-[16px] font-normal text-white disabled:opacity-50 active:scale-[0.97] transition-transform relative overflow-hidden"
             style={{ background: `linear-gradient(135deg, #0A84FF 0%, #0A84FF 50%, #0A84FF 100%)`, boxShadow: SH_BTN, letterSpacing: "-0.2px" }}>
             <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.13) 0%, transparent 52%)" }} />
             <span className="relative z-10 flex items-center gap-[8px]">
@@ -1182,7 +1182,7 @@ const DashboardPage = () => {
             }} />
             <span className="text-[22px] relative z-10">💡</span>
             <div className="relative z-10">
-              <div className="text-[16px] font-semibold text-white" style={{ letterSpacing: "-0.3px" }}>AI Parenting Tips</div>
+              <div className="text-[16px] font-normal text-white" style={{ letterSpacing: "-0.3px" }}>AI Parenting Tips</div>
               <div className="text-[12px] mt-1" style={{ color: "rgba(255,255,255,0.52)" }}>Based on {childFirstName}'s current data</div>
             </div>
           </div>
@@ -1193,12 +1193,12 @@ const DashboardPage = () => {
             return tips.length > 0 ? tips.map((item: { tip: string; reason: string }, i: number) => (
               <div key={i} className="px-[16px] py-[16px] flex items-start gap-[16px]"
                 style={{ borderBottom: i < tips.length - 1 ? `0.5px solid ${SEP}` : "none" }}>
-                <div className="w-7 h-7 rounded-[9px] flex items-center justify-center text-[12px] font-semibold shrink-0 mt-1"
+                <div className="w-7 h-7 rounded-[9px] flex items-center justify-center text-[12px] font-normal shrink-0 mt-1"
                   style={{ background: IND_SOFT, border: `0.5px solid ${IND_BDR}`, color: IND }}>
                   {i + 1}
                 </div>
                 <div>
-                  <div className="text-[13px] font-semibold" style={{ color: T1, letterSpacing: "-0.2px" }}>{item.tip}</div>
+                  <div className="text-[13px] font-normal" style={{ color: T1, letterSpacing: "-0.2px" }}>{item.tip}</div>
                   <p className="text-[12px] mt-[4px] leading-[1.5]" style={{ color: T3, letterSpacing: "-0.1px" }}>{item.reason}</p>
                 </div>
               </div>
@@ -1276,13 +1276,13 @@ const DashboardPage = () => {
 
     return (
       <div className="animate-in fade-in duration-500 -m-4 sm:-m-6 md:-m-8 min-h-[calc(100vh-64px)]"
-        style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif", background: BG }}>
+        style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif", background: BG }}>
         <div className="w-full px-6 pt-8 pb-10">
 
           {/* ── Greeting + Date ── */}
           <div className="flex items-start justify-between gap-6 flex-wrap mb-8">
             <div>
-              <h1 className="text-[42px] font-semibold leading-[1.05]" style={{ color: T1, letterSpacing: "-1.2px" }}>
+              <h1 className="text-[42px] font-normal leading-[1.05]" style={{ color: T1, letterSpacing: "-1.2px" }}>
                 {greeting},{" "}
                 <span style={{ background: `linear-gradient(130deg, ${IND} 0%, ${IND3} 100%)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                   {parentFirstName}
@@ -1292,14 +1292,14 @@ const DashboardPage = () => {
             </div>
             <div className="flex items-center gap-3">
               <div className="flex flex-col items-end">
-                <span className="text-[12px] font-semibold uppercase tracking-[0.14em]" style={{ color: T4 }}>
+                <span className="text-[12px] font-normal uppercase tracking-[0.14em]" style={{ color: T4 }}>
                   {currentTime.toLocaleDateString("en-US", { weekday: "long" })}
                 </span>
-                <span className="text-[14px] font-semibold mt-[2px]" style={{ color: T2 }}>
+                <span className="text-[14px] font-normal mt-[2px]" style={{ color: T2 }}>
                   {currentTime.toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}
                 </span>
               </div>
-              <div className="w-12 h-12 rounded-[14px] flex items-center justify-center text-[14px] font-semibold text-white"
+              <div className="w-12 h-12 rounded-[14px] flex items-center justify-center text-[14px] font-normal text-white"
                 style={{ background: `linear-gradient(140deg, ${IND} 0%, ${IND2} 100%)`, boxShadow: "0 4px 14px rgba(10,132,255,0.28)" }}>
                 {userInitials}
               </div>
@@ -1325,10 +1325,10 @@ const DashboardPage = () => {
               <div className="relative z-10">
                 <div className="flex items-start justify-between gap-4 mb-6">
                   <div>
-                    <h3 className="text-[22px] font-semibold" style={{ color: T1, letterSpacing: "-0.5px" }}>Academic Health</h3>
+                    <h3 className="text-[22px] font-normal" style={{ color: T1, letterSpacing: "-0.5px" }}>Academic Health</h3>
                     <p className="text-[14px] mt-1" style={{ color: T3 }}>Overall performance indicator</p>
                   </div>
-                  <div className="inline-flex items-center gap-[8px] px-[16px] py-[8px] rounded-full text-[13px] font-semibold"
+                  <div className="inline-flex items-center gap-[8px] px-[16px] py-[8px] rounded-full text-[13px] font-normal"
                     style={{
                       background: trendStable || isImproving ? GREEN_S : ORANGE_S,
                       color: trendStable || isImproving ? "#248A3D" : "#86310C",
@@ -1341,10 +1341,10 @@ const DashboardPage = () => {
                 </div>
                 <div className="flex items-end justify-between gap-6 mt-8">
                   <div className="flex flex-col gap-2">
-                    <div className="text-[80px] font-semibold leading-none" style={{ color: IND, letterSpacing: "-4.5px" }}>
+                    <div className="text-[80px] font-normal leading-none" style={{ color: IND, letterSpacing: "-4.5px" }}>
                       {liveStats.avgScore > 0 ? `${liveStats.avgScore}%` : "—"}
                     </div>
-                    <div className="text-[12px] font-semibold uppercase tracking-[0.10em] mt-2" style={{ color: T4 }}>
+                    <div className="text-[12px] font-normal uppercase tracking-[0.10em] mt-2" style={{ color: T4 }}>
                       {liveStats.avgScore >= 75 ? "Good Standing" : liveStats.avgScore > 0 ? "Needs Attention" : "No data yet"}
                     </div>
                   </div>
@@ -1361,7 +1361,7 @@ const DashboardPage = () => {
                         strokeDasharray={ringCirc} strokeDashoffset={ringOffset}
                         style={{ transition: "stroke-dashoffset 1s cubic-bezier(0.4,0,0.2,1)" }} />
                     </svg>
-                    <div className="absolute inset-0 flex items-center justify-center text-[22px] font-semibold" style={{ color: T1, letterSpacing: "-0.5px" }}>
+                    <div className="absolute inset-0 flex items-center justify-center text-[22px] font-normal" style={{ color: T1, letterSpacing: "-0.5px" }}>
                       {liveStats.avgScore > 0 ? `${liveStats.avgScore}%` : "—"}
                     </div>
                   </div>
@@ -1389,23 +1389,23 @@ const DashboardPage = () => {
                 backgroundSize: "26px 26px"
               }} />
               <div className="relative z-10">
-                <div className="w-[68px] h-[68px] rounded-[22px] flex items-center justify-center text-[24px] font-semibold text-white mb-4"
+                <div className="w-[68px] h-[68px] rounded-[22px] flex items-center justify-center text-[24px] font-normal text-white mb-4"
                   style={{ background: "rgba(255,255,255,0.18)", border: "0.5px solid rgba(255,255,255,0.26)", boxShadow: "0 4px 20px rgba(0,0,0,0.18)" }}>
                   {studentInitials}
                 </div>
-                <div className="text-[24px] font-semibold text-white" style={{ letterSpacing: "-0.6px" }}>{studentData?.name || "Student"}</div>
+                <div className="text-[24px] font-normal text-white" style={{ letterSpacing: "-0.6px" }}>{studentData?.name || "Student"}</div>
                 <div className="text-[14px] mt-[4px]" style={{ color: "rgba(255,255,255,0.52)" }}>
                   {studentMeta.className !== "—" ? `Grade ${studentMeta.className}` : studentData?.grade ? `Grade ${studentData.grade}` : "Grade —"}
                   {studentMeta.rollNo !== "—" ? ` · Roll ${studentMeta.rollNo}` : ""}
                 </div>
                 <div className="grid grid-cols-2 mt-5 rounded-[15px] overflow-hidden" style={{ gap: "1px", background: "rgba(255,255,255,0.10)" }}>
                   <div className="px-[16px] py-[12px]" style={{ background: "rgba(255,255,255,0.07)" }}>
-                    <div className="text-[12px] font-semibold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.38)" }}>Class Teacher</div>
-                    <div className="text-[15px] font-semibold mt-1 text-white truncate" style={{ letterSpacing: "-0.2px" }}>{teacherInfo.name}</div>
+                    <div className="text-[12px] font-normal uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.38)" }}>Class Teacher</div>
+                    <div className="text-[15px] font-normal mt-1 text-white truncate" style={{ letterSpacing: "-0.2px" }}>{teacherInfo.name}</div>
                   </div>
                   <div className="px-[16px] py-[12px]" style={{ background: "rgba(255,255,255,0.07)" }}>
-                    <div className="text-[12px] font-semibold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.38)" }}>Academic Year</div>
-                    <div className="text-[15px] font-semibold mt-1 text-white" style={{ letterSpacing: "-0.2px" }}>{academicYear}</div>
+                    <div className="text-[12px] font-normal uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.38)" }}>Academic Year</div>
+                    <div className="text-[15px] font-normal mt-1 text-white" style={{ letterSpacing: "-0.2px" }}>{academicYear}</div>
                   </div>
                 </div>
               </div>
@@ -1436,9 +1436,9 @@ const DashboardPage = () => {
                   style={{ background: iconBoxBg, border: `0.5px solid ${iconBoxBdr}` }}>
                   <Icon className="w-[18px] h-[18px]" style={{ color: iconColor }} />
                 </div>
-                <div className="text-[12px] font-semibold uppercase tracking-[0.08em] relative" style={{ color: T4 }}>{label}</div>
-                <div className="text-[28px] font-semibold mt-1 leading-none relative" style={{ color: T1, letterSpacing: "-1px" }}>{value}</div>
-                <div className="text-[12px] font-medium mt-[8px] relative truncate" style={{ color: statusColor }}>{status}</div>
+                <div className="text-[12px] font-normal uppercase tracking-[0.08em] relative" style={{ color: T4 }}>{label}</div>
+                <div className="text-[28px] font-normal mt-1 leading-none relative" style={{ color: T1, letterSpacing: "-1px" }}>{value}</div>
+                <div className="text-[12px] font-normal mt-[8px] relative truncate" style={{ color: statusColor }}>{status}</div>
               </div>
             ))}
           </div>
@@ -1459,9 +1459,9 @@ const DashboardPage = () => {
               <Trophy className="w-[22px] h-[22px] text-white" />
             </div>
             <div className="flex-1 min-w-0 relative">
-              <div className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: T4 }}>Class Leaderboard</div>
-              <div className="text-[18px] font-semibold mt-[2px]" style={{ color: T1, letterSpacing: "-0.4px" }}>See where you stand this week</div>
-              <div className="text-[12px] font-medium mt-[2px]" style={{ color: T3 }}>Weekly ranking · AI insights · personalised plan</div>
+              <div className="text-[12px] font-normal uppercase tracking-[0.10em]" style={{ color: T4 }}>Class Leaderboard</div>
+              <div className="text-[18px] font-normal mt-[2px]" style={{ color: T1, letterSpacing: "-0.4px" }}>See where you stand this week</div>
+              <div className="text-[12px] font-normal mt-[2px]" style={{ color: T3 }}>Weekly ranking · AI insights · personalised plan</div>
             </div>
             <ArrowRight className="w-[20px] h-[20px] flex-shrink-0 relative" style={{ color: IND }} />
           </div>
@@ -1474,11 +1474,11 @@ const DashboardPage = () => {
             <div className="flex items-center justify-between px-6 pt-[16px] pb-[12px]" style={{ borderBottom: `0.5px solid ${IND_BDR}` }}>
               <div className="flex items-center gap-2">
                 <Sparkles className="w-[13px] h-[13px]" style={{ color: IND }} strokeWidth={2.4} />
-                <span className="text-[12px] font-semibold uppercase tracking-[0.12em]" style={{ color: T4 }}>Edullent AI · Live Summary</span>
+                <span className="text-[12px] font-normal uppercase tracking-[0.12em]" style={{ color: T4 }}>Edullent AI · Live Summary</span>
               </div>
               <div className="flex items-center gap-[4px] px-3 py-[4px] rounded-full" style={{ background: GREEN_S, border: `0.5px solid ${GREEN_B}` }}>
                 <div className="w-[6px] h-[6px] rounded-full animate-pulse" style={{ background: GREEN, boxShadow: `0 0 0 2px ${GREEN_S}` }} />
-                <span className="text-[12px] font-semibold tracking-[0.06em]" style={{ color: GREEN }}>LIVE</span>
+                <span className="text-[12px] font-normal tracking-[0.06em]" style={{ color: GREEN }}>LIVE</span>
               </div>
             </div>
 
@@ -1548,9 +1548,9 @@ const DashboardPage = () => {
                         style={{ background: iconBoxBg, border: `0.5px solid ${iconBoxBdr}` }}>
                         <Icon className="w-[18px] h-[18px]" style={{ color: iconColor }} strokeWidth={2.3} />
                       </div>
-                      <div className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: T4 }}>{label}</div>
-                      <div className="text-[28px] font-semibold mt-1 leading-none" style={{ color: T1, letterSpacing: "-1px" }}>{value}</div>
-                      <div className="text-[12px] font-medium mt-[8px] truncate" style={{ color: statusColor }}>{status}</div>
+                      <div className="text-[12px] font-normal uppercase tracking-[0.10em]" style={{ color: T4 }}>{label}</div>
+                      <div className="text-[28px] font-normal mt-1 leading-none" style={{ color: T1, letterSpacing: "-1px" }}>{value}</div>
+                      <div className="text-[12px] font-normal mt-[8px] truncate" style={{ color: statusColor }}>{status}</div>
                     </div>
                   ))}
                 </div>
@@ -1560,7 +1560,7 @@ const DashboardPage = () => {
                   <BrainCircuit className="w-4 h-4 shrink-0 mt-[2px]" style={{ color: IND }} />
                   {aiInsights?.child_summary_narrative ? (
                     <p className="text-[13px] leading-[1.65]" style={{ color: T3, letterSpacing: "-0.1px" }}>
-                      <strong style={{ color: T1, fontWeight: 600 }}>{studentData?.name}</strong>{" "}
+                      <strong style={{ color: T1, fontWeight: 400 }}>{studentData?.name}</strong>{" "}
                       {aiInsights.child_summary_narrative.replace(studentData?.name || "", "").trim()}
                     </p>
                   ) : (
@@ -1586,7 +1586,7 @@ const DashboardPage = () => {
               onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/alerts"); } }}
               className="bg-white rounded-[22px] p-6 cursor-pointer transition-all hover:-translate-y-1 hover:scale-[1.02] hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
               style={{ boxShadow: SH, border: `0.5px solid ${IND_BDR}` }}>
-              <h3 className="text-[18px] font-semibold mb-5" style={{ color: T1, letterSpacing: "-0.4px" }}>Recent Alerts</h3>
+              <h3 className="text-[18px] font-normal mb-5" style={{ color: T1, letterSpacing: "-0.4px" }}>Recent Alerts</h3>
               {recentAlerts.length > 0 ? (
                 <div className="space-y-3">
                   {recentAlerts.map(alert => (
@@ -1597,7 +1597,7 @@ const DashboardPage = () => {
                         {alert.urgent ? <Clock className="w-4 h-4" /> : <CheckCircle className="w-4 h-4" />}
                       </div>
                       <div>
-                        <p className="text-[14px] font-medium leading-snug" style={{ color: T1 }}>{alert.title}</p>
+                        <p className="text-[14px] font-normal leading-snug" style={{ color: T1 }}>{alert.title}</p>
                         <p className="text-[12px] mt-1" style={{ color: T3 }}>{timeAgo(alert.time)}</p>
                       </div>
                     </div>
@@ -1630,7 +1630,7 @@ const DashboardPage = () => {
                     <BookOpen className="w-5 h-5" style={{ color: IND }} />
                   </div>
                   <div>
-                    <div className="text-[16px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>Weekly AI Report</div>
+                    <div className="text-[16px] font-normal" style={{ color: T1, letterSpacing: "-0.3px" }}>Weekly AI Report</div>
                     <div className="text-[12px] mt-1" style={{ color: T3 }}>
                       {isPrevWeekReport ? "Last week's report" : weekConfig.canGenerate ? (weeklyReport ? "This week's digest" : "Generate this week's report") : "New report available Friday"}
                     </div>
@@ -1638,19 +1638,19 @@ const DashboardPage = () => {
                 </div>
                 {weekConfig.canGenerate && !weeklyReport ? (
                   <button onClick={(e) => { e.stopPropagation(); handleGenerateWeeklyReport(); }} disabled={weeklyLoading || dataLoading}
-                    className="flex items-center gap-2 px-4 py-[12px] rounded-[12px] text-[12px] font-semibold text-white disabled:opacity-50 transition-transform hover:scale-[1.02]"
+                    className="flex items-center gap-2 px-4 py-[12px] rounded-[12px] text-[12px] font-normal text-white disabled:opacity-50 transition-transform hover:scale-[1.02]"
                     style={{ background: IND, boxShadow: "0 4px 14px rgba(10,132,255,0.28)" }}>
                     {weeklyLoading ? <Loader2 className="w-[14px] h-[14px] animate-spin" /> : <Sparkles className="w-[14px] h-[14px]" />}
                     {weeklyLoading ? "Generating..." : "Generate"}
                   </button>
                 ) : weekConfig.canGenerate && weeklyReport ? (
                   <button onClick={(e) => { e.stopPropagation(); setWeeklyReport(null); }}
-                    className="text-[12px] font-medium px-3 py-[8px] rounded-[10px]"
+                    className="text-[12px] font-normal px-3 py-[8px] rounded-[10px]"
                     style={{ color: T3, border: `0.5px solid ${IND_BDR}`, background: "white" }}>
                     Regenerate
                   </button>
                 ) : (
-                  <div className="flex items-center gap-1 px-3 py-[8px] rounded-[12px] text-[12px] font-semibold whitespace-nowrap"
+                  <div className="flex items-center gap-1 px-3 py-[8px] rounded-[12px] text-[12px] font-normal whitespace-nowrap"
                     style={{ background: "#E5E5EC", color: T3, border: `0.5px solid ${IND_BDR}` }}>
                     <Clock className="w-[12px] h-[12px]" />
                     Fri{weekConfig.daysLeft > 0 ? ` · ${weekConfig.daysLeft}d` : ""}
@@ -1702,7 +1702,7 @@ const DashboardPage = () => {
                 backgroundSize: "26px 26px"
               }} />
               <div className="relative z-10">
-                <div className="flex items-center gap-[8px] text-[12px] font-semibold uppercase tracking-[0.10em] mb-3" style={{ color: "rgba(255,255,255,0.52)" }}>
+                <div className="flex items-center gap-[8px] text-[12px] font-normal uppercase tracking-[0.10em] mb-3" style={{ color: "rgba(255,255,255,0.52)" }}>
                   <Sparkles className="w-3 h-3" />
                   AI Message
                 </div>
@@ -1726,7 +1726,7 @@ const DashboardPage = () => {
                     borderRight: i < arr.length - 1 ? `0.5px solid ${SEP}` : "none",
                     borderBottom: i < arr.length - 1 ? `0.5px solid ${SEP}` : "none",
                   }}>
-                  <span className="text-[12px] font-semibold uppercase tracking-[0.09em]" style={{ color: IND3 }}>{tag}</span>
+                  <span className="text-[12px] font-normal uppercase tracking-[0.09em]" style={{ color: IND3 }}>{tag}</span>
                   <p className="text-[13px] leading-[1.58]" style={{ color: T2, letterSpacing: "-0.1px" }}>{text}</p>
                 </div>
               ))}
@@ -1744,11 +1744,11 @@ const DashboardPage = () => {
                   <div className="absolute -top-5 -right-5 w-[80px] h-[80px] rounded-full pointer-events-none"
                     style={{ background: "radial-gradient(circle, rgba(245,160,0,0.10) 0%, transparent 70%)" }} />
                   <div className="relative z-10">
-                    <div className="text-[12px] font-semibold uppercase tracking-[0.09em] mb-[4px]" style={{ color: ORANGE }}>Overall Performance</div>
-                    <div className="text-[20px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>{weeklyReport.overall_performance.verdict}</div>
+                    <div className="text-[12px] font-normal uppercase tracking-[0.09em] mb-[4px]" style={{ color: ORANGE }}>Overall Performance</div>
+                    <div className="text-[20px] font-normal" style={{ color: T1, letterSpacing: "-0.3px" }}>{weeklyReport.overall_performance.verdict}</div>
                     <p className="text-[13px] mt-[8px] leading-[1.58]" style={{ color: T3, letterSpacing: "-0.1px" }}>{weeklyReport.overall_performance.score_context}</p>
                   </div>
-                  <div className="flex items-center gap-1 px-[16px] py-[8px] rounded-[14px] text-[12px] font-semibold shrink-0 relative z-10"
+                  <div className="flex items-center gap-1 px-[16px] py-[8px] rounded-[14px] text-[12px] font-normal shrink-0 relative z-10"
                     style={{
                       background: weeklyReport.overall_performance.trend === "Declining" ? ORANGE_S : GREEN_S,
                       border: `0.5px solid ${weeklyReport.overall_performance.trend === "Declining" ? ORANGE_B : GREEN_B}`,
@@ -1762,7 +1762,7 @@ const DashboardPage = () => {
 
               {/* Download PDF button */}
               <button onClick={handleDownloadPDF} disabled={pdfDownloading}
-                className="rounded-[22px] py-[24px] px-6 flex items-center justify-center gap-3 text-[15px] font-semibold text-white disabled:opacity-50 transition-transform hover:scale-[1.01] relative overflow-hidden"
+                className="rounded-[22px] py-[24px] px-6 flex items-center justify-center gap-3 text-[15px] font-normal text-white disabled:opacity-50 transition-transform hover:scale-[1.01] relative overflow-hidden"
                 style={{ background: `linear-gradient(135deg, #0A84FF 0%, #0A84FF 50%, #0A84FF 100%)`, boxShadow: SH_BTN, letterSpacing: "-0.2px" }}>
                 <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.13) 0%, transparent 52%)" }} />
                 <span className="relative z-10 flex items-center gap-3">
@@ -1779,7 +1779,7 @@ const DashboardPage = () => {
           {/* ── AI Improvement Tips ── */}
           {weeklyReport?.improvement_tips?.length > 0 && (
             <div className="mb-5">
-              <div className="text-[12px] font-semibold uppercase tracking-[0.10em] mb-3 px-1" style={{ color: T4 }}>
+              <div className="text-[12px] font-normal uppercase tracking-[0.10em] mb-3 px-1" style={{ color: T4 }}>
                 AI Improvement Tips
               </div>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
@@ -1794,7 +1794,7 @@ const DashboardPage = () => {
                       {i === 0 ? "💡" : "🎯"}
                     </div>
                     <div>
-                      <div className="text-[15px] font-semibold leading-[1.35]" style={{ color: T1, letterSpacing: "-0.2px" }}>{t.tip}</div>
+                      <div className="text-[15px] font-normal leading-[1.35]" style={{ color: T1, letterSpacing: "-0.2px" }}>{t.tip}</div>
                       <p className="text-[13px] mt-[4px] leading-[1.5]" style={{ color: T3, letterSpacing: "-0.1px" }}>{t.reason}</p>
                     </div>
                   </div>
@@ -1815,7 +1815,7 @@ const DashboardPage = () => {
               }} />
               <span className="text-[28px] relative z-10">💡</span>
               <div className="relative z-10">
-                <div className="text-[18px] font-semibold text-white" style={{ letterSpacing: "-0.3px" }}>AI Parenting Tips</div>
+                <div className="text-[18px] font-normal text-white" style={{ letterSpacing: "-0.3px" }}>AI Parenting Tips</div>
                 <div className="text-[12px] mt-1" style={{ color: "rgba(255,255,255,0.52)" }}>Based on {childFirstName}'s current data</div>
               </div>
             </div>
@@ -1830,12 +1830,12 @@ const DashboardPage = () => {
                         borderRight: i < arr.length - 1 ? `0.5px solid ${SEP}` : "none",
                         borderBottom: i < arr.length - 1 ? `0.5px solid ${SEP}` : "none",
                       }}>
-                      <div className="w-8 h-8 rounded-[10px] flex items-center justify-center text-[13px] font-semibold shrink-0 mt-1"
+                      <div className="w-8 h-8 rounded-[10px] flex items-center justify-center text-[13px] font-normal shrink-0 mt-1"
                         style={{ background: IND_SOFT, border: `0.5px solid ${IND_BDR}`, color: IND }}>
                         {i + 1}
                       </div>
                       <div>
-                        <div className="text-[14px] font-semibold" style={{ color: T1, letterSpacing: "-0.2px" }}>{item.tip}</div>
+                        <div className="text-[14px] font-normal" style={{ color: T1, letterSpacing: "-0.2px" }}>{item.tip}</div>
                         <p className="text-[12px] mt-[4px] leading-[1.5]" style={{ color: T3, letterSpacing: "-0.1px" }}>{item.reason}</p>
                       </div>
                     </div>

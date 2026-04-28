@@ -146,7 +146,7 @@ const SettingsPage = () => {
 
     return (
       <div className="animate-in fade-in duration-500 -mx-3 -mt-3 md:mx-0 md:mt-0"
-        style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif", background: BG, minHeight: "100vh" }}>
+        style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif", background: BG, minHeight: "100vh" }}>
 
         {/* ── System Badge ── */}
         <div className="mx-5 mt-3 flex items-center gap-[12px] px-4 py-3 rounded-[18px] relative overflow-hidden"
@@ -161,8 +161,8 @@ const SettingsPage = () => {
             <Settings className="w-5 h-5" style={{ color: "rgba(255,255,255,0.95)" }} strokeWidth={2.1} />
           </div>
           <div className="relative z-10">
-            <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-[4px]" style={{ color: "rgba(255,255,255,0.55)" }}>Institutional Portal Registry</div>
-            <div className="flex items-center gap-[4px] text-[12px] font-semibold text-white">
+            <div className="text-[12px] font-normal uppercase tracking-[0.12em] mb-[4px]" style={{ color: "rgba(255,255,255,0.55)" }}>Institutional Portal Registry</div>
+            <div className="flex items-center gap-[4px] text-[12px] font-normal text-white">
               <span className="w-[6px] h-[6px] rounded-full animate-pulse" style={{ background: "#00EE88", boxShadow: "0 0 0 2px rgba(0,238,136,0.20)" }} />
               Settings Sync Active
             </div>
@@ -171,7 +171,7 @@ const SettingsPage = () => {
 
         {/* ── Page Head ── */}
         <div className="px-5 pt-4">
-          <div className="text-[28px] font-semibold mb-1" style={{ color: T1, letterSpacing: "-0.7px" }}>Portal Preferences</div>
+          <div className="text-[28px] font-normal mb-1" style={{ color: T1, letterSpacing: "-0.7px" }}>Portal Preferences</div>
           <div className="text-[12px] font-normal leading-[1.6]" style={{ color: T3 }}>
             Manage your parental profile and predictive intelligence alerts.
           </div>
@@ -187,8 +187,8 @@ const SettingsPage = () => {
             <ShieldCheck className="w-[22px] h-[22px]" style={{ color: GREEN }} strokeWidth={2.2} />
           </div>
           <div>
-            <div className="text-[12px] font-semibold uppercase tracking-[0.10em] mb-1" style={{ color: T4 }}>Identity Status</div>
-            <div className="text-[16px] font-semibold" style={{ color: GREEN, letterSpacing: "-0.2px" }}>Verified Guardian</div>
+            <div className="text-[12px] font-normal uppercase tracking-[0.10em] mb-1" style={{ color: T4 }}>Identity Status</div>
+            <div className="text-[16px] font-normal" style={{ color: GREEN, letterSpacing: "-0.2px" }}>Verified Guardian</div>
           </div>
         </div>
 
@@ -203,13 +203,13 @@ const SettingsPage = () => {
               style={{ background: "rgba(255,59,48,0.10)", border: "0.5px solid rgba(255,59,48,0.20)" }}>
               <Heart className="w-[14px] h-[14px]" style={{ color: RED }} strokeWidth={2.5} />
             </div>
-            <div className="text-[12px] font-semibold uppercase tracking-[0.09em]" style={{ color: T2 }}>Account Identity Matrix</div>
+            <div className="text-[12px] font-normal uppercase tracking-[0.09em]" style={{ color: T2 }}>Account Identity Matrix</div>
           </div>
 
           {/* Avatar */}
           <div className="flex flex-col items-center gap-3 mb-[16px] relative z-10">
             <div className="relative">
-              <div className="w-20 h-20 rounded-[26px] flex items-center justify-center text-[28px] font-semibold text-white"
+              <div className="w-20 h-20 rounded-[26px] flex items-center justify-center text-[28px] font-normal text-white"
                 style={{
                   background: `linear-gradient(140deg, ${B1}, ${B2})`,
                   boxShadow: `${SH_BTN}, 0 0 0 4px rgba(255,255,255,0.85)`,
@@ -221,14 +221,14 @@ const SettingsPage = () => {
                 <Camera className="w-[13px] h-[13px]" style={{ color: "rgba(10,132,255,0.7)" }} strokeWidth={2.3} />
               </button>
             </div>
-            <div className="text-[20px] font-semibold" style={{ color: T1, letterSpacing: "-0.4px" }}>{profileForm.name || "Guardian"}</div>
+            <div className="text-[20px] font-normal" style={{ color: T1, letterSpacing: "-0.4px" }}>{profileForm.name || "Guardian"}</div>
             <div className="flex items-center gap-2 flex-wrap justify-center">
-              <div className="px-[12px] py-[4px] rounded-full text-[12px] font-semibold text-white tracking-[0.06em] uppercase"
+              <div className="px-[12px] py-[4px] rounded-full text-[12px] font-normal text-white tracking-[0.06em] uppercase"
                 style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: "0 2px 8px rgba(10,132,255,0.26)" }}>
                 Parent Guardian
               </div>
               {shortId && (
-                <div className="px-[12px] py-[4px] rounded-full text-[12px] font-semibold tracking-[0.06em] uppercase"
+                <div className="px-[12px] py-[4px] rounded-full text-[12px] font-normal tracking-[0.06em] uppercase"
                   style={{ background: "rgba(10,132,255,0.08)", border: "0.5px solid rgba(10,132,255,0.16)", color: B1 }}>
                   ID: {shortId}
                 </div>
@@ -238,7 +238,7 @@ const SettingsPage = () => {
 
           {/* Field: Authorized Name */}
           <div className="mb-[16px] relative z-10">
-            <div className="text-[12px] font-semibold uppercase tracking-[0.10em] mb-[8px] pl-[2px]" style={{ color: T4 }}>Authorized Name</div>
+            <div className="text-[12px] font-normal uppercase tracking-[0.10em] mb-[8px] pl-[2px]" style={{ color: T4 }}>Authorized Name</div>
             <div className="flex items-center gap-[12px] px-[16px] py-3 rounded-[15px]"
               style={{ background: BG, border: "0.5px solid rgba(10,132,255,0.12)" }}>
               <User className="w-[15px] h-[15px]" style={{ color: "rgba(10,132,255,0.5)" }} strokeWidth={2.2} />
@@ -246,7 +246,7 @@ const SettingsPage = () => {
                 type="text"
                 value={profileForm.name}
                 onChange={(e) => setProfileForm({ ...profileForm, name: e.target.value })}
-                className="flex-1 bg-transparent outline-none text-[14px] font-semibold"
+                className="flex-1 bg-transparent outline-none text-[14px] font-normal"
                 style={{ color: T1, letterSpacing: "-0.1px", fontFamily: "inherit" }}
               />
             </div>
@@ -254,17 +254,17 @@ const SettingsPage = () => {
 
           {/* Field: Primary Email (readonly) */}
           <div className="mb-[16px] relative z-10">
-            <div className="text-[12px] font-semibold uppercase tracking-[0.10em] mb-[8px] pl-[2px]" style={{ color: T4 }}>Primary Email</div>
+            <div className="text-[12px] font-normal uppercase tracking-[0.10em] mb-[8px] pl-[2px]" style={{ color: T4 }}>Primary Email</div>
             <div className="flex items-center gap-[12px] px-[16px] py-3 rounded-[15px] opacity-80"
               style={{ background: BG, border: "0.5px solid rgba(10,132,255,0.12)" }}>
               <Mail className="w-[15px] h-[15px]" style={{ color: "rgba(10,132,255,0.5)" }} strokeWidth={2.2} />
-              <span className="flex-1 text-[12px] font-semibold truncate" style={{ color: T1 }}>{profileForm.email || "—"}</span>
+              <span className="flex-1 text-[12px] font-normal truncate" style={{ color: T1 }}>{profileForm.email || "—"}</span>
             </div>
           </div>
 
           {/* Field: Contact Line */}
           <div className="mb-[16px] relative z-10">
-            <div className="text-[12px] font-semibold uppercase tracking-[0.10em] mb-[8px] pl-[2px]" style={{ color: T4 }}>Contact Line</div>
+            <div className="text-[12px] font-normal uppercase tracking-[0.10em] mb-[8px] pl-[2px]" style={{ color: T4 }}>Contact Line</div>
             <div className="flex items-center gap-[12px] px-[16px] py-3 rounded-[15px]"
               style={{ background: BG, border: "0.5px solid rgba(10,132,255,0.12)" }}>
               <Phone className="w-[15px] h-[15px]" style={{ color: "rgba(10,132,255,0.5)" }} strokeWidth={2.2} />
@@ -273,7 +273,7 @@ const SettingsPage = () => {
                 value={profileForm.phone}
                 onChange={(e) => setProfileForm({ ...profileForm, phone: e.target.value })}
                 placeholder="+00 000 000 00"
-                className="flex-1 bg-transparent outline-none text-[14px] font-semibold placeholder:font-normal"
+                className="flex-1 bg-transparent outline-none text-[14px] font-normal placeholder:font-normal"
                 style={{ color: T1, letterSpacing: "-0.1px", fontFamily: "inherit" }}
               />
             </div>
@@ -281,14 +281,14 @@ const SettingsPage = () => {
 
           {/* Field: Interface Locality */}
           <div className="mb-4 relative z-10">
-            <div className="text-[12px] font-semibold uppercase tracking-[0.10em] mb-[8px] pl-[2px]" style={{ color: T4 }}>Interface Locality</div>
+            <div className="text-[12px] font-normal uppercase tracking-[0.10em] mb-[8px] pl-[2px]" style={{ color: T4 }}>Interface Locality</div>
             <div className="flex items-center gap-[12px] px-[16px] py-3 rounded-[15px]"
               style={{ background: BG, border: "0.5px solid rgba(10,132,255,0.12)" }}>
               <Globe className="w-[15px] h-[15px]" style={{ color: "rgba(10,132,255,0.5)" }} strokeWidth={2.2} />
               <select
                 value={profileForm.language}
                 onChange={(e) => setProfileForm({ ...profileForm, language: e.target.value })}
-                className="flex-1 bg-transparent outline-none text-[14px] font-semibold appearance-none cursor-pointer"
+                className="flex-1 bg-transparent outline-none text-[14px] font-normal appearance-none cursor-pointer"
                 style={{ color: T1, letterSpacing: "-0.1px", fontFamily: "inherit" }}
               >
                 <option value="English">ENG: Institutional English</option>
@@ -303,7 +303,7 @@ const SettingsPage = () => {
           <button
             onClick={handleUpdateProfile}
             disabled={isUpdating}
-            className="w-full h-[52px] mt-5 rounded-[17px] flex items-center justify-center gap-2 text-[14px] font-semibold text-white uppercase tracking-[0.08em] disabled:opacity-50 relative overflow-hidden active:scale-[0.97] transition-transform z-10"
+            className="w-full h-[52px] mt-5 rounded-[17px] flex items-center justify-center gap-2 text-[14px] font-normal text-white uppercase tracking-[0.08em] disabled:opacity-50 relative overflow-hidden active:scale-[0.97] transition-transform z-10"
             style={{
               background: "linear-gradient(135deg, #1D1D1F, #3A3A3C)",
               boxShadow: "0 6px 22px rgba(0,8,64,0.32), 0 2px 6px rgba(0,8,64,0.18)",
@@ -323,7 +323,7 @@ const SettingsPage = () => {
             style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: "0 2px 8px rgba(10,132,255,0.26)" }}>
             <Bell className="w-[18px] h-[18px] text-white" strokeWidth={2.2} />
           </div>
-          <div className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: T2 }}>Intelligence Alerts Matrix</div>
+          <div className="text-[12px] font-normal uppercase tracking-[0.10em]" style={{ color: T2 }}>Intelligence Alerts Matrix</div>
         </div>
 
         {/* Toggles */}
@@ -344,8 +344,8 @@ const SettingsPage = () => {
                     <Icon className="w-5 h-5 text-white" strokeWidth={2.2} />
                   </div>
                   <div className="min-w-0">
-                    <div className="text-[13px] font-semibold uppercase tracking-[0.04em] mb-[4px]" style={{ color: T1 }}>{t.title}</div>
-                    <div className="text-[12px] font-semibold uppercase tracking-[0.04em] truncate" style={{ color: T4 }}>{t.sub}</div>
+                    <div className="text-[13px] font-normal uppercase tracking-[0.04em] mb-[4px]" style={{ color: T1 }}>{t.title}</div>
+                    <div className="text-[12px] font-normal uppercase tracking-[0.04em] truncate" style={{ color: T4 }}>{t.sub}</div>
                   </div>
                 </div>
                 <div className="pt-[2px]">
@@ -369,20 +369,20 @@ const SettingsPage = () => {
             backgroundSize: "24px 24px",
           }} />
 
-          <div className="inline-flex items-center gap-[8px] px-3 py-[4px] rounded-full text-[12px] font-semibold uppercase tracking-[0.10em] mb-5 relative z-10"
+          <div className="inline-flex items-center gap-[8px] px-3 py-[4px] rounded-full text-[12px] font-normal uppercase tracking-[0.10em] mb-5 relative z-10"
             style={{ background: "rgba(255,255,255,0.16)", border: "0.5px solid rgba(255,255,255,0.26)", color: "rgba(255,255,255,0.70)", WebkitBackdropFilter: "blur(8px)", backdropFilter: "blur(8px)" }}>
             <Sparkles className="w-[11px] h-[11px]" strokeWidth={2.5} />
             Institutional Link
           </div>
 
           <div className="flex flex-col items-center gap-3 mb-[24px] relative z-10">
-            <div className="w-[74px] h-[74px] rounded-[24px] flex items-center justify-center text-[28px] font-semibold"
+            <div className="w-[74px] h-[74px] rounded-[24px] flex items-center justify-center text-[28px] font-normal"
               style={{ background: "rgba(255,255,255,0.92)", color: B1, boxShadow: "0 4px 20px rgba(0,0,0,0.22), 0 0 0 3px rgba(255,255,255,0.20)" }}>
               {studentInitial}
             </div>
             <div className="text-center">
-              <div className="text-[20px] font-semibold text-white" style={{ letterSpacing: "-0.4px" }}>{studentData?.name || "Student"}</div>
-              <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mt-1" style={{ color: "rgba(255,255,255,0.45)" }}>Grade Subdivision Matrix</div>
+              <div className="text-[20px] font-normal text-white" style={{ letterSpacing: "-0.4px" }}>{studentData?.name || "Student"}</div>
+              <div className="text-[12px] font-normal uppercase tracking-[0.12em] mt-1" style={{ color: "rgba(255,255,255,0.45)" }}>Grade Subdivision Matrix</div>
             </div>
           </div>
 
@@ -395,8 +395,8 @@ const SettingsPage = () => {
             ].map((row, i, arr) => (
               <div key={row.lbl} className="flex items-center justify-between px-4 py-[12px]"
                 style={{ borderBottom: i < arr.length - 1 ? "0.5px solid rgba(255,255,255,0.08)" : "none" }}>
-                <span className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.40)" }}>{row.lbl}</span>
-                <span className="text-[13px] font-semibold text-white truncate max-w-[60%] text-right" style={{ letterSpacing: "-0.1px" }}>{row.val}</span>
+                <span className="text-[12px] font-normal uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.40)" }}>{row.lbl}</span>
+                <span className="text-[13px] font-normal text-white truncate max-w-[60%] text-right" style={{ letterSpacing: "-0.1px" }}>{row.val}</span>
               </div>
             ))}
           </div>
@@ -410,9 +410,9 @@ const SettingsPage = () => {
               style={{ background: "rgba(10,132,255,0.10)", border: "0.5px solid rgba(10,132,255,0.18)" }}>
               <Lock className="w-[18px] h-[18px]" style={{ color: B1 }} strokeWidth={2.2} />
             </div>
-            <div className="text-[13px] font-semibold uppercase tracking-[0.08em]" style={{ color: T2 }}>Security Ops</div>
+            <div className="text-[13px] font-normal uppercase tracking-[0.08em]" style={{ color: T2 }}>Security Ops</div>
           </div>
-          <div className="text-[12px] font-semibold uppercase tracking-[0.06em] leading-[1.7] mb-[16px]" style={{ color: T3 }}>
+          <div className="text-[12px] font-normal uppercase tracking-[0.06em] leading-[1.7] mb-[16px]" style={{ color: T3 }}>
             Encryption and access controls are managed by the institutional administrator.
           </div>
 
@@ -424,12 +424,12 @@ const SettingsPage = () => {
             <div key={row.name} className="flex items-center justify-between py-[12px] cursor-pointer active:opacity-70"
               style={{ borderTop: `0.5px solid ${SEP}`, paddingBottom: i === arr.length - 1 ? 0 : 13 }}>
               <div className="flex flex-col gap-[4px]">
-                <div className="text-[13px] font-semibold" style={{ color: T1, letterSpacing: "-0.1px" }}>{row.name}</div>
-                <div className="text-[12px] font-medium" style={{ color: T4 }}>{row.sub}</div>
+                <div className="text-[13px] font-normal" style={{ color: T1, letterSpacing: "-0.1px" }}>{row.name}</div>
+                <div className="text-[12px] font-normal" style={{ color: T4 }}>{row.sub}</div>
               </div>
               <div className="flex items-center gap-2">
                 {row.right === "ON" && (
-                  <div className="px-[8px] py-[4px] rounded-full text-[12px] font-semibold tracking-[0.06em]"
+                  <div className="px-[8px] py-[4px] rounded-full text-[12px] font-normal tracking-[0.06em]"
                     style={{ background: GREEN_S, border: `0.5px solid ${GREEN_B}`, color: GREEN_D }}>
                     ON
                   </div>
@@ -447,7 +447,7 @@ const SettingsPage = () => {
         <button
           onClick={handleUpdateProfile}
           disabled={isUpdating}
-          className="mx-5 mt-4 mb-2 w-[calc(100%-40px)] h-[52px] rounded-[17px] flex items-center justify-center gap-2 text-[14px] font-semibold text-white uppercase tracking-[0.08em] disabled:opacity-50 relative overflow-hidden active:scale-[0.97] transition-transform"
+          className="mx-5 mt-4 mb-2 w-[calc(100%-40px)] h-[52px] rounded-[17px] flex items-center justify-center gap-2 text-[14px] font-normal text-white uppercase tracking-[0.08em] disabled:opacity-50 relative overflow-hidden active:scale-[0.97] transition-transform"
           style={{
             background: "linear-gradient(135deg, #1D1D1F, #3A3A3C)",
             boxShadow: "0 6px 22px rgba(0,8,64,0.32), 0 2px 6px rgba(0,8,64,0.18)",
@@ -544,26 +544,26 @@ const SettingsPage = () => {
 
   return (
     <div className="animate-in fade-in duration-500 -m-4 sm:-m-6 md:-m-8 min-h-[calc(100vh-64px)]"
-      style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif", background: BG_D }}>
+      style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif", background: BG_D }}>
       <div className="w-full px-6 pt-8 pb-10">
 
         {/* ── Toolbar ── */}
         <div className="flex items-center justify-between mb-6 flex-wrap gap-4">
           <div>
-            <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-1 flex items-center gap-[8px]" style={{ color: T4 }}>
+            <div className="text-[12px] font-normal uppercase tracking-[0.12em] mb-1 flex items-center gap-[8px]" style={{ color: T4 }}>
               <span className="w-[6px] h-[6px] rounded-full animate-pulse" style={{ background: GREEN, boxShadow: "0 0 0 3px rgba(52,199,89,0.2)" }} />
               Parent Dashboard · Settings
             </div>
-            <h1 className="text-[28px] font-semibold leading-none" style={{ color: T1, letterSpacing: "-0.8px" }}>Portal Preferences</h1>
+            <h1 className="text-[28px] font-normal leading-none" style={{ color: T1, letterSpacing: "-0.8px" }}>Portal Preferences</h1>
             <div className="text-[13px] font-normal mt-[8px]" style={{ color: T3 }}>Manage your parental profile and predictive intelligence alerts</div>
           </div>
           <div className="flex items-center gap-[12px]">
-            <div className="px-[16px] py-[8px] rounded-full text-[12px] font-semibold flex items-center gap-[8px]"
+            <div className="px-[16px] py-[8px] rounded-full text-[12px] font-normal flex items-center gap-[8px]"
               style={{ background: "rgba(52,199,89,0.08)", color: GREEN_D_COL, border: "0.5px solid rgba(52,199,89,0.22)" }}>
               <ShieldCheck className="w-[12px] h-[12px]" strokeWidth={2.5} />
               Verified Guardian
             </div>
-            <div className="w-10 h-10 rounded-full flex items-center justify-center text-[14px] font-semibold text-white"
+            <div className="w-10 h-10 rounded-full flex items-center justify-center text-[14px] font-normal text-white"
               style={{ background: `linear-gradient(140deg, ${B1}, ${B2})`, boxShadow: "0 3px 12px rgba(10,132,255,0.36), 0 0 0 2px rgba(255,255,255,0.8)" }}>
               {(studentData?.name?.[0] || "S").toUpperCase()}
             </div>
@@ -588,13 +588,13 @@ const SettingsPage = () => {
               <div className="absolute -top-[20px] -right-[20px] w-[100px] h-[100px] rounded-full pointer-events-none"
                 style={{ background: `radial-gradient(circle, ${glow} 0%, transparent 70%)` }} />
               <div className="flex items-center justify-between mb-3 relative">
-                <span className="text-[12px] font-semibold uppercase tracking-[0.12em]" style={{ color: T4 }}>{label}</span>
+                <span className="text-[12px] font-normal uppercase tracking-[0.12em]" style={{ color: T4 }}>{label}</span>
                 <div className="w-10 h-10 rounded-[12px] flex items-center justify-center"
                   style={{ background: grad, boxShadow: sh, transform: "translateZ(18px)" }}>
                   <Icon className="w-[18px] h-[18px] text-white" strokeWidth={2.3} />
                 </div>
               </div>
-              <div className="text-[28px] font-semibold leading-none relative" style={{ color, letterSpacing: "-0.7px", transform: "translateZ(10px)" }}>{val}</div>
+              <div className="text-[28px] font-normal leading-none relative" style={{ color, letterSpacing: "-0.7px", transform: "translateZ(10px)" }}>{val}</div>
             </div>
           ))}
         </div>
@@ -620,7 +620,7 @@ const SettingsPage = () => {
                 <Heart className="w-6 h-6" style={{ color: RED }} strokeWidth={2.2} />
               </div>
               <div>
-                <div className="text-[18px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>Account Identity</div>
+                <div className="text-[18px] font-normal" style={{ color: T1, letterSpacing: "-0.3px" }}>Account Identity</div>
                 <div className="text-[12px] font-normal" style={{ color: T3 }}>Verified parental profile &amp; contact</div>
               </div>
             </div>
@@ -628,7 +628,7 @@ const SettingsPage = () => {
             {/* Avatar row */}
             <div className="flex items-center gap-6 mb-8 relative z-10" style={{ transform: "translateZ(20px)" }}>
               <div className="relative">
-                <div className="w-24 h-24 rounded-[28px] flex items-center justify-center text-[28px] font-semibold text-white"
+                <div className="w-24 h-24 rounded-[28px] flex items-center justify-center text-[28px] font-normal text-white"
                   style={{ background: `linear-gradient(140deg, ${B1}, ${B2})`, boxShadow: `${SH_BTN_D}, 0 0 0 5px rgba(255,255,255,0.85)` }}>
                   {firstInitialD}
                 </div>
@@ -638,14 +638,14 @@ const SettingsPage = () => {
                 </button>
               </div>
               <div>
-                <div className="text-[28px] font-semibold" style={{ color: T1, letterSpacing: "-0.6px" }}>{profileForm.name || "Guardian"}</div>
+                <div className="text-[28px] font-normal" style={{ color: T1, letterSpacing: "-0.6px" }}>{profileForm.name || "Guardian"}</div>
                 <div className="flex items-center gap-2 flex-wrap mt-2">
-                  <div className="px-[12px] py-[4px] rounded-full text-[12px] font-semibold text-white tracking-[0.06em] uppercase"
+                  <div className="px-[12px] py-[4px] rounded-full text-[12px] font-normal text-white tracking-[0.06em] uppercase"
                     style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: "0 2px 8px rgba(10,132,255,0.28)" }}>
                     Parent Guardian
                   </div>
                   {shortIdD && (
-                    <div className="px-[12px] py-[4px] rounded-full text-[12px] font-semibold tracking-[0.06em] uppercase"
+                    <div className="px-[12px] py-[4px] rounded-full text-[12px] font-normal tracking-[0.06em] uppercase"
                       style={{ background: "rgba(10,132,255,0.08)", border: `0.5px solid ${BLUE_BDR}`, color: B1 }}>
                       ID: {shortIdD}
                     </div>
@@ -658,48 +658,48 @@ const SettingsPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 relative z-10">
               {/* Authorized Name */}
               <div>
-                <div className="text-[12px] font-semibold uppercase tracking-[0.10em] mb-2 pl-1" style={{ color: T4 }}>Authorized Name</div>
+                <div className="text-[12px] font-normal uppercase tracking-[0.10em] mb-2 pl-1" style={{ color: T4 }}>Authorized Name</div>
                 <div className="flex items-center gap-3 px-4 py-[12px] rounded-[14px] focus-within:ring-2 focus-within:ring-offset-2"
                   style={{ background: BG_D, border: `0.5px solid ${BLUE_BDR}` }}>
                   <User className="w-4 h-4" style={{ color: "rgba(10,132,255,0.55)" }} strokeWidth={2.3} />
                   <input type="text" value={profileForm.name}
                     onChange={(e) => setProfileForm({ ...profileForm, name: e.target.value })}
-                    className="flex-1 bg-transparent outline-none text-[14px] font-semibold"
+                    className="flex-1 bg-transparent outline-none text-[14px] font-normal"
                     style={{ color: T1, letterSpacing: "-0.1px" }} />
                 </div>
               </div>
               {/* Primary Email */}
               <div>
-                <div className="text-[12px] font-semibold uppercase tracking-[0.10em] mb-2 pl-1" style={{ color: T4 }}>Primary Email</div>
+                <div className="text-[12px] font-normal uppercase tracking-[0.10em] mb-2 pl-1" style={{ color: T4 }}>Primary Email</div>
                 <div className="flex items-center gap-3 px-4 py-[12px] rounded-[14px] opacity-75"
                   style={{ background: BG_D, border: `0.5px solid ${BLUE_BDR}` }}>
                   <Mail className="w-4 h-4" style={{ color: "rgba(10,132,255,0.55)" }} strokeWidth={2.3} />
-                  <span className="flex-1 text-[13px] font-semibold truncate" style={{ color: T1 }}>{profileForm.email || "—"}</span>
+                  <span className="flex-1 text-[13px] font-normal truncate" style={{ color: T1 }}>{profileForm.email || "—"}</span>
                   <Lock className="w-3 h-3" style={{ color: T4 }} strokeWidth={2.3} />
                 </div>
               </div>
               {/* Contact Line */}
               <div>
-                <div className="text-[12px] font-semibold uppercase tracking-[0.10em] mb-2 pl-1" style={{ color: T4 }}>Contact Line</div>
+                <div className="text-[12px] font-normal uppercase tracking-[0.10em] mb-2 pl-1" style={{ color: T4 }}>Contact Line</div>
                 <div className="flex items-center gap-3 px-4 py-[12px] rounded-[14px]"
                   style={{ background: BG_D, border: `0.5px solid ${BLUE_BDR}` }}>
                   <Phone className="w-4 h-4" style={{ color: "rgba(10,132,255,0.55)" }} strokeWidth={2.3} />
                   <input type="tel" value={profileForm.phone}
                     onChange={(e) => setProfileForm({ ...profileForm, phone: e.target.value })}
                     placeholder="+00 000 000 00"
-                    className="flex-1 bg-transparent outline-none text-[14px] font-semibold placeholder:font-normal"
+                    className="flex-1 bg-transparent outline-none text-[14px] font-normal placeholder:font-normal"
                     style={{ color: T1, letterSpacing: "-0.1px" }} />
                 </div>
               </div>
               {/* Interface Locality */}
               <div>
-                <div className="text-[12px] font-semibold uppercase tracking-[0.10em] mb-2 pl-1" style={{ color: T4 }}>Interface Locality</div>
+                <div className="text-[12px] font-normal uppercase tracking-[0.10em] mb-2 pl-1" style={{ color: T4 }}>Interface Locality</div>
                 <div className="flex items-center gap-3 px-4 py-[12px] rounded-[14px]"
                   style={{ background: BG_D, border: `0.5px solid ${BLUE_BDR}` }}>
                   <Globe className="w-4 h-4" style={{ color: "rgba(10,132,255,0.55)" }} strokeWidth={2.3} />
                   <select value={profileForm.language}
                     onChange={(e) => setProfileForm({ ...profileForm, language: e.target.value })}
-                    className="flex-1 bg-transparent outline-none text-[14px] font-semibold appearance-none cursor-pointer"
+                    className="flex-1 bg-transparent outline-none text-[14px] font-normal appearance-none cursor-pointer"
                     style={{ color: T1, letterSpacing: "-0.1px" }}>
                     <option value="English">ENG · Institutional English</option>
                     <option value="Hindi">HIN · Northern Dialect</option>
@@ -712,7 +712,7 @@ const SettingsPage = () => {
 
             {/* Commit button */}
             <button onClick={handleUpdateProfile} disabled={isUpdating}
-              className="mt-8 w-full md:w-auto md:min-w-[260px] h-14 px-8 rounded-[16px] flex items-center justify-center gap-2 text-[13px] font-semibold text-white uppercase tracking-[0.06em] disabled:opacity-50 relative overflow-hidden transition-transform hover:scale-[1.02]"
+              className="mt-8 w-full md:w-auto md:min-w-[260px] h-14 px-8 rounded-[16px] flex items-center justify-center gap-2 text-[13px] font-normal text-white uppercase tracking-[0.06em] disabled:opacity-50 relative overflow-hidden transition-transform hover:scale-[1.02]"
               style={{
                 background: `linear-gradient(135deg, ${B1}, ${B2})`,
                 boxShadow: SH_BTN_D,
@@ -745,19 +745,19 @@ const SettingsPage = () => {
               backgroundSize: "24px 24px",
             }} />
             <div className="relative z-10" style={{ transform: "translateZ(14px)" }}>
-              <div className="inline-flex items-center gap-[4px] px-3 py-[4px] rounded-full text-[12px] font-semibold uppercase tracking-[0.12em] mb-6"
+              <div className="inline-flex items-center gap-[4px] px-3 py-[4px] rounded-full text-[12px] font-normal uppercase tracking-[0.12em] mb-6"
                 style={{ background: "rgba(255,255,255,0.16)", border: "0.5px solid rgba(255,255,255,0.26)", color: "rgba(255,255,255,0.80)", backdropFilter: "blur(8px)" }}>
                 <Sparkles className="w-[11px] h-[11px]" strokeWidth={2.5} />
                 Institutional Link
               </div>
               <div className="flex flex-col items-center gap-3 mb-6" style={{ transform: "translateZ(22px)" }}>
-                <div className="w-20 h-20 rounded-[24px] flex items-center justify-center text-[28px] font-semibold"
+                <div className="w-20 h-20 rounded-[24px] flex items-center justify-center text-[28px] font-normal"
                   style={{ background: "rgba(255,255,255,0.92)", color: B1, boxShadow: "0 4px 24px rgba(0,0,0,0.22), 0 0 0 4px rgba(255,255,255,0.20)" }}>
                   {studentInitialD}
                 </div>
                 <div className="text-center">
-                  <div className="text-[20px] font-semibold text-white" style={{ letterSpacing: "-0.4px" }}>{studentData?.name || "Student"}</div>
-                  <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mt-1" style={{ color: "rgba(255,255,255,0.50)" }}>Grade Subdivision Matrix</div>
+                  <div className="text-[20px] font-normal text-white" style={{ letterSpacing: "-0.4px" }}>{studentData?.name || "Student"}</div>
+                  <div className="text-[12px] font-normal uppercase tracking-[0.12em] mt-1" style={{ color: "rgba(255,255,255,0.50)" }}>Grade Subdivision Matrix</div>
                 </div>
               </div>
               <div className="rounded-[16px] overflow-hidden" style={{ background: "rgba(255,255,255,0.08)" }}>
@@ -769,8 +769,8 @@ const SettingsPage = () => {
                 ].map((row, i, arr) => (
                   <div key={row.lbl} className="flex items-center justify-between px-4 py-[12px]"
                     style={{ borderBottom: i < arr.length - 1 ? "0.5px solid rgba(255,255,255,0.08)" : "none" }}>
-                    <span className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.45)" }}>{row.lbl}</span>
-                    <span className="text-[13px] font-semibold text-white truncate max-w-[60%] text-right" style={{ letterSpacing: "-0.1px" }}>{row.val}</span>
+                    <span className="text-[12px] font-normal uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.45)" }}>{row.lbl}</span>
+                    <span className="text-[13px] font-normal text-white truncate max-w-[60%] text-right" style={{ letterSpacing: "-0.1px" }}>{row.val}</span>
                   </div>
                 ))}
               </div>
@@ -786,10 +786,10 @@ const SettingsPage = () => {
               <Bell className="w-5 h-5 text-white" strokeWidth={2.3} />
             </div>
             <div>
-              <div className="text-[18px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>Intelligence Alerts Matrix</div>
+              <div className="text-[18px] font-normal" style={{ color: T1, letterSpacing: "-0.3px" }}>Intelligence Alerts Matrix</div>
               <div className="text-[12px] font-normal" style={{ color: T3 }}>Toggle per-category alerts · syncs to vault instantly</div>
             </div>
-            <div className="ml-auto px-[12px] py-[8px] rounded-full text-[12px] font-semibold"
+            <div className="ml-auto px-[12px] py-[8px] rounded-full text-[12px] font-normal"
               style={{ background: "rgba(52,199,89,0.08)", color: GREEN_D_COL, border: "0.5px solid rgba(52,199,89,0.22)" }}>
               {activeCount} / 4 active
             </div>
@@ -825,7 +825,7 @@ const SettingsPage = () => {
                   </div>
 
                   <div className="relative z-10" style={{ transform: "translateZ(12px)" }}>
-                    <div className="text-[14px] font-semibold mb-1" style={{ color: T1, letterSpacing: "-0.2px" }}>{t.title}</div>
+                    <div className="text-[14px] font-normal mb-1" style={{ color: T1, letterSpacing: "-0.2px" }}>{t.title}</div>
                     <div className="text-[12px] leading-[1.55]" style={{ color: T3 }}>{t.sub}</div>
                   </div>
 
@@ -833,11 +833,11 @@ const SettingsPage = () => {
                     {on ? (
                       <>
                         <CheckCircle2 className="w-[12px] h-[12px]" style={{ color: GREEN }} strokeWidth={2.5} />
-                        <span className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: GREEN_D_COL }}>Delivering live</span>
+                        <span className="text-[12px] font-normal uppercase tracking-[0.10em]" style={{ color: GREEN_D_COL }}>Delivering live</span>
                       </>
                     ) : (
                       <>
-                        <span className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: T4 }}>Paused</span>
+                        <span className="text-[12px] font-normal uppercase tracking-[0.10em]" style={{ color: T4 }}>Paused</span>
                       </>
                     )}
                   </div>
@@ -869,17 +869,17 @@ const SettingsPage = () => {
                   style={{ background: grad, boxShadow: sh, transform: "translateZ(22px)" }}>
                   <Icon className="w-[22px] h-[22px] text-white" strokeWidth={2.2} />
                 </div>
-                <div className="px-[12px] py-[4px] rounded-full text-[12px] font-semibold"
+                <div className="px-[12px] py-[4px] rounded-full text-[12px] font-normal"
                   style={{ background: statusBg, color: statusColor, border: `0.5px solid ${statusBdr}`, transform: "translateZ(14px)" }}>
                   {status}
                 </div>
               </div>
 
-              <div className="text-[15px] font-semibold mb-1 relative z-10" style={{ color: T1, letterSpacing: "-0.2px", transform: "translateZ(10px)" }}>{name}</div>
+              <div className="text-[15px] font-normal mb-1 relative z-10" style={{ color: T1, letterSpacing: "-0.2px", transform: "translateZ(10px)" }}>{name}</div>
               <div className="text-[12px] leading-[1.6] relative z-10" style={{ color: T3 }}>{sub}</div>
 
               <div className="flex items-center gap-[4px] mt-5 pt-3 relative z-10" style={{ borderTop: `0.5px solid ${BLUE_BDR}` }}>
-                <span className="text-[12px] font-semibold" style={{ color: B1, letterSpacing: "-0.1px" }}>Manage</span>
+                <span className="text-[12px] font-normal" style={{ color: B1, letterSpacing: "-0.1px" }}>Manage</span>
                 <ChevronRight className="w-[13px] h-[13px]" style={{ color: B1 }} strokeWidth={2.5} />
               </div>
             </div>

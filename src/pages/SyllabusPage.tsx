@@ -239,7 +239,7 @@ const SyllabusPage = () => {
           style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif", background: BG, minHeight: "100vh" }}>
           <div className="flex items-start justify-between px-[24px] pt-[16px]">
             <div>
-              <div className="text-[28px] font-semibold mb-[4px]" style={{ color: T1, letterSpacing: "-0.7px" }}>Class Documents</div>
+              <div className="text-[28px] font-normal mb-[4px]" style={{ color: T1, letterSpacing: "-0.7px" }}>Class Documents</div>
               <div className="text-[12px] font-normal" style={{ color: T3 }}>Syllabus &amp; notes shared by your teachers</div>
             </div>
           </div>
@@ -251,7 +251,7 @@ const SyllabusPage = () => {
               style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: `${SH_BTN}, 0 0 0 10px rgba(10,132,255,0.08)` }}>
               <Library className="w-8 h-8 text-white" strokeWidth={2.1} />
             </div>
-            <div className="text-[18px] font-semibold relative z-10 text-center" style={{ color: T1, letterSpacing: "-0.4px" }}>No Class Assigned</div>
+            <div className="text-[18px] font-normal relative z-10 text-center" style={{ color: T1, letterSpacing: "-0.4px" }}>No Class Assigned</div>
             <div className="text-[13px] text-center max-w-[220px] leading-[1.6] font-normal relative z-10" style={{ color: T3 }}>
               Please contact your school administration to be assigned to a class.
             </div>
@@ -268,11 +268,11 @@ const SyllabusPage = () => {
         {/* ── Page Head ── */}
         <div className="flex items-start justify-between px-[24px] pt-[16px]">
           <div>
-            <div className="text-[28px] font-semibold mb-[4px]" style={{ color: T1, letterSpacing: "-0.7px" }}>Class Documents</div>
+            <div className="text-[28px] font-normal mb-[4px]" style={{ color: T1, letterSpacing: "-0.7px" }}>Class Documents</div>
             <div className="text-[12px] font-normal" style={{ color: T3 }}>{docSubtitle}</div>
           </div>
           {docs.length > 0 && (
-            <div className="px-3 py-[4px] rounded-full text-[12px] font-semibold tracking-[0.04em] text-white whitespace-nowrap mt-1 shrink-0"
+            <div className="px-3 py-[4px] rounded-full text-[12px] font-normal tracking-[0.04em] text-white whitespace-nowrap mt-1 shrink-0"
               style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: "0 3px 10px rgba(10,132,255,0.28)" }}>
               {docs.length} Doc{docs.length === 1 ? "" : "s"}
             </div>
@@ -308,7 +308,7 @@ const SyllabusPage = () => {
               <button
                 key={f.key}
                 onClick={() => setTypeFilter(f.key)}
-                className="px-[16px] py-[8px] rounded-full text-[12px] font-semibold flex-shrink-0 transition-transform active:scale-[0.94]"
+                className="px-[16px] py-[8px] rounded-full text-[12px] font-normal flex-shrink-0 transition-transform active:scale-[0.94]"
                 style={{
                   background: isAct ? `linear-gradient(135deg, ${B1}, ${B2})` : "#FFFFFF",
                   color: isAct ? "#fff" : T3,
@@ -323,7 +323,7 @@ const SyllabusPage = () => {
         </div>
 
         {/* ── Section label ── */}
-        <div className="px-[24px] pt-[16px] text-[12px] font-semibold uppercase tracking-[0.10em] flex items-center gap-2"
+        <div className="px-[24px] pt-[16px] text-[12px] font-normal uppercase tracking-[0.10em] flex items-center gap-2"
           style={{ color: T4 }}>
           <span>Recent Documents</span>
           <span className="flex-1 h-px" style={{ background: "rgba(10,132,255,0.12)" }} />
@@ -334,7 +334,7 @@ const SyllabusPage = () => {
           <div className="mx-5 mt-[16px] bg-white rounded-[24px] py-10 flex flex-col items-center gap-3"
             style={{ boxShadow: SH_LG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
             <Loader2 className="w-8 h-8 animate-spin" style={{ color: B1 }} />
-            <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: T4 }}>Loading documents…</p>
+            <p className="text-xs font-normal uppercase tracking-widest" style={{ color: T4 }}>Loading documents…</p>
           </div>
         ) : mobileFiltered.length === 0 ? (
           <div className="mx-5 mt-[16px] bg-white rounded-[24px] px-5 py-8 flex flex-col items-center gap-3 relative overflow-hidden"
@@ -347,7 +347,7 @@ const SyllabusPage = () => {
               style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: `${SH_BTN}, 0 0 0 10px rgba(10,132,255,0.08)` }}>
               <FileText className="w-8 h-8 text-white" strokeWidth={2.1} />
             </div>
-            <div className="text-[18px] font-semibold relative z-10 text-center" style={{ color: T1, letterSpacing: "-0.4px" }}>
+            <div className="text-[18px] font-normal relative z-10 text-center" style={{ color: T1, letterSpacing: "-0.4px" }}>
               {searchQuery || typeFilter !== "all" ? "No Matches Found" : "No Documents Yet"}
             </div>
             <div className="text-[13px] text-center max-w-[220px] leading-[1.6] font-normal relative z-10" style={{ color: T3 }}>
@@ -384,23 +384,23 @@ const SyllabusPage = () => {
                     <FileText className="w-6 h-6 text-white" strokeWidth={2.1} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="text-[16px] font-semibold mb-[4px] leading-[1.3]" style={{ color: T1, letterSpacing: "-0.3px" }}>
+                    <div className="text-[16px] font-normal mb-[4px] leading-[1.3]" style={{ color: T1, letterSpacing: "-0.3px" }}>
                       {doc.title || "Untitled Document"}
                     </div>
                     {doc.fileName && (
-                      <div className="text-[12px] font-medium truncate max-w-full mb-[4px]" style={{ color: T3, letterSpacing: "-0.1px" }}>
+                      <div className="text-[12px] font-normal truncate max-w-full mb-[4px]" style={{ color: T3, letterSpacing: "-0.1px" }}>
                         {doc.fileName}
                       </div>
                     )}
                     <div className="flex items-center gap-[12px] flex-wrap">
                       {doc.fileSize ? (
-                        <div className="px-[8px] py-[4px] rounded-full text-[12px] font-semibold tracking-[0.02em]"
+                        <div className="px-[8px] py-[4px] rounded-full text-[12px] font-normal tracking-[0.02em]"
                           style={{ background: "rgba(10,132,255,0.08)", border: "0.5px solid rgba(10,132,255,0.16)", color: B1 }}>
                           {formatBytes(doc.fileSize)}
                         </div>
                       ) : null}
                       {doc.uploadedAt && (
-                        <div className="flex items-center gap-1 text-[12px] font-medium" style={{ color: T3 }}>
+                        <div className="flex items-center gap-1 text-[12px] font-normal" style={{ color: T3 }}>
                           <Calendar className="w-[10px] h-[10px]" strokeWidth={2.5} />
                           {formatRelative(doc.uploadedAt)}
                         </div>
@@ -409,7 +409,7 @@ const SyllabusPage = () => {
                     {doc.uploadedByName && (
                       <div className="flex items-center gap-1 mt-[4px]">
                         <User className="w-[10px] h-[10px]" style={{ color: T3 }} strokeWidth={2.5} />
-                        <span className="text-[12px] font-semibold uppercase tracking-[0.06em]" style={{ color: T3 }}>
+                        <span className="text-[12px] font-normal uppercase tracking-[0.06em]" style={{ color: T3 }}>
                           By {doc.uploadedByName}
                         </span>
                       </div>
@@ -418,18 +418,18 @@ const SyllabusPage = () => {
                 </div>
 
                 <div className="flex gap-[8px] mb-3 relative z-10 flex-wrap">
-                  <div className="px-[12px] py-1 rounded-full text-[12px] font-semibold"
+                  <div className="px-[12px] py-1 rounded-full text-[12px] font-normal"
                     style={{ background: theme.tagBg, color: theme.tagColor, border: `0.5px solid ${theme.tagBorder}` }}>
                     {theme.tagLabel}
                   </div>
                   {subjectGuess && (
-                    <div className="px-[12px] py-1 rounded-full text-[12px] font-semibold"
+                    <div className="px-[12px] py-1 rounded-full text-[12px] font-normal"
                       style={{ background: "rgba(10,132,255,0.08)", color: B1, border: "0.5px solid rgba(10,132,255,0.16)" }}>
                       {subjectGuess}
                     </div>
                   )}
                   {recent && (
-                    <div className="px-[12px] py-1 rounded-full text-[12px] font-semibold"
+                    <div className="px-[12px] py-1 rounded-full text-[12px] font-normal"
                       style={{ background: "rgba(52,199,89,0.10)", color: "#248A3D", border: "0.5px solid rgba(52,199,89,0.22)" }}>
                       New
                     </div>
@@ -440,7 +440,7 @@ const SyllabusPage = () => {
                   <button
                     onClick={e => { e.stopPropagation(); handleView(doc.fileUrl); }}
                     disabled={!doc.fileUrl}
-                    className="flex-1 h-11 rounded-[14px] flex items-center justify-center gap-2 text-[14px] font-semibold text-white disabled:opacity-50 relative overflow-hidden active:scale-[0.97] transition-transform"
+                    className="flex-1 h-11 rounded-[14px] flex items-center justify-center gap-2 text-[14px] font-normal text-white disabled:opacity-50 relative overflow-hidden active:scale-[0.97] transition-transform"
                     style={{
                       background: `linear-gradient(135deg, ${B1}, ${B2})`,
                       boxShadow: SH_BTN,
@@ -488,23 +488,23 @@ const SyllabusPage = () => {
               backgroundImage: "linear-gradient(rgba(255,255,255,0.014) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.014) 1px, transparent 1px)",
               backgroundSize: "24px 24px"
             }} />
-            <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-[12px] relative z-10" style={{ color: "rgba(255,255,255,0.48)" }}>
+            <div className="text-[12px] font-normal uppercase tracking-[0.12em] mb-[12px] relative z-10" style={{ color: "rgba(255,255,255,0.48)" }}>
               Document Library
             </div>
             <div className="grid grid-cols-3 rounded-[16px] overflow-hidden relative z-10" style={{ gap: "1px", background: "rgba(255,255,255,0.12)" }}>
               <div className="py-3 px-[16px] text-center" style={{ background: "rgba(255,255,255,0.08)" }}>
-                <div className="text-[22px] font-semibold text-white leading-none mb-1" style={{ letterSpacing: "-0.6px" }}>{docs.length}</div>
-                <div className="text-[12px] font-semibold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.40)" }}>Total</div>
+                <div className="text-[22px] font-normal text-white leading-none mb-1" style={{ letterSpacing: "-0.6px" }}>{docs.length}</div>
+                <div className="text-[12px] font-normal uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.40)" }}>Total</div>
               </div>
               <div className="py-3 px-[16px] text-center" style={{ background: "rgba(255,255,255,0.08)" }}>
-                <div className="text-[22px] font-semibold text-white leading-none mb-1" style={{ letterSpacing: "-0.6px" }}>{pdfCount}</div>
-                <div className="text-[12px] font-semibold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.40)" }}>{pdfCount === 1 ? "PDF" : "PDFs"}</div>
+                <div className="text-[22px] font-normal text-white leading-none mb-1" style={{ letterSpacing: "-0.6px" }}>{pdfCount}</div>
+                <div className="text-[12px] font-normal uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.40)" }}>{pdfCount === 1 ? "PDF" : "PDFs"}</div>
               </div>
               <div className="py-3 px-[16px] text-center" style={{ background: "rgba(255,255,255,0.08)" }}>
-                <div className="text-[22px] font-semibold text-white leading-none mb-1" style={{ letterSpacing: "-0.6px" }}>
+                <div className="text-[22px] font-normal text-white leading-none mb-1" style={{ letterSpacing: "-0.6px" }}>
                   {totalBytes > 0 ? formatBytes(totalBytes) : "—"}
                 </div>
-                <div className="text-[12px] font-semibold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.40)" }}>Storage</div>
+                <div className="text-[12px] font-normal uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.40)" }}>Storage</div>
               </div>
             </div>
           </div>
@@ -586,7 +586,7 @@ const SyllabusPage = () => {
         style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif", background: BG }}>
         <div className="w-full px-6 pt-8 pb-10">
           <div className="mb-6">
-            <div className="text-[28px] font-semibold" style={{ color: T1, letterSpacing: "-0.9px" }}>Class Documents</div>
+            <div className="text-[28px] font-normal" style={{ color: T1, letterSpacing: "-0.9px" }}>Class Documents</div>
             <div className="text-[14px] mt-2 font-normal" style={{ color: T3 }}>Syllabus &amp; notes shared by your teachers</div>
           </div>
           <div className="bg-white rounded-[28px] px-6 py-10 flex flex-col items-center gap-4 relative overflow-hidden"
@@ -597,7 +597,7 @@ const SyllabusPage = () => {
               style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: `${SH_BTN}, 0 0 0 12px rgba(10,132,255,0.08)` }}>
               <Library className="w-10 h-10 text-white" strokeWidth={2.1} />
             </div>
-            <div className="text-[22px] font-semibold relative z-10 text-center" style={{ color: T1, letterSpacing: "-0.5px" }}>No Class Assigned</div>
+            <div className="text-[22px] font-normal relative z-10 text-center" style={{ color: T1, letterSpacing: "-0.5px" }}>No Class Assigned</div>
             <div className="text-[14px] text-center max-w-[400px] leading-[1.6] font-normal relative z-10" style={{ color: T3 }}>
               Please contact your school administration to be assigned to a class.
             </div>
@@ -615,11 +615,11 @@ const SyllabusPage = () => {
         {/* ── Toolbar ── */}
         <div className="flex items-start justify-between gap-6 flex-wrap mb-5">
           <div>
-            <div className="text-[28px] font-semibold" style={{ color: T1, letterSpacing: "-0.9px" }}>Class Documents</div>
+            <div className="text-[28px] font-normal" style={{ color: T1, letterSpacing: "-0.9px" }}>Class Documents</div>
             <div className="text-[14px] mt-2 font-normal" style={{ color: T3 }}>{docSubtitleD}</div>
           </div>
           {docs.length > 0 && (
-            <div className="px-4 py-[12px] rounded-full text-[13px] font-semibold tracking-[0.02em] text-white whitespace-nowrap"
+            <div className="px-4 py-[12px] rounded-full text-[13px] font-normal tracking-[0.02em] text-white whitespace-nowrap"
               style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: "0 3px 10px rgba(10,132,255,0.28)" }}>
               {docs.length} Document{docs.length === 1 ? "" : "s"}
             </div>
@@ -654,7 +654,7 @@ const SyllabusPage = () => {
                 <button
                   key={f.key}
                   onClick={() => setTypeFilter(f.key)}
-                  className="px-4 py-[12px] rounded-[16px] text-[12px] font-semibold flex-shrink-0 transition-transform hover:scale-[1.03]"
+                  className="px-4 py-[12px] rounded-[16px] text-[12px] font-normal flex-shrink-0 transition-transform hover:scale-[1.03]"
                   style={{
                     background: isAct ? `linear-gradient(135deg, ${B1}, ${B2})` : "#FFFFFF",
                     color: isAct ? "#fff" : T3,
@@ -673,7 +673,7 @@ const SyllabusPage = () => {
           <div className="bg-white rounded-[24px] py-10 flex flex-col items-center gap-3"
             style={{ boxShadow: SH_LG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
             <Loader2 className="w-10 h-10 animate-spin" style={{ color: B1 }} />
-            <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: T4 }}>Loading documents…</p>
+            <p className="text-xs font-normal uppercase tracking-widest" style={{ color: T4 }}>Loading documents…</p>
           </div>
         ) : finalFilteredD.length === 0 ? (
           <div className="bg-white rounded-[24px] px-6 py-10 flex flex-col items-center gap-4 relative overflow-hidden"
@@ -686,7 +686,7 @@ const SyllabusPage = () => {
               style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: `${SH_BTN}, 0 0 0 12px rgba(10,132,255,0.08)` }}>
               <FileText className="w-10 h-10 text-white" strokeWidth={2.1} />
             </div>
-            <div className="text-[22px] font-semibold relative z-10 text-center" style={{ color: T1, letterSpacing: "-0.5px" }}>
+            <div className="text-[22px] font-normal relative z-10 text-center" style={{ color: T1, letterSpacing: "-0.5px" }}>
               {searchQuery || typeFilter !== "all" ? "No Matches Found" : "No Documents Yet"}
             </div>
             <div className="text-[14px] text-center max-w-[440px] leading-[1.6] font-normal relative z-10" style={{ color: T3 }}>
@@ -724,23 +724,23 @@ const SyllabusPage = () => {
                       <FileText className="w-7 h-7 text-white" strokeWidth={2.1} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="text-[18px] font-semibold mb-1 leading-[1.3]" style={{ color: T1, letterSpacing: "-0.3px" }}>
+                      <div className="text-[18px] font-normal mb-1 leading-[1.3]" style={{ color: T1, letterSpacing: "-0.3px" }}>
                         {doc.title || "Untitled Document"}
                       </div>
                       {doc.fileName && (
-                        <div className="text-[12px] font-medium truncate max-w-full mb-1" style={{ color: T3, letterSpacing: "-0.1px" }}>
+                        <div className="text-[12px] font-normal truncate max-w-full mb-1" style={{ color: T3, letterSpacing: "-0.1px" }}>
                           {doc.fileName}
                         </div>
                       )}
                       <div className="flex items-center gap-[12px] flex-wrap">
                         {doc.fileSize ? (
-                          <div className="px-[8px] py-[4px] rounded-full text-[12px] font-semibold tracking-[0.02em]"
+                          <div className="px-[8px] py-[4px] rounded-full text-[12px] font-normal tracking-[0.02em]"
                             style={{ background: "rgba(10,132,255,0.08)", border: "0.5px solid rgba(10,132,255,0.16)", color: B1 }}>
                             {formatBytes(doc.fileSize)}
                           </div>
                         ) : null}
                         {doc.uploadedAt && (
-                          <div className="flex items-center gap-1 text-[12px] font-medium" style={{ color: T3 }}>
+                          <div className="flex items-center gap-1 text-[12px] font-normal" style={{ color: T3 }}>
                             <Calendar className="w-[11px] h-[11px]" strokeWidth={2.5} />
                             {formatRelative(doc.uploadedAt)}
                           </div>
@@ -749,7 +749,7 @@ const SyllabusPage = () => {
                       {doc.uploadedByName && (
                         <div className="flex items-center gap-1 mt-2">
                           <User className="w-[11px] h-[11px]" style={{ color: T3 }} strokeWidth={2.5} />
-                          <span className="text-[12px] font-semibold uppercase tracking-[0.06em]" style={{ color: T3 }}>
+                          <span className="text-[12px] font-normal uppercase tracking-[0.06em]" style={{ color: T3 }}>
                             By {doc.uploadedByName}
                           </span>
                         </div>
@@ -758,18 +758,18 @@ const SyllabusPage = () => {
                   </div>
 
                   <div className="flex gap-[8px] mb-3 relative z-10 flex-wrap">
-                    <div className="px-3 py-1 rounded-full text-[12px] font-semibold"
+                    <div className="px-3 py-1 rounded-full text-[12px] font-normal"
                       style={{ background: theme.tagBg, color: theme.tagColor, border: `0.5px solid ${theme.tagBorder}` }}>
                       {theme.tagLabel}
                     </div>
                     {subjectGuess && (
-                      <div className="px-3 py-1 rounded-full text-[12px] font-semibold"
+                      <div className="px-3 py-1 rounded-full text-[12px] font-normal"
                         style={{ background: "rgba(10,132,255,0.08)", color: B1, border: "0.5px solid rgba(10,132,255,0.16)" }}>
                         {subjectGuess}
                       </div>
                     )}
                     {recent && (
-                      <div className="px-3 py-1 rounded-full text-[12px] font-semibold"
+                      <div className="px-3 py-1 rounded-full text-[12px] font-normal"
                         style={{ background: "rgba(52,199,89,0.10)", color: "#248A3D", border: "0.5px solid rgba(52,199,89,0.22)" }}>
                         New
                       </div>
@@ -780,7 +780,7 @@ const SyllabusPage = () => {
                     <button
                       onClick={e => { e.stopPropagation(); handleView(doc.fileUrl); }}
                       disabled={!doc.fileUrl}
-                      className="flex-1 h-11 rounded-[14px] flex items-center justify-center gap-2 text-[14px] font-semibold text-white disabled:opacity-50 relative overflow-hidden transition-transform hover:scale-[1.01]"
+                      className="flex-1 h-11 rounded-[14px] flex items-center justify-center gap-2 text-[14px] font-normal text-white disabled:opacity-50 relative overflow-hidden transition-transform hover:scale-[1.01]"
                       style={{
                         background: `linear-gradient(135deg, ${B1}, ${B2})`,
                         boxShadow: SH_BTN,
@@ -827,23 +827,23 @@ const SyllabusPage = () => {
               backgroundImage: "linear-gradient(rgba(255,255,255,0.014) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.014) 1px, transparent 1px)",
               backgroundSize: "24px 24px"
             }} />
-            <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-4 relative z-10" style={{ color: "rgba(255,255,255,0.48)" }}>
+            <div className="text-[12px] font-normal uppercase tracking-[0.12em] mb-4 relative z-10" style={{ color: "rgba(255,255,255,0.48)" }}>
               Document Library
             </div>
             <div className="grid grid-cols-3 rounded-[18px] overflow-hidden relative z-10" style={{ gap: "1px", background: "rgba(255,255,255,0.12)" }}>
               <div className="py-5 px-4 text-center" style={{ background: "rgba(255,255,255,0.08)" }}>
-                <div className="text-[28px] font-semibold text-white leading-none mb-2" style={{ letterSpacing: "-1.2px" }}>{docs.length}</div>
-                <div className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.42)" }}>Total Documents</div>
+                <div className="text-[28px] font-normal text-white leading-none mb-2" style={{ letterSpacing: "-1.2px" }}>{docs.length}</div>
+                <div className="text-[12px] font-normal uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.42)" }}>Total Documents</div>
               </div>
               <div className="py-5 px-4 text-center" style={{ background: "rgba(255,255,255,0.08)" }}>
-                <div className="text-[28px] font-semibold text-white leading-none mb-2" style={{ letterSpacing: "-1.2px" }}>{pdfCountD}</div>
-                <div className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.42)" }}>{pdfCountD === 1 ? "PDF File" : "PDF Files"}</div>
+                <div className="text-[28px] font-normal text-white leading-none mb-2" style={{ letterSpacing: "-1.2px" }}>{pdfCountD}</div>
+                <div className="text-[12px] font-normal uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.42)" }}>{pdfCountD === 1 ? "PDF File" : "PDF Files"}</div>
               </div>
               <div className="py-5 px-4 text-center" style={{ background: "rgba(255,255,255,0.08)" }}>
-                <div className="text-[28px] font-semibold text-white leading-none mb-2" style={{ letterSpacing: "-1.2px" }}>
+                <div className="text-[28px] font-normal text-white leading-none mb-2" style={{ letterSpacing: "-1.2px" }}>
                   {totalBytesD > 0 ? formatBytes(totalBytesD) : "—"}
                 </div>
-                <div className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.42)" }}>Total Storage</div>
+                <div className="text-[12px] font-normal uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.42)" }}>Total Storage</div>
               </div>
             </div>
           </div>

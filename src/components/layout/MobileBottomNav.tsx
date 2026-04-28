@@ -82,7 +82,7 @@ export const MobileBottomNav = (_props: MobileBottomNavProps) => {
       className="fixed left-0 right-0 lg:hidden z-[100] flex justify-center px-3 pointer-events-none"
       style={{
         bottom: "calc(env(safe-area-inset-bottom) + 12px)",
-        fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif",
+        fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif",
       }}
     >
       <div
@@ -117,7 +117,7 @@ export const MobileBottomNav = (_props: MobileBottomNavProps) => {
                 <IconComp active={isActive} />
                 {showBadge && (
                   <span
-                    className="absolute -top-[4px] -right-[8px] min-w-[16px] h-4 flex items-center justify-center px-[4px] text-[12px] font-semibold text-white rounded-full"
+                    className="absolute -top-[4px] -right-[8px] min-w-[16px] h-4 flex items-center justify-center px-[4px] text-[12px] font-normal text-white rounded-full"
                     style={{
                       background: "#E5304A",
                       border: "1.5px solid rgba(255,255,255,0.95)",

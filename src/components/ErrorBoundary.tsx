@@ -58,13 +58,13 @@ export class ErrorBoundary extends React.Component<
           <AlertCircle className="w-8 h-8 text-rose-400" />
         </div>
         <div className="text-center max-w-xs">
-          <h2 className="text-lg font-semibold text-slate-800 mb-1">Something went wrong</h2>
+          <h2 className="text-lg font-normal text-slate-800 mb-1">Something went wrong</h2>
           <p className="text-sm text-slate-500 mb-5 leading-relaxed">
             This page ran into an unexpected issue. Your data is safe — nothing was lost.
           </p>
           <button
             onClick={this.handleRetry}
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white rounded-xl text-sm font-semibold hover:opacity-90 transition-opacity shadow-sm"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white rounded-xl text-sm font-normal hover:opacity-90 transition-opacity shadow-sm"
           >
             <RefreshCw className="w-4 h-4" />
             Try Again

@@ -26,7 +26,7 @@ export function PlainRow({ data, subtitle }: PlainRowProps) {
         <p
           style={{
             fontSize: 14,
-            fontWeight: 600,
+            fontWeight: 400,
             margin: 0,
             color: T.T1,
             letterSpacing: '-0.2px',
@@ -38,7 +38,7 @@ export function PlainRow({ data, subtitle }: PlainRowProps) {
           <p
             style={{
               fontSize: 11,
-              fontWeight: 500,
+              fontWeight: 400,
               color: T.T3,
               margin: '1px 0 0',
             }}
@@ -50,7 +50,7 @@ export function PlainRow({ data, subtitle }: PlainRowProps) {
       <span
         style={{
           fontSize: 17,
-          fontWeight: 600,
+          fontWeight: 400,
           color: T.T1,
           letterSpacing: '-0.4px',
         }}

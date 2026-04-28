@@ -310,18 +310,18 @@ const ReportsPage = () => {
 
     return (
       <div className="animate-in fade-in duration-500 -mx-3 -mt-3 md:mx-0 md:mt-0"
-        style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif", background: BG, minHeight: "100vh" }}>
+        style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif", background: BG, minHeight: "100vh" }}>
 
         {/* ── Page Head ── */}
         <div className="px-5 pt-4">
           <div className="flex items-center gap-[12px] mb-[4px]">
-            <div className="text-[28px] font-semibold" style={{ color: T1, letterSpacing: "-0.7px" }}>Academic Reports</div>
+            <div className="text-[28px] font-normal" style={{ color: T1, letterSpacing: "-0.7px" }}>Academic Reports</div>
             <div className="w-[38px] h-[38px] rounded-[12px] flex items-center justify-center ml-auto"
               style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: "0 3px 10px rgba(10,132,255,0.28)" }}>
               <FileText className="w-5 h-5 text-white" strokeWidth={2.2} />
             </div>
           </div>
-          <div className="inline-flex items-center gap-[8px] px-3 py-[8px] rounded-full text-[12px] font-semibold uppercase tracking-[0.10em]"
+          <div className="inline-flex items-center gap-[8px] px-3 py-[8px] rounded-full text-[12px] font-normal uppercase tracking-[0.10em]"
             style={{ background: "rgba(10,132,255,0.08)", border: "0.5px solid rgba(10,132,255,0.16)", color: B1 }}>
             <ShieldCheck className="w-[9px] h-[9px]" strokeWidth={2.5} />
             Authorized Academic Intelligence &amp; Documentation Pipeline
@@ -338,7 +338,7 @@ const ReportsPage = () => {
             placeholder="Search Documents..."
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
-            className="w-full py-[12px] pr-4 pl-[42px] rounded-[16px] text-[13px] font-semibold outline-none bg-white"
+            className="w-full py-[12px] pr-4 pl-[42px] rounded-[16px] text-[13px] font-normal outline-none bg-white"
             style={{
               border: "0.5px solid rgba(10,132,255,0.12)",
               color: T1,
@@ -365,8 +365,8 @@ const ReportsPage = () => {
                   boxShadow: isAct ? SH_BTN : SH,
                   transitionTimingFunction: "cubic-bezier(0.34,1.56,0.64,1)",
                 }}>
-                <span className="text-[12px] font-semibold tracking-[0.02em]" style={{ color: isAct ? "#fff" : T3 }}>{f.label}</span>
-                <span className="text-[12px] font-semibold rounded-full px-[8px] py-[1px]"
+                <span className="text-[12px] font-normal tracking-[0.02em]" style={{ color: isAct ? "#fff" : T3 }}>{f.label}</span>
+                <span className="text-[12px] font-normal rounded-full px-[8px] py-[1px]"
                   style={{
                     background: isAct ? "rgba(255,255,255,0.22)" : "rgba(10,132,255,0.10)",
                     color: isAct ? "#fff" : B1,
@@ -383,7 +383,7 @@ const ReportsPage = () => {
           <div className="mx-5 mt-[16px] bg-white rounded-[26px] py-10 flex flex-col items-center gap-3"
             style={{ boxShadow: SH_LG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
             <Loader2 className="w-10 h-10 animate-spin" style={{ color: B1 }} />
-            <p className="text-[12px] font-semibold uppercase tracking-widest" style={{ color: T4 }}>Accessing Document Repository…</p>
+            <p className="text-[12px] font-normal uppercase tracking-widest" style={{ color: T4 }}>Accessing Document Repository…</p>
           </div>
         ) : filteredMobile.length === 0 ? (
           <div className="mx-5 mt-[16px] bg-white rounded-[26px] px-6 py-10 flex flex-col items-center text-center relative overflow-hidden"
@@ -394,7 +394,7 @@ const ReportsPage = () => {
               style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: `${SH_BTN}, 0 0 0 10px rgba(10,132,255,0.08)` }}>
               <FileCheck className="w-8 h-8 text-white" strokeWidth={2.1} />
             </div>
-            <div className="text-[18px] font-semibold mb-[8px] relative z-10" style={{ color: T1, letterSpacing: "-0.4px" }}>
+            <div className="text-[18px] font-normal mb-[8px] relative z-10" style={{ color: T1, letterSpacing: "-0.4px" }}>
               {searchQuery || formatFilter !== "all" ? "No Matches Found" : "Repository Empty"}
             </div>
             <div className="text-[13px] leading-[1.6] max-w-[240px] font-normal italic relative z-10" style={{ color: T3 }}>
@@ -438,16 +438,16 @@ const ReportsPage = () => {
                       : <FileText className="w-6 h-6 text-white" strokeWidth={2.2} />}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="text-[16px] font-semibold uppercase mb-[8px] leading-[1.25]" style={{ color: T1, letterSpacing: "-0.3px" }}>
+                    <div className="text-[16px] font-normal uppercase mb-[8px] leading-[1.25]" style={{ color: T1, letterSpacing: "-0.3px" }}>
                       {r.title || "Academic Report"}
                     </div>
                     <div className="flex items-center gap-2 flex-wrap">
-                      <div className="flex items-center gap-1 text-[12px] font-semibold uppercase tracking-[0.04em]" style={{ color: T3 }}>
+                      <div className="flex items-center gap-1 text-[12px] font-normal uppercase tracking-[0.04em]" style={{ color: T3 }}>
                         <GraduationCap className="w-[11px] h-[11px]" strokeWidth={2.5} />
                         {r.teacherName || "Faculty"}
                       </div>
                       <div className="w-[3px] h-[3px] rounded-full" style={{ background: T4 }} />
-                      <div className="flex items-center gap-1 text-[12px] font-semibold uppercase tracking-[0.04em]" style={{ color: T3 }}>
+                      <div className="flex items-center gap-1 text-[12px] font-normal uppercase tracking-[0.04em]" style={{ color: T3 }}>
                         <Clock className="w-[11px] h-[11px]" strokeWidth={2.5} />
                         {formatDate(r.createdAt)}
                       </div>
@@ -468,18 +468,18 @@ const ReportsPage = () => {
 
                 {/* Actions */}
                 <div className="flex items-center gap-[12px] relative z-10">
-                  <div className="flex items-center gap-[4px] px-[12px] py-[8px] rounded-full text-[12px] font-semibold uppercase tracking-[0.06em] text-white shrink-0"
+                  <div className="flex items-center gap-[4px] px-[12px] py-[8px] rounded-full text-[12px] font-normal uppercase tracking-[0.06em] text-white shrink-0"
                     style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: "0 3px 10px rgba(10,132,255,0.28)" }}>
                     <CheckCircle2 className="w-[10px] h-[10px]" strokeWidth={2.5} />
                     Verified
                   </div>
                   <div className="shrink-0">
-                    <div className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: T4 }}>Format</div>
-                    <div className="text-[12px] font-semibold uppercase tracking-[0.04em]" style={{ color: T2 }}>{theme.ext}</div>
+                    <div className="text-[12px] font-normal uppercase tracking-[0.10em]" style={{ color: T4 }}>Format</div>
+                    <div className="text-[12px] font-normal uppercase tracking-[0.04em]" style={{ color: T2 }}>{theme.ext}</div>
                   </div>
                   <button
                     onClick={e => { e.stopPropagation(); handleDownload(r); }}
-                    className="flex-1 h-[46px] rounded-[15px] flex items-center justify-center gap-2 text-[12px] font-semibold text-white uppercase tracking-[0.06em] relative overflow-hidden active:scale-[0.96] transition-transform"
+                    className="flex-1 h-[46px] rounded-[15px] flex items-center justify-center gap-2 text-[12px] font-normal text-white uppercase tracking-[0.06em] relative overflow-hidden active:scale-[0.96] transition-transform"
                     style={{
                       background: "linear-gradient(135deg, #1D1D1F, #0A84FF)",
                       boxShadow: SH_DARK,
@@ -509,17 +509,17 @@ const ReportsPage = () => {
               backgroundSize: "24px 24px"
             }} />
 
-            <div className="inline-flex items-center gap-[4px] px-3 py-[4px] rounded-full text-[12px] font-semibold uppercase tracking-[0.10em] mb-[16px] relative z-10"
+            <div className="inline-flex items-center gap-[4px] px-3 py-[4px] rounded-full text-[12px] font-normal uppercase tracking-[0.10em] mb-[16px] relative z-10"
               style={{ background: "rgba(255,255,255,0.18)", border: "0.5px solid rgba(255,255,255,0.28)", color: "rgba(255,255,255,0.75)", WebkitBackdropFilter: "blur(8px)", backdropFilter: "blur(8px)" }}>
               <ShieldCheck className="w-[10px] h-[10px]" strokeWidth={2.5} />
               Infrastructure Policy
             </div>
 
-            <div className="text-[22px] font-semibold uppercase text-white leading-[1.15] mb-3 relative z-10" style={{ letterSpacing: "-0.6px" }}>
+            <div className="text-[22px] font-normal uppercase text-white leading-[1.15] mb-3 relative z-10" style={{ letterSpacing: "-0.6px" }}>
               Document Infrastructure Policy
             </div>
             <div className="text-[13px] leading-[1.75] font-normal relative z-10" style={{ color: "rgba(255,255,255,0.75)" }}>
-              Academic reports are generated by the <strong style={{ color: "#fff", fontWeight: 600 }}>instructional faculty</strong> and mirrored to the parent portal for peak accessibility. All documents are <strong style={{ color: "#fff", fontWeight: 600 }}>encrypted</strong>, verified, and digitally timestamped.
+              Academic reports are generated by the <strong style={{ color: "#fff", fontWeight: 400 }}>instructional faculty</strong> and mirrored to the parent portal for peak accessibility. All documents are <strong style={{ color: "#fff", fontWeight: 400 }}>encrypted</strong>, verified, and digitally timestamped.
             </div>
 
             <div className="h-[0.5px] my-4 relative z-10" style={{ background: "rgba(255,255,255,0.16)" }} />
@@ -536,7 +536,7 @@ const ReportsPage = () => {
                     style={{ background: "rgba(255,255,255,0.18)", border: "0.5px solid rgba(255,255,255,0.26)" }}>
                     <Icon className="w-[13px] h-[13px]" style={{ color: "rgba(255,255,255,0.85)" }} strokeWidth={2.3} />
                   </div>
-                  <span className="text-[12px] font-semibold" style={{ color: "rgba(255,255,255,0.75)", letterSpacing: "-0.1px" }}>{text}</span>
+                  <span className="text-[12px] font-normal" style={{ color: "rgba(255,255,255,0.75)", letterSpacing: "-0.1px" }}>{text}</span>
                 </div>
               ))}
             </div>
@@ -623,17 +623,17 @@ const ReportsPage = () => {
 
   return (
     <div className="animate-in fade-in duration-500 -m-4 sm:-m-6 md:-m-8 min-h-[calc(100vh-64px)]"
-      style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif", background: BG_D }}>
+      style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif", background: BG_D }}>
       <div className="w-full px-6 pt-8 pb-10">
 
         {/* ── Toolbar ── */}
         <div className="flex items-center justify-between mb-6 flex-wrap gap-4">
           <div>
-            <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-1 flex items-center gap-[8px]" style={{ color: T4 }}>
+            <div className="text-[12px] font-normal uppercase tracking-[0.12em] mb-1 flex items-center gap-[8px]" style={{ color: T4 }}>
               <span className="w-[6px] h-[6px] rounded-full" style={{ background: B1, boxShadow: "0 0 0 3px rgba(10,132,255,0.18)" }} />
               Parent Dashboard · Reports
             </div>
-            <h1 className="text-[28px] font-semibold leading-none" style={{ color: T1, letterSpacing: "-0.8px" }}>Academic Reports</h1>
+            <h1 className="text-[28px] font-normal leading-none" style={{ color: T1, letterSpacing: "-0.8px" }}>Academic Reports</h1>
             <div className="text-[13px] font-normal mt-[8px] flex items-center gap-[8px]" style={{ color: T3 }}>
               <ShieldCheck className="w-[13px] h-[13px]" style={{ color: B1 }} strokeWidth={2.3} />
               Authorized academic intelligence &amp; documentation pipeline
@@ -647,7 +647,7 @@ const ReportsPage = () => {
                 className="pl-10 pr-5 py-[12px] rounded-[14px] text-[13px] outline-none w-[260px]"
                 style={{ background: "#fff", border: `0.5px solid ${BLUE_BDR}`, boxShadow: SH_D, color: T1, letterSpacing: "-0.1px" }} />
             </div>
-            <div className="w-10 h-10 rounded-full flex items-center justify-center text-[14px] font-semibold text-white"
+            <div className="w-10 h-10 rounded-full flex items-center justify-center text-[14px] font-normal text-white"
               style={{ background: `linear-gradient(140deg, ${B1}, ${B2})`, boxShadow: "0 3px 12px rgba(10,132,255,0.36), 0 0 0 2px rgba(255,255,255,0.8)" }}>
               {(studentData?.name?.[0] || "S").toUpperCase()}
             </div>
@@ -676,10 +676,10 @@ const ReportsPage = () => {
                   style={{ background: iconBoxBg, border: `0.5px solid ${iconBoxBdr}` }}>
                   <Icon className="w-[17px] h-[17px]" style={{ color }} strokeWidth={2.3} />
                 </div>
-                <div className="text-[12px] font-semibold uppercase tracking-[0.10em] relative" style={{ color: T4 }}>{label}</div>
-                <div className="text-[28px] font-semibold mt-1 leading-none relative" style={{ color, letterSpacing: "-1px" }}>{val}</div>
+                <div className="text-[12px] font-normal uppercase tracking-[0.10em] relative" style={{ color: T4 }}>{label}</div>
+                <div className="text-[28px] font-normal mt-1 leading-none relative" style={{ color, letterSpacing: "-1px" }}>{val}</div>
                 {isAct && (
-                  <div className="text-[12px] font-semibold uppercase tracking-[0.10em] mt-[8px] flex items-center gap-[4px] relative" style={{ color }}>
+                  <div className="text-[12px] font-normal uppercase tracking-[0.10em] mt-[8px] flex items-center gap-[4px] relative" style={{ color }}>
                     <CheckCircle2 className="w-[11px] h-[11px]" strokeWidth={2.5} /> Active
                   </div>
                 )}
@@ -694,7 +694,7 @@ const ReportsPage = () => {
             const isAct = formatFilter === f.key;
             return (
               <button key={f.key} onClick={() => setFormatFilter(f.key)}
-                className="flex items-center gap-2 px-4 py-[8px] rounded-[14px] text-[12px] font-semibold transition-transform hover:scale-[1.02]"
+                className="flex items-center gap-2 px-4 py-[8px] rounded-[14px] text-[12px] font-normal transition-transform hover:scale-[1.02]"
                 style={isAct ? {
                   background: `linear-gradient(135deg, ${B1}, ${B2})`, color: "#fff",
                   boxShadow: SH_BTN_D, letterSpacing: "-0.1px",
@@ -703,7 +703,7 @@ const ReportsPage = () => {
                   border: `0.5px solid ${BLUE_BDR}`, boxShadow: SH_D, letterSpacing: "-0.1px",
                 }}>
                 {f.label}
-                <span className="min-w-[20px] h-[20px] rounded-[6px] flex items-center justify-center text-[12px] font-semibold px-[4px]"
+                <span className="min-w-[20px] h-[20px] rounded-[6px] flex items-center justify-center text-[12px] font-normal px-[4px]"
                   style={{ background: isAct ? "rgba(255,255,255,0.22)" : "rgba(10,132,255,0.08)", color: isAct ? "#fff" : B1 }}>
                   {f.count}
                 </span>
@@ -721,7 +721,7 @@ const ReportsPage = () => {
               <div className="bg-white rounded-[22px] py-10 flex flex-col items-center"
                 style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(10,132,255,0.10)" }}>
                 <Loader2 className="w-12 h-12 animate-spin" style={{ color: B1 }} />
-                <p className="text-[13px] font-medium mt-3" style={{ color: T4 }}>Accessing Document Repository…</p>
+                <p className="text-[13px] font-normal mt-3" style={{ color: T4 }}>Accessing Document Repository…</p>
               </div>
             ) : filteredDesktop.length === 0 ? (
               <div className="bg-white rounded-[22px] py-10 px-8 flex flex-col items-center text-center relative overflow-hidden"
@@ -732,7 +732,7 @@ const ReportsPage = () => {
                   style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: `${SH_BTN_D}, 0 0 0 10px rgba(10,132,255,0.08)` }}>
                   <FileCheck className="w-10 h-10 text-white" strokeWidth={2} />
                 </div>
-                <div className="text-[22px] font-semibold mb-2 relative z-10" style={{ color: T1, letterSpacing: "-0.5px" }}>
+                <div className="text-[22px] font-normal mb-2 relative z-10" style={{ color: T1, letterSpacing: "-0.5px" }}>
                   {searchQuery || formatFilter !== "all" ? "No matches found" : "Repository empty"}
                 </div>
                 <div className="text-[13px] leading-[1.6] max-w-[400px] relative z-10" style={{ color: T3 }}>
@@ -784,16 +784,16 @@ const ReportsPage = () => {
                           ) : <FileText className="w-[26px] h-[26px] text-white" strokeWidth={2.2} />}
                         </div>
                         <div className="flex-1 min-w-0" style={{ transform: "translateZ(12px)" }}>
-                          <div className="text-[18px] font-semibold mb-[4px] leading-[1.3]" style={{ color: T1, letterSpacing: "-0.3px" }}>
+                          <div className="text-[18px] font-normal mb-[4px] leading-[1.3]" style={{ color: T1, letterSpacing: "-0.3px" }}>
                             {r.title || "Academic Report"}
                           </div>
                           <div className="flex items-center gap-[8px] flex-wrap">
-                            <div className="flex items-center gap-[4px] text-[12px] font-medium" style={{ color: T3 }}>
+                            <div className="flex items-center gap-[4px] text-[12px] font-normal" style={{ color: T3 }}>
                               <GraduationCap className="w-[12px] h-[12px]" strokeWidth={2.3} />
                               {r.teacherName || "Faculty"}
                             </div>
                             <span className="w-[3px] h-[3px] rounded-full" style={{ background: T4 }} />
-                            <div className="flex items-center gap-[4px] text-[12px] font-medium" style={{ color: T3 }}>
+                            <div className="flex items-center gap-[4px] text-[12px] font-normal" style={{ color: T3 }}>
                               <Clock className="w-[12px] h-[12px]" strokeWidth={2.3} />
                               {formatDateD(r.createdAt)}
                             </div>
@@ -812,17 +812,17 @@ const ReportsPage = () => {
                       {/* Actions */}
                       <div className="flex items-center justify-between relative z-10" style={{ transform: "translateZ(14px)" }}>
                         <div className="flex items-center gap-2">
-                          <div className="flex items-center gap-[4px] px-[12px] py-[4px] rounded-full text-[12px] font-semibold text-white"
+                          <div className="flex items-center gap-[4px] px-[12px] py-[4px] rounded-full text-[12px] font-normal text-white"
                             style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: "0 2px 8px rgba(10,132,255,0.30)" }}>
                             <CheckCircle2 className="w-[11px] h-[11px]" strokeWidth={2.5} /> Verified
                           </div>
-                          <div className="px-[12px] py-[4px] rounded-full text-[12px] font-semibold"
+                          <div className="px-[12px] py-[4px] rounded-full text-[12px] font-normal"
                             style={{ background: type === "excel" ? "rgba(52,199,89,0.10)" : "rgba(10,132,255,0.10)", color: type === "excel" ? "#248A3D" : B1, border: `0.5px solid ${type === "excel" ? "rgba(52,199,89,0.22)" : BLUE_BDR}` }}>
                             {(r.format || type).toUpperCase()}
                           </div>
                         </div>
                         <button onClick={e => { e.stopPropagation(); handleDownload(r); }}
-                          className="h-10 px-5 rounded-[12px] flex items-center gap-2 text-[12px] font-semibold text-white transition-transform hover:scale-[1.03]"
+                          className="h-10 px-5 rounded-[12px] flex items-center gap-2 text-[12px] font-normal text-white transition-transform hover:scale-[1.03]"
                           style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: SH_BTN_D, letterSpacing: "-0.1px" }}>
                           <Download className="w-4 h-4" strokeWidth={2.3} /> Download
                         </button>
@@ -857,16 +857,16 @@ const ReportsPage = () => {
                 backgroundSize: "22px 22px",
               }} />
               <div className="relative z-10" style={{ transform: "translateZ(14px)" }}>
-                <div className="inline-flex items-center gap-[4px] px-3 py-[4px] rounded-full mb-4 text-[12px] font-semibold uppercase tracking-[0.12em]"
+                <div className="inline-flex items-center gap-[4px] px-3 py-[4px] rounded-full mb-4 text-[12px] font-normal uppercase tracking-[0.12em]"
                   style={{ background: "rgba(255,255,255,0.18)", border: "0.5px solid rgba(255,255,255,0.28)", color: "rgba(255,255,255,0.80)", backdropFilter: "blur(8px)" }}>
                   <ShieldCheck className="w-[11px] h-[11px]" strokeWidth={2.5} />
                   Infrastructure Policy
                 </div>
-                <div className="text-[22px] font-semibold leading-[1.2] mb-3" style={{ letterSpacing: "-0.5px" }}>
+                <div className="text-[22px] font-normal leading-[1.2] mb-3" style={{ letterSpacing: "-0.5px" }}>
                   Document Infrastructure
                 </div>
                 <p className="text-[13px] leading-[1.65]" style={{ color: "rgba(255,255,255,0.75)" }}>
-                  Academic reports are generated by the <strong style={{ color: "#fff", fontWeight: 600 }}>instructional faculty</strong> and mirrored to the parent portal. All documents are encrypted, verified, and timestamped.
+                  Academic reports are generated by the <strong style={{ color: "#fff", fontWeight: 400 }}>instructional faculty</strong> and mirrored to the parent portal. All documents are encrypted, verified, and timestamped.
                 </p>
                 <div className="h-[0.5px] my-4" style={{ background: "rgba(255,255,255,0.16)" }} />
                 <div className="space-y-3">
@@ -881,7 +881,7 @@ const ReportsPage = () => {
                         style={{ background: "rgba(255,255,255,0.18)", border: "0.5px solid rgba(255,255,255,0.26)" }}>
                         <Icon className="w-[14px] h-[14px]" style={{ color: "rgba(255,255,255,0.85)" }} strokeWidth={2.3} />
                       </div>
-                      <span className="text-[12px] font-semibold" style={{ color: "rgba(255,255,255,0.80)", letterSpacing: "-0.1px" }}>{text}</span>
+                      <span className="text-[12px] font-normal" style={{ color: "rgba(255,255,255,0.80)", letterSpacing: "-0.1px" }}>{text}</span>
                     </div>
                   ))}
                 </div>
@@ -904,7 +904,7 @@ const ReportsPage = () => {
                   <Sparkles className="w-5 h-5 text-white" strokeWidth={2.3} />
                 </div>
                 <div>
-                  <div className="text-[15px] font-semibold" style={{ color: T1, letterSpacing: "-0.2px" }}>AI Quick Insights</div>
+                  <div className="text-[15px] font-normal" style={{ color: T1, letterSpacing: "-0.2px" }}>AI Quick Insights</div>
                   <div className="text-[12px] font-normal" style={{ color: T3 }}>Auto-generated this term</div>
                 </div>
               </div>
@@ -918,8 +918,8 @@ const ReportsPage = () => {
                   { label: "PDF / Excel", val: `${pdfCountD} / ${excelCountD}` },
                 ].map(({ label, val }) => (
                   <div key={label} className="flex items-center justify-between py-[8px]" style={{ borderBottom: `0.5px solid ${BLUE_BDR}` }}>
-                    <span className="text-[12px] font-semibold uppercase tracking-[0.08em]" style={{ color: T4 }}>{label}</span>
-                    <span className="text-[15px] font-semibold" style={{ color: B1, letterSpacing: "-0.3px" }}>{val}</span>
+                    <span className="text-[12px] font-normal uppercase tracking-[0.08em]" style={{ color: T4 }}>{label}</span>
+                    <span className="text-[15px] font-normal" style={{ color: B1, letterSpacing: "-0.3px" }}>{val}</span>
                   </div>
                 ))}
               </div>

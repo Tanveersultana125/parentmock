@@ -33,7 +33,7 @@ export function PlanProgressSummary({ actions, projectedRank }: PlanProgressSumm
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            fontWeight: 600,
+            fontWeight: 400,
             fontSize: 14,
             boxShadow: '0 4px 12px rgba(52,199,89,0.3)',
           }}
@@ -44,7 +44,7 @@ export function PlanProgressSummary({ actions, projectedRank }: PlanProgressSumm
           <p
             style={{
               fontSize: 13,
-              fontWeight: 600,
+              fontWeight: 400,
               color: T.T1,
               margin: 0,
               letterSpacing: '-0.2px',
@@ -52,7 +52,7 @@ export function PlanProgressSummary({ actions, projectedRank }: PlanProgressSumm
           >
             Plan progress: {completed} of {actions.length} actions complete
           </p>
-          <p style={{ fontSize: 11, fontWeight: 500, color: T.T3, margin: '2px 0 0' }}>
+          <p style={{ fontSize: 11, fontWeight: 400, color: T.T3, margin: '2px 0 0' }}>
             Score boost so far: +{totalReward}
             {projectedRank !== undefined && ` · Projected new rank #${projectedRank}`}
           </p>
