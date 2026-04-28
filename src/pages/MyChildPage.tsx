@@ -10,11 +10,11 @@ import { useIsMobile } from "../hooks/use-mobile";
 
 // ── Tokens ───────────────────────────────────────────────────────────────────
 const T = {
-  bg: "#EEF4FF", white: "#ffffff", ink: "#0f172a", ink2: "#475569", ink3: "#94a3b8",
-  bdr: "#e2e8f0", s1: "#f1f5f9", s2: "#e2e8f0",
-  blue: "#3B5BDB", blBg: "#EDF2FF", blBdr: "#BAC8FF",
-  grn: "#16a34a", glBg: "#f0fdf4", red: "#dc2626", rlBg: "#fef2f2",
-  amb: "#d97706", alBg: "#fffbeb", pur: "#7c3aed",
+  bg: "#F5F5F7", white: "#ffffff", ink: "#0f172a", ink2: "#6E6E73", ink3: "#A1A1A6",
+  bdr: "#EBEBF0", s1: "#F5F5F7", s2: "#EBEBF0",
+  blue: "#0A84FF", blBg: "#F5F5F7", blBdr: "#BAC8FF",
+  grn: "#34C759", glBg: "#F5F5F7", red: "#FF3B30", rlBg: "#FFF5F4",
+  amb: "#86310C", alBg: "#FFFAEB", pur: "#7c3aed",
 };
 
 const toDate = (v: any): Date | null => { if (!v) return null; if (v?.toDate) return v.toDate(); if (v?.seconds) return new Date(v.seconds * 1000); const d = new Date(v); return isNaN(d.getTime()) ? null : d; };
@@ -22,8 +22,8 @@ const MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "
 const timeAgo = (v: any) => { const d = toDate(v); if (!d) return ""; const s = (Date.now() - d.getTime()) / 1000; if (s < 60) return "just now"; if (s < 3600) return `${Math.floor(s / 60)}m ago`; if (s < 86400) return `${Math.floor(s / 3600)}h ago`; return d.toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" }).toUpperCase(); };
 
 // ── Canonical blue-halo shadows (matches principal-dashboard tilt3D) ──────────
-const SH_REST = "0 0 0 0.5px rgba(0,85,255,0.10), 0 4px 16px rgba(0,85,255,0.12), 0 20px 48px rgba(0,85,255,0.14)";
-const SH_HOVER = "0 0 0 0.5px rgba(0,85,255,0.14), 0 8px 24px rgba(0,85,255,0.16), 0 20px 46px rgba(0,85,255,0.18)";
+const SH_REST = "0 0 0 0.5px rgba(10,132,255,0.10), 0 4px 16px rgba(10,132,255,0.12), 0 20px 48px rgba(10,132,255,0.14)";
+const SH_HOVER = "0 0 0 0.5px rgba(10,132,255,0.14), 0 8px 24px rgba(10,132,255,0.16), 0 20px 46px rgba(10,132,255,0.18)";
 
 // ── Card wrapper — hover lift + blue halo, no cursor-tracking rotation ────────
 // Mirrors principal-dashboard's tilt3D behavior: translate3d(-5px) + scale(1.02)
@@ -37,7 +37,7 @@ const Card = ({ children, title, action, style }: { children: React.ReactNode; t
       onMouseLeave={() => setHovered(false)}
       style={{
         background: T.white,
-        border: `0.5px solid ${hovered ? "rgba(0,85,255,0.22)" : "rgba(0,85,255,0.10)"}`,
+        border: `0.5px solid ${hovered ? "rgba(10,132,255,0.22)" : "rgba(10,132,255,0.10)"}`,
         borderRadius: 16,
         overflow: "hidden",
         transform: hovered ? "translate3d(0,-5px,0) scale(1.02)" : "translate3d(0,0,0) scale(1)",
@@ -365,7 +365,7 @@ const MyChildPage = () => {
   }));
 
   return (
-    <div style={{ minHeight: "100vh", background: T.bg, padding: isMobile ? "12px 12px 60px" : "20px 24px 60px", fontFamily: "'Inter','Plus Jakarta Sans',-apple-system,sans-serif" }}>
+    <div style={{ minHeight: "100vh", background: T.bg, padding: isMobile ? "12px 12px 60px" : "20px 24px 60px", fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif" }}>
 
       {/* ═══ TOP BAR ══════════════════════════════════════════════════════════ */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: isMobile ? 14 : 24, gap: 8, flexWrap: "wrap" }}>
@@ -395,10 +395,10 @@ const MyChildPage = () => {
                     strokeDasharray={2 * Math.PI * 26} strokeDashoffset={2 * Math.PI * 26 * (1 - m.avg / 100)} transform="rotate(-90 32 32)"
                     style={{ transition: "stroke-dashoffset 1s ease" }} />
                 </svg>
-                <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 700, color: T.blue }}>{(m.avg / 25).toFixed(1)}</div>
+                <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 600, color: T.blue }}>{(m.avg / 25).toFixed(1)}</div>
               </div>
               <div>
-                <div style={{ fontSize: 28, fontWeight: 800, color: T.ink }}>{Math.round(m.avg)}%</div>
+                <div style={{ fontSize: 28, fontWeight: 600, color: T.ink }}>{Math.round(m.avg)}%</div>
                 <div style={{ fontSize: 11, color: T.ink3, display: "flex", alignItems: "center", gap: 4 }}>
                   Avg Score · {testScores.length} tests
                   {m.trend === "up" && <TrendingUp size={12} color={T.grn} />}
@@ -428,7 +428,7 @@ const MyChildPage = () => {
                     strokeDasharray={2 * Math.PI * 28} strokeDashoffset={2 * Math.PI * 28 * (1 - m.attRate / 100)}
                     transform="rotate(-90 36 36)" style={{ transition: "stroke-dashoffset 1s ease" }} />
                 </svg>
-                <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, fontWeight: 700, color: m.attRate >= 85 ? T.grn : T.amb }}>{Math.round(m.attRate)}%</div>
+                <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, fontWeight: 600, color: m.attRate >= 85 ? T.grn : T.amb }}>{Math.round(m.attRate)}%</div>
               </div>
               <div>
                 <div style={{ fontSize: 15, fontWeight: 600, color: T.ink }}>Present</div>
@@ -464,9 +464,9 @@ const MyChildPage = () => {
 
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", paddingTop: isMobile ? 16 : 20, order: isMobile ? -1 : 0, padding: isMobile ? "20px 16px 18px" : undefined, background: isMobile ? T.white : "transparent", borderRadius: isMobile ? 16 : 0, border: isMobile ? `1px solid ${T.bdr}` : "none" }}>
           <div style={{ width: isMobile ? 110 : 140, height: isMobile ? 110 : 140, borderRadius: "50%", border: `4px solid ${T.blue}`, background: T.blBg, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: isMobile ? 12 : 16, boxShadow: "0 8px 30px rgba(59,91,219,0.15)" }}>
-            <span style={{ fontSize: 42, fontWeight: 800, color: T.blue }}>{initials}</span>
+            <span style={{ fontSize: 42, fontWeight: 600, color: T.blue }}>{initials}</span>
           </div>
-          <h2 style={{ fontSize: 20, fontWeight: 700, color: T.ink, textAlign: "center", marginBottom: 4 }}>{sName}</h2>
+          <h2 style={{ fontSize: 20, fontWeight: 600, color: T.ink, textAlign: "center", marginBottom: 4 }}>{sName}</h2>
           <p style={{ fontSize: 12, color: T.ink3, textAlign: "center", marginBottom: 4 }}>{student.className || student.class || "—"}</p>
           <p style={{ fontSize: 11, color: T.ink3, textAlign: "center", marginBottom: 12 }}>Roll: {student.rollNo || student.roll || "—"} · ID: {sid.slice(0, 6).toUpperCase()}</p>
           <div style={{ display: "flex", gap: 6 }}>
@@ -498,7 +498,7 @@ const MyChildPage = () => {
           <Card title="AI Intelligence" action={<DetailLink />}>
             <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 8 }}>
               <span style={{ fontSize: 11, color: T.ink3 }}>Predicted next score:</span>
-              <span style={{ fontSize: 20, fontWeight: 700, color: T.blue }}>{Math.min(100, Math.round(m.avg + Math.max(0, (100 - m.avg) * 0.05)))}%</span>
+              <span style={{ fontSize: 20, fontWeight: 600, color: T.blue }}>{Math.min(100, Math.round(m.avg + Math.max(0, (100 - m.avg) * 0.05)))}%</span>
             </div>
             <div style={{ fontSize: 11, color: T.ink3, lineHeight: 1.6 }}>
               {m.trend === "up" ? "Performance is improving. Your child is on a positive trajectory." :
@@ -570,7 +570,7 @@ const MyChildPage = () => {
         </Card>
 
         <Card title="Risk Assessment" action={<DetailLink />}>
-          <div style={{ fontSize: 22, fontWeight: 800, color: riskColor, marginBottom: 14 }}>{riskLevel}</div>
+          <div style={{ fontSize: 22, fontWeight: 600, color: riskColor, marginBottom: 14 }}>{riskLevel}</div>
           {[
             { label: "ATTENDANCE", val: m.attRate, color: m.attRate >= 85 ? T.blue : T.amb, extra: undefined as string | undefined },
             { label: "ACADEMIC", val: m.avg, color: m.avg >= 75 ? T.blue : m.avg >= 50 ? T.amb : T.red, extra: undefined },
@@ -598,13 +598,13 @@ const MyChildPage = () => {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8, marginBottom: 14 }}>
             <div style={{ textAlign: "center", padding: "10px 0", background: T.glBg, borderRadius: 10 }}>
-              <div style={{ fontSize: 20, fontWeight: 700, color: T.grn }}>{calPresent}</div><div style={{ fontSize: 10, color: T.grn }}>PRESENT</div>
+              <div style={{ fontSize: 20, fontWeight: 600, color: T.grn }}>{calPresent}</div><div style={{ fontSize: 10, color: T.grn }}>PRESENT</div>
             </div>
             <div style={{ textAlign: "center", padding: "10px 0", background: T.alBg, borderRadius: 10 }}>
-              <div style={{ fontSize: 20, fontWeight: 700, color: T.amb }}>{calLate}</div><div style={{ fontSize: 10, color: T.amb }}>LATE</div>
+              <div style={{ fontSize: 20, fontWeight: 600, color: T.amb }}>{calLate}</div><div style={{ fontSize: 10, color: T.amb }}>LATE</div>
             </div>
             <div style={{ textAlign: "center", padding: "10px 0", background: T.rlBg, borderRadius: 10 }}>
-              <div style={{ fontSize: 20, fontWeight: 700, color: T.red }}>{calAbsent}</div><div style={{ fontSize: 10, color: T.red }}>ABSENT</div>
+              <div style={{ fontSize: 20, fontWeight: 600, color: T.red }}>{calAbsent}</div><div style={{ fontSize: 10, color: T.red }}>ABSENT</div>
             </div>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: 4, textAlign: "center" }}>
@@ -769,7 +769,7 @@ const MyChildPage = () => {
       {editOpen && (
         <div style={{ position: "fixed", inset: 0, background: "rgba(15,23,42,0.4)", backdropFilter: "blur(4px)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 50 }} onClick={() => setEditOpen(false)}>
           <div onClick={e => e.stopPropagation()} style={{ background: T.white, borderRadius: 16, width: 420, maxWidth: "90vw", padding: 24, boxShadow: "0 20px 60px rgba(0,0,0,0.15)" }}>
-            <h3 style={{ fontSize: 16, fontWeight: 700, color: T.ink, marginBottom: 16 }}>Edit Profile</h3>
+            <h3 style={{ fontSize: 16, fontWeight: 600, color: T.ink, marginBottom: 16 }}>Edit Profile</h3>
             {([
               { key: "dob", label: "Date of Birth", type: "date" },
               { key: "bloodGroup", label: "Blood Group", type: "text" },

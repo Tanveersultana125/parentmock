@@ -16,7 +16,7 @@ export function PlanProgressSummary({ actions, projectedRank }: PlanProgressSumm
     <div
       style={{
         background:
-          'linear-gradient(135deg, rgba(52,199,89,0.06) 0%, rgba(0,85,255,0.04) 100%)',
+          'linear-gradient(135deg, rgba(52,199,89,0.06) 0%, rgba(10,132,255,0.04) 100%)',
         border: '0.5px solid rgba(52,199,89,0.18)',
         borderRadius: 18,
         padding: 16,
@@ -28,12 +28,12 @@ export function PlanProgressSummary({ actions, projectedRank }: PlanProgressSumm
             width: 32,
             height: 32,
             borderRadius: 10,
-            background: 'linear-gradient(135deg, #34C759 0%, #00C853 100%)',
+            background: 'linear-gradient(135deg, #34C759 0%, #34C759 100%)',
             color: '#FFFFFF',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            fontWeight: 800,
+            fontWeight: 600,
             fontSize: 14,
             boxShadow: '0 4px 12px rgba(52,199,89,0.3)',
           }}
@@ -44,7 +44,7 @@ export function PlanProgressSummary({ actions, projectedRank }: PlanProgressSumm
           <p
             style={{
               fontSize: 13,
-              fontWeight: 800,
+              fontWeight: 600,
               color: T.T1,
               margin: 0,
               letterSpacing: '-0.2px',
@@ -71,7 +71,7 @@ export function PlanProgressSummary({ actions, projectedRank }: PlanProgressSumm
                   ? T.GREEN
                   : a.status === 'in_progress'
                   ? 'rgba(52,199,89,0.30)'
-                  : 'rgba(0,85,255,0.10)',
+                  : 'rgba(10,132,255,0.10)',
             }}
           />
         ))}

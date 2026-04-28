@@ -33,7 +33,7 @@ export function PodiumRow({ data, isFirst }: PodiumRowProps) {
         gap: 14,
         padding: '14px 10px',
         borderRadius: 16,
-        borderTop: isFirst ? 'none' : '0.5px solid rgba(0,85,255,0.06)',
+        borderTop: isFirst ? 'none' : '0.5px solid rgba(10,132,255,0.06)',
       }}
     >
       <RankBadge rank={data.rank} size="lg" />
@@ -47,7 +47,7 @@ export function PodiumRow({ data, isFirst }: PodiumRowProps) {
         <p
           style={{
             fontSize: 15,
-            fontWeight: 700,
+            fontWeight: 600,
             margin: 0,
             color: T.T1,
             letterSpacing: '-0.3px',
@@ -57,13 +57,13 @@ export function PodiumRow({ data, isFirst }: PodiumRowProps) {
         </p>
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: 4, marginTop: 2 }}>
           <TrendArrow direction={data.trend} color={trendColor} />
-          <span style={{ fontSize: 11, fontWeight: 700, color: trendColor }}>{label}</span>
+          <span style={{ fontSize: 11, fontWeight: 600, color: trendColor }}>{label}</span>
         </div>
       </div>
       <span
         style={{
           fontSize: 19,
-          fontWeight: 800,
+          fontWeight: 600,
           color: T.T1,
           letterSpacing: '-0.6px',
         }}

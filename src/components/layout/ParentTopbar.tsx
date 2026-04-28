@@ -6,7 +6,7 @@ interface ParentTopbarProps {
   onMenuClick: () => void;
 }
 
-const IND = "#30306E";
+const IND = "#3A3A3C";
 
 export const ParentTopbar = ({ onMenuClick }: ParentTopbarProps) => {
   const { studentData, user } = useAuth();
@@ -25,7 +25,7 @@ export const ParentTopbar = ({ onMenuClick }: ParentTopbarProps) => {
           // unless we add safe-area-inset-top here.
           paddingTop: "env(safe-area-inset-top)",
           height: "calc(56px + env(safe-area-inset-top))",
-          fontFamily: "'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif",
+          fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif",
           background: "rgba(238,244,255,0.82)",
           WebkitBackdropFilter: "saturate(220%) blur(24px)",
           backdropFilter: "saturate(220%) blur(24px)",
@@ -49,13 +49,13 @@ export const ParentTopbar = ({ onMenuClick }: ParentTopbarProps) => {
             <Menu className="w-[18px] h-[18px]" style={{ color: "rgba(48,48,110,0.55)" }} />
           </button>
 
-          <div className="flex items-center gap-[7px] pl-1 min-w-0">
+          <div className="flex items-center gap-[8px] pl-1 min-w-0">
             <span
               className="w-[7px] h-[7px] rounded-full flex-shrink-0 animate-pulse"
               style={{ background: "#12C04E", boxShadow: "0 0 0 2.5px rgba(18,192,78,0.2)" }}
             />
             <span
-              className="text-[15px] font-bold truncate"
+              className="text-[15px] font-semibold truncate"
               style={{ color: IND, letterSpacing: "-0.2px" }}
             >
               {studentData?.schoolName || "Edullent"}
@@ -64,7 +64,7 @@ export const ParentTopbar = ({ onMenuClick }: ParentTopbarProps) => {
         </div>
 
         {/* Right — bell + avatar */}
-        <div className="flex items-center gap-[10px] flex-shrink-0">
+        <div className="flex items-center gap-[12px] flex-shrink-0">
           <button
             className="relative w-[38px] h-[38px] rounded-full flex items-center justify-center active:scale-90 transition-transform"
             style={{
@@ -84,9 +84,9 @@ export const ParentTopbar = ({ onMenuClick }: ParentTopbarProps) => {
           </button>
 
           <div
-            className="w-[38px] h-[38px] rounded-full flex items-center justify-center text-sm font-bold text-white"
+            className="w-[38px] h-[38px] rounded-full flex items-center justify-center text-sm font-semibold text-white"
             style={{
-              background: "linear-gradient(140deg, #30306E 0%, #4444A0 100%)",
+              background: "linear-gradient(140deg, #3A3A3C 0%, #4444A0 100%)",
               boxShadow: "0 2px 10px rgba(48,48,110,0.26), 0 0 0 2.5px rgba(255,255,255,0.8)",
             }}
           >
@@ -101,7 +101,7 @@ export const ParentTopbar = ({ onMenuClick }: ParentTopbarProps) => {
   // DESKTOP — unchanged
   // ══════════════════════════════
   return (
-    <header className="h-16 bg-[#EEF4FF]/80 backdrop-blur-md border-b border-slate-100 flex items-center justify-between px-4 md:px-8 sticky top-0 z-[60]">
+    <header className="h-16 bg-[#F5F5F7]/80 backdrop-blur-md border-b border-slate-100 flex items-center justify-between px-4 md:px-8 sticky top-0 z-[60]">
       <div className="flex items-center gap-3 min-w-0">
         <button
           onClick={onMenuClick}
@@ -112,12 +112,12 @@ export const ParentTopbar = ({ onMenuClick }: ParentTopbarProps) => {
         </button>
 
         <div className="flex flex-col leading-tight min-w-0">
-          <span className="text-sm font-black text-slate-800 truncate max-w-[140px] md:max-w-none uppercase tracking-tight">
+          <span className="text-sm font-semibold text-slate-800 truncate max-w-[140px] md:max-w-none uppercase tracking-tight">
             {studentData?.schoolName || "EDULLENT"}
           </span>
-          <div className="flex items-center gap-2 mt-0.5">
+          <div className="flex items-center gap-2 mt-1">
             <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest truncate">
+            <span className="text-[12px] font-semibold text-slate-400 uppercase tracking-widest truncate">
               {studentData?.branch || "Portal Active"}
             </span>
           </div>
@@ -132,10 +132,10 @@ export const ParentTopbar = ({ onMenuClick }: ParentTopbarProps) => {
 
         <div className="flex items-center gap-3 pl-3 md:pl-6 border-l border-slate-100">
           <div className="text-right hidden sm:block leading-none">
-            <p className="text-sm font-black text-slate-800">{studentData?.name || user?.displayName || "Parent"}</p>
-            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Guardian</p>
+            <p className="text-sm font-semibold text-slate-800">{studentData?.name || user?.displayName || "Parent"}</p>
+            <p className="text-[12px] font-semibold text-slate-400 uppercase tracking-widest mt-1">Guardian</p>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center font-black text-sm shadow-lg shadow-blue-900/20 ring-4 ring-blue-50">
+          <div className="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center font-semibold text-sm shadow-lg shadow-blue-900/20 ring-4 ring-blue-50">
             {initial}
           </div>
         </div>

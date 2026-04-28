@@ -16,8 +16,8 @@ export function SubjectBar({ subject, isLast }: SubjectBarProps) {
         style={{
           padding: 12,
           borderRadius: 12,
-          background: 'rgba(255,69,58,0.06)',
-          border: '0.5px solid rgba(255,69,58,0.15)',
+          background: 'rgba(255,59,48,0.06)',
+          border: '0.5px solid rgba(255,59,48,0.15)',
           marginTop: 4,
           marginBottom: isLast ? 0 : 12,
         }}
@@ -33,7 +33,7 @@ export function SubjectBar({ subject, isLast }: SubjectBarProps) {
           <span
             style={{
               fontSize: 13,
-              fontWeight: 700,
+              fontWeight: 600,
               color: T.T1,
               letterSpacing: '-0.2px',
             }}
@@ -43,7 +43,7 @@ export function SubjectBar({ subject, isLast }: SubjectBarProps) {
           <span
             style={{
               fontSize: 16,
-              fontWeight: 800,
+              fontWeight: 600,
               color: T.RED,
               letterSpacing: '-0.4px',
             }}
@@ -55,7 +55,7 @@ export function SubjectBar({ subject, isLast }: SubjectBarProps) {
           style={{
             position: 'relative',
             height: 6,
-            background: 'rgba(0,85,255,0.06)',
+            background: 'rgba(10,132,255,0.06)',
             borderRadius: 999,
             overflow: 'hidden',
           }}
@@ -67,7 +67,7 @@ export function SubjectBar({ subject, isLast }: SubjectBarProps) {
               top: 0,
               height: '100%',
               width: `${subject.score}%`,
-              background: 'linear-gradient(90deg, #FF8800 0%, #FF453A 100%)',
+              background: 'linear-gradient(90deg, #FF9500 0%, #FF453A 100%)',
               borderRadius: 999,
             }}
           />
@@ -82,7 +82,7 @@ export function SubjectBar({ subject, isLast }: SubjectBarProps) {
             }}
           />
         </div>
-        <p style={{ fontSize: 11, fontWeight: 700, color: T.RED, margin: '4px 0 0' }}>
+        <p style={{ fontSize: 11, fontWeight: 600, color: T.RED, margin: '4px 0 0' }}>
           {subject.score - subject.classAvg} below class avg of {subject.classAvg} · Your weakest subject
         </p>
       </div>
@@ -102,7 +102,7 @@ export function SubjectBar({ subject, isLast }: SubjectBarProps) {
         <span
           style={{
             fontSize: 13,
-            fontWeight: 700,
+            fontWeight: 600,
             color: T.T1,
             letterSpacing: '-0.2px',
           }}
@@ -112,7 +112,7 @@ export function SubjectBar({ subject, isLast }: SubjectBarProps) {
         <span
           style={{
             fontSize: 16,
-            fontWeight: 800,
+            fontWeight: 600,
             color: T.T1,
             letterSpacing: '-0.4px',
           }}
@@ -124,7 +124,7 @@ export function SubjectBar({ subject, isLast }: SubjectBarProps) {
         style={{
           position: 'relative',
           height: 6,
-          background: 'rgba(0,85,255,0.06)',
+          background: 'rgba(10,132,255,0.06)',
           borderRadius: 999,
           overflow: 'hidden',
         }}
@@ -137,7 +137,7 @@ export function SubjectBar({ subject, isLast }: SubjectBarProps) {
             height: '100%',
             width: `${subject.score}%`,
             background: isStrong
-              ? 'linear-gradient(90deg, #34C759 0%, #00C853 100%)'
+              ? 'linear-gradient(90deg, #34C759 0%, #34C759 100%)'
               : T.B1,
             borderRadius: 999,
           }}

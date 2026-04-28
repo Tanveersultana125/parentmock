@@ -42,12 +42,12 @@ export function TrajectoryChart({ data }: TrajectoryChartProps) {
     >
       <defs>
         <linearGradient id="lineFillEd" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#0055FF" stopOpacity="0.18" />
-          <stop offset="100%" stopColor="#0055FF" stopOpacity="0" />
+          <stop offset="0%" stopColor="#0A84FF" stopOpacity="0.18" />
+          <stop offset="100%" stopColor="#0A84FF" stopOpacity="0" />
         </linearGradient>
         <linearGradient id="lineStrokeEd" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#4499FF" />
-          <stop offset="100%" stopColor="#0055FF" />
+          <stop offset="0%" stopColor="#7CBBFF" />
+          <stop offset="100%" stopColor="#0A84FF" />
         </linearGradient>
       </defs>
       {[40, 100, 160].map((y) => (
@@ -57,7 +57,7 @@ export function TrajectoryChart({ data }: TrajectoryChartProps) {
           y1={y}
           x2="380"
           y2={y}
-          stroke="rgba(0,85,255,0.06)"
+          stroke="rgba(10,132,255,0.06)"
           strokeWidth="0.5"
           strokeDasharray="2 4"
         />
@@ -135,7 +135,7 @@ export function TrajectoryStat({ label, value, color = T.T1 }: TrajectoryStatPro
       <p
         style={{
           fontSize: 9,
-          fontWeight: 800,
+          fontWeight: 600,
           letterSpacing: '1.2px',
           color: T.T4,
           margin: '0 0 2px',
@@ -144,7 +144,7 @@ export function TrajectoryStat({ label, value, color = T.T1 }: TrajectoryStatPro
       >
         {label}
       </p>
-      <p style={{ fontSize: 14, fontWeight: 800, color, margin: 0, letterSpacing: '-0.2px' }}>
+      <p style={{ fontSize: 14, fontWeight: 600, color, margin: 0, letterSpacing: '-0.2px' }}>
         {value}
       </p>
     </div>

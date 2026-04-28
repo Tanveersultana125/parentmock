@@ -27,7 +27,7 @@ export function MetricCard({ label, value, classAvg, isPercentage }: MetricCardP
       <p
         style={{
           fontSize: 32,
-          fontWeight: 800,
+          fontWeight: 600,
           letterSpacing: '-1px',
           color: T.T1,
           margin: '8px 0 0',
@@ -42,7 +42,7 @@ export function MetricCard({ label, value, classAvg, isPercentage }: MetricCardP
           style={{
             flex: 1,
             height: 4,
-            background: 'rgba(0,85,255,0.06)',
+            background: 'rgba(10,132,255,0.06)',
             borderRadius: 999,
             overflow: 'hidden',
           }}
@@ -56,7 +56,7 @@ export function MetricCard({ label, value, classAvg, isPercentage }: MetricCardP
             }}
           />
         </div>
-        <span style={{ fontSize: 10, fontWeight: 700, color: diffColor }}>
+        <span style={{ fontSize: 10, fontWeight: 600, color: diffColor }}>
           {diff >= 0 ? '+' : ''}
           {diff} vs class
         </span>

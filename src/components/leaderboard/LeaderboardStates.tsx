@@ -54,7 +54,7 @@ function PageShell({ showBack, eyebrow, children }: PageShellProps) {
             }}
           >
             <ArrowLeft size={14} color={T.B1} strokeWidth={2.2} />
-            <span style={{ fontSize: 12, fontWeight: 700, color: T.B1, letterSpacing: '-0.1px' }}>
+            <span style={{ fontSize: 12, fontWeight: 600, color: T.B1, letterSpacing: '-0.1px' }}>
               Back
             </span>
           </button>
@@ -94,7 +94,7 @@ function CenteredCard({
           width: 56,
           height: 56,
           borderRadius: 18,
-          background: 'rgba(0,85,255,0.08)',
+          background: 'rgba(10,132,255,0.08)',
           display: 'inline-flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -106,7 +106,7 @@ function CenteredCard({
       <h2
         style={{
           fontSize: 18,
-          fontWeight: 800,
+          fontWeight: 600,
           letterSpacing: '-0.4px',
           color: T.T1,
           margin: '0 0 8px',
@@ -141,7 +141,7 @@ export function LeaderboardSkeleton() {
         <h1
           style={{
             fontSize: 34,
-            fontWeight: 800,
+            fontWeight: 600,
             letterSpacing: '-1.4px',
             color: T.T1,
             margin: '8px 0',
@@ -186,13 +186,13 @@ export function LeaderboardSkeleton() {
               alignItems: 'center',
               gap: 14,
               padding: '14px 0',
-              borderTop: i === 0 ? 'none' : '0.5px solid rgba(0,85,255,0.06)',
+              borderTop: i === 0 ? 'none' : '0.5px solid rgba(10,132,255,0.06)',
             }}
           >
-            <div style={{ width: 34, height: 34, borderRadius: 12, background: 'rgba(0,85,255,0.06)' }} />
-            <div style={{ width: 34, height: 34, borderRadius: '50%', background: 'rgba(0,85,255,0.06)' }} />
-            <div style={{ flex: 1, height: 14, borderRadius: 7, background: 'rgba(0,85,255,0.06)' }} />
-            <div style={{ width: 36, height: 18, borderRadius: 9, background: 'rgba(0,85,255,0.06)' }} />
+            <div style={{ width: 34, height: 34, borderRadius: 12, background: 'rgba(10,132,255,0.06)' }} />
+            <div style={{ width: 34, height: 34, borderRadius: '50%', background: 'rgba(10,132,255,0.06)' }} />
+            <div style={{ flex: 1, height: 14, borderRadius: 7, background: 'rgba(10,132,255,0.06)' }} />
+            <div style={{ width: 36, height: 18, borderRadius: 9, background: 'rgba(10,132,255,0.06)' }} />
           </div>
         ))}
       </div>
@@ -207,7 +207,7 @@ export function InsightsSkeleton() {
         <h1
           style={{
             fontSize: 34,
-            fontWeight: 800,
+            fontWeight: 600,
             letterSpacing: '-1.4px',
             color: T.T1,
             margin: '0 0 6px',
@@ -299,7 +299,7 @@ export function LeaderboardError({ error, onRetry, variant }: ErrorProps) {
                 color: '#FFFFFF',
                 cursor: 'pointer',
                 fontFamily: FONT,
-                fontWeight: 700,
+                fontWeight: 600,
                 boxShadow: T.SH_BTN,
               }}
             >

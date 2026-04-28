@@ -18,7 +18,7 @@ const bottomNavItems = [
 ];
 
 // ── Indigo theme ──
-const IND      = "#30306E";
+const IND      = "#3A3A3C";
 const INACTIVE = "rgba(48,48,110,0.26)";
 const INACTIVE_LBL = "rgba(48,48,110,0.25)";
 
@@ -82,7 +82,7 @@ export const MobileBottomNav = (_props: MobileBottomNavProps) => {
       className="fixed left-0 right-0 lg:hidden z-[100] flex justify-center px-3 pointer-events-none"
       style={{
         bottom: "calc(env(safe-area-inset-bottom) + 12px)",
-        fontFamily: "'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif",
+        fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif",
       }}
     >
       <div
@@ -117,7 +117,7 @@ export const MobileBottomNav = (_props: MobileBottomNavProps) => {
                 <IconComp active={isActive} />
                 {showBadge && (
                   <span
-                    className="absolute -top-[3px] -right-[6px] min-w-[16px] h-4 flex items-center justify-center px-[3px] text-[10px] font-bold text-white rounded-full"
+                    className="absolute -top-[4px] -right-[8px] min-w-[16px] h-4 flex items-center justify-center px-[4px] text-[12px] font-semibold text-white rounded-full"
                     style={{
                       background: "#E5304A",
                       border: "1.5px solid rgba(255,255,255,0.95)",
@@ -129,7 +129,7 @@ export const MobileBottomNav = (_props: MobileBottomNavProps) => {
                 )}
               </div>
               <span
-                className="text-[10px] leading-tight"
+                className="text-[12px] leading-tight"
                 style={{
                   color: isActive ? IND : INACTIVE_LBL,
                   fontWeight: isActive ? 700 : 500,

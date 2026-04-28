@@ -17,7 +17,7 @@ export function PlainRow({ data, subtitle }: PlainRowProps) {
         gap: 14,
         padding: '12px 10px',
         borderRadius: 14,
-        borderTop: '0.5px solid rgba(0,85,255,0.06)',
+        borderTop: '0.5px solid rgba(10,132,255,0.06)',
       }}
     >
       <RankBadge rank={data.rank} />
@@ -26,7 +26,7 @@ export function PlainRow({ data, subtitle }: PlainRowProps) {
         <p
           style={{
             fontSize: 14,
-            fontWeight: 700,
+            fontWeight: 600,
             margin: 0,
             color: T.T1,
             letterSpacing: '-0.2px',
@@ -50,7 +50,7 @@ export function PlainRow({ data, subtitle }: PlainRowProps) {
       <span
         style={{
           fontSize: 17,
-          fontWeight: 800,
+          fontWeight: 600,
           color: T.T1,
           letterSpacing: '-0.4px',
         }}

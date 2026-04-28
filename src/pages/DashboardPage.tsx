@@ -190,7 +190,7 @@ function ScoreArc({ pct, color, size = 80 }: { pct: number; color: string; size?
           style={{ transition: "stroke-dashoffset 1s ease", filter: `drop-shadow(0 0 6px ${color}90)` }} />
       </svg>
       <div className="absolute bottom-0 left-0 right-0 flex flex-col items-center">
-        <span className="text-sm font-black text-white leading-none">{pct > 0 ? `${pct}%` : "N/A"}</span>
+        <span className="text-sm font-semibold text-white leading-none">{pct > 0 ? `${pct}%` : "N/A"}</span>
       </div>
     </div>
   );
@@ -622,8 +622,8 @@ const DashboardPage = () => {
 
   if (studentData?.status === "Invited") return (
     <div className="h-[80vh] flex flex-col items-center justify-center p-10 text-center gap-4">
-      <Loader2 className="w-12 h-12 text-[#1e3a8a] animate-spin opacity-40" />
-      <h2 className="text-xl font-bold text-slate-700">Setting up your account...</h2>
+      <Loader2 className="w-12 h-12 text-[#1D1D1F] animate-spin opacity-40" />
+      <h2 className="text-xl font-semibold text-slate-700">Setting up your account...</h2>
       <p className="text-sm text-slate-400">Your access is being provisioned. Please wait.</p>
     </div>
   );
@@ -647,30 +647,30 @@ const DashboardPage = () => {
      ═══════════════════════════════════════════════════════════════ */
   if (isMobile) {
     // ── Bright Blue Apple UI tokens (matches Performance page) ──
-    const IND = "#0055FF";
-    const IND2 = "#1166FF";
-    const IND3 = "#4499FF";
-    const BG = "#EEF4FF";
-    const BG2 = "#E0ECFF";
-    const T1 = "#001040";
-    const T2 = "#002080";
-    const T3 = "#5070B0";
-    const T4 = "#99AACC";
-    const SEP = "rgba(0,85,255,0.07)";
-    const IND_BDR = "rgba(0,85,255,0.10)";
-    const IND_SOFT = "rgba(0,85,255,0.05)";
-    const GREEN = "#00C853";
-    const GREEN_S = "rgba(0,200,83,0.12)";
-    const GREEN_B = "rgba(0,200,83,0.25)";
-    const ORANGE = "#FF8800";
-    const ORANGE_S = "rgba(255,136,0,0.12)";
-    const ORANGE_B = "rgba(255,136,0,0.25)";
-    const ROSE = "#FF3355";
-    const ROSE_S = "rgba(255,51,85,0.10)";
-    const IND_DARK_GRAD = "linear-gradient(140deg, #001888 0%, #0033CC 48%, #0055FF 100%)";
-    const SH = "0 0 0 0.5px rgba(0,85,255,0.08), 0 2px 8px rgba(0,85,255,0.09), 0 10px 28px rgba(0,85,255,0.11)";
-    const SH_LG = "0 0 0 0.5px rgba(0,85,255,0.10), 0 4px 16px rgba(0,85,255,0.12), 0 20px 48px rgba(0,85,255,0.14)";
-    const SH_BTN = "0 4px 14px rgba(0,85,255,0.32), 0 1px 4px rgba(0,85,255,0.18)";
+    const IND = "#0A84FF";
+    const IND2 = "#3395FF";
+    const IND3 = "#7CBBFF";
+    const BG = "#F5F5F7";
+    const BG2 = "#EBEBF0";
+    const T1 = "#1D1D1F";
+    const T2 = "#3A3A3C";
+    const T3 = "#6E6E73";
+    const T4 = "#A1A1A6";
+    const SEP = "rgba(10,132,255,0.07)";
+    const IND_BDR = "rgba(10,132,255,0.10)";
+    const IND_SOFT = "rgba(10,132,255,0.05)";
+    const GREEN = "#34C759";
+    const GREEN_S = "rgba(52,199,89,0.12)";
+    const GREEN_B = "rgba(52,199,89,0.25)";
+    const ORANGE = "#FF9500";
+    const ORANGE_S = "rgba(255,149,0,0.12)";
+    const ORANGE_B = "rgba(255,149,0,0.25)";
+    const ROSE = "#FF3B30";
+    const ROSE_S = "rgba(255,59,48,0.10)";
+    const IND_DARK_GRAD = "linear-gradient(140deg, #0A84FF 0%, #0A84FF 48%, #0A84FF 100%)";
+    const SH = "0 0 0 0.5px rgba(10,132,255,0.08), 0 2px 8px rgba(10,132,255,0.09), 0 10px 28px rgba(10,132,255,0.11)";
+    const SH_LG = "0 0 0 0.5px rgba(10,132,255,0.10), 0 4px 16px rgba(10,132,255,0.12), 0 20px 48px rgba(10,132,255,0.14)";
+    const SH_BTN = "0 4px 14px rgba(10,132,255,0.32), 0 1px 4px rgba(10,132,255,0.18)";
     void BG2;
     // Academic Health ring
     const scorePct = Math.min(liveStats.avgScore, 100);
@@ -684,17 +684,17 @@ const DashboardPage = () => {
     const trendStable = liveStats.trendPct === 0;
 
     return (
-      <div className="animate-in fade-in duration-500 -mx-3 -mt-3 md:mx-0 md:mt-0" style={{ fontFamily: "'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif", background: BG, minHeight: "100vh" }}>
+      <div className="animate-in fade-in duration-500 -mx-3 -mt-3 md:mx-0 md:mt-0" style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif", background: BG, minHeight: "100vh" }}>
 
         {/* ── Greeting ── */}
         <div className="px-6 pt-6 pb-0">
-          <h1 className="text-[32px] font-bold leading-[1.10]" style={{ color: T1, letterSpacing: "-0.8px" }}>
+          <h1 className="text-[28px] font-semibold leading-[1.10]" style={{ color: T1, letterSpacing: "-0.8px" }}>
             {greeting},<br />
             <span style={{ background: `linear-gradient(130deg, ${IND} 0%, ${IND3} 100%)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
               {parentFirstName}
             </span> 👋
           </h1>
-          <p className="text-[14px] mt-[5px]" style={{ color: T3, letterSpacing: "-0.1px" }}>Here's how {childFirstName} is doing today</p>
+          <p className="text-[14px] mt-[4px]" style={{ color: T3, letterSpacing: "-0.1px" }}>Here's how {childFirstName} is doing today</p>
         </div>
 
         {/* ── Academic Health Card ── */}
@@ -704,31 +704,31 @@ const DashboardPage = () => {
           aria-label="Open performance page"
           onClick={() => navigate("/performance")}
           onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/performance"); } }}
-          className="mx-5 mt-[22px] bg-white rounded-[28px] p-6 relative overflow-hidden cursor-pointer active:scale-[0.98] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF]/40"
+          className="mx-5 mt-[24px] bg-white rounded-[28px] p-6 relative overflow-hidden cursor-pointer active:scale-[0.98] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
           style={{ boxShadow: SH_LG, border: `0.5px solid ${IND_BDR}` }}>
           <div className="absolute -top-[70px] -right-[50px] w-[220px] h-[220px] rounded-full pointer-events-none"
-            style={{ background: "radial-gradient(circle, rgba(0,85,255,0.05) 0%, transparent 70%)" }} />
+            style={{ background: "radial-gradient(circle, rgba(10,132,255,0.05) 0%, transparent 70%)" }} />
           <div className="absolute -bottom-[50px] left-5 w-[160px] h-[160px] rounded-full pointer-events-none"
-            style={{ background: "radial-gradient(circle, rgba(0,85,255,0.03) 0%, transparent 70%)" }} />
+            style={{ background: "radial-gradient(circle, rgba(10,132,255,0.03) 0%, transparent 70%)" }} />
           <div className="relative z-10">
-            <h3 className="text-[18px] font-bold" style={{ color: T1, letterSpacing: "-0.4px" }}>Academic Health</h3>
-            <p className="text-[13px] mt-0.5" style={{ color: T3 }}>Overall performance indicator</p>
-            <div className="inline-flex items-center gap-[5px] mt-[14px] px-[13px] py-[5px] rounded-full text-[12px] font-semibold"
+            <h3 className="text-[18px] font-semibold" style={{ color: T1, letterSpacing: "-0.4px" }}>Academic Health</h3>
+            <p className="text-[13px] mt-1" style={{ color: T3 }}>Overall performance indicator</p>
+            <div className="inline-flex items-center gap-[4px] mt-[16px] px-[12px] py-[4px] rounded-full text-[12px] font-semibold"
               style={{
                 background: trendStable || isImproving ? GREEN_S : ORANGE_S,
-                color: trendStable || isImproving ? "#0A6A2E" : "#905800",
+                color: trendStable || isImproving ? "#248A3D" : "#86310C",
                 border: `0.5px solid ${trendStable || isImproving ? GREEN_B : ORANGE_B}`,
                 letterSpacing: "-0.1px"
               }}>
               <TrendingUp className={`w-3 h-3 ${isDeclining ? "rotate-180" : ""}`} />
               {trendStable ? "Stable performance" : isImproving ? `Improved by ${liveStats.trendPct}%` : `Declined by ${Math.abs(liveStats.trendPct)}%`}
             </div>
-            <div className="flex items-end justify-between mt-[22px]">
+            <div className="flex items-end justify-between mt-[24px]">
               <div className="flex flex-col gap-1">
-                <div className="text-[56px] font-bold leading-none" style={{ color: IND, letterSpacing: "-3px" }}>
+                <div className="text-[56px] font-semibold leading-none" style={{ color: IND, letterSpacing: "-3px" }}>
                   {liveStats.avgScore > 0 ? `${liveStats.avgScore}%` : "—"}
                 </div>
-                <div className="text-[10px] font-bold uppercase tracking-[0.09em] mt-1" style={{ color: T4 }}>
+                <div className="text-[12px] font-semibold uppercase tracking-[0.09em] mt-1" style={{ color: T4 }}>
                   {liveStats.avgScore >= 75 ? "Good Standing" : liveStats.avgScore > 0 ? "Needs Attention" : "No data yet"}
                 </div>
               </div>
@@ -740,12 +740,12 @@ const DashboardPage = () => {
                       <stop offset="100%" stopColor={IND} />
                     </linearGradient>
                   </defs>
-                  <circle cx="48" cy="48" r={ringR} fill="none" stroke="rgba(0,85,255,0.09)" strokeWidth="7" />
+                  <circle cx="48" cy="48" r={ringR} fill="none" stroke="rgba(10,132,255,0.09)" strokeWidth="7" />
                   <circle cx="48" cy="48" r={ringR} fill="none" stroke="url(#indGradMobile)" strokeWidth="7" strokeLinecap="round"
                     strokeDasharray={ringCirc} strokeDashoffset={ringOffset}
                     style={{ transition: "stroke-dashoffset 1s cubic-bezier(0.4,0,0.2,1)" }} />
                 </svg>
-                <div className="absolute inset-0 flex items-center justify-center text-[15px] font-bold" style={{ color: T1, letterSpacing: "-0.4px" }}>
+                <div className="absolute inset-0 flex items-center justify-center text-[15px] font-semibold" style={{ color: T1, letterSpacing: "-0.4px" }}>
                   {liveStats.avgScore > 0 ? `${liveStats.avgScore}%` : "—"}
                 </div>
               </div>
@@ -754,12 +754,12 @@ const DashboardPage = () => {
         </div>
 
         {/* ── Stats Grid 2×2 ── */}
-        <div className="grid grid-cols-2 gap-3 mx-5 mt-[14px]">
+        <div className="grid grid-cols-2 gap-3 mx-5 mt-[16px]">
           {[
-            { icon: CheckCircle, decorIcon: TrendingUp, iconColor: GREEN, cardBg: "linear-gradient(135deg, rgba(0,200,83,0.13) 0%, rgba(0,200,83,0.04) 100%)", cardBdr: "rgba(0,200,83,0.20)", iconBoxBg: "rgba(0,200,83,0.18)", iconBoxBdr: "rgba(0,200,83,0.30)", label: "Attendance", value: attDisplay, status: liveStats.attendance === null ? "No records yet" : attOnTrack ? "On track ✓" : "Below target", statusColor: liveStats.attendance === null ? T4 : attOnTrack ? GREEN : ORANGE, route: "/attendance" },
-            { icon: AlertCircle, decorIcon: BarChart3, iconColor: ORANGE, cardBg: "linear-gradient(135deg, rgba(255,136,0,0.13) 0%, rgba(255,136,0,0.04) 100%)", cardBdr: "rgba(255,136,0,0.22)", iconBoxBg: "rgba(255,136,0,0.18)", iconBoxBdr: "rgba(255,136,0,0.32)", label: "Pending Work", value: pendingDisplay, status: liveStats.pending === null ? "No assignments yet" : noPending ? "All clear ✓" : "Due this week", statusColor: liveStats.pending === null ? T4 : noPending ? GREEN : ORANGE, route: "/assignments" },
-            { icon: Calendar, decorIcon: ClipboardList, iconColor: IND, cardBg: "linear-gradient(135deg, rgba(0,85,255,0.10) 0%, rgba(0,85,255,0.03) 100%)", cardBdr: "rgba(0,85,255,0.20)", iconBoxBg: "rgba(0,85,255,0.14)", iconBoxBdr: "rgba(0,85,255,0.28)", label: "Upcoming Tests", value: testsDisplay, status: liveStats.tests === null ? "No tests scheduled" : "Next 7 days", statusColor: T4, route: "/tests" },
-            { icon: Star, decorIcon: Award, iconColor: ROSE, cardBg: "linear-gradient(135deg, rgba(255,51,85,0.10) 0%, rgba(255,51,85,0.03) 100%)", cardBdr: "rgba(255,51,85,0.20)", iconBoxBg: "rgba(255,51,85,0.14)", iconBoxBdr: "rgba(255,51,85,0.30)", label: "Recent Grade", value: liveStats.recentGrade !== "N/A" ? liveStats.recentGrade : "—", status: liveStats.recentSubject, statusColor: T4, route: "/tests" },
+            { icon: CheckCircle, decorIcon: TrendingUp, iconColor: GREEN, cardBg: "linear-gradient(135deg, rgba(52,199,89,0.13) 0%, rgba(52,199,89,0.04) 100%)", cardBdr: "rgba(52,199,89,0.20)", iconBoxBg: "rgba(52,199,89,0.18)", iconBoxBdr: "rgba(52,199,89,0.30)", label: "Attendance", value: attDisplay, status: liveStats.attendance === null ? "No records yet" : attOnTrack ? "On track ✓" : "Below target", statusColor: liveStats.attendance === null ? T4 : attOnTrack ? GREEN : ORANGE, route: "/attendance" },
+            { icon: AlertCircle, decorIcon: BarChart3, iconColor: ORANGE, cardBg: "linear-gradient(135deg, rgba(255,149,0,0.13) 0%, rgba(255,149,0,0.04) 100%)", cardBdr: "rgba(255,149,0,0.22)", iconBoxBg: "rgba(255,149,0,0.18)", iconBoxBdr: "rgba(255,149,0,0.32)", label: "Pending Work", value: pendingDisplay, status: liveStats.pending === null ? "No assignments yet" : noPending ? "All clear ✓" : "Due this week", statusColor: liveStats.pending === null ? T4 : noPending ? GREEN : ORANGE, route: "/assignments" },
+            { icon: Calendar, decorIcon: ClipboardList, iconColor: IND, cardBg: "linear-gradient(135deg, rgba(10,132,255,0.10) 0%, rgba(10,132,255,0.03) 100%)", cardBdr: "rgba(10,132,255,0.20)", iconBoxBg: "rgba(10,132,255,0.14)", iconBoxBdr: "rgba(10,132,255,0.28)", label: "Upcoming Tests", value: testsDisplay, status: liveStats.tests === null ? "No tests scheduled" : "Next 7 days", statusColor: T4, route: "/tests" },
+            { icon: Star, decorIcon: Award, iconColor: ROSE, cardBg: "linear-gradient(135deg, rgba(255,59,48,0.10) 0%, rgba(255,59,48,0.03) 100%)", cardBdr: "rgba(255,59,48,0.20)", iconBoxBg: "rgba(255,59,48,0.14)", iconBoxBdr: "rgba(255,59,48,0.30)", label: "Recent Grade", value: liveStats.recentGrade !== "N/A" ? liveStats.recentGrade : "—", status: liveStats.recentSubject, statusColor: T4, route: "/tests" },
           ].map(({ icon: Icon, decorIcon: DecorIcon, iconColor, cardBg, cardBdr, iconBoxBg, iconBoxBdr, label, value, status, statusColor, route }) => (
             <div
               key={label}
@@ -768,18 +768,18 @@ const DashboardPage = () => {
               aria-label={`Open ${label} page`}
               onClick={() => navigate(route)}
               onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate(route); } }}
-              className="rounded-[22px] px-4 pt-[18px] pb-[18px] relative overflow-hidden cursor-pointer active:scale-[0.96] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF]/40"
+              className="rounded-[22px] px-4 pt-[16px] pb-[16px] relative overflow-hidden cursor-pointer active:scale-[0.96] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
               style={{ background: cardBg, boxShadow: SH, border: `0.5px solid ${cardBdr}`, transitionTimingFunction: "cubic-bezier(0.34,1.56,0.64,1)" }}>
               <div className="absolute pointer-events-none" style={{ bottom: 10, right: 10 }}>
                 <DecorIcon style={{ width: 60, height: 60, color: iconColor, opacity: 0.20, strokeWidth: 1.6 }} />
               </div>
-              <div className="w-[34px] h-[34px] rounded-[11px] flex items-center justify-center mb-[14px] relative"
+              <div className="w-[34px] h-[34px] rounded-[11px] flex items-center justify-center mb-[16px] relative"
                 style={{ background: iconBoxBg, border: `0.5px solid ${iconBoxBdr}` }}>
                 <Icon className="w-[17px] h-[17px]" style={{ color: iconColor }} />
               </div>
-              <div className="text-[10px] font-bold uppercase tracking-[0.08em] relative" style={{ color: T4 }}>{label}</div>
-              <div className="text-[28px] font-bold mt-1 leading-none relative" style={{ color: T1, letterSpacing: "-0.8px" }}>{value}</div>
-              <div className="text-[12px] font-medium mt-[6px] relative truncate" style={{ color: statusColor }}>{status}</div>
+              <div className="text-[12px] font-semibold uppercase tracking-[0.08em] relative" style={{ color: T4 }}>{label}</div>
+              <div className="text-[28px] font-semibold mt-1 leading-none relative" style={{ color: T1, letterSpacing: "-0.8px" }}>{value}</div>
+              <div className="text-[12px] font-medium mt-[8px] relative truncate" style={{ color: statusColor }}>{status}</div>
             </div>
           ))}
         </div>
@@ -791,17 +791,17 @@ const DashboardPage = () => {
           aria-label="Open class leaderboard"
           onClick={() => navigate("/leaderboard")}
           onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/leaderboard"); } }}
-          className="bg-white rounded-[22px] mx-5 mt-[14px] px-4 py-[16px] flex items-center gap-3 relative overflow-hidden cursor-pointer active:scale-[0.96] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF]/40"
+          className="bg-white rounded-[22px] mx-5 mt-[16px] px-4 py-[16px] flex items-center gap-3 relative overflow-hidden cursor-pointer active:scale-[0.96] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
           style={{ boxShadow: SH, border: `0.5px solid ${IND_BDR}`, transitionTimingFunction: "cubic-bezier(0.34,1.56,0.64,1)" }}>
-          <div className="absolute -top-[18px] -right-[18px] w-[72px] h-[72px] rounded-full pointer-events-none"
-            style={{ background: `radial-gradient(circle, rgba(255,170,0,0.16) 0%, transparent 70%)`, opacity: 0.7 }} />
+          <div className="absolute -top-[16px] -right-[16px] w-[72px] h-[72px] rounded-full pointer-events-none"
+            style={{ background: `radial-gradient(circle, rgba(255,204,0,0.16) 0%, transparent 70%)`, opacity: 0.7 }} />
           <div className="w-[40px] h-[40px] rounded-[12px] flex items-center justify-center relative flex-shrink-0"
-            style={{ background: "linear-gradient(135deg, #FFD700 0%, #FFAA00 100%)", boxShadow: "0 4px 12px rgba(255,170,0,0.30)" }}>
+            style={{ background: "linear-gradient(135deg, #FFCC00 0%, #FFCC00 100%)", boxShadow: "0 4px 12px rgba(255,204,0,0.30)" }}>
             <Trophy className="w-[19px] h-[19px] text-white" />
           </div>
           <div className="flex-1 min-w-0 relative">
-            <div className="text-[10px] font-bold uppercase tracking-[0.10em]" style={{ color: T4 }}>Class Leaderboard</div>
-            <div className="text-[15px] font-bold mt-[2px] truncate" style={{ color: T1, letterSpacing: "-0.3px" }}>See where you stand this week</div>
+            <div className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: T4 }}>Class Leaderboard</div>
+            <div className="text-[15px] font-semibold mt-[2px] truncate" style={{ color: T1, letterSpacing: "-0.3px" }}>See where you stand this week</div>
           </div>
           <ArrowRight className="w-[16px] h-[16px] flex-shrink-0 relative" style={{ color: IND }} />
         </div>
@@ -811,14 +811,14 @@ const DashboardPage = () => {
           style={{ boxShadow: SH_LG, border: `0.5px solid ${IND_BDR}` }}>
 
           {/* Header */}
-          <div className="flex items-center justify-between px-5 pt-[14px] pb-[12px]" style={{ borderBottom: `0.5px solid ${IND_BDR}` }}>
+          <div className="flex items-center justify-between px-5 pt-[16px] pb-[12px]" style={{ borderBottom: `0.5px solid ${IND_BDR}` }}>
             <div className="flex items-center gap-2">
               <Sparkles className="w-[12px] h-[12px]" style={{ color: IND }} strokeWidth={2.4} />
-              <span className="text-[10px] font-bold uppercase tracking-[0.10em]" style={{ color: T4 }}>Edullent AI · Live Summary</span>
+              <span className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: T4 }}>Edullent AI · Live Summary</span>
             </div>
-            <div className="flex items-center gap-[5px] px-[10px] py-[3px] rounded-full" style={{ background: GREEN_S, border: `0.5px solid ${GREEN_B}` }}>
+            <div className="flex items-center gap-[4px] px-[12px] py-[4px] rounded-full" style={{ background: GREEN_S, border: `0.5px solid ${GREEN_B}` }}>
               <div className="w-[5px] h-[5px] rounded-full animate-pulse" style={{ background: GREEN, boxShadow: `0 0 0 2px ${GREEN_S}` }} />
-              <span className="text-[10px] font-bold tracking-[0.06em]" style={{ color: GREEN }}>LIVE</span>
+              <span className="text-[12px] font-semibold tracking-[0.06em]" style={{ color: GREEN }}>LIVE</span>
             </div>
           </div>
 
@@ -830,7 +830,7 @@ const DashboardPage = () => {
           ) : (
             <>
               {/* 2×2 pastel mini-cards */}
-              <div className="grid grid-cols-2 gap-[10px] p-[14px]">
+              <div className="grid grid-cols-2 gap-[12px] p-[16px]">
                 {[
                   {
                     label: "Attendance",
@@ -838,9 +838,9 @@ const DashboardPage = () => {
                     status: liveStats.attendance === null ? "No data" : attOnTrack ? "✓ On Track" : "Below 85% target",
                     statusColor: liveStats.attendance === null ? T4 : attOnTrack ? GREEN : ORANGE,
                     icon: CheckCircle, iconColor: GREEN,
-                    cardBg: "linear-gradient(135deg, rgba(0,200,83,0.13) 0%, rgba(0,200,83,0.04) 100%)",
-                    cardBdr: "rgba(0,200,83,0.20)",
-                    iconBoxBg: "rgba(0,200,83,0.18)", iconBoxBdr: "rgba(0,200,83,0.30)",
+                    cardBg: "linear-gradient(135deg, rgba(52,199,89,0.13) 0%, rgba(52,199,89,0.04) 100%)",
+                    cardBdr: "rgba(52,199,89,0.20)",
+                    iconBoxBg: "rgba(52,199,89,0.18)", iconBoxBdr: "rgba(52,199,89,0.30)",
                     route: "/attendance",
                   },
                   {
@@ -849,9 +849,9 @@ const DashboardPage = () => {
                     status: liveStats.avgScore >= 80 ? "Excellent" : liveStats.avgScore >= 60 ? "Good" : liveStats.avgScore > 0 ? "Needs Work" : "No Data",
                     statusColor: liveStats.avgScore >= 80 ? GREEN : liveStats.avgScore >= 60 ? IND : liveStats.avgScore > 0 ? ORANGE : T4,
                     icon: TrendingUp, iconColor: IND,
-                    cardBg: "linear-gradient(135deg, rgba(0,85,255,0.10) 0%, rgba(0,85,255,0.03) 100%)",
-                    cardBdr: "rgba(0,85,255,0.20)",
-                    iconBoxBg: "rgba(0,85,255,0.14)", iconBoxBdr: "rgba(0,85,255,0.28)",
+                    cardBg: "linear-gradient(135deg, rgba(10,132,255,0.10) 0%, rgba(10,132,255,0.03) 100%)",
+                    cardBdr: "rgba(10,132,255,0.20)",
+                    iconBoxBg: "rgba(10,132,255,0.14)", iconBoxBdr: "rgba(10,132,255,0.28)",
                     route: "/performance",
                   },
                   {
@@ -860,9 +860,9 @@ const DashboardPage = () => {
                     status: liveStats.pending === null ? "No assignments yet" : noPending ? "✓ All Done" : `${liveStats.pending} to complete`,
                     statusColor: liveStats.pending === null ? T4 : noPending ? GREEN : ORANGE,
                     icon: AlertCircle, iconColor: ORANGE,
-                    cardBg: "linear-gradient(135deg, rgba(255,136,0,0.13) 0%, rgba(255,136,0,0.04) 100%)",
-                    cardBdr: "rgba(255,136,0,0.22)",
-                    iconBoxBg: "rgba(255,136,0,0.18)", iconBoxBdr: "rgba(255,136,0,0.32)",
+                    cardBg: "linear-gradient(135deg, rgba(255,149,0,0.13) 0%, rgba(255,149,0,0.04) 100%)",
+                    cardBdr: "rgba(255,149,0,0.22)",
+                    iconBoxBg: "rgba(255,149,0,0.18)", iconBoxBdr: "rgba(255,149,0,0.32)",
                     route: "/assignments",
                   },
                   {
@@ -871,9 +871,9 @@ const DashboardPage = () => {
                     status: liveStats.recentSubject || "No tests yet",
                     statusColor: T4,
                     icon: Star, iconColor: ROSE,
-                    cardBg: "linear-gradient(135deg, rgba(255,51,85,0.10) 0%, rgba(255,51,85,0.03) 100%)",
-                    cardBdr: "rgba(255,51,85,0.20)",
-                    iconBoxBg: "rgba(255,51,85,0.14)", iconBoxBdr: "rgba(255,51,85,0.30)",
+                    cardBg: "linear-gradient(135deg, rgba(255,59,48,0.10) 0%, rgba(255,59,48,0.03) 100%)",
+                    cardBdr: "rgba(255,59,48,0.20)",
+                    iconBoxBg: "rgba(255,59,48,0.14)", iconBoxBdr: "rgba(255,59,48,0.30)",
                     route: "/tests",
                   },
                 ].map(({ label, value, status, statusColor, icon: Icon, iconColor, cardBg, cardBdr, iconBoxBg, iconBoxBdr, route }) => (
@@ -883,31 +883,31 @@ const DashboardPage = () => {
                     aria-label={`Open ${label} page`}
                     onClick={() => navigate(route)}
                     onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate(route); } }}
-                    className="rounded-[16px] px-[14px] pt-[14px] pb-[14px] cursor-pointer active:scale-[0.96] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF]/30"
+                    className="rounded-[16px] px-[16px] pt-[16px] pb-[16px] cursor-pointer active:scale-[0.96] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/30"
                     style={{ background: cardBg, border: `0.5px solid ${cardBdr}`, transitionTimingFunction: "cubic-bezier(0.34,1.56,0.64,1)" }}>
-                    <div className="w-[30px] h-[30px] rounded-[10px] flex items-center justify-center mb-[10px]"
+                    <div className="w-[30px] h-[30px] rounded-[10px] flex items-center justify-center mb-[12px]"
                       style={{ background: iconBoxBg, border: `0.5px solid ${iconBoxBdr}` }}>
                       <Icon className="w-[15px] h-[15px]" style={{ color: iconColor }} strokeWidth={2.4} />
                     </div>
-                    <div className="text-[9px] font-bold uppercase tracking-[0.08em]" style={{ color: T4 }}>{label}</div>
-                    <div className="text-[24px] font-bold mt-[2px] leading-none" style={{ color: T1, letterSpacing: "-0.7px" }}>{value}</div>
-                    <div className="text-[10px] font-medium mt-[5px] truncate" style={{ color: statusColor }}>{status}</div>
+                    <div className="text-[12px] font-semibold uppercase tracking-[0.08em]" style={{ color: T4 }}>{label}</div>
+                    <div className="text-[24px] font-semibold mt-[2px] leading-none" style={{ color: T1, letterSpacing: "-0.7px" }}>{value}</div>
+                    <div className="text-[12px] font-medium mt-[4px] truncate" style={{ color: statusColor }}>{status}</div>
                   </div>
                 ))}
               </div>
 
               {/* AI Insight Strip (light) */}
-              <div className="px-[18px] py-[12px] flex items-start gap-[10px]" style={{ borderTop: `0.5px solid ${IND_BDR}`, background: IND_SOFT }}>
+              <div className="px-[16px] py-[12px] flex items-start gap-[12px]" style={{ borderTop: `0.5px solid ${IND_BDR}`, background: IND_SOFT }}>
                 <BrainCircuit className="w-4 h-4 shrink-0 mt-[1px]" style={{ color: IND }} />
                 {aiInsights?.child_summary_narrative ? (
                   <p className="text-[12px] leading-[1.65]" style={{ color: T3, letterSpacing: "-0.1px" }}>
-                    <strong style={{ color: T1, fontWeight: 700 }}>{studentData?.name}</strong>{" "}
+                    <strong style={{ color: T1, fontWeight: 600 }}>{studentData?.name}</strong>{" "}
                     {aiInsights.child_summary_narrative.replace(studentData?.name || "", "").trim()}
                   </p>
                 ) : (
                   <div className="flex items-center gap-2">
                     <Loader2 className="w-3 h-3 animate-spin" style={{ color: IND }} />
-                    <p className="text-[11px] italic" style={{ color: T4 }}>AI summary generating...</p>
+                    <p className="text-[12px] italic" style={{ color: T4 }}>AI summary generating...</p>
                   </div>
                 )}
               </div>
@@ -925,10 +925,10 @@ const DashboardPage = () => {
           className="mx-5 mt-5 rounded-[28px] p-6 relative overflow-hidden cursor-pointer active:scale-[0.98] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
           style={{
             background: IND_DARK_GRAD,
-            boxShadow: "0 10px 36px rgba(0,85,255,0.22), 0 0 0 0.5px rgba(255,255,255,0.18)",
+            boxShadow: "0 10px 36px rgba(10,132,255,0.22), 0 0 0 0.5px rgba(255,255,255,0.18)",
             border: "0.5px solid rgba(255,255,255,0.18)"
           }}>
-          <div className="absolute -top-[55px] -right-[35px] w-[210px] h-[210px] rounded-full pointer-events-none"
+          <div className="absolute -top-[55px] -right-[32px] w-[210px] h-[210px] rounded-full pointer-events-none"
             style={{ background: "radial-gradient(circle, rgba(255,255,255,0.11) 0%, transparent 70%)" }} />
           <div className="absolute inset-0 pointer-events-none" style={{
             backgroundImage: "linear-gradient(rgba(255,255,255,0.014) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.014) 1px, transparent 1px)",
@@ -936,22 +936,22 @@ const DashboardPage = () => {
           }} />
 
           <div className="relative z-10">
-            <div className="w-[68px] h-[68px] rounded-[22px] flex items-center justify-center text-[24px] font-bold text-white mb-4"
+            <div className="w-[68px] h-[68px] rounded-[22px] flex items-center justify-center text-[24px] font-semibold text-white mb-4"
               style={{ background: "rgba(255,255,255,0.18)", border: "0.5px solid rgba(255,255,255,0.26)", boxShadow: "0 4px 20px rgba(0,0,0,0.18)" }}>
               {studentInitials}
             </div>
-            <div className="text-[22px] font-bold text-white" style={{ letterSpacing: "-0.6px" }}>{studentData?.name || "Student"}</div>
-            <div className="text-[14px] mt-[3px]" style={{ color: "rgba(255,255,255,0.52)" }}>
+            <div className="text-[22px] font-semibold text-white" style={{ letterSpacing: "-0.6px" }}>{studentData?.name || "Student"}</div>
+            <div className="text-[14px] mt-[4px]" style={{ color: "rgba(255,255,255,0.52)" }}>
               {studentMeta.className !== "—" ? `Grade ${studentMeta.className}` : studentData?.grade ? `Grade ${studentData.grade}` : "Grade —"}
               {teacherInfo.name !== "—" ? ` — ${teacherInfo.name}` : ""}
             </div>
             <div className="grid grid-cols-2 mt-5 rounded-[15px] overflow-hidden" style={{ gap: "1px", background: "rgba(255,255,255,0.10)" }}>
-              <div className="px-[15px] py-[13px]" style={{ background: "rgba(255,255,255,0.07)" }}>
-                <div className="text-[10px] font-bold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.38)" }}>Class Teacher</div>
+              <div className="px-[16px] py-[12px]" style={{ background: "rgba(255,255,255,0.07)" }}>
+                <div className="text-[12px] font-semibold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.38)" }}>Class Teacher</div>
                 <div className="text-[15px] font-semibold mt-1 text-white" style={{ letterSpacing: "-0.2px" }}>{teacherInfo.name}</div>
               </div>
-              <div className="px-[15px] py-[13px]" style={{ background: "rgba(255,255,255,0.07)" }}>
-                <div className="text-[10px] font-bold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.38)" }}>Academic Year</div>
+              <div className="px-[16px] py-[12px]" style={{ background: "rgba(255,255,255,0.07)" }}>
+                <div className="text-[12px] font-semibold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.38)" }}>Academic Year</div>
                 <div className="text-[15px] font-semibold mt-1 text-white" style={{ letterSpacing: "-0.2px" }}>{academicYear}</div>
               </div>
             </div>
@@ -965,29 +965,29 @@ const DashboardPage = () => {
           aria-label="Open alerts page"
           onClick={() => navigate("/alerts")}
           onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/alerts"); } }}
-          className="mx-5 mt-[14px] bg-white rounded-[22px] p-5 cursor-pointer active:scale-[0.98] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF]/40"
+          className="mx-5 mt-[16px] bg-white rounded-[22px] p-5 cursor-pointer active:scale-[0.98] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
           style={{ boxShadow: SH, border: `0.5px solid ${IND_BDR}` }}>
-          <h3 className="text-[18px] font-bold mb-5" style={{ color: T1, letterSpacing: "-0.4px" }}>Recent Alerts</h3>
+          <h3 className="text-[18px] font-semibold mb-5" style={{ color: T1, letterSpacing: "-0.4px" }}>Recent Alerts</h3>
           {recentAlerts.length > 0 ? (
             <div className="space-y-3">
               {recentAlerts.map(alert => (
                 <div key={alert.id} className="flex items-start gap-3 p-3 rounded-xl"
                   style={{ background: alert.urgent ? "rgba(245,160,0,0.08)" : "rgba(18,192,78,0.08)" }}>
-                  <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 mt-0.5"
+                  <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 mt-1"
                     style={{ background: alert.urgent ? "rgba(245,160,0,0.15)" : "rgba(18,192,78,0.15)", color: alert.urgent ? ORANGE : GREEN }}>
                     {alert.urgent ? <Clock className="w-3.5 h-3.5" /> : <CheckCircle className="w-3.5 h-3.5" />}
                   </div>
                   <div>
                     <p className="text-sm font-medium leading-snug" style={{ color: T1 }}>{alert.title}</p>
-                    <p className="text-xs mt-0.5" style={{ color: T3 }}>{timeAgo(alert.time)}</p>
+                    <p className="text-xs mt-1" style={{ color: T3 }}>{timeAgo(alert.time)}</p>
                   </div>
                 </div>
               ))}
             </div>
           ) : (
-            <div className="flex flex-col items-center gap-[10px] p-4">
+            <div className="flex flex-col items-center gap-[12px] p-4">
               <div className="w-[54px] h-[54px] rounded-[17px] flex items-center justify-center"
-                style={{ background: IND_SOFT, border: `0.5px solid ${IND_BDR}`, boxShadow: "0 0 0 5px rgba(0,85,255,0.03)" }}>
+                style={{ background: IND_SOFT, border: `0.5px solid ${IND_BDR}`, boxShadow: "0 0 0 5px rgba(10,132,255,0.03)" }}>
                 <ShieldCheck className="w-6 h-6" style={{ color: T4 }} />
               </div>
               <p className="text-[14px]" style={{ color: T3 }}>No alerts right now</p>
@@ -1002,7 +1002,7 @@ const DashboardPage = () => {
           aria-label="Open reports page"
           onClick={() => navigate("/reports")}
           onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/reports"); } }}
-          className="mx-5 mt-[14px] bg-white rounded-[22px] px-5 py-[18px] cursor-pointer active:scale-[0.98] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF]/40"
+          className="mx-5 mt-[16px] bg-white rounded-[22px] px-5 py-[16px] cursor-pointer active:scale-[0.98] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
           style={{ boxShadow: SH, border: `0.5px solid ${IND_BDR}` }}>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
@@ -1011,8 +1011,8 @@ const DashboardPage = () => {
                 <BookOpen className="w-[18px] h-[18px]" style={{ color: IND }} />
               </div>
               <div>
-                <div className="text-[15px] font-bold" style={{ color: T1, letterSpacing: "-0.3px" }}>Weekly AI Report</div>
-                <div className="text-[12px] mt-0.5" style={{ color: T3 }}>
+                <div className="text-[15px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>Weekly AI Report</div>
+                <div className="text-[12px] mt-1" style={{ color: T3 }}>
                   {isPrevWeekReport ? "Last week's report" : weekConfig.canGenerate ? (weeklyReport ? "This week's digest" : "Generate this week's report") : "New report available Friday"}
                 </div>
               </div>
@@ -1020,12 +1020,12 @@ const DashboardPage = () => {
             {weekConfig.canGenerate && !weeklyReport ? (
               <button onClick={(e) => { e.stopPropagation(); handleGenerateWeeklyReport(); }} disabled={weeklyLoading || dataLoading}
                 className="flex items-center gap-2 px-3 py-2 rounded-[12px] text-[12px] font-semibold text-white disabled:opacity-50"
-                style={{ background: IND, boxShadow: "0 2px 8px rgba(0,85,255,0.28)" }}>
+                style={{ background: IND, boxShadow: "0 2px 8px rgba(10,132,255,0.28)" }}>
                 {weeklyLoading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Sparkles className="w-3.5 h-3.5" />}
                 {weeklyLoading ? "..." : "Generate"}
               </button>
             ) : !weekConfig.canGenerate ? (
-              <div className="flex items-center gap-1 px-[11px] py-[7px] rounded-[12px] text-[11px] font-semibold whitespace-nowrap"
+              <div className="flex items-center gap-1 px-[12px] py-[8px] rounded-[12px] text-[12px] font-semibold whitespace-nowrap"
                 style={{ background: "#E5E5EC", color: T3, border: `0.5px solid ${IND_BDR}` }}>
                 <Clock className="w-[11px] h-[11px]" />
                 Fri{weekConfig.daysLeft > 0 ? ` · ${weekConfig.daysLeft}d` : ""}
@@ -1041,8 +1041,8 @@ const DashboardPage = () => {
           )}
 
           {!weeklyReport && !weeklyLoading && (
-            <div className="flex items-start gap-2 mt-[14px] pt-[14px]" style={{ borderTop: `0.5px solid ${SEP}` }}>
-              <Clock className="w-[14px] h-[14px] shrink-0 mt-0.5" style={{ color: T4 }} />
+            <div className="flex items-start gap-2 mt-[16px] pt-[16px]" style={{ borderTop: `0.5px solid ${SEP}` }}>
+              <Clock className="w-[14px] h-[14px] shrink-0 mt-1" style={{ color: T4 }} />
               <p className="text-[13px] leading-[1.6]" style={{ color: T3, letterSpacing: "-0.1px" }}>
                 {weekConfig.canGenerate
                   ? `Tap "Generate" to get ${childFirstName}'s weekly digest.`
@@ -1052,8 +1052,8 @@ const DashboardPage = () => {
           )}
 
           {weeklyReport && !weeklyLoading && isPrevWeekReport && (
-            <div className="flex items-start gap-2 mt-[14px] pt-[14px]" style={{ borderTop: `0.5px solid ${SEP}` }}>
-              <Clock className="w-[14px] h-[14px] shrink-0 mt-0.5" style={{ color: T4 }} />
+            <div className="flex items-start gap-2 mt-[16px] pt-[16px]" style={{ borderTop: `0.5px solid ${SEP}` }}>
+              <Clock className="w-[14px] h-[14px] shrink-0 mt-1" style={{ color: T4 }} />
               <p className="text-[13px] leading-[1.55]" style={{ color: T3 }}>
                 This is last week's report. A new report can be generated this Friday.
               </p>
@@ -1063,11 +1063,11 @@ const DashboardPage = () => {
 
         {/* ── AI Message (Indigo gradient) ── */}
         {weeklyReport && !weeklyLoading && (
-          <div className="mx-5 mt-3 rounded-[24px] px-[22px] py-5 relative overflow-hidden"
+          <div className="mx-5 mt-3 rounded-[24px] px-[24px] py-5 relative overflow-hidden"
             style={{
               background: IND_DARK_GRAD,
-              border: "0.5px solid rgba(0,85,255,0.22)",
-              boxShadow: "0 6px 28px rgba(0,85,255,0.22), 0 2px 8px rgba(0,85,255,0.14)"
+              border: "0.5px solid rgba(10,132,255,0.22)",
+              boxShadow: "0 6px 28px rgba(10,132,255,0.22), 0 2px 8px rgba(10,132,255,0.14)"
             }}>
             <div className="absolute -top-8 -right-5 w-[160px] h-[160px] rounded-full pointer-events-none"
               style={{ background: "radial-gradient(circle, rgba(255,255,255,0.10) 0%, transparent 65%)" }} />
@@ -1076,7 +1076,7 @@ const DashboardPage = () => {
               backgroundSize: "26px 26px"
             }} />
             <div className="relative z-10">
-              <div className="flex items-center gap-[6px] text-[10px] font-bold uppercase tracking-[0.10em] mb-3" style={{ color: "rgba(255,255,255,0.52)" }}>
+              <div className="flex items-center gap-[8px] text-[12px] font-semibold uppercase tracking-[0.10em] mb-3" style={{ color: "rgba(255,255,255,0.52)" }}>
                 <Sparkles className="w-3 h-3" />
                 AI Message
               </div>
@@ -1095,9 +1095,9 @@ const DashboardPage = () => {
               { tag: "Tests", text: weeklyReport.test_analysis },
               { tag: "Assignments", text: weeklyReport.assignment_status },
             ].map(({ tag, text }, i, arr) => (
-              <div key={tag} className="px-[18px] py-[15px] flex flex-col gap-[5px]"
+              <div key={tag} className="px-[16px] py-[16px] flex flex-col gap-[4px]"
                 style={{ borderBottom: i < arr.length - 1 ? `0.5px solid ${SEP}` : "none" }}>
-                <span className="text-[10px] font-bold uppercase tracking-[0.09em]" style={{ color: IND3 }}>{tag}</span>
+                <span className="text-[12px] font-semibold uppercase tracking-[0.09em]" style={{ color: IND3 }}>{tag}</span>
                 <p className="text-[13px] leading-[1.58]" style={{ color: T2, letterSpacing: "-0.1px" }}>{text}</p>
               </div>
             ))}
@@ -1106,20 +1106,20 @@ const DashboardPage = () => {
 
         {/* ── Overall Performance Card ── */}
         {weeklyReport?.overall_performance && (
-          <div className="mx-5 mt-[14px] bg-white rounded-[22px] px-5 py-[18px] flex items-start justify-between gap-[14px] relative overflow-hidden"
+          <div className="mx-5 mt-[16px] bg-white rounded-[22px] px-5 py-[16px] flex items-start justify-between gap-[16px] relative overflow-hidden"
             style={{ border: `0.5px solid ${ORANGE_B}`, boxShadow: SH }}>
             <div className="absolute -top-4 -right-4 w-[60px] h-[60px] rounded-full pointer-events-none"
               style={{ background: "radial-gradient(circle, rgba(245,160,0,0.10) 0%, transparent 70%)" }} />
             <div className="relative z-10">
-              <div className="text-[10px] font-bold uppercase tracking-[0.09em] mb-[5px]" style={{ color: ORANGE }}>Overall Performance</div>
-              <div className="text-[17px] font-bold" style={{ color: T1, letterSpacing: "-0.3px" }}>{weeklyReport.overall_performance.verdict}</div>
-              <p className="text-[12px] mt-[5px] leading-[1.58]" style={{ color: T3, letterSpacing: "-0.1px" }}>{weeklyReport.overall_performance.score_context}</p>
+              <div className="text-[12px] font-semibold uppercase tracking-[0.09em] mb-[4px]" style={{ color: ORANGE }}>Overall Performance</div>
+              <div className="text-[18px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>{weeklyReport.overall_performance.verdict}</div>
+              <p className="text-[12px] mt-[4px] leading-[1.58]" style={{ color: T3, letterSpacing: "-0.1px" }}>{weeklyReport.overall_performance.score_context}</p>
             </div>
-            <div className="flex items-center gap-1 px-[14px] py-[9px] rounded-[14px] text-[12px] font-bold shrink-0 relative z-10"
+            <div className="flex items-center gap-1 px-[16px] py-[8px] rounded-[14px] text-[12px] font-semibold shrink-0 relative z-10"
               style={{
                 background: weeklyReport.overall_performance.trend === "Declining" ? ORANGE_S : GREEN_S,
                 border: `0.5px solid ${weeklyReport.overall_performance.trend === "Declining" ? ORANGE_B : GREEN_B}`,
-                color: weeklyReport.overall_performance.trend === "Declining" ? "#905800" : "#0A6A2E",
+                color: weeklyReport.overall_performance.trend === "Declining" ? "#86310C" : "#248A3D",
                 boxShadow: "0 1px 4px rgba(0,0,0,0.04)"
               }}>
               <TrendingUp className={`w-3 h-3 ${weeklyReport.overall_performance.trend === "Declining" ? "rotate-180" : ""}`} />
@@ -1131,11 +1131,11 @@ const DashboardPage = () => {
         {/* ── AI Improvement Tips ── */}
         {weeklyReport?.improvement_tips?.length > 0 && (
           <>
-            <div className="px-6 pt-5 pb-0 text-[10px] font-bold uppercase tracking-[0.10em]" style={{ color: T4 }}>
+            <div className="px-6 pt-5 pb-0 text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: T4 }}>
               AI Improvement Tips
             </div>
             {weeklyReport.improvement_tips.map((t: { tip: string; reason: string }, i: number) => (
-              <div key={i} className="mx-5 mt-[10px] bg-white rounded-[20px] px-[18px] py-4 flex items-start gap-[14px] active:scale-[0.97] transition-transform"
+              <div key={i} className="mx-5 mt-[12px] bg-white rounded-[20px] px-[16px] py-4 flex items-start gap-[16px] active:scale-[0.97] transition-transform"
                 style={{ boxShadow: SH, border: `0.5px solid ${IND_BDR}` }}>
                 <div className="w-[42px] h-[42px] rounded-[13px] flex items-center justify-center shrink-0 text-[20px]"
                   style={{
@@ -1146,7 +1146,7 @@ const DashboardPage = () => {
                 </div>
                 <div>
                   <div className="text-[14px] font-semibold leading-[1.35]" style={{ color: T1, letterSpacing: "-0.2px" }}>{t.tip}</div>
-                  <p className="text-[12px] mt-[3px] leading-[1.5]" style={{ color: T3, letterSpacing: "-0.1px" }}>{t.reason}</p>
+                  <p className="text-[12px] mt-[4px] leading-[1.5]" style={{ color: T3, letterSpacing: "-0.1px" }}>{t.reason}</p>
                 </div>
               </div>
             ))}
@@ -1156,10 +1156,10 @@ const DashboardPage = () => {
         {/* ── Download PDF Button ── */}
         {weeklyReport && !weeklyLoading && (
           <button onClick={handleDownloadPDF} disabled={pdfDownloading}
-            className="mx-5 mt-5 w-[calc(100%-40px)] rounded-[18px] py-[17px] flex items-center justify-center gap-[9px] text-[16px] font-bold text-white disabled:opacity-50 active:scale-[0.97] transition-transform relative overflow-hidden"
-            style={{ background: `linear-gradient(135deg, #001888 0%, #0033CC 50%, #0055FF 100%)`, boxShadow: SH_BTN, letterSpacing: "-0.2px" }}>
+            className="mx-5 mt-5 w-[calc(100%-40px)] rounded-[18px] py-[16px] flex items-center justify-center gap-[8px] text-[16px] font-semibold text-white disabled:opacity-50 active:scale-[0.97] transition-transform relative overflow-hidden"
+            style={{ background: `linear-gradient(135deg, #0A84FF 0%, #0A84FF 50%, #0A84FF 100%)`, boxShadow: SH_BTN, letterSpacing: "-0.2px" }}>
             <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.13) 0%, transparent 52%)" }} />
-            <span className="relative z-10 flex items-center gap-[9px]">
+            <span className="relative z-10 flex items-center gap-[8px]">
               {pdfDownloading ? (
                 <><Loader2 className="w-[17px] h-[17px] animate-spin" /> Generating PDF...</>
               ) : (
@@ -1182,8 +1182,8 @@ const DashboardPage = () => {
             }} />
             <span className="text-[22px] relative z-10">💡</span>
             <div className="relative z-10">
-              <div className="text-[16px] font-bold text-white" style={{ letterSpacing: "-0.3px" }}>AI Parenting Tips</div>
-              <div className="text-[12px] mt-0.5" style={{ color: "rgba(255,255,255,0.52)" }}>Based on {childFirstName}'s current data</div>
+              <div className="text-[16px] font-semibold text-white" style={{ letterSpacing: "-0.3px" }}>AI Parenting Tips</div>
+              <div className="text-[12px] mt-1" style={{ color: "rgba(255,255,255,0.52)" }}>Based on {childFirstName}'s current data</div>
             </div>
           </div>
 
@@ -1191,19 +1191,19 @@ const DashboardPage = () => {
           {(() => {
             const tips = aiInsights?.parenting_tips?.length > 0 ? aiInsights.parenting_tips : smartTips;
             return tips.length > 0 ? tips.map((item: { tip: string; reason: string }, i: number) => (
-              <div key={i} className="px-[18px] py-[15px] flex items-start gap-[14px]"
+              <div key={i} className="px-[16px] py-[16px] flex items-start gap-[16px]"
                 style={{ borderBottom: i < tips.length - 1 ? `0.5px solid ${SEP}` : "none" }}>
-                <div className="w-7 h-7 rounded-[9px] flex items-center justify-center text-[12px] font-bold shrink-0 mt-0.5"
+                <div className="w-7 h-7 rounded-[9px] flex items-center justify-center text-[12px] font-semibold shrink-0 mt-1"
                   style={{ background: IND_SOFT, border: `0.5px solid ${IND_BDR}`, color: IND }}>
                   {i + 1}
                 </div>
                 <div>
                   <div className="text-[13px] font-semibold" style={{ color: T1, letterSpacing: "-0.2px" }}>{item.tip}</div>
-                  <p className="text-[12px] mt-[3px] leading-[1.5]" style={{ color: T3, letterSpacing: "-0.1px" }}>{item.reason}</p>
+                  <p className="text-[12px] mt-[4px] leading-[1.5]" style={{ color: T3, letterSpacing: "-0.1px" }}>{item.reason}</p>
                 </div>
               </div>
             )) : (
-              <div className="px-[18px] py-6 flex items-center gap-3">
+              <div className="px-[16px] py-6 flex items-center gap-3">
                 <Loader2 className="w-4 h-4 animate-spin" style={{ color: IND }} />
                 <p className="text-sm italic" style={{ color: T3 }}>Loading {childFirstName}'s tips...</p>
               </div>
@@ -1239,30 +1239,30 @@ const DashboardPage = () => {
      ═══════════════════════════════════════════════════════════════ */
   {
     // Bright Blue Apple UI tokens (matches Performance page)
-    const IND = "#0055FF";
-    const IND2 = "#1166FF";
-    const IND3 = "#4499FF";
-    const BG = "#EEF4FF";
-    const BG2 = "#E0ECFF";
-    const T1 = "#001040";
-    const T2 = "#002080";
-    const T3 = "#5070B0";
-    const T4 = "#99AACC";
-    const SEP = "rgba(0,85,255,0.07)";
-    const IND_BDR = "rgba(0,85,255,0.10)";
-    const IND_SOFT = "rgba(0,85,255,0.05)";
-    const GREEN = "#00C853";
-    const GREEN_S = "rgba(0,200,83,0.12)";
-    const GREEN_B = "rgba(0,200,83,0.25)";
-    const ORANGE = "#FF8800";
-    const ORANGE_S = "rgba(255,136,0,0.12)";
-    const ORANGE_B = "rgba(255,136,0,0.25)";
-    const ROSE = "#FF3355";
-    const ROSE_S = "rgba(255,51,85,0.10)";
-    const IND_DARK_GRAD = "linear-gradient(140deg, #001888 0%, #0033CC 48%, #0055FF 100%)";
-    const SH = "0 0 0 0.5px rgba(0,85,255,0.08), 0 2px 8px rgba(0,85,255,0.09), 0 10px 28px rgba(0,85,255,0.11)";
-    const SH_LG = "0 0 0 0.5px rgba(0,85,255,0.10), 0 4px 16px rgba(0,85,255,0.12), 0 20px 48px rgba(0,85,255,0.14)";
-    const SH_BTN = "0 4px 14px rgba(0,85,255,0.32), 0 1px 4px rgba(0,85,255,0.18)";
+    const IND = "#0A84FF";
+    const IND2 = "#3395FF";
+    const IND3 = "#7CBBFF";
+    const BG = "#F5F5F7";
+    const BG2 = "#EBEBF0";
+    const T1 = "#1D1D1F";
+    const T2 = "#3A3A3C";
+    const T3 = "#6E6E73";
+    const T4 = "#A1A1A6";
+    const SEP = "rgba(10,132,255,0.07)";
+    const IND_BDR = "rgba(10,132,255,0.10)";
+    const IND_SOFT = "rgba(10,132,255,0.05)";
+    const GREEN = "#34C759";
+    const GREEN_S = "rgba(52,199,89,0.12)";
+    const GREEN_B = "rgba(52,199,89,0.25)";
+    const ORANGE = "#FF9500";
+    const ORANGE_S = "rgba(255,149,0,0.12)";
+    const ORANGE_B = "rgba(255,149,0,0.25)";
+    const ROSE = "#FF3B30";
+    const ROSE_S = "rgba(255,59,48,0.10)";
+    const IND_DARK_GRAD = "linear-gradient(140deg, #0A84FF 0%, #0A84FF 48%, #0A84FF 100%)";
+    const SH = "0 0 0 0.5px rgba(10,132,255,0.08), 0 2px 8px rgba(10,132,255,0.09), 0 10px 28px rgba(10,132,255,0.11)";
+    const SH_LG = "0 0 0 0.5px rgba(10,132,255,0.10), 0 4px 16px rgba(10,132,255,0.12), 0 20px 48px rgba(10,132,255,0.14)";
+    const SH_BTN = "0 4px 14px rgba(10,132,255,0.32), 0 1px 4px rgba(10,132,255,0.18)";
     void BG2;
 
     const scorePct = Math.min(liveStats.avgScore, 100);
@@ -1276,13 +1276,13 @@ const DashboardPage = () => {
 
     return (
       <div className="animate-in fade-in duration-500 -m-4 sm:-m-6 md:-m-8 min-h-[calc(100vh-64px)]"
-        style={{ fontFamily: "'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif", background: BG }}>
-        <div className="w-full px-6 pt-8 pb-12">
+        style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif", background: BG }}>
+        <div className="w-full px-6 pt-8 pb-10">
 
           {/* ── Greeting + Date ── */}
           <div className="flex items-start justify-between gap-6 flex-wrap mb-8">
             <div>
-              <h1 className="text-[42px] font-bold leading-[1.05]" style={{ color: T1, letterSpacing: "-1.2px" }}>
+              <h1 className="text-[42px] font-semibold leading-[1.05]" style={{ color: T1, letterSpacing: "-1.2px" }}>
                 {greeting},{" "}
                 <span style={{ background: `linear-gradient(130deg, ${IND} 0%, ${IND3} 100%)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                   {parentFirstName}
@@ -1292,15 +1292,15 @@ const DashboardPage = () => {
             </div>
             <div className="flex items-center gap-3">
               <div className="flex flex-col items-end">
-                <span className="text-[11px] font-bold uppercase tracking-[0.14em]" style={{ color: T4 }}>
+                <span className="text-[12px] font-semibold uppercase tracking-[0.14em]" style={{ color: T4 }}>
                   {currentTime.toLocaleDateString("en-US", { weekday: "long" })}
                 </span>
                 <span className="text-[14px] font-semibold mt-[2px]" style={{ color: T2 }}>
                   {currentTime.toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}
                 </span>
               </div>
-              <div className="w-12 h-12 rounded-[14px] flex items-center justify-center text-[14px] font-bold text-white"
-                style={{ background: `linear-gradient(140deg, ${IND} 0%, ${IND2} 100%)`, boxShadow: "0 4px 14px rgba(0,85,255,0.28)" }}>
+              <div className="w-12 h-12 rounded-[14px] flex items-center justify-center text-[14px] font-semibold text-white"
+                style={{ background: `linear-gradient(140deg, ${IND} 0%, ${IND2} 100%)`, boxShadow: "0 4px 14px rgba(10,132,255,0.28)" }}>
                 {userInitials}
               </div>
             </div>
@@ -1316,22 +1316,22 @@ const DashboardPage = () => {
               aria-label="Open performance page"
               onClick={() => navigate("/performance")}
               onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/performance"); } }}
-              className="lg:col-span-3 bg-white rounded-[28px] p-8 relative overflow-hidden cursor-pointer transition-all hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF]/40"
+              className="lg:col-span-3 bg-white rounded-[28px] p-8 relative overflow-hidden cursor-pointer transition-all hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
               style={{ boxShadow: SH_LG, border: `0.5px solid ${IND_BDR}` }}>
               <div className="absolute -top-[80px] -right-[60px] w-[260px] h-[260px] rounded-full pointer-events-none"
-                style={{ background: "radial-gradient(circle, rgba(0,85,255,0.05) 0%, transparent 70%)" }} />
+                style={{ background: "radial-gradient(circle, rgba(10,132,255,0.05) 0%, transparent 70%)" }} />
               <div className="absolute -bottom-[60px] left-6 w-[200px] h-[200px] rounded-full pointer-events-none"
-                style={{ background: "radial-gradient(circle, rgba(0,85,255,0.03) 0%, transparent 70%)" }} />
+                style={{ background: "radial-gradient(circle, rgba(10,132,255,0.03) 0%, transparent 70%)" }} />
               <div className="relative z-10">
                 <div className="flex items-start justify-between gap-4 mb-6">
                   <div>
-                    <h3 className="text-[22px] font-bold" style={{ color: T1, letterSpacing: "-0.5px" }}>Academic Health</h3>
+                    <h3 className="text-[22px] font-semibold" style={{ color: T1, letterSpacing: "-0.5px" }}>Academic Health</h3>
                     <p className="text-[14px] mt-1" style={{ color: T3 }}>Overall performance indicator</p>
                   </div>
-                  <div className="inline-flex items-center gap-[6px] px-[14px] py-[7px] rounded-full text-[13px] font-semibold"
+                  <div className="inline-flex items-center gap-[8px] px-[16px] py-[8px] rounded-full text-[13px] font-semibold"
                     style={{
                       background: trendStable || isImproving ? GREEN_S : ORANGE_S,
-                      color: trendStable || isImproving ? "#0A6A2E" : "#905800",
+                      color: trendStable || isImproving ? "#248A3D" : "#86310C",
                       border: `0.5px solid ${trendStable || isImproving ? GREEN_B : ORANGE_B}`,
                       letterSpacing: "-0.1px"
                     }}>
@@ -1341,10 +1341,10 @@ const DashboardPage = () => {
                 </div>
                 <div className="flex items-end justify-between gap-6 mt-8">
                   <div className="flex flex-col gap-2">
-                    <div className="text-[80px] font-bold leading-none" style={{ color: IND, letterSpacing: "-4.5px" }}>
+                    <div className="text-[80px] font-semibold leading-none" style={{ color: IND, letterSpacing: "-4.5px" }}>
                       {liveStats.avgScore > 0 ? `${liveStats.avgScore}%` : "—"}
                     </div>
-                    <div className="text-[11px] font-bold uppercase tracking-[0.10em] mt-2" style={{ color: T4 }}>
+                    <div className="text-[12px] font-semibold uppercase tracking-[0.10em] mt-2" style={{ color: T4 }}>
                       {liveStats.avgScore >= 75 ? "Good Standing" : liveStats.avgScore > 0 ? "Needs Attention" : "No data yet"}
                     </div>
                   </div>
@@ -1356,12 +1356,12 @@ const DashboardPage = () => {
                           <stop offset="100%" stopColor={IND} />
                         </linearGradient>
                       </defs>
-                      <circle cx="70" cy="70" r={ringR} fill="none" stroke="rgba(0,85,255,0.09)" strokeWidth="10" />
+                      <circle cx="70" cy="70" r={ringR} fill="none" stroke="rgba(10,132,255,0.09)" strokeWidth="10" />
                       <circle cx="70" cy="70" r={ringR} fill="none" stroke="url(#indGradDesk)" strokeWidth="10" strokeLinecap="round"
                         strokeDasharray={ringCirc} strokeDashoffset={ringOffset}
                         style={{ transition: "stroke-dashoffset 1s cubic-bezier(0.4,0,0.2,1)" }} />
                     </svg>
-                    <div className="absolute inset-0 flex items-center justify-center text-[22px] font-bold" style={{ color: T1, letterSpacing: "-0.5px" }}>
+                    <div className="absolute inset-0 flex items-center justify-center text-[22px] font-semibold" style={{ color: T1, letterSpacing: "-0.5px" }}>
                       {liveStats.avgScore > 0 ? `${liveStats.avgScore}%` : "—"}
                     </div>
                   </div>
@@ -1376,35 +1376,35 @@ const DashboardPage = () => {
               aria-label="Open my child profile"
               onClick={() => navigate("/my-child")}
               onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/my-child"); } }}
-              className="lg:col-span-2 rounded-[28px] p-7 relative overflow-hidden cursor-pointer transition-all hover:-translate-y-1 hover:scale-[1.02] hover:shadow-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+              className="lg:col-span-2 rounded-[28px] p-8 relative overflow-hidden cursor-pointer transition-all hover:-translate-y-1 hover:scale-[1.02] hover:shadow-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
               style={{
                 background: IND_DARK_GRAD,
-                boxShadow: "0 10px 36px rgba(0,85,255,0.22), 0 0 0 0.5px rgba(255,255,255,0.18)",
+                boxShadow: "0 10px 36px rgba(10,132,255,0.22), 0 0 0 0.5px rgba(255,255,255,0.18)",
                 border: "0.5px solid rgba(255,255,255,0.18)"
               }}>
-              <div className="absolute -top-[55px] -right-[35px] w-[210px] h-[210px] rounded-full pointer-events-none"
+              <div className="absolute -top-[55px] -right-[32px] w-[210px] h-[210px] rounded-full pointer-events-none"
                 style={{ background: "radial-gradient(circle, rgba(255,255,255,0.11) 0%, transparent 70%)" }} />
               <div className="absolute inset-0 pointer-events-none" style={{
                 backgroundImage: "linear-gradient(rgba(255,255,255,0.014) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.014) 1px, transparent 1px)",
                 backgroundSize: "26px 26px"
               }} />
               <div className="relative z-10">
-                <div className="w-[68px] h-[68px] rounded-[22px] flex items-center justify-center text-[24px] font-bold text-white mb-4"
+                <div className="w-[68px] h-[68px] rounded-[22px] flex items-center justify-center text-[24px] font-semibold text-white mb-4"
                   style={{ background: "rgba(255,255,255,0.18)", border: "0.5px solid rgba(255,255,255,0.26)", boxShadow: "0 4px 20px rgba(0,0,0,0.18)" }}>
                   {studentInitials}
                 </div>
-                <div className="text-[24px] font-bold text-white" style={{ letterSpacing: "-0.6px" }}>{studentData?.name || "Student"}</div>
-                <div className="text-[14px] mt-[3px]" style={{ color: "rgba(255,255,255,0.52)" }}>
+                <div className="text-[24px] font-semibold text-white" style={{ letterSpacing: "-0.6px" }}>{studentData?.name || "Student"}</div>
+                <div className="text-[14px] mt-[4px]" style={{ color: "rgba(255,255,255,0.52)" }}>
                   {studentMeta.className !== "—" ? `Grade ${studentMeta.className}` : studentData?.grade ? `Grade ${studentData.grade}` : "Grade —"}
                   {studentMeta.rollNo !== "—" ? ` · Roll ${studentMeta.rollNo}` : ""}
                 </div>
                 <div className="grid grid-cols-2 mt-5 rounded-[15px] overflow-hidden" style={{ gap: "1px", background: "rgba(255,255,255,0.10)" }}>
-                  <div className="px-[15px] py-[13px]" style={{ background: "rgba(255,255,255,0.07)" }}>
-                    <div className="text-[10px] font-bold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.38)" }}>Class Teacher</div>
+                  <div className="px-[16px] py-[12px]" style={{ background: "rgba(255,255,255,0.07)" }}>
+                    <div className="text-[12px] font-semibold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.38)" }}>Class Teacher</div>
                     <div className="text-[15px] font-semibold mt-1 text-white truncate" style={{ letterSpacing: "-0.2px" }}>{teacherInfo.name}</div>
                   </div>
-                  <div className="px-[15px] py-[13px]" style={{ background: "rgba(255,255,255,0.07)" }}>
-                    <div className="text-[10px] font-bold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.38)" }}>Academic Year</div>
+                  <div className="px-[16px] py-[12px]" style={{ background: "rgba(255,255,255,0.07)" }}>
+                    <div className="text-[12px] font-semibold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.38)" }}>Academic Year</div>
                     <div className="text-[15px] font-semibold mt-1 text-white" style={{ letterSpacing: "-0.2px" }}>{academicYear}</div>
                   </div>
                 </div>
@@ -1415,10 +1415,10 @@ const DashboardPage = () => {
           {/* ── Row 2: 4 Stat Cards ── */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-5">
             {[
-              { icon: CheckCircle, decorIcon: TrendingUp, iconColor: GREEN, cardBg: "linear-gradient(135deg, rgba(0,200,83,0.13) 0%, rgba(0,200,83,0.04) 100%)", cardBdr: "rgba(0,200,83,0.20)", iconBoxBg: "rgba(0,200,83,0.18)", iconBoxBdr: "rgba(0,200,83,0.30)", label: "Attendance", value: attDisplay, status: liveStats.attendance === null ? "No records yet" : attOnTrack ? "On track ✓" : "Below target", statusColor: liveStats.attendance === null ? T4 : attOnTrack ? GREEN : ORANGE, route: "/attendance" },
-              { icon: AlertCircle, decorIcon: BarChart3, iconColor: ORANGE, cardBg: "linear-gradient(135deg, rgba(255,136,0,0.13) 0%, rgba(255,136,0,0.04) 100%)", cardBdr: "rgba(255,136,0,0.22)", iconBoxBg: "rgba(255,136,0,0.18)", iconBoxBdr: "rgba(255,136,0,0.32)", label: "Pending Work", value: pendingDisplay, status: liveStats.pending === null ? "No assignments yet" : noPending ? "All clear ✓" : "Due this week", statusColor: liveStats.pending === null ? T4 : noPending ? GREEN : ORANGE, route: "/assignments" },
-              { icon: Calendar, decorIcon: ClipboardList, iconColor: IND, cardBg: "linear-gradient(135deg, rgba(0,85,255,0.10) 0%, rgba(0,85,255,0.03) 100%)", cardBdr: "rgba(0,85,255,0.20)", iconBoxBg: "rgba(0,85,255,0.14)", iconBoxBdr: "rgba(0,85,255,0.28)", label: "Upcoming Tests", value: testsDisplay, status: liveStats.tests === null ? "No tests scheduled" : "Next 7 days", statusColor: T4, route: "/tests" },
-              { icon: Star, decorIcon: Award, iconColor: ROSE, cardBg: "linear-gradient(135deg, rgba(255,51,85,0.10) 0%, rgba(255,51,85,0.03) 100%)", cardBdr: "rgba(255,51,85,0.20)", iconBoxBg: "rgba(255,51,85,0.14)", iconBoxBdr: "rgba(255,51,85,0.30)", label: "Recent Grade", value: liveStats.recentGrade !== "N/A" ? liveStats.recentGrade : "—", status: liveStats.recentSubject, statusColor: T4, route: "/tests" },
+              { icon: CheckCircle, decorIcon: TrendingUp, iconColor: GREEN, cardBg: "linear-gradient(135deg, rgba(52,199,89,0.13) 0%, rgba(52,199,89,0.04) 100%)", cardBdr: "rgba(52,199,89,0.20)", iconBoxBg: "rgba(52,199,89,0.18)", iconBoxBdr: "rgba(52,199,89,0.30)", label: "Attendance", value: attDisplay, status: liveStats.attendance === null ? "No records yet" : attOnTrack ? "On track ✓" : "Below target", statusColor: liveStats.attendance === null ? T4 : attOnTrack ? GREEN : ORANGE, route: "/attendance" },
+              { icon: AlertCircle, decorIcon: BarChart3, iconColor: ORANGE, cardBg: "linear-gradient(135deg, rgba(255,149,0,0.13) 0%, rgba(255,149,0,0.04) 100%)", cardBdr: "rgba(255,149,0,0.22)", iconBoxBg: "rgba(255,149,0,0.18)", iconBoxBdr: "rgba(255,149,0,0.32)", label: "Pending Work", value: pendingDisplay, status: liveStats.pending === null ? "No assignments yet" : noPending ? "All clear ✓" : "Due this week", statusColor: liveStats.pending === null ? T4 : noPending ? GREEN : ORANGE, route: "/assignments" },
+              { icon: Calendar, decorIcon: ClipboardList, iconColor: IND, cardBg: "linear-gradient(135deg, rgba(10,132,255,0.10) 0%, rgba(10,132,255,0.03) 100%)", cardBdr: "rgba(10,132,255,0.20)", iconBoxBg: "rgba(10,132,255,0.14)", iconBoxBdr: "rgba(10,132,255,0.28)", label: "Upcoming Tests", value: testsDisplay, status: liveStats.tests === null ? "No tests scheduled" : "Next 7 days", statusColor: T4, route: "/tests" },
+              { icon: Star, decorIcon: Award, iconColor: ROSE, cardBg: "linear-gradient(135deg, rgba(255,59,48,0.10) 0%, rgba(255,59,48,0.03) 100%)", cardBdr: "rgba(255,59,48,0.20)", iconBoxBg: "rgba(255,59,48,0.14)", iconBoxBdr: "rgba(255,59,48,0.30)", label: "Recent Grade", value: liveStats.recentGrade !== "N/A" ? liveStats.recentGrade : "—", status: liveStats.recentSubject, statusColor: T4, route: "/tests" },
             ].map(({ icon: Icon, decorIcon: DecorIcon, iconColor, cardBg, cardBdr, iconBoxBg, iconBoxBdr, label, value, status, statusColor, route }) => (
               <div
                 key={label}
@@ -1427,7 +1427,7 @@ const DashboardPage = () => {
                 aria-label={`Open ${label} page`}
                 onClick={() => navigate(route)}
                 onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate(route); } }}
-                className="rounded-[22px] px-5 pt-5 pb-5 relative overflow-hidden cursor-pointer transition-all hover:-translate-y-1 hover:scale-[1.02] hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF]/40"
+                className="rounded-[22px] px-5 pt-5 pb-5 relative overflow-hidden cursor-pointer transition-all hover:-translate-y-1 hover:scale-[1.02] hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
                 style={{ background: cardBg, boxShadow: SH, border: `0.5px solid ${cardBdr}`, transitionTimingFunction: "cubic-bezier(0.34,1.56,0.64,1)" }}>
                 <div className="absolute pointer-events-none" style={{ bottom: 14, right: 14 }}>
                   <DecorIcon style={{ width: 80, height: 80, color: iconColor, opacity: 0.20, strokeWidth: 1.6 }} />
@@ -1436,9 +1436,9 @@ const DashboardPage = () => {
                   style={{ background: iconBoxBg, border: `0.5px solid ${iconBoxBdr}` }}>
                   <Icon className="w-[18px] h-[18px]" style={{ color: iconColor }} />
                 </div>
-                <div className="text-[10px] font-bold uppercase tracking-[0.08em] relative" style={{ color: T4 }}>{label}</div>
-                <div className="text-[34px] font-bold mt-1 leading-none relative" style={{ color: T1, letterSpacing: "-1px" }}>{value}</div>
-                <div className="text-[12px] font-medium mt-[6px] relative truncate" style={{ color: statusColor }}>{status}</div>
+                <div className="text-[12px] font-semibold uppercase tracking-[0.08em] relative" style={{ color: T4 }}>{label}</div>
+                <div className="text-[28px] font-semibold mt-1 leading-none relative" style={{ color: T1, letterSpacing: "-1px" }}>{value}</div>
+                <div className="text-[12px] font-medium mt-[8px] relative truncate" style={{ color: statusColor }}>{status}</div>
               </div>
             ))}
           </div>
@@ -1450,17 +1450,17 @@ const DashboardPage = () => {
             aria-label="Open class leaderboard"
             onClick={() => navigate("/leaderboard")}
             onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/leaderboard"); } }}
-            className="bg-white rounded-[22px] px-6 py-5 mb-5 flex items-center gap-4 relative overflow-hidden cursor-pointer transition-all hover:-translate-y-1 hover:scale-[1.01] hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF]/40"
+            className="bg-white rounded-[22px] px-6 py-5 mb-5 flex items-center gap-4 relative overflow-hidden cursor-pointer transition-all hover:-translate-y-1 hover:scale-[1.01] hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
             style={{ boxShadow: SH, border: `0.5px solid ${IND_BDR}`, transitionTimingFunction: "cubic-bezier(0.34,1.56,0.64,1)" }}>
             <div className="absolute -top-[24px] -right-[24px] w-[120px] h-[120px] rounded-full pointer-events-none"
-              style={{ background: `radial-gradient(circle, rgba(255,170,0,0.18) 0%, transparent 70%)`, opacity: 0.7 }} />
+              style={{ background: `radial-gradient(circle, rgba(255,204,0,0.18) 0%, transparent 70%)`, opacity: 0.7 }} />
             <div className="w-[48px] h-[48px] rounded-[14px] flex items-center justify-center relative flex-shrink-0"
-              style={{ background: "linear-gradient(135deg, #FFD700 0%, #FFAA00 100%)", boxShadow: "0 6px 16px rgba(255,170,0,0.32)" }}>
+              style={{ background: "linear-gradient(135deg, #FFCC00 0%, #FFCC00 100%)", boxShadow: "0 6px 16px rgba(255,204,0,0.32)" }}>
               <Trophy className="w-[22px] h-[22px] text-white" />
             </div>
             <div className="flex-1 min-w-0 relative">
-              <div className="text-[11px] font-bold uppercase tracking-[0.10em]" style={{ color: T4 }}>Class Leaderboard</div>
-              <div className="text-[18px] font-bold mt-[2px]" style={{ color: T1, letterSpacing: "-0.4px" }}>See where you stand this week</div>
+              <div className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: T4 }}>Class Leaderboard</div>
+              <div className="text-[18px] font-semibold mt-[2px]" style={{ color: T1, letterSpacing: "-0.4px" }}>See where you stand this week</div>
               <div className="text-[12px] font-medium mt-[2px]" style={{ color: T3 }}>Weekly ranking · AI insights · personalised plan</div>
             </div>
             <ArrowRight className="w-[20px] h-[20px] flex-shrink-0 relative" style={{ color: IND }} />
@@ -1471,19 +1471,19 @@ const DashboardPage = () => {
             style={{ boxShadow: SH_LG, border: `0.5px solid ${IND_BDR}` }}>
 
             {/* Header */}
-            <div className="flex items-center justify-between px-6 pt-[14px] pb-[12px]" style={{ borderBottom: `0.5px solid ${IND_BDR}` }}>
+            <div className="flex items-center justify-between px-6 pt-[16px] pb-[12px]" style={{ borderBottom: `0.5px solid ${IND_BDR}` }}>
               <div className="flex items-center gap-2">
                 <Sparkles className="w-[13px] h-[13px]" style={{ color: IND }} strokeWidth={2.4} />
-                <span className="text-[11px] font-bold uppercase tracking-[0.12em]" style={{ color: T4 }}>Edullent AI · Live Summary</span>
+                <span className="text-[12px] font-semibold uppercase tracking-[0.12em]" style={{ color: T4 }}>Edullent AI · Live Summary</span>
               </div>
-              <div className="flex items-center gap-[5px] px-3 py-[4px] rounded-full" style={{ background: GREEN_S, border: `0.5px solid ${GREEN_B}` }}>
+              <div className="flex items-center gap-[4px] px-3 py-[4px] rounded-full" style={{ background: GREEN_S, border: `0.5px solid ${GREEN_B}` }}>
                 <div className="w-[6px] h-[6px] rounded-full animate-pulse" style={{ background: GREEN, boxShadow: `0 0 0 2px ${GREEN_S}` }} />
-                <span className="text-[10px] font-bold tracking-[0.06em]" style={{ color: GREEN }}>LIVE</span>
+                <span className="text-[12px] font-semibold tracking-[0.06em]" style={{ color: GREEN }}>LIVE</span>
               </div>
             </div>
 
             {dataLoading ? (
-              <div className="flex items-center gap-3 py-14 justify-center">
+              <div className="flex items-center gap-3 py-10 justify-center">
                 <Loader2 className="w-6 h-6 animate-spin" style={{ color: IND }} />
                 <span className="text-sm" style={{ color: T4 }}>Loading {childFirstName}'s data...</span>
               </div>
@@ -1497,9 +1497,9 @@ const DashboardPage = () => {
                       status: liveStats.attendance === null ? "No data" : attOnTrack ? "✓ On Track" : "Below 85% target",
                       statusColor: liveStats.attendance === null ? T4 : attOnTrack ? GREEN : ORANGE,
                       icon: CheckCircle, iconColor: GREEN,
-                      cardBg: "linear-gradient(135deg, rgba(0,200,83,0.13) 0%, rgba(0,200,83,0.04) 100%)",
-                      cardBdr: "rgba(0,200,83,0.20)",
-                      iconBoxBg: "rgba(0,200,83,0.18)", iconBoxBdr: "rgba(0,200,83,0.30)",
+                      cardBg: "linear-gradient(135deg, rgba(52,199,89,0.13) 0%, rgba(52,199,89,0.04) 100%)",
+                      cardBdr: "rgba(52,199,89,0.20)",
+                      iconBoxBg: "rgba(52,199,89,0.18)", iconBoxBdr: "rgba(52,199,89,0.30)",
                       route: "/attendance",
                     },
                     {
@@ -1508,9 +1508,9 @@ const DashboardPage = () => {
                       status: liveStats.avgScore >= 80 ? "Excellent" : liveStats.avgScore >= 60 ? "Good" : liveStats.avgScore > 0 ? "Needs Work" : "No Data",
                       statusColor: liveStats.avgScore >= 80 ? GREEN : liveStats.avgScore >= 60 ? IND : liveStats.avgScore > 0 ? ORANGE : T4,
                       icon: TrendingUp, iconColor: IND,
-                      cardBg: "linear-gradient(135deg, rgba(0,85,255,0.10) 0%, rgba(0,85,255,0.03) 100%)",
-                      cardBdr: "rgba(0,85,255,0.20)",
-                      iconBoxBg: "rgba(0,85,255,0.14)", iconBoxBdr: "rgba(0,85,255,0.28)",
+                      cardBg: "linear-gradient(135deg, rgba(10,132,255,0.10) 0%, rgba(10,132,255,0.03) 100%)",
+                      cardBdr: "rgba(10,132,255,0.20)",
+                      iconBoxBg: "rgba(10,132,255,0.14)", iconBoxBdr: "rgba(10,132,255,0.28)",
                       route: "/performance",
                     },
                     {
@@ -1519,9 +1519,9 @@ const DashboardPage = () => {
                       status: liveStats.pending === null ? "No assignments yet" : noPending ? "✓ All Done" : `${liveStats.pending} to complete`,
                       statusColor: liveStats.pending === null ? T4 : noPending ? GREEN : ORANGE,
                       icon: AlertCircle, iconColor: ORANGE,
-                      cardBg: "linear-gradient(135deg, rgba(255,136,0,0.13) 0%, rgba(255,136,0,0.04) 100%)",
-                      cardBdr: "rgba(255,136,0,0.22)",
-                      iconBoxBg: "rgba(255,136,0,0.18)", iconBoxBdr: "rgba(255,136,0,0.32)",
+                      cardBg: "linear-gradient(135deg, rgba(255,149,0,0.13) 0%, rgba(255,149,0,0.04) 100%)",
+                      cardBdr: "rgba(255,149,0,0.22)",
+                      iconBoxBg: "rgba(255,149,0,0.18)", iconBoxBdr: "rgba(255,149,0,0.32)",
                       route: "/assignments",
                     },
                     {
@@ -1530,9 +1530,9 @@ const DashboardPage = () => {
                       status: liveStats.recentSubject || "No tests yet",
                       statusColor: T4,
                       icon: Star, iconColor: ROSE,
-                      cardBg: "linear-gradient(135deg, rgba(255,51,85,0.10) 0%, rgba(255,51,85,0.03) 100%)",
-                      cardBdr: "rgba(255,51,85,0.20)",
-                      iconBoxBg: "rgba(255,51,85,0.14)", iconBoxBdr: "rgba(255,51,85,0.30)",
+                      cardBg: "linear-gradient(135deg, rgba(255,59,48,0.10) 0%, rgba(255,59,48,0.03) 100%)",
+                      cardBdr: "rgba(255,59,48,0.20)",
+                      iconBoxBg: "rgba(255,59,48,0.14)", iconBoxBdr: "rgba(255,59,48,0.30)",
                       route: "/tests",
                     },
                   ].map(({ label, value, status, statusColor, icon: Icon, iconColor, cardBg, cardBdr, iconBoxBg, iconBoxBdr, route }) => (
@@ -1542,25 +1542,25 @@ const DashboardPage = () => {
                       aria-label={`Open ${label} page`}
                       onClick={() => navigate(route)}
                       onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate(route); } }}
-                      className="rounded-[18px] px-5 pt-5 pb-5 cursor-pointer transition-transform hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF]/30"
+                      className="rounded-[18px] px-5 pt-5 pb-5 cursor-pointer transition-transform hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/30"
                       style={{ background: cardBg, border: `0.5px solid ${cardBdr}` }}>
-                      <div className="w-[36px] h-[36px] rounded-[12px] flex items-center justify-center mb-[14px]"
+                      <div className="w-[36px] h-[36px] rounded-[12px] flex items-center justify-center mb-[16px]"
                         style={{ background: iconBoxBg, border: `0.5px solid ${iconBoxBdr}` }}>
                         <Icon className="w-[18px] h-[18px]" style={{ color: iconColor }} strokeWidth={2.3} />
                       </div>
-                      <div className="text-[10px] font-bold uppercase tracking-[0.10em]" style={{ color: T4 }}>{label}</div>
-                      <div className="text-[32px] font-bold mt-1 leading-none" style={{ color: T1, letterSpacing: "-1px" }}>{value}</div>
+                      <div className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: T4 }}>{label}</div>
+                      <div className="text-[28px] font-semibold mt-1 leading-none" style={{ color: T1, letterSpacing: "-1px" }}>{value}</div>
                       <div className="text-[12px] font-medium mt-[8px] truncate" style={{ color: statusColor }}>{status}</div>
                     </div>
                   ))}
                 </div>
 
                 {/* AI Insight Strip (light) */}
-                <div className="px-7 py-[14px] flex items-start gap-3" style={{ borderTop: `0.5px solid ${IND_BDR}`, background: IND_SOFT }}>
+                <div className="px-8 py-[16px] flex items-start gap-3" style={{ borderTop: `0.5px solid ${IND_BDR}`, background: IND_SOFT }}>
                   <BrainCircuit className="w-4 h-4 shrink-0 mt-[2px]" style={{ color: IND }} />
                   {aiInsights?.child_summary_narrative ? (
                     <p className="text-[13px] leading-[1.65]" style={{ color: T3, letterSpacing: "-0.1px" }}>
-                      <strong style={{ color: T1, fontWeight: 700 }}>{studentData?.name}</strong>{" "}
+                      <strong style={{ color: T1, fontWeight: 600 }}>{studentData?.name}</strong>{" "}
                       {aiInsights.child_summary_narrative.replace(studentData?.name || "", "").trim()}
                     </p>
                   ) : (
@@ -1584,21 +1584,21 @@ const DashboardPage = () => {
               aria-label="Open alerts page"
               onClick={() => navigate("/alerts")}
               onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/alerts"); } }}
-              className="bg-white rounded-[22px] p-6 cursor-pointer transition-all hover:-translate-y-1 hover:scale-[1.02] hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF]/40"
+              className="bg-white rounded-[22px] p-6 cursor-pointer transition-all hover:-translate-y-1 hover:scale-[1.02] hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
               style={{ boxShadow: SH, border: `0.5px solid ${IND_BDR}` }}>
-              <h3 className="text-[18px] font-bold mb-5" style={{ color: T1, letterSpacing: "-0.4px" }}>Recent Alerts</h3>
+              <h3 className="text-[18px] font-semibold mb-5" style={{ color: T1, letterSpacing: "-0.4px" }}>Recent Alerts</h3>
               {recentAlerts.length > 0 ? (
                 <div className="space-y-3">
                   {recentAlerts.map(alert => (
                     <div key={alert.id} className="flex items-start gap-3 p-3 rounded-xl"
                       style={{ background: alert.urgent ? "rgba(245,160,0,0.08)" : "rgba(18,192,78,0.08)" }}>
-                      <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 mt-0.5"
+                      <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 mt-1"
                         style={{ background: alert.urgent ? "rgba(245,160,0,0.15)" : "rgba(18,192,78,0.15)", color: alert.urgent ? ORANGE : GREEN }}>
                         {alert.urgent ? <Clock className="w-4 h-4" /> : <CheckCircle className="w-4 h-4" />}
                       </div>
                       <div>
                         <p className="text-[14px] font-medium leading-snug" style={{ color: T1 }}>{alert.title}</p>
-                        <p className="text-[12px] mt-0.5" style={{ color: T3 }}>{timeAgo(alert.time)}</p>
+                        <p className="text-[12px] mt-1" style={{ color: T3 }}>{timeAgo(alert.time)}</p>
                       </div>
                     </div>
                   ))}
@@ -1606,7 +1606,7 @@ const DashboardPage = () => {
               ) : (
                 <div className="flex flex-col items-center gap-3 py-10">
                   <div className="w-[60px] h-[60px] rounded-[18px] flex items-center justify-center"
-                    style={{ background: IND_SOFT, border: `0.5px solid ${IND_BDR}`, boxShadow: "0 0 0 5px rgba(0,85,255,0.03)" }}>
+                    style={{ background: IND_SOFT, border: `0.5px solid ${IND_BDR}`, boxShadow: "0 0 0 5px rgba(10,132,255,0.03)" }}>
                     <ShieldCheck className="w-7 h-7" style={{ color: T4 }} />
                   </div>
                   <p className="text-[14px]" style={{ color: T3 }}>No alerts right now</p>
@@ -1621,36 +1621,36 @@ const DashboardPage = () => {
               aria-label="Open reports page"
               onClick={() => navigate("/reports")}
               onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/reports"); } }}
-              className="bg-white rounded-[22px] px-6 py-6 cursor-pointer transition-all hover:-translate-y-1 hover:scale-[1.02] hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF]/40"
+              className="bg-white rounded-[22px] px-6 py-6 cursor-pointer transition-all hover:-translate-y-1 hover:scale-[1.02] hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
               style={{ boxShadow: SH, border: `0.5px solid ${IND_BDR}` }}>
-              <div className="flex items-center justify-between gap-3 mb-[14px]">
+              <div className="flex items-center justify-between gap-3 mb-[16px]">
                 <div className="flex items-center gap-3">
                   <div className="w-[46px] h-[46px] rounded-[14px] flex items-center justify-center"
                     style={{ background: IND_SOFT, border: `0.5px solid ${IND_BDR}` }}>
                     <BookOpen className="w-5 h-5" style={{ color: IND }} />
                   </div>
                   <div>
-                    <div className="text-[16px] font-bold" style={{ color: T1, letterSpacing: "-0.3px" }}>Weekly AI Report</div>
-                    <div className="text-[12px] mt-0.5" style={{ color: T3 }}>
+                    <div className="text-[16px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>Weekly AI Report</div>
+                    <div className="text-[12px] mt-1" style={{ color: T3 }}>
                       {isPrevWeekReport ? "Last week's report" : weekConfig.canGenerate ? (weeklyReport ? "This week's digest" : "Generate this week's report") : "New report available Friday"}
                     </div>
                   </div>
                 </div>
                 {weekConfig.canGenerate && !weeklyReport ? (
                   <button onClick={(e) => { e.stopPropagation(); handleGenerateWeeklyReport(); }} disabled={weeklyLoading || dataLoading}
-                    className="flex items-center gap-2 px-4 py-[10px] rounded-[12px] text-[12px] font-semibold text-white disabled:opacity-50 transition-transform hover:scale-[1.02]"
-                    style={{ background: IND, boxShadow: "0 4px 14px rgba(0,85,255,0.28)" }}>
+                    className="flex items-center gap-2 px-4 py-[12px] rounded-[12px] text-[12px] font-semibold text-white disabled:opacity-50 transition-transform hover:scale-[1.02]"
+                    style={{ background: IND, boxShadow: "0 4px 14px rgba(10,132,255,0.28)" }}>
                     {weeklyLoading ? <Loader2 className="w-[14px] h-[14px] animate-spin" /> : <Sparkles className="w-[14px] h-[14px]" />}
                     {weeklyLoading ? "Generating..." : "Generate"}
                   </button>
                 ) : weekConfig.canGenerate && weeklyReport ? (
                   <button onClick={(e) => { e.stopPropagation(); setWeeklyReport(null); }}
-                    className="text-[11px] font-medium px-3 py-[8px] rounded-[10px]"
+                    className="text-[12px] font-medium px-3 py-[8px] rounded-[10px]"
                     style={{ color: T3, border: `0.5px solid ${IND_BDR}`, background: "white" }}>
                     Regenerate
                   </button>
                 ) : (
-                  <div className="flex items-center gap-1 px-3 py-[8px] rounded-[12px] text-[11px] font-semibold whitespace-nowrap"
+                  <div className="flex items-center gap-1 px-3 py-[8px] rounded-[12px] text-[12px] font-semibold whitespace-nowrap"
                     style={{ background: "#E5E5EC", color: T3, border: `0.5px solid ${IND_BDR}` }}>
                     <Clock className="w-[12px] h-[12px]" />
                     Fri{weekConfig.daysLeft > 0 ? ` · ${weekConfig.daysLeft}d` : ""}
@@ -1666,8 +1666,8 @@ const DashboardPage = () => {
               )}
 
               {!weeklyReport && !weeklyLoading && (
-                <div className="flex items-start gap-2 pt-[14px]" style={{ borderTop: `0.5px solid ${SEP}` }}>
-                  <Clock className="w-[15px] h-[15px] shrink-0 mt-0.5" style={{ color: T4 }} />
+                <div className="flex items-start gap-2 pt-[16px]" style={{ borderTop: `0.5px solid ${SEP}` }}>
+                  <Clock className="w-[15px] h-[15px] shrink-0 mt-1" style={{ color: T4 }} />
                   <p className="text-[13px] leading-[1.6]" style={{ color: T3, letterSpacing: "-0.1px" }}>
                     {weekConfig.canGenerate
                       ? `Click "Generate" to get ${childFirstName}'s weekly digest.`
@@ -1677,8 +1677,8 @@ const DashboardPage = () => {
               )}
 
               {weeklyReport && !weeklyLoading && isPrevWeekReport && (
-                <div className="flex items-start gap-2 pt-[14px]" style={{ borderTop: `0.5px solid ${SEP}` }}>
-                  <Clock className="w-[15px] h-[15px] shrink-0 mt-0.5" style={{ color: T4 }} />
+                <div className="flex items-start gap-2 pt-[16px]" style={{ borderTop: `0.5px solid ${SEP}` }}>
+                  <Clock className="w-[15px] h-[15px] shrink-0 mt-1" style={{ color: T4 }} />
                   <p className="text-[13px] leading-[1.55]" style={{ color: T3 }}>
                     This is last week's report. A new report can be generated this Friday.
                   </p>
@@ -1689,11 +1689,11 @@ const DashboardPage = () => {
 
           {/* ── AI Message gradient card ── */}
           {weeklyReport && !weeklyLoading && (
-            <div className="rounded-[24px] px-7 py-6 relative overflow-hidden mb-5"
+            <div className="rounded-[24px] px-8 py-6 relative overflow-hidden mb-5"
               style={{
                 background: IND_DARK_GRAD,
-                border: "0.5px solid rgba(0,85,255,0.22)",
-                boxShadow: "0 6px 28px rgba(0,85,255,0.22), 0 2px 8px rgba(0,85,255,0.14)"
+                border: "0.5px solid rgba(10,132,255,0.22)",
+                boxShadow: "0 6px 28px rgba(10,132,255,0.22), 0 2px 8px rgba(10,132,255,0.14)"
               }}>
               <div className="absolute -top-10 -right-8 w-[200px] h-[200px] rounded-full pointer-events-none"
                 style={{ background: "radial-gradient(circle, rgba(255,255,255,0.10) 0%, transparent 65%)" }} />
@@ -1702,7 +1702,7 @@ const DashboardPage = () => {
                 backgroundSize: "26px 26px"
               }} />
               <div className="relative z-10">
-                <div className="flex items-center gap-[6px] text-[10px] font-bold uppercase tracking-[0.10em] mb-3" style={{ color: "rgba(255,255,255,0.52)" }}>
+                <div className="flex items-center gap-[8px] text-[12px] font-semibold uppercase tracking-[0.10em] mb-3" style={{ color: "rgba(255,255,255,0.52)" }}>
                   <Sparkles className="w-3 h-3" />
                   AI Message
                 </div>
@@ -1721,12 +1721,12 @@ const DashboardPage = () => {
                 { tag: "Tests", text: weeklyReport.test_analysis },
                 { tag: "Assignments", text: weeklyReport.assignment_status },
               ].map(({ tag, text }, i, arr) => (
-                <div key={tag} className="px-6 py-5 flex flex-col gap-[6px]"
+                <div key={tag} className="px-6 py-5 flex flex-col gap-[8px]"
                   style={{
                     borderRight: i < arr.length - 1 ? `0.5px solid ${SEP}` : "none",
                     borderBottom: i < arr.length - 1 ? `0.5px solid ${SEP}` : "none",
                   }}>
-                  <span className="text-[10px] font-bold uppercase tracking-[0.09em]" style={{ color: IND3 }}>{tag}</span>
+                  <span className="text-[12px] font-semibold uppercase tracking-[0.09em]" style={{ color: IND3 }}>{tag}</span>
                   <p className="text-[13px] leading-[1.58]" style={{ color: T2, letterSpacing: "-0.1px" }}>{text}</p>
                 </div>
               ))}
@@ -1744,15 +1744,15 @@ const DashboardPage = () => {
                   <div className="absolute -top-5 -right-5 w-[80px] h-[80px] rounded-full pointer-events-none"
                     style={{ background: "radial-gradient(circle, rgba(245,160,0,0.10) 0%, transparent 70%)" }} />
                   <div className="relative z-10">
-                    <div className="text-[10px] font-bold uppercase tracking-[0.09em] mb-[5px]" style={{ color: ORANGE }}>Overall Performance</div>
-                    <div className="text-[20px] font-bold" style={{ color: T1, letterSpacing: "-0.3px" }}>{weeklyReport.overall_performance.verdict}</div>
-                    <p className="text-[13px] mt-[6px] leading-[1.58]" style={{ color: T3, letterSpacing: "-0.1px" }}>{weeklyReport.overall_performance.score_context}</p>
+                    <div className="text-[12px] font-semibold uppercase tracking-[0.09em] mb-[4px]" style={{ color: ORANGE }}>Overall Performance</div>
+                    <div className="text-[20px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>{weeklyReport.overall_performance.verdict}</div>
+                    <p className="text-[13px] mt-[8px] leading-[1.58]" style={{ color: T3, letterSpacing: "-0.1px" }}>{weeklyReport.overall_performance.score_context}</p>
                   </div>
-                  <div className="flex items-center gap-1 px-[14px] py-[9px] rounded-[14px] text-[12px] font-bold shrink-0 relative z-10"
+                  <div className="flex items-center gap-1 px-[16px] py-[8px] rounded-[14px] text-[12px] font-semibold shrink-0 relative z-10"
                     style={{
                       background: weeklyReport.overall_performance.trend === "Declining" ? ORANGE_S : GREEN_S,
                       border: `0.5px solid ${weeklyReport.overall_performance.trend === "Declining" ? ORANGE_B : GREEN_B}`,
-                      color: weeklyReport.overall_performance.trend === "Declining" ? "#905800" : "#0A6A2E",
+                      color: weeklyReport.overall_performance.trend === "Declining" ? "#86310C" : "#248A3D",
                     }}>
                     <TrendingUp className={`w-3 h-3 ${weeklyReport.overall_performance.trend === "Declining" ? "rotate-180" : ""}`} />
                     {weeklyReport.overall_performance.trend}
@@ -1762,8 +1762,8 @@ const DashboardPage = () => {
 
               {/* Download PDF button */}
               <button onClick={handleDownloadPDF} disabled={pdfDownloading}
-                className="rounded-[22px] py-[22px] px-6 flex items-center justify-center gap-3 text-[15px] font-bold text-white disabled:opacity-50 transition-transform hover:scale-[1.01] relative overflow-hidden"
-                style={{ background: `linear-gradient(135deg, #001888 0%, #0033CC 50%, #0055FF 100%)`, boxShadow: SH_BTN, letterSpacing: "-0.2px" }}>
+                className="rounded-[22px] py-[24px] px-6 flex items-center justify-center gap-3 text-[15px] font-semibold text-white disabled:opacity-50 transition-transform hover:scale-[1.01] relative overflow-hidden"
+                style={{ background: `linear-gradient(135deg, #0A84FF 0%, #0A84FF 50%, #0A84FF 100%)`, boxShadow: SH_BTN, letterSpacing: "-0.2px" }}>
                 <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.13) 0%, transparent 52%)" }} />
                 <span className="relative z-10 flex items-center gap-3">
                   {pdfDownloading ? (
@@ -1779,7 +1779,7 @@ const DashboardPage = () => {
           {/* ── AI Improvement Tips ── */}
           {weeklyReport?.improvement_tips?.length > 0 && (
             <div className="mb-5">
-              <div className="text-[10px] font-bold uppercase tracking-[0.10em] mb-3 px-1" style={{ color: T4 }}>
+              <div className="text-[12px] font-semibold uppercase tracking-[0.10em] mb-3 px-1" style={{ color: T4 }}>
                 AI Improvement Tips
               </div>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
@@ -1813,10 +1813,10 @@ const DashboardPage = () => {
                 backgroundImage: "linear-gradient(rgba(255,255,255,0.014) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.014) 1px, transparent 1px)",
                 backgroundSize: "24px 24px"
               }} />
-              <span className="text-[26px] relative z-10">💡</span>
+              <span className="text-[28px] relative z-10">💡</span>
               <div className="relative z-10">
-                <div className="text-[17px] font-bold text-white" style={{ letterSpacing: "-0.3px" }}>AI Parenting Tips</div>
-                <div className="text-[12px] mt-0.5" style={{ color: "rgba(255,255,255,0.52)" }}>Based on {childFirstName}'s current data</div>
+                <div className="text-[18px] font-semibold text-white" style={{ letterSpacing: "-0.3px" }}>AI Parenting Tips</div>
+                <div className="text-[12px] mt-1" style={{ color: "rgba(255,255,255,0.52)" }}>Based on {childFirstName}'s current data</div>
               </div>
             </div>
 
@@ -1830,7 +1830,7 @@ const DashboardPage = () => {
                         borderRight: i < arr.length - 1 ? `0.5px solid ${SEP}` : "none",
                         borderBottom: i < arr.length - 1 ? `0.5px solid ${SEP}` : "none",
                       }}>
-                      <div className="w-8 h-8 rounded-[10px] flex items-center justify-center text-[13px] font-bold shrink-0 mt-0.5"
+                      <div className="w-8 h-8 rounded-[10px] flex items-center justify-center text-[13px] font-semibold shrink-0 mt-1"
                         style={{ background: IND_SOFT, border: `0.5px solid ${IND_BDR}`, color: IND }}>
                         {i + 1}
                       </div>

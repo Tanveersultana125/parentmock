@@ -17,7 +17,7 @@ export function SectionHeader({ number, eyebrow, title, subtitle }: SectionHeade
       <h2
         style={{
           fontSize: 24,
-          fontWeight: 800,
+          fontWeight: 600,
           letterSpacing: '-0.9px',
           color: T.T1,
           margin: '4px 0',

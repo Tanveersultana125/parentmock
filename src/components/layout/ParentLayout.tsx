@@ -10,9 +10,9 @@ export const ParentLayout = () => {
 
   return (
     /* h-screen + overflow-hidden = fixed viewport shell, scroll lives in <main>.
-       bg-[#EEF4FF] fills the 10px gaps around the floating sidebar so its
+       bg-[#F5F5F7] fills the 10px gaps around the floating sidebar so its
        elevation/shadow reads against a non-sidebar surface. */
-    <div className="flex h-screen w-full overflow-hidden bg-[#EEF4FF]">
+    <div className="flex h-screen w-full overflow-hidden bg-[#F5F5F7]">
 
       {/* Mobile overlay */}
       {sidebarOpen && (
@@ -35,7 +35,7 @@ export const ParentLayout = () => {
             lg:pb-8          → no bottom nav on desktop
         */}
         <main
-          className="flex-1 overflow-y-auto overflow-x-hidden p-3 md:p-6 pb-[calc(88px+env(safe-area-inset-bottom)+1rem)] lg:pb-8 flex flex-col bg-[#EEF4FF]"
+          className="flex-1 overflow-y-auto overflow-x-hidden p-3 md:p-6 pb-[calc(88px+env(safe-area-inset-bottom)+1rem)] lg:pb-8 flex flex-col bg-[#F5F5F7]"
           style={{ WebkitOverflowScrolling: 'touch', overscrollBehavior: 'none' }}
         >
           <PageTransition>

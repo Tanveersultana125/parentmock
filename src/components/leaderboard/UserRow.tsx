@@ -16,10 +16,10 @@ export function UserRow({ user }: UserRowProps) {
         padding: '14px 12px',
         borderRadius: 16,
         background:
-          'linear-gradient(90deg, rgba(0,85,255,0.08) 0%, rgba(0,85,255,0.04) 100%)',
+          'linear-gradient(90deg, rgba(10,132,255,0.08) 0%, rgba(10,132,255,0.04) 100%)',
         border: `2px solid ${T.B1}`,
         margin: '6px 0',
-        boxShadow: '0 4px 16px rgba(0,85,255,0.18)',
+        boxShadow: '0 4px 16px rgba(10,132,255,0.18)',
       }}
     >
       <div
@@ -27,16 +27,16 @@ export function UserRow({ user }: UserRowProps) {
           width: 36,
           height: 36,
           borderRadius: 12,
-          background: 'linear-gradient(135deg, #0055FF 0%, #1166FF 100%)',
+          background: 'linear-gradient(135deg, #0A84FF 0%, #3395FF 100%)',
           color: '#FFFFFF',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          fontWeight: 800,
+          fontWeight: 600,
           fontSize: 14,
           flexShrink: 0,
           letterSpacing: '-0.4px',
-          boxShadow: '0 4px 12px rgba(0,85,255,0.35)',
+          boxShadow: '0 4px 12px rgba(10,132,255,0.35)',
         }}
       >
         {user.rank}
@@ -55,7 +55,7 @@ export function UserRow({ user }: UserRowProps) {
         <p
           style={{
             fontSize: 15,
-            fontWeight: 800,
+            fontWeight: 600,
             margin: 0,
             color: T.T1,
             letterSpacing: '-0.3px',
@@ -66,7 +66,7 @@ export function UserRow({ user }: UserRowProps) {
         <span
           style={{
             fontSize: 9,
-            fontWeight: 800,
+            fontWeight: 600,
             letterSpacing: '0.1em',
             padding: '3px 8px',
             borderRadius: 999,
@@ -81,7 +81,7 @@ export function UserRow({ user }: UserRowProps) {
       <span
         style={{
           fontSize: 19,
-          fontWeight: 800,
+          fontWeight: 600,
           color: T.B1,
           letterSpacing: '-0.6px',
         }}

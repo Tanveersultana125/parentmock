@@ -188,17 +188,17 @@ const TimetablePage = () => {
      MOBILE — Bright Blue Apple UI
      ═══════════════════════════════════════════════════════════════ */
   if (isMobile) {
-    const B1 = "#0055FF";
-    const B2 = "#1166FF";
-    const BG = "#EEF4FF";
-    const BG2 = "#E0ECFF";
-    const T1 = "#001040";
-    const T2 = "#002080";
-    const T3 = "#5070B0";
-    const T4 = "#99AACC";
-    const SEP = "rgba(0,85,255,0.07)";
-    const SH = "0 0 0 0.5px rgba(0,85,255,0.08), 0 2px 8px rgba(0,85,255,0.10), 0 10px 28px rgba(0,85,255,0.12)";
-    const SH_BTN = "0 6px 22px rgba(0,85,255,0.42), 0 2px 6px rgba(0,85,255,0.24)";
+    const B1 = "#0A84FF";
+    const B2 = "#3395FF";
+    const BG = "#F5F5F7";
+    const BG2 = "#EBEBF0";
+    const T1 = "#1D1D1F";
+    const T2 = "#3A3A3C";
+    const T3 = "#6E6E73";
+    const T4 = "#A1A1A6";
+    const SEP = "rgba(10,132,255,0.07)";
+    const SH = "0 0 0 0.5px rgba(10,132,255,0.08), 0 2px 8px rgba(10,132,255,0.10), 0 10px 28px rgba(10,132,255,0.12)";
+    const SH_BTN = "0 6px 22px rgba(10,132,255,0.42), 0 2px 6px rgba(10,132,255,0.24)";
 
     // ── This week's dates (Mon → Sat) ──
     const now = new Date();
@@ -227,9 +227,9 @@ const TimetablePage = () => {
 
     // ── Per-subject accent (rotates three blue shades) ──
     const subjectAccents = [
-      { bar: "linear-gradient(180deg, #0055FF, #4499FF)",  icoBg: "linear-gradient(135deg, #0044EE, #2277FF)", icoShadow: "0 3px 10px rgba(0,68,238,0.28)" },
-      { bar: "linear-gradient(180deg, #0033CC, #2277FF)",  icoBg: "linear-gradient(135deg, #002DBB, #0055FF)", icoShadow: "0 3px 10px rgba(0,45,187,0.28)" },
-      { bar: "linear-gradient(180deg, #2255DD, #66BBFF)",  icoBg: "linear-gradient(135deg, #1155EE, #44AAFF)", icoShadow: "0 3px 10px rgba(17,85,238,0.28)" },
+      { bar: "linear-gradient(180deg, #0A84FF, #7CBBFF)",  icoBg: "linear-gradient(135deg, #3395FF, #5BA9FF)", icoShadow: "0 3px 10px rgba(0,68,238,0.28)" },
+      { bar: "linear-gradient(180deg, #0A84FF, #5BA9FF)",  icoBg: "linear-gradient(135deg, #0A84FF, #0A84FF)", icoShadow: "0 3px 10px rgba(0,45,187,0.28)" },
+      { bar: "linear-gradient(180deg, #2255DD, #7CBBFF)",  icoBg: "linear-gradient(135deg, #3395FF, #7CBBFF)", icoShadow: "0 3px 10px rgba(17,85,238,0.28)" },
     ];
     // Stable mapping subject → accent
     const subjectAccentMap = new Map<string, number>();
@@ -246,27 +246,27 @@ const TimetablePage = () => {
 
     return (
       <div className="animate-in fade-in duration-500 -mx-3 -mt-3 md:mx-0 md:mt-0"
-        style={{ fontFamily: "'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif", background: BG, minHeight: "100vh" }}>
+        style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif", background: BG, minHeight: "100vh" }}>
 
         {/* ── Hero Banner ── */}
-        <div className="mx-5 mt-4 rounded-[26px] px-[22px] pt-[22px] pb-6 relative overflow-hidden"
+        <div className="mx-5 mt-4 rounded-[26px] px-[24px] pt-[24px] pb-6 relative overflow-hidden"
           style={{
-            background: "linear-gradient(140deg, #0033CC 0%, #0055FF 40%, #2277FF 75%, #55AAFF 100%)",
+            background: "linear-gradient(140deg, #0A84FF 0%, #0A84FF 40%, #5BA9FF 75%, #7CBBFF 100%)",
             boxShadow: SH_BTN,
             minHeight: 140,
           }}>
-          <div className="absolute -top-[30px] -right-5 w-[140px] h-[140px] rounded-full pointer-events-none" style={{ background: "rgba(255,255,255,0.14)" }} />
-          <div className="absolute -bottom-[30px] right-[30px] w-[110px] h-[110px] rounded-full pointer-events-none" style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.12)" }} />
-          <div className="absolute -bottom-[10px] right-[90px] w-[70px] h-[70px] rounded-full pointer-events-none" style={{ background: "rgba(255,255,255,0.10)", border: "1px solid rgba(255,255,255,0.15)" }} />
-          <div className="absolute bottom-[10px] right-[160px] w-11 h-11 rounded-full pointer-events-none" style={{ background: "rgba(255,255,255,0.08)" }} />
+          <div className="absolute -top-[32px] -right-5 w-[140px] h-[140px] rounded-full pointer-events-none" style={{ background: "rgba(255,255,255,0.14)" }} />
+          <div className="absolute -bottom-[32px] right-[32px] w-[110px] h-[110px] rounded-full pointer-events-none" style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.12)" }} />
+          <div className="absolute -bottom-[12px] right-[90px] w-[70px] h-[70px] rounded-full pointer-events-none" style={{ background: "rgba(255,255,255,0.10)", border: "1px solid rgba(255,255,255,0.15)" }} />
+          <div className="absolute bottom-[12px] right-[160px] w-11 h-11 rounded-full pointer-events-none" style={{ background: "rgba(255,255,255,0.08)" }} />
           <div className="absolute inset-0 pointer-events-none" style={{
             backgroundImage: "linear-gradient(rgba(255,255,255,0.016) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.016) 1px, transparent 1px)",
             backgroundSize: "24px 24px"
           }} />
 
-          <div className="text-[9px] font-bold uppercase tracking-[0.14em] mb-2 relative z-10" style={{ color: "rgba(255,255,255,0.55)" }}>Weekly Schedule</div>
-          <div className="text-[36px] font-bold text-white mb-[10px] relative z-10 leading-[1.05]" style={{ letterSpacing: "-0.9px" }}>Timetable</div>
-          <div className="text-[13px] font-medium flex items-center gap-[5px] relative z-10" style={{ color: "rgba(255,255,255,0.72)" }}>
+          <div className="text-[12px] font-semibold uppercase tracking-[0.14em] mb-2 relative z-10" style={{ color: "rgba(255,255,255,0.55)" }}>Weekly Schedule</div>
+          <div className="text-[28px] font-semibold text-white mb-[12px] relative z-10 leading-[1.05]" style={{ letterSpacing: "-0.9px" }}>Timetable</div>
+          <div className="text-[13px] font-medium flex items-center gap-[4px] relative z-10" style={{ color: "rgba(255,255,255,0.72)" }}>
             <User className="w-[13px] h-[13px]" style={{ color: "rgba(255,255,255,0.75)" }} strokeWidth={2.2} />
             <span className="truncate">{studentData?.name || "Student"}</span>
             {(studentData?.className || (studentData as any)?.class) && (
@@ -279,7 +279,7 @@ const TimetablePage = () => {
         </div>
 
         {/* ── Day Selector ── */}
-        <div className="px-5 pt-[18px] flex flex-col gap-3">
+        <div className="px-5 pt-[16px] flex flex-col gap-3">
           <div className="flex gap-2 overflow-x-auto pb-1" style={{ scrollbarWidth: "none" }}>
             {DAY_SHORT.map((lbl, i) => {
               const isAct = selectedDay === i;
@@ -288,16 +288,16 @@ const TimetablePage = () => {
                 <button
                   key={lbl}
                   onClick={() => setSelectedDay(i)}
-                  className="flex flex-col items-center gap-[3px] min-w-[52px] px-2 py-[10px] rounded-[18px] transition-transform active:scale-[0.92] shrink-0"
+                  className="flex flex-col items-center gap-[4px] min-w-[52px] px-2 py-[12px] rounded-[18px] transition-transform active:scale-[0.92] shrink-0"
                   style={{
                     background: isAct ? `linear-gradient(135deg, ${B1}, ${B2})` : "#FFFFFF",
-                    border: isAct ? "0.5px solid rgba(0,85,255,0.10)" : "0.5px solid rgba(0,85,255,0.10)",
-                    boxShadow: isAct ? "0 4px 16px rgba(0,85,255,0.36), 0 1px 4px rgba(0,85,255,0.22)" : SH,
+                    border: isAct ? "0.5px solid rgba(10,132,255,0.10)" : "0.5px solid rgba(10,132,255,0.10)",
+                    boxShadow: isAct ? "0 4px 16px rgba(10,132,255,0.36), 0 1px 4px rgba(10,132,255,0.22)" : SH,
                     transitionTimingFunction: "cubic-bezier(0.34,1.56,0.64,1)",
                   }}
                 >
-                  <span className="text-[11px] font-bold uppercase tracking-[0.06em]" style={{ color: isAct ? "#FFFFFF" : T3 }}>{lbl}</span>
-                  <span className="text-[17px] font-bold" style={{ color: isAct ? "#FFFFFF" : T2, letterSpacing: "-0.3px" }}>{d.getDate()}</span>
+                  <span className="text-[12px] font-semibold uppercase tracking-[0.06em]" style={{ color: isAct ? "#FFFFFF" : T3 }}>{lbl}</span>
+                  <span className="text-[18px] font-semibold" style={{ color: isAct ? "#FFFFFF" : T2, letterSpacing: "-0.3px" }}>{d.getDate()}</span>
                   <span className="w-[5px] h-[5px] rounded-full mt-[1px]" style={{ background: isAct ? "rgba(255,255,255,0.55)" : "transparent" }} />
                 </button>
               );
@@ -307,49 +307,49 @@ const TimetablePage = () => {
           {/* Progress bar */}
           <div className="h-[3px] rounded-[2px] overflow-hidden" style={{ background: BG2 }}>
             <div className="h-full rounded-[2px] transition-all duration-500"
-              style={{ width: `${Math.max(progressPct, 4)}%`, background: `linear-gradient(90deg, ${B1}, #4499FF)` }} />
+              style={{ width: `${Math.max(progressPct, 4)}%`, background: `linear-gradient(90deg, ${B1}, #7CBBFF)` }} />
           </div>
         </div>
 
         {/* ── Day Head ── */}
         <div className="flex items-center justify-between mx-5 mt-5">
-          <div className="text-[18px] font-bold" style={{ color: T1, letterSpacing: "-0.4px" }}>
+          <div className="text-[18px] font-semibold" style={{ color: T1, letterSpacing: "-0.4px" }}>
             {DAYS[selectedDay]}
             <span className="text-[12px] font-medium ml-2" style={{ color: T4, letterSpacing: 0 }}>
               · {MONTH[weekDates[selectedDay].getMonth()]} {weekDates[selectedDay].getDate()}
             </span>
           </div>
-          <div className="text-[11px] font-bold px-[11px] py-1 rounded-full tracking-[0.04em]"
-            style={{ color: B1, background: "rgba(0,85,255,0.10)", border: "0.5px solid rgba(0,85,255,0.18)" }}>
+          <div className="text-[12px] font-semibold px-[12px] py-1 rounded-full tracking-[0.04em]"
+            style={{ color: B1, background: "rgba(10,132,255,0.10)", border: "0.5px solid rgba(10,132,255,0.18)" }}>
             {todaySlots.length} {todaySlots.length === 1 ? "Period" : "Periods"}
           </div>
         </div>
 
         {/* ── Period List ── */}
-        <div className="px-5 mt-3 flex flex-col gap-[10px]">
+        <div className="px-5 mt-3 flex flex-col gap-[12px]">
           {loading ? (
-            <div className="flex flex-col items-center gap-[10px] py-10">
+            <div className="flex flex-col items-center gap-[12px] py-10">
               <div className="w-14 h-14 rounded-2xl flex items-center justify-center" style={{ background: BG2 }}>
                 <Loader2 className="w-7 h-7 animate-spin" style={{ color: B1 }} />
               </div>
-              <p className="text-[12px] font-bold uppercase tracking-widest" style={{ color: T4 }}>Loading schedule…</p>
+              <p className="text-[12px] font-semibold uppercase tracking-widest" style={{ color: T4 }}>Loading schedule…</p>
             </div>
           ) : timetable.length === 0 ? (
-            <div className="flex flex-col items-center gap-[10px] py-12 text-center">
+            <div className="flex flex-col items-center gap-[12px] py-10 text-center">
               <div className="w-[60px] h-[60px] rounded-[20px] flex items-center justify-center"
-                style={{ background: "rgba(0,85,255,0.08)", border: "0.5px solid rgba(0,85,255,0.14)", boxShadow: "0 0 0 8px rgba(0,85,255,0.04)" }}>
+                style={{ background: "rgba(10,132,255,0.08)", border: "0.5px solid rgba(10,132,255,0.14)", boxShadow: "0 0 0 8px rgba(10,132,255,0.04)" }}>
                 <CalendarDays className="w-7 h-7" style={{ color: T4 }} />
               </div>
-              <div className="text-[16px] font-bold" style={{ color: T2, letterSpacing: "-0.2px" }}>No timetable yet</div>
+              <div className="text-[16px] font-semibold" style={{ color: T2, letterSpacing: "-0.2px" }}>No timetable yet</div>
               <div className="text-[13px] max-w-[220px] leading-[1.55]" style={{ color: T4 }}>Your school hasn't set up the timetable.</div>
             </div>
           ) : todaySlots.length === 0 ? (
-            <div className="flex flex-col items-center gap-[10px] py-12 text-center">
+            <div className="flex flex-col items-center gap-[12px] py-10 text-center">
               <div className="w-[60px] h-[60px] rounded-[20px] flex items-center justify-center"
-                style={{ background: "rgba(0,85,255,0.08)", border: "0.5px solid rgba(0,85,255,0.14)", boxShadow: "0 0 0 8px rgba(0,85,255,0.04)" }}>
+                style={{ background: "rgba(10,132,255,0.08)", border: "0.5px solid rgba(10,132,255,0.14)", boxShadow: "0 0 0 8px rgba(10,132,255,0.04)" }}>
                 <CalendarDays className="w-7 h-7" style={{ color: T4 }} />
               </div>
-              <div className="text-[16px] font-bold" style={{ color: T2, letterSpacing: "-0.2px" }}>No classes today</div>
+              <div className="text-[16px] font-semibold" style={{ color: T2, letterSpacing: "-0.2px" }}>No classes today</div>
               <div className="text-[13px] max-w-[220px] leading-[1.55]" style={{ color: T4 }}>Enjoy the day off!</div>
             </div>
           ) : (
@@ -366,11 +366,11 @@ const TimetablePage = () => {
                     aria-label={`Open ${subject} syllabus`}
                     onClick={() => navigate("/syllabus", { state: { subject } })}
                     onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/syllabus", { state: { subject } }); } }}
-                    className="rounded-[20px] px-4 py-4 flex items-center gap-[14px] relative overflow-hidden bg-white cursor-pointer active:scale-[0.97] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF]/40"
-                    style={{ boxShadow: SH, border: "0.5px solid rgba(0,85,255,0.10)", transitionTimingFunction: "cubic-bezier(0.34,1.56,0.64,1)" }}>
+                    className="rounded-[20px] px-4 py-4 flex items-center gap-[16px] relative overflow-hidden bg-white cursor-pointer active:scale-[0.97] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
+                    style={{ boxShadow: SH, border: "0.5px solid rgba(10,132,255,0.10)", transitionTimingFunction: "cubic-bezier(0.34,1.56,0.64,1)" }}>
                     <div className="absolute left-0 top-0 bottom-0 w-[3.5px] rounded-l-[2px]" style={{ background: accent.bar }} />
-                    <div className="w-8 h-8 rounded-[10px] flex items-center justify-center shrink-0 text-[12px] font-bold"
-                      style={{ background: "rgba(0,85,255,0.10)", border: "0.5px solid rgba(0,85,255,0.18)", color: B1, letterSpacing: "-0.2px" }}>
+                    <div className="w-8 h-8 rounded-[10px] flex items-center justify-center shrink-0 text-[12px] font-semibold"
+                      style={{ background: "rgba(10,132,255,0.10)", border: "0.5px solid rgba(10,132,255,0.18)", color: B1, letterSpacing: "-0.2px" }}>
                       {periodNum}
                     </div>
                     <div className="w-10 h-10 rounded-[13px] flex items-center justify-center shrink-0"
@@ -378,24 +378,24 @@ const TimetablePage = () => {
                       <BookOpen className="w-5 h-5 text-white" strokeWidth={2.2} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="text-[15px] font-bold mb-1 truncate" style={{ color: T1, letterSpacing: "-0.2px" }}>{subject}</div>
-                      <div className="flex items-center gap-[10px] flex-wrap">
+                      <div className="text-[15px] font-semibold mb-1 truncate" style={{ color: T1, letterSpacing: "-0.2px" }}>{subject}</div>
+                      <div className="flex items-center gap-[12px] flex-wrap">
                         {slot.teacherName && (
-                          <div className="flex items-center gap-1 text-[11px] font-medium" style={{ color: T3 }}>
+                          <div className="flex items-center gap-1 text-[12px] font-medium" style={{ color: T3 }}>
                             <User className="w-[11px] h-[11px] opacity-70" strokeWidth={2.2} />
                             <span className="truncate max-w-[120px]">{slot.teacherName}</span>
                           </div>
                         )}
                         {slot.time && (
-                          <div className="flex items-center gap-1 text-[11px] font-medium" style={{ color: T3 }}>
+                          <div className="flex items-center gap-1 text-[12px] font-medium" style={{ color: T3 }}>
                             <Clock className="w-[11px] h-[11px] opacity-70" strokeWidth={2.2} />
                             {slot.time}
                           </div>
                         )}
                       </div>
                     </div>
-                    <div className="px-[11px] py-[5px] rounded-full text-[10px] font-bold shrink-0 tracking-[0.02em]"
-                      style={{ background: "rgba(0,85,255,0.10)", color: B1, border: "0.5px solid rgba(0,85,255,0.20)" }}>
+                    <div className="px-[12px] py-[4px] rounded-full text-[12px] font-semibold shrink-0 tracking-[0.02em]"
+                      style={{ background: "rgba(10,132,255,0.10)", color: B1, border: "0.5px solid rgba(10,132,255,0.20)" }}>
                       {tag}
                     </div>
                   </div>
@@ -403,10 +403,10 @@ const TimetablePage = () => {
               })}
 
               {/* End divider */}
-              <div className="flex items-center justify-center gap-2 py-[10px]">
-                <div className="flex-1 h-px" style={{ background: "rgba(0,85,255,0.10)" }} />
-                <div className="text-[10px] font-bold uppercase tracking-[0.10em]" style={{ color: "rgba(0,85,255,0.30)" }}>No more periods</div>
-                <div className="flex-1 h-px" style={{ background: "rgba(0,85,255,0.10)" }} />
+              <div className="flex items-center justify-center gap-2 py-[12px]">
+                <div className="flex-1 h-px" style={{ background: "rgba(10,132,255,0.10)" }} />
+                <div className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: "rgba(10,132,255,0.30)" }}>No more periods</div>
+                <div className="flex-1 h-px" style={{ background: "rgba(10,132,255,0.10)" }} />
               </div>
             </>
           )}
@@ -414,9 +414,9 @@ const TimetablePage = () => {
 
         {/* ── This Week Overview ── */}
         {!loading && timetable.length > 0 && (
-          <div className="mx-5 mt-4 bg-white rounded-[20px] px-[18px] py-4"
-            style={{ boxShadow: SH, border: "0.5px solid rgba(0,85,255,0.10)" }}>
-            <div className="text-[12px] font-bold uppercase tracking-[0.08em] mb-[14px]" style={{ color: T4 }}>This Week</div>
+          <div className="mx-5 mt-4 bg-white rounded-[20px] px-[16px] py-4"
+            style={{ boxShadow: SH, border: "0.5px solid rgba(10,132,255,0.10)" }}>
+            <div className="text-[12px] font-semibold uppercase tracking-[0.08em] mb-[16px]" style={{ color: T4 }}>This Week</div>
             <div className="grid grid-cols-5 gap-2">
               {DAY_SHORT.slice(0, 5).map((lbl, i) => {
                 const isAct = selectedDay === i;
@@ -427,18 +427,18 @@ const TimetablePage = () => {
                     onClick={() => setSelectedDay(i)}
                     aria-label={`Show ${DAYS[i]} schedule`}
                     aria-pressed={isAct}
-                    className="flex flex-col items-center gap-[5px] active:scale-[0.94] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF]/40 rounded-[12px]"
+                    className="flex flex-col items-center gap-[4px] active:scale-[0.94] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40 rounded-[12px]"
                   >
                     <div
                       className="w-9 h-9 rounded-[12px] flex items-center justify-center"
                       style={
                         isAct
-                          ? { background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: "0 3px 10px rgba(0,85,255,0.30)" }
-                          : { background: BG, border: "0.5px solid rgba(0,85,255,0.12)" }
+                          ? { background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: "0 3px 10px rgba(10,132,255,0.30)" }
+                          : { background: BG, border: "0.5px solid rgba(10,132,255,0.12)" }
                       }>
-                      <span className="text-[11px] font-bold" style={{ color: isAct ? "#FFFFFF" : T3 }}>{count}</span>
+                      <span className="text-[12px] font-semibold" style={{ color: isAct ? "#FFFFFF" : T3 }}>{count}</span>
                     </div>
-                    <span className="text-[9px] font-bold uppercase tracking-[0.06em]" style={{ color: isAct ? B1 : T4 }}>{lbl}</span>
+                    <span className="text-[12px] font-semibold uppercase tracking-[0.06em]" style={{ color: isAct ? B1 : T4 }}>{lbl}</span>
                   </button>
                 );
               })}
@@ -454,17 +454,17 @@ const TimetablePage = () => {
   /* ═══════════════════════════════════════════════════════════════
      DESKTOP — Bright Blue Apple UI (matches mobile)
      ═══════════════════════════════════════════════════════════════ */
-  const B1 = "#0055FF";
-  const B2 = "#1166FF";
-  const BG = "#EEF4FF";
-  const BG2 = "#E0ECFF";
-  const T1 = "#001040";
-  const T2 = "#002080";
-  const T3 = "#5070B0";
-  const T4 = "#99AACC";
-  const SEP = "rgba(0,85,255,0.07)";
-  const SH = "0 0 0 0.5px rgba(0,85,255,0.08), 0 2px 8px rgba(0,85,255,0.10), 0 10px 28px rgba(0,85,255,0.12)";
-  const SH_BTN = "0 6px 22px rgba(0,85,255,0.42), 0 2px 6px rgba(0,85,255,0.24)";
+  const B1 = "#0A84FF";
+  const B2 = "#3395FF";
+  const BG = "#F5F5F7";
+  const BG2 = "#EBEBF0";
+  const T1 = "#1D1D1F";
+  const T2 = "#3A3A3C";
+  const T3 = "#6E6E73";
+  const T4 = "#A1A1A6";
+  const SEP = "rgba(10,132,255,0.07)";
+  const SH = "0 0 0 0.5px rgba(10,132,255,0.08), 0 2px 8px rgba(10,132,255,0.10), 0 10px 28px rgba(10,132,255,0.12)";
+  const SH_BTN = "0 6px 22px rgba(10,132,255,0.42), 0 2px 6px rgba(10,132,255,0.24)";
 
   // Week dates
   const now = new Date();
@@ -489,9 +489,9 @@ const TimetablePage = () => {
     : 0;
 
   const subjectAccents = [
-    { bar: "linear-gradient(180deg, #0055FF, #4499FF)",  icoBg: "linear-gradient(135deg, #0044EE, #2277FF)", icoShadow: "0 3px 10px rgba(0,68,238,0.28)" },
-    { bar: "linear-gradient(180deg, #0033CC, #2277FF)",  icoBg: "linear-gradient(135deg, #002DBB, #0055FF)", icoShadow: "0 3px 10px rgba(0,45,187,0.28)" },
-    { bar: "linear-gradient(180deg, #2255DD, #66BBFF)",  icoBg: "linear-gradient(135deg, #1155EE, #44AAFF)", icoShadow: "0 3px 10px rgba(17,85,238,0.28)" },
+    { bar: "linear-gradient(180deg, #0A84FF, #7CBBFF)",  icoBg: "linear-gradient(135deg, #3395FF, #5BA9FF)", icoShadow: "0 3px 10px rgba(0,68,238,0.28)" },
+    { bar: "linear-gradient(180deg, #0A84FF, #5BA9FF)",  icoBg: "linear-gradient(135deg, #0A84FF, #0A84FF)", icoShadow: "0 3px 10px rgba(0,45,187,0.28)" },
+    { bar: "linear-gradient(180deg, #2255DD, #7CBBFF)",  icoBg: "linear-gradient(135deg, #3395FF, #7CBBFF)", icoShadow: "0 3px 10px rgba(17,85,238,0.28)" },
   ];
   const subjectAccentMap = new Map<string, number>();
   let accentIdx = 0;
@@ -507,19 +507,19 @@ const TimetablePage = () => {
 
   return (
     <div className="animate-in fade-in duration-500 -m-4 sm:-m-6 md:-m-8 min-h-[calc(100vh-64px)]"
-      style={{ fontFamily: "'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif", background: BG }}>
-      <div className="w-full px-6 pt-8 pb-12">
+      style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif", background: BG }}>
+      <div className="w-full px-6 pt-8 pb-10">
 
         {/* ── Hero Banner ── */}
         <div className="rounded-[26px] px-8 pt-8 pb-8 relative overflow-hidden mb-5"
           style={{
-            background: "linear-gradient(140deg, #0033CC 0%, #0055FF 40%, #2277FF 75%, #55AAFF 100%)",
+            background: "linear-gradient(140deg, #0A84FF 0%, #0A84FF 40%, #5BA9FF 75%, #7CBBFF 100%)",
             boxShadow: SH_BTN,
             minHeight: 180,
           }}>
           <div className="absolute -top-[40px] -right-[40px] w-[260px] h-[260px] rounded-full pointer-events-none" style={{ background: "rgba(255,255,255,0.14)" }} />
           <div className="absolute -bottom-[50px] right-[60px] w-[180px] h-[180px] rounded-full pointer-events-none" style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.12)" }} />
-          <div className="absolute -bottom-[10px] right-[200px] w-[120px] h-[120px] rounded-full pointer-events-none" style={{ background: "rgba(255,255,255,0.10)", border: "1px solid rgba(255,255,255,0.15)" }} />
+          <div className="absolute -bottom-[12px] right-[200px] w-[120px] h-[120px] rounded-full pointer-events-none" style={{ background: "rgba(255,255,255,0.10)", border: "1px solid rgba(255,255,255,0.15)" }} />
           <div className="absolute bottom-[40px] right-[340px] w-[80px] h-[80px] rounded-full pointer-events-none" style={{ background: "rgba(255,255,255,0.08)" }} />
           <div className="absolute inset-0 pointer-events-none" style={{
             backgroundImage: "linear-gradient(rgba(255,255,255,0.016) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.016) 1px, transparent 1px)",
@@ -527,9 +527,9 @@ const TimetablePage = () => {
           }} />
           <div className="flex items-end justify-between gap-6 flex-wrap relative z-10">
             <div>
-              <div className="text-[10px] font-bold uppercase tracking-[0.14em] mb-2" style={{ color: "rgba(255,255,255,0.55)" }}>Weekly Schedule</div>
-              <div className="text-[48px] font-bold text-white mb-3 leading-[1.02]" style={{ letterSpacing: "-1.4px" }}>Timetable</div>
-              <div className="text-[14px] font-medium flex items-center gap-[6px]" style={{ color: "rgba(255,255,255,0.78)" }}>
+              <div className="text-[12px] font-semibold uppercase tracking-[0.14em] mb-2" style={{ color: "rgba(255,255,255,0.55)" }}>Weekly Schedule</div>
+              <div className="text-[28px] font-semibold text-white mb-3 leading-[1.02]" style={{ letterSpacing: "-1.4px" }}>Timetable</div>
+              <div className="text-[14px] font-medium flex items-center gap-[8px]" style={{ color: "rgba(255,255,255,0.78)" }}>
                 <User className="w-[14px] h-[14px]" style={{ color: "rgba(255,255,255,0.75)" }} strokeWidth={2.2} />
                 <span className="truncate">{studentData?.name || "Student"}</span>
                 {(studentData?.className || (studentData as any)?.class) && (
@@ -543,15 +543,15 @@ const TimetablePage = () => {
             {!loading && timetable.length > 0 && (
               <div className="flex items-center gap-5">
                 <div className="text-right">
-                  <div className="text-[10px] font-bold uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.55)" }}>This Week</div>
-                  <div className="text-[30px] font-bold text-white leading-none mt-1" style={{ letterSpacing: "-0.8px" }}>{totalPeriodsThisWeek}</div>
-                  <div className="text-[11px] font-medium" style={{ color: "rgba(255,255,255,0.60)" }}>periods</div>
+                  <div className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.55)" }}>This Week</div>
+                  <div className="text-[28px] font-semibold text-white leading-none mt-1" style={{ letterSpacing: "-0.8px" }}>{totalPeriodsThisWeek}</div>
+                  <div className="text-[12px] font-medium" style={{ color: "rgba(255,255,255,0.60)" }}>periods</div>
                 </div>
                 <div className="w-px h-14" style={{ background: "rgba(255,255,255,0.22)" }} />
                 <div className="text-right">
-                  <div className="text-[10px] font-bold uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.55)" }}>Progress</div>
-                  <div className="text-[30px] font-bold text-white leading-none mt-1" style={{ letterSpacing: "-0.8px" }}>{progressPct}%</div>
-                  <div className="text-[11px] font-medium" style={{ color: "rgba(255,255,255,0.60)" }}>through week</div>
+                  <div className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.55)" }}>Progress</div>
+                  <div className="text-[28px] font-semibold text-white leading-none mt-1" style={{ letterSpacing: "-0.8px" }}>{progressPct}%</div>
+                  <div className="text-[12px] font-medium" style={{ color: "rgba(255,255,255,0.60)" }}>through week</div>
                 </div>
               </div>
             )}
@@ -572,12 +572,12 @@ const TimetablePage = () => {
                   className="flex flex-col items-center gap-1 min-w-[90px] px-4 py-3 rounded-[18px] transition-transform hover:scale-[1.03] shrink-0"
                   style={{
                     background: isAct ? `linear-gradient(135deg, ${B1}, ${B2})` : "#FFFFFF",
-                    border: "0.5px solid rgba(0,85,255,0.10)",
-                    boxShadow: isAct ? "0 4px 16px rgba(0,85,255,0.36), 0 1px 4px rgba(0,85,255,0.22)" : SH,
+                    border: "0.5px solid rgba(10,132,255,0.10)",
+                    boxShadow: isAct ? "0 4px 16px rgba(10,132,255,0.36), 0 1px 4px rgba(10,132,255,0.22)" : SH,
                   }}>
-                  <span className="text-[11px] font-bold uppercase tracking-[0.08em]" style={{ color: isAct ? "#FFFFFF" : T3 }}>{lbl}</span>
-                  <span className="text-[22px] font-bold leading-none" style={{ color: isAct ? "#FFFFFF" : T2, letterSpacing: "-0.4px" }}>{d.getDate()}</span>
-                  <span className="text-[9px] font-bold uppercase tracking-[0.08em]" style={{ color: isAct ? "rgba(255,255,255,0.75)" : isToday ? B1 : T4 }}>
+                  <span className="text-[12px] font-semibold uppercase tracking-[0.08em]" style={{ color: isAct ? "#FFFFFF" : T3 }}>{lbl}</span>
+                  <span className="text-[22px] font-semibold leading-none" style={{ color: isAct ? "#FFFFFF" : T2, letterSpacing: "-0.4px" }}>{d.getDate()}</span>
+                  <span className="text-[12px] font-semibold uppercase tracking-[0.08em]" style={{ color: isAct ? "rgba(255,255,255,0.75)" : isToday ? B1 : T4 }}>
                     {isToday ? "Today" : `${perDayCount[i]} period${perDayCount[i] === 1 ? "" : "s"}`}
                   </span>
                 </button>
@@ -586,7 +586,7 @@ const TimetablePage = () => {
           </div>
           <div className="h-[3px] rounded-[2px] overflow-hidden" style={{ background: BG2 }}>
             <div className="h-full rounded-[2px] transition-all duration-500"
-              style={{ width: `${Math.max(progressPct, 4)}%`, background: `linear-gradient(90deg, ${B1}, #4499FF)` }} />
+              style={{ width: `${Math.max(progressPct, 4)}%`, background: `linear-gradient(90deg, ${B1}, #7CBBFF)` }} />
           </div>
         </div>
 
@@ -596,45 +596,45 @@ const TimetablePage = () => {
           {/* Today's periods (lg:col-span-2) */}
           <div className="lg:col-span-2">
             <div className="flex items-center justify-between mb-3">
-              <div className="text-[22px] font-bold" style={{ color: T1, letterSpacing: "-0.5px" }}>
+              <div className="text-[22px] font-semibold" style={{ color: T1, letterSpacing: "-0.5px" }}>
                 {DAYS[selectedDay]}
                 <span className="text-[14px] font-medium ml-3" style={{ color: T4, letterSpacing: 0 }}>
                   · {MONTH[weekDates[selectedDay].getMonth()]} {weekDates[selectedDay].getDate()}
                 </span>
               </div>
-              <div className="text-[12px] font-bold px-3 py-[6px] rounded-full tracking-[0.04em]"
-                style={{ color: B1, background: "rgba(0,85,255,0.10)", border: "0.5px solid rgba(0,85,255,0.18)" }}>
+              <div className="text-[12px] font-semibold px-3 py-[8px] rounded-full tracking-[0.04em]"
+                style={{ color: B1, background: "rgba(10,132,255,0.10)", border: "0.5px solid rgba(10,132,255,0.18)" }}>
                 {todaySlots.length} {todaySlots.length === 1 ? "Period" : "Periods"}
               </div>
             </div>
 
-            <div className="flex flex-col gap-[10px]">
+            <div className="flex flex-col gap-[12px]">
               {loading ? (
-                <div className="flex flex-col items-center gap-[10px] py-16 bg-white rounded-[20px]"
-                  style={{ boxShadow: SH, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                <div className="flex flex-col items-center gap-[12px] py-10 bg-white rounded-[20px]"
+                  style={{ boxShadow: SH, border: "0.5px solid rgba(10,132,255,0.10)" }}>
                   <div className="w-14 h-14 rounded-2xl flex items-center justify-center" style={{ background: BG2 }}>
                     <Loader2 className="w-7 h-7 animate-spin" style={{ color: B1 }} />
                   </div>
-                  <p className="text-[12px] font-bold uppercase tracking-widest" style={{ color: T4 }}>Loading schedule…</p>
+                  <p className="text-[12px] font-semibold uppercase tracking-widest" style={{ color: T4 }}>Loading schedule…</p>
                 </div>
               ) : timetable.length === 0 ? (
-                <div className="flex flex-col items-center gap-[10px] py-20 text-center bg-white rounded-[20px]"
-                  style={{ boxShadow: SH, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                <div className="flex flex-col items-center gap-[12px] py-10 text-center bg-white rounded-[20px]"
+                  style={{ boxShadow: SH, border: "0.5px solid rgba(10,132,255,0.10)" }}>
                   <div className="w-[70px] h-[70px] rounded-[22px] flex items-center justify-center"
-                    style={{ background: "rgba(0,85,255,0.08)", border: "0.5px solid rgba(0,85,255,0.14)", boxShadow: "0 0 0 10px rgba(0,85,255,0.04)" }}>
+                    style={{ background: "rgba(10,132,255,0.08)", border: "0.5px solid rgba(10,132,255,0.14)", boxShadow: "0 0 0 10px rgba(10,132,255,0.04)" }}>
                     <CalendarDays className="w-9 h-9" style={{ color: T4 }} />
                   </div>
-                  <div className="text-[18px] font-bold" style={{ color: T2, letterSpacing: "-0.3px" }}>No timetable yet</div>
+                  <div className="text-[18px] font-semibold" style={{ color: T2, letterSpacing: "-0.3px" }}>No timetable yet</div>
                   <div className="text-[14px] max-w-[300px] leading-[1.55]" style={{ color: T4 }}>Your school hasn't set up the timetable.</div>
                 </div>
               ) : todaySlots.length === 0 ? (
-                <div className="flex flex-col items-center gap-[10px] py-20 text-center bg-white rounded-[20px]"
-                  style={{ boxShadow: SH, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                <div className="flex flex-col items-center gap-[12px] py-10 text-center bg-white rounded-[20px]"
+                  style={{ boxShadow: SH, border: "0.5px solid rgba(10,132,255,0.10)" }}>
                   <div className="w-[70px] h-[70px] rounded-[22px] flex items-center justify-center"
-                    style={{ background: "rgba(0,85,255,0.08)", border: "0.5px solid rgba(0,85,255,0.14)", boxShadow: "0 0 0 10px rgba(0,85,255,0.04)" }}>
+                    style={{ background: "rgba(10,132,255,0.08)", border: "0.5px solid rgba(10,132,255,0.14)", boxShadow: "0 0 0 10px rgba(10,132,255,0.04)" }}>
                     <CalendarDays className="w-9 h-9" style={{ color: T4 }} />
                   </div>
-                  <div className="text-[18px] font-bold" style={{ color: T2, letterSpacing: "-0.3px" }}>No classes today</div>
+                  <div className="text-[18px] font-semibold" style={{ color: T2, letterSpacing: "-0.3px" }}>No classes today</div>
                   <div className="text-[14px] max-w-[300px] leading-[1.55]" style={{ color: T4 }}>Enjoy the day off!</div>
                 </div>
               ) : (
@@ -651,11 +651,11 @@ const TimetablePage = () => {
                         aria-label={`Open ${subject} syllabus`}
                         onClick={() => navigate("/syllabus", { state: { subject } })}
                         onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/syllabus", { state: { subject } }); } }}
-                        className="rounded-[20px] px-5 py-4 flex items-center gap-4 relative overflow-hidden bg-white cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF]/40"
-                        style={{ boxShadow: SH, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                        className="rounded-[20px] px-5 py-4 flex items-center gap-4 relative overflow-hidden bg-white cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
+                        style={{ boxShadow: SH, border: "0.5px solid rgba(10,132,255,0.10)" }}>
                         <div className="absolute left-0 top-0 bottom-0 w-[3.5px]" style={{ background: accent.bar }} />
-                        <div className="w-10 h-10 rounded-[12px] flex items-center justify-center shrink-0 text-[13px] font-bold"
-                          style={{ background: "rgba(0,85,255,0.10)", border: "0.5px solid rgba(0,85,255,0.18)", color: B1, letterSpacing: "-0.2px" }}>
+                        <div className="w-10 h-10 rounded-[12px] flex items-center justify-center shrink-0 text-[13px] font-semibold"
+                          style={{ background: "rgba(10,132,255,0.10)", border: "0.5px solid rgba(10,132,255,0.18)", color: B1, letterSpacing: "-0.2px" }}>
                           {periodNum}
                         </div>
                         <div className="w-12 h-12 rounded-[14px] flex items-center justify-center shrink-0"
@@ -663,7 +663,7 @@ const TimetablePage = () => {
                           <BookOpen className="w-[22px] h-[22px] text-white" strokeWidth={2.2} />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <div className="text-[17px] font-bold mb-1 truncate" style={{ color: T1, letterSpacing: "-0.3px" }}>{subject}</div>
+                          <div className="text-[18px] font-semibold mb-1 truncate" style={{ color: T1, letterSpacing: "-0.3px" }}>{subject}</div>
                           <div className="flex items-center gap-4 flex-wrap">
                             {slot.teacherName && (
                               <div className="flex items-center gap-1.5 text-[12px] font-medium" style={{ color: T3 }}>
@@ -682,8 +682,8 @@ const TimetablePage = () => {
                             )}
                           </div>
                         </div>
-                        <div className="px-3 py-[6px] rounded-full text-[11px] font-bold shrink-0 tracking-[0.02em]"
-                          style={{ background: "rgba(0,85,255,0.10)", color: B1, border: "0.5px solid rgba(0,85,255,0.20)" }}>
+                        <div className="px-3 py-[8px] rounded-full text-[12px] font-semibold shrink-0 tracking-[0.02em]"
+                          style={{ background: "rgba(10,132,255,0.10)", color: B1, border: "0.5px solid rgba(10,132,255,0.20)" }}>
                           {tag}
                         </div>
                       </div>
@@ -691,9 +691,9 @@ const TimetablePage = () => {
                   })}
 
                   <div className="flex items-center justify-center gap-2 py-3">
-                    <div className="flex-1 h-px" style={{ background: "rgba(0,85,255,0.10)" }} />
-                    <div className="text-[10px] font-bold uppercase tracking-[0.10em]" style={{ color: "rgba(0,85,255,0.30)" }}>No more periods</div>
-                    <div className="flex-1 h-px" style={{ background: "rgba(0,85,255,0.10)" }} />
+                    <div className="flex-1 h-px" style={{ background: "rgba(10,132,255,0.10)" }} />
+                    <div className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: "rgba(10,132,255,0.30)" }}>No more periods</div>
+                    <div className="flex-1 h-px" style={{ background: "rgba(10,132,255,0.10)" }} />
                   </div>
                 </>
               )}
@@ -704,9 +704,9 @@ const TimetablePage = () => {
           {!loading && timetable.length > 0 && (
             <div className="flex flex-col gap-4">
               <div className="bg-white rounded-[22px] p-5"
-                style={{ boxShadow: SH, border: "0.5px solid rgba(0,85,255,0.10)" }}>
-                <div className="text-[13px] font-bold uppercase tracking-[0.08em] mb-4" style={{ color: T4 }}>This Week Overview</div>
-                <div className="flex flex-col gap-[10px]">
+                style={{ boxShadow: SH, border: "0.5px solid rgba(10,132,255,0.10)" }}>
+                <div className="text-[13px] font-semibold uppercase tracking-[0.08em] mb-4" style={{ color: T4 }}>This Week Overview</div>
+                <div className="flex flex-col gap-[12px]">
                   {DAY_SHORT.slice(0, 6).map((lbl, i) => {
                     const isAct = selectedDay === i;
                     const count = perDayCount[i];
@@ -718,32 +718,32 @@ const TimetablePage = () => {
                         onClick={() => setSelectedDay(i)}
                         className="flex items-center gap-3 p-3 rounded-[14px] transition-transform hover:-translate-y-0.5 text-left"
                         style={{
-                          background: isAct ? `linear-gradient(135deg, rgba(0,85,255,0.08), rgba(68,153,255,0.04))` : BG,
-                          border: `0.5px solid ${isAct ? "rgba(0,85,255,0.24)" : "rgba(0,85,255,0.10)"}`,
+                          background: isAct ? `linear-gradient(135deg, rgba(10,132,255,0.08), rgba(124,187,255,0.04))` : BG,
+                          border: `0.5px solid ${isAct ? "rgba(10,132,255,0.24)" : "rgba(10,132,255,0.10)"}`,
                         }}>
                         <div className="w-11 h-11 rounded-[12px] flex items-center justify-center shrink-0"
                           style={{
                             background: isAct ? `linear-gradient(135deg, ${B1}, ${B2})` : "#fff",
-                            boxShadow: isAct ? "0 3px 10px rgba(0,85,255,0.30)" : SH,
-                            border: isAct ? "0.5px solid transparent" : "0.5px solid rgba(0,85,255,0.12)",
+                            boxShadow: isAct ? "0 3px 10px rgba(10,132,255,0.30)" : SH,
+                            border: isAct ? "0.5px solid transparent" : "0.5px solid rgba(10,132,255,0.12)",
                           }}>
-                          <span className="text-[15px] font-bold" style={{ color: isAct ? "#FFFFFF" : B1, letterSpacing: "-0.3px" }}>{count}</span>
+                          <span className="text-[15px] font-semibold" style={{ color: isAct ? "#FFFFFF" : B1, letterSpacing: "-0.3px" }}>{count}</span>
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2">
-                            <span className="text-[13px] font-bold" style={{ color: T1 }}>{DAYS[i]}</span>
+                            <span className="text-[13px] font-semibold" style={{ color: T1 }}>{DAYS[i]}</span>
                             {isToday && (
-                              <span className="text-[9px] font-bold px-[6px] py-[2px] rounded-full"
-                                style={{ background: "rgba(0,85,255,0.10)", color: B1, border: "0.5px solid rgba(0,85,255,0.22)" }}>
+                              <span className="text-[12px] font-semibold px-[8px] py-[2px] rounded-full"
+                                style={{ background: "rgba(10,132,255,0.10)", color: B1, border: "0.5px solid rgba(10,132,255,0.22)" }}>
                                 TODAY
                               </span>
                             )}
                           </div>
                           <div className="h-[4px] rounded-[2px] mt-1.5 overflow-hidden" style={{ background: BG2 }}>
                             <div className="h-full rounded-[2px]"
-                              style={{ width: `${(count / maxCount) * 100}%`, background: isAct ? `linear-gradient(90deg, ${B1}, #4499FF)` : "rgba(0,85,255,0.35)" }} />
+                              style={{ width: `${(count / maxCount) * 100}%`, background: isAct ? `linear-gradient(90deg, ${B1}, #7CBBFF)` : "rgba(10,132,255,0.35)" }} />
                           </div>
-                          <div className="text-[10px] mt-1 font-medium" style={{ color: T4 }}>
+                          <div className="text-[12px] mt-1 font-medium" style={{ color: T4 }}>
                             {count === 0 ? "No classes" : `${count} ${count === 1 ? "period" : "periods"}`}
                           </div>
                         </div>

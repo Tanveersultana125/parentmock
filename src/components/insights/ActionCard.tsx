@@ -32,7 +32,7 @@ export function ActionCard({ action, index }: ActionCardProps) {
           style={{
             flexShrink: 0,
             fontSize: 30,
-            fontWeight: 800,
+            fontWeight: 600,
             letterSpacing: '-1.2px',
             color: T.B1,
             lineHeight: 1,
@@ -45,7 +45,7 @@ export function ActionCard({ action, index }: ActionCardProps) {
           <p
             style={{
               fontSize: 15,
-              fontWeight: 800,
+              fontWeight: 600,
               color: T.T1,
               margin: '0 0 4px',
               letterSpacing: '-0.2px',
@@ -108,7 +108,7 @@ function CompletedCard({ action, numStr }: { action: ActionItem; numStr: string 
           style={{
             flexShrink: 0,
             fontSize: 30,
-            fontWeight: 800,
+            fontWeight: 600,
             letterSpacing: '-1.2px',
             color: T.B1,
             lineHeight: 1,
@@ -121,7 +121,7 @@ function CompletedCard({ action, numStr }: { action: ActionItem; numStr: string 
           <p
             style={{
               fontSize: 15,
-              fontWeight: 800,
+              fontWeight: 600,
               color: T.T1,
               margin: '0 0 4px',
               letterSpacing: '-0.2px',
@@ -133,7 +133,7 @@ function CompletedCard({ action, numStr }: { action: ActionItem; numStr: string 
           <p
             style={{
               fontSize: 12,
-              fontWeight: 700,
+              fontWeight: 600,
               color: T.GREEN,
               margin: 0,
               lineHeight: 1.5,
@@ -147,15 +147,15 @@ function CompletedCard({ action, numStr }: { action: ActionItem; numStr: string 
         style={{
           padding: 12,
           borderRadius: 12,
-          background: 'rgba(0,85,255,0.04)',
-          border: '0.5px solid rgba(0,85,255,0.08)',
+          background: 'rgba(10,132,255,0.04)',
+          border: '0.5px solid rgba(10,132,255,0.08)',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <span
             style={{
               fontSize: 10,
-              fontWeight: 800,
+              fontWeight: 600,
               letterSpacing: '1.2px',
               color: T.GREEN,
               textTransform: 'uppercase',
@@ -168,12 +168,12 @@ function CompletedCard({ action, numStr }: { action: ActionItem; numStr: string 
               flex: 1,
               height: 4,
               borderRadius: 999,
-              background: 'linear-gradient(90deg, #34C759 0%, #00C853 100%)',
+              background: 'linear-gradient(90deg, #34C759 0%, #34C759 100%)',
               boxShadow: '0 0 10px rgba(52,199,89,0.45)',
             }}
           />
           {action.reward && (
-            <span style={{ fontSize: 11, fontWeight: 800, color: T.GREEN }}>
+            <span style={{ fontSize: 11, fontWeight: 600, color: T.GREEN }}>
               {action.reward}
             </span>
           )}
@@ -216,7 +216,7 @@ function InProgressTrack({ action }: { action: ActionItem }) {
           <span
             style={{
               fontSize: 10,
-              fontWeight: 800,
+              fontWeight: 600,
               letterSpacing: '1.2px',
               color: T.GREEN,
               textTransform: 'uppercase',
@@ -225,7 +225,7 @@ function InProgressTrack({ action }: { action: ActionItem }) {
             Live · Auto-tracked
           </span>
         </span>
-        <span style={{ fontSize: 12, fontWeight: 800, color: T.GREEN }}>
+        <span style={{ fontSize: 12, fontWeight: 600, color: T.GREEN }}>
           {current} / {target} done
         </span>
       </div>
@@ -237,7 +237,7 @@ function InProgressTrack({ action }: { action: ActionItem }) {
               flex: 1,
               height: 6,
               borderRadius: 999,
-              background: i < current ? T.GREEN : 'rgba(0,85,255,0.10)',
+              background: i < current ? T.GREEN : 'rgba(10,132,255,0.10)',
               boxShadow: i < current ? `0 0 6px rgba(52,199,89,0.4)` : 'none',
             }}
           />
@@ -281,8 +281,8 @@ function PendingAutoTrack({ action }: { action: ActionItem }) {
       style={{
         padding: 12,
         borderRadius: 12,
-        background: 'rgba(0,85,255,0.04)',
-        border: '0.5px solid rgba(0,85,255,0.08)',
+        background: 'rgba(10,132,255,0.04)',
+        border: '0.5px solid rgba(10,132,255,0.08)',
       }}
     >
       <div
@@ -305,7 +305,7 @@ function PendingAutoTrack({ action }: { action: ActionItem }) {
           <span
             style={{
               fontSize: 10,
-              fontWeight: 800,
+              fontWeight: 600,
               letterSpacing: '1.2px',
               color: T.B1,
               textTransform: 'uppercase',
@@ -314,19 +314,19 @@ function PendingAutoTrack({ action }: { action: ActionItem }) {
             Auto-tracked daily
           </span>
         </span>
-        <span style={{ fontSize: 12, fontWeight: 800, color: T.B1 }}>
+        <span style={{ fontSize: 12, fontWeight: 600, color: T.B1 }}>
           {current}
           {suffix} → {target}
           {suffix}
         </span>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-        <span style={{ fontSize: 11, fontWeight: 700, color: T.T3 }}>Now {current}</span>
+        <span style={{ fontSize: 11, fontWeight: 600, color: T.T3 }}>Now {current}</span>
         <div
           style={{
             flex: 1,
             height: 4,
-            background: 'rgba(0,85,255,0.10)',
+            background: 'rgba(10,132,255,0.10)',
             borderRadius: 999,
             position: 'relative',
           }}
@@ -355,7 +355,7 @@ function PendingAutoTrack({ action }: { action: ActionItem }) {
             }}
           />
         </div>
-        <span style={{ fontSize: 11, fontWeight: 800, color: T.GREEN }}>Goal {target}</span>
+        <span style={{ fontSize: 11, fontWeight: 600, color: T.GREEN }}>Goal {target}</span>
       </div>
     </div>
   );
@@ -367,8 +367,8 @@ function ManualTrack({ action }: { action: ActionItem }) {
       style={{
         padding: 12,
         borderRadius: 12,
-        background: 'rgba(123,63,244,0.04)',
-        border: '0.5px solid rgba(123,63,244,0.10)',
+        background: 'rgba(175,82,222,0.04)',
+        border: '0.5px solid rgba(175,82,222,0.10)',
       }}
     >
       <div
@@ -391,7 +391,7 @@ function ManualTrack({ action }: { action: ActionItem }) {
           <span
             style={{
               fontSize: 10,
-              fontWeight: 800,
+              fontWeight: 600,
               letterSpacing: '1.2px',
               color: T.VIOLET,
               textTransform: 'uppercase',
@@ -400,7 +400,7 @@ function ManualTrack({ action }: { action: ActionItem }) {
             Teacher-tracked
           </span>
         </span>
-        <span style={{ fontSize: 11, fontWeight: 800, color: T.VIOLET }}>Manual update</span>
+        <span style={{ fontSize: 11, fontWeight: 600, color: T.VIOLET }}>Manual update</span>
       </div>
       {action.hint && (
         <p

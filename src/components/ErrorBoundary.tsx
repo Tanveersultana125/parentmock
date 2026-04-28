@@ -58,7 +58,7 @@ export class ErrorBoundary extends React.Component<
           <AlertCircle className="w-8 h-8 text-rose-400" />
         </div>
         <div className="text-center max-w-xs">
-          <h2 className="text-lg font-bold text-slate-800 mb-1">Something went wrong</h2>
+          <h2 className="text-lg font-semibold text-slate-800 mb-1">Something went wrong</h2>
           <p className="text-sm text-slate-500 mb-5 leading-relaxed">
             This page ran into an unexpected issue. Your data is safe — nothing was lost.
           </p>
@@ -71,7 +71,7 @@ export class ErrorBoundary extends React.Component<
           </button>
         </div>
         {import.meta.env.DEV && this.state.error && (
-          <pre className="text-[10px] text-rose-400 bg-rose-50 rounded-xl p-3 max-w-sm overflow-auto">
+          <pre className="text-[12px] text-rose-400 bg-rose-50 rounded-xl p-3 max-w-sm overflow-auto">
             {this.state.error.message}
           </pre>
         )}

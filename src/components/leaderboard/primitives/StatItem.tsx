@@ -10,7 +10,7 @@ export function StatItem({ label, value, suffix = '' }: StatItemProps) {
       <p
         style={{
           fontSize: 9,
-          fontWeight: 800,
+          fontWeight: 600,
           letterSpacing: '1.4px',
           color: 'rgba(255,255,255,0.5)',
           margin: '0 0 4px',
@@ -22,7 +22,7 @@ export function StatItem({ label, value, suffix = '' }: StatItemProps) {
       <p
         style={{
           fontSize: 22,
-          fontWeight: 800,
+          fontWeight: 600,
           letterSpacing: '-0.6px',
           color: '#FFFFFF',
           margin: 0,
