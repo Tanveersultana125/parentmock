@@ -235,8 +235,8 @@ const SyllabusPage = () => {
     // No class assigned — mobile empty state
     if (!studentData?.classId) {
       return (
-        <div className="animate-in fade-in duration-500 -mx-3 -mt-3 md:mx-0 md:mt-0"
-          style={{ fontFamily: "'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif", background: BG, minHeight: "100vh" }}>
+        <div data-sfpro className="animate-in fade-in duration-500 -mx-3 -mt-3 md:mx-0 md:mt-0"
+          style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif", background: BG, minHeight: "100vh" }}>
           <div className="flex items-start justify-between px-[22px] pt-[18px]">
             <div>
               <div className="text-[26px] font-bold mb-[3px]" style={{ color: T1, letterSpacing: "-0.7px" }}>Class Documents</div>
@@ -262,8 +262,8 @@ const SyllabusPage = () => {
     }
 
     return (
-      <div className="animate-in fade-in duration-500 -mx-3 -mt-3 md:mx-0 md:mt-0"
-        style={{ fontFamily: "'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif", background: BG, minHeight: "100vh" }}>
+      <div data-sfpro className="animate-in fade-in duration-500 -mx-3 -mt-3 md:mx-0 md:mt-0"
+        style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif", background: BG, minHeight: "100vh" }}>
 
         {/* ── Page Head ── */}
         <div className="flex items-start justify-between px-[22px] pt-[18px]">
@@ -582,8 +582,8 @@ const SyllabusPage = () => {
   // No class assigned state (desktop)
   if (!studentData?.classId) {
     return (
-      <div className="animate-in fade-in duration-500 -m-4 sm:-m-6 md:-m-8 min-h-[calc(100vh-64px)]"
-        style={{ fontFamily: "'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif", background: BG }}>
+      <div data-sfpro className="animate-in fade-in duration-500 -m-4 sm:-m-6 md:-m-8 min-h-[calc(100vh-64px)]"
+        style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif", background: BG }}>
         <div className="w-full px-6 pt-8 pb-12">
           <div className="mb-6">
             <div className="text-[32px] font-bold" style={{ color: T1, letterSpacing: "-0.9px" }}>Class Documents</div>
@@ -608,8 +608,8 @@ const SyllabusPage = () => {
   }
 
   return (
-    <div className="animate-in fade-in duration-500 -m-4 sm:-m-6 md:-m-8 min-h-[calc(100vh-64px)]"
-      style={{ fontFamily: "'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif", background: BG }}>
+    <div data-sfpro className="animate-in fade-in duration-500 -m-4 sm:-m-6 md:-m-8 min-h-[calc(100vh-64px)]"
+      style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif", background: BG }}>
       <div className="w-full px-6 pt-8 pb-12">
 
         {/* ── Toolbar ── */}

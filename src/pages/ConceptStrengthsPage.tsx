@@ -648,8 +648,8 @@ Return JSON: { hints: ["hint1 (gentle nudge)", "hint2", "hint3", "hint4", "hint5
     };
 
     return (
-      <div className="animate-in fade-in duration-500 -mx-3 -mt-3 md:mx-0 md:mt-0"
-        style={{ fontFamily: "'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif", background: BG, minHeight: "100vh" }}>
+      <div data-sfpro className="animate-in fade-in duration-500 -mx-3 -mt-3 md:mx-0 md:mt-0"
+        style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif", background: BG, minHeight: "100vh" }}>
 
         {/* Page Head */}
         <div className="px-5 pt-4">
@@ -864,7 +864,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)", "hint2", "hint3", "hint4", "hint5
                         <CartesianGrid strokeDasharray="0" vertical={false} stroke="rgba(0,85,255,0.07)" />
                         <XAxis dataKey="month" tick={{ fontSize: 10, fill: T4 }} axisLine={false} tickLine={false} />
                         <YAxis tick={{ fontSize: 10, fill: T4 }} domain={[0, 100]} axisLine={false} tickLine={false} />
-                        <Tooltip contentStyle={{ fontSize: 11, borderRadius: 8, border: `0.5px solid ${BLUE_BDR}`, fontFamily: "DM Sans", boxShadow: "0 4px 20px rgba(0,85,255,0.12)" }} />
+                        <Tooltip contentStyle={{ fontSize: 11, borderRadius: 8, border: `0.5px solid ${BLUE_BDR}`, fontFamily: "'SF Pro Display'", boxShadow: "0 4px 20px rgba(0,85,255,0.12)" }} />
                         <Legend wrapperStyle={{ fontSize: 11 }} />
                         {subjectList.slice(0, 3).map((sub, i) => (
                           <Line key={sub} type="monotone" dataKey={sub} stroke={[GREEN, B1, RED, ORANGE, TEAL][i]} strokeWidth={2.5} dot={{ r: 4, strokeWidth: 2, fill: "#fff" }} connectNulls />
@@ -1005,7 +1005,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)", "hint2", "hint3", "hint4", "hint5
                   className="w-full py-[13px] pl-[14px] pr-[48px] rounded-[15px] text-[13px] font-normal outline-none"
                   style={{
                     background: BG, border: `0.5px solid ${BLUE_BDR}`,
-                    color: T1, fontFamily: "DM Sans, sans-serif",
+                    color: T1, fontFamily: "'SF Pro Display', sans-serif",
                     letterSpacing: "-0.1px"
                   }} />
                 <button onClick={() => handleExplain()} disabled={generatingExplanation}
@@ -1107,7 +1107,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)", "hint2", "hint3", "hint4", "hint5
                 <input type="text" value={practiceTopic} onChange={e => setPracticeTopic(e.target.value)}
                   placeholder={`Topic (e.g. ${activeSubject || "Islamic Read"})`}
                   className="flex-1 py-3 px-[14px] rounded-[14px] text-[13px] outline-none"
-                  style={{ background: BG, border: `0.5px solid ${BLUE_BDR}`, color: T1, fontFamily: "DM Sans, sans-serif" }} />
+                  style={{ background: BG, border: `0.5px solid ${BLUE_BDR}`, color: T1, fontFamily: "'SF Pro Display', sans-serif" }} />
                 <button onClick={handleGenerateQuestions} disabled={generatingQuestions}
                   className="py-3 px-[18px] rounded-[14px] text-[13px] font-bold text-white flex items-center gap-[5px] shrink-0 whitespace-nowrap disabled:opacity-60 active:scale-[0.93] transition-transform"
                   style={{
@@ -1213,7 +1213,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)", "hint2", "hint3", "hint4", "hint5
                   background: BG,
                   border: `0.5px solid ${BLUE_BDR}`,
                   color: T1,
-                  fontFamily: "DM Sans, sans-serif",
+                  fontFamily: "'SF Pro Display', sans-serif",
                   letterSpacing: "-0.1px"
                 }} />
 
@@ -1303,8 +1303,8 @@ Return JSON: { hints: ["hint1 (gentle nudge)", "hint2", "hint3", "hint4", "hint5
   };
 
   return (
-    <div className="animate-in fade-in duration-500 -m-4 sm:-m-6 md:-m-8 min-h-[calc(100vh-64px)]"
-      style={{ fontFamily: "'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif", background: BG }}>
+    <div data-sfpro className="animate-in fade-in duration-500 -m-4 sm:-m-6 md:-m-8 min-h-[calc(100vh-64px)]"
+      style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif", background: BG }}>
       <div className="w-full px-6 pt-8 pb-12">
 
         {/* ── Toolbar ── */}
@@ -1460,7 +1460,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)", "hint2", "hint3", "hint4", "hint5
                       <CartesianGrid strokeDasharray="0" vertical={false} stroke="rgba(0,85,255,0.07)" />
                       <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fill: T4, fontSize: 11 }} />
                       <YAxis axisLine={false} tickLine={false} tick={{ fill: T4, fontSize: 11 }} domain={[0, 100]} />
-                      <Tooltip contentStyle={{ borderRadius: "12px", border: `0.5px solid ${BLUE_BDR}`, fontSize: 12, fontFamily: "DM Sans", boxShadow: "0 4px 20px rgba(0,85,255,0.12)" }} formatter={(v: any, n: string) => [`${v}%`, n]} />
+                      <Tooltip contentStyle={{ borderRadius: "12px", border: `0.5px solid ${BLUE_BDR}`, fontSize: 12, fontFamily: "'SF Pro Display'", boxShadow: "0 4px 20px rgba(0,85,255,0.12)" }} formatter={(v: any, n: string) => [`${v}%`, n]} />
                       <Legend iconType="circle" iconSize={8} wrapperStyle={{ fontSize: 12, paddingTop: 16, color: T3 }} />
                       {subjectList.slice(0, 5).map((sub, i) => {
                         const colors = [B1, GREEN, ORANGE, PINK, TEAL];
@@ -1621,7 +1621,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)", "hint2", "hint3", "hint4", "hint5
                   onKeyDown={e => e.key === "Enter" && handleExplain()}
                   placeholder="e.g. Photosynthesis, Newton's Law…"
                   className="w-full py-3 pl-4 pr-[52px] rounded-[14px] text-[13px] outline-none"
-                  style={{ background: BG, border: `0.5px solid ${BLUE_BDR}`, color: T1, fontFamily: "DM Sans, sans-serif", letterSpacing: "-0.1px" }} />
+                  style={{ background: BG, border: `0.5px solid ${BLUE_BDR}`, color: T1, fontFamily: "'SF Pro Display', sans-serif", letterSpacing: "-0.1px" }} />
                 <button onClick={() => handleExplain()} disabled={generatingExplanation}
                   className="absolute right-[6px] top-1/2 -translate-y-1/2 w-9 h-9 rounded-[11px] flex items-center justify-center disabled:opacity-50 transition-transform hover:scale-105"
                   style={{ background: `linear-gradient(135deg, ${TEAL}, #22DDCC)`, boxShadow: "0 2px 8px rgba(0,196,180,0.32)" }}>
@@ -1762,7 +1762,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)", "hint2", "hint3", "hint4", "hint5
                   onKeyDown={e => e.key === "Enter" && handleGenerateQuestions()}
                   placeholder={`Topic (e.g. ${activeSubject || "Fractions"})`}
                   className="flex-1 min-w-[220px] h-12 px-4 rounded-[14px] text-[13px] outline-none"
-                  style={{ background: BG, border: `0.5px solid ${BLUE_BDR}`, color: T1, fontFamily: "DM Sans, sans-serif" }} />
+                  style={{ background: BG, border: `0.5px solid ${BLUE_BDR}`, color: T1, fontFamily: "'SF Pro Display', sans-serif" }} />
                 <button onClick={handleGenerateQuestions} disabled={generatingQuestions}
                   className="h-12 px-6 rounded-[14px] text-[13px] font-bold text-white flex items-center gap-2 disabled:opacity-60 transition-transform hover:scale-[1.02]"
                   style={{ background: `linear-gradient(135deg, ${ORANGE}, #FFAA22)`, boxShadow: "0 3px 12px rgba(255,136,0,0.32)" }}>
@@ -1882,7 +1882,7 @@ Return JSON: { hints: ["hint1 (gentle nudge)", "hint2", "hint3", "hint4", "hint5
               <textarea value={doubtText} onChange={e => setDoubtText(e.target.value)}
                 placeholder="Type your doubt… e.g. 'I don't understand simultaneous equations'"
                 className="w-full py-3 px-4 rounded-[14px] text-[13px] outline-none resize-none min-h-[120px] leading-[1.6] relative z-10"
-                style={{ background: BG, border: `0.5px solid ${BLUE_BDR}`, color: T1, fontFamily: "DM Sans, sans-serif", letterSpacing: "-0.1px" }} />
+                style={{ background: BG, border: `0.5px solid ${BLUE_BDR}`, color: T1, fontFamily: "'SF Pro Display', sans-serif", letterSpacing: "-0.1px" }} />
 
               <div className="flex gap-2 mt-4 relative z-10">
                 <input ref={fileInputRef} type="file" accept="image/*" capture="environment" onChange={handleImageUpload} className="hidden" />

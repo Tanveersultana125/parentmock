@@ -325,8 +325,8 @@ export default function BehaviourPage() {
     };
 
     return (
-      <div className="animate-in fade-in duration-500 -mx-3 -mt-3 md:mx-0 md:mt-0"
-        style={{ fontFamily: "'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif", background: BG, minHeight: "100vh" }}>
+      <div data-sfpro className="animate-in fade-in duration-500 -mx-3 -mt-3 md:mx-0 md:mt-0"
+        style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif", background: BG, minHeight: "100vh" }}>
 
         {loading ? (
           <div className="flex flex-col items-center justify-center pt-24 gap-3">
@@ -651,8 +651,8 @@ export default function BehaviourPage() {
   };
 
   return (
-    <div className="animate-in fade-in duration-500 -m-4 sm:-m-6 md:-m-8 min-h-[calc(100vh-64px)]"
-      style={{ fontFamily: "'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif", background: BG_D }}>
+    <div data-sfpro className="animate-in fade-in duration-500 -m-4 sm:-m-6 md:-m-8 min-h-[calc(100vh-64px)]"
+      style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif", background: BG_D }}>
       <div className="w-full px-6 pt-8 pb-12">
 
         {loading ? (
@@ -916,7 +916,7 @@ export default function BehaviourPage() {
                         <XAxis dataKey="m" axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: T4 }} dy={8} />
                         <YAxis domain={[1, 5]} axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: T4 }} />
                         <Tooltip
-                          contentStyle={{ borderRadius: 12, border: `0.5px solid ${BLUE_BDR}`, boxShadow: "0 4px 20px rgba(0,85,255,0.12)", fontSize: 12, fontFamily: "DM Sans", background: "#fff" }}
+                          contentStyle={{ borderRadius: 12, border: `0.5px solid ${BLUE_BDR}`, boxShadow: "0 4px 20px rgba(0,85,255,0.12)", fontSize: 12, fontFamily: "'SF Pro Display'", background: "#fff" }}
                           formatter={(val: any) => [`${val?.toFixed?.(1) ?? val}`, "Rating"]} />
                         <Area type="monotone" dataKey="score" stroke="url(#behDeskLine)" strokeWidth={3} fill="url(#behDeskArea)"
                           dot={{ r: 5, fill: B1, strokeWidth: 2, stroke: "#fff" }} activeDot={{ r: 7, strokeWidth: 2, stroke: "#fff" }} />

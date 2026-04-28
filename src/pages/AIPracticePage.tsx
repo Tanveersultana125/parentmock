@@ -474,8 +474,8 @@ const AIPracticePage = () => {
       : 0;
 
     return (
-      <div className="animate-in fade-in duration-500 -mx-3 -mt-3 md:mx-0 md:mt-0"
-        style={{ fontFamily: "'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif", background: BG, minHeight: "100vh" }}>
+      <div data-sfpro className="animate-in fade-in duration-500 -mx-3 -mt-3 md:mx-0 md:mt-0"
+        style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif", background: BG, minHeight: "100vh" }}>
 
         {/* ── Header ── */}
         <div className="flex items-center justify-between px-5 pt-3">
@@ -738,8 +738,8 @@ const AIPracticePage = () => {
     };
 
     return (
-      <div className="animate-in fade-in duration-500 -mx-3 -mt-3 md:mx-0 md:mt-0"
-        style={{ fontFamily: "'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif", background: BG, minHeight: "100vh" }}>
+      <div data-sfpro className="animate-in fade-in duration-500 -mx-3 -mt-3 md:mx-0 md:mt-0"
+        style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif", background: BG, minHeight: "100vh" }}>
 
         {/* ── Back ── */}
         <div className="flex items-center gap-2 px-5 pt-[14px] cursor-pointer active:opacity-60 w-fit" onClick={() => setView("home")}>
@@ -900,8 +900,8 @@ const AIPracticePage = () => {
     : 0;
 
   const DesktopShell = ({ children }: { children: any }) => (
-    <div className="animate-in fade-in duration-500 -m-4 sm:-m-6 md:-m-8 min-h-[calc(100vh-64px)]"
-      style={{ fontFamily: "'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif", background: BG_D }}>
+    <div data-sfpro className="animate-in fade-in duration-500 -m-4 sm:-m-6 md:-m-8 min-h-[calc(100vh-64px)]"
+      style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif", background: BG_D }}>
       <div className="w-full px-6 pt-8 pb-12">{children}</div>
     </div>
   );
@@ -1611,7 +1611,7 @@ const AIPracticePage = () => {
                     placeholder={q.type === "fill_blank" ? "Type your answer..." : "Write your answer (2-3 sentences)..."}
                     rows={q.type === "short_answer" ? 5 : 3}
                     className="w-full px-5 py-4 rounded-[16px] text-[14px] outline-none resize-none leading-[1.6]"
-                    style={{ background: BG_D, border: `0.5px solid ${BLUE_BDR_D}`, color: T1, fontFamily: "DM Sans, sans-serif" }}
+                    style={{ background: BG_D, border: `0.5px solid ${BLUE_BDR_D}`, color: T1, fontFamily: "'SF Pro Display', sans-serif" }}
                   />
                 )}
               </>
