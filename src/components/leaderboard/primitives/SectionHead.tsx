@@ -14,7 +14,7 @@ export function SectionHead({ title, subtitle }: SectionHeadProps) {
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: '4px 8px 14px',
-        borderBottom: '0.5px solid rgba(0,85,255,0.08)',
+        borderBottom: '0.5px solid rgba(10,132,255,0.08)',
       }}
     >
       <Eyebrow>{title}</Eyebrow>

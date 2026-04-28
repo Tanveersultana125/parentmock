@@ -27,7 +27,7 @@ export function ForecastCard({ data }: ForecastCardProps) {
           width: '80%',
           height: '140%',
           background:
-            'radial-gradient(circle, rgba(123,63,244,0.18) 0%, transparent 60%)',
+            'radial-gradient(circle, rgba(175,82,222,0.18) 0%, transparent 60%)',
           pointerEvents: 'none',
         }}
       />
@@ -48,15 +48,15 @@ export function ForecastCard({ data }: ForecastCardProps) {
             gap: 6,
             padding: '5px 11px',
             borderRadius: 999,
-            background: 'rgba(123,63,244,0.20)',
-            border: '0.5px solid rgba(123,63,244,0.4)',
+            background: 'rgba(175,82,222,0.20)',
+            border: '0.5px solid rgba(175,82,222,0.4)',
           }}
         >
           <Sparkles size={10} color={T.VIOLET_LIGHT} strokeWidth={2.2} />
           <span
             style={{
               fontSize: 9,
-              fontWeight: 800,
+              fontWeight: 600,
               color: T.VIOLET_LIGHT,
               letterSpacing: '1.4px',
               textTransform: 'uppercase',
@@ -70,7 +70,7 @@ export function ForecastCard({ data }: ForecastCardProps) {
       <p
         style={{
           fontSize: 11,
-          fontWeight: 800,
+          fontWeight: 600,
           letterSpacing: '1.6px',
           color: 'rgba(255,255,255,0.55)',
           margin: '0 0 8px',
@@ -93,7 +93,7 @@ export function ForecastCard({ data }: ForecastCardProps) {
         <span
           style={{
             fontSize: 64,
-            fontWeight: 800,
+            fontWeight: 600,
             letterSpacing: '-3.5px',
             lineHeight: 0.9,
             color: '#FFFFFF',
@@ -107,7 +107,7 @@ export function ForecastCard({ data }: ForecastCardProps) {
           #{data.projectedRank}
         </span>
         <div>
-          <p style={{ fontSize: 13, fontWeight: 700, color: 'rgba(255,255,255,0.7)', margin: 0 }}>
+          <p style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.7)', margin: 0 }}>
             {data.rankChange > 0 ? `Up ${data.rankChange} spots` : data.rankChange < 0 ? `Down ${-data.rankChange}` : 'Holding rank'}
           </p>
           <p
@@ -156,7 +156,7 @@ export function ForecastCard({ data }: ForecastCardProps) {
               <span
                 style={{
                   fontSize: 13,
-                  fontWeight: 800,
+                  fontWeight: 600,
                   color: s.highlight ? T.VIOLET_LIGHT : '#FFFFFF',
                   letterSpacing: '-0.2px',
                 }}
@@ -209,7 +209,7 @@ export function ForecastCard({ data }: ForecastCardProps) {
             }}
           />
         </div>
-        <span style={{ fontSize: 11, fontWeight: 800, color: T.VIOLET_LIGHT }}>
+        <span style={{ fontSize: 11, fontWeight: 600, color: T.VIOLET_LIGHT }}>
           {data.confidence}%
         </span>
       </div>

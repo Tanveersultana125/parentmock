@@ -20,7 +20,7 @@ const K = {
   border:  "#102240",
   cyan:    "#00d4ff",
   green:   "#00ff88",
-  amber:   "#ffaa00",
+  amber:   "#FFCC00",
   orange:  "#ff6b35",
   red:     "#ff3d71",
   white:   "#e2f0ff",
@@ -54,7 +54,7 @@ const Box = ({
 
 /** Section micro-label */
 const Tag = ({ label, color = K.cyan }: { label: string; color?: string }) => (
-  <div style={{ fontSize:7, fontWeight:700, letterSpacing:"0.2em",
+  <div style={{ fontSize:7, fontWeight: 600, letterSpacing:"0.2em",
     color, textTransform:"uppercase", marginBottom:8,
     display:"flex", alignItems:"center", gap:5 }}>
     <span style={{ width:10, height:1, background:color, opacity:.7 }} />
@@ -65,7 +65,7 @@ const Tag = ({ label, color = K.cyan }: { label: string; color?: string }) => (
 
 /** Big glowing number */
 const BigNum = ({ value, color, size = 30 }: { value: string; color: string; size?: number }) => (
-  <div style={{ fontSize: size, fontWeight: 900, color,
+  <div style={{ fontSize: size, fontWeight: 600, color,
     textShadow: `0 0 20px ${color}80`, lineHeight: 1 }}>
     {value}
   </div>
@@ -85,7 +85,7 @@ const StatRow = ({ label, value, color }: { label: string; value: string; color:
   <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center",
     padding:"4px 0", borderBottom:`1px solid ${K.border}` }}>
     <span style={{ fontSize:9, color: K.subtext }}>{label}</span>
-    <span style={{ fontSize:10, fontWeight:800, color }}>{value}</span>
+    <span style={{ fontSize:10, fontWeight: 600, color }}>{value}</span>
   </div>
 );
 
@@ -169,15 +169,15 @@ const WeeklyReportPDF = React.forwardRef<HTMLDivElement, WeeklyReportPDFProps>(
                 border:`2px solid ${K.cyan}50`,
                 boxShadow:`0 0 16px ${K.cyan}30`,
                 display:"flex", alignItems:"center", justifyContent:"center",
-                fontSize:16, fontWeight:900, color:K.cyan }}>
+                fontSize:16, fontWeight: 600, color:K.cyan }}>
                 {studentName.split(" ").map(n=>n[0]).join("").toUpperCase().slice(0,2)}
               </div>
               <div>
                 <div style={{ fontSize:7, color:K.cyan, letterSpacing:"0.2em",
-                  fontWeight:700, textTransform:"uppercase", marginBottom:3 }}>
+                  fontWeight: 600, textTransform:"uppercase", marginBottom:3 }}>
                   ◈ Edullent AI · Weekly Report
                 </div>
-                <div style={{ fontSize:20, fontWeight:900, lineHeight:1, color:K.white }}>
+                <div style={{ fontSize:20, fontWeight: 600, lineHeight:1, color:K.white }}>
                   {studentName}
                 </div>
                 <div style={{ fontSize:9, color:K.muted, marginTop:2 }}>
@@ -190,14 +190,14 @@ const WeeklyReportPDF = React.forwardRef<HTMLDivElement, WeeklyReportPDFProps>(
             <div style={{ display:"flex", gap:12, alignItems:"center" }}>
               <div style={{ textAlign:"center" }}>
                 <div style={{ fontSize:7, color:K.muted, letterSpacing:"0.1em", marginBottom:4 }}>TREND</div>
-                <div style={{ fontSize:22, fontWeight:900, color:tColor,
+                <div style={{ fontSize:22, fontWeight: 600, color:tColor,
                   textShadow:`0 0 16px ${tColor}` }}>{tArrow}</div>
-                <div style={{ fontSize:8, color:tColor, fontWeight:700 }}>{trend.toUpperCase()}</div>
+                <div style={{ fontSize:8, color:tColor, fontWeight: 600 }}>{trend.toUpperCase()}</div>
               </div>
               <div style={{ width:1, height:40, background:K.border }} />
               <div style={{ textAlign:"center" }}>
                 <div style={{ fontSize:7, color:K.muted, letterSpacing:"0.1em", marginBottom:4 }}>RISK</div>
-                <div style={{ fontSize:14, fontWeight:900, color:rColor,
+                <div style={{ fontSize:14, fontWeight: 600, color:rColor,
                   background:`${rColor}15`, border:`1px solid ${rColor}40`,
                   borderRadius:6, padding:"4px 12px",
                   boxShadow:`0 0 12px ${rColor}30` }}>{risk}</div>
@@ -207,7 +207,7 @@ const WeeklyReportPDF = React.forwardRef<HTMLDivElement, WeeklyReportPDFProps>(
                 background:`${vColor}12`, border:`1px solid ${vColor}45`,
                 boxShadow:`0 0 20px ${vColor}25`, textAlign:"center" }}>
                 <div style={{ fontSize:7, color:K.muted, letterSpacing:"0.1em", marginBottom:4 }}>VERDICT</div>
-                <div style={{ fontSize:15, fontWeight:900, color:vColor }}>{verdict}</div>
+                <div style={{ fontSize:15, fontWeight: 600, color:vColor }}>{verdict}</div>
               </div>
             </div>
           </div>
@@ -239,7 +239,7 @@ const WeeklyReportPDF = React.forwardRef<HTMLDivElement, WeeklyReportPDFProps>(
                         display:"inline-block" }} />
                       <span style={{ fontSize:8, color:K.subtext }}>{d.name}</span>
                     </div>
-                    <span style={{ fontSize:9, fontWeight:800, color:d.color }}>{d.value}d</span>
+                    <span style={{ fontSize:9, fontWeight: 600, color:d.color }}>{d.value}d</span>
                   </div>
                 ))}
               </div>
@@ -274,7 +274,7 @@ const WeeklyReportPDF = React.forwardRef<HTMLDivElement, WeeklyReportPDFProps>(
                 {[["A+","≥90",K.green],["A","≥80",K.green],["B","≥70",K.cyan],["C","<70",K.amber]].map(([g,r,c])=>(
                   <div key={g} style={{ flex:1, background:`${c}15`, border:`1px solid ${c}30`,
                     borderRadius:4, padding:"3px 0", textAlign:"center" }}>
-                    <div style={{ fontSize:8, fontWeight:800, color:c as string }}>{g}</div>
+                    <div style={{ fontSize:8, fontWeight: 600, color:c as string }}>{g}</div>
                     <div style={{ fontSize:6, color:K.muted }}>{r}</div>
                   </div>
                 ))}
@@ -350,7 +350,7 @@ const WeeklyReportPDF = React.forwardRef<HTMLDivElement, WeeklyReportPDFProps>(
               <div style={{ marginTop:6 }}>
                 <div style={{ display:"flex", justifyContent:"space-between", marginBottom:4 }}>
                   <span style={{ fontSize:8, color:K.muted }}>Completion</span>
-                  <span style={{ fontSize:9, fontWeight:800, color:K.green }}>
+                  <span style={{ fontSize:9, fontWeight: 600, color:K.green }}>
                     {assignments.total > 0 ? Math.round((assignments.submitted/assignments.total)*100) : 0}%
                   </span>
                 </div>
@@ -377,13 +377,13 @@ const WeeklyReportPDF = React.forwardRef<HTMLDivElement, WeeklyReportPDFProps>(
                     borderLeft:`3px solid ${K.amber}`,
                   }}>
                     <div style={{ display:"flex", alignItems:"flex-start", gap:6 }}>
-                      <span style={{ fontSize:7, fontWeight:900, color:K.amber,
+                      <span style={{ fontSize:7, fontWeight: 600, color:K.amber,
                         background:`${K.amber}20`, borderRadius:3,
                         padding:"2px 5px", flexShrink:0, marginTop:1 }}>
                         {String(i+1).padStart(2,"0")}
                       </span>
                       <div>
-                        <div style={{ fontSize:9, fontWeight:700, color:K.white, marginBottom:2, lineHeight:1.3 }}>
+                        <div style={{ fontSize:9, fontWeight: 600, color:K.white, marginBottom:2, lineHeight:1.3 }}>
                           {t.tip}
                         </div>
                         <div style={{ fontSize:8, color:K.subtext, lineHeight:1.4 }}>
@@ -401,7 +401,7 @@ const WeeklyReportPDF = React.forwardRef<HTMLDivElement, WeeklyReportPDFProps>(
               {report?.message && (
                 <div style={{ marginTop:10, background:`${K.cyan}08`,
                   border:`1px solid ${K.cyan}20`, borderRadius:6, padding:"8px 10px" }}>
-                  <div style={{ fontSize:7, color:K.cyan, fontWeight:700,
+                  <div style={{ fontSize:7, color:K.cyan, fontWeight: 600,
                     letterSpacing:"0.1em", marginBottom:4 }}>✦ AI MESSAGE</div>
                   <div style={{ fontSize:8, color:K.subtext, lineHeight:1.5,
                     display:"-webkit-box", WebkitLineClamp:4,
@@ -429,13 +429,13 @@ const WeeklyReportPDF = React.forwardRef<HTMLDivElement, WeeklyReportPDFProps>(
                 { label:"TESTS",      value:`${tests.length}`, color: K.cyan },
               ].map(s => (
                 <div key={s.label} style={{ textAlign:"center" }}>
-                  <div style={{ fontSize:12, fontWeight:900, color:s.color,
+                  <div style={{ fontSize:12, fontWeight: 600, color:s.color,
                     textShadow:`0 0 10px ${s.color}60` }}>{s.value}</div>
                   <div style={{ fontSize:6, color:K.muted, letterSpacing:"0.1em" }}>{s.label}</div>
                 </div>
               ))}
             </div>
-            <div style={{ fontSize:8, color:`${K.cyan}70`, fontWeight:700,
+            <div style={{ fontSize:8, color:`${K.cyan}70`, fontWeight: 600,
               letterSpacing:"0.12em" }}>
               CONFIDENTIAL · PARENT USE ONLY
             </div>

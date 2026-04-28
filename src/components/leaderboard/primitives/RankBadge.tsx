@@ -18,7 +18,7 @@ export function RankBadge({ rank, size = 'md' }: RankBadgeProps) {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    fontWeight: 800,
+    fontWeight: 600,
     fontSize,
     letterSpacing: '-0.4px',
     boxShadow: shadow,
@@ -29,8 +29,8 @@ export function RankBadge({ rank, size = 'md' }: RankBadgeProps) {
     return (
       <div
         style={podiumStyle(
-          'linear-gradient(135deg, #FFD700 0%, #FFAA00 100%)',
-          '0 6px 16px rgba(255,170,0,0.35)',
+          'linear-gradient(135deg, #FFCC00 0%, #FFCC00 100%)',
+          '0 6px 16px rgba(255,204,0,0.35)',
         )}
       >
         1
@@ -68,12 +68,12 @@ export function RankBadge({ rank, size = 'md' }: RankBadgeProps) {
         width: dimensions,
         height: dimensions,
         borderRadius: 12,
-        background: 'rgba(0,85,255,0.06)',
+        background: 'rgba(10,132,255,0.06)',
         color: T.T3,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        fontWeight: 800,
+        fontWeight: 600,
         fontSize: 13,
         flexShrink: 0,
       }}

@@ -16,7 +16,7 @@ export const OfflineBanner = () => {
   return (
     <div style={{
       position: "fixed", top: 0, left: 0, right: 0, zIndex: 9999,
-      background: "#dc2626", color: "#fff",
+      background: "#FF3B30", color: "#fff",
       padding: "8px 16px", fontSize: 13, fontWeight: 600,
       textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
     }}>

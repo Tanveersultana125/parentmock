@@ -48,14 +48,14 @@ const resolveSubject = (en: any): string =>
 
 // ── Mobile bright-blue palette — all shades of blue, rotated per-card ──
 const BLUE_HEROES = [
-  "linear-gradient(140deg, #0044EE 0%, #1166FF 48%, #44AAFF 100%)",
-  "linear-gradient(140deg, #002DBB 0%, #004FFF 48%, #2277FF 100%)",
-  "linear-gradient(140deg, #003399 0%, #0055FF 48%, #3388FF 100%)",
+  "linear-gradient(140deg, #3395FF 0%, #3395FF 48%, #7CBBFF 100%)",
+  "linear-gradient(140deg, #0A84FF 0%, #004FFF 48%, #5BA9FF 100%)",
+  "linear-gradient(140deg, #003399 0%, #0A84FF 48%, #3388FF 100%)",
   "linear-gradient(140deg, #0022AA 0%, #0044DD 48%, #2266EE 100%)",
 ];
 const BLUE_AVATARS = [
-  { bg: "linear-gradient(140deg,#0044EE,#2277FF)", shadow: "0 3px 12px rgba(0,68,238,0.32)" },
-  { bg: "linear-gradient(140deg,#002DBB,#0055FF)", shadow: "0 3px 12px rgba(0,45,187,0.32)" },
+  { bg: "linear-gradient(140deg,#3395FF,#5BA9FF)", shadow: "0 3px 12px rgba(0,68,238,0.32)" },
+  { bg: "linear-gradient(140deg,#0A84FF,#0A84FF)", shadow: "0 3px 12px rgba(0,45,187,0.32)" },
   { bg: "linear-gradient(140deg,#003399,#3388FF)", shadow: "0 3px 12px rgba(0,51,153,0.32)" },
   { bg: "linear-gradient(140deg,#0022AA,#2266EE)", shadow: "0 3px 12px rgba(0,34,170,0.32)" },
 ];
@@ -64,70 +64,70 @@ const BLUE_AVATARS = [
 const CARD_THEMES = [
   // 1 · Green
   {
-    hero: "linear-gradient(135deg, rgba(0,200,83,0.18) 0%, rgba(0,200,83,0.05) 100%)",
-    heroBdr: "rgba(0,200,83,0.18)",
-    accent: "#00A040",
-    accentSolid: "#00C853",
-    iconBoxBg: "rgba(0,200,83,0.18)",
-    iconBoxBdr: "rgba(0,200,83,0.32)",
-    pillBg: "rgba(0,200,83,0.18)",
-    pillBdr: "rgba(0,200,83,0.34)",
-    chipBg: "rgba(0,200,83,0.16)",
-    chipBdr: "rgba(0,200,83,0.30)",
-    btnGrad: "linear-gradient(135deg, #00C853 0%, #00A040 100%)",
-    btnShadow: "0 4px 18px rgba(0,200,83,0.34), 0 1px 4px rgba(0,200,83,0.20)",
-    avatar: { bg: "linear-gradient(140deg,#00C853,#00A040)", shadow: "0 3px 12px rgba(0,200,83,0.32)" },
+    hero: "linear-gradient(135deg, rgba(52,199,89,0.18) 0%, rgba(52,199,89,0.05) 100%)",
+    heroBdr: "rgba(52,199,89,0.18)",
+    accent: "#248A3D",
+    accentSolid: "#34C759",
+    iconBoxBg: "rgba(52,199,89,0.18)",
+    iconBoxBdr: "rgba(52,199,89,0.32)",
+    pillBg: "rgba(52,199,89,0.18)",
+    pillBdr: "rgba(52,199,89,0.34)",
+    chipBg: "rgba(52,199,89,0.16)",
+    chipBdr: "rgba(52,199,89,0.30)",
+    btnGrad: "linear-gradient(135deg, #34C759 0%, #248A3D 100%)",
+    btnShadow: "0 4px 18px rgba(52,199,89,0.34), 0 1px 4px rgba(52,199,89,0.20)",
+    avatar: { bg: "linear-gradient(140deg,#34C759,#248A3D)", shadow: "0 3px 12px rgba(52,199,89,0.32)" },
     decorIcon: GraduationCap,
   },
   // 2 · Orange
   {
-    hero: "linear-gradient(135deg, rgba(255,136,0,0.18) 0%, rgba(255,136,0,0.05) 100%)",
-    heroBdr: "rgba(255,136,0,0.20)",
+    hero: "linear-gradient(135deg, rgba(255,149,0,0.18) 0%, rgba(255,149,0,0.05) 100%)",
+    heroBdr: "rgba(255,149,0,0.20)",
     accent: "#CC6A00",
-    accentSolid: "#FF8800",
-    iconBoxBg: "rgba(255,136,0,0.18)",
-    iconBoxBdr: "rgba(255,136,0,0.34)",
-    pillBg: "rgba(255,136,0,0.18)",
-    pillBdr: "rgba(255,136,0,0.34)",
-    chipBg: "rgba(255,136,0,0.16)",
-    chipBdr: "rgba(255,136,0,0.32)",
-    btnGrad: "linear-gradient(135deg, #FF8800 0%, #E07000 100%)",
-    btnShadow: "0 4px 18px rgba(255,136,0,0.34), 0 1px 4px rgba(255,136,0,0.20)",
-    avatar: { bg: "linear-gradient(140deg,#FF8800,#E07000)", shadow: "0 3px 12px rgba(255,136,0,0.32)" },
+    accentSolid: "#FF9500",
+    iconBoxBg: "rgba(255,149,0,0.18)",
+    iconBoxBdr: "rgba(255,149,0,0.34)",
+    pillBg: "rgba(255,149,0,0.18)",
+    pillBdr: "rgba(255,149,0,0.34)",
+    chipBg: "rgba(255,149,0,0.16)",
+    chipBdr: "rgba(255,149,0,0.32)",
+    btnGrad: "linear-gradient(135deg, #FF9500 0%, #E07000 100%)",
+    btnShadow: "0 4px 18px rgba(255,149,0,0.34), 0 1px 4px rgba(255,149,0,0.20)",
+    avatar: { bg: "linear-gradient(140deg,#FF9500,#E07000)", shadow: "0 3px 12px rgba(255,149,0,0.32)" },
     decorIcon: BookText,
   },
   // 3 · Blue
   {
-    hero: "linear-gradient(135deg, rgba(0,85,255,0.14) 0%, rgba(0,85,255,0.04) 100%)",
-    heroBdr: "rgba(0,85,255,0.20)",
-    accent: "#0033AA",
-    accentSolid: "#0055FF",
-    iconBoxBg: "rgba(0,85,255,0.14)",
-    iconBoxBdr: "rgba(0,85,255,0.28)",
-    pillBg: "rgba(0,85,255,0.14)",
-    pillBdr: "rgba(0,85,255,0.28)",
-    chipBg: "rgba(0,85,255,0.12)",
-    chipBdr: "rgba(0,85,255,0.26)",
-    btnGrad: "linear-gradient(135deg, #0055FF 0%, #1166FF 100%)",
-    btnShadow: "0 4px 18px rgba(0,85,255,0.34), 0 1px 4px rgba(0,85,255,0.20)",
-    avatar: { bg: "linear-gradient(140deg,#0055FF,#1166FF)", shadow: "0 3px 12px rgba(0,85,255,0.32)" },
+    hero: "linear-gradient(135deg, rgba(10,132,255,0.14) 0%, rgba(10,132,255,0.04) 100%)",
+    heroBdr: "rgba(10,132,255,0.20)",
+    accent: "#0A84FF",
+    accentSolid: "#0A84FF",
+    iconBoxBg: "rgba(10,132,255,0.14)",
+    iconBoxBdr: "rgba(10,132,255,0.28)",
+    pillBg: "rgba(10,132,255,0.14)",
+    pillBdr: "rgba(10,132,255,0.28)",
+    chipBg: "rgba(10,132,255,0.12)",
+    chipBdr: "rgba(10,132,255,0.26)",
+    btnGrad: "linear-gradient(135deg, #0A84FF 0%, #3395FF 100%)",
+    btnShadow: "0 4px 18px rgba(10,132,255,0.34), 0 1px 4px rgba(10,132,255,0.20)",
+    avatar: { bg: "linear-gradient(140deg,#0A84FF,#3395FF)", shadow: "0 3px 12px rgba(10,132,255,0.32)" },
     decorIcon: Library,
   },
   // 4 · Rose
   {
-    hero: "linear-gradient(135deg, rgba(255,51,85,0.16) 0%, rgba(255,51,85,0.05) 100%)",
-    heroBdr: "rgba(255,51,85,0.20)",
-    accent: "#CC2244",
-    accentSolid: "#FF3355",
-    iconBoxBg: "rgba(255,51,85,0.16)",
-    iconBoxBdr: "rgba(255,51,85,0.32)",
-    pillBg: "rgba(255,51,85,0.16)",
-    pillBdr: "rgba(255,51,85,0.32)",
-    chipBg: "rgba(255,51,85,0.14)",
-    chipBdr: "rgba(255,51,85,0.30)",
-    btnGrad: "linear-gradient(135deg, #FF3355 0%, #CC2244 100%)",
-    btnShadow: "0 4px 18px rgba(255,51,85,0.34), 0 1px 4px rgba(255,51,85,0.20)",
-    avatar: { bg: "linear-gradient(140deg,#FF3355,#CC2244)", shadow: "0 3px 12px rgba(255,51,85,0.32)" },
+    hero: "linear-gradient(135deg, rgba(255,59,48,0.16) 0%, rgba(255,59,48,0.05) 100%)",
+    heroBdr: "rgba(255,59,48,0.20)",
+    accent: "#86170E",
+    accentSolid: "#FF3B30",
+    iconBoxBg: "rgba(255,59,48,0.16)",
+    iconBoxBdr: "rgba(255,59,48,0.32)",
+    pillBg: "rgba(255,59,48,0.16)",
+    pillBdr: "rgba(255,59,48,0.32)",
+    chipBg: "rgba(255,59,48,0.14)",
+    chipBdr: "rgba(255,59,48,0.30)",
+    btnGrad: "linear-gradient(135deg, #FF3B30 0%, #86170E 100%)",
+    btnShadow: "0 4px 18px rgba(255,59,48,0.34), 0 1px 4px rgba(255,59,48,0.20)",
+    avatar: { bg: "linear-gradient(140deg,#FF3B30,#86170E)", shadow: "0 3px 12px rgba(255,59,48,0.32)" },
     decorIcon: BookMarked,
   },
 ];
@@ -275,26 +275,26 @@ const ClassesPage = () => {
      MOBILE — Bright Blue Apple UI
      ═══════════════════════════════════════════════════════════════ */
   if (isMobile) {
-    const B1 = "#0055FF";
-    const B2 = "#1166FF";
-    const BG = "#EEF4FF";
-    const BG2 = "#E0ECFF";
-    const T1 = "#001040";
-    const T3 = "#5070B0";
-    const T4 = "#99AACC";
-    const SEP = "rgba(0,85,255,0.07)";
-    const SH = "0 0 0 0.5px rgba(0,85,255,0.08), 0 2px 8px rgba(0,85,255,0.10), 0 10px 28px rgba(0,85,255,0.12)";
-    const SH_LG = "0 0 0 0.5px rgba(0,85,255,0.10), 0 4px 16px rgba(0,85,255,0.12), 0 18px 44px rgba(0,85,255,0.15)";
-    const SH_BTN = "0 6px 22px rgba(0,85,255,0.42), 0 2px 6px rgba(0,85,255,0.24)";
+    const B1 = "#0A84FF";
+    const B2 = "#3395FF";
+    const BG = "#F5F5F7";
+    const BG2 = "#EBEBF0";
+    const T1 = "#1D1D1F";
+    const T3 = "#6E6E73";
+    const T4 = "#A1A1A6";
+    const SEP = "rgba(10,132,255,0.07)";
+    const SH = "0 0 0 0.5px rgba(10,132,255,0.08), 0 2px 8px rgba(10,132,255,0.10), 0 10px 28px rgba(10,132,255,0.12)";
+    const SH_LG = "0 0 0 0.5px rgba(10,132,255,0.10), 0 4px 16px rgba(10,132,255,0.12), 0 18px 44px rgba(10,132,255,0.15)";
+    const SH_BTN = "0 6px 22px rgba(10,132,255,0.42), 0 2px 6px rgba(10,132,255,0.24)";
 
     return (
       <div className="animate-in fade-in duration-500 -mx-3 -mt-3 md:mx-0 md:mt-0"
-        style={{ fontFamily: "'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif", background: BG, minHeight: "100vh" }}>
+        style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif", background: BG, minHeight: "100vh" }}>
 
         {/* ── Page Head ── */}
-        <div className="px-[22px] pt-[18px] pb-0">
-          <div className="text-[9px] font-bold uppercase tracking-[0.12em] mb-1" style={{ color: T4 }}>Parent Dashboard</div>
-          <h1 className="text-[28px] font-bold leading-[1.12]" style={{ color: T1, letterSpacing: "-0.7px" }}>My Classes</h1>
+        <div className="px-[24px] pt-[16px] pb-0">
+          <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-1" style={{ color: T4 }}>Parent Dashboard</div>
+          <h1 className="text-[28px] font-semibold leading-[1.12]" style={{ color: T1, letterSpacing: "-0.7px" }}>My Classes</h1>
           <p className="text-[13px] mt-1 font-normal" style={{ color: T3 }}>
             Enrolled subjects &amp; schedules for {childFirstName}
           </p>
@@ -303,7 +303,7 @@ const ClassesPage = () => {
         {/* ── Top Message CTA ── */}
         <button
           onClick={() => navigate("/teacher-notes")}
-          className="w-[calc(100%-40px)] mx-5 mt-[18px] rounded-[20px] px-5 py-[17px] flex items-center justify-between relative overflow-hidden active:scale-[0.97] transition-transform"
+          className="w-[calc(100%-40px)] mx-5 mt-[16px] rounded-[20px] px-5 py-[16px] flex items-center justify-between relative overflow-hidden active:scale-[0.97] transition-transform"
           style={{ background: `linear-gradient(135deg, ${B1} 0%, ${B2} 100%)`, boxShadow: SH_BTN }}
         >
           <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.16) 0%, transparent 52%)" }} />
@@ -317,8 +317,8 @@ const ClassesPage = () => {
               <MessageSquare className="w-[22px] h-[22px]" style={{ color: "rgba(255,255,255,0.95)" }} strokeWidth={2.2} />
             </div>
             <div className="text-left">
-              <div className="text-[16px] font-bold text-white" style={{ letterSpacing: "-0.2px" }}>Message Teacher</div>
-              <div className="text-[11px]" style={{ color: "rgba(255,255,255,0.55)" }}>Send a direct message to faculty</div>
+              <div className="text-[16px] font-semibold text-white" style={{ letterSpacing: "-0.2px" }}>Message Teacher</div>
+              <div className="text-[12px]" style={{ color: "rgba(255,255,255,0.55)" }}>Send a direct message to faculty</div>
             </div>
           </div>
           <div className="w-9 h-9 rounded-[12px] flex items-center justify-center shrink-0 relative z-10"
@@ -329,18 +329,18 @@ const ClassesPage = () => {
 
         {/* ── Loading / Empty / Content ── */}
         {loading ? (
-          <div className="flex flex-col items-center justify-center py-24 gap-4">
+          <div className="flex flex-col items-center justify-center py-10 gap-4">
             <div className="w-14 h-14 rounded-2xl flex items-center justify-center" style={{ background: BG2, border: `0.5px solid ${SEP}` }}>
               <Loader2 className="w-7 h-7 animate-spin" style={{ color: B1 }} />
             </div>
             <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: T4 }}>Loading classes…</p>
           </div>
         ) : enrollments.length === 0 ? (
-          <div className="mx-5 mt-5 py-16 rounded-[26px] flex flex-col items-center text-center border-2 border-dashed" style={{ borderColor: "rgba(0,85,255,0.22)" }}>
+          <div className="mx-5 mt-5 py-10 rounded-[26px] flex flex-col items-center text-center border-2 border-dashed" style={{ borderColor: "rgba(10,132,255,0.22)" }}>
             <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-4" style={{ background: BG2 }}>
               <Target className="w-8 h-8" style={{ color: T4 }} />
             </div>
-            <h3 className="text-base font-bold" style={{ color: T3 }}>No Classes Found</h3>
+            <h3 className="text-base font-semibold" style={{ color: T3 }}>No Classes Found</h3>
             <p className="text-sm mt-1" style={{ color: T4 }}>No subject enrollments yet.</p>
           </div>
         ) : (
@@ -367,18 +367,18 @@ const ClassesPage = () => {
                   aria-label={`Open ${subject || "class"} teacher notes`}
                   onClick={() => navigate("/teacher-notes", { state: { teacherId: en.teacherId } })}
                   onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/teacher-notes", { state: { teacherId: en.teacherId } }); } }}
-                  className="mx-5 mt-[14px] rounded-[26px] overflow-hidden bg-white cursor-pointer active:scale-[0.98] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF]/50"
-                  style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                  className="mx-5 mt-[16px] rounded-[26px] overflow-hidden bg-white cursor-pointer active:scale-[0.98] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/50"
+                  style={{ boxShadow: SH_LG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
 
                   {/* Hero */}
-                  <div className="relative overflow-hidden px-5 pt-5 pb-[22px]" style={{ background: theme.hero, borderBottom: `0.5px solid ${theme.heroBdr}` }}>
+                  <div className="relative overflow-hidden px-5 pt-5 pb-[24px]" style={{ background: theme.hero, borderBottom: `0.5px solid ${theme.heroBdr}` }}>
                     {/* Decorative bottom-right icon (matches dashboard cards) */}
                     <div className="absolute pointer-events-none" style={{ bottom: 12, right: 12 }}>
                       <DecorIcon style={{ width: 72, height: 72, color: theme.accentSolid, opacity: 0.20, strokeWidth: 1.6 }} />
                     </div>
 
                     {/* Active pill */}
-                    <div className="absolute top-4 right-4 z-[2] flex items-center gap-[5px] px-[12px] py-[5px] rounded-full text-[10px] font-bold tracking-[0.06em]"
+                    <div className="absolute top-4 right-4 z-[2] flex items-center gap-[4px] px-[12px] py-[4px] rounded-full text-[12px] font-semibold tracking-[0.06em]"
                       style={{ background: theme.pillBg, border: `0.5px solid ${theme.pillBdr}`, color: theme.accent }}>
                       <span className="w-[6px] h-[6px] rounded-full animate-pulse" style={{ background: theme.accentSolid, boxShadow: `0 0 0 2.5px ${theme.pillBg}` }} />
                       Active
@@ -389,22 +389,22 @@ const ClassesPage = () => {
                       <BookOpen className="w-6 h-6" style={{ color: theme.accentSolid }} strokeWidth={2.1} />
                     </div>
 
-                    <div className="text-[9px] font-bold uppercase tracking-[0.12em] mb-[6px] relative z-10" style={{ color: T4 }}>
+                    <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-[8px] relative z-10" style={{ color: T4 }}>
                       Subject
                     </div>
-                    <h2 className="text-[28px] font-bold mb-[14px] relative z-10 leading-[1.08]" style={{ color: T1, letterSpacing: "-0.7px" }}>
+                    <h2 className="text-[28px] font-semibold mb-[16px] relative z-10 leading-[1.08]" style={{ color: T1, letterSpacing: "-0.7px" }}>
                       {subject || "Class"}
                     </h2>
 
                     {/* Class / section tag */}
                     {className ? (
-                      <div className="inline-flex items-center gap-[6px] px-[14px] py-[7px] rounded-full relative z-10 text-[12px] font-bold"
+                      <div className="inline-flex items-center gap-[8px] px-[16px] py-[8px] rounded-full relative z-10 text-[12px] font-semibold"
                         style={{ background: theme.chipBg, border: `0.5px solid ${theme.chipBdr}`, color: theme.accent }}>
                         <Layers className="w-3 h-3" style={{ color: theme.accentSolid }} strokeWidth={2.2} />
                         {className}
                       </div>
                     ) : (
-                      <div className="inline-flex items-center gap-[6px] px-[14px] py-[7px] rounded-full relative z-10 text-[11px] font-medium"
+                      <div className="inline-flex items-center gap-[8px] px-[16px] py-[8px] rounded-full relative z-10 text-[12px] font-medium"
                         style={{ background: "rgba(0,0,0,0.04)", color: T3 }}>
                         <Layers className="w-3 h-3" style={{ color: T4 }} />
                         Class not assigned
@@ -415,44 +415,44 @@ const ClassesPage = () => {
                   {/* Body */}
                   <div className="p-5">
                     {/* Teacher row */}
-                    <div className="flex items-center gap-[13px] px-4 py-[14px] rounded-[18px] mb-[14px]"
-                      style={{ background: BG, border: "0.5px solid rgba(0,85,255,0.12)" }}>
-                      <div className="w-11 h-11 rounded-[14px] flex items-center justify-center text-[15px] font-bold text-white shrink-0"
+                    <div className="flex items-center gap-[12px] px-4 py-[16px] rounded-[18px] mb-[16px]"
+                      style={{ background: BG, border: "0.5px solid rgba(10,132,255,0.12)" }}>
+                      <div className="w-11 h-11 rounded-[14px] flex items-center justify-center text-[15px] font-semibold text-white shrink-0"
                         style={{ background: avatar.bg, boxShadow: avatar.shadow }}>
                         {en.initials}
                       </div>
                       <div>
-                        <div className="text-[9px] font-bold uppercase tracking-[0.09em] mb-[3px]" style={{ color: T4 }}>
+                        <div className="text-[12px] font-semibold uppercase tracking-[0.09em] mb-[4px]" style={{ color: T4 }}>
                           {isClassTeacher ? "Class Teacher" : "Subject Teacher"}
                         </div>
-                        <div className="text-[15px] font-bold" style={{ color: T1, letterSpacing: "-0.2px" }}>
+                        <div className="text-[15px] font-semibold" style={{ color: T1, letterSpacing: "-0.2px" }}>
                           {en.teacherName}
                         </div>
                       </div>
                     </div>
 
                     {/* Meta grid */}
-                    <div className="grid grid-cols-2 gap-[10px] mb-4">
-                      <div className="flex items-center gap-[10px] px-[14px] py-[13px] rounded-[16px]"
-                        style={{ background: BG, border: "0.5px solid rgba(0,85,255,0.12)" }}>
+                    <div className="grid grid-cols-2 gap-[12px] mb-4">
+                      <div className="flex items-center gap-[12px] px-[16px] py-[12px] rounded-[16px]"
+                        style={{ background: BG, border: "0.5px solid rgba(10,132,255,0.12)" }}>
                         <div className="w-8 h-8 rounded-[10px] flex items-center justify-center shrink-0"
-                          style={{ background: "rgba(0,85,255,0.10)", border: "0.5px solid rgba(0,85,255,0.18)" }}>
+                          style={{ background: "rgba(10,132,255,0.10)", border: "0.5px solid rgba(10,132,255,0.18)" }}>
                           <Clock className="w-[14px] h-[14px]" style={{ color: B1 }} strokeWidth={2.2} />
                         </div>
                         <div className="min-w-0">
-                          <div className="text-[9px] font-bold uppercase tracking-[0.08em] mb-[3px]" style={{ color: T4 }}>Schedule</div>
-                          <div className="text-[13px] font-bold truncate" style={{ color: T1, letterSpacing: "-0.1px" }}>{schedule}</div>
+                          <div className="text-[12px] font-semibold uppercase tracking-[0.08em] mb-[4px]" style={{ color: T4 }}>Schedule</div>
+                          <div className="text-[13px] font-semibold truncate" style={{ color: T1, letterSpacing: "-0.1px" }}>{schedule}</div>
                         </div>
                       </div>
-                      <div className="flex items-center gap-[10px] px-[14px] py-[13px] rounded-[16px]"
-                        style={{ background: BG, border: "0.5px solid rgba(0,85,255,0.12)" }}>
+                      <div className="flex items-center gap-[12px] px-[16px] py-[12px] rounded-[16px]"
+                        style={{ background: BG, border: "0.5px solid rgba(10,132,255,0.12)" }}>
                         <div className="w-8 h-8 rounded-[10px] flex items-center justify-center shrink-0"
-                          style={{ background: "rgba(0,85,255,0.10)", border: "0.5px solid rgba(0,85,255,0.18)" }}>
+                          style={{ background: "rgba(10,132,255,0.10)", border: "0.5px solid rgba(10,132,255,0.18)" }}>
                           <School className="w-[14px] h-[14px]" style={{ color: B1 }} strokeWidth={2.2} />
                         </div>
                         <div className="min-w-0">
-                          <div className="text-[9px] font-bold uppercase tracking-[0.08em] mb-[3px]" style={{ color: T4 }}>Year</div>
-                          <div className="text-[13px] font-bold truncate" style={{ color: T1, letterSpacing: "-0.1px" }}>{year}</div>
+                          <div className="text-[12px] font-semibold uppercase tracking-[0.08em] mb-[4px]" style={{ color: T4 }}>Year</div>
+                          <div className="text-[13px] font-semibold truncate" style={{ color: T1, letterSpacing: "-0.1px" }}>{year}</div>
                         </div>
                       </div>
                     </div>
@@ -460,13 +460,13 @@ const ClassesPage = () => {
                     {/* Message button */}
                     <button
                       onClick={(e) => { e.stopPropagation(); navigate("/teacher-notes", { state: { teacherId: en.teacherId } }); }}
-                      className="w-full rounded-[16px] px-[18px] py-[14px] flex items-center justify-between relative overflow-hidden active:scale-[0.97] transition-transform"
+                      className="w-full rounded-[16px] px-[16px] py-[16px] flex items-center justify-between relative overflow-hidden active:scale-[0.97] transition-transform"
                       style={{ background: theme.btnGrad, boxShadow: theme.btnShadow }}
                     >
                       <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 52%)" }} />
-                      <div className="flex items-center gap-[10px] relative z-10">
+                      <div className="flex items-center gap-[12px] relative z-10">
                         <MessageSquare className="w-[17px] h-[17px] text-white" strokeWidth={2.2} />
-                        <span className="text-[14px] font-bold text-white" style={{ letterSpacing: "-0.1px" }}>Message Teacher</span>
+                        <span className="text-[14px] font-semibold text-white" style={{ letterSpacing: "-0.1px" }}>Message Teacher</span>
                       </div>
                       <div className="w-[30px] h-[30px] rounded-[10px] flex items-center justify-center relative z-10"
                         style={{ background: "rgba(255,255,255,0.18)", border: "0.5px solid rgba(255,255,255,0.26)" }}>
@@ -485,55 +485,55 @@ const ClassesPage = () => {
               aria-label="Open my child profile"
               onClick={() => navigate("/my-child")}
               onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/my-child"); } }}
-              className="mx-5 mt-[14px] rounded-[24px] p-[22px] relative overflow-hidden cursor-pointer active:scale-[0.98] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+              className="mx-5 mt-[16px] rounded-[24px] p-[24px] relative overflow-hidden cursor-pointer active:scale-[0.98] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
               style={{
-                background: "linear-gradient(140deg, #001888 0%, #0033CC 48%, #0055FF 100%)",
+                background: "linear-gradient(140deg, #0A84FF 0%, #0A84FF 48%, #0A84FF 100%)",
                 boxShadow: "0 10px 36px rgba(0,51,204,0.38), 0 0 0 0.5px rgba(255,255,255,0.16)",
                 border: "0.5px solid rgba(255,255,255,0.16)"
               }}>
-              <div className="absolute -top-[42px] -right-[30px] w-[200px] h-[200px] rounded-full pointer-events-none"
+              <div className="absolute -top-[42px] -right-[32px] w-[200px] h-[200px] rounded-full pointer-events-none"
                 style={{ background: "radial-gradient(circle, rgba(255,255,255,0.16) 0%, transparent 65%)" }} />
               <div className="absolute inset-0 pointer-events-none" style={{
                 backgroundImage: "linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px)",
                 backgroundSize: "24px 24px"
               }} />
 
-              <div className="flex items-center gap-[13px] mb-5 relative z-10">
+              <div className="flex items-center gap-[12px] mb-5 relative z-10">
                 <div className="w-12 h-12 rounded-[16px] flex items-center justify-center shrink-0"
                   style={{ background: "rgba(255,255,255,0.18)", border: "0.5px solid rgba(255,255,255,0.28)" }}>
                   <ShieldCheck className="w-6 h-6 text-white" strokeWidth={2.2} />
                 </div>
                 <div>
-                  <div className="text-[9px] font-bold uppercase tracking-[0.12em] mb-1" style={{ color: "rgba(255,255,255,0.45)" }}>Enrollment Verified</div>
-                  <div className="text-[17px] font-bold text-white" style={{ letterSpacing: "-0.3px" }}>Academic Registry Active</div>
+                  <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-1" style={{ color: "rgba(255,255,255,0.45)" }}>Enrollment Verified</div>
+                  <div className="text-[18px] font-semibold text-white" style={{ letterSpacing: "-0.3px" }}>Academic Registry Active</div>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 rounded-[18px] overflow-hidden relative z-10" style={{ gap: "1px", background: "rgba(255,255,255,0.14)" }}>
-                <div className="py-[18px] flex flex-col items-center gap-[5px]" style={{ background: "rgba(255,255,255,0.09)" }}>
-                  <div className="text-[34px] font-bold text-white leading-none" style={{ letterSpacing: "-1.5px" }}>{enrollments.length}</div>
-                  <div className="text-[9px] font-bold uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.42)" }}>Subjects</div>
+                <div className="py-[16px] flex flex-col items-center gap-[4px]" style={{ background: "rgba(255,255,255,0.09)" }}>
+                  <div className="text-[28px] font-semibold text-white leading-none" style={{ letterSpacing: "-1.5px" }}>{enrollments.length}</div>
+                  <div className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.42)" }}>Subjects</div>
                 </div>
-                <div className="py-[18px] flex flex-col items-center gap-[5px]" style={{ background: "rgba(255,255,255,0.09)" }}>
-                  <div className="text-[34px] font-bold text-white leading-none" style={{ letterSpacing: "-1.5px" }}>{uniqueTeacherCount}</div>
-                  <div className="text-[9px] font-bold uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.42)" }}>Teachers</div>
+                <div className="py-[16px] flex flex-col items-center gap-[4px]" style={{ background: "rgba(255,255,255,0.09)" }}>
+                  <div className="text-[28px] font-semibold text-white leading-none" style={{ letterSpacing: "-1.5px" }}>{uniqueTeacherCount}</div>
+                  <div className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.42)" }}>Teachers</div>
                 </div>
               </div>
             </div>
 
             {/* ── All Subjects Section ── */}
-            <div className="px-[22px] pt-5 text-[9px] font-bold uppercase tracking-[0.10em] flex items-center gap-2"
+            <div className="px-[24px] pt-5 text-[12px] font-semibold uppercase tracking-[0.10em] flex items-center gap-2"
               style={{ color: T4 }}>
               <span>All Subjects</span>
-              <span className="flex-1 h-px" style={{ background: "rgba(0,85,255,0.14)" }} />
+              <span className="flex-1 h-px" style={{ background: "rgba(10,132,255,0.14)" }} />
             </div>
 
-            <div className="mx-5 mt-[14px] bg-white rounded-[22px] overflow-hidden"
-              style={{ boxShadow: SH, border: "0.5px solid rgba(0,85,255,0.12)" }}>
-              <div className="flex items-center justify-between px-[18px] pt-4 pb-3" style={{ borderBottom: `0.5px solid ${SEP}` }}>
-                <div className="text-[16px] font-bold" style={{ color: T1, letterSpacing: "-0.3px" }}>Enrolled Subjects</div>
-                <div className="px-[11px] py-[4px] rounded-full text-[11px] font-bold"
-                  style={{ background: "rgba(0,85,255,0.10)", border: "0.5px solid rgba(0,85,255,0.18)", color: B1 }}>
+            <div className="mx-5 mt-[16px] bg-white rounded-[22px] overflow-hidden"
+              style={{ boxShadow: SH, border: "0.5px solid rgba(10,132,255,0.12)" }}>
+              <div className="flex items-center justify-between px-[16px] pt-4 pb-3" style={{ borderBottom: `0.5px solid ${SEP}` }}>
+                <div className="text-[16px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>Enrolled Subjects</div>
+                <div className="px-[12px] py-[4px] rounded-full text-[12px] font-semibold"
+                  style={{ background: "rgba(10,132,255,0.10)", border: "0.5px solid rgba(10,132,255,0.18)", color: B1 }}>
                   {enrollments.length} Active
                 </div>
               </div>
@@ -547,7 +547,7 @@ const ClassesPage = () => {
                     role="button"
                     tabIndex={0}
                     aria-label={`Open ${subject || "class"} teacher notes`}
-                    className="flex items-center gap-[13px] px-[18px] py-[14px] cursor-pointer active:bg-[#EEF4FF] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#0055FF]/40"
+                    className="flex items-center gap-[12px] px-[16px] py-[16px] cursor-pointer active:bg-[#F5F5F7] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#0A84FF]/40"
                     style={{ borderBottom: idx < arr.length - 1 ? `0.5px solid ${SEP}` : "none" }}
                     onClick={() => navigate("/teacher-notes", { state: { teacherId: en.teacherId } })}
                     onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/teacher-notes", { state: { teacherId: en.teacherId } }); } }}>
@@ -556,11 +556,11 @@ const ClassesPage = () => {
                       <BookOpen className="w-5 h-5 text-white" strokeWidth={2.2} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="text-[14px] font-bold truncate" style={{ color: T1, letterSpacing: "-0.2px" }}>{subject || "Class"}</div>
-                      <div className="text-[11px] mt-0.5 truncate" style={{ color: T3 }}>{en.teacherName} · {schedule}</div>
+                      <div className="text-[14px] font-semibold truncate" style={{ color: T1, letterSpacing: "-0.2px" }}>{subject || "Class"}</div>
+                      <div className="text-[12px] mt-1 truncate" style={{ color: T3 }}>{en.teacherName} · {schedule}</div>
                     </div>
-                    <div className="px-[11px] py-1 rounded-full text-[10px] font-bold shrink-0"
-                      style={{ background: "rgba(0,85,255,0.10)", color: "#0033AA", border: "0.5px solid rgba(0,85,255,0.22)" }}>
+                    <div className="px-[12px] py-1 rounded-full text-[12px] font-semibold shrink-0"
+                      style={{ background: "rgba(10,132,255,0.10)", color: "#0A84FF", border: "0.5px solid rgba(10,132,255,0.22)" }}>
                       Active
                     </div>
                   </div>
@@ -578,29 +578,29 @@ const ClassesPage = () => {
   /* ═══════════════════════════════════════════════════════════════
      DESKTOP — Bright Blue Apple UI (matches mobile)
      ═══════════════════════════════════════════════════════════════ */
-  const B1 = "#0055FF";
-  const B2 = "#1166FF";
-  const BG = "#EEF4FF";
-  const T1 = "#001040";
-  const T3 = "#5070B0";
-  const T4 = "#99AACC";
-  const SEP = "rgba(0,85,255,0.07)";
-  const SH = "0 0 0 0.5px rgba(0,85,255,0.08), 0 2px 8px rgba(0,85,255,0.10), 0 10px 28px rgba(0,85,255,0.12)";
-  const SH_LG = "0 0 0 0.5px rgba(0,85,255,0.10), 0 4px 16px rgba(0,85,255,0.12), 0 18px 44px rgba(0,85,255,0.15)";
-  const SH_BTN = "0 6px 22px rgba(0,85,255,0.42), 0 2px 6px rgba(0,85,255,0.24)";
+  const B1 = "#0A84FF";
+  const B2 = "#3395FF";
+  const BG = "#F5F5F7";
+  const T1 = "#1D1D1F";
+  const T3 = "#6E6E73";
+  const T4 = "#A1A1A6";
+  const SEP = "rgba(10,132,255,0.07)";
+  const SH = "0 0 0 0.5px rgba(10,132,255,0.08), 0 2px 8px rgba(10,132,255,0.10), 0 10px 28px rgba(10,132,255,0.12)";
+  const SH_LG = "0 0 0 0.5px rgba(10,132,255,0.10), 0 4px 16px rgba(10,132,255,0.12), 0 18px 44px rgba(10,132,255,0.15)";
+  const SH_BTN = "0 6px 22px rgba(10,132,255,0.42), 0 2px 6px rgba(10,132,255,0.24)";
 
   return (
     <div className="animate-in fade-in duration-500 -m-4 sm:-m-6 md:-m-8 min-h-[calc(100vh-64px)]"
-      style={{ fontFamily: "'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif", background: BG }}>
-      <div className="w-full px-6 pt-8 pb-12">
+      style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif", background: BG }}>
+      <div className="w-full px-6 pt-8 pb-10">
 
         {/* ── Toolbar row ── */}
         <div className="flex items-start justify-between gap-6 flex-wrap mb-8">
           <div>
-            <div className="text-[10px] font-bold uppercase tracking-[0.14em] mb-2" style={{ color: T4 }}>Parent Dashboard</div>
-            <h1 className="text-[38px] font-bold leading-[1.05]" style={{ color: T1, letterSpacing: "-1.1px" }}>My Classes</h1>
+            <div className="text-[12px] font-semibold uppercase tracking-[0.14em] mb-2" style={{ color: T4 }}>Parent Dashboard</div>
+            <h1 className="text-[38px] font-semibold leading-[1.05]" style={{ color: T1, letterSpacing: "-1.1px" }}>My Classes</h1>
             <p className="text-[14px] mt-2 font-normal" style={{ color: T3 }}>
-              Enrolled subjects & schedules for <span style={{ color: T1, fontWeight: 700 }}>{studentData?.name}</span>
+              Enrolled subjects & schedules for <span style={{ color: T1, fontWeight: 600 }}>{studentData?.name}</span>
             </p>
           </div>
           <button
@@ -609,7 +609,7 @@ const ClassesPage = () => {
             style={{ background: `linear-gradient(135deg, ${B1} 0%, ${B2} 100%)`, boxShadow: SH_BTN }}>
             <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.14) 0%, transparent 52%)" }} />
             <MessageSquare className="w-[18px] h-[18px] relative z-10" strokeWidth={2.2} />
-            <span className="text-[14px] font-bold relative z-10">Message Teacher</span>
+            <span className="text-[14px] font-semibold relative z-10">Message Teacher</span>
             <div className="w-8 h-8 rounded-[10px] flex items-center justify-center relative z-10"
               style={{ background: "rgba(255,255,255,0.18)", border: "0.5px solid rgba(255,255,255,0.26)" }}>
               <ChevronRight className="w-[13px] h-[13px]" strokeWidth={2.5} />
@@ -621,17 +621,17 @@ const ClassesPage = () => {
         {loading ? (
           <div className="py-40 flex flex-col items-center gap-4">
             <div className="w-14 h-14 rounded-2xl flex items-center justify-center"
-              style={{ background: "rgba(0,85,255,0.08)", border: `0.5px solid ${SEP}` }}>
+              style={{ background: "rgba(10,132,255,0.08)", border: `0.5px solid ${SEP}` }}>
               <Loader2 className="w-7 h-7 animate-spin" style={{ color: B1 }} />
             </div>
-            <p className="text-xs font-bold uppercase tracking-widest" style={{ color: T4 }}>Loading classes…</p>
+            <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: T4 }}>Loading classes…</p>
           </div>
         ) : enrollments.length === 0 ? (
-          <div className="py-32 rounded-[26px] flex flex-col items-center text-center border-2 border-dashed" style={{ borderColor: "rgba(0,85,255,0.22)" }}>
-            <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-4" style={{ background: "rgba(0,85,255,0.08)" }}>
+          <div className="py-32 rounded-[26px] flex flex-col items-center text-center border-2 border-dashed" style={{ borderColor: "rgba(10,132,255,0.22)" }}>
+            <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-4" style={{ background: "rgba(10,132,255,0.08)" }}>
               <Target className="w-8 h-8" style={{ color: T4 }} />
             </div>
-            <h3 className="text-base font-bold" style={{ color: T3 }}>No Classes Found</h3>
+            <h3 className="text-base font-semibold" style={{ color: T3 }}>No Classes Found</h3>
             <p className="text-sm mt-1" style={{ color: T4 }}>No subject enrollments yet.</p>
           </div>
         ) : (
@@ -656,11 +656,11 @@ const ClassesPage = () => {
                     aria-label={`Open ${subject || "class"} teacher notes`}
                     onClick={() => navigate("/teacher-notes", { state: { teacherId: en.teacherId } })}
                     onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/teacher-notes", { state: { teacherId: en.teacherId } }); } }}
-                    className="rounded-[26px] overflow-hidden bg-white flex flex-col cursor-pointer transition-all hover:-translate-y-1 hover:scale-[1.02] hover:shadow-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF]/50"
-                    style={{ boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                    className="rounded-[26px] overflow-hidden bg-white flex flex-col cursor-pointer transition-all hover:-translate-y-1 hover:scale-[1.02] hover:shadow-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/50"
+                    style={{ boxShadow: SH_LG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
 
                     {/* Hero */}
-                    <div className="relative overflow-hidden px-6 pt-6 pb-7" style={{ background: theme.hero, borderBottom: `0.5px solid ${theme.heroBdr}` }}>
+                    <div className="relative overflow-hidden px-6 pt-6 pb-8" style={{ background: theme.hero, borderBottom: `0.5px solid ${theme.heroBdr}` }}>
                       {/* Decorative bottom-right icon (matches dashboard cards) */}
                       <div className="absolute pointer-events-none" style={{ bottom: 14, right: 14 }}>
                         <DecorIcon style={{ width: 88, height: 88, color: theme.accentSolid, opacity: 0.20, strokeWidth: 1.6 }} />
@@ -671,28 +671,28 @@ const ClassesPage = () => {
                           style={{ background: theme.iconBoxBg, border: `0.5px solid ${theme.iconBoxBdr}` }}>
                           <BookOpen className="w-6 h-6" style={{ color: theme.accentSolid }} strokeWidth={2.1} />
                         </div>
-                        <div className="flex items-center gap-[5px] px-[13px] py-[5px] rounded-full text-[10px] font-bold tracking-[0.06em]"
+                        <div className="flex items-center gap-[4px] px-[12px] py-[4px] rounded-full text-[12px] font-semibold tracking-[0.06em]"
                           style={{ background: theme.pillBg, border: `0.5px solid ${theme.pillBdr}`, color: theme.accent }}>
                           <span className="w-[6px] h-[6px] rounded-full animate-pulse" style={{ background: theme.accentSolid, boxShadow: `0 0 0 2.5px ${theme.pillBg}` }} />
                           Active
                         </div>
                       </div>
 
-                      <div className="text-[9px] font-bold uppercase tracking-[0.12em] mb-[6px] relative z-10" style={{ color: T4 }}>
+                      <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-[8px] relative z-10" style={{ color: T4 }}>
                         Subject
                       </div>
-                      <h2 className="text-[26px] font-bold mb-[14px] relative z-10 leading-[1.08]" style={{ color: T1, letterSpacing: "-0.6px" }}>
+                      <h2 className="text-[28px] font-semibold mb-[16px] relative z-10 leading-[1.08]" style={{ color: T1, letterSpacing: "-0.6px" }}>
                         {subject || "Class"}
                       </h2>
 
                       {className ? (
-                        <div className="inline-flex items-center gap-[6px] px-[14px] py-[7px] rounded-full relative z-10 text-[12px] font-bold"
+                        <div className="inline-flex items-center gap-[8px] px-[16px] py-[8px] rounded-full relative z-10 text-[12px] font-semibold"
                           style={{ background: theme.chipBg, border: `0.5px solid ${theme.chipBdr}`, color: theme.accent }}>
                           <Layers className="w-3 h-3" style={{ color: theme.accentSolid }} strokeWidth={2.2} />
                           {className}
                         </div>
                       ) : (
-                        <div className="inline-flex items-center gap-[6px] px-[14px] py-[7px] rounded-full relative z-10 text-[11px] font-medium"
+                        <div className="inline-flex items-center gap-[8px] px-[16px] py-[8px] rounded-full relative z-10 text-[12px] font-medium"
                           style={{ background: "rgba(0,0,0,0.04)", color: T3 }}>
                           <Layers className="w-3 h-3" style={{ color: T4 }} />
                           Class not assigned
@@ -703,44 +703,44 @@ const ClassesPage = () => {
                     {/* Body */}
                     <div className="p-5 flex flex-col flex-1">
                       {/* Teacher row */}
-                      <div className="flex items-center gap-[13px] px-4 py-[14px] rounded-[18px] mb-[14px]"
-                        style={{ background: BG, border: "0.5px solid rgba(0,85,255,0.12)" }}>
-                        <div className="w-11 h-11 rounded-[14px] flex items-center justify-center text-[15px] font-bold text-white shrink-0"
+                      <div className="flex items-center gap-[12px] px-4 py-[16px] rounded-[18px] mb-[16px]"
+                        style={{ background: BG, border: "0.5px solid rgba(10,132,255,0.12)" }}>
+                        <div className="w-11 h-11 rounded-[14px] flex items-center justify-center text-[15px] font-semibold text-white shrink-0"
                           style={{ background: avatar.bg, boxShadow: avatar.shadow }}>
                           {en.initials}
                         </div>
                         <div>
-                          <div className="text-[9px] font-bold uppercase tracking-[0.09em] mb-[3px]" style={{ color: T4 }}>
+                          <div className="text-[12px] font-semibold uppercase tracking-[0.09em] mb-[4px]" style={{ color: T4 }}>
                             {isClassTeacher ? "Class Teacher" : "Subject Teacher"}
                           </div>
-                          <div className="text-[15px] font-bold" style={{ color: T1, letterSpacing: "-0.2px" }}>
+                          <div className="text-[15px] font-semibold" style={{ color: T1, letterSpacing: "-0.2px" }}>
                             {en.teacherName}
                           </div>
                         </div>
                       </div>
 
                       {/* Meta grid */}
-                      <div className="grid grid-cols-2 gap-[10px] mb-4">
-                        <div className="flex items-center gap-[10px] px-[14px] py-[13px] rounded-[16px]"
-                          style={{ background: BG, border: "0.5px solid rgba(0,85,255,0.12)" }}>
+                      <div className="grid grid-cols-2 gap-[12px] mb-4">
+                        <div className="flex items-center gap-[12px] px-[16px] py-[12px] rounded-[16px]"
+                          style={{ background: BG, border: "0.5px solid rgba(10,132,255,0.12)" }}>
                           <div className="w-8 h-8 rounded-[10px] flex items-center justify-center shrink-0"
-                            style={{ background: "rgba(0,85,255,0.10)", border: "0.5px solid rgba(0,85,255,0.18)" }}>
+                            style={{ background: "rgba(10,132,255,0.10)", border: "0.5px solid rgba(10,132,255,0.18)" }}>
                             <Clock className="w-[14px] h-[14px]" style={{ color: B1 }} strokeWidth={2.2} />
                           </div>
                           <div className="min-w-0">
-                            <div className="text-[9px] font-bold uppercase tracking-[0.08em] mb-[3px]" style={{ color: T4 }}>Schedule</div>
-                            <div className="text-[13px] font-bold truncate" style={{ color: T1, letterSpacing: "-0.1px" }}>{schedule}</div>
+                            <div className="text-[12px] font-semibold uppercase tracking-[0.08em] mb-[4px]" style={{ color: T4 }}>Schedule</div>
+                            <div className="text-[13px] font-semibold truncate" style={{ color: T1, letterSpacing: "-0.1px" }}>{schedule}</div>
                           </div>
                         </div>
-                        <div className="flex items-center gap-[10px] px-[14px] py-[13px] rounded-[16px]"
-                          style={{ background: BG, border: "0.5px solid rgba(0,85,255,0.12)" }}>
+                        <div className="flex items-center gap-[12px] px-[16px] py-[12px] rounded-[16px]"
+                          style={{ background: BG, border: "0.5px solid rgba(10,132,255,0.12)" }}>
                           <div className="w-8 h-8 rounded-[10px] flex items-center justify-center shrink-0"
-                            style={{ background: "rgba(0,85,255,0.10)", border: "0.5px solid rgba(0,85,255,0.18)" }}>
+                            style={{ background: "rgba(10,132,255,0.10)", border: "0.5px solid rgba(10,132,255,0.18)" }}>
                             <School className="w-[14px] h-[14px]" style={{ color: B1 }} strokeWidth={2.2} />
                           </div>
                           <div className="min-w-0">
-                            <div className="text-[9px] font-bold uppercase tracking-[0.08em] mb-[3px]" style={{ color: T4 }}>Year</div>
-                            <div className="text-[13px] font-bold truncate" style={{ color: T1, letterSpacing: "-0.1px" }}>{year}</div>
+                            <div className="text-[12px] font-semibold uppercase tracking-[0.08em] mb-[4px]" style={{ color: T4 }}>Year</div>
+                            <div className="text-[13px] font-semibold truncate" style={{ color: T1, letterSpacing: "-0.1px" }}>{year}</div>
                           </div>
                         </div>
                       </div>
@@ -749,12 +749,12 @@ const ClassesPage = () => {
                       <div className="mt-auto">
                         <button
                           onClick={(e) => { e.stopPropagation(); navigate("/teacher-notes", { state: { teacherId: en.teacherId } }); }}
-                          className="w-full rounded-[16px] px-5 py-[14px] flex items-center justify-between relative overflow-hidden transition-transform hover:scale-[1.01]"
+                          className="w-full rounded-[16px] px-5 py-[16px] flex items-center justify-between relative overflow-hidden transition-transform hover:scale-[1.01]"
                           style={{ background: theme.btnGrad, boxShadow: theme.btnShadow }}>
                           <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 52%)" }} />
-                          <div className="flex items-center gap-[10px] relative z-10">
+                          <div className="flex items-center gap-[12px] relative z-10">
                             <MessageSquare className="w-[17px] h-[17px] text-white" strokeWidth={2.2} />
-                            <span className="text-[14px] font-bold text-white" style={{ letterSpacing: "-0.1px" }}>Message Teacher</span>
+                            <span className="text-[14px] font-semibold text-white" style={{ letterSpacing: "-0.1px" }}>Message Teacher</span>
                           </div>
                           <div className="w-[30px] h-[30px] rounded-[10px] flex items-center justify-center relative z-10"
                             style={{ background: "rgba(255,255,255,0.18)", border: "0.5px solid rgba(255,255,255,0.26)" }}>
@@ -778,49 +778,49 @@ const ClassesPage = () => {
                 aria-label="Open my child profile"
                 onClick={() => navigate("/my-child")}
                 onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/my-child"); } }}
-                className="lg:col-span-2 rounded-[24px] p-7 relative overflow-hidden cursor-pointer transition-all hover:-translate-y-1 hover:scale-[1.02] hover:shadow-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+                className="lg:col-span-2 rounded-[24px] p-8 relative overflow-hidden cursor-pointer transition-all hover:-translate-y-1 hover:scale-[1.02] hover:shadow-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
                 style={{
-                  background: "linear-gradient(140deg, #001888 0%, #0033CC 48%, #0055FF 100%)",
+                  background: "linear-gradient(140deg, #0A84FF 0%, #0A84FF 48%, #0A84FF 100%)",
                   boxShadow: "0 10px 36px rgba(0,51,204,0.38), 0 0 0 0.5px rgba(255,255,255,0.16)",
                   border: "0.5px solid rgba(255,255,255,0.16)"
                 }}>
-                <div className="absolute -top-[42px] -right-[30px] w-[240px] h-[240px] rounded-full pointer-events-none"
+                <div className="absolute -top-[42px] -right-[32px] w-[240px] h-[240px] rounded-full pointer-events-none"
                   style={{ background: "radial-gradient(circle, rgba(255,255,255,0.16) 0%, transparent 65%)" }} />
                 <div className="absolute inset-0 pointer-events-none" style={{
                   backgroundImage: "linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px)",
                   backgroundSize: "24px 24px"
                 }} />
 
-                <div className="flex items-center gap-[13px] mb-6 relative z-10">
+                <div className="flex items-center gap-[12px] mb-6 relative z-10">
                   <div className="w-14 h-14 rounded-[18px] flex items-center justify-center shrink-0"
                     style={{ background: "rgba(255,255,255,0.18)", border: "0.5px solid rgba(255,255,255,0.28)" }}>
                     <ShieldCheck className="w-7 h-7 text-white" strokeWidth={2.2} />
                   </div>
                   <div>
-                    <div className="text-[10px] font-bold uppercase tracking-[0.12em] mb-1" style={{ color: "rgba(255,255,255,0.45)" }}>Enrollment Verified</div>
-                    <div className="text-[20px] font-bold text-white" style={{ letterSpacing: "-0.4px" }}>Academic Registry Active</div>
+                    <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-1" style={{ color: "rgba(255,255,255,0.45)" }}>Enrollment Verified</div>
+                    <div className="text-[20px] font-semibold text-white" style={{ letterSpacing: "-0.4px" }}>Academic Registry Active</div>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 rounded-[18px] overflow-hidden relative z-10" style={{ gap: "1px", background: "rgba(255,255,255,0.14)" }}>
-                  <div className="py-5 flex flex-col items-center gap-[5px]" style={{ background: "rgba(255,255,255,0.09)" }}>
-                    <div className="text-[42px] font-bold text-white leading-none" style={{ letterSpacing: "-2px" }}>{enrollments.length}</div>
-                    <div className="text-[10px] font-bold uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.42)" }}>Subjects</div>
+                  <div className="py-5 flex flex-col items-center gap-[4px]" style={{ background: "rgba(255,255,255,0.09)" }}>
+                    <div className="text-[42px] font-semibold text-white leading-none" style={{ letterSpacing: "-2px" }}>{enrollments.length}</div>
+                    <div className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.42)" }}>Subjects</div>
                   </div>
-                  <div className="py-5 flex flex-col items-center gap-[5px]" style={{ background: "rgba(255,255,255,0.09)" }}>
-                    <div className="text-[42px] font-bold text-white leading-none" style={{ letterSpacing: "-2px" }}>{uniqueTeacherCount}</div>
-                    <div className="text-[10px] font-bold uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.42)" }}>Teachers</div>
+                  <div className="py-5 flex flex-col items-center gap-[4px]" style={{ background: "rgba(255,255,255,0.09)" }}>
+                    <div className="text-[42px] font-semibold text-white leading-none" style={{ letterSpacing: "-2px" }}>{uniqueTeacherCount}</div>
+                    <div className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.42)" }}>Teachers</div>
                   </div>
                 </div>
               </div>
 
               {/* All Subjects list (lg:col-span-3) */}
               <div className="lg:col-span-3 bg-white rounded-[22px] overflow-hidden"
-                style={{ boxShadow: SH, border: "0.5px solid rgba(0,85,255,0.12)" }}>
+                style={{ boxShadow: SH, border: "0.5px solid rgba(10,132,255,0.12)" }}>
                 <div className="flex items-center justify-between px-6 py-4" style={{ borderBottom: `0.5px solid ${SEP}` }}>
-                  <div className="text-[17px] font-bold" style={{ color: T1, letterSpacing: "-0.3px" }}>Enrolled Subjects</div>
-                  <div className="px-3 py-[4px] rounded-full text-[11px] font-bold"
-                    style={{ background: "rgba(0,85,255,0.10)", border: "0.5px solid rgba(0,85,255,0.18)", color: B1 }}>
+                  <div className="text-[18px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>Enrolled Subjects</div>
+                  <div className="px-3 py-[4px] rounded-full text-[12px] font-semibold"
+                    style={{ background: "rgba(10,132,255,0.10)", border: "0.5px solid rgba(10,132,255,0.18)", color: B1 }}>
                     {enrollments.length} Active
                   </div>
                 </div>
@@ -834,7 +834,7 @@ const ClassesPage = () => {
                       role="button"
                       tabIndex={0}
                       aria-label={`Open ${subject || "class"} teacher notes`}
-                      className="flex items-center gap-[13px] px-6 py-4 cursor-pointer transition-colors hover:bg-[#F5F9FF] focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#0055FF]/40"
+                      className="flex items-center gap-[12px] px-6 py-4 cursor-pointer transition-colors hover:bg-[#F5F5F7] focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#0A84FF]/40"
                       style={{ borderBottom: idx < arr.length - 1 ? `0.5px solid ${SEP}` : "none" }}
                       onClick={() => navigate("/teacher-notes", { state: { teacherId: en.teacherId } })}
                       onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/teacher-notes", { state: { teacherId: en.teacherId } }); } }}>
@@ -843,11 +843,11 @@ const ClassesPage = () => {
                         <BookOpen className="w-5 h-5 text-white" strokeWidth={2.2} />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className="text-[14px] font-bold truncate" style={{ color: T1, letterSpacing: "-0.2px" }}>{subject || "Class"}</div>
-                        <div className="text-[11px] mt-0.5 truncate" style={{ color: T3 }}>{en.teacherName} · {schedule}</div>
+                        <div className="text-[14px] font-semibold truncate" style={{ color: T1, letterSpacing: "-0.2px" }}>{subject || "Class"}</div>
+                        <div className="text-[12px] mt-1 truncate" style={{ color: T3 }}>{en.teacherName} · {schedule}</div>
                       </div>
-                      <div className="px-3 py-[5px] rounded-full text-[10px] font-bold shrink-0"
-                        style={{ background: "rgba(0,85,255,0.10)", color: "#0033AA", border: "0.5px solid rgba(0,85,255,0.22)" }}>
+                      <div className="px-3 py-[4px] rounded-full text-[12px] font-semibold shrink-0"
+                        style={{ background: "rgba(10,132,255,0.10)", color: "#0A84FF", border: "0.5px solid rgba(10,132,255,0.22)" }}>
                         Active
                       </div>
                       <ChevronRight className="w-[14px] h-[14px] shrink-0" style={{ color: T4 }} strokeWidth={2.3} />

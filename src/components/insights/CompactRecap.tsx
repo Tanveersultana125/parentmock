@@ -17,13 +17,13 @@ export function CompactRecap({ rank, previousRank, score }: CompactRecapProps) {
     climbed > 0
       ? 'rgba(52,199,89,0.20)'
       : dropped > 0
-      ? 'rgba(255,69,58,0.20)'
+      ? 'rgba(255,59,48,0.20)'
       : 'rgba(255,255,255,0.10)';
   const border =
     climbed > 0
       ? 'rgba(52,199,89,0.4)'
       : dropped > 0
-      ? 'rgba(255,69,58,0.4)'
+      ? 'rgba(255,59,48,0.4)'
       : 'rgba(255,255,255,0.20)';
 
   return (
@@ -55,7 +55,7 @@ export function CompactRecap({ rank, previousRank, score }: CompactRecapProps) {
           <p
             style={{
               fontSize: 9,
-              fontWeight: 800,
+              fontWeight: 600,
               letterSpacing: '1.6px',
               color: 'rgba(255,255,255,0.55)',
               margin: '0 0 2px',
@@ -67,7 +67,7 @@ export function CompactRecap({ rank, previousRank, score }: CompactRecapProps) {
           <p
             style={{
               fontSize: 36,
-              fontWeight: 800,
+              fontWeight: 600,
               letterSpacing: '-1.6px',
               color: '#FFFFFF',
               margin: 0,
@@ -82,7 +82,7 @@ export function CompactRecap({ rank, previousRank, score }: CompactRecapProps) {
           <p
             style={{
               fontSize: 9,
-              fontWeight: 800,
+              fontWeight: 600,
               letterSpacing: '1.6px',
               color: 'rgba(255,255,255,0.55)',
               margin: '0 0 2px',
@@ -94,7 +94,7 @@ export function CompactRecap({ rank, previousRank, score }: CompactRecapProps) {
           <p
             style={{
               fontSize: 36,
-              fontWeight: 800,
+              fontWeight: 600,
               letterSpacing: '-1px',
               color: '#FFFFFF',
               margin: 0,
@@ -120,7 +120,7 @@ export function CompactRecap({ rank, previousRank, score }: CompactRecapProps) {
           <span
             style={{
               fontSize: 9,
-              fontWeight: 800,
+              fontWeight: 600,
               letterSpacing: '1px',
               color,
               textTransform: 'uppercase',

@@ -12,7 +12,7 @@ export function Eyebrow({ children, color = T.T4 }: EyebrowProps) {
       className="m-0 uppercase"
       style={{
         fontSize: '10px',
-        fontWeight: 800,
+        fontWeight: 600,
         letterSpacing: '1.8px',
         color,
         fontFamily: FONT,

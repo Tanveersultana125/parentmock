@@ -35,13 +35,13 @@ export function HeroPositionCard({
     climbed > 0
       ? 'rgba(52,199,89,0.18)'
       : dropped > 0
-      ? 'rgba(255,69,58,0.18)'
+      ? 'rgba(255,59,48,0.18)'
       : 'rgba(255,255,255,0.10)';
   const trendBorder =
     climbed > 0
       ? 'rgba(52,199,89,0.3)'
       : dropped > 0
-      ? 'rgba(255,69,58,0.3)'
+      ? 'rgba(255,59,48,0.3)'
       : 'rgba(255,255,255,0.15)';
   const trendColor = climbed > 0 ? T.GREEN : dropped > 0 ? T.RED : 'rgba(255,255,255,0.6)';
 
@@ -101,7 +101,7 @@ export function HeroPositionCard({
           <span
             style={{
               fontSize: 9,
-              fontWeight: 800,
+              fontWeight: 600,
               letterSpacing: '1.4px',
               color: '#FFFFFF',
               textTransform: 'uppercase',
@@ -125,7 +125,7 @@ export function HeroPositionCard({
           <span
             style={{
               fontSize: 9,
-              fontWeight: 800,
+              fontWeight: 600,
               letterSpacing: '1px',
               color: trendColor,
               textTransform: 'uppercase',
@@ -140,7 +140,7 @@ export function HeroPositionCard({
         <p
           style={{
             fontSize: 9,
-            fontWeight: 800,
+            fontWeight: 600,
             letterSpacing: '2px',
             color: 'rgba(255,255,255,0.55)',
             margin: '0 0 2px',
@@ -152,7 +152,7 @@ export function HeroPositionCard({
         <div
           style={{
             fontSize: 88,
-            fontWeight: 800,
+            fontWeight: 600,
             letterSpacing: '-5px',
             color: '#FFFFFF',
             lineHeight: 0.9,
@@ -208,7 +208,7 @@ export function HeroPositionCard({
             style={{
               height: '100%',
               width: `${percentile}%`,
-              background: 'linear-gradient(90deg, #4499FF 0%, #FFFFFF 100%)',
+              background: 'linear-gradient(90deg, #7CBBFF 0%, #FFFFFF 100%)',
               borderRadius: 999,
               boxShadow: '0 0 12px rgba(255,255,255,0.4)',
             }}
@@ -240,7 +240,7 @@ export function HeroPositionCard({
           color: T.B1,
           cursor: 'pointer',
           fontFamily: FONT,
-          fontWeight: 800,
+          fontWeight: 600,
           letterSpacing: '-0.1px',
           boxShadow:
             '0 8px 24px rgba(0,0,0,0.20), 0 2px 6px rgba(0,0,0,0.10)',

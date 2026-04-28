@@ -162,7 +162,7 @@ export default function Insights() {
           <span
             style={{
               fontSize: 12,
-              fontWeight: 700,
+              fontWeight: 600,
               color: T.B1,
               letterSpacing: '-0.1px',
             }}
@@ -177,7 +177,7 @@ export default function Insights() {
         <h1
           style={{
             fontSize: 34,
-            fontWeight: 800,
+            fontWeight: 600,
             letterSpacing: '-1.4px',
             color: T.T1,
             margin: '0 0 6px',
@@ -288,7 +288,7 @@ export default function Insights() {
                 display: 'flex',
                 gap: 16,
                 paddingTop: 14,
-                borderTop: '0.5px solid rgba(0,85,255,0.06)',
+                borderTop: '0.5px solid rgba(10,132,255,0.06)',
                 marginTop: 8,
               }}
             >

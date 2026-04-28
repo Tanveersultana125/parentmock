@@ -36,14 +36,17 @@ main {
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: 'Inter', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif;
+  line-height: 1.5;
 }
 
-/* SF Pro Display end-to-end on opted-in pages (data-sfpro on the root) */
+/* Apple-style typography stack — applied globally so every page inherits.
+   data-sfpro retained as a no-op marker for backwards-compat with legacy
+   per-page opt-in markup; weight is no longer forced so the type scale
+   (page titles 600, section titles 500, body 400) cascades naturally. */
 [data-sfpro],
 [data-sfpro] * {
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif !important;
-  font-weight: 400 !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif !important;
 }
 
 /* 5. Native-like button/interactive feedback */

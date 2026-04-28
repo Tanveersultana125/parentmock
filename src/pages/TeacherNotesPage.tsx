@@ -316,26 +316,26 @@ const TeacherNotesPage = () => {
   // ═══════════════════════════════════════════════════════════════
   if (isMobile) {
     // ── WhatsApp palette ──
-    const B1 = "#00A884", B2 = "#008069", B3 = "#25D366";   // green primary / deep / bright
-    const BG = "#FFFFFF", BG2 = "#F5F6F6", BG3 = "#EFEAE2", CARD = "#FFFFFF"; // page / hover / chat-bg / surface
-    const T1 = "#111B21", T2 = "#3B4A54", T3 = "#667781", T4 = "#8696A0";
-    const ORANGE = "#FF8800", GOLD = "#FFAA00", GREEN = "#25D366", RED = "#FF3355";
-    const SEP = "#E9EDEF";
+    const B1 = "#34C759", B2 = "#248A3D", B3 = "#25D366";   // green primary / deep / bright
+    const BG = "#FFFFFF", BG2 = "#F5F5F7", BG3 = "#F5F5F7", CARD = "#FFFFFF"; // page / hover / chat-bg / surface
+    const T1 = "#1D1D1F", T2 = "#3B4A54", T3 = "#6E6E73", T4 = "#8696A0";
+    const ORANGE = "#FF9500", GOLD = "#FFCC00", GREEN = "#25D366", RED = "#FF3B30";
+    const SEP = "#EBEBF0";
     const SH    = "0 1px 2px rgba(11,20,26,0.08)";
     const SH_LG = "0 2px 6px rgba(11,20,26,0.10), 0 1px 2px rgba(11,20,26,0.06)";
     const SH_BTN = "0 4px 12px rgba(0,168,132,0.32), 0 1px 3px rgba(0,168,132,0.18)";
-    const FONT = "'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif";
-    const WA_HEADER_BG = "#F0F2F5";
-    const WA_BUBBLE_OUT = "#D9FDD3";
-    const WA_TICK_READ = "#53BDEB";
+    const FONT = "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif";
+    const WA_HEADER_BG = "#F0F0F2";
+    const WA_BUBBLE_OUT = "#F0F8F1";
+    const WA_TICK_READ = "#5AC8FA";
 
     const avatarChar = (studentData?.name?.[0] || "S").toUpperCase();
 
     // Per-teacher avatar palette (cycled by first char of name)
     const teacherGrads = [
-      { bg: "linear-gradient(135deg, #00C853, #22EE66)", sh: "0 3px 10px rgba(0,200,83,0.24)", tagBg: "rgba(0,85,255,0.10)", tagBdr: "rgba(0,85,255,0.16)", tagFg: B1 },
-      { bg: "linear-gradient(135deg, #FF8800, #FFCC22)", sh: "0 3px 10px rgba(255,136,0,0.24)", tagBg: "rgba(255,136,0,0.10)", tagBdr: "rgba(255,136,0,0.22)", tagFg: "#884400" },
-      { bg: `linear-gradient(135deg, ${B1}, ${B3})`,     sh: "0 3px 10px rgba(0,85,255,0.24)",  tagBg: "rgba(0,85,255,0.10)", tagBdr: "rgba(0,85,255,0.16)", tagFg: B1 },
+      { bg: "linear-gradient(135deg, #34C759, #34C759)", sh: "0 3px 10px rgba(52,199,89,0.24)", tagBg: "rgba(10,132,255,0.10)", tagBdr: "rgba(10,132,255,0.16)", tagFg: B1 },
+      { bg: "linear-gradient(135deg, #FF9500, #FFCC00)", sh: "0 3px 10px rgba(255,149,0,0.24)", tagBg: "rgba(255,149,0,0.10)", tagBdr: "rgba(255,149,0,0.22)", tagFg: "#86310C" },
+      { bg: `linear-gradient(135deg, ${B1}, ${B3})`,     sh: "0 3px 10px rgba(10,132,255,0.24)",  tagBg: "rgba(10,132,255,0.10)", tagBdr: "rgba(10,132,255,0.16)", tagFg: B1 },
       { bg: "linear-gradient(135deg, #8844CC, #BB77FF)", sh: "0 3px 10px rgba(136,68,204,0.24)", tagBg: "rgba(136,68,204,0.10)", tagBdr: "rgba(136,68,204,0.22)", tagFg: "#6622AA" },
     ];
     const gradIdx  = (name?: string) => ((name?.charCodeAt(0) || 0) % teacherGrads.length + teacherGrads.length) % teacherGrads.length;
@@ -374,21 +374,21 @@ const TeacherNotesPage = () => {
 
     // Shared rate modal (rendered alongside chat view)
     const rateModalMobile = showRateModal && selectedTeacher && (
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "rgba(0,16,64,0.55)", fontFamily: FONT }}>
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "rgba(29,29,31,0.55)", fontFamily: FONT }}>
         <div className="bg-white rounded-[26px] p-6 w-full max-w-sm" style={{ boxShadow: "0 24px 60px rgba(0,20,80,0.30)" }}>
           <div className="flex items-center justify-between mb-5">
             <div>
-              <h3 className="text-[17px] font-bold" style={{ color: T1, letterSpacing: "-0.3px" }}>Rate Teacher</h3>
+              <h3 className="text-[18px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>Rate Teacher</h3>
               <p className="text-[13px] font-semibold mt-[2px]" style={{ color: B1 }}>{selectedTeacher.teacherName}</p>
             </div>
             <button onClick={() => { setShowRateModal(false); setRatingValue(0); setReviewText(""); }}
               className="w-9 h-9 rounded-full flex items-center justify-center active:scale-95"
-              style={{ background: BG, border: "0.5px solid rgba(0,85,255,0.12)" }}>
+              style={{ background: BG, border: "0.5px solid rgba(10,132,255,0.12)" }}>
               <X className="w-4 h-4" style={{ color: T3 }} />
             </button>
           </div>
           <div className="text-center mb-5">
-            <p className="text-[10px] font-bold uppercase tracking-[0.15em] mb-3" style={{ color: T4 }}>Your Rating</p>
+            <p className="text-[12px] font-semibold uppercase tracking-[0.15em] mb-3" style={{ color: T4 }}>Your Rating</p>
             <div className="flex justify-center gap-2">
               {[1, 2, 3, 4, 5].map(star => (
                 <button key={star}
@@ -404,20 +404,20 @@ const TeacherNotesPage = () => {
               ))}
             </div>
             {ratingValue > 0 && (
-              <p className="text-[13px] font-bold mt-2" style={{ color: GOLD }}>
+              <p className="text-[13px] font-semibold mt-2" style={{ color: GOLD }}>
                 {["", "Poor", "Fair", "Good", "Very Good", "Excellent"][ratingValue]}
               </p>
             )}
           </div>
           <div className="mb-4">
-            <p className="text-[10px] font-bold uppercase tracking-[0.15em] mb-2" style={{ color: T4 }}>Review (Optional)</p>
+            <p className="text-[12px] font-semibold uppercase tracking-[0.15em] mb-2" style={{ color: T4 }}>Review (Optional)</p>
             <textarea rows={3} value={reviewText} onChange={e => setReviewText(e.target.value)}
               placeholder="Share your experience..."
               className="w-full px-4 py-3 rounded-[14px] text-[13px] resize-none outline-none"
-              style={{ background: BG, border: "0.5px solid rgba(0,85,255,0.12)", color: T1, fontFamily: FONT }} />
+              style={{ background: BG, border: "0.5px solid rgba(10,132,255,0.12)", color: T1, fontFamily: FONT }} />
           </div>
           <button onClick={handleSubmitReview} disabled={ratingValue === 0 || isSubmittingReview}
-            className="w-full h-12 rounded-[16px] text-white font-bold text-[14px] flex items-center justify-center gap-2 active:scale-[0.97] disabled:opacity-50"
+            className="w-full h-12 rounded-[16px] text-white font-semibold text-[14px] flex items-center justify-center gap-2 active:scale-[0.97] disabled:opacity-50"
             style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: SH_BTN }}>
             {isSubmittingReview ? <><Loader2 className="w-4 h-4 animate-spin" /> Submitting…</> : <><Star className="w-4 h-4 fill-white" /> Submit Review</>}
           </button>
@@ -428,27 +428,27 @@ const TeacherNotesPage = () => {
     // ── Compact stat row (shared between home + chat) ──
     const statRow = (compact: boolean) => (
       <div className="flex rounded-[20px] overflow-hidden"
-        style={{ background: CARD, boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+        style={{ background: CARD, boxShadow: SH_LG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
         {[
-          { ico: <MessageSquare className="w-[13px] h-[13px]" style={{ color: B1 }} strokeWidth={2.4} />, bg: "rgba(0,85,255,0.10)", bdr: "rgba(0,85,255,0.18)", label: "Total\nMessages", val: stats.total },
-          { ico: <Mail className="w-[13px] h-[13px]" style={{ color: ORANGE }} strokeWidth={2.4} />, bg: "rgba(255,136,0,0.10)", bdr: "rgba(255,136,0,0.22)", label: "Teacher\nMsgs", val: stats.unread },
-          { ico: <GraduationCap className="w-[13px] h-[13px]" style={{ color: "rgba(0,85,255,0.7)" }} strokeWidth={2.4} />, bg: "rgba(0,85,255,0.08)", bdr: "rgba(0,85,255,0.16)", label: "Teachers", val: stats.teachers },
+          { ico: <MessageSquare className="w-[13px] h-[13px]" style={{ color: B1 }} strokeWidth={2.4} />, bg: "rgba(10,132,255,0.10)", bdr: "rgba(10,132,255,0.18)", label: "Total\nMessages", val: stats.total },
+          { ico: <Mail className="w-[13px] h-[13px]" style={{ color: ORANGE }} strokeWidth={2.4} />, bg: "rgba(255,149,0,0.10)", bdr: "rgba(255,149,0,0.22)", label: "Teacher\nMsgs", val: stats.unread },
+          { ico: <GraduationCap className="w-[13px] h-[13px]" style={{ color: "rgba(10,132,255,0.7)" }} strokeWidth={2.4} />, bg: "rgba(10,132,255,0.08)", bdr: "rgba(10,132,255,0.16)", label: "Teachers", val: stats.teachers },
         ].map((s, i, arr) => (
           <div key={i} className="flex-1 px-3 flex flex-col relative"
             style={{
               paddingTop: compact ? 12 : 14, paddingBottom: compact ? 12 : 14,
               gap: compact ? 4 : 5,
-              borderRight: i < arr.length - 1 ? "0.5px solid rgba(0,85,255,0.10)" : undefined,
+              borderRight: i < arr.length - 1 ? "0.5px solid rgba(10,132,255,0.10)" : undefined,
             }}>
             <div className="w-[26px] h-[26px] rounded-[8px] flex items-center justify-center"
               style={{ background: s.bg, border: `0.5px solid ${s.bdr}`, marginBottom: compact ? 2 : 3 }}>
               {s.ico}
             </div>
-            <div className="font-bold uppercase tracking-[0.07em] leading-[1.3] whitespace-pre-line"
+            <div className="font-semibold uppercase tracking-[0.07em] leading-[1.3] whitespace-pre-line"
               style={{ color: T4, fontSize: compact ? 8 : 9 }}>
               {s.label}
             </div>
-            <div className="font-bold leading-none" style={{ color: T1, letterSpacing: "-0.6px", fontSize: compact ? 18 : 22 }}>{s.val}</div>
+            <div className="font-semibold leading-none" style={{ color: T1, letterSpacing: "-0.6px", fontSize: compact ? 18 : 22 }}>{s.val}</div>
           </div>
         ))}
       </div>
@@ -459,7 +459,7 @@ const TeacherNotesPage = () => {
       <div className="flex items-center justify-between px-5 py-3"
         style={{ background: B1, color: "#fff" }}>
         <div className="text-[20px] font-semibold" style={{ letterSpacing: "-0.2px" }}>Chats</div>
-        <div className="flex items-center gap-[18px]">
+        <div className="flex items-center gap-[16px]">
           <Search className="w-[19px] h-[19px]" style={{ color: "#fff" }} strokeWidth={2.2} />
           <MoreVertical className="w-[19px] h-[19px]" style={{ color: "#fff" }} strokeWidth={2.2} />
         </div>
@@ -477,13 +477,13 @@ const TeacherNotesPage = () => {
           >
 
             {/* WhatsApp-style chat header */}
-            <div className="flex items-center gap-3 px-3 py-[10px] shrink-0"
+            <div className="flex items-center gap-3 px-3 py-[12px] shrink-0"
               style={{ background: B1, color: "#fff" }}>
               <button onClick={() => setSelectedTeacher(null)}
                 className="w-8 h-8 flex items-center justify-center active:scale-90 shrink-0">
                 <ChevronLeft className="w-[22px] h-[22px] text-white" strokeWidth={2.5} />
               </button>
-              <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-[14px] font-bold shrink-0"
+              <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-[14px] font-semibold shrink-0"
                 style={{ background: gradFor(selectedTeacher.teacherName) }}>
                 {selectedTeacher.teacherName?.substring(0, 2).toUpperCase()}
               </div>
@@ -496,9 +496,9 @@ const TeacherNotesPage = () => {
                 </div>
               </div>
               <button onClick={() => setShowRateModal(true)}
-                className="flex items-center gap-[4px] px-[10px] py-[6px] rounded-full text-[12px] font-semibold text-white active:scale-95 shrink-0"
+                className="flex items-center gap-[4px] px-[12px] py-[8px] rounded-full text-[12px] font-semibold text-white active:scale-95 shrink-0"
                 style={{ background: "rgba(255,255,255,0.18)" }}>
-                <Star size={12} fill="#FFD700" color="#FFD700" />
+                <Star size={12} fill="#FFCC00" color="#FFCC00" />
                 Rate
               </button>
             </div>
@@ -526,7 +526,7 @@ const TeacherNotesPage = () => {
               ) : groupedMessages.map(group => (
                 <div key={group.date}>
                   <div className="flex justify-center my-3">
-                    <span className="text-[11px] font-medium px-[10px] py-[4px] rounded-[6px]"
+                    <span className="text-[12px] font-medium px-[12px] py-[4px] rounded-[6px]"
                       style={{ background: "#FFFFFF", color: T3, boxShadow: SH }}>
                       {group.date}
                     </span>
@@ -534,23 +534,23 @@ const TeacherNotesPage = () => {
                   {group.messages.map(n => {
                     const isParent = n.from === "parent";
                     return isParent ? (
-                      <div key={n.id} className="flex justify-end mb-[3px]">
-                        <div className="max-w-[78%] px-[9px] py-[6px] relative"
+                      <div key={n.id} className="flex justify-end mb-[4px]">
+                        <div className="max-w-[78%] px-[8px] py-[8px] relative"
                           style={{
                             background: WA_BUBBLE_OUT,
                             borderRadius: "8px 8px 0 8px",
                             boxShadow: SH,
                           }}>
                           <div className="text-[14px] leading-[1.4] whitespace-pre-wrap break-words pr-[58px]" style={{ color: T1 }}>{n.content}</div>
-                          <div className="absolute right-[8px] bottom-[4px] flex items-center gap-[3px]">
-                            <span className="text-[10px]" style={{ color: T3 }}>{fmtTime(n.createdAt)}</span>
+                          <div className="absolute right-[8px] bottom-[4px] flex items-center gap-[4px]">
+                            <span className="text-[12px]" style={{ color: T3 }}>{fmtTime(n.createdAt)}</span>
                             <CheckCheck className="w-[14px] h-[14px]" style={{ color: WA_TICK_READ }} />
                           </div>
                         </div>
                       </div>
                     ) : (
-                      <div key={n.id} className="flex justify-start mb-[3px]">
-                        <div className="max-w-[78%] px-[9px] py-[6px] relative"
+                      <div key={n.id} className="flex justify-start mb-[4px]">
+                        <div className="max-w-[78%] px-[8px] py-[8px] relative"
                           style={{
                             background: CARD,
                             borderRadius: "8px 8px 8px 0",
@@ -558,7 +558,7 @@ const TeacherNotesPage = () => {
                           }}>
                           <div className="text-[14px] leading-[1.4] whitespace-pre-wrap break-words pr-[44px]" style={{ color: T1 }}>{n.content}</div>
                           <div className="absolute right-[8px] bottom-[4px]">
-                            <span className="text-[10px]" style={{ color: T3 }}>{fmtTime(n.createdAt)}</span>
+                            <span className="text-[12px]" style={{ color: T3 }}>{fmtTime(n.createdAt)}</span>
                           </div>
                         </div>
                       </div>
@@ -570,7 +570,7 @@ const TeacherNotesPage = () => {
             </div>
 
             {/* Input bar — WhatsApp style */}
-            <div className="px-2 py-[7px] flex items-end gap-[6px] shrink-0"
+            <div className="px-2 py-[8px] flex items-end gap-[8px] shrink-0"
               style={{ background: WA_HEADER_BG }}>
               <div className="flex-1 flex items-center gap-1 px-3 py-[8px] rounded-[24px]"
                 style={{ background: "#fff" }}>
@@ -658,7 +658,7 @@ const TeacherNotesPage = () => {
                   setSelectedTeacher({ teacherId: t.id, teacherName: t.name, subject: t.subject || "General" });
                   setShowNewChat(false);
                 }}
-                  className="flex items-center gap-[14px] px-4 py-[10px] cursor-pointer active:bg-[#F5F6F6] transition-colors">
+                  className="flex items-center gap-[16px] px-4 py-[12px] cursor-pointer active:bg-[#F5F5F7] transition-colors">
                   <div className="w-[48px] h-[48px] rounded-full flex items-center justify-center text-white text-[16px] font-semibold shrink-0"
                     style={{ background: gradFor(t.name) }}>
                     {t.name?.substring(0, 2).toUpperCase()}
@@ -686,27 +686,27 @@ const TeacherNotesPage = () => {
         {compactHeader}
 
         {/* Stat row */}
-        <div className="mx-5 mt-[14px]">{statRow(false)}</div>
+        <div className="mx-5 mt-[16px]">{statRow(false)}</div>
 
         {/* Hero banner */}
         <div className="mx-5 mt-3 rounded-[22px] px-5 py-4 flex items-center gap-3 relative overflow-hidden"
           style={{ background: `linear-gradient(135deg, ${B1} 0%, ${B2} 50%, ${B3} 100%)`, boxShadow: SH_BTN }}>
-          <div className="absolute -top-[30px] -right-[20px] w-[130px] h-[130px] rounded-full pointer-events-none"
+          <div className="absolute -top-[32px] -right-[20px] w-[130px] h-[130px] rounded-full pointer-events-none"
             style={{ background: "radial-gradient(circle, rgba(255,255,255,0.14) 0%, transparent 65%)" }} />
           <div className="w-[42px] h-[42px] rounded-[14px] flex items-center justify-center shrink-0 relative z-10"
             style={{ background: "rgba(255,255,255,0.20)", border: "0.5px solid rgba(255,255,255,0.28)" }}>
             <GraduationCap className="w-[22px] h-[22px] text-white" strokeWidth={2.2} />
           </div>
           <div className="relative z-10">
-            <div className="text-[17px] font-bold text-white mb-[2px]" style={{ letterSpacing: "-0.3px" }}>Teacher Messages</div>
-            <div className="text-[11px] font-normal" style={{ color: "rgba(255,255,255,0.65)" }}>Direct communication with your teachers</div>
+            <div className="text-[18px] font-semibold text-white mb-[2px]" style={{ letterSpacing: "-0.3px" }}>Teacher Messages</div>
+            <div className="text-[12px] font-normal" style={{ color: "rgba(255,255,255,0.65)" }}>Direct communication with your teachers</div>
           </div>
         </div>
 
         {/* Search */}
         <div className="mx-5 mt-3 relative">
-          <div className="absolute left-[14px] top-1/2 -translate-y-1/2 pointer-events-none">
-            <Search className="w-[15px] h-[15px]" style={{ color: "rgba(0,85,255,0.42)" }} strokeWidth={2.2} />
+          <div className="absolute left-[16px] top-1/2 -translate-y-1/2 pointer-events-none">
+            <Search className="w-[15px] h-[15px]" style={{ color: "rgba(10,132,255,0.42)" }} strokeWidth={2.2} />
           </div>
           <input
             type="text"
@@ -714,13 +714,13 @@ const TeacherNotesPage = () => {
             onChange={e => setSearchQuery(e.target.value)}
             placeholder="Search teachers..."
             className="w-full pl-[42px] pr-4 py-3 rounded-[15px] text-[13px] outline-none"
-            style={{ background: CARD, border: "0.5px solid rgba(0,85,255,0.12)", color: T1, boxShadow: SH, fontFamily: FONT }}
+            style={{ background: CARD, border: "0.5px solid rgba(10,132,255,0.12)", color: T1, boxShadow: SH, fontFamily: FONT }}
           />
         </div>
 
         {/* New Message btn */}
         <button onClick={() => setShowNewChat(true)}
-          className="mx-5 mt-[10px] w-[calc(100%-40px)] h-[50px] rounded-[16px] flex items-center justify-center gap-2 text-[15px] font-bold text-white active:scale-[0.97] relative overflow-hidden"
+          className="mx-5 mt-[12px] w-[calc(100%-40px)] h-[50px] rounded-[16px] flex items-center justify-center gap-2 text-[15px] font-semibold text-white active:scale-[0.97] relative overflow-hidden"
           style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: SH_BTN, letterSpacing: "-0.1px" }}>
           <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.14) 0%, transparent 52%)" }} />
           <Plus className="w-4 h-4 relative z-10" strokeWidth={2.5} />
@@ -732,12 +732,12 @@ const TeacherNotesPage = () => {
           <div className="flex justify-center mt-5"><Loader2 className="w-6 h-6 animate-spin" style={{ color: B1 }} /></div>
         ) : filteredConvs.length > 0 ? (
           <div className="mx-5 mt-3 rounded-[22px] overflow-hidden"
-            style={{ background: CARD, boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
-            <div className="px-[18px] pt-[14px] pb-[10px] flex items-center justify-between"
-              style={{ borderBottom: "0.5px solid rgba(0,85,255,0.07)" }}>
-              <div className="text-[14px] font-bold" style={{ color: T1, letterSpacing: "-0.2px" }}>Conversations</div>
-              <div className="px-[9px] py-[3px] rounded-full text-[10px] font-bold"
-                style={{ background: "rgba(0,85,255,0.10)", color: B1, border: "0.5px solid rgba(0,85,255,0.18)" }}>
+            style={{ background: CARD, boxShadow: SH_LG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
+            <div className="px-[16px] pt-[16px] pb-[12px] flex items-center justify-between"
+              style={{ borderBottom: "0.5px solid rgba(10,132,255,0.07)" }}>
+              <div className="text-[14px] font-semibold" style={{ color: T1, letterSpacing: "-0.2px" }}>Conversations</div>
+              <div className="px-[8px] py-[4px] rounded-full text-[12px] font-semibold"
+                style={{ background: "rgba(10,132,255,0.10)", color: B1, border: "0.5px solid rgba(10,132,255,0.18)" }}>
                 {filteredConvs.length} active
               </div>
             </div>
@@ -745,23 +745,23 @@ const TeacherNotesPage = () => {
               const unread = unreadCounts.get(t.teacherId) || 0;
               return (
                 <div key={t.teacherId} onClick={() => setSelectedTeacher(t)}
-                  className="flex items-center gap-[13px] px-[18px] py-[14px] cursor-pointer active:bg-[rgba(0,85,255,0.04)] transition-colors"
-                  style={i < arr.length - 1 ? { borderBottom: "0.5px solid rgba(0,85,255,0.07)" } : {}}>
-                  <div className="w-[46px] h-[46px] rounded-[15px] flex items-center justify-center text-white text-[16px] font-bold shrink-0"
-                    style={{ background: gradFor(t.teacherName), boxShadow: "0 3px 10px rgba(0,85,255,0.26)" }}>
+                  className="flex items-center gap-[12px] px-[16px] py-[16px] cursor-pointer active:bg-[rgba(10,132,255,0.04)] transition-colors"
+                  style={i < arr.length - 1 ? { borderBottom: "0.5px solid rgba(10,132,255,0.07)" } : {}}>
+                  <div className="w-[46px] h-[46px] rounded-[15px] flex items-center justify-center text-white text-[16px] font-semibold shrink-0"
+                    style={{ background: gradFor(t.teacherName), boxShadow: "0 3px 10px rgba(10,132,255,0.26)" }}>
                     {t.teacherName?.substring(0, 2).toUpperCase()}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="text-[14px] font-bold truncate" style={{ color: T1, letterSpacing: "-0.2px" }}>{t.teacherName}</div>
+                    <div className="text-[14px] font-semibold truncate" style={{ color: T1, letterSpacing: "-0.2px" }}>{t.teacherName}</div>
                     <div className="text-[12px] font-normal truncate" style={{ color: T3 }}>
                       {t.lastMessage.from === "parent" ? "✓ " : ""}{t.lastMessage.content}
                     </div>
                   </div>
-                  <div className="flex flex-col items-end gap-[5px] shrink-0">
-                    <div className="text-[10px] font-semibold" style={{ color: T4 }}>{fmtTime(t.lastMessage.createdAt)}</div>
+                  <div className="flex flex-col items-end gap-[4px] shrink-0">
+                    <div className="text-[12px] font-semibold" style={{ color: T4 }}>{fmtTime(t.lastMessage.createdAt)}</div>
                     {unread > 0 && (
-                      <div className="min-w-[20px] h-[20px] rounded-full flex items-center justify-center text-[10px] font-bold text-white px-[5px]"
-                        style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: "0 2px 6px rgba(0,85,255,0.30)" }}>
+                      <div className="min-w-[20px] h-[20px] rounded-full flex items-center justify-center text-[12px] font-semibold text-white px-[4px]"
+                        style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: "0 2px 6px rgba(10,132,255,0.30)" }}>
                         {unread}
                       </div>
                     )}
@@ -771,17 +771,17 @@ const TeacherNotesPage = () => {
             })}
           </div>
         ) : (
-          <div className="mx-5 mt-3 rounded-[22px] px-5 py-8 flex flex-col items-center gap-[10px] relative overflow-hidden"
-            style={{ background: CARD, boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+          <div className="mx-5 mt-3 rounded-[22px] px-5 py-8 flex flex-col items-center gap-[12px] relative overflow-hidden"
+            style={{ background: CARD, boxShadow: SH_LG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
             <div className="absolute -top-10 -right-7 w-[150px] h-[150px] rounded-full pointer-events-none"
-              style={{ background: "radial-gradient(circle, rgba(0,85,255,0.05) 0%, transparent 70%)" }} />
-            <div className="w-16 h-16 rounded-[22px] flex items-center justify-center mb-[6px] relative z-10"
-              style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: `${SH_BTN}, 0 0 0 10px rgba(0,85,255,0.07)` }}>
+              style={{ background: "radial-gradient(circle, rgba(10,132,255,0.05) 0%, transparent 70%)" }} />
+            <div className="w-16 h-16 rounded-[22px] flex items-center justify-center mb-[8px] relative z-10"
+              style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: `${SH_BTN}, 0 0 0 10px rgba(10,132,255,0.07)` }}>
               <MessageSquare className="w-[30px] h-[30px]" style={{ color: "rgba(255,255,255,0.95)" }} strokeWidth={2.1} />
             </div>
-            <div className="text-[17px] font-bold text-center relative z-10" style={{ color: T1, letterSpacing: "-0.3px" }}>No conversations yet</div>
+            <div className="text-[18px] font-semibold text-center relative z-10" style={{ color: T1, letterSpacing: "-0.3px" }}>No conversations yet</div>
             <div className="text-[12px] text-center max-w-[210px] leading-[1.6] font-normal relative z-10" style={{ color: T3 }}>
-              Tap <strong style={{ color: B1, fontWeight: 700 }}>New Message</strong> to start a direct chat with your teacher.
+              Tap <strong style={{ color: B1, fontWeight: 600 }}>New Message</strong> to start a direct chat with your teacher.
             </div>
           </div>
         )}
@@ -794,29 +794,29 @@ const TeacherNotesPage = () => {
   /* ═══════════════════════════════════════════════════════════════
      DESKTOP — Bright Blue Apple UI
      ═══════════════════════════════════════════════════════════════ */
-  const B1 = "#0055FF", B2 = "#1166FF", B3 = "#2277FF";
-  const BG_D = "#EEF4FF", BG2_D = "#E0ECFF";
-  const T1 = "#001040", T3 = "#5070B0", T4 = "#99AACC";
-  const ORANGE = "#FF8800", GOLD = "#FFAA00", GREEN = "#00C853", RED = "#FF3355";
-  const BLUE_BDR = "rgba(0,85,255,0.12)";
-  const SH_D = "0 0 0 0.5px rgba(0,85,255,0.08), 0 2px 8px rgba(0,85,255,0.09), 0 10px 28px rgba(0,85,255,0.11)";
-  const SH_LG_D = "0 0 0 0.5px rgba(0,85,255,0.10), 0 4px 16px rgba(0,85,255,0.12), 0 18px 44px rgba(0,85,255,0.14)";
-  const SH_BTN_D = "0 6px 22px rgba(0,85,255,0.42), 0 2px 6px rgba(0,85,255,0.22)";
-  const FONT_D = "'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif";
+  const B1 = "#0A84FF", B2 = "#3395FF", B3 = "#5BA9FF";
+  const BG_D = "#F5F5F7", BG2_D = "#EBEBF0";
+  const T1 = "#1D1D1F", T3 = "#6E6E73", T4 = "#A1A1A6";
+  const ORANGE = "#FF9500", GOLD = "#FFCC00", GREEN = "#34C759", RED = "#FF3B30";
+  const BLUE_BDR = "rgba(10,132,255,0.12)";
+  const SH_D = "0 0 0 0.5px rgba(10,132,255,0.08), 0 2px 8px rgba(10,132,255,0.09), 0 10px 28px rgba(10,132,255,0.11)";
+  const SH_LG_D = "0 0 0 0.5px rgba(10,132,255,0.10), 0 4px 16px rgba(10,132,255,0.12), 0 18px 44px rgba(10,132,255,0.14)";
+  const SH_BTN_D = "0 6px 22px rgba(10,132,255,0.42), 0 2px 6px rgba(10,132,255,0.22)";
+  const FONT_D = "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif";
 
   // ── WhatsApp Web palette (used inside the chat container) ──
-  const WA_GREEN = "#00A884", WA_GREEN_DEEP = "#008069";
-  const WA_HEADER_BG = "#F0F2F5";
-  const WA_CHAT_BG = "#EFEAE2";
-  const WA_BUBBLE_OUT = "#D9FDD3";
-  const WA_TICK_READ = "#53BDEB";
-  const WA_SEP = "#E9EDEF";
-  const WA_T1 = "#111B21", WA_T2 = "#3B4A54", WA_T3 = "#667781";
+  const WA_GREEN = "#34C759", WA_GREEN_DEEP = "#248A3D";
+  const WA_HEADER_BG = "#F0F0F2";
+  const WA_CHAT_BG = "#F5F5F7";
+  const WA_BUBBLE_OUT = "#F0F8F1";
+  const WA_TICK_READ = "#5AC8FA";
+  const WA_SEP = "#EBEBF0";
+  const WA_T1 = "#1D1D1F", WA_T2 = "#3B4A54", WA_T3 = "#6E6E73";
 
   const teacherGradsD = [
-    { bg: `linear-gradient(135deg, ${GREEN}, #22EE66)`, sh: "0 3px 10px rgba(0,200,83,0.26)" },
-    { bg: `linear-gradient(135deg, ${ORANGE}, #FFCC22)`, sh: "0 3px 10px rgba(255,136,0,0.26)" },
-    { bg: `linear-gradient(135deg, ${B1}, ${B3})`, sh: "0 3px 10px rgba(0,85,255,0.26)" },
+    { bg: `linear-gradient(135deg, ${GREEN}, #34C759)`, sh: "0 3px 10px rgba(52,199,89,0.26)" },
+    { bg: `linear-gradient(135deg, ${ORANGE}, #FFCC00)`, sh: "0 3px 10px rgba(255,149,0,0.26)" },
+    { bg: `linear-gradient(135deg, ${B1}, ${B3})`, sh: "0 3px 10px rgba(10,132,255,0.26)" },
     { bg: "linear-gradient(135deg, #8844CC, #BB77FF)", sh: "0 3px 10px rgba(136,68,204,0.26)" },
   ];
   const gradForName = (name?: string) => teacherGradsD[((name?.charCodeAt(0) || 0) % teacherGradsD.length + teacherGradsD.length) % teacherGradsD.length];
@@ -836,31 +836,31 @@ const TeacherNotesPage = () => {
   return (
     <div className="animate-in fade-in duration-500 -m-4 sm:-m-6 md:-m-8 min-h-[calc(100vh-64px)]"
       style={{ fontFamily: FONT_D, background: BG_D }}>
-      <div className="w-full px-6 pt-8 pb-12">
+      <div className="w-full px-6 pt-8 pb-10">
 
         {/* ── Toolbar ── */}
         <div className="flex items-center justify-between mb-6">
           <div>
-            <div className="text-[10px] font-bold uppercase tracking-[0.12em] mb-1 flex items-center gap-[7px]" style={{ color: T4 }}>
-              <span className="w-[6px] h-[6px] rounded-full animate-pulse" style={{ background: GREEN, boxShadow: "0 0 0 3px rgba(0,200,83,0.2)" }} />
+            <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-1 flex items-center gap-[8px]" style={{ color: T4 }}>
+              <span className="w-[6px] h-[6px] rounded-full animate-pulse" style={{ background: GREEN, boxShadow: "0 0 0 3px rgba(52,199,89,0.2)" }} />
               Parent Dashboard · Teacher Messages
             </div>
-            <h1 className="text-[32px] font-bold leading-none" style={{ color: T1, letterSpacing: "-0.8px" }}>Teacher Notes &amp; Chat</h1>
-            <div className="text-[13px] font-normal mt-[6px]" style={{ color: T3 }}>Direct messages with your child's teachers</div>
+            <h1 className="text-[28px] font-semibold leading-none" style={{ color: T1, letterSpacing: "-0.8px" }}>Teacher Notes &amp; Chat</h1>
+            <div className="text-[13px] font-normal mt-[8px]" style={{ color: T3 }}>Direct messages with your child's teachers</div>
           </div>
-          <div className="flex items-center gap-[10px]">
+          <div className="flex items-center gap-[12px]">
             <button onClick={() => setShowNewChat(true)}
-              className="px-4 py-[10px] rounded-[14px] text-[13px] font-bold text-white flex items-center gap-2 transition-transform hover:scale-[1.02]"
+              className="px-4 py-[12px] rounded-[14px] text-[13px] font-semibold text-white flex items-center gap-2 transition-transform hover:scale-[1.02]"
               style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: SH_BTN_D, letterSpacing: "-0.1px" }}>
               <Plus className="w-4 h-4" strokeWidth={2.5} /> New Message
             </button>
             <div className="w-10 h-10 rounded-full flex items-center justify-center relative"
               style={{ background: "#fff", border: `0.5px solid ${BLUE_BDR}`, boxShadow: SH_D }}>
-              <Bell className="w-4 h-4" style={{ color: "rgba(0,85,255,0.60)" }} strokeWidth={1.8} />
+              <Bell className="w-4 h-4" style={{ color: "rgba(10,132,255,0.60)" }} strokeWidth={1.8} />
               {stats.unread > 0 && <span className="absolute top-[1px] right-[1px] w-2 h-2 rounded-full" style={{ background: RED, border: "1.5px solid white" }} />}
             </div>
-            <div className="w-10 h-10 rounded-full flex items-center justify-center text-[14px] font-bold text-white"
-              style={{ background: `linear-gradient(140deg, ${B1}, ${B2})`, boxShadow: "0 3px 12px rgba(0,85,255,0.36), 0 0 0 2px rgba(255,255,255,0.8)" }}>
+            <div className="w-10 h-10 rounded-full flex items-center justify-center text-[14px] font-semibold text-white"
+              style={{ background: `linear-gradient(140deg, ${B1}, ${B2})`, boxShadow: "0 3px 12px rgba(10,132,255,0.36), 0 0 0 2px rgba(255,255,255,0.8)" }}>
               {(studentData?.name?.[0] || "S").toUpperCase()}
             </div>
           </div>
@@ -869,9 +869,9 @@ const TeacherNotesPage = () => {
         {/* ── Stat strip ── */}
         <div className="grid grid-cols-3 gap-4 mb-5">
           {[
-            { label: "Total Messages", val: stats.total, color: B1, icon: MessageSquare, decorIcon: MessagesSquare, cardBg: "linear-gradient(135deg, rgba(0,85,255,0.10) 0%, rgba(0,85,255,0.03) 100%)", cardBdr: "rgba(0,85,255,0.20)", iconBoxBg: "rgba(0,85,255,0.14)", iconBoxBdr: "rgba(0,85,255,0.28)" },
-            { label: "Unread", val: stats.unread, color: ORANGE, icon: Mail, decorIcon: MailOpen, cardBg: "linear-gradient(135deg, rgba(255,136,0,0.13) 0%, rgba(255,136,0,0.04) 100%)", cardBdr: "rgba(255,136,0,0.22)", iconBoxBg: "rgba(255,136,0,0.18)", iconBoxBdr: "rgba(255,136,0,0.32)" },
-            { label: "Teachers", val: stats.teachers, color: GREEN, icon: GraduationCap, decorIcon: Users, cardBg: "linear-gradient(135deg, rgba(0,200,83,0.13) 0%, rgba(0,200,83,0.04) 100%)", cardBdr: "rgba(0,200,83,0.20)", iconBoxBg: "rgba(0,200,83,0.18)", iconBoxBdr: "rgba(0,200,83,0.30)" },
+            { label: "Total Messages", val: stats.total, color: B1, icon: MessageSquare, decorIcon: MessagesSquare, cardBg: "linear-gradient(135deg, rgba(10,132,255,0.10) 0%, rgba(10,132,255,0.03) 100%)", cardBdr: "rgba(10,132,255,0.20)", iconBoxBg: "rgba(10,132,255,0.14)", iconBoxBdr: "rgba(10,132,255,0.28)" },
+            { label: "Unread", val: stats.unread, color: ORANGE, icon: Mail, decorIcon: MailOpen, cardBg: "linear-gradient(135deg, rgba(255,149,0,0.13) 0%, rgba(255,149,0,0.04) 100%)", cardBdr: "rgba(255,149,0,0.22)", iconBoxBg: "rgba(255,149,0,0.18)", iconBoxBdr: "rgba(255,149,0,0.32)" },
+            { label: "Teachers", val: stats.teachers, color: GREEN, icon: GraduationCap, decorIcon: Users, cardBg: "linear-gradient(135deg, rgba(52,199,89,0.13) 0%, rgba(52,199,89,0.04) 100%)", cardBdr: "rgba(52,199,89,0.20)", iconBoxBg: "rgba(52,199,89,0.18)", iconBoxBdr: "rgba(52,199,89,0.30)" },
           ].map(({ label, val, color, icon: Icon, decorIcon: DecorIcon, cardBg, cardBdr, iconBoxBg, iconBoxBdr }) => (
             <div key={label} className="rounded-[22px] px-6 py-5 relative overflow-hidden"
               style={{ background: cardBg, boxShadow: SH_D, border: `0.5px solid ${cardBdr}` }}>
@@ -879,13 +879,13 @@ const TeacherNotesPage = () => {
                 <DecorIcon style={{ width: 80, height: 80, color, opacity: 0.20, strokeWidth: 1.6 }} />
               </div>
               <div className="flex items-center justify-between mb-3 relative">
-                <span className="text-[10px] font-bold uppercase tracking-[0.12em]" style={{ color: T4 }}>{label}</span>
+                <span className="text-[12px] font-semibold uppercase tracking-[0.12em]" style={{ color: T4 }}>{label}</span>
                 <div className="w-10 h-10 rounded-[12px] flex items-center justify-center"
                   style={{ background: iconBoxBg, border: `0.5px solid ${iconBoxBdr}` }}>
                   <Icon className="w-[18px] h-[18px]" style={{ color }} strokeWidth={2.3} />
                 </div>
               </div>
-              <div className="text-[34px] font-bold leading-none relative" style={{ color, letterSpacing: "-1px" }}>{val}</div>
+              <div className="text-[28px] font-semibold leading-none relative" style={{ color, letterSpacing: "-1px" }}>{val}</div>
             </div>
           ))}
         </div>
@@ -915,7 +915,7 @@ const TeacherNotesPage = () => {
 
               {/* Search bar (WA pill) */}
               <div className="px-3 py-2 shrink-0 bg-white">
-                <div className="flex items-center gap-3 rounded-[8px] px-3 py-[7px]" style={{ background: WA_HEADER_BG }}>
+                <div className="flex items-center gap-3 rounded-[8px] px-3 py-[8px]" style={{ background: WA_HEADER_BG }}>
                   <Search className="w-[15px] h-[15px]" style={{ color: WA_T3 }} strokeWidth={2.3} />
                   <input type="text" value={searchQuery} onChange={e => setSearchQuery(e.target.value)}
                     placeholder="Search or start new chat"
@@ -927,7 +927,7 @@ const TeacherNotesPage = () => {
               {/* New chat overlay */}
               {showNewChat && (
                 <div className="absolute inset-0 bg-white z-20 flex flex-col">
-                  <div className="px-4 py-[14px] flex items-center gap-3 shrink-0" style={{ background: WA_GREEN }}>
+                  <div className="px-4 py-[16px] flex items-center gap-3 shrink-0" style={{ background: WA_GREEN }}>
                     <button onClick={() => setShowNewChat(false)}
                       className="w-9 h-9 rounded-full flex items-center justify-center hover:bg-[rgba(255,255,255,0.12)]">
                       <ChevronLeft className="w-[20px] h-[20px] text-white" strokeWidth={2.5} />
@@ -936,7 +936,7 @@ const TeacherNotesPage = () => {
                   </div>
                   <div className="flex-1 overflow-y-auto no-sb">
                     {availableTeachers.length === 0 ? (
-                      <div className="py-12 text-center text-[12px]" style={{ color: WA_T3 }}>No class teachers found</div>
+                      <div className="py-10 text-center text-[12px]" style={{ color: WA_T3 }}>No class teachers found</div>
                     ) : availableTeachers.map(t => {
                       const g = gradForName(t.name);
                       return (
@@ -944,7 +944,7 @@ const TeacherNotesPage = () => {
                           setSelectedTeacher({ teacherId: t.id, teacherName: t.name, subject: t.subject || "General" });
                           setShowNewChat(false);
                         }}
-                          className="w-full flex items-center gap-3 px-4 py-[10px] transition-colors hover:bg-[#F5F6F6]">
+                          className="w-full flex items-center gap-3 px-4 py-[12px] transition-colors hover:bg-[#F5F5F7]">
                           <div className="w-12 h-12 rounded-full flex items-center justify-center text-white text-[14px] font-semibold shrink-0"
                             style={{ background: g.bg }}>
                             {t.name?.substring(0, 2).toUpperCase()}
@@ -963,9 +963,9 @@ const TeacherNotesPage = () => {
               {/* Conversation list */}
               <div className="flex-1 overflow-y-auto no-sb">
                 {loading ? (
-                  <div className="flex justify-center py-12"><Loader2 className="w-6 h-6 animate-spin" style={{ color: WA_GREEN }} /></div>
+                  <div className="flex justify-center py-10"><Loader2 className="w-6 h-6 animate-spin" style={{ color: WA_GREEN }} /></div>
                 ) : mergedConversationsD.length === 0 ? (
-                  <div className="py-12 px-5 text-center text-[12px]" style={{ color: WA_T3 }}>
+                  <div className="py-10 px-5 text-center text-[12px]" style={{ color: WA_T3 }}>
                     No conversations yet. Click <strong style={{ color: WA_GREEN }}>+</strong> to start.
                   </div>
                 ) : mergedConversationsD.map(t => {
@@ -974,8 +974,8 @@ const TeacherNotesPage = () => {
                   const g = gradForName(t.teacherName);
                   return (
                     <button key={t.teacherId} onClick={() => setSelectedTeacher(t)}
-                      className="w-full flex items-center gap-3 pl-[15px] pr-3 py-[10px] transition-colors hover:bg-[#F5F6F6]"
-                      style={{ background: active ? "#F0F2F5" : "transparent" }}>
+                      className="w-full flex items-center gap-3 pl-[16px] pr-3 py-[12px] transition-colors hover:bg-[#F5F5F7]"
+                      style={{ background: active ? "#F0F0F2" : "transparent" }}>
                       <div className="w-12 h-12 rounded-full flex items-center justify-center text-white text-[14px] font-semibold shrink-0"
                         style={{ background: g.bg }}>
                         {t.teacherName?.substring(0, 2).toUpperCase()}
@@ -995,7 +995,7 @@ const TeacherNotesPage = () => {
                             <span className="truncate">{t.lastMessage ? t.lastMessage.content : (t.subject || "Start conversation")}</span>
                           </span>
                           {unread > 0 && (
-                            <span className="ml-2 min-w-[20px] h-5 rounded-full text-white text-[11px] font-semibold flex items-center justify-center px-[6px] shrink-0"
+                            <span className="ml-2 min-w-[20px] h-5 rounded-full text-white text-[12px] font-semibold flex items-center justify-center px-[8px] shrink-0"
                               style={{ background: WA_GREEN }}>
                               {unread}
                             </span>
@@ -1013,7 +1013,7 @@ const TeacherNotesPage = () => {
               {selectedTeacher ? (
                 <>
                   {/* Chat header (WA gray) */}
-                  <div className="flex items-center gap-3 px-4 py-[10px] shrink-0"
+                  <div className="flex items-center gap-3 px-4 py-[12px] shrink-0"
                     style={{ background: WA_HEADER_BG, borderBottom: `1px solid ${WA_SEP}` }}>
                     <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-[13px] font-semibold shrink-0"
                       style={{ background: gradForName(selectedTeacher.teacherName).bg }}>
@@ -1026,7 +1026,7 @@ const TeacherNotesPage = () => {
                       </div>
                     </div>
                     <button onClick={() => setShowRateModal(true)}
-                      className="flex items-center gap-[5px] px-3 py-[7px] rounded-full text-[12px] font-medium transition-colors hover:bg-[rgba(11,20,26,0.06)]"
+                      className="flex items-center gap-[4px] px-3 py-[8px] rounded-full text-[12px] font-medium transition-colors hover:bg-[rgba(11,20,26,0.06)]"
                       style={{ color: WA_T2 }}>
                       <Star className="w-[14px] h-[14px]" style={{ fill: GOLD, color: GOLD }} strokeWidth={2} /> Rate
                     </button>
@@ -1065,7 +1065,7 @@ const TeacherNotesPage = () => {
                     ) : groupedMessages.map(group => (
                       <div key={group.date}>
                         <div className="flex justify-center my-3">
-                          <span className="px-[10px] py-[4px] rounded-[6px] text-[11.5px] font-medium"
+                          <span className="px-[12px] py-[4px] rounded-[6px] text-[11.5px] font-medium"
                             style={{ background: "#FFFFFF", color: WA_T3, boxShadow: "0 1px 1px rgba(11,20,26,0.08)" }}>
                             {group.date}
                           </span>
@@ -1073,8 +1073,8 @@ const TeacherNotesPage = () => {
                         {group.messages.map(n => {
                           const isParent = n.from === "parent";
                           return (
-                            <div key={n.id} className={`flex mb-[3px] ${isParent ? "justify-end" : "justify-start"}`}>
-                              <div className="max-w-[65%] px-[9px] py-[6px] relative"
+                            <div key={n.id} className={`flex mb-[4px] ${isParent ? "justify-end" : "justify-start"}`}>
+                              <div className="max-w-[65%] px-[8px] py-[8px] relative"
                                 style={isParent ? {
                                   background: WA_BUBBLE_OUT,
                                   borderRadius: "8px 8px 0 8px",
@@ -1086,8 +1086,8 @@ const TeacherNotesPage = () => {
                                 }}>
                                 <p className={`text-[14.2px] whitespace-pre-wrap leading-[1.4] ${isParent ? "pr-[58px]" : "pr-[44px]"}`}
                                   style={{ color: WA_T1 }}>{n.content}</p>
-                                <div className="absolute right-[8px] bottom-[4px] flex items-center gap-[3px]">
-                                  <span className="text-[11px]" style={{ color: WA_T3 }}>{fmtTime(n.createdAt)}</span>
+                                <div className="absolute right-[8px] bottom-[4px] flex items-center gap-[4px]">
+                                  <span className="text-[12px]" style={{ color: WA_T3 }}>{fmtTime(n.createdAt)}</span>
                                   {isParent && <CheckCheck className="w-[15px] h-[15px]" style={{ color: WA_TICK_READ }} strokeWidth={2.2} />}
                                 </div>
                               </div>
@@ -1100,7 +1100,7 @@ const TeacherNotesPage = () => {
                   </div>
 
                   {/* Input bar (WA gray with white pill input + green send) */}
-                  <div className="flex items-end gap-2 px-4 py-[10px] shrink-0" style={{ background: WA_HEADER_BG }}>
+                  <div className="flex items-end gap-2 px-4 py-[12px] shrink-0" style={{ background: WA_HEADER_BG }}>
                     <button className="w-10 h-10 rounded-full flex items-center justify-center transition-colors hover:bg-[rgba(11,20,26,0.06)]">
                       <Smile className="w-[22px] h-[22px]" style={{ color: WA_T2 }} strokeWidth={1.8} />
                     </button>
@@ -1133,16 +1133,16 @@ const TeacherNotesPage = () => {
                       style={{ background: "rgba(0,168,132,0.10)" }}>
                       <GraduationCap className="w-14 h-14" style={{ color: WA_GREEN, opacity: 0.6 }} strokeWidth={1.8} />
                     </div>
-                    <div className="text-[28px] font-light mb-3" style={{ color: WA_T2, letterSpacing: "-0.4px" }}>Teacher Notes Web</div>
+                    <div className="text-[28px] font-normal mb-3" style={{ color: WA_T2, letterSpacing: "-0.4px" }}>Teacher Notes Web</div>
                     <div className="text-[13.5px] leading-[1.6]" style={{ color: WA_T3 }}>
                       Select a teacher from the sidebar to start messaging or review past conversations. You can also <strong style={{ color: WA_GREEN_DEEP }}>Rate</strong> a teacher from their chat.
                     </div>
                     <div className="mt-6 flex justify-center gap-2">
-                      <div className="flex items-center gap-[5px] px-3 py-[5px] rounded-full text-[11px] font-semibold"
+                      <div className="flex items-center gap-[4px] px-3 py-[4px] rounded-full text-[12px] font-semibold"
                         style={{ background: "rgba(0,168,132,0.10)", color: WA_GREEN_DEEP }}>
                         <MessageSquare className="w-[11px] h-[11px]" strokeWidth={2.3} /> {stats.total} msgs
                       </div>
-                      <div className="flex items-center gap-[5px] px-3 py-[5px] rounded-full text-[11px] font-semibold"
+                      <div className="flex items-center gap-[4px] px-3 py-[4px] rounded-full text-[12px] font-semibold"
                         style={{ background: "rgba(0,168,132,0.10)", color: WA_GREEN_DEEP }}>
                         <GraduationCap className="w-[11px] h-[11px]" strokeWidth={2.3} /> {stats.teachers} teachers
                       </div>
@@ -1157,15 +1157,15 @@ const TeacherNotesPage = () => {
 
       {/* Rate Teacher Modal */}
       {showRateModal && selectedTeacher && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "rgba(0,16,64,0.55)", fontFamily: FONT_D, backdropFilter: "blur(4px)" }}>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "rgba(29,29,31,0.55)", fontFamily: FONT_D, backdropFilter: "blur(4px)" }}>
           <div className="bg-white rounded-[26px] p-8 w-full max-w-md relative overflow-hidden"
             style={{ boxShadow: "0 24px 60px rgba(0,20,80,0.30)" }}>
-            <div className="absolute -top-[40px] -right-[30px] w-[180px] h-[180px] rounded-full pointer-events-none"
-              style={{ background: "radial-gradient(circle, rgba(255,170,0,0.08) 0%, transparent 70%)" }} />
+            <div className="absolute -top-[40px] -right-[32px] w-[180px] h-[180px] rounded-full pointer-events-none"
+              style={{ background: "radial-gradient(circle, rgba(255,204,0,0.08) 0%, transparent 70%)" }} />
             <div className="flex items-center justify-between mb-6 relative z-10">
               <div>
-                <div className="text-[19px] font-bold" style={{ color: T1, letterSpacing: "-0.3px" }}>Rate Teacher</div>
-                <div className="text-[13px] font-semibold mt-[3px]" style={{ color: B1 }}>{selectedTeacher.teacherName}</div>
+                <div className="text-[20px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>Rate Teacher</div>
+                <div className="text-[13px] font-semibold mt-[4px]" style={{ color: B1 }}>{selectedTeacher.teacherName}</div>
               </div>
               <button onClick={() => { setShowRateModal(false); setRatingValue(0); setReviewText(""); }}
                 className="w-9 h-9 rounded-full flex items-center justify-center transition-transform hover:scale-105"
@@ -1174,7 +1174,7 @@ const TeacherNotesPage = () => {
               </button>
             </div>
             <div className="text-center mb-6 relative z-10">
-              <div className="text-[10px] font-bold uppercase tracking-[0.15em] mb-3" style={{ color: T4 }}>Your Rating</div>
+              <div className="text-[12px] font-semibold uppercase tracking-[0.15em] mb-3" style={{ color: T4 }}>Your Rating</div>
               <div className="flex justify-center gap-2">
                 {[1, 2, 3, 4, 5].map(star => (
                   <button key={star}
@@ -1190,20 +1190,20 @@ const TeacherNotesPage = () => {
                 ))}
               </div>
               {ratingValue > 0 && (
-                <div className="text-[14px] font-bold mt-3" style={{ color: GOLD }}>
+                <div className="text-[14px] font-semibold mt-3" style={{ color: GOLD }}>
                   {["", "Poor", "Fair", "Good", "Very Good", "Excellent"][ratingValue]}
                 </div>
               )}
             </div>
             <div className="mb-5 relative z-10">
-              <div className="text-[10px] font-bold uppercase tracking-[0.15em] mb-2" style={{ color: T4 }}>Review (Optional)</div>
+              <div className="text-[12px] font-semibold uppercase tracking-[0.15em] mb-2" style={{ color: T4 }}>Review (Optional)</div>
               <textarea rows={4} value={reviewText} onChange={e => setReviewText(e.target.value)}
                 placeholder="Share your experience…"
                 className="w-full px-4 py-3 rounded-[14px] text-[13px] resize-none outline-none"
                 style={{ background: BG_D, border: `0.5px solid ${BLUE_BDR}`, color: T1, fontFamily: FONT_D }} />
             </div>
             <button onClick={handleSubmitReview} disabled={ratingValue === 0 || isSubmittingReview}
-              className="w-full h-12 rounded-[14px] text-white font-bold text-[14px] flex items-center justify-center gap-2 transition-transform hover:scale-[1.01] disabled:opacity-50 relative z-10"
+              className="w-full h-12 rounded-[14px] text-white font-semibold text-[14px] flex items-center justify-center gap-2 transition-transform hover:scale-[1.01] disabled:opacity-50 relative z-10"
               style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: SH_BTN_D, letterSpacing: "-0.1px" }}>
               {isSubmittingReview ? <><Loader2 className="w-4 h-4 animate-spin" /> Submitting…</> : <><Star className="w-4 h-4 fill-white" /> Submit Review</>}
             </button>

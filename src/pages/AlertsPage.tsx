@@ -622,13 +622,13 @@ const AlertsPage = () => {
   // MOBILE — Blue Premium UI
   // ═══════════════════════════════════════════════════════════════
   if (isMobile) {
-    const B1 = "#0055FF", B2 = "#1166FF";
-    const BG = "#EEF4FF", BG2 = "#E0ECFF", CARD = "#FFFFFF";
-    const T1 = "#001040", T2 = "#002080", T3 = "#5070B0", T4 = "#99AACC";
-    const SH    = "0 0 0 0.5px rgba(0,85,255,0.08), 0 2px 8px rgba(0,85,255,0.08), 0 10px 28px rgba(0,85,255,0.10)";
-    const SH_LG = "0 0 0 0.5px rgba(0,85,255,0.10), 0 4px 16px rgba(0,85,255,0.11), 0 20px 48px rgba(0,85,255,0.13)";
-    const SH_BTN = "0 6px 22px rgba(0,85,255,0.40), 0 2px 5px rgba(0,85,255,0.20)";
-    const FONT = "'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif";
+    const B1 = "#0A84FF", B2 = "#3395FF";
+    const BG = "#F5F5F7", BG2 = "#EBEBF0", CARD = "#FFFFFF";
+    const T1 = "#1D1D1F", T2 = "#3A3A3C", T3 = "#6E6E73", T4 = "#A1A1A6";
+    const SH    = "0 0 0 0.5px rgba(10,132,255,0.08), 0 2px 8px rgba(10,132,255,0.08), 0 10px 28px rgba(10,132,255,0.10)";
+    const SH_LG = "0 0 0 0.5px rgba(10,132,255,0.10), 0 4px 16px rgba(10,132,255,0.11), 0 20px 48px rgba(10,132,255,0.13)";
+    const SH_BTN = "0 6px 22px rgba(10,132,255,0.40), 0 2px 5px rgba(10,132,255,0.20)";
+    const FONT = "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif";
 
     const avatarChar = (studentData?.name?.[0] || "S").toUpperCase();
 
@@ -653,31 +653,31 @@ const AlertsPage = () => {
     };
     const themeFor = (p: ParsedAlert["priority"]): Theme => {
       if (p === "High Priority") return {
-        stripe: "linear-gradient(180deg, #FF3355, #FF6688)",
-        iconGrad: "linear-gradient(135deg, #FF3355, #FF6688)",
-        iconShadow: "0 3px 12px rgba(255,51,85,0.28)",
-        badgeBg: "rgba(255,51,85,0.09)", badgeBdr: "rgba(255,51,85,0.20)", badgeText: "#FF3355",
+        stripe: "linear-gradient(180deg, #FF3B30, #FF5E55)",
+        iconGrad: "linear-gradient(135deg, #FF3B30, #FF5E55)",
+        iconShadow: "0 3px 12px rgba(255,59,48,0.28)",
+        badgeBg: "rgba(255,59,48,0.09)", badgeBdr: "rgba(255,59,48,0.20)", badgeText: "#FF3B30",
         emoji: "🔴", label: "High Priority",
       };
       if (p === "Medium Priority") return {
-        stripe: "linear-gradient(180deg, #FF8800, #FFCC22)",
-        iconGrad: "linear-gradient(135deg, #FF8800, #FFCC22)",
-        iconShadow: "0 3px 12px rgba(255,136,0,0.28)",
-        badgeBg: "rgba(255,136,0,0.09)", badgeBdr: "rgba(255,136,0,0.20)", badgeText: "#884400",
+        stripe: "linear-gradient(180deg, #FF9500, #FFCC00)",
+        iconGrad: "linear-gradient(135deg, #FF9500, #FFCC00)",
+        iconShadow: "0 3px 12px rgba(255,149,0,0.28)",
+        badgeBg: "rgba(255,149,0,0.09)", badgeBdr: "rgba(255,149,0,0.20)", badgeText: "#86310C",
         emoji: "🟡", label: "Medium Priority",
       };
       if (p === "Good News") return {
-        stripe: "linear-gradient(180deg, #00C853, #66EE88)",
-        iconGrad: "linear-gradient(135deg, #00C853, #66EE88)",
-        iconShadow: "0 3px 12px rgba(0,200,83,0.24)",
-        badgeBg: "rgba(0,200,83,0.09)", badgeBdr: "rgba(0,200,83,0.20)", badgeText: "#007830",
+        stripe: "linear-gradient(180deg, #34C759, #34C759)",
+        iconGrad: "linear-gradient(135deg, #34C759, #34C759)",
+        iconShadow: "0 3px 12px rgba(52,199,89,0.24)",
+        badgeBg: "rgba(52,199,89,0.09)", badgeBdr: "rgba(52,199,89,0.20)", badgeText: "#248A3D",
         emoji: "🟢", label: "Great Work",
       };
       return {
-        stripe: "linear-gradient(180deg, #0055FF, #1166FF)",
-        iconGrad: "linear-gradient(135deg, #0055FF, #1166FF)",
-        iconShadow: "0 3px 12px rgba(0,85,255,0.26)",
-        badgeBg: "rgba(0,85,255,0.09)", badgeBdr: "rgba(0,85,255,0.20)", badgeText: "#0055FF",
+        stripe: "linear-gradient(180deg, #0A84FF, #3395FF)",
+        iconGrad: "linear-gradient(135deg, #0A84FF, #3395FF)",
+        iconShadow: "0 3px 12px rgba(10,132,255,0.26)",
+        badgeBg: "rgba(10,132,255,0.09)", badgeBdr: "rgba(10,132,255,0.20)", badgeText: "#0A84FF",
         emoji: "🔵", label: "General",
       };
     };
@@ -708,33 +708,33 @@ const AlertsPage = () => {
         style={{ background: BG, minHeight: "100vh", fontFamily: FONT }}>
 
         {/* Header */}
-        <div className="flex items-center justify-between px-[22px] pt-[14px]">
-          <div className="flex items-center gap-[7px]">
-            <div className="w-[7px] h-[7px] rounded-full animate-pulse" style={{ background: "#00CC55", boxShadow: "0 0 0 2.5px rgba(0,204,85,0.2)" }} />
-            <span className="text-[16px] font-bold" style={{ color: B1 }}>EduIntellect</span>
+        <div className="flex items-center justify-between px-[24px] pt-[16px]">
+          <div className="flex items-center gap-[8px]">
+            <div className="w-[7px] h-[7px] rounded-full animate-pulse" style={{ background: "#34C759", boxShadow: "0 0 0 2.5px rgba(0,204,85,0.2)" }} />
+            <span className="text-[16px] font-semibold" style={{ color: B1 }}>EduIntellect</span>
           </div>
-          <div className="flex items-center gap-[10px]">
+          <div className="flex items-center gap-[12px]">
             <div className="w-9 h-9 rounded-full flex items-center justify-center relative"
-              style={{ background: "rgba(255,255,255,0.88)", border: "0.5px solid rgba(0,85,255,0.16)", boxShadow: SH }}>
-              <BellRing className="w-[17px] h-[17px]" style={{ color: "rgba(0,85,255,0.60)" }} strokeWidth={1.8} />
+              style={{ background: "rgba(255,255,255,0.88)", border: "0.5px solid rgba(10,132,255,0.16)", boxShadow: SH }}>
+              <BellRing className="w-[17px] h-[17px]" style={{ color: "rgba(10,132,255,0.60)" }} strokeWidth={1.8} />
               {unreadCount > 0 && (
-                <span className="absolute top-[1px] right-[1px] w-2 h-2 rounded-full" style={{ background: "#FF3355", border: "1.5px solid white" }} />
+                <span className="absolute top-[1px] right-[1px] w-2 h-2 rounded-full" style={{ background: "#FF3B30", border: "1.5px solid white" }} />
               )}
             </div>
-            <div className="w-9 h-9 rounded-full flex items-center justify-center text-[13px] font-bold text-white"
-              style={{ background: `linear-gradient(140deg, ${B1}, ${B2})`, boxShadow: "0 4px 16px rgba(0,85,255,0.38), 0 0 0 2.5px rgba(255,255,255,0.85)" }}>
+            <div className="w-9 h-9 rounded-full flex items-center justify-center text-[13px] font-semibold text-white"
+              style={{ background: `linear-gradient(140deg, ${B1}, ${B2})`, boxShadow: "0 4px 16px rgba(10,132,255,0.38), 0 0 0 2.5px rgba(255,255,255,0.85)" }}>
               {avatarChar}
             </div>
           </div>
         </div>
 
         {/* Page head */}
-        <div className="pt-[18px] px-[22px]">
-          <div className="flex items-center gap-[10px] mb-1 flex-wrap">
-            <h1 className="text-[26px] font-bold" style={{ color: T1, letterSpacing: "-0.7px" }}>Alerts &amp; Notifications</h1>
+        <div className="pt-[16px] px-[24px]">
+          <div className="flex items-center gap-[12px] mb-1 flex-wrap">
+            <h1 className="text-[28px] font-semibold" style={{ color: T1, letterSpacing: "-0.7px" }}>Alerts &amp; Notifications</h1>
             {unreadCount > 0 && (
-              <div className="px-3 py-[5px] rounded-full text-[11px] font-bold text-white"
-                style={{ background: "linear-gradient(135deg, #FF3355, #FF6688)", boxShadow: "0 3px 10px rgba(255,51,85,0.30)", letterSpacing: "0.04em" }}>
+              <div className="px-3 py-[4px] rounded-full text-[12px] font-semibold text-white"
+                style={{ background: "linear-gradient(135deg, #FF3B30, #FF5E55)", boxShadow: "0 3px 10px rgba(255,59,48,0.30)", letterSpacing: "0.04em" }}>
                 {unreadCount} NEW
               </div>
             )}
@@ -745,23 +745,23 @@ const AlertsPage = () => {
         {/* Mark All Read */}
         {allAlerts.length > 0 && (
           <button onClick={markAllRead}
-            className="mx-5 mt-4 w-[calc(100%-40px)] h-12 rounded-[16px] flex items-center justify-center gap-2 text-[14px] font-bold active:scale-[0.98] transition-transform"
-            style={{ background: CARD, border: "0.5px solid rgba(0,85,255,0.16)", color: B1, boxShadow: SH, letterSpacing: "-0.1px" }}>
-            <CheckCircle className="w-4 h-4" style={{ color: "rgba(0,85,255,0.7)" }} strokeWidth={2.2} />
+            className="mx-5 mt-4 w-[calc(100%-40px)] h-12 rounded-[16px] flex items-center justify-center gap-2 text-[14px] font-semibold active:scale-[0.98] transition-transform"
+            style={{ background: CARD, border: "0.5px solid rgba(10,132,255,0.16)", color: B1, boxShadow: SH, letterSpacing: "-0.1px" }}>
+            <CheckCircle className="w-4 h-4" style={{ color: "rgba(10,132,255,0.7)" }} strokeWidth={2.2} />
             Mark All Read
           </button>
         )}
 
         {/* Filter Tabs */}
-        <div className="flex gap-[6px] px-5 pt-[14px] overflow-x-auto no-sb" style={{ scrollbarWidth: "none" }}>
+        <div className="flex gap-[8px] px-5 pt-[16px] overflow-x-auto no-sb" style={{ scrollbarWidth: "none" }}>
           {filterTabs.map((tab, i) => {
             const active = activeTab === i;
             return (
               <button key={tab} onClick={() => setActiveTab(i)}
-                className="shrink-0 px-4 py-[9px] rounded-[14px] text-[12px] font-bold whitespace-nowrap active:scale-[0.94] transition-transform"
+                className="shrink-0 px-4 py-[8px] rounded-[14px] text-[12px] font-semibold whitespace-nowrap active:scale-[0.94] transition-transform"
                 style={active
                   ? { background: `linear-gradient(135deg, ${B1}, ${B2})`, color: "#fff", boxShadow: SH_BTN, letterSpacing: "0.02em" }
-                  : { background: CARD, color: T3, border: "0.5px solid rgba(0,85,255,0.12)", boxShadow: SH, letterSpacing: "0.02em" }}>
+                  : { background: CARD, color: T3, border: "0.5px solid rgba(10,132,255,0.12)", boxShadow: SH, letterSpacing: "0.02em" }}>
                 {tab} ({getTabCount(tab)})
               </button>
             );
@@ -770,15 +770,15 @@ const AlertsPage = () => {
 
         {/* Alert cards OR empty state */}
         {filteredAlerts.length === 0 ? (
-          <div className="mx-5 mt-4 rounded-[24px] px-5 py-10 flex flex-col items-center gap-[10px] relative overflow-hidden"
-            style={{ background: CARD, boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+          <div className="mx-5 mt-4 rounded-[24px] px-5 py-10 flex flex-col items-center gap-[12px] relative overflow-hidden"
+            style={{ background: CARD, boxShadow: SH_LG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
             <div className="absolute -top-10 -right-7 w-[150px] h-[150px] rounded-full pointer-events-none"
-              style={{ background: "radial-gradient(circle, rgba(0,85,255,0.05) 0%, transparent 70%)" }} />
-            <div className="w-16 h-16 rounded-[22px] flex items-center justify-center mb-[6px] relative z-10"
-              style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: `${SH_BTN}, 0 0 0 10px rgba(0,85,255,0.07)` }}>
+              style={{ background: "radial-gradient(circle, rgba(10,132,255,0.05) 0%, transparent 70%)" }} />
+            <div className="w-16 h-16 rounded-[22px] flex items-center justify-center mb-[8px] relative z-10"
+              style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: `${SH_BTN}, 0 0 0 10px rgba(10,132,255,0.07)` }}>
               <BellRing className="w-[30px] h-[30px]" style={{ color: "rgba(255,255,255,0.95)" }} strokeWidth={2.1} />
             </div>
-            <div className="text-[17px] font-bold text-center relative z-10" style={{ color: T1, letterSpacing: "-0.3px" }}>You're all caught up!</div>
+            <div className="text-[18px] font-semibold text-center relative z-10" style={{ color: T1, letterSpacing: "-0.3px" }}>You're all caught up!</div>
             <div className="text-[12px] text-center max-w-[230px] leading-[1.6] font-normal relative z-10" style={{ color: T3 }}>
               No {filterTabs[activeTab] !== "All" ? `${filterTabs[activeTab].toLowerCase()} ` : ""}alerts right now. Check back later.
             </div>
@@ -793,10 +793,10 @@ const AlertsPage = () => {
             const secondary = actions.find(a => !a.primary);
             const primaryIsGood = alert.priority === "Good News";
             const primaryGrad = primaryIsGood
-              ? "linear-gradient(135deg, #00C853, #22EE66)"
+              ? "linear-gradient(135deg, #34C759, #34C759)"
               : `linear-gradient(135deg, ${B1}, ${B2})`;
             const primaryShadow = primaryIsGood
-              ? "0 5px 16px rgba(0,200,83,0.30)"
+              ? "0 5px 16px rgba(52,199,89,0.30)"
               : SH_BTN;
 
             const runPrimary = () => { if (primary) primary.onClick(); };
@@ -808,37 +808,37 @@ const AlertsPage = () => {
                 aria-label={`${alert.title} — ${primary?.label || "view"}`}
                 onClick={runPrimary}
                 onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); runPrimary(); } }}
-                className="mx-5 mt-[14px] rounded-[24px] relative overflow-hidden cursor-pointer active:scale-[0.98] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF]/40"
-                style={{ background: CARD, boxShadow: SH_LG, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+                className="mx-5 mt-[16px] rounded-[24px] relative overflow-hidden cursor-pointer active:scale-[0.98] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
+                style={{ background: CARD, boxShadow: SH_LG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
                 {/* Left accent stripe */}
                 <div className="absolute left-0 top-0 bottom-0 w-1 rounded-l-[2px]" style={{ background: theme.stripe }} />
                 {/* Unread dot */}
                 {recent && (
                   <div className="absolute top-4 right-4 w-2 h-2 rounded-full"
-                    style={{ background: B1, boxShadow: "0 0 0 2.5px rgba(0,85,255,0.20)" }} />
+                    style={{ background: B1, boxShadow: "0 0 0 2.5px rgba(10,132,255,0.20)" }} />
                 )}
 
-                <div className="px-[18px] py-[18px] pl-[22px]">
+                <div className="px-[16px] py-[16px] pl-[24px]">
                   {/* Top row */}
-                  <div className="flex items-start gap-[13px] mb-3">
+                  <div className="flex items-start gap-[12px] mb-3">
                     <div className="w-11 h-11 rounded-[14px] flex items-center justify-center shrink-0"
                       style={{ background: theme.iconGrad, boxShadow: theme.iconShadow }}>
                       <Icon className="w-[22px] h-[22px] text-white" strokeWidth={2.2} />
                     </div>
                     <div className="flex-1 min-w-0 pr-5">
-                      <div className="text-[15px] font-bold leading-[1.3] mb-[5px]" style={{ color: T1, letterSpacing: "-0.3px" }}>
+                      <div className="text-[15px] font-semibold leading-[1.3] mb-[4px]" style={{ color: T1, letterSpacing: "-0.3px" }}>
                         {alert.title}
                       </div>
-                      <div className="flex flex-wrap items-center gap-[6px]">
-                        <div className="px-[10px] py-1 rounded-full text-[10px] font-bold whitespace-nowrap"
+                      <div className="flex flex-wrap items-center gap-[8px]">
+                        <div className="px-[12px] py-1 rounded-full text-[12px] font-semibold whitespace-nowrap"
                           style={{ background: theme.badgeBg, color: theme.badgeText, border: `0.5px solid ${theme.badgeBdr}`, letterSpacing: "0.02em" }}>
                           {theme.emoji} {theme.label}
                         </div>
-                        <div className="px-[10px] py-1 rounded-full text-[10px] font-bold whitespace-nowrap"
+                        <div className="px-[12px] py-1 rounded-full text-[12px] font-semibold whitespace-nowrap"
                           style={{
-                            background: alert.category === "Academic" ? "rgba(0,85,255,0.10)" : alert.category === "Attendance" ? "rgba(0,200,83,0.09)" : "rgba(0,85,255,0.08)",
-                            color: alert.category === "Academic" ? B1 : alert.category === "Attendance" ? "#007830" : T3,
-                            border: `0.5px solid ${alert.category === "Academic" ? "rgba(0,85,255,0.20)" : alert.category === "Attendance" ? "rgba(0,200,83,0.20)" : "rgba(0,85,255,0.12)"}`,
+                            background: alert.category === "Academic" ? "rgba(10,132,255,0.10)" : alert.category === "Attendance" ? "rgba(52,199,89,0.09)" : "rgba(10,132,255,0.08)",
+                            color: alert.category === "Academic" ? B1 : alert.category === "Attendance" ? "#248A3D" : T3,
+                            border: `0.5px solid ${alert.category === "Academic" ? "rgba(10,132,255,0.20)" : alert.category === "Attendance" ? "rgba(52,199,89,0.20)" : "rgba(10,132,255,0.12)"}`,
                             letterSpacing: "0.02em",
                           }}>
                           {alert.category}
@@ -848,22 +848,22 @@ const AlertsPage = () => {
                   </div>
 
                   {/* Message */}
-                  <div className="text-[13px] leading-[1.72] font-normal mb-[10px]"
+                  <div className="text-[13px] leading-[1.72] font-normal mb-[12px]"
                     style={{ color: T2, letterSpacing: "-0.1px" }}>
                     {alert.description}
                   </div>
 
                   {/* Date row */}
-                  <div className="flex items-center gap-[5px] text-[11px] font-semibold mb-[14px]" style={{ color: T4 }}>
+                  <div className="flex items-center gap-[4px] text-[12px] font-semibold mb-[16px]" style={{ color: T4 }}>
                     <Calendar className="w-3 h-3" strokeWidth={2.3} />
                     {fmtAlertDate(alert.createdAt)}
                   </div>
 
                   {/* Divider */}
-                  <div className="h-[0.5px] mb-[14px]" style={{ background: "rgba(0,85,255,0.07)" }} />
+                  <div className="h-[0.5px] mb-[16px]" style={{ background: "rgba(10,132,255,0.07)" }} />
 
                   {/* Recommended Actions label */}
-                  <div className="flex items-center gap-[6px] text-[9px] font-bold uppercase tracking-[0.10em] mb-[10px]" style={{ color: T4 }}>
+                  <div className="flex items-center gap-[8px] text-[12px] font-semibold uppercase tracking-[0.10em] mb-[12px]" style={{ color: T4 }}>
                     <Sparkles className="w-[11px] h-[11px]" strokeWidth={2.5} />
                     Recommended Actions
                   </div>
@@ -872,7 +872,7 @@ const AlertsPage = () => {
                   <div className="flex gap-2">
                     {primary && (
                       <button onClick={(e) => { e.stopPropagation(); primary.onClick(); }}
-                        className="flex-1 h-[42px] rounded-[13px] flex items-center justify-center gap-[6px] text-[12px] font-bold text-white active:scale-[0.95] transition-transform relative overflow-hidden"
+                        className="flex-1 h-[42px] rounded-[13px] flex items-center justify-center gap-[8px] text-[12px] font-semibold text-white active:scale-[0.95] transition-transform relative overflow-hidden"
                         style={{ background: primaryGrad, boxShadow: primaryShadow, letterSpacing: "0.02em" }}>
                         <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.14) 0%, transparent 52%)" }} />
                         <span className="relative z-10 px-1 text-center truncate">{primary.label}</span>
@@ -880,8 +880,8 @@ const AlertsPage = () => {
                     )}
                     {secondary && (
                       <button onClick={(e) => { e.stopPropagation(); secondary.onClick(); }}
-                        className="flex-1 h-[42px] rounded-[13px] flex items-center justify-center gap-[6px] text-[12px] font-bold active:scale-[0.95] transition-transform"
-                        style={{ background: BG, border: "0.5px solid rgba(0,85,255,0.16)", color: T2, boxShadow: SH, letterSpacing: "0.02em" }}>
+                        className="flex-1 h-[42px] rounded-[13px] flex items-center justify-center gap-[8px] text-[12px] font-semibold active:scale-[0.95] transition-transform"
+                        style={{ background: BG, border: "0.5px solid rgba(10,132,255,0.16)", color: T2, boxShadow: SH, letterSpacing: "0.02em" }}>
                         <span className="px-1 text-center truncate">{secondary.label}</span>
                       </button>
                     )}
@@ -894,14 +894,14 @@ const AlertsPage = () => {
 
         {/* Summary dark card */}
         {allAlerts.length > 0 && (
-          <div className="mx-5 mt-[14px] rounded-[24px] px-[22px] py-5 relative overflow-hidden transition-transform active:scale-[0.98]"
+          <div className="mx-5 mt-[16px] rounded-[24px] px-[24px] py-5 relative overflow-hidden transition-transform active:scale-[0.98]"
             style={{
-              background: "linear-gradient(140deg, #001888 0%, #0033CC 48%, #0055FF 100%)",
+              background: "linear-gradient(140deg, #0A84FF 0%, #0A84FF 48%, #0A84FF 100%)",
               boxShadow: "0 8px 28px rgba(0,51,204,0.30), 0 0 0 0.5px rgba(255,255,255,0.14)",
             }}>
             <div className="absolute -top-10 -right-6 w-[160px] h-[160px] rounded-full pointer-events-none"
               style={{ background: "radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 65%)" }} />
-            <div className="text-[9px] font-bold uppercase tracking-[0.12em] mb-[10px] relative z-10" style={{ color: "rgba(255,255,255,0.48)" }}>
+            <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-[12px] relative z-10" style={{ color: "rgba(255,255,255,0.48)" }}>
               Notification Summary
             </div>
             <div className="grid grid-cols-3 gap-[1px] rounded-[16px] overflow-hidden relative z-10" style={{ background: "rgba(255,255,255,0.12)" }}>
@@ -910,9 +910,9 @@ const AlertsPage = () => {
                 { val: highCount, label: "High" },
                 { val: allAlerts.length, label: "Total" },
               ].map(({ val, label }) => (
-                <div key={label} className="py-[13px] px-3 text-center" style={{ background: "rgba(255,255,255,0.08)" }}>
-                  <div className="text-[24px] font-bold text-white leading-none mb-1" style={{ letterSpacing: "-0.7px" }}>{val}</div>
-                  <div className="text-[9px] font-bold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.40)" }}>{label}</div>
+                <div key={label} className="py-[12px] px-3 text-center" style={{ background: "rgba(255,255,255,0.08)" }}>
+                  <div className="text-[24px] font-semibold text-white leading-none mb-1" style={{ letterSpacing: "-0.7px" }}>{val}</div>
+                  <div className="text-[12px] font-semibold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.40)" }}>{label}</div>
                 </div>
               ))}
             </div>
@@ -927,14 +927,14 @@ const AlertsPage = () => {
   /* ═══════════════════════════════════════════════════════════════
      DESKTOP — Bright Blue Apple UI + 3D hover cards
      ═══════════════════════════════════════════════════════════════ */
-  const B1 = "#0055FF", B2 = "#1166FF";
-  const BG_D = "#EEF4FF";
-  const T1 = "#001040", T2 = "#002080", T3 = "#5070B0", T4 = "#99AACC";
-  const GREEN_D = "#00C853", RED_D = "#FF3355", ORANGE_D = "#FF8800";
-  const BLUE_BDR = "rgba(0,85,255,0.12)";
-  const SH_D = "0 0 0 0.5px rgba(0,85,255,0.08), 0 2px 8px rgba(0,85,255,0.09), 0 10px 28px rgba(0,85,255,0.11)";
-  const SH_LG_D = "0 0 0 0.5px rgba(0,85,255,0.10), 0 4px 16px rgba(0,85,255,0.12), 0 18px 44px rgba(0,85,255,0.14)";
-  const SH_BTN_D = "0 6px 22px rgba(0,85,255,0.42), 0 2px 6px rgba(0,85,255,0.22)";
+  const B1 = "#0A84FF", B2 = "#3395FF";
+  const BG_D = "#F5F5F7";
+  const T1 = "#1D1D1F", T2 = "#3A3A3C", T3 = "#6E6E73", T4 = "#A1A1A6";
+  const GREEN_D = "#34C759", RED_D = "#FF3B30", ORANGE_D = "#FF9500";
+  const BLUE_BDR = "rgba(10,132,255,0.12)";
+  const SH_D = "0 0 0 0.5px rgba(10,132,255,0.08), 0 2px 8px rgba(10,132,255,0.09), 0 10px 28px rgba(10,132,255,0.11)";
+  const SH_LG_D = "0 0 0 0.5px rgba(10,132,255,0.10), 0 4px 16px rgba(10,132,255,0.12), 0 18px 44px rgba(10,132,255,0.14)";
+  const SH_BTN_D = "0 6px 22px rgba(10,132,255,0.42), 0 2px 6px rgba(10,132,255,0.22)";
 
   const isRecentD = (ts: any) => {
     const d = ts?.toDate?.() || null;
@@ -950,31 +950,31 @@ const AlertsPage = () => {
 
   const themeForD = (p: ParsedAlert["priority"]) => {
     if (p === "High Priority") return {
-      stripe: "linear-gradient(180deg, #FF3355, #FF6688)",
-      iconGrad: "linear-gradient(135deg, #FF3355, #FF6688)",
-      iconShadow: "0 3px 12px rgba(255,51,85,0.28)",
-      badgeBg: "rgba(255,51,85,0.10)", badgeBdr: "rgba(255,51,85,0.22)", badgeText: RED_D,
+      stripe: "linear-gradient(180deg, #FF3B30, #FF5E55)",
+      iconGrad: "linear-gradient(135deg, #FF3B30, #FF5E55)",
+      iconShadow: "0 3px 12px rgba(255,59,48,0.28)",
+      badgeBg: "rgba(255,59,48,0.10)", badgeBdr: "rgba(255,59,48,0.22)", badgeText: RED_D,
       emoji: "🔴", label: "High Priority",
     };
     if (p === "Medium Priority") return {
-      stripe: "linear-gradient(180deg, #FF8800, #FFCC22)",
-      iconGrad: "linear-gradient(135deg, #FF8800, #FFCC22)",
-      iconShadow: "0 3px 12px rgba(255,136,0,0.28)",
-      badgeBg: "rgba(255,136,0,0.10)", badgeBdr: "rgba(255,136,0,0.22)", badgeText: "#884400",
+      stripe: "linear-gradient(180deg, #FF9500, #FFCC00)",
+      iconGrad: "linear-gradient(135deg, #FF9500, #FFCC00)",
+      iconShadow: "0 3px 12px rgba(255,149,0,0.28)",
+      badgeBg: "rgba(255,149,0,0.10)", badgeBdr: "rgba(255,149,0,0.22)", badgeText: "#86310C",
       emoji: "🟡", label: "Medium",
     };
     if (p === "Good News") return {
-      stripe: "linear-gradient(180deg, #00C853, #66EE88)",
-      iconGrad: "linear-gradient(135deg, #00C853, #22EE66)",
-      iconShadow: "0 3px 12px rgba(0,200,83,0.28)",
-      badgeBg: "rgba(0,200,83,0.10)", badgeBdr: "rgba(0,200,83,0.22)", badgeText: "#007830",
+      stripe: "linear-gradient(180deg, #34C759, #34C759)",
+      iconGrad: "linear-gradient(135deg, #34C759, #34C759)",
+      iconShadow: "0 3px 12px rgba(52,199,89,0.28)",
+      badgeBg: "rgba(52,199,89,0.10)", badgeBdr: "rgba(52,199,89,0.22)", badgeText: "#248A3D",
       emoji: "🟢", label: "Great Work",
     };
     return {
       stripe: `linear-gradient(180deg, ${B1}, ${B2})`,
       iconGrad: `linear-gradient(135deg, ${B1}, ${B2})`,
-      iconShadow: "0 3px 12px rgba(0,85,255,0.28)",
-      badgeBg: "rgba(0,85,255,0.10)", badgeBdr: "rgba(0,85,255,0.20)", badgeText: B1,
+      iconShadow: "0 3px 12px rgba(10,132,255,0.28)",
+      badgeBg: "rgba(10,132,255,0.10)", badgeBdr: "rgba(10,132,255,0.20)", badgeText: B1,
       emoji: "🔵", label: "General",
     };
   };
@@ -1009,7 +1009,7 @@ const AlertsPage = () => {
     const glow = el.querySelector<HTMLDivElement>('[data-glow]');
     if (glow) {
       glow.style.opacity = "1";
-      glow.style.background = `radial-gradient(420px circle at ${x}px ${y}px, rgba(0,85,255,0.12), transparent 45%)`;
+      glow.style.background = `radial-gradient(420px circle at ${x}px ${y}px, rgba(10,132,255,0.12), transparent 45%)`;
     }
   };
   const handle3DLeave = (e: React.MouseEvent<HTMLDivElement | HTMLButtonElement>) => {
@@ -1022,41 +1022,41 @@ const AlertsPage = () => {
 
   return (
     <div className="animate-in fade-in duration-500 -m-4 sm:-m-6 md:-m-8 min-h-[calc(100vh-64px)]"
-      style={{ fontFamily: "'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif", background: BG_D }}>
-      <div className="w-full px-6 pt-8 pb-12">
+      style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif", background: BG_D }}>
+      <div className="w-full px-6 pt-8 pb-10">
 
         {/* ── Toolbar ── */}
         <div className="flex items-center justify-between mb-6 flex-wrap gap-4">
           <div>
-            <div className="text-[10px] font-bold uppercase tracking-[0.12em] mb-1 flex items-center gap-[7px]" style={{ color: T4 }}>
-              <span className="w-[6px] h-[6px] rounded-full animate-pulse" style={{ background: RED_D, boxShadow: "0 0 0 3px rgba(255,51,85,0.18)" }} />
+            <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-1 flex items-center gap-[8px]" style={{ color: T4 }}>
+              <span className="w-[6px] h-[6px] rounded-full animate-pulse" style={{ background: RED_D, boxShadow: "0 0 0 3px rgba(255,59,48,0.18)" }} />
               Parent Dashboard · Alerts
             </div>
             <div className="flex items-center gap-3">
-              <h1 className="text-[32px] font-bold leading-none" style={{ color: T1, letterSpacing: "-0.8px" }}>Alerts &amp; Notifications</h1>
+              <h1 className="text-[28px] font-semibold leading-none" style={{ color: T1, letterSpacing: "-0.8px" }}>Alerts &amp; Notifications</h1>
               {unreadCountD > 0 && (
-                <div className="px-3 py-[6px] rounded-full text-[11px] font-bold text-white"
-                  style={{ background: `linear-gradient(135deg, ${RED_D}, #FF6688)`, boxShadow: "0 3px 10px rgba(255,51,85,0.30)", letterSpacing: "0.04em" }}>
+                <div className="px-3 py-[8px] rounded-full text-[12px] font-semibold text-white"
+                  style={{ background: `linear-gradient(135deg, ${RED_D}, #FF5E55)`, boxShadow: "0 3px 10px rgba(255,59,48,0.30)", letterSpacing: "0.04em" }}>
                   {unreadCountD} NEW
                 </div>
               )}
             </div>
-            <div className="text-[13px] font-normal mt-[6px]" style={{ color: T3 }}>Stay updated with your child's activities</div>
+            <div className="text-[13px] font-normal mt-[8px]" style={{ color: T3 }}>Stay updated with your child's activities</div>
           </div>
-          <div className="flex items-center gap-[10px]">
+          <div className="flex items-center gap-[12px]">
             <button onClick={markAllRead}
-              className="px-4 py-[10px] rounded-[14px] text-[13px] font-bold flex items-center gap-2 transition-transform hover:scale-[1.02]"
+              className="px-4 py-[12px] rounded-[14px] text-[13px] font-semibold flex items-center gap-2 transition-transform hover:scale-[1.02]"
               style={{ background: "#fff", color: T2, border: `0.5px solid ${BLUE_BDR}`, boxShadow: SH_D, letterSpacing: "-0.1px" }}>
               <CheckCircle className="w-4 h-4" style={{ color: B1 }} strokeWidth={2.3} />
               Mark All Read
             </button>
             <div className="w-10 h-10 rounded-full flex items-center justify-center relative"
               style={{ background: "#fff", border: `0.5px solid ${BLUE_BDR}`, boxShadow: SH_D }}>
-              <BellRing className="w-4 h-4" style={{ color: "rgba(0,85,255,0.60)" }} strokeWidth={1.8} />
+              <BellRing className="w-4 h-4" style={{ color: "rgba(10,132,255,0.60)" }} strokeWidth={1.8} />
               {unreadCountD > 0 && <span className="absolute top-[1px] right-[1px] w-2 h-2 rounded-full" style={{ background: RED_D, border: "1.5px solid white" }} />}
             </div>
-            <div className="w-10 h-10 rounded-full flex items-center justify-center text-[14px] font-bold text-white"
-              style={{ background: `linear-gradient(140deg, ${B1}, ${B2})`, boxShadow: "0 3px 12px rgba(0,85,255,0.36), 0 0 0 2px rgba(255,255,255,0.8)" }}>
+            <div className="w-10 h-10 rounded-full flex items-center justify-center text-[14px] font-semibold text-white"
+              style={{ background: `linear-gradient(140deg, ${B1}, ${B2})`, boxShadow: "0 3px 12px rgba(10,132,255,0.36), 0 0 0 2px rgba(255,255,255,0.8)" }}>
               {(studentData?.name?.[0] || "S").toUpperCase()}
             </div>
           </div>
@@ -1065,10 +1065,10 @@ const AlertsPage = () => {
         {/* ── Stat cards (3D hover, functional filter tabs) ── */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-5" style={{ perspective: "1200px" }}>
           {[
-            { label: "Total", val: allAlerts.length, color: B1, icon: BellRing, grad: `linear-gradient(135deg, ${B1}, ${B2})`, sh: "0 3px 10px rgba(0,85,255,0.28)", glow: "rgba(0,85,255,0.09)", tab: 0 },
-            { label: "Unread", val: unreadCountD, color: ORANGE_D, icon: Calendar, grad: `linear-gradient(135deg, ${ORANGE_D}, #FFAA22)`, sh: "0 3px 10px rgba(255,136,0,0.28)", glow: "rgba(255,136,0,0.09)", tab: 0 },
-            { label: "High Priority", val: highCountD, color: RED_D, icon: AlertCircle, grad: `linear-gradient(135deg, ${RED_D}, #FF6688)`, sh: "0 3px 10px rgba(255,51,85,0.28)", glow: "rgba(255,51,85,0.09)", tab: 0 },
-            { label: "Good News", val: goodCountD, color: GREEN_D, icon: Trophy, grad: `linear-gradient(135deg, ${GREEN_D}, #22EE66)`, sh: "0 3px 10px rgba(0,200,83,0.28)", glow: "rgba(0,200,83,0.09)", tab: 0 },
+            { label: "Total", val: allAlerts.length, color: B1, icon: BellRing, grad: `linear-gradient(135deg, ${B1}, ${B2})`, sh: "0 3px 10px rgba(10,132,255,0.28)", glow: "rgba(10,132,255,0.09)", tab: 0 },
+            { label: "Unread", val: unreadCountD, color: ORANGE_D, icon: Calendar, grad: `linear-gradient(135deg, ${ORANGE_D}, #FF9500)`, sh: "0 3px 10px rgba(255,149,0,0.28)", glow: "rgba(255,149,0,0.09)", tab: 0 },
+            { label: "High Priority", val: highCountD, color: RED_D, icon: AlertCircle, grad: `linear-gradient(135deg, ${RED_D}, #FF5E55)`, sh: "0 3px 10px rgba(255,59,48,0.28)", glow: "rgba(255,59,48,0.09)", tab: 0 },
+            { label: "Good News", val: goodCountD, color: GREEN_D, icon: Trophy, grad: `linear-gradient(135deg, ${GREEN_D}, #34C759)`, sh: "0 3px 10px rgba(52,199,89,0.28)", glow: "rgba(52,199,89,0.09)", tab: 0 },
           ].map(({ label, val, color, icon: Icon, grad, sh, glow, tab }) => (
             <button key={label}
               onMouseEnter={handle3DEnter}
@@ -1078,7 +1078,7 @@ const AlertsPage = () => {
               className="bg-white rounded-[22px] px-6 py-5 relative overflow-hidden text-left cursor-pointer"
               style={{
                 boxShadow: SH_D,
-                border: "0.5px solid rgba(0,85,255,0.10)",
+                border: "0.5px solid rgba(10,132,255,0.10)",
                 transformStyle: "preserve-3d",
                 willChange: "transform",
               }}>
@@ -1086,13 +1086,13 @@ const AlertsPage = () => {
               <div className="absolute -top-[20px] -right-[20px] w-[100px] h-[100px] rounded-full pointer-events-none"
                 style={{ background: `radial-gradient(circle, ${glow} 0%, transparent 70%)` }} />
               <div className="flex items-center justify-between mb-3 relative">
-                <span className="text-[10px] font-bold uppercase tracking-[0.12em]" style={{ color: T4 }}>{label}</span>
+                <span className="text-[12px] font-semibold uppercase tracking-[0.12em]" style={{ color: T4 }}>{label}</span>
                 <div className="w-10 h-10 rounded-[12px] flex items-center justify-center"
                   style={{ background: grad, boxShadow: sh, transform: "translateZ(18px)" }}>
                   <Icon className="w-[18px] h-[18px] text-white" strokeWidth={2.3} />
                 </div>
               </div>
-              <div className="text-[34px] font-bold leading-none relative" style={{ color, letterSpacing: "-1px", transform: "translateZ(10px)" }}>{val}</div>
+              <div className="text-[28px] font-semibold leading-none relative" style={{ color, letterSpacing: "-1px", transform: "translateZ(10px)" }}>{val}</div>
             </button>
           ))}
         </div>
@@ -1103,13 +1103,13 @@ const AlertsPage = () => {
             const active = activeTab === i;
             return (
               <button key={tab} onClick={() => setActiveTab(i)}
-                className="px-5 py-[10px] rounded-[14px] text-[12px] font-bold flex items-center gap-2 transition-transform hover:scale-[1.02]"
+                className="px-5 py-[12px] rounded-[14px] text-[12px] font-semibold flex items-center gap-2 transition-transform hover:scale-[1.02]"
                 style={active
                   ? { background: `linear-gradient(135deg, ${B1}, ${B2})`, color: "#fff", boxShadow: SH_BTN_D, letterSpacing: "-0.1px" }
                   : { background: "#fff", color: T3, border: `0.5px solid ${BLUE_BDR}`, boxShadow: SH_D, letterSpacing: "-0.1px" }}>
                 {tab}
-                <span className="min-w-[20px] h-[20px] rounded-[6px] flex items-center justify-center text-[11px] font-bold px-[5px]"
-                  style={{ background: active ? "rgba(255,255,255,0.22)" : "rgba(0,85,255,0.08)", color: active ? "#fff" : B1 }}>
+                <span className="min-w-[20px] h-[20px] rounded-[6px] flex items-center justify-center text-[12px] font-semibold px-[4px]"
+                  style={{ background: active ? "rgba(255,255,255,0.22)" : "rgba(10,132,255,0.08)", color: active ? "#fff" : B1 }}>
                   {getTabCount(tab)}
                 </span>
               </button>
@@ -1123,21 +1123,21 @@ const AlertsPage = () => {
           {/* Alert list */}
           <div className="xl:col-span-2">
             {loading ? (
-              <div className="bg-white rounded-[22px] py-24 flex flex-col items-center"
-                style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+              <div className="bg-white rounded-[22px] py-10 flex flex-col items-center"
+                style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(10,132,255,0.10)" }}>
                 <Loader2 className="w-12 h-12 animate-spin" style={{ color: B1 }} />
                 <p className="text-[13px] font-medium mt-3" style={{ color: T4 }}>Loading alerts…</p>
               </div>
             ) : filteredAlerts.length === 0 ? (
-              <div className="bg-white rounded-[22px] py-16 flex flex-col items-center text-center relative overflow-hidden"
-                style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(0,85,255,0.10)" }}>
+              <div className="bg-white rounded-[22px] py-10 flex flex-col items-center text-center relative overflow-hidden"
+                style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(10,132,255,0.10)" }}>
                 <div className="absolute -top-[50px] -right-[40px] w-[220px] h-[220px] rounded-full pointer-events-none"
-                  style={{ background: "radial-gradient(circle, rgba(0,85,255,0.05) 0%, transparent 70%)" }} />
+                  style={{ background: "radial-gradient(circle, rgba(10,132,255,0.05) 0%, transparent 70%)" }} />
                 <div className="w-[84px] h-[84px] rounded-[24px] flex items-center justify-center mb-4 relative z-10"
-                  style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: `${SH_BTN_D}, 0 0 0 10px rgba(0,85,255,0.07)` }}>
+                  style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: `${SH_BTN_D}, 0 0 0 10px rgba(10,132,255,0.07)` }}>
                   <BellRing className="w-10 h-10 text-white" strokeWidth={2.1} />
                 </div>
-                <div className="text-[20px] font-bold mb-1 relative z-10" style={{ color: T1, letterSpacing: "-0.4px" }}>You're all caught up!</div>
+                <div className="text-[20px] font-semibold mb-1 relative z-10" style={{ color: T1, letterSpacing: "-0.4px" }}>You're all caught up!</div>
                 <div className="text-[13px] leading-[1.6] max-w-[400px] relative z-10" style={{ color: T3 }}>
                   No {filterTabs[activeTab] !== "All" ? `${filterTabs[activeTab].toLowerCase()} ` : ""}alerts right now. Check back later.
                 </div>
@@ -1153,10 +1153,10 @@ const AlertsPage = () => {
                   const secondary = actions.find(a => !a.primary);
                   const primaryIsGood = alert.priority === "Good News";
                   const primaryGrad = primaryIsGood
-                    ? `linear-gradient(135deg, ${GREEN_D}, #22EE66)`
+                    ? `linear-gradient(135deg, ${GREEN_D}, #34C759)`
                     : `linear-gradient(135deg, ${B1}, ${B2})`;
                   const primaryShadow = primaryIsGood
-                    ? "0 5px 16px rgba(0,200,83,0.32)"
+                    ? "0 5px 16px rgba(52,199,89,0.32)"
                     : SH_BTN_D;
 
                   return (
@@ -1167,7 +1167,7 @@ const AlertsPage = () => {
                       className="rounded-[22px] relative overflow-hidden bg-white"
                       style={{
                         boxShadow: SH_LG_D,
-                        border: "0.5px solid rgba(0,85,255,0.10)",
+                        border: "0.5px solid rgba(10,132,255,0.10)",
                         transformStyle: "preserve-3d",
                         willChange: "transform",
                       }}>
@@ -1175,10 +1175,10 @@ const AlertsPage = () => {
                       <div className="absolute left-0 top-0 bottom-0 w-[4px] rounded-l-[2px]" style={{ background: theme.stripe }} />
                       {recent && (
                         <div className="absolute top-5 right-5 w-[8px] h-[8px] rounded-full"
-                          style={{ background: B1, boxShadow: "0 0 0 3px rgba(0,85,255,0.20)", animation: "pulse 2s infinite" }} />
+                          style={{ background: B1, boxShadow: "0 0 0 3px rgba(10,132,255,0.20)", animation: "pulse 2s infinite" }} />
                       )}
 
-                      <div className="px-7 py-6" style={{ transform: "translateZ(8px)" }}>
+                      <div className="px-8 py-6" style={{ transform: "translateZ(8px)" }}>
                         {/* Top row */}
                         <div className="flex items-start gap-4 mb-4">
                           <div className="w-[52px] h-[52px] rounded-[16px] flex items-center justify-center shrink-0"
@@ -1186,24 +1186,24 @@ const AlertsPage = () => {
                             <Icon className="w-[24px] h-[24px] text-white" strokeWidth={2.2} />
                           </div>
                           <div className="flex-1 min-w-0 pr-8">
-                            <div className="text-[17px] font-bold leading-[1.3] mb-2" style={{ color: T1, letterSpacing: "-0.3px" }}>
+                            <div className="text-[18px] font-semibold leading-[1.3] mb-2" style={{ color: T1, letterSpacing: "-0.3px" }}>
                               {alert.title}
                             </div>
                             <div className="flex flex-wrap items-center gap-2">
-                              <div className="px-[10px] py-[4px] rounded-full text-[10px] font-bold whitespace-nowrap"
+                              <div className="px-[12px] py-[4px] rounded-full text-[12px] font-semibold whitespace-nowrap"
                                 style={{ background: theme.badgeBg, color: theme.badgeText, border: `0.5px solid ${theme.badgeBdr}`, letterSpacing: "0.02em" }}>
                                 {theme.emoji} {theme.label}
                               </div>
-                              <div className="px-[10px] py-[4px] rounded-full text-[10px] font-bold whitespace-nowrap"
+                              <div className="px-[12px] py-[4px] rounded-full text-[12px] font-semibold whitespace-nowrap"
                                 style={{
-                                  background: alert.category === "Academic" ? "rgba(0,85,255,0.10)" : alert.category === "Attendance" ? "rgba(0,200,83,0.10)" : "rgba(0,85,255,0.08)",
-                                  color: alert.category === "Academic" ? B1 : alert.category === "Attendance" ? "#007830" : T3,
-                                  border: `0.5px solid ${alert.category === "Academic" ? "rgba(0,85,255,0.20)" : alert.category === "Attendance" ? "rgba(0,200,83,0.22)" : BLUE_BDR}`,
+                                  background: alert.category === "Academic" ? "rgba(10,132,255,0.10)" : alert.category === "Attendance" ? "rgba(52,199,89,0.10)" : "rgba(10,132,255,0.08)",
+                                  color: alert.category === "Academic" ? B1 : alert.category === "Attendance" ? "#248A3D" : T3,
+                                  border: `0.5px solid ${alert.category === "Academic" ? "rgba(10,132,255,0.20)" : alert.category === "Attendance" ? "rgba(52,199,89,0.22)" : BLUE_BDR}`,
                                 }}>
                                 {alert.category}
                               </div>
                               {alert.teacherName && (
-                                <div className="flex items-center gap-[4px] text-[11px] font-medium" style={{ color: T3 }}>
+                                <div className="flex items-center gap-[4px] text-[12px] font-medium" style={{ color: T3 }}>
                                   <User className="w-[11px] h-[11px]" strokeWidth={2.3} /> {alert.teacherName}
                                 </div>
                               )}
@@ -1217,7 +1217,7 @@ const AlertsPage = () => {
                         </p>
 
                         {/* Date + meta */}
-                        <div className="flex items-center gap-4 text-[11px] font-semibold mb-5" style={{ color: T4 }}>
+                        <div className="flex items-center gap-4 text-[12px] font-semibold mb-5" style={{ color: T4 }}>
                           <span className="flex items-center gap-[4px]">
                             <Calendar className="w-3 h-3" strokeWidth={2.3} />
                             {alert.date ? fmtDateStr(alert.date) : fmtAlertDateD(alert.createdAt)}
@@ -1231,10 +1231,10 @@ const AlertsPage = () => {
                         </div>
 
                         {/* Divider */}
-                        <div className="h-[0.5px] mb-4" style={{ background: "rgba(0,85,255,0.08)" }} />
+                        <div className="h-[0.5px] mb-4" style={{ background: "rgba(10,132,255,0.08)" }} />
 
                         {/* AI Actions label */}
-                        <div className="flex items-center gap-[6px] text-[10px] font-bold uppercase tracking-[0.10em] mb-3" style={{ color: B1 }}>
+                        <div className="flex items-center gap-[8px] text-[12px] font-semibold uppercase tracking-[0.10em] mb-3" style={{ color: B1 }}>
                           <Sparkles className="w-[12px] h-[12px]" strokeWidth={2.5} />
                           Recommended Actions
                         </div>
@@ -1243,7 +1243,7 @@ const AlertsPage = () => {
                         <div className="flex gap-2" style={{ transform: "translateZ(14px)" }}>
                           {primary && (
                             <button onClick={primary.onClick}
-                              className="flex-1 h-11 rounded-[13px] flex items-center justify-center gap-2 text-[13px] font-bold text-white transition-transform hover:scale-[1.02] relative overflow-hidden"
+                              className="flex-1 h-11 rounded-[13px] flex items-center justify-center gap-2 text-[13px] font-semibold text-white transition-transform hover:scale-[1.02] relative overflow-hidden"
                               style={{ background: primaryGrad, boxShadow: primaryShadow, letterSpacing: "-0.1px" }}>
                               <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.14) 0%, transparent 52%)" }} />
                               <span className="relative z-10 px-1 text-center truncate">{primary.label}</span>
@@ -1251,7 +1251,7 @@ const AlertsPage = () => {
                           )}
                           {secondary && (
                             <button onClick={secondary.onClick}
-                              className="flex-1 h-11 rounded-[13px] flex items-center justify-center gap-2 text-[13px] font-bold transition-transform hover:scale-[1.02]"
+                              className="flex-1 h-11 rounded-[13px] flex items-center justify-center gap-2 text-[13px] font-semibold transition-transform hover:scale-[1.02]"
                               style={{ background: BG_D, color: T2, border: `0.5px solid ${BLUE_BDR}`, boxShadow: SH_D, letterSpacing: "-0.1px" }}>
                               <span className="px-1 text-center truncate">{secondary.label}</span>
                             </button>
@@ -1278,28 +1278,28 @@ const AlertsPage = () => {
               onMouseEnter={handle3DEnter}
               onMouseMove={handle3DMove}
               onMouseLeave={handle3DLeave}
-              className="rounded-[22px] p-7 relative overflow-hidden text-white"
+              className="rounded-[22px] p-8 relative overflow-hidden text-white"
               style={{
-                background: "linear-gradient(140deg, #001888 0%, #0033CC 48%, #0055FF 100%)",
+                background: "linear-gradient(140deg, #0A84FF 0%, #0A84FF 48%, #0A84FF 100%)",
                 boxShadow: "0 8px 30px rgba(0,51,204,0.34), 0 0 0 0.5px rgba(255,255,255,0.14)",
                 transformStyle: "preserve-3d",
                 willChange: "transform",
               }}>
               <div data-glow className="absolute inset-0 pointer-events-none transition-opacity duration-300" style={{ opacity: 0 }} />
-              <div className="absolute -top-[50px] -right-[35px] w-[220px] h-[220px] rounded-full pointer-events-none"
+              <div className="absolute -top-[50px] -right-[32px] w-[220px] h-[220px] rounded-full pointer-events-none"
                 style={{ background: "radial-gradient(circle, rgba(255,255,255,0.14) 0%, transparent 65%)" }} />
               <div className="relative z-10" style={{ transform: "translateZ(14px)" }}>
-                <div className="text-[10px] font-bold uppercase tracking-[0.12em] mb-3" style={{ color: "rgba(255,255,255,0.50)" }}>Notification Summary</div>
-                <div className="text-[22px] font-bold leading-[1.2] mb-5" style={{ letterSpacing: "-0.5px" }}>This Term</div>
+                <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-3" style={{ color: "rgba(255,255,255,0.50)" }}>Notification Summary</div>
+                <div className="text-[22px] font-semibold leading-[1.2] mb-5" style={{ letterSpacing: "-0.5px" }}>This Term</div>
                 <div className="grid grid-cols-3 rounded-[16px] overflow-hidden" style={{ gap: "1px", background: "rgba(255,255,255,0.12)" }}>
                   {[
                     { val: unreadCountD, label: "Unread" },
                     { val: highCountD, label: "High" },
                     { val: allAlerts.length, label: "Total" },
                   ].map(({ val, label }) => (
-                    <div key={label} className="py-[13px] px-2 text-center" style={{ background: "rgba(255,255,255,0.08)" }}>
-                      <div className="text-[22px] font-bold text-white leading-none mb-1" style={{ letterSpacing: "-0.6px" }}>{val}</div>
-                      <div className="text-[9px] font-bold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.42)" }}>{label}</div>
+                    <div key={label} className="py-[12px] px-2 text-center" style={{ background: "rgba(255,255,255,0.08)" }}>
+                      <div className="text-[22px] font-semibold text-white leading-none mb-1" style={{ letterSpacing: "-0.6px" }}>{val}</div>
+                      <div className="text-[12px] font-semibold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.42)" }}>{label}</div>
                     </div>
                   ))}
                 </div>
@@ -1312,22 +1312,22 @@ const AlertsPage = () => {
               onMouseMove={handle3DMove}
               onMouseLeave={handle3DLeave}
               className="bg-white rounded-[22px] p-5 relative overflow-hidden"
-              style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(0,85,255,0.10)", transformStyle: "preserve-3d", willChange: "transform" }}>
+              style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(10,132,255,0.10)", transformStyle: "preserve-3d", willChange: "transform" }}>
               <div data-glow className="absolute inset-0 pointer-events-none transition-opacity duration-300" style={{ opacity: 0 }} />
-              <div className="text-[15px] font-bold mb-4" style={{ color: T1, letterSpacing: "-0.3px", transform: "translateZ(10px)" }}>By Category</div>
+              <div className="text-[15px] font-semibold mb-4" style={{ color: T1, letterSpacing: "-0.3px", transform: "translateZ(10px)" }}>By Category</div>
               <div className="space-y-3">
                 {filterTabs.filter(t => t !== "All").map(cat => {
                   const count = getTabCount(cat);
                   const pct = allAlerts.length > 0 ? Math.round((count / allAlerts.length) * 100) : 0;
                   const color = cat === "Academic" ? B1 : cat === "Attendance" ? GREEN_D : T3;
-                  const bar = cat === "Academic" ? `linear-gradient(90deg, ${B1}, #4499FF)` : cat === "Attendance" ? `linear-gradient(90deg, ${GREEN_D}, #66EE88)` : `linear-gradient(90deg, ${T3}, ${T4})`;
+                  const bar = cat === "Academic" ? `linear-gradient(90deg, ${B1}, #7CBBFF)` : cat === "Attendance" ? `linear-gradient(90deg, ${GREEN_D}, #34C759)` : `linear-gradient(90deg, ${T3}, ${T4})`;
                   return (
                     <div key={cat}>
-                      <div className="flex items-center justify-between mb-[6px]">
-                        <span className="text-[12px] font-bold" style={{ color: T2 }}>{cat}</span>
-                        <span className="text-[13px] font-bold" style={{ color }}>{count}</span>
+                      <div className="flex items-center justify-between mb-[8px]">
+                        <span className="text-[12px] font-semibold" style={{ color: T2 }}>{cat}</span>
+                        <span className="text-[13px] font-semibold" style={{ color }}>{count}</span>
                       </div>
-                      <div className="h-[7px] rounded-[4px] overflow-hidden" style={{ background: "rgba(0,85,255,0.08)" }}>
+                      <div className="h-[7px] rounded-[4px] overflow-hidden" style={{ background: "rgba(10,132,255,0.08)" }}>
                         <div className="h-full rounded-[4px]" style={{ width: `${pct}%`, background: bar, transition: "width 1s cubic-bezier(0.4,0,0.2,1)" }} />
                       </div>
                     </div>
@@ -1342,18 +1342,18 @@ const AlertsPage = () => {
               onMouseMove={handle3DMove}
               onMouseLeave={handle3DLeave}
               className="bg-white rounded-[22px] p-5 relative overflow-hidden"
-              style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(0,85,255,0.10)", transformStyle: "preserve-3d", willChange: "transform" }}>
+              style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(10,132,255,0.10)", transformStyle: "preserve-3d", willChange: "transform" }}>
               <div data-glow className="absolute inset-0 pointer-events-none transition-opacity duration-300" style={{ opacity: 0 }} />
               <div className="absolute -top-[20px] -right-[20px] w-[120px] h-[120px] rounded-full pointer-events-none"
-                style={{ background: "radial-gradient(circle, rgba(107,33,232,0.08) 0%, transparent 70%)" }} />
+                style={{ background: "radial-gradient(circle, rgba(175,82,222,0.08) 0%, transparent 70%)" }} />
               <div className="flex items-center gap-3 mb-3 relative z-10" style={{ transform: "translateZ(12px)" }}>
                 <div className="w-11 h-11 rounded-[14px] flex items-center justify-center"
-                  style={{ background: "linear-gradient(135deg, #6B21E8, #A87FF8)", boxShadow: "0 3px 12px rgba(107,33,232,0.28)" }}>
+                  style={{ background: "linear-gradient(135deg, #AF52DE, #AF52DE)", boxShadow: "0 3px 12px rgba(175,82,222,0.28)" }}>
                   <Sparkles className="w-5 h-5 text-white" strokeWidth={2.3} />
                 </div>
                 <div>
-                  <div className="text-[15px] font-bold" style={{ color: T1, letterSpacing: "-0.2px" }}>AI Assist</div>
-                  <div className="text-[11px] font-normal" style={{ color: T3 }}>Action shortcuts</div>
+                  <div className="text-[15px] font-semibold" style={{ color: T1, letterSpacing: "-0.2px" }}>AI Assist</div>
+                  <div className="text-[12px] font-normal" style={{ color: T3 }}>Action shortcuts</div>
                 </div>
               </div>
               <p className="text-[12px] leading-[1.6] relative z-10" style={{ color: T3 }}>
