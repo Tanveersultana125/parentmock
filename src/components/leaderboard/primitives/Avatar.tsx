@@ -19,7 +19,7 @@ export function Avatar({ initials, bg, color, size = 34 }: AvatarProps) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        fontWeight: 600,
+        fontWeight: 400,
         fontSize: size > 36 ? 13 : 12,
         flexShrink: 0,
         letterSpacing: '-0.2px',

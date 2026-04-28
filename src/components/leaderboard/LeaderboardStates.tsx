@@ -54,7 +54,7 @@ function PageShell({ showBack, eyebrow, children }: PageShellProps) {
             }}
           >
             <ArrowLeft size={14} color={T.B1} strokeWidth={2.2} />
-            <span style={{ fontSize: 12, fontWeight: 600, color: T.B1, letterSpacing: '-0.1px' }}>
+            <span style={{ fontSize: 12, fontWeight: 400, color: T.B1, letterSpacing: '-0.1px' }}>
               Back
             </span>
           </button>
@@ -106,7 +106,7 @@ function CenteredCard({
       <h2
         style={{
           fontSize: 18,
-          fontWeight: 600,
+          fontWeight: 400,
           letterSpacing: '-0.4px',
           color: T.T1,
           margin: '0 0 8px',
@@ -118,7 +118,7 @@ function CenteredCard({
       <p
         style={{
           fontSize: 13,
-          fontWeight: 500,
+          fontWeight: 400,
           color: T.T3,
           margin: 0,
           lineHeight: 1.5,
@@ -141,7 +141,7 @@ export function LeaderboardSkeleton() {
         <h1
           style={{
             fontSize: 34,
-            fontWeight: 600,
+            fontWeight: 400,
             letterSpacing: '-1.4px',
             color: T.T1,
             margin: '8px 0',
@@ -207,7 +207,7 @@ export function InsightsSkeleton() {
         <h1
           style={{
             fontSize: 34,
-            fontWeight: 600,
+            fontWeight: 400,
             letterSpacing: '-1.4px',
             color: T.T1,
             margin: '0 0 6px',
@@ -217,7 +217,7 @@ export function InsightsSkeleton() {
         >
           Your deep dive
         </h1>
-        <p style={{ fontSize: 13, fontWeight: 500, color: T.T3, margin: 0 }}>
+        <p style={{ fontSize: 13, fontWeight: 400, color: T.T3, margin: 0 }}>
           Loading personalized insights…
         </p>
       </div>
@@ -299,7 +299,7 @@ export function LeaderboardError({ error, onRetry, variant }: ErrorProps) {
                 color: '#FFFFFF',
                 cursor: 'pointer',
                 fontFamily: FONT,
-                fontWeight: 600,
+                fontWeight: 400,
                 boxShadow: T.SH_BTN,
               }}
             >

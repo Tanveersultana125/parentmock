@@ -324,7 +324,7 @@ const TeacherNotesPage = () => {
     const SH    = "0 1px 2px rgba(11,20,26,0.08)";
     const SH_LG = "0 2px 6px rgba(11,20,26,0.10), 0 1px 2px rgba(11,20,26,0.06)";
     const SH_BTN = "0 4px 12px rgba(0,168,132,0.32), 0 1px 3px rgba(0,168,132,0.18)";
-    const FONT = "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif";
+    const FONT = "'SF Pro Display', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif";
     const WA_HEADER_BG = "#F0F0F2";
     const WA_BUBBLE_OUT = "#F0F8F1";
     const WA_TICK_READ = "#5AC8FA";
@@ -378,8 +378,8 @@ const TeacherNotesPage = () => {
         <div className="bg-white rounded-[26px] p-6 w-full max-w-sm" style={{ boxShadow: "0 24px 60px rgba(0,20,80,0.30)" }}>
           <div className="flex items-center justify-between mb-5">
             <div>
-              <h3 className="text-[18px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>Rate Teacher</h3>
-              <p className="text-[13px] font-semibold mt-[2px]" style={{ color: B1 }}>{selectedTeacher.teacherName}</p>
+              <h3 className="text-[18px] font-normal" style={{ color: T1, letterSpacing: "-0.3px" }}>Rate Teacher</h3>
+              <p className="text-[13px] font-normal mt-[2px]" style={{ color: B1 }}>{selectedTeacher.teacherName}</p>
             </div>
             <button onClick={() => { setShowRateModal(false); setRatingValue(0); setReviewText(""); }}
               className="w-9 h-9 rounded-full flex items-center justify-center active:scale-95"
@@ -388,7 +388,7 @@ const TeacherNotesPage = () => {
             </button>
           </div>
           <div className="text-center mb-5">
-            <p className="text-[12px] font-semibold uppercase tracking-[0.15em] mb-3" style={{ color: T4 }}>Your Rating</p>
+            <p className="text-[12px] font-normal uppercase tracking-[0.15em] mb-3" style={{ color: T4 }}>Your Rating</p>
             <div className="flex justify-center gap-2">
               {[1, 2, 3, 4, 5].map(star => (
                 <button key={star}
@@ -404,20 +404,20 @@ const TeacherNotesPage = () => {
               ))}
             </div>
             {ratingValue > 0 && (
-              <p className="text-[13px] font-semibold mt-2" style={{ color: GOLD }}>
+              <p className="text-[13px] font-normal mt-2" style={{ color: GOLD }}>
                 {["", "Poor", "Fair", "Good", "Very Good", "Excellent"][ratingValue]}
               </p>
             )}
           </div>
           <div className="mb-4">
-            <p className="text-[12px] font-semibold uppercase tracking-[0.15em] mb-2" style={{ color: T4 }}>Review (Optional)</p>
+            <p className="text-[12px] font-normal uppercase tracking-[0.15em] mb-2" style={{ color: T4 }}>Review (Optional)</p>
             <textarea rows={3} value={reviewText} onChange={e => setReviewText(e.target.value)}
               placeholder="Share your experience..."
               className="w-full px-4 py-3 rounded-[14px] text-[13px] resize-none outline-none"
               style={{ background: BG, border: "0.5px solid rgba(10,132,255,0.12)", color: T1, fontFamily: FONT }} />
           </div>
           <button onClick={handleSubmitReview} disabled={ratingValue === 0 || isSubmittingReview}
-            className="w-full h-12 rounded-[16px] text-white font-semibold text-[14px] flex items-center justify-center gap-2 active:scale-[0.97] disabled:opacity-50"
+            className="w-full h-12 rounded-[16px] text-white font-normal text-[14px] flex items-center justify-center gap-2 active:scale-[0.97] disabled:opacity-50"
             style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: SH_BTN }}>
             {isSubmittingReview ? <><Loader2 className="w-4 h-4 animate-spin" /> Submitting…</> : <><Star className="w-4 h-4 fill-white" /> Submit Review</>}
           </button>
@@ -444,11 +444,11 @@ const TeacherNotesPage = () => {
               style={{ background: s.bg, border: `0.5px solid ${s.bdr}`, marginBottom: compact ? 2 : 3 }}>
               {s.ico}
             </div>
-            <div className="font-semibold uppercase tracking-[0.07em] leading-[1.3] whitespace-pre-line"
+            <div className="font-normal uppercase tracking-[0.07em] leading-[1.3] whitespace-pre-line"
               style={{ color: T4, fontSize: compact ? 8 : 9 }}>
               {s.label}
             </div>
-            <div className="font-semibold leading-none" style={{ color: T1, letterSpacing: "-0.6px", fontSize: compact ? 18 : 22 }}>{s.val}</div>
+            <div className="font-normal leading-none" style={{ color: T1, letterSpacing: "-0.6px", fontSize: compact ? 18 : 22 }}>{s.val}</div>
           </div>
         ))}
       </div>
@@ -458,7 +458,7 @@ const TeacherNotesPage = () => {
     const compactHeader = (
       <div className="flex items-center justify-between px-5 py-3"
         style={{ background: B1, color: "#fff" }}>
-        <div className="text-[20px] font-semibold" style={{ letterSpacing: "-0.2px" }}>Chats</div>
+        <div className="text-[20px] font-normal" style={{ letterSpacing: "-0.2px" }}>Chats</div>
         <div className="flex items-center gap-[16px]">
           <Search className="w-[19px] h-[19px]" style={{ color: "#fff" }} strokeWidth={2.2} />
           <MoreVertical className="w-[19px] h-[19px]" style={{ color: "#fff" }} strokeWidth={2.2} />
@@ -483,12 +483,12 @@ const TeacherNotesPage = () => {
                 className="w-8 h-8 flex items-center justify-center active:scale-90 shrink-0">
                 <ChevronLeft className="w-[22px] h-[22px] text-white" strokeWidth={2.5} />
               </button>
-              <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-[14px] font-semibold shrink-0"
+              <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-[14px] font-normal shrink-0"
                 style={{ background: gradFor(selectedTeacher.teacherName) }}>
                 {selectedTeacher.teacherName?.substring(0, 2).toUpperCase()}
               </div>
               <div className="flex-1 min-w-0">
-                <div className="text-[16px] font-semibold text-white truncate" style={{ letterSpacing: "-0.1px" }}>
+                <div className="text-[16px] font-normal text-white truncate" style={{ letterSpacing: "-0.1px" }}>
                   {selectedTeacher.teacherName}
                 </div>
                 <div className="text-[12px] truncate" style={{ color: "rgba(255,255,255,0.78)" }}>
@@ -496,7 +496,7 @@ const TeacherNotesPage = () => {
                 </div>
               </div>
               <button onClick={() => setShowRateModal(true)}
-                className="flex items-center gap-[4px] px-[12px] py-[8px] rounded-full text-[12px] font-semibold text-white active:scale-95 shrink-0"
+                className="flex items-center gap-[4px] px-[12px] py-[8px] rounded-full text-[12px] font-normal text-white active:scale-95 shrink-0"
                 style={{ background: "rgba(255,255,255,0.18)" }}>
                 <Star size={12} fill="#FFCC00" color="#FFCC00" />
                 Rate
@@ -518,7 +518,7 @@ const TeacherNotesPage = () => {
                     style={{ background: "rgba(0,168,132,0.10)" }}>
                     <GraduationCap className="w-[26px] h-[26px]" style={{ color: B1, opacity: 0.55 }} strokeWidth={2.1} />
                   </div>
-                  <div className="text-[15px] font-semibold" style={{ color: T1 }}>No messages yet</div>
+                  <div className="text-[15px] font-normal" style={{ color: T1 }}>No messages yet</div>
                   <div className="text-[12px] text-center max-w-[220px] leading-[1.5]" style={{ color: T3 }}>
                     Start the conversation with your teacher
                   </div>
@@ -526,7 +526,7 @@ const TeacherNotesPage = () => {
               ) : groupedMessages.map(group => (
                 <div key={group.date}>
                   <div className="flex justify-center my-3">
-                    <span className="text-[12px] font-medium px-[12px] py-[4px] rounded-[6px]"
+                    <span className="text-[12px] font-normal px-[12px] py-[4px] rounded-[6px]"
                       style={{ background: "#FFFFFF", color: T3, boxShadow: SH }}>
                       {group.date}
                     </span>
@@ -618,7 +618,7 @@ const TeacherNotesPage = () => {
               <ChevronLeft className="w-[22px] h-[22px] text-white" strokeWidth={2.5} />
             </button>
             <div className="flex-1 min-w-0">
-              <div className="text-[18px] font-semibold text-white leading-tight">Select contact</div>
+              <div className="text-[18px] font-normal text-white leading-tight">Select contact</div>
               <div className="text-[12px]" style={{ color: "rgba(255,255,255,0.78)" }}>{availableTeachers.length} teachers</div>
             </div>
             <Search className="w-[19px] h-[19px] text-white" strokeWidth={2.2} />
@@ -642,7 +642,7 @@ const TeacherNotesPage = () => {
           </div>
 
           {/* Section label */}
-          <div className="px-5 pt-2 pb-1 text-[13px] font-medium" style={{ color: B1 }}>
+          <div className="px-5 pt-2 pb-1 text-[13px] font-normal" style={{ color: B1 }}>
             Contacts on EduIntellect
           </div>
 
@@ -659,12 +659,12 @@ const TeacherNotesPage = () => {
                   setShowNewChat(false);
                 }}
                   className="flex items-center gap-[16px] px-4 py-[12px] cursor-pointer active:bg-[#F5F5F7] transition-colors">
-                  <div className="w-[48px] h-[48px] rounded-full flex items-center justify-center text-white text-[16px] font-semibold shrink-0"
+                  <div className="w-[48px] h-[48px] rounded-full flex items-center justify-center text-white text-[16px] font-normal shrink-0"
                     style={{ background: gradFor(t.name) }}>
                     {t.name?.substring(0, 2).toUpperCase()}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="text-[16px] font-medium truncate" style={{ color: T1 }}>{t.name}</div>
+                    <div className="text-[16px] font-normal truncate" style={{ color: T1 }}>{t.name}</div>
                     <div className="text-[13px] truncate" style={{ color: T3 }}>{t.subject || "Teacher"}</div>
                   </div>
                 </div>
@@ -698,7 +698,7 @@ const TeacherNotesPage = () => {
             <GraduationCap className="w-[22px] h-[22px] text-white" strokeWidth={2.2} />
           </div>
           <div className="relative z-10">
-            <div className="text-[18px] font-semibold text-white mb-[2px]" style={{ letterSpacing: "-0.3px" }}>Teacher Messages</div>
+            <div className="text-[18px] font-normal text-white mb-[2px]" style={{ letterSpacing: "-0.3px" }}>Teacher Messages</div>
             <div className="text-[12px] font-normal" style={{ color: "rgba(255,255,255,0.65)" }}>Direct communication with your teachers</div>
           </div>
         </div>
@@ -720,7 +720,7 @@ const TeacherNotesPage = () => {
 
         {/* New Message btn */}
         <button onClick={() => setShowNewChat(true)}
-          className="mx-5 mt-[12px] w-[calc(100%-40px)] h-[50px] rounded-[16px] flex items-center justify-center gap-2 text-[15px] font-semibold text-white active:scale-[0.97] relative overflow-hidden"
+          className="mx-5 mt-[12px] w-[calc(100%-40px)] h-[50px] rounded-[16px] flex items-center justify-center gap-2 text-[15px] font-normal text-white active:scale-[0.97] relative overflow-hidden"
           style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: SH_BTN, letterSpacing: "-0.1px" }}>
           <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.14) 0%, transparent 52%)" }} />
           <Plus className="w-4 h-4 relative z-10" strokeWidth={2.5} />
@@ -735,8 +735,8 @@ const TeacherNotesPage = () => {
             style={{ background: CARD, boxShadow: SH_LG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
             <div className="px-[16px] pt-[16px] pb-[12px] flex items-center justify-between"
               style={{ borderBottom: "0.5px solid rgba(10,132,255,0.07)" }}>
-              <div className="text-[14px] font-semibold" style={{ color: T1, letterSpacing: "-0.2px" }}>Conversations</div>
-              <div className="px-[8px] py-[4px] rounded-full text-[12px] font-semibold"
+              <div className="text-[14px] font-normal" style={{ color: T1, letterSpacing: "-0.2px" }}>Conversations</div>
+              <div className="px-[8px] py-[4px] rounded-full text-[12px] font-normal"
                 style={{ background: "rgba(10,132,255,0.10)", color: B1, border: "0.5px solid rgba(10,132,255,0.18)" }}>
                 {filteredConvs.length} active
               </div>
@@ -747,20 +747,20 @@ const TeacherNotesPage = () => {
                 <div key={t.teacherId} onClick={() => setSelectedTeacher(t)}
                   className="flex items-center gap-[12px] px-[16px] py-[16px] cursor-pointer active:bg-[rgba(10,132,255,0.04)] transition-colors"
                   style={i < arr.length - 1 ? { borderBottom: "0.5px solid rgba(10,132,255,0.07)" } : {}}>
-                  <div className="w-[46px] h-[46px] rounded-[15px] flex items-center justify-center text-white text-[16px] font-semibold shrink-0"
+                  <div className="w-[46px] h-[46px] rounded-[15px] flex items-center justify-center text-white text-[16px] font-normal shrink-0"
                     style={{ background: gradFor(t.teacherName), boxShadow: "0 3px 10px rgba(10,132,255,0.26)" }}>
                     {t.teacherName?.substring(0, 2).toUpperCase()}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="text-[14px] font-semibold truncate" style={{ color: T1, letterSpacing: "-0.2px" }}>{t.teacherName}</div>
+                    <div className="text-[14px] font-normal truncate" style={{ color: T1, letterSpacing: "-0.2px" }}>{t.teacherName}</div>
                     <div className="text-[12px] font-normal truncate" style={{ color: T3 }}>
                       {t.lastMessage.from === "parent" ? "✓ " : ""}{t.lastMessage.content}
                     </div>
                   </div>
                   <div className="flex flex-col items-end gap-[4px] shrink-0">
-                    <div className="text-[12px] font-semibold" style={{ color: T4 }}>{fmtTime(t.lastMessage.createdAt)}</div>
+                    <div className="text-[12px] font-normal" style={{ color: T4 }}>{fmtTime(t.lastMessage.createdAt)}</div>
                     {unread > 0 && (
-                      <div className="min-w-[20px] h-[20px] rounded-full flex items-center justify-center text-[12px] font-semibold text-white px-[4px]"
+                      <div className="min-w-[20px] h-[20px] rounded-full flex items-center justify-center text-[12px] font-normal text-white px-[4px]"
                         style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: "0 2px 6px rgba(10,132,255,0.30)" }}>
                         {unread}
                       </div>
@@ -779,9 +779,9 @@ const TeacherNotesPage = () => {
               style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: `${SH_BTN}, 0 0 0 10px rgba(10,132,255,0.07)` }}>
               <MessageSquare className="w-[30px] h-[30px]" style={{ color: "rgba(255,255,255,0.95)" }} strokeWidth={2.1} />
             </div>
-            <div className="text-[18px] font-semibold text-center relative z-10" style={{ color: T1, letterSpacing: "-0.3px" }}>No conversations yet</div>
+            <div className="text-[18px] font-normal text-center relative z-10" style={{ color: T1, letterSpacing: "-0.3px" }}>No conversations yet</div>
             <div className="text-[12px] text-center max-w-[210px] leading-[1.6] font-normal relative z-10" style={{ color: T3 }}>
-              Tap <strong style={{ color: B1, fontWeight: 600 }}>New Message</strong> to start a direct chat with your teacher.
+              Tap <strong style={{ color: B1, fontWeight: 400 }}>New Message</strong> to start a direct chat with your teacher.
             </div>
           </div>
         )}
@@ -802,7 +802,7 @@ const TeacherNotesPage = () => {
   const SH_D = "0 0 0 0.5px rgba(10,132,255,0.08), 0 2px 8px rgba(10,132,255,0.09), 0 10px 28px rgba(10,132,255,0.11)";
   const SH_LG_D = "0 0 0 0.5px rgba(10,132,255,0.10), 0 4px 16px rgba(10,132,255,0.12), 0 18px 44px rgba(10,132,255,0.14)";
   const SH_BTN_D = "0 6px 22px rgba(10,132,255,0.42), 0 2px 6px rgba(10,132,255,0.22)";
-  const FONT_D = "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif";
+  const FONT_D = "'SF Pro Display', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif";
 
   // ── WhatsApp Web palette (used inside the chat container) ──
   const WA_GREEN = "#34C759", WA_GREEN_DEEP = "#248A3D";
@@ -841,16 +841,16 @@ const TeacherNotesPage = () => {
         {/* ── Toolbar ── */}
         <div className="flex items-center justify-between mb-6">
           <div>
-            <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-1 flex items-center gap-[8px]" style={{ color: T4 }}>
+            <div className="text-[12px] font-normal uppercase tracking-[0.12em] mb-1 flex items-center gap-[8px]" style={{ color: T4 }}>
               <span className="w-[6px] h-[6px] rounded-full animate-pulse" style={{ background: GREEN, boxShadow: "0 0 0 3px rgba(52,199,89,0.2)" }} />
               Parent Dashboard · Teacher Messages
             </div>
-            <h1 className="text-[28px] font-semibold leading-none" style={{ color: T1, letterSpacing: "-0.8px" }}>Teacher Notes &amp; Chat</h1>
+            <h1 className="text-[28px] font-normal leading-none" style={{ color: T1, letterSpacing: "-0.8px" }}>Teacher Notes &amp; Chat</h1>
             <div className="text-[13px] font-normal mt-[8px]" style={{ color: T3 }}>Direct messages with your child's teachers</div>
           </div>
           <div className="flex items-center gap-[12px]">
             <button onClick={() => setShowNewChat(true)}
-              className="px-4 py-[12px] rounded-[14px] text-[13px] font-semibold text-white flex items-center gap-2 transition-transform hover:scale-[1.02]"
+              className="px-4 py-[12px] rounded-[14px] text-[13px] font-normal text-white flex items-center gap-2 transition-transform hover:scale-[1.02]"
               style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: SH_BTN_D, letterSpacing: "-0.1px" }}>
               <Plus className="w-4 h-4" strokeWidth={2.5} /> New Message
             </button>
@@ -859,7 +859,7 @@ const TeacherNotesPage = () => {
               <Bell className="w-4 h-4" style={{ color: "rgba(10,132,255,0.60)" }} strokeWidth={1.8} />
               {stats.unread > 0 && <span className="absolute top-[1px] right-[1px] w-2 h-2 rounded-full" style={{ background: RED, border: "1.5px solid white" }} />}
             </div>
-            <div className="w-10 h-10 rounded-full flex items-center justify-center text-[14px] font-semibold text-white"
+            <div className="w-10 h-10 rounded-full flex items-center justify-center text-[14px] font-normal text-white"
               style={{ background: `linear-gradient(140deg, ${B1}, ${B2})`, boxShadow: "0 3px 12px rgba(10,132,255,0.36), 0 0 0 2px rgba(255,255,255,0.8)" }}>
               {(studentData?.name?.[0] || "S").toUpperCase()}
             </div>
@@ -879,13 +879,13 @@ const TeacherNotesPage = () => {
                 <DecorIcon style={{ width: 80, height: 80, color, opacity: 0.20, strokeWidth: 1.6 }} />
               </div>
               <div className="flex items-center justify-between mb-3 relative">
-                <span className="text-[12px] font-semibold uppercase tracking-[0.12em]" style={{ color: T4 }}>{label}</span>
+                <span className="text-[12px] font-normal uppercase tracking-[0.12em]" style={{ color: T4 }}>{label}</span>
                 <div className="w-10 h-10 rounded-[12px] flex items-center justify-center"
                   style={{ background: iconBoxBg, border: `0.5px solid ${iconBoxBdr}` }}>
                   <Icon className="w-[18px] h-[18px]" style={{ color }} strokeWidth={2.3} />
                 </div>
               </div>
-              <div className="text-[28px] font-semibold leading-none relative" style={{ color, letterSpacing: "-1px" }}>{val}</div>
+              <div className="text-[28px] font-normal leading-none relative" style={{ color, letterSpacing: "-1px" }}>{val}</div>
             </div>
           ))}
         </div>
@@ -900,7 +900,7 @@ const TeacherNotesPage = () => {
               {/* WA-style green-gray app bar */}
               <div className="flex items-center justify-between px-4 py-3 shrink-0"
                 style={{ background: WA_HEADER_BG, borderBottom: `1px solid ${WA_SEP}` }}>
-                <div className="text-[16px] font-medium" style={{ color: WA_T1, letterSpacing: "-0.1px" }}>Chats</div>
+                <div className="text-[16px] font-normal" style={{ color: WA_T1, letterSpacing: "-0.1px" }}>Chats</div>
                 <div className="flex items-center gap-1">
                   <button onClick={() => setShowNewChat(true)}
                     className="w-9 h-9 rounded-full flex items-center justify-center transition-colors hover:bg-[rgba(11,20,26,0.06)]"
@@ -932,7 +932,7 @@ const TeacherNotesPage = () => {
                       className="w-9 h-9 rounded-full flex items-center justify-center hover:bg-[rgba(255,255,255,0.12)]">
                       <ChevronLeft className="w-[20px] h-[20px] text-white" strokeWidth={2.5} />
                     </button>
-                    <span className="text-[15px] font-medium text-white">New chat</span>
+                    <span className="text-[15px] font-normal text-white">New chat</span>
                   </div>
                   <div className="flex-1 overflow-y-auto no-sb">
                     {availableTeachers.length === 0 ? (
@@ -945,12 +945,12 @@ const TeacherNotesPage = () => {
                           setShowNewChat(false);
                         }}
                           className="w-full flex items-center gap-3 px-4 py-[12px] transition-colors hover:bg-[#F5F5F7]">
-                          <div className="w-12 h-12 rounded-full flex items-center justify-center text-white text-[14px] font-semibold shrink-0"
+                          <div className="w-12 h-12 rounded-full flex items-center justify-center text-white text-[14px] font-normal shrink-0"
                             style={{ background: g.bg }}>
                             {t.name?.substring(0, 2).toUpperCase()}
                           </div>
                           <div className="text-left">
-                            <div className="text-[15px] font-medium" style={{ color: WA_T1 }}>{t.name}</div>
+                            <div className="text-[15px] font-normal" style={{ color: WA_T1 }}>{t.name}</div>
                             <div className="text-[12px] mt-[2px]" style={{ color: WA_T3 }}>{t.subject || "Teacher"}</div>
                           </div>
                         </button>
@@ -976,13 +976,13 @@ const TeacherNotesPage = () => {
                     <button key={t.teacherId} onClick={() => setSelectedTeacher(t)}
                       className="w-full flex items-center gap-3 pl-[16px] pr-3 py-[12px] transition-colors hover:bg-[#F5F5F7]"
                       style={{ background: active ? "#F0F0F2" : "transparent" }}>
-                      <div className="w-12 h-12 rounded-full flex items-center justify-center text-white text-[14px] font-semibold shrink-0"
+                      <div className="w-12 h-12 rounded-full flex items-center justify-center text-white text-[14px] font-normal shrink-0"
                         style={{ background: g.bg }}>
                         {t.teacherName?.substring(0, 2).toUpperCase()}
                       </div>
                       <div className="flex-1 min-w-0 text-left" style={{ borderTop: `1px solid ${WA_SEP}`, paddingTop: 10, paddingBottom: 10, marginTop: -10, marginBottom: -10 }}>
                         <div className="flex justify-between items-center">
-                          <span className="text-[15px] font-medium truncate" style={{ color: WA_T1 }}>{t.teacherName}</span>
+                          <span className="text-[15px] font-normal truncate" style={{ color: WA_T1 }}>{t.teacherName}</span>
                           {t.lastMessage && (
                             <span className="text-[11.5px] shrink-0 ml-2" style={{ color: unread > 0 ? WA_GREEN : WA_T3 }}>
                               {fmtTime(t.lastMessage.createdAt)}
@@ -995,7 +995,7 @@ const TeacherNotesPage = () => {
                             <span className="truncate">{t.lastMessage ? t.lastMessage.content : (t.subject || "Start conversation")}</span>
                           </span>
                           {unread > 0 && (
-                            <span className="ml-2 min-w-[20px] h-5 rounded-full text-white text-[12px] font-semibold flex items-center justify-center px-[8px] shrink-0"
+                            <span className="ml-2 min-w-[20px] h-5 rounded-full text-white text-[12px] font-normal flex items-center justify-center px-[8px] shrink-0"
                               style={{ background: WA_GREEN }}>
                               {unread}
                             </span>
@@ -1015,18 +1015,18 @@ const TeacherNotesPage = () => {
                   {/* Chat header (WA gray) */}
                   <div className="flex items-center gap-3 px-4 py-[12px] shrink-0"
                     style={{ background: WA_HEADER_BG, borderBottom: `1px solid ${WA_SEP}` }}>
-                    <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-[13px] font-semibold shrink-0"
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-[13px] font-normal shrink-0"
                       style={{ background: gradForName(selectedTeacher.teacherName).bg }}>
                       {selectedTeacher.teacherName?.substring(0, 2).toUpperCase()}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="text-[16px] font-medium leading-tight" style={{ color: WA_T1, letterSpacing: "-0.1px" }}>{selectedTeacher.teacherName}</div>
+                      <div className="text-[16px] font-normal leading-tight" style={{ color: WA_T1, letterSpacing: "-0.1px" }}>{selectedTeacher.teacherName}</div>
                       <div className="text-[12px] mt-[2px]" style={{ color: WA_T3 }}>
                         {selectedTeacher.subject || "Teacher"} · online
                       </div>
                     </div>
                     <button onClick={() => setShowRateModal(true)}
-                      className="flex items-center gap-[4px] px-3 py-[8px] rounded-full text-[12px] font-medium transition-colors hover:bg-[rgba(11,20,26,0.06)]"
+                      className="flex items-center gap-[4px] px-3 py-[8px] rounded-full text-[12px] font-normal transition-colors hover:bg-[rgba(11,20,26,0.06)]"
                       style={{ color: WA_T2 }}>
                       <Star className="w-[14px] h-[14px]" style={{ fill: GOLD, color: GOLD }} strokeWidth={2} /> Rate
                     </button>
@@ -1056,7 +1056,7 @@ const TeacherNotesPage = () => {
                             style={{ background: "rgba(0,168,132,0.10)" }}>
                             <GraduationCap className="w-7 h-7" style={{ color: WA_GREEN, opacity: 0.7 }} strokeWidth={2.2} />
                           </div>
-                          <div className="text-[15px] font-semibold mb-1" style={{ color: WA_T1 }}>No messages yet</div>
+                          <div className="text-[15px] font-normal mb-1" style={{ color: WA_T1 }}>No messages yet</div>
                           <div className="text-[13px] max-w-[260px] leading-[1.5]" style={{ color: WA_T3 }}>
                             Start the conversation with <strong>{selectedTeacher.teacherName}</strong>.
                           </div>
@@ -1065,7 +1065,7 @@ const TeacherNotesPage = () => {
                     ) : groupedMessages.map(group => (
                       <div key={group.date}>
                         <div className="flex justify-center my-3">
-                          <span className="px-[12px] py-[4px] rounded-[6px] text-[11.5px] font-medium"
+                          <span className="px-[12px] py-[4px] rounded-[6px] text-[11.5px] font-normal"
                             style={{ background: "#FFFFFF", color: WA_T3, boxShadow: "0 1px 1px rgba(11,20,26,0.08)" }}>
                             {group.date}
                           </span>
@@ -1138,11 +1138,11 @@ const TeacherNotesPage = () => {
                       Select a teacher from the sidebar to start messaging or review past conversations. You can also <strong style={{ color: WA_GREEN_DEEP }}>Rate</strong> a teacher from their chat.
                     </div>
                     <div className="mt-6 flex justify-center gap-2">
-                      <div className="flex items-center gap-[4px] px-3 py-[4px] rounded-full text-[12px] font-semibold"
+                      <div className="flex items-center gap-[4px] px-3 py-[4px] rounded-full text-[12px] font-normal"
                         style={{ background: "rgba(0,168,132,0.10)", color: WA_GREEN_DEEP }}>
                         <MessageSquare className="w-[11px] h-[11px]" strokeWidth={2.3} /> {stats.total} msgs
                       </div>
-                      <div className="flex items-center gap-[4px] px-3 py-[4px] rounded-full text-[12px] font-semibold"
+                      <div className="flex items-center gap-[4px] px-3 py-[4px] rounded-full text-[12px] font-normal"
                         style={{ background: "rgba(0,168,132,0.10)", color: WA_GREEN_DEEP }}>
                         <GraduationCap className="w-[11px] h-[11px]" strokeWidth={2.3} /> {stats.teachers} teachers
                       </div>
@@ -1164,8 +1164,8 @@ const TeacherNotesPage = () => {
               style={{ background: "radial-gradient(circle, rgba(255,204,0,0.08) 0%, transparent 70%)" }} />
             <div className="flex items-center justify-between mb-6 relative z-10">
               <div>
-                <div className="text-[20px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>Rate Teacher</div>
-                <div className="text-[13px] font-semibold mt-[4px]" style={{ color: B1 }}>{selectedTeacher.teacherName}</div>
+                <div className="text-[20px] font-normal" style={{ color: T1, letterSpacing: "-0.3px" }}>Rate Teacher</div>
+                <div className="text-[13px] font-normal mt-[4px]" style={{ color: B1 }}>{selectedTeacher.teacherName}</div>
               </div>
               <button onClick={() => { setShowRateModal(false); setRatingValue(0); setReviewText(""); }}
                 className="w-9 h-9 rounded-full flex items-center justify-center transition-transform hover:scale-105"
@@ -1174,7 +1174,7 @@ const TeacherNotesPage = () => {
               </button>
             </div>
             <div className="text-center mb-6 relative z-10">
-              <div className="text-[12px] font-semibold uppercase tracking-[0.15em] mb-3" style={{ color: T4 }}>Your Rating</div>
+              <div className="text-[12px] font-normal uppercase tracking-[0.15em] mb-3" style={{ color: T4 }}>Your Rating</div>
               <div className="flex justify-center gap-2">
                 {[1, 2, 3, 4, 5].map(star => (
                   <button key={star}
@@ -1190,20 +1190,20 @@ const TeacherNotesPage = () => {
                 ))}
               </div>
               {ratingValue > 0 && (
-                <div className="text-[14px] font-semibold mt-3" style={{ color: GOLD }}>
+                <div className="text-[14px] font-normal mt-3" style={{ color: GOLD }}>
                   {["", "Poor", "Fair", "Good", "Very Good", "Excellent"][ratingValue]}
                 </div>
               )}
             </div>
             <div className="mb-5 relative z-10">
-              <div className="text-[12px] font-semibold uppercase tracking-[0.15em] mb-2" style={{ color: T4 }}>Review (Optional)</div>
+              <div className="text-[12px] font-normal uppercase tracking-[0.15em] mb-2" style={{ color: T4 }}>Review (Optional)</div>
               <textarea rows={4} value={reviewText} onChange={e => setReviewText(e.target.value)}
                 placeholder="Share your experience…"
                 className="w-full px-4 py-3 rounded-[14px] text-[13px] resize-none outline-none"
                 style={{ background: BG_D, border: `0.5px solid ${BLUE_BDR}`, color: T1, fontFamily: FONT_D }} />
             </div>
             <button onClick={handleSubmitReview} disabled={ratingValue === 0 || isSubmittingReview}
-              className="w-full h-12 rounded-[14px] text-white font-semibold text-[14px] flex items-center justify-center gap-2 transition-transform hover:scale-[1.01] disabled:opacity-50 relative z-10"
+              className="w-full h-12 rounded-[14px] text-white font-normal text-[14px] flex items-center justify-center gap-2 transition-transform hover:scale-[1.01] disabled:opacity-50 relative z-10"
               style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: SH_BTN_D, letterSpacing: "-0.1px" }}>
               {isSubmittingReview ? <><Loader2 className="w-4 h-4 animate-spin" /> Submitting…</> : <><Star className="w-4 h-4 fill-white" /> Submit Review</>}
             </button>

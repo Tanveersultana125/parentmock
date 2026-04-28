@@ -18,7 +18,7 @@ export function SectionHead({ title, subtitle }: SectionHeadProps) {
       }}
     >
       <Eyebrow>{title}</Eyebrow>
-      <span style={{ fontSize: 11, fontWeight: 500, color: T.T3 }}>{subtitle}</span>
+      <span style={{ fontSize: 11, fontWeight: 400, color: T.T3 }}>{subtitle}</span>
     </div>
   );
 }

@@ -331,17 +331,17 @@ export default function BehaviourPage() {
         {loading ? (
           <div className="flex flex-col items-center justify-center pt-10 gap-3">
             <Loader2 className="w-10 h-10 animate-spin" style={{ color: B1 }} />
-            <p className="text-xs font-medium" style={{ color: T4 }}>Loading behaviour data…</p>
+            <p className="text-xs font-normal" style={{ color: T4 }}>Loading behaviour data…</p>
           </div>
         ) : (
           <>
             {/* ── Page Head ── */}
             <div className="px-[24px] pt-5">
-              <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-1 flex items-center gap-[8px]" style={{ color: T4 }}>
+              <div className="text-[12px] font-normal uppercase tracking-[0.12em] mb-1 flex items-center gap-[8px]" style={{ color: T4 }}>
                 <span className="w-[5px] h-[5px] rounded-full" style={{ background: B1, boxShadow: "0 0 0 2px rgba(10,132,255,0.18)" }} />
                 Student Report
               </div>
-              <div className="text-[28px] font-semibold leading-[1.08]" style={{ color: T1, letterSpacing: "-0.7px" }}>
+              <div className="text-[28px] font-normal leading-[1.08]" style={{ color: T1, letterSpacing: "-0.7px" }}>
                 Behaviour &amp;<br />Discipline
               </div>
             </div>
@@ -351,7 +351,7 @@ export default function BehaviourPage() {
               style={{ boxShadow: SH_LG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
               <div className="absolute -top-[46px] -right-8 w-[160px] h-[160px] rounded-full pointer-events-none"
                 style={{ background: "radial-gradient(circle, rgba(52,199,89,0.07) 0%, transparent 70%)" }} />
-              <div className="text-[18px] font-semibold mb-[4px] relative z-10" style={{ color: T1, letterSpacing: "-0.3px" }}>
+              <div className="text-[18px] font-normal mb-[4px] relative z-10" style={{ color: T1, letterSpacing: "-0.3px" }}>
                 Overall Behavior Rating
               </div>
               <div className="text-[12px] mb-5 font-normal relative z-10" style={{ color: T3 }}>
@@ -360,8 +360,8 @@ export default function BehaviourPage() {
 
               <div className="flex items-center gap-4 mb-4 relative z-10">
                 <div className="flex flex-col">
-                  <div className="text-[56px] font-semibold leading-none" style={{ color: GREEN, letterSpacing: "-2px" }}>{rating}</div>
-                  <div className="text-[12px] font-semibold uppercase tracking-[0.08em] mt-[4px]" style={{ color: T4 }}>Out of 5</div>
+                  <div className="text-[56px] font-normal leading-none" style={{ color: GREEN, letterSpacing: "-2px" }}>{rating}</div>
+                  <div className="text-[12px] font-normal uppercase tracking-[0.08em] mt-[4px]" style={{ color: T4 }}>Out of 5</div>
                 </div>
                 <div className="flex gap-1 ml-auto">
                   {mobileStars()}
@@ -371,22 +371,22 @@ export default function BehaviourPage() {
               {/* Sub metrics */}
               <div className="grid grid-cols-3 gap-2 pt-4 relative z-10" style={{ borderTop: `0.5px solid ${SEP}` }}>
                 <div className="flex flex-col items-center gap-[4px]">
-                  <div className="text-[18px] font-semibold leading-none" style={{ color: GREEN, letterSpacing: "-0.4px" }}>{conductGrade}</div>
-                  <div className="text-[12px] font-semibold uppercase tracking-[0.08em]" style={{ color: T4 }}>Conduct</div>
+                  <div className="text-[18px] font-normal leading-none" style={{ color: GREEN, letterSpacing: "-0.4px" }}>{conductGrade}</div>
+                  <div className="text-[12px] font-normal uppercase tracking-[0.08em]" style={{ color: T4 }}>Conduct</div>
                   <div className="h-1 w-full rounded-[2px] overflow-hidden" style={{ background: BG2 }}>
                     <div className="h-full rounded-[2px]" style={{ width: `${Math.min(100, rateNum * 20)}%`, background: `linear-gradient(90deg, ${GREEN}, #34C759)` }} />
                   </div>
                 </div>
                 <div className="flex flex-col items-center gap-[4px]">
-                  <div className="text-[18px] font-semibold leading-none" style={{ color: B1, letterSpacing: "-0.4px" }}>{punctualityPct}%</div>
-                  <div className="text-[12px] font-semibold uppercase tracking-[0.08em]" style={{ color: T4 }}>Punctual</div>
+                  <div className="text-[18px] font-normal leading-none" style={{ color: B1, letterSpacing: "-0.4px" }}>{punctualityPct}%</div>
+                  <div className="text-[12px] font-normal uppercase tracking-[0.08em]" style={{ color: T4 }}>Punctual</div>
                   <div className="h-1 w-full rounded-[2px] overflow-hidden" style={{ background: BG2 }}>
                     <div className="h-full rounded-[2px]" style={{ width: `${punctualityPct}%`, background: `linear-gradient(90deg, ${B1}, ${B4})` }} />
                   </div>
                 </div>
                 <div className="flex flex-col items-center gap-[4px]">
-                  <div className="text-[18px] font-semibold leading-none" style={{ color: GOLD, letterSpacing: "-0.4px" }}>{respectScore}</div>
-                  <div className="text-[12px] font-semibold uppercase tracking-[0.08em]" style={{ color: T4 }}>Respect</div>
+                  <div className="text-[18px] font-normal leading-none" style={{ color: GOLD, letterSpacing: "-0.4px" }}>{respectScore}</div>
+                  <div className="text-[12px] font-normal uppercase tracking-[0.08em]" style={{ color: T4 }}>Respect</div>
                   <div className="h-1 w-full rounded-[2px] overflow-hidden" style={{ background: BG2 }}>
                     <div className="h-full rounded-[2px]" style={{ width: `${Math.min(100, rateNum * 20)}%`, background: `linear-gradient(90deg, ${GOLD}, #FFCC00)` }} />
                   </div>
@@ -402,12 +402,12 @@ export default function BehaviourPage() {
                   style={{ background: `linear-gradient(135deg, ${GREEN}, #34C759)`, boxShadow: "0 3px 10px rgba(52,199,89,0.26)" }}>
                   <Trophy className="w-5 h-5 text-white" strokeWidth={2.2} />
                 </div>
-                <div className="text-[16px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>Positive Highlights</div>
+                <div className="text-[16px] font-normal" style={{ color: T1, letterSpacing: "-0.3px" }}>Positive Highlights</div>
               </div>
 
               {positiveNotes.length === 0 ? (
                 <div className="text-[13px] italic leading-[1.6] font-normal py-1" style={{ color: T3 }}>
-                  No positive highlights yet. <strong style={{ color: GREEN, fontStyle: "normal", fontWeight: 600 }}>Keep shining!</strong>
+                  No positive highlights yet. <strong style={{ color: GREEN, fontStyle: "normal", fontWeight: 400 }}>Keep shining!</strong>
                 </div>
               ) : (
                 positiveNotes.slice(0, 5).map((note, idx, arr) => {
@@ -425,10 +425,10 @@ export default function BehaviourPage() {
                         <Icon className="w-[15px] h-[15px]" style={{ color: GREEN }} strokeWidth={2.5} />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className="text-[13px] font-semibold truncate" style={{ color: T1, letterSpacing: "-0.1px", marginBottom: 2 }}>
+                        <div className="text-[13px] font-normal truncate" style={{ color: T1, letterSpacing: "-0.1px", marginBottom: 2 }}>
                           {note.content || "Great behaviour"}
                         </div>
-                        <div className="text-[12px] font-semibold flex items-center gap-[4px]" style={{ color: T4 }}>
+                        <div className="text-[12px] font-normal flex items-center gap-[4px]" style={{ color: T4 }}>
                           <Clock className="w-[10px] h-[10px]" strokeWidth={2.5} />
                           {formatNoteDate(note)}
                           {note.teacherName && (
@@ -439,7 +439,7 @@ export default function BehaviourPage() {
                           )}
                         </div>
                       </div>
-                      <div className="px-[12px] py-1 rounded-full text-[12px] font-semibold shrink-0"
+                      <div className="px-[12px] py-1 rounded-full text-[12px] font-normal shrink-0"
                         style={{ background: "rgba(52,199,89,0.09)", color: GREEN_D, border: "0.5px solid rgba(52,199,89,0.20)" }}>
                         {tierFor(idx)}
                       </div>
@@ -457,12 +457,12 @@ export default function BehaviourPage() {
                   style={{ background: "rgba(255,149,0,0.09)", border: "0.5px solid rgba(255,149,0,0.22)" }}>
                   <AlertTriangle className="w-5 h-5" style={{ color: ORANGE }} strokeWidth={2.2} />
                 </div>
-                <div className="text-[16px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>Areas for Improvement</div>
+                <div className="text-[16px] font-normal" style={{ color: T1, letterSpacing: "-0.3px" }}>Areas for Improvement</div>
               </div>
 
               {improvementNotes.length === 0 ? (
                 <div className="text-[13px] italic leading-[1.6] font-normal py-1" style={{ color: T3 }}>
-                  No areas for improvement recorded! <strong style={{ color: GREEN, fontStyle: "normal", fontWeight: 600 }}>Great job.</strong>
+                  No areas for improvement recorded! <strong style={{ color: GREEN, fontStyle: "normal", fontWeight: 400 }}>Great job.</strong>
                 </div>
               ) : (
                 improvementNotes.slice(0, 5).map((note, idx, arr) => {
@@ -480,10 +480,10 @@ export default function BehaviourPage() {
                         <Icon className="w-[15px] h-[15px]" style={{ color: RED }} strokeWidth={2.5} />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className="text-[13px] font-semibold truncate" style={{ color: T1, letterSpacing: "-0.1px", marginBottom: 2 }}>
+                        <div className="text-[13px] font-normal truncate" style={{ color: T1, letterSpacing: "-0.1px", marginBottom: 2 }}>
                           {note.content || "Needs attention"}
                         </div>
-                        <div className="text-[12px] font-semibold flex items-center gap-[4px]" style={{ color: T4 }}>
+                        <div className="text-[12px] font-normal flex items-center gap-[4px]" style={{ color: T4 }}>
                           <Clock className="w-[10px] h-[10px]" strokeWidth={2.5} />
                           {formatNoteDate(note)}
                           {note.teacherName && (
@@ -494,7 +494,7 @@ export default function BehaviourPage() {
                           )}
                         </div>
                       </div>
-                      <div className="px-[12px] py-1 rounded-full text-[12px] font-semibold shrink-0"
+                      <div className="px-[12px] py-1 rounded-full text-[12px] font-normal shrink-0"
                         style={{ background: "rgba(255,59,48,0.09)", color: RED, border: "0.5px solid rgba(255,59,48,0.20)" }}>
                         Focus
                       </div>
@@ -509,8 +509,8 @@ export default function BehaviourPage() {
               <div className="mx-5 mt-3 bg-white rounded-[24px] p-5"
                 style={{ boxShadow: SH_LG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
                 <div className="flex items-center justify-between mb-1">
-                  <div className="text-[18px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>Behavior Trend</div>
-                  <div className="px-[12px] py-1 rounded-full text-[12px] font-semibold"
+                  <div className="text-[18px] font-normal" style={{ color: T1, letterSpacing: "-0.3px" }}>Behavior Trend</div>
+                  <div className="px-[12px] py-1 rounded-full text-[12px] font-normal"
                     style={{ background: "rgba(10,132,255,0.10)", color: B1, border: "0.5px solid rgba(10,132,255,0.18)" }}>
                     {rating} {trendUp ? "↑" : "↓"}
                   </div>
@@ -530,8 +530,8 @@ export default function BehaviourPage() {
                         </linearGradient>
                       </defs>
                       <CartesianGrid strokeDasharray="0" vertical={false} stroke="rgba(10,132,255,0.06)" />
-                      <XAxis dataKey="m" axisLine={false} tickLine={false} tick={{ fontSize: 9, fill: T4, fontWeight: 600 }} />
-                      <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 9, fill: T4, fontWeight: 600 }} domain={[1, 5]} width={28} />
+                      <XAxis dataKey="m" axisLine={false} tickLine={false} tick={{ fontSize: 9, fill: T4, fontWeight: 400 }} />
+                      <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 9, fill: T4, fontWeight: 400 }} domain={[1, 5]} width={28} />
                       <Tooltip
                         contentStyle={{ borderRadius: 12, border: "0.5px solid rgba(10,132,255,0.15)", boxShadow: "0 4px 20px rgba(10,132,255,0.12)", fontSize: 11, padding: "6px 10px", background: "#fff" }}
                         formatter={(val: any) => [`${val.toFixed?.(1) ?? val}`, "Rating"]}
@@ -560,8 +560,8 @@ export default function BehaviourPage() {
                     style={{ background: iconBoxBg, border: `0.5px solid ${iconBoxBdr}` }}>
                     <Icon className="w-[14px] h-[14px]" style={{ color }} strokeWidth={2.5} />
                   </div>
-                  <div className="text-[20px] font-semibold leading-none mb-[2px] relative" style={{ color, letterSpacing: "-0.5px" }}>{val}</div>
-                  <div className="text-[12px] font-semibold uppercase tracking-[0.07em] relative" style={{ color: T4 }}>{label}</div>
+                  <div className="text-[20px] font-normal leading-none mb-[2px] relative" style={{ color, letterSpacing: "-0.5px" }}>{val}</div>
+                  <div className="text-[12px] font-normal uppercase tracking-[0.07em] relative" style={{ color: T4 }}>{label}</div>
                 </div>
               ))}
             </div>
@@ -578,21 +578,21 @@ export default function BehaviourPage() {
                 backgroundImage: "linear-gradient(rgba(255,255,255,0.014) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.014) 1px, transparent 1px)",
                 backgroundSize: "24px 24px"
               }} />
-              <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-[12px] relative z-10" style={{ color: "rgba(255,255,255,0.48)" }}>
+              <div className="text-[12px] font-normal uppercase tracking-[0.12em] mb-[12px] relative z-10" style={{ color: "rgba(255,255,255,0.48)" }}>
                 Term Behaviour Summary
               </div>
               <div className="grid grid-cols-3 rounded-[16px] overflow-hidden relative z-10" style={{ gap: "1px", background: "rgba(255,255,255,0.12)" }}>
                 <div className="py-[16px] px-3 text-center" style={{ background: "rgba(255,255,255,0.08)" }}>
-                  <div className="text-[24px] font-semibold text-white leading-none mb-1" style={{ letterSpacing: "-0.7px" }}>{rating}</div>
-                  <div className="text-[12px] font-semibold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.40)" }}>Rating</div>
+                  <div className="text-[24px] font-normal text-white leading-none mb-1" style={{ letterSpacing: "-0.7px" }}>{rating}</div>
+                  <div className="text-[12px] font-normal uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.40)" }}>Rating</div>
                 </div>
                 <div className="py-[16px] px-3 text-center" style={{ background: "rgba(255,255,255,0.08)" }}>
-                  <div className="text-[24px] font-semibold text-white leading-none mb-1" style={{ letterSpacing: "-0.7px" }}>{incidents}</div>
-                  <div className="text-[12px] font-semibold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.40)" }}>{incidents === 1 ? "Incident" : "Incidents"}</div>
+                  <div className="text-[24px] font-normal text-white leading-none mb-1" style={{ letterSpacing: "-0.7px" }}>{incidents}</div>
+                  <div className="text-[12px] font-normal uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.40)" }}>{incidents === 1 ? "Incident" : "Incidents"}</div>
                 </div>
                 <div className="py-[16px] px-3 text-center" style={{ background: "rgba(255,255,255,0.08)" }}>
-                  <div className="text-[24px] font-semibold text-white leading-none mb-1" style={{ letterSpacing: "-0.7px" }}>{conductGrade}</div>
-                  <div className="text-[12px] font-semibold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.40)" }}>Grade</div>
+                  <div className="text-[24px] font-normal text-white leading-none mb-1" style={{ letterSpacing: "-0.7px" }}>{conductGrade}</div>
+                  <div className="text-[12px] font-normal uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.40)" }}>Grade</div>
                 </div>
               </div>
             </div>
@@ -659,27 +659,27 @@ export default function BehaviourPage() {
           <div className="bg-white rounded-[22px] py-10 flex flex-col items-center"
             style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(10,132,255,0.10)" }}>
             <Loader2 className="w-12 h-12 animate-spin" style={{ color: B1 }} />
-            <p className="text-[13px] font-medium mt-3" style={{ color: T4 }}>Loading behaviour data…</p>
+            <p className="text-[13px] font-normal mt-3" style={{ color: T4 }}>Loading behaviour data…</p>
           </div>
         ) : (
           <>
             {/* ── Toolbar ── */}
             <div className="flex items-center justify-between mb-6">
               <div>
-                <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-1 flex items-center gap-[8px]" style={{ color: T4 }}>
+                <div className="text-[12px] font-normal uppercase tracking-[0.12em] mb-1 flex items-center gap-[8px]" style={{ color: T4 }}>
                   <span className="w-[6px] h-[6px] rounded-full" style={{ background: B1, boxShadow: "0 0 0 3px rgba(10,132,255,0.18)" }} />
                   Parent Dashboard · Behaviour
                 </div>
-                <h1 className="text-[28px] font-semibold leading-none" style={{ color: T1, letterSpacing: "-0.8px" }}>Behaviour &amp; Discipline</h1>
+                <h1 className="text-[28px] font-normal leading-none" style={{ color: T1, letterSpacing: "-0.8px" }}>Behaviour &amp; Discipline</h1>
                 <div className="text-[13px] font-normal mt-[8px]" style={{ color: T3 }}>Teacher observations, positive highlights, and improvement areas</div>
               </div>
               <div className="flex items-center gap-[12px]">
-                <div className="px-[16px] py-[8px] rounded-full text-[12px] font-semibold flex items-center gap-[8px]"
+                <div className="px-[16px] py-[8px] rounded-full text-[12px] font-normal flex items-center gap-[8px]"
                   style={{ background: "rgba(52,199,89,0.08)", color: GREEN_D, border: "0.5px solid rgba(52,199,89,0.22)" }}>
                   <Star className="w-[12px] h-[12px]" style={{ fill: GREEN }} />
                   {rating} / 5
                 </div>
-                <div className="w-10 h-10 rounded-full flex items-center justify-center text-[14px] font-semibold text-white"
+                <div className="w-10 h-10 rounded-full flex items-center justify-center text-[14px] font-normal text-white"
                   style={{ background: `linear-gradient(140deg, ${B1}, ${B2})`, boxShadow: "0 3px 12px rgba(10,132,255,0.36), 0 0 0 2px rgba(255,255,255,0.8)" }}>
                   {studentData?.name?.[0]?.toUpperCase() || "S"}
                 </div>
@@ -694,13 +694,13 @@ export default function BehaviourPage() {
                 <div className="absolute -top-[40px] -right-[20px] w-[260px] h-[260px] rounded-full pointer-events-none"
                   style={{ background: "radial-gradient(circle, rgba(52,199,89,0.07) 0%, transparent 70%)" }} />
                 <div className="relative z-10">
-                  <div className="text-[18px] font-semibold mb-1" style={{ color: T1, letterSpacing: "-0.3px" }}>Overall Behavior Rating</div>
+                  <div className="text-[18px] font-normal mb-1" style={{ color: T1, letterSpacing: "-0.3px" }}>Overall Behavior Rating</div>
                   <div className="text-[12px] font-normal mb-6" style={{ color: T3 }}>Based on teacher observations this term</div>
 
                   <div className="flex items-center gap-6 flex-wrap">
                     <div>
-                      <div className="text-[72px] font-semibold leading-none" style={{ color: GREEN, letterSpacing: "-2.5px" }}>{rating}</div>
-                      <div className="text-[12px] font-semibold uppercase tracking-[0.10em] mt-2" style={{ color: T4 }}>Out of 5</div>
+                      <div className="text-[72px] font-normal leading-none" style={{ color: GREEN, letterSpacing: "-2.5px" }}>{rating}</div>
+                      <div className="text-[12px] font-normal uppercase tracking-[0.10em] mt-2" style={{ color: T4 }}>Out of 5</div>
                     </div>
                     <div className="flex gap-[8px]">
                       {renderDesktopStars(rateNumD)}
@@ -711,8 +711,8 @@ export default function BehaviourPage() {
                   <div className="grid grid-cols-3 gap-4 pt-5 mt-6" style={{ borderTop: `0.5px solid ${SEP_D}` }}>
                     <div>
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: T4 }}>Conduct</span>
-                        <span className="text-[18px] font-semibold leading-none" style={{ color: GREEN, letterSpacing: "-0.3px" }}>{conductGradeD}</span>
+                        <span className="text-[12px] font-normal uppercase tracking-[0.10em]" style={{ color: T4 }}>Conduct</span>
+                        <span className="text-[18px] font-normal leading-none" style={{ color: GREEN, letterSpacing: "-0.3px" }}>{conductGradeD}</span>
                       </div>
                       <div className="h-[6px] rounded-[3px] overflow-hidden" style={{ background: BG2_D }}>
                         <div className="h-full rounded-[3px]" style={{ width: `${Math.min(100, rateNumD * 20)}%`, background: `linear-gradient(90deg, ${GREEN}, #34C759)` }} />
@@ -720,8 +720,8 @@ export default function BehaviourPage() {
                     </div>
                     <div>
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: T4 }}>Punctuality</span>
-                        <span className="text-[18px] font-semibold leading-none" style={{ color: B1, letterSpacing: "-0.3px" }}>{!hasBehaviourSignal ? "—" : `${punctualityPctD}%`}</span>
+                        <span className="text-[12px] font-normal uppercase tracking-[0.10em]" style={{ color: T4 }}>Punctuality</span>
+                        <span className="text-[18px] font-normal leading-none" style={{ color: B1, letterSpacing: "-0.3px" }}>{!hasBehaviourSignal ? "—" : `${punctualityPctD}%`}</span>
                       </div>
                       <div className="h-[6px] rounded-[3px] overflow-hidden" style={{ background: BG2_D }}>
                         <div className="h-full rounded-[3px]" style={{ width: `${punctualityPctD}%`, background: `linear-gradient(90deg, ${B1}, ${B4})` }} />
@@ -729,8 +729,8 @@ export default function BehaviourPage() {
                     </div>
                     <div>
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: T4 }}>Respect</span>
-                        <span className="text-[18px] font-semibold leading-none" style={{ color: GOLD, letterSpacing: "-0.3px" }}>{respectScoreD}</span>
+                        <span className="text-[12px] font-normal uppercase tracking-[0.10em]" style={{ color: T4 }}>Respect</span>
+                        <span className="text-[18px] font-normal leading-none" style={{ color: GOLD, letterSpacing: "-0.3px" }}>{respectScoreD}</span>
                       </div>
                       <div className="h-[6px] rounded-[3px] overflow-hidden" style={{ background: BG2_D }}>
                         <div className="h-full rounded-[3px]" style={{ width: `${Math.min(100, rateNumD * 20)}%`, background: `linear-gradient(90deg, ${GOLD}, #FFCC00)` }} />
@@ -757,8 +757,8 @@ export default function BehaviourPage() {
                       style={{ background: iconBoxBg, border: `0.5px solid ${iconBoxBdr}` }}>
                       <Icon className="w-5 h-5" style={{ color }} strokeWidth={2.3} />
                     </div>
-                    <div className="text-[28px] font-semibold leading-none mb-1 relative" style={{ color, letterSpacing: "-0.6px" }}>{val}</div>
-                    <div className="text-[12px] font-semibold uppercase tracking-[0.10em] relative" style={{ color: T4 }}>{label}</div>
+                    <div className="text-[28px] font-normal leading-none mb-1 relative" style={{ color, letterSpacing: "-0.6px" }}>{val}</div>
+                    <div className="text-[12px] font-normal uppercase tracking-[0.10em] relative" style={{ color: T4 }}>{label}</div>
                   </div>
                 ))}
               </div>
@@ -775,7 +775,7 @@ export default function BehaviourPage() {
                     <Trophy className="w-5 h-5 text-white" strokeWidth={2.2} />
                   </div>
                   <div>
-                    <div className="text-[18px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>Positive Highlights</div>
+                    <div className="text-[18px] font-normal" style={{ color: T1, letterSpacing: "-0.3px" }}>Positive Highlights</div>
                     <div className="text-[12px] font-normal mt-[2px]" style={{ color: T3 }}>{positiveNotes.length} recorded</div>
                   </div>
                 </div>
@@ -799,10 +799,10 @@ export default function BehaviourPage() {
                             <Icon className="w-[16px] h-[16px]" style={{ color: GREEN }} strokeWidth={2.5} />
                           </div>
                           <div className="flex-1 min-w-0">
-                            <div className="text-[13px] font-semibold mb-[4px]" style={{ color: T1, letterSpacing: "-0.1px" }}>
+                            <div className="text-[13px] font-normal mb-[4px]" style={{ color: T1, letterSpacing: "-0.1px" }}>
                               {note.content || "Great behaviour"}
                             </div>
-                            <div className="text-[12px] font-semibold flex items-center gap-[4px]" style={{ color: T4 }}>
+                            <div className="text-[12px] font-normal flex items-center gap-[4px]" style={{ color: T4 }}>
                               <Clock className="w-[10px] h-[10px]" strokeWidth={2.5} />
                               {formatNoteDate(note)}
                               {note.teacherName && (
@@ -813,7 +813,7 @@ export default function BehaviourPage() {
                               )}
                             </div>
                           </div>
-                          <div className="px-[12px] py-[4px] rounded-full text-[12px] font-semibold shrink-0"
+                          <div className="px-[12px] py-[4px] rounded-full text-[12px] font-normal shrink-0"
                             style={{ background: "rgba(52,199,89,0.10)", color: GREEN_D, border: "0.5px solid rgba(52,199,89,0.22)" }}>
                             {tierForD(idx)}
                           </div>
@@ -833,7 +833,7 @@ export default function BehaviourPage() {
                     <AlertTriangle className="w-5 h-5 text-white" strokeWidth={2.2} />
                   </div>
                   <div>
-                    <div className="text-[18px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>Areas for Improvement</div>
+                    <div className="text-[18px] font-normal" style={{ color: T1, letterSpacing: "-0.3px" }}>Areas for Improvement</div>
                     <div className="text-[12px] font-normal mt-[2px]" style={{ color: T3 }}>{improvementNotes.length} flagged</div>
                   </div>
                 </div>
@@ -857,10 +857,10 @@ export default function BehaviourPage() {
                             <Icon className="w-[16px] h-[16px]" style={{ color: RED }} strokeWidth={2.5} />
                           </div>
                           <div className="flex-1 min-w-0">
-                            <div className="text-[13px] font-semibold mb-[4px]" style={{ color: T1, letterSpacing: "-0.1px" }}>
+                            <div className="text-[13px] font-normal mb-[4px]" style={{ color: T1, letterSpacing: "-0.1px" }}>
                               {note.content || "Needs attention"}
                             </div>
-                            <div className="text-[12px] font-semibold flex items-center gap-[4px]" style={{ color: T4 }}>
+                            <div className="text-[12px] font-normal flex items-center gap-[4px]" style={{ color: T4 }}>
                               <Clock className="w-[10px] h-[10px]" strokeWidth={2.5} />
                               {formatNoteDate(note)}
                               {note.teacherName && (
@@ -871,7 +871,7 @@ export default function BehaviourPage() {
                               )}
                             </div>
                           </div>
-                          <div className="px-[12px] py-[4px] rounded-full text-[12px] font-semibold shrink-0"
+                          <div className="px-[12px] py-[4px] rounded-full text-[12px] font-normal shrink-0"
                             style={{ background: "rgba(255,59,48,0.10)", color: RED, border: "0.5px solid rgba(255,59,48,0.22)" }}>
                             Focus
                           </div>
@@ -890,10 +890,10 @@ export default function BehaviourPage() {
                 style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(10,132,255,0.10)" }}>
                 <div className="flex items-center justify-between mb-5">
                   <div>
-                    <div className="text-[18px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>Behavior Trend</div>
+                    <div className="text-[18px] font-normal" style={{ color: T1, letterSpacing: "-0.3px" }}>Behavior Trend</div>
                     <div className="text-[12px] font-normal mt-[2px]" style={{ color: T3 }}>Rating progression across months</div>
                   </div>
-                  <div className="px-[12px] py-[4px] rounded-full text-[12px] font-semibold"
+                  <div className="px-[12px] py-[4px] rounded-full text-[12px] font-normal"
                     style={{ background: "rgba(10,132,255,0.10)", color: B1, border: `0.5px solid ${BLUE_BDR}` }}>
                     {rating} / 5
                   </div>
@@ -942,8 +942,8 @@ export default function BehaviourPage() {
                   backgroundImage: "linear-gradient(rgba(255,255,255,0.014) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.014) 1px, transparent 1px)",
                   backgroundSize: "24px 24px"
                 }} />
-                <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-2 relative z-10" style={{ color: "rgba(255,255,255,0.50)" }}>Term Summary</div>
-                <div className="text-[20px] font-semibold mb-5 relative z-10 text-white" style={{ letterSpacing: "-0.3px" }}>Behaviour Overview</div>
+                <div className="text-[12px] font-normal uppercase tracking-[0.12em] mb-2 relative z-10" style={{ color: "rgba(255,255,255,0.50)" }}>Term Summary</div>
+                <div className="text-[20px] font-normal mb-5 relative z-10 text-white" style={{ letterSpacing: "-0.3px" }}>Behaviour Overview</div>
                 <div className="space-y-2 relative z-10">
                   {[
                     { label: "Rating", val: rating },
@@ -952,8 +952,8 @@ export default function BehaviourPage() {
                     { label: "Positive notes", val: `${positiveNotes.length}` },
                   ].map(({ label, val }) => (
                     <div key={label} className="flex items-center justify-between py-3" style={{ borderBottom: "0.5px solid rgba(255,255,255,0.10)" }}>
-                      <span className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.50)" }}>{label}</span>
-                      <span className="text-[18px] font-semibold text-white" style={{ letterSpacing: "-0.3px" }}>{val}</span>
+                      <span className="text-[12px] font-normal uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.50)" }}>{label}</span>
+                      <span className="text-[18px] font-normal text-white" style={{ letterSpacing: "-0.3px" }}>{val}</span>
                     </div>
                   ))}
                 </div>

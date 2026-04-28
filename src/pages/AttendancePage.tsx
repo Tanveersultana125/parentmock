@@ -222,15 +222,15 @@ const AttendancePage = () => {
 
     return (
       <div className="animate-in fade-in duration-500 -mx-3 -mt-3 md:mx-0 md:mt-0"
-        style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif", background: BG, minHeight: "100vh" }}>
+        style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif", background: BG, minHeight: "100vh" }}>
 
         {/* ── Page Head ── */}
         <div className="flex items-start justify-between px-[24px] pt-[16px]">
           <div>
-            <div className="text-[24px] font-semibold" style={{ color: T1, letterSpacing: "-0.6px" }}>Attendance Tracking</div>
+            <div className="text-[24px] font-normal" style={{ color: T1, letterSpacing: "-0.6px" }}>Attendance Tracking</div>
             <div className="text-[12px] mt-[4px] font-normal" style={{ color: T3 }}>Monitor daily presence and monthly patterns</div>
           </div>
-          <div className="px-3 py-[4px] rounded-full text-[12px] font-semibold tracking-[0.02em] whitespace-nowrap mt-1 shrink-0"
+          <div className="px-3 py-[4px] rounded-full text-[12px] font-normal tracking-[0.02em] whitespace-nowrap mt-1 shrink-0"
             style={{ background: GREEN_S, color: GREEN_D, border: `0.5px solid ${GREEN_B}` }}>
             {stats.percentage}% AVG
           </div>
@@ -288,8 +288,8 @@ const AttendancePage = () => {
                 style={{ background: iconBoxBg, border: `0.5px solid ${iconBoxBdr}` }}>
                 <Icon className="w-[17px] h-[17px]" style={{ color: iconColor }} strokeWidth={2.2} />
               </div>
-              <div className="text-[28px] font-semibold leading-none mb-[4px] relative" style={{ color: valColor, letterSpacing: "-0.6px" }}>{value}</div>
-              <div className="text-[12px] font-semibold uppercase tracking-[0.09em] relative" style={{ color: T4 }}>{label}</div>
+              <div className="text-[28px] font-normal leading-none mb-[4px] relative" style={{ color: valColor, letterSpacing: "-0.6px" }}>{value}</div>
+              <div className="text-[12px] font-normal uppercase tracking-[0.09em] relative" style={{ color: T4 }}>{label}</div>
             </div>
           ))}
         </div>
@@ -304,22 +304,22 @@ const AttendancePage = () => {
           className="mx-5 mt-3 bg-white rounded-[24px] p-5 flex items-center gap-5 cursor-pointer active:scale-[0.98] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
           style={{ boxShadow: SH_LG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
           <div className="flex-1">
-            <div className="text-[16px] font-semibold mb-1" style={{ color: T1, letterSpacing: "-0.3px" }}>This Month</div>
+            <div className="text-[16px] font-normal mb-1" style={{ color: T1, letterSpacing: "-0.3px" }}>This Month</div>
             <div className="text-[12px] mb-[16px] font-normal" style={{ color: T3 }}>{monthName} summary</div>
             <div className="flex items-center gap-[8px] mb-[8px]">
               <div className="w-2 h-2 rounded-full shrink-0" style={{ background: GREEN }} />
-              <span className="text-[12px] font-semibold" style={{ color: T2 }}>Present</span>
-              <span className="text-[12px] font-semibold ml-auto" style={{ color: GREEN }}>{monthStats.present} {monthStats.present === 1 ? "day" : "days"}</span>
+              <span className="text-[12px] font-normal" style={{ color: T2 }}>Present</span>
+              <span className="text-[12px] font-normal ml-auto" style={{ color: GREEN }}>{monthStats.present} {monthStats.present === 1 ? "day" : "days"}</span>
             </div>
             <div className="flex items-center gap-[8px] mb-[8px]">
               <div className="w-2 h-2 rounded-full shrink-0" style={{ background: RED }} />
-              <span className="text-[12px] font-semibold" style={{ color: T2 }}>Absent</span>
-              <span className="text-[12px] font-semibold ml-auto" style={{ color: RED }}>{monthStats.absent} {monthStats.absent === 1 ? "day" : "days"}</span>
+              <span className="text-[12px] font-normal" style={{ color: T2 }}>Absent</span>
+              <span className="text-[12px] font-normal ml-auto" style={{ color: RED }}>{monthStats.absent} {monthStats.absent === 1 ? "day" : "days"}</span>
             </div>
             <div className="flex items-center gap-[8px]">
               <div className="w-2 h-2 rounded-full shrink-0" style={{ background: ORANGE }} />
-              <span className="text-[12px] font-semibold" style={{ color: T2 }}>Late</span>
-              <span className="text-[12px] font-semibold ml-auto" style={{ color: ORANGE }}>{monthStats.late} {monthStats.late === 1 ? "day" : "days"}</span>
+              <span className="text-[12px] font-normal" style={{ color: T2 }}>Late</span>
+              <span className="text-[12px] font-normal ml-auto" style={{ color: ORANGE }}>{monthStats.late} {monthStats.late === 1 ? "day" : "days"}</span>
             </div>
           </div>
           <div className="relative w-[90px] h-[90px] shrink-0">
@@ -340,8 +340,8 @@ const AttendancePage = () => {
                 style={{ transition: "stroke-dashoffset 1s cubic-bezier(0.4,0,0.2,1)" }} />
             </svg>
             <div className="absolute inset-0 flex flex-col items-center justify-center">
-              <div className="text-[20px] font-semibold leading-none" style={{ color: ringColor, letterSpacing: "-0.5px" }}>{stats.percentage}%</div>
-              <div className="text-[12px] font-semibold uppercase tracking-[0.08em] mt-1" style={{ color: T4 }}>Rate</div>
+              <div className="text-[20px] font-normal leading-none" style={{ color: ringColor, letterSpacing: "-0.5px" }}>{stats.percentage}%</div>
+              <div className="text-[12px] font-normal uppercase tracking-[0.08em] mt-1" style={{ color: T4 }}>Rate</div>
             </div>
           </div>
         </div>
@@ -366,7 +366,7 @@ const AttendancePage = () => {
                 style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: "0 2px 8px rgba(10,132,255,0.28)" }}>
                 <CalendarIcon className="w-[14px] h-[14px] text-white" strokeWidth={2.2} />
               </div>
-              <span className="text-[16px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>{monthName}</span>
+              <span className="text-[16px] font-normal" style={{ color: T1, letterSpacing: "-0.3px" }}>{monthName}</span>
             </div>
             <button onClick={(e) => { e.stopPropagation(); handleNextMonth(); }} aria-label="Next month"
               className="w-[34px] h-[34px] rounded-[11px] flex items-center justify-center active:scale-[0.88] transition-transform"
@@ -377,13 +377,13 @@ const AttendancePage = () => {
 
           {/* Legend */}
           <div className="flex items-center gap-[16px] mb-[16px]">
-            <div className="flex items-center gap-[4px] text-[12px] font-semibold tracking-[0.04em]" style={{ color: T3 }}>
+            <div className="flex items-center gap-[4px] text-[12px] font-normal tracking-[0.04em]" style={{ color: T3 }}>
               <div className="w-2 h-2 rounded-full" style={{ background: GREEN }} />Present
             </div>
-            <div className="flex items-center gap-[4px] text-[12px] font-semibold tracking-[0.04em]" style={{ color: T3 }}>
+            <div className="flex items-center gap-[4px] text-[12px] font-normal tracking-[0.04em]" style={{ color: T3 }}>
               <div className="w-2 h-2 rounded-full" style={{ background: RED }} />Absent
             </div>
-            <div className="flex items-center gap-[4px] text-[12px] font-semibold tracking-[0.04em]" style={{ color: T3 }}>
+            <div className="flex items-center gap-[4px] text-[12px] font-normal tracking-[0.04em]" style={{ color: T3 }}>
               <div className="w-2 h-2 rounded-full" style={{ background: ORANGE }} />Late
             </div>
           </div>
@@ -391,14 +391,14 @@ const AttendancePage = () => {
           {/* Day names */}
           <div className="grid grid-cols-7 mb-[8px]">
             {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map(d => (
-              <div key={d} className="text-center py-1 text-[12px] font-semibold uppercase tracking-[0.05em]" style={{ color: T4 }}>{d}</div>
+              <div key={d} className="text-center py-1 text-[12px] font-normal uppercase tracking-[0.05em]" style={{ color: T4 }}>{d}</div>
             ))}
           </div>
 
           {loading ? (
             <div className="flex flex-col items-center gap-3 py-10">
               <Loader2 className="w-8 h-8 animate-spin" style={{ color: B1 }} />
-              <p className="text-xs font-medium" style={{ color: T4 }}>Syncing logs…</p>
+              <p className="text-xs font-normal" style={{ color: T4 }}>Syncing logs…</p>
             </div>
           ) : (
             <div className="grid grid-cols-7 gap-[4px]">
@@ -419,23 +419,23 @@ const AttendancePage = () => {
                     return {
                       background: `linear-gradient(135deg, ${B1}, ${B2})`,
                       color: "#fff",
-                      fontWeight: 600,
+                      fontWeight: 400,
                       boxShadow: "0 4px 14px rgba(10,132,255,0.36), 0 1px 4px rgba(10,132,255,0.22)",
                     };
                   }
                   switch (status) {
                     case "present":
-                      return { background: "rgba(52,199,89,0.10)", color: GREEN_D, border: "0.5px solid rgba(52,199,89,0.18)", fontWeight: 600 };
+                      return { background: "rgba(52,199,89,0.10)", color: GREEN_D, border: "0.5px solid rgba(52,199,89,0.18)", fontWeight: 400 };
                     case "absent":
-                      return { background: "rgba(255,59,48,0.10)", color: RED, border: "0.5px solid rgba(255,59,48,0.18)", fontWeight: 600 };
+                      return { background: "rgba(255,59,48,0.10)", color: RED, border: "0.5px solid rgba(255,59,48,0.18)", fontWeight: 400 };
                     case "late":
-                      return { background: "rgba(255,149,0,0.10)", color: ORANGE, border: "0.5px solid rgba(255,149,0,0.18)", fontWeight: 600 };
+                      return { background: "rgba(255,149,0,0.10)", color: ORANGE, border: "0.5px solid rgba(255,149,0,0.18)", fontWeight: 400 };
                     case "weekend":
-                      return { color: T4, fontWeight: 500 };
+                      return { color: T4, fontWeight: 400 };
                     case "forgotten":
-                      return { color: T4, opacity: 0.7, fontWeight: 500 };
+                      return { color: T4, opacity: 0.7, fontWeight: 400 };
                     default:
-                      return { color: T2, fontWeight: 500 };
+                      return { color: T2, fontWeight: 400 };
                   }
                 })();
 
@@ -465,7 +465,7 @@ const AttendancePage = () => {
             onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/reports"); } }}
             className="mx-5 mt-3 bg-white rounded-[22px] px-5 py-[16px] cursor-pointer active:scale-[0.98] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
             style={{ boxShadow: SH, border: "0.5px solid rgba(10,132,255,0.10)" }}>
-            <div className="text-[14px] font-semibold mb-[16px]" style={{ color: T1, letterSpacing: "-0.2px" }}>Weekly Attendance</div>
+            <div className="text-[14px] font-normal mb-[16px]" style={{ color: T1, letterSpacing: "-0.2px" }}>Weekly Attendance</div>
             <div className="flex items-end justify-between gap-[8px] h-[52px] mb-2">
               {weekBars.map((b, i) => {
                 const h =
@@ -489,7 +489,7 @@ const AttendancePage = () => {
                         boxShadow: isHighlight ? "0 0 0 3px rgba(10,132,255,0.20)" : "none"
                       }}
                     />
-                    <span className="text-[12px] font-semibold uppercase tracking-[0.04em]"
+                    <span className="text-[12px] font-normal uppercase tracking-[0.04em]"
                       style={{ color: isHighlight ? B1 : T4 }}>
                       {b.label}
                     </span>
@@ -509,7 +509,7 @@ const AttendancePage = () => {
           onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/alerts"); } }}
           className="mx-5 mt-3 bg-white rounded-[24px] p-5 cursor-pointer active:scale-[0.98] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
           style={{ boxShadow: SH_LG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
-          <div className="text-[16px] font-semibold mb-4" style={{ color: T1, letterSpacing: "-0.3px" }}>Recent Absences</div>
+          <div className="text-[16px] font-normal mb-4" style={{ color: T1, letterSpacing: "-0.3px" }}>Recent Absences</div>
 
           {recentAbsences.length === 0 ? (
             // Only celebrate "perfect attendance" when there's ACTUAL attendance
@@ -522,7 +522,7 @@ const AttendancePage = () => {
                   style={{ background: "rgba(48,48,110,0.06)", border: `0.5px solid rgba(48,48,110,0.12)` }}>
                   <CalendarIcon className="w-7 h-7" style={{ color: T4 }} strokeWidth={2.2} />
                 </div>
-                <div className="text-[14px] font-semibold" style={{ color: T3 }}>No attendance recorded yet</div>
+                <div className="text-[14px] font-normal" style={{ color: T3 }}>No attendance recorded yet</div>
                 <div className="text-[12px] text-center max-w-[220px] leading-[1.55] font-normal" style={{ color: T4 }}>
                   Once your child's teacher starts marking attendance, the records will appear here.
                 </div>
@@ -533,7 +533,7 @@ const AttendancePage = () => {
                   style={{ background: GREEN_S, border: `0.5px solid ${GREEN_B}`, boxShadow: "0 0 0 8px rgba(52,199,89,0.05)" }}>
                   <CheckCircle className="w-7 h-7" style={{ color: GREEN }} strokeWidth={2.2} />
                 </div>
-                <div className="text-[14px] font-semibold" style={{ color: T3 }}>Perfect attendance! 🎉</div>
+                <div className="text-[14px] font-normal" style={{ color: T3 }}>Perfect attendance! 🎉</div>
                 <div className="text-[12px] text-center max-w-[200px] leading-[1.55] font-normal" style={{ color: T4 }}>
                   No absences recorded this month. Keep it up!
                 </div>
@@ -566,12 +566,12 @@ const AttendancePage = () => {
                       : <Clock className="w-[18px] h-[18px]" style={{ color: ORANGE }} strokeWidth={2.2} />}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="text-[14px] font-semibold" style={{ color: T1, letterSpacing: "-0.2px" }}>{dateStr}</div>
+                    <div className="text-[14px] font-normal" style={{ color: T1, letterSpacing: "-0.2px" }}>{dateStr}</div>
                     <div className="text-[12px] mt-1 truncate font-normal" style={{ color: T3 }}>
                       {a.note || (isAbsent ? "Reason: Not specified" : "Arrived late")}
                     </div>
                   </div>
-                  <div className="px-[12px] py-1 rounded-full text-[12px] font-semibold shrink-0"
+                  <div className="px-[12px] py-1 rounded-full text-[12px] font-normal shrink-0"
                     style={{
                       background: isAbsent ? "rgba(255,59,48,0.10)" : "rgba(255,149,0,0.10)",
                       color: isAbsent ? RED : ORANGE,
@@ -604,7 +604,7 @@ const AttendancePage = () => {
             backgroundImage: "linear-gradient(rgba(255,255,255,0.014) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.014) 1px, transparent 1px)",
             backgroundSize: "24px 24px"
           }} />
-          <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-2 relative z-10" style={{ color: "rgba(255,255,255,0.52)" }}>
+          <div className="text-[12px] font-normal uppercase tracking-[0.12em] mb-2 relative z-10" style={{ color: "rgba(255,255,255,0.52)" }}>
             Attendance Policy
           </div>
           <p className="text-[13px] leading-[1.6] font-normal mb-[16px] relative z-10" style={{ color: "rgba(255,255,255,0.82)" }}>
@@ -620,7 +620,7 @@ const AttendancePage = () => {
                 ? <CheckCircle className="w-3 h-3" style={{ color: GREEN }} strokeWidth={2.5} />
                 : <XCircle className="w-3 h-3" style={{ color: "#fff" }} strokeWidth={2.5} />}
             </div>
-            <span className="text-[13px] font-semibold text-white" style={{ letterSpacing: "-0.1px" }}>
+            <span className="text-[13px] font-normal text-white" style={{ letterSpacing: "-0.1px" }}>
               {studentFirstName} is {aboveThreshold ? "above the threshold" : "below the requirement"}
             </span>
           </div>
@@ -637,10 +637,10 @@ const AttendancePage = () => {
           style={{ boxShadow: SH, border: "0.5px solid rgba(10,132,255,0.10)" }}>
           <div className="flex items-end justify-between mb-[12px]">
             <div>
-              <div className="text-[13px] font-semibold" style={{ color: T1, letterSpacing: "-0.2px", marginBottom: 2 }}>Exam Eligibility</div>
+              <div className="text-[13px] font-normal" style={{ color: T1, letterSpacing: "-0.2px", marginBottom: 2 }}>Exam Eligibility</div>
               <div className="text-[12px] font-normal" style={{ color: T3 }}>{attendanceThreshold}% threshold required</div>
             </div>
-            <div className="text-[18px] font-semibold" style={{ color: aboveThreshold ? GREEN : RED, letterSpacing: "-0.4px" }}>
+            <div className="text-[18px] font-normal" style={{ color: aboveThreshold ? GREEN : RED, letterSpacing: "-0.4px" }}>
               {stats.percentage}%
             </div>
           </div>
@@ -656,8 +656,8 @@ const AttendancePage = () => {
               style={{ left: `${Math.min(attendanceThreshold, 100)}%`, background: "rgba(10,132,255,0.4)" }} />
           </div>
           <div className="flex justify-between">
-            <span className="text-[12px] font-semibold" style={{ color: aboveThreshold ? GREEN : RED }}>{stats.percentage}% current</span>
-            <span className="text-[12px] font-semibold" style={{ color: "rgba(10,132,255,0.5)" }}>{attendanceThreshold}% required</span>
+            <span className="text-[12px] font-normal" style={{ color: aboveThreshold ? GREEN : RED }}>{stats.percentage}% current</span>
+            <span className="text-[12px] font-normal" style={{ color: "rgba(10,132,255,0.5)" }}>{attendanceThreshold}% required</span>
           </div>
         </div>
 
@@ -715,16 +715,16 @@ const AttendancePage = () => {
 
   return (
     <div className="animate-in fade-in duration-500 -m-4 sm:-m-6 md:-m-8 min-h-[calc(100vh-64px)]"
-      style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif", background: BG }}>
+      style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif", background: BG }}>
       <div className="w-full px-6 pt-8 pb-10">
 
         {/* ── Toolbar ── */}
         <div className="flex items-start justify-between gap-6 flex-wrap mb-6">
           <div>
-            <div className="text-[28px] font-semibold" style={{ color: T1, letterSpacing: "-0.9px" }}>Attendance Tracking</div>
+            <div className="text-[28px] font-normal" style={{ color: T1, letterSpacing: "-0.9px" }}>Attendance Tracking</div>
             <div className="text-[14px] mt-2 font-normal" style={{ color: T3 }}>Monitor daily presence and monthly patterns</div>
           </div>
-          <div className="px-4 py-[12px] rounded-full text-[13px] font-semibold tracking-[0.02em] whitespace-nowrap"
+          <div className="px-4 py-[12px] rounded-full text-[13px] font-normal tracking-[0.02em] whitespace-nowrap"
             style={{ background: GREEN_S, color: GREEN_D, border: `0.5px solid ${GREEN_B}` }}>
             {stats.percentage}% Avg
           </div>
@@ -754,8 +754,8 @@ const AttendancePage = () => {
                 style={{ background: iconBoxBg, border: `0.5px solid ${iconBoxBdr}` }}>
                 <Icon className="w-[18px] h-[18px]" style={{ color: iconColor }} strokeWidth={2.2} />
               </div>
-              <div className="text-[28px] font-semibold leading-none mb-[4px] relative" style={{ color: valColor, letterSpacing: "-1px" }}>{value}</div>
-              <div className="text-[12px] font-semibold uppercase tracking-[0.10em] relative" style={{ color: T4 }}>{label}</div>
+              <div className="text-[28px] font-normal leading-none mb-[4px] relative" style={{ color: valColor, letterSpacing: "-1px" }}>{value}</div>
+              <div className="text-[12px] font-normal uppercase tracking-[0.10em] relative" style={{ color: T4 }}>{label}</div>
             </div>
           ))}
         </div>
@@ -785,7 +785,7 @@ const AttendancePage = () => {
                     style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: "0 2px 8px rgba(10,132,255,0.28)" }}>
                     <CalendarIcon className="w-[14px] h-[14px] text-white" strokeWidth={2.2} />
                   </div>
-                  <span className="text-[15px] font-semibold min-w-[160px] text-center" style={{ color: T1, letterSpacing: "-0.3px" }}>{monthName}</span>
+                  <span className="text-[15px] font-normal min-w-[160px] text-center" style={{ color: T1, letterSpacing: "-0.3px" }}>{monthName}</span>
                 </div>
                 <button onClick={(e) => { e.stopPropagation(); handleNextMonth(); }} aria-label="Next month"
                   className="w-10 h-10 rounded-[12px] flex items-center justify-center transition-transform hover:scale-[1.05]"
@@ -794,13 +794,13 @@ const AttendancePage = () => {
                 </button>
               </div>
               <div className="flex items-center gap-4 flex-wrap">
-                <div className="flex items-center gap-[4px] text-[12px] font-semibold tracking-[0.04em]" style={{ color: T3 }}>
+                <div className="flex items-center gap-[4px] text-[12px] font-normal tracking-[0.04em]" style={{ color: T3 }}>
                   <div className="w-2 h-2 rounded-full" style={{ background: GREEN }} />Present
                 </div>
-                <div className="flex items-center gap-[4px] text-[12px] font-semibold tracking-[0.04em]" style={{ color: T3 }}>
+                <div className="flex items-center gap-[4px] text-[12px] font-normal tracking-[0.04em]" style={{ color: T3 }}>
                   <div className="w-2 h-2 rounded-full" style={{ background: RED }} />Absent
                 </div>
-                <div className="flex items-center gap-[4px] text-[12px] font-semibold tracking-[0.04em]" style={{ color: T3 }}>
+                <div className="flex items-center gap-[4px] text-[12px] font-normal tracking-[0.04em]" style={{ color: T3 }}>
                   <div className="w-2 h-2 rounded-full" style={{ background: ORANGE }} />Late
                 </div>
               </div>
@@ -808,14 +808,14 @@ const AttendancePage = () => {
 
             <div className="grid grid-cols-7 mb-2">
               {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map(d => (
-                <div key={d} className="text-center py-1 text-[12px] font-semibold uppercase tracking-[0.06em]" style={{ color: T4 }}>{d}</div>
+                <div key={d} className="text-center py-1 text-[12px] font-normal uppercase tracking-[0.06em]" style={{ color: T4 }}>{d}</div>
               ))}
             </div>
 
             {loading ? (
               <div className="flex flex-col items-center gap-3 py-10">
                 <Loader2 className="w-10 h-10 animate-spin" style={{ color: B1 }} />
-                <p className="text-[13px] font-medium" style={{ color: T4 }}>Syncing logs…</p>
+                <p className="text-[13px] font-normal" style={{ color: T4 }}>Syncing logs…</p>
               </div>
             ) : (
               <div className="grid grid-cols-7 gap-[8px]">
@@ -836,23 +836,23 @@ const AttendancePage = () => {
                       return {
                         background: `linear-gradient(135deg, ${B1}, ${B2})`,
                         color: "#fff",
-                        fontWeight: 600,
+                        fontWeight: 400,
                         boxShadow: "0 4px 14px rgba(10,132,255,0.36), 0 1px 4px rgba(10,132,255,0.22)",
                       };
                     }
                     switch (status) {
                       case "present":
-                        return { background: "rgba(52,199,89,0.10)", color: GREEN_D, border: "0.5px solid rgba(52,199,89,0.18)", fontWeight: 600 };
+                        return { background: "rgba(52,199,89,0.10)", color: GREEN_D, border: "0.5px solid rgba(52,199,89,0.18)", fontWeight: 400 };
                       case "absent":
-                        return { background: "rgba(255,59,48,0.10)", color: RED, border: "0.5px solid rgba(255,59,48,0.18)", fontWeight: 600 };
+                        return { background: "rgba(255,59,48,0.10)", color: RED, border: "0.5px solid rgba(255,59,48,0.18)", fontWeight: 400 };
                       case "late":
-                        return { background: "rgba(255,149,0,0.10)", color: ORANGE, border: "0.5px solid rgba(255,149,0,0.18)", fontWeight: 600 };
+                        return { background: "rgba(255,149,0,0.10)", color: ORANGE, border: "0.5px solid rgba(255,149,0,0.18)", fontWeight: 400 };
                       case "weekend":
-                        return { color: T4, fontWeight: 500 };
+                        return { color: T4, fontWeight: 400 };
                       case "forgotten":
-                        return { color: T4, opacity: 0.7, fontWeight: 500 };
+                        return { color: T4, opacity: 0.7, fontWeight: 400 };
                       default:
-                        return { color: T2, fontWeight: 500 };
+                        return { color: T2, fontWeight: 400 };
                     }
                   })();
 
@@ -885,22 +885,22 @@ const AttendancePage = () => {
               className="bg-white rounded-[24px] p-5 flex items-center gap-5 cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
               style={{ boxShadow: SH_LG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
               <div className="flex-1">
-                <div className="text-[18px] font-semibold mb-1" style={{ color: T1, letterSpacing: "-0.3px" }}>This Month</div>
+                <div className="text-[18px] font-normal mb-1" style={{ color: T1, letterSpacing: "-0.3px" }}>This Month</div>
                 <div className="text-[12px] mb-4 font-normal" style={{ color: T3 }}>{monthName} summary</div>
                 <div className="flex items-center gap-[8px] mb-[8px]">
                   <div className="w-2 h-2 rounded-full shrink-0" style={{ background: GREEN }} />
-                  <span className="text-[12px] font-semibold" style={{ color: T2 }}>Present</span>
-                  <span className="text-[12px] font-semibold ml-auto" style={{ color: GREEN }}>{monthStats.present} {monthStats.present === 1 ? "day" : "days"}</span>
+                  <span className="text-[12px] font-normal" style={{ color: T2 }}>Present</span>
+                  <span className="text-[12px] font-normal ml-auto" style={{ color: GREEN }}>{monthStats.present} {monthStats.present === 1 ? "day" : "days"}</span>
                 </div>
                 <div className="flex items-center gap-[8px] mb-[8px]">
                   <div className="w-2 h-2 rounded-full shrink-0" style={{ background: RED }} />
-                  <span className="text-[12px] font-semibold" style={{ color: T2 }}>Absent</span>
-                  <span className="text-[12px] font-semibold ml-auto" style={{ color: RED }}>{monthStats.absent} {monthStats.absent === 1 ? "day" : "days"}</span>
+                  <span className="text-[12px] font-normal" style={{ color: T2 }}>Absent</span>
+                  <span className="text-[12px] font-normal ml-auto" style={{ color: RED }}>{monthStats.absent} {monthStats.absent === 1 ? "day" : "days"}</span>
                 </div>
                 <div className="flex items-center gap-[8px]">
                   <div className="w-2 h-2 rounded-full shrink-0" style={{ background: ORANGE }} />
-                  <span className="text-[12px] font-semibold" style={{ color: T2 }}>Late</span>
-                  <span className="text-[12px] font-semibold ml-auto" style={{ color: ORANGE }}>{monthStats.late} {monthStats.late === 1 ? "day" : "days"}</span>
+                  <span className="text-[12px] font-normal" style={{ color: T2 }}>Late</span>
+                  <span className="text-[12px] font-normal ml-auto" style={{ color: ORANGE }}>{monthStats.late} {monthStats.late === 1 ? "day" : "days"}</span>
                 </div>
               </div>
               <div className="relative w-[120px] h-[120px] shrink-0">
@@ -921,8 +921,8 @@ const AttendancePage = () => {
                     style={{ transition: "stroke-dashoffset 1s cubic-bezier(0.4,0,0.2,1)" }} />
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <div className="text-[28px] font-semibold leading-none" style={{ color: ringColor, letterSpacing: "-0.7px" }}>{stats.percentage}%</div>
-                  <div className="text-[12px] font-semibold uppercase tracking-[0.08em] mt-1" style={{ color: T4 }}>Rate</div>
+                  <div className="text-[28px] font-normal leading-none" style={{ color: ringColor, letterSpacing: "-0.7px" }}>{stats.percentage}%</div>
+                  <div className="text-[12px] font-normal uppercase tracking-[0.08em] mt-1" style={{ color: T4 }}>Rate</div>
                 </div>
               </div>
             </div>
@@ -937,7 +937,7 @@ const AttendancePage = () => {
                 onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/reports"); } }}
                 className="bg-white rounded-[22px] px-5 py-5 cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
                 style={{ boxShadow: SH, border: "0.5px solid rgba(10,132,255,0.10)" }}>
-                <div className="text-[15px] font-semibold mb-4" style={{ color: T1, letterSpacing: "-0.2px" }}>Weekly Attendance</div>
+                <div className="text-[15px] font-normal mb-4" style={{ color: T1, letterSpacing: "-0.2px" }}>Weekly Attendance</div>
                 <div className="flex items-end justify-between gap-[8px] h-[70px] mb-2">
                   {weekBarsD.map((b, i) => {
                     const h =
@@ -961,7 +961,7 @@ const AttendancePage = () => {
                             boxShadow: isHighlight ? "0 0 0 3px rgba(10,132,255,0.20)" : "none"
                           }}
                         />
-                        <span className="text-[12px] font-semibold uppercase tracking-[0.04em]"
+                        <span className="text-[12px] font-normal uppercase tracking-[0.04em]"
                           style={{ color: isHighlight ? B1 : T4 }}>
                           {b.label}
                         </span>
@@ -986,7 +986,7 @@ const AttendancePage = () => {
             onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/alerts"); } }}
             className="bg-white rounded-[24px] p-6 cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
             style={{ boxShadow: SH_LG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
-            <div className="text-[18px] font-semibold mb-4" style={{ color: T1, letterSpacing: "-0.3px" }}>Recent Absences</div>
+            <div className="text-[18px] font-normal mb-4" style={{ color: T1, letterSpacing: "-0.3px" }}>Recent Absences</div>
 
             {recentAbsences.length === 0 ? (
               attendanceLogs.length === 0 ? (
@@ -995,7 +995,7 @@ const AttendancePage = () => {
                     style={{ background: "rgba(48,48,110,0.06)", border: "0.5px solid rgba(48,48,110,0.12)" }}>
                     <CalendarIcon className="w-8 h-8" style={{ color: T4 }} strokeWidth={2.2} />
                   </div>
-                  <div className="text-[15px] font-semibold" style={{ color: T3 }}>No attendance recorded yet</div>
+                  <div className="text-[15px] font-normal" style={{ color: T3 }}>No attendance recorded yet</div>
                   <div className="text-[12px] text-center max-w-[260px] leading-[1.55] font-normal" style={{ color: T4 }}>
                     Once your child's teacher starts marking attendance, the records will appear here.
                   </div>
@@ -1006,7 +1006,7 @@ const AttendancePage = () => {
                     style={{ background: GREEN_S, border: `0.5px solid ${GREEN_B}`, boxShadow: "0 0 0 8px rgba(52,199,89,0.05)" }}>
                     <CheckCircle className="w-8 h-8" style={{ color: GREEN }} strokeWidth={2.2} />
                   </div>
-                  <div className="text-[15px] font-semibold" style={{ color: T3 }}>Perfect attendance! 🎉</div>
+                  <div className="text-[15px] font-normal" style={{ color: T3 }}>Perfect attendance! 🎉</div>
                   <div className="text-[12px] text-center max-w-[220px] leading-[1.55] font-normal" style={{ color: T4 }}>
                     No absences recorded this month. Keep it up!
                   </div>
@@ -1040,12 +1040,12 @@ const AttendancePage = () => {
                           : <Clock className="w-[18px] h-[18px]" style={{ color: ORANGE }} strokeWidth={2.2} />}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className="text-[14px] font-semibold" style={{ color: T1, letterSpacing: "-0.2px" }}>{dateStr}</div>
+                        <div className="text-[14px] font-normal" style={{ color: T1, letterSpacing: "-0.2px" }}>{dateStr}</div>
                         <div className="text-[12px] mt-1 truncate font-normal" style={{ color: T3 }}>
                           {a.note || (isAbsent ? "Reason: Not specified" : "Arrived late")}
                         </div>
                       </div>
-                      <div className="px-3 py-[4px] rounded-full text-[12px] font-semibold shrink-0"
+                      <div className="px-3 py-[4px] rounded-full text-[12px] font-normal shrink-0"
                         style={{
                           background: isAbsent ? "rgba(255,59,48,0.10)" : "rgba(255,149,0,0.10)",
                           color: isAbsent ? RED : ORANGE,
@@ -1079,7 +1079,7 @@ const AttendancePage = () => {
               backgroundImage: "linear-gradient(rgba(255,255,255,0.014) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.014) 1px, transparent 1px)",
               backgroundSize: "24px 24px"
             }} />
-            <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-3 relative z-10" style={{ color: "rgba(255,255,255,0.52)" }}>
+            <div className="text-[12px] font-normal uppercase tracking-[0.12em] mb-3 relative z-10" style={{ color: "rgba(255,255,255,0.52)" }}>
               Attendance Policy
             </div>
             <p className="text-[15px] leading-[1.65] font-normal mb-5 relative z-10" style={{ color: "rgba(255,255,255,0.88)" }}>
@@ -1095,7 +1095,7 @@ const AttendancePage = () => {
                   ? <CheckCircle className="w-[13px] h-[13px]" style={{ color: GREEN }} strokeWidth={2.5} />
                   : <XCircle className="w-[13px] h-[13px]" style={{ color: "#fff" }} strokeWidth={2.5} />}
               </div>
-              <span className="text-[14px] font-semibold text-white" style={{ letterSpacing: "-0.1px" }}>
+              <span className="text-[14px] font-normal text-white" style={{ letterSpacing: "-0.1px" }}>
                 {studentFirstName} is {aboveThreshold ? "above the threshold" : "below the requirement"}
               </span>
             </div>
@@ -1112,10 +1112,10 @@ const AttendancePage = () => {
             style={{ boxShadow: SH, border: "0.5px solid rgba(10,132,255,0.10)" }}>
             <div className="flex items-end justify-between mb-3">
               <div>
-                <div className="text-[15px] font-semibold" style={{ color: T1, letterSpacing: "-0.2px", marginBottom: 3 }}>Exam Eligibility</div>
+                <div className="text-[15px] font-normal" style={{ color: T1, letterSpacing: "-0.2px", marginBottom: 3 }}>Exam Eligibility</div>
                 <div className="text-[12px] font-normal" style={{ color: T3 }}>{attendanceThreshold}% threshold required</div>
               </div>
-              <div className="text-[28px] font-semibold" style={{ color: aboveThreshold ? GREEN : RED, letterSpacing: "-0.7px" }}>
+              <div className="text-[28px] font-normal" style={{ color: aboveThreshold ? GREEN : RED, letterSpacing: "-0.7px" }}>
                 {stats.percentage}%
               </div>
             </div>
@@ -1131,8 +1131,8 @@ const AttendancePage = () => {
                 style={{ left: `${Math.min(attendanceThreshold, 100)}%`, background: "rgba(10,132,255,0.55)" }} />
             </div>
             <div className="flex justify-between">
-              <span className="text-[12px] font-semibold" style={{ color: aboveThreshold ? GREEN : RED }}>{stats.percentage}% current</span>
-              <span className="text-[12px] font-semibold" style={{ color: "rgba(10,132,255,0.6)" }}>{attendanceThreshold}% required</span>
+              <span className="text-[12px] font-normal" style={{ color: aboveThreshold ? GREEN : RED }}>{stats.percentage}% current</span>
+              <span className="text-[12px] font-normal" style={{ color: "rgba(10,132,255,0.6)" }}>{attendanceThreshold}% required</span>
             </div>
           </div>
         </div>

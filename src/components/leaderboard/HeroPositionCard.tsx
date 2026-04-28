@@ -101,7 +101,7 @@ export function HeroPositionCard({
           <span
             style={{
               fontSize: 9,
-              fontWeight: 600,
+              fontWeight: 400,
               letterSpacing: '1.4px',
               color: '#FFFFFF',
               textTransform: 'uppercase',
@@ -125,7 +125,7 @@ export function HeroPositionCard({
           <span
             style={{
               fontSize: 9,
-              fontWeight: 600,
+              fontWeight: 400,
               letterSpacing: '1px',
               color: trendColor,
               textTransform: 'uppercase',
@@ -140,7 +140,7 @@ export function HeroPositionCard({
         <p
           style={{
             fontSize: 9,
-            fontWeight: 600,
+            fontWeight: 400,
             letterSpacing: '2px',
             color: 'rgba(255,255,255,0.55)',
             margin: '0 0 2px',
@@ -152,7 +152,7 @@ export function HeroPositionCard({
         <div
           style={{
             fontSize: 88,
-            fontWeight: 600,
+            fontWeight: 400,
             letterSpacing: '-5px',
             color: '#FFFFFF',
             lineHeight: 0.9,
@@ -167,7 +167,7 @@ export function HeroPositionCard({
         <p
           style={{
             fontSize: 12,
-            fontWeight: 500,
+            fontWeight: 400,
             color: 'rgba(255,255,255,0.6)',
             margin: '4px 0 0',
           }}
@@ -217,7 +217,7 @@ export function HeroPositionCard({
         <p
           style={{
             fontSize: 11,
-            fontWeight: 500,
+            fontWeight: 400,
             color: 'rgba(255,255,255,0.6)',
             margin: '8px 0 0',
             textAlign: 'center',
@@ -240,7 +240,7 @@ export function HeroPositionCard({
           color: T.B1,
           cursor: 'pointer',
           fontFamily: FONT,
-          fontWeight: 600,
+          fontWeight: 400,
           letterSpacing: '-0.1px',
           boxShadow:
             '0 8px 24px rgba(0,0,0,0.20), 0 2px 6px rgba(0,0,0,0.10)',

@@ -135,7 +135,7 @@ export function TrajectoryStat({ label, value, color = T.T1 }: TrajectoryStatPro
       <p
         style={{
           fontSize: 9,
-          fontWeight: 600,
+          fontWeight: 400,
           letterSpacing: '1.2px',
           color: T.T4,
           margin: '0 0 2px',
@@ -144,7 +144,7 @@ export function TrajectoryStat({ label, value, color = T.T1 }: TrajectoryStatPro
       >
         {label}
       </p>
-      <p style={{ fontSize: 14, fontWeight: 600, color, margin: 0, letterSpacing: '-0.2px' }}>
+      <p style={{ fontSize: 14, fontWeight: 400, color, margin: 0, letterSpacing: '-0.2px' }}>
         {value}
       </p>
     </div>

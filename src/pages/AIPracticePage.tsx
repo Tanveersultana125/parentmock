@@ -440,7 +440,7 @@ const AIPracticePage = () => {
   const card: React.CSSProperties = { background: C.white, border: `1px solid ${C.bdr}`, borderRadius: 18, overflow: "hidden" };
   const btnPrimary: React.CSSProperties = {
     width: "100%", padding: 14, borderRadius: 14, background: C.pur,
-    border: "none", color: "#fff", fontSize: 14, fontWeight: 600,
+    border: "none", color: "#fff", fontSize: 14, fontWeight: 400,
     cursor: "pointer", fontFamily: "inherit",
     display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
   };
@@ -481,7 +481,7 @@ const AIPracticePage = () => {
         <div className="flex items-center justify-between px-5 pt-3">
           <div className="flex items-center gap-[8px]">
             <div className="w-[7px] h-[7px] rounded-full animate-pulse" style={{ background: "#34C759", boxShadow: "0 0 0 2.5px rgba(0,204,85,0.2)" }} />
-            <span className="text-[15px] font-semibold" style={{ color: B1 }}>EduIntellect</span>
+            <span className="text-[15px] font-normal" style={{ color: B1 }}>EduIntellect</span>
           </div>
           <div className="flex items-center gap-[8px]">
             <div className="w-[34px] h-[34px] rounded-full flex items-center justify-center relative"
@@ -489,7 +489,7 @@ const AIPracticePage = () => {
               <Bell className="w-4 h-4" style={{ color: "rgba(10,132,255,0.60)" }} strokeWidth={1.8} />
               <span className="absolute top-0 right-0 w-2 h-2 rounded-full" style={{ background: "#FF3B30", border: "1.5px solid white" }} />
             </div>
-            <div className="w-[34px] h-[34px] rounded-full flex items-center justify-center text-[13px] font-semibold text-white"
+            <div className="w-[34px] h-[34px] rounded-full flex items-center justify-center text-[13px] font-normal text-white"
               style={{ background: `linear-gradient(140deg, ${B1}, ${B2})`, boxShadow: "0 3px 12px rgba(10,132,255,0.36), 0 0 0 2px rgba(255,255,255,0.8)" }}>
               {studentName?.[0]?.toUpperCase() || "S"}
             </div>
@@ -508,12 +508,12 @@ const AIPracticePage = () => {
           </div>
 
           <div className="relative z-10">
-            <div className="inline-flex items-center gap-[4px] px-3 py-[4px] rounded-full mb-[16px] text-[12px] font-semibold uppercase tracking-[0.10em]"
+            <div className="inline-flex items-center gap-[4px] px-3 py-[4px] rounded-full mb-[16px] text-[12px] font-normal uppercase tracking-[0.10em]"
               style={{ background: "rgba(10,132,255,0.10)", border: "0.5px solid rgba(10,132,255,0.22)", color: B1 }}>
               <Sparkles className="w-[11px] h-[11px]" strokeWidth={2.5} />
               AI Powered · USP Feature
             </div>
-            <h1 className="text-[28px] font-semibold leading-[1.08] mb-2" style={{ color: T1, letterSpacing: "-0.8px" }}>
+            <h1 className="text-[28px] font-normal leading-[1.08] mb-2" style={{ color: T1, letterSpacing: "-0.8px" }}>
               AI Practice<br />Exams
             </h1>
             <p className="text-[12px] leading-[1.6] font-normal mb-[16px]" style={{ color: T3 }}>
@@ -532,8 +532,8 @@ const AIPracticePage = () => {
                   <div className="h-[22px] flex items-center justify-center text-[18px] leading-none mb-[2px]">
                     {typeof icon === "string" ? icon : icon}
                   </div>
-                  <div className="text-[20px] font-semibold leading-none" style={{ color: T1, letterSpacing: "-0.5px" }}>{val}</div>
-                  <div className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color }}>{label}</div>
+                  <div className="text-[20px] font-normal leading-none" style={{ color: T1, letterSpacing: "-0.5px" }}>{val}</div>
+                  <div className="text-[12px] font-normal uppercase tracking-[0.10em]" style={{ color }}>{label}</div>
                 </div>
               ))}
             </div>
@@ -551,19 +551,19 @@ const AIPracticePage = () => {
               🔥
             </div>
             <div>
-              <div className="text-[15px] font-semibold" style={{ color: T1, letterSpacing: "-0.2px" }}>Practice Streak</div>
+              <div className="text-[15px] font-normal" style={{ color: T1, letterSpacing: "-0.2px" }}>Practice Streak</div>
               <div className="text-[12px] font-normal" style={{ color: T3 }}>
                 {streak > 0 ? "Keep the fire going!" : "Start today to build your streak!"}
               </div>
             </div>
           </div>
-          <div className="text-[22px] font-semibold relative z-10" style={{ color: ORANGE, letterSpacing: "-0.5px" }}>{streak}d</div>
+          <div className="text-[22px] font-normal relative z-10" style={{ color: ORANGE, letterSpacing: "-0.5px" }}>{streak}d</div>
         </div>
 
         {/* ── Practice Calendar ── */}
         <div className="mx-[16px] mt-3 rounded-[22px] px-[16px] py-[16px]"
           style={{ background: CARD, boxShadow: SH_LG, border: "0.5px solid rgba(10,132,255,0.10)" }}>
-          <div className="text-[15px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>Practice Calendar</div>
+          <div className="text-[15px] font-normal" style={{ color: T1, letterSpacing: "-0.3px" }}>Practice Calendar</div>
           <div className="text-[12px] font-normal mt-[4px] mb-[16px]" style={{ color: T3 }}>{practiceDates.size} days practiced this year</div>
 
           {/* Heatmap 18×7 grid */}
@@ -589,7 +589,7 @@ const AIPracticePage = () => {
           </div>
 
           {/* Legend */}
-          <div className="flex items-center gap-[8px] text-[12px] font-semibold" style={{ color: T4 }}>
+          <div className="flex items-center gap-[8px] text-[12px] font-normal" style={{ color: T4 }}>
             <span>Less</span>
             {[BG2, "rgba(10,132,255,0.15)", "rgba(10,132,255,0.30)", "rgba(10,132,255,0.55)", B1].map((c, i) => (
               <div key={i} className="w-3 h-3 rounded-[3px]" style={{ background: c }} />
@@ -600,7 +600,7 @@ const AIPracticePage = () => {
 
         {/* ── New Practice Exam CTA ── */}
         <button onClick={() => setView("upload")}
-          className="mx-[16px] mt-[16px] w-[calc(100%-36px)] h-[52px] rounded-[18px] flex items-center justify-center gap-2 text-[15px] font-semibold text-white active:scale-[0.97] transition-transform relative overflow-hidden"
+          className="mx-[16px] mt-[16px] w-[calc(100%-36px)] h-[52px] rounded-[18px] flex items-center justify-center gap-2 text-[15px] font-normal text-white active:scale-[0.97] transition-transform relative overflow-hidden"
           style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: SH_BTN, letterSpacing: "-0.1px" }}>
           <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 52%)" }} />
           <Plus className="relative z-10 w-4 h-4" strokeWidth={2.5} />
@@ -610,14 +610,14 @@ const AIPracticePage = () => {
         {/* ── Empty state hint ── */}
         {attempts.length === 0 && documents.length === 0 && (
           <div className="px-5 pt-[16px] text-center text-[13px] leading-[1.6] font-normal" style={{ color: T3 }}>
-            No exams yet. Tap <strong style={{ color: B1, fontWeight: 600 }}>New Practice Exam</strong> to begin!
+            No exams yet. Tap <strong style={{ color: B1, fontWeight: 400 }}>New Practice Exam</strong> to begin!
           </div>
         )}
 
         {/* ── Your Documents ── */}
         {documents.length > 0 && (
           <>
-            <div className="flex items-center gap-2 px-5 pt-[16px] text-[12px] font-semibold uppercase tracking-[0.1em]" style={{ color: "rgba(10,132,255,0.40)" }}>
+            <div className="flex items-center gap-2 px-5 pt-[16px] text-[12px] font-normal uppercase tracking-[0.1em]" style={{ color: "rgba(10,132,255,0.40)" }}>
               Your Documents
               <div className="flex-1 h-[0.5px]" style={{ background: SEP }} />
             </div>
@@ -631,7 +631,7 @@ const AIPracticePage = () => {
                     <FileText className="w-5 h-5" style={{ color: B1 }} strokeWidth={2} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="text-[14px] font-semibold truncate" style={{ color: T1, letterSpacing: "-0.2px" }}>{doc.fileName}</div>
+                    <div className="text-[14px] font-normal truncate" style={{ color: T1, letterSpacing: "-0.2px" }}>{doc.fileName}</div>
                     <div className="text-[12px] mt-[2px]" style={{ color: T3 }}>{doc.pageCount || 0} pages · {doc.extractedTopics?.length || 0} topics</div>
                   </div>
                 </div>
@@ -643,7 +643,7 @@ const AIPracticePage = () => {
         {/* ── Recent Exams ── */}
         {attempts.length > 0 && (
           <>
-            <div className="flex items-center gap-2 px-5 pt-[16px] text-[12px] font-semibold uppercase tracking-[0.1em]" style={{ color: "rgba(10,132,255,0.40)" }}>
+            <div className="flex items-center gap-2 px-5 pt-[16px] text-[12px] font-normal uppercase tracking-[0.1em]" style={{ color: "rgba(10,132,255,0.40)" }}>
               Recent Exams
               <div className="flex-1 h-[0.5px]" style={{ background: SEP }} />
             </div>
@@ -664,14 +664,14 @@ const AIPracticePage = () => {
                       <BarChart3 className="w-5 h-5" style={{ color: iconColor }} strokeWidth={2} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="text-[14px] font-semibold truncate" style={{ color: T1, letterSpacing: "-0.2px" }}>{a.examTitle || a.topic || "Practice"}</div>
+                      <div className="text-[14px] font-normal truncate" style={{ color: T1, letterSpacing: "-0.2px" }}>{a.examTitle || a.topic || "Practice"}</div>
                       <div className="text-[12px] mt-[2px]" style={{ color: T3 }}>
                         {a.submittedAt?.toDate?.().toLocaleDateString(undefined, { month: "short", day: "numeric" }) || "—"} · {a.total || a.questionCount || 0} questions
                       </div>
                     </div>
                     <div className="flex flex-col items-end gap-[4px]">
-                      <div className="text-[18px] font-semibold" style={{ color: iconColor, letterSpacing: "-0.4px" }}>{pct}%</div>
-                      <div className="px-[8px] py-[4px] rounded-full text-[12px] font-semibold"
+                      <div className="text-[18px] font-normal" style={{ color: iconColor, letterSpacing: "-0.4px" }}>{pct}%</div>
+                      <div className="px-[8px] py-[4px] rounded-full text-[12px] font-normal"
                         style={{ background: iconBg, color: iconColor, border: `0.5px solid ${iconBdr}` }}>
                         {chipText}
                       </div>
@@ -689,7 +689,7 @@ const AIPracticePage = () => {
             style={{ background: "linear-gradient(140deg, #0A84FF 0%, #0A84FF 48%, #0A84FF 100%)", boxShadow: "0 8px 28px rgba(0,51,204,0.32), 0 0 0 0.5px rgba(255,255,255,0.14)" }}>
             <div className="absolute -top-8 -right-5 w-[130px] h-[130px] rounded-full pointer-events-none"
               style={{ background: "radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 65%)" }} />
-            <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-3 relative z-10" style={{ color: "rgba(255,255,255,0.48)" }}>
+            <div className="text-[12px] font-normal uppercase tracking-[0.12em] mb-3 relative z-10" style={{ color: "rgba(255,255,255,0.48)" }}>
               Your Exam History
             </div>
             <div className="grid grid-cols-3 gap-[1px] rounded-[16px] overflow-hidden relative z-10" style={{ background: "rgba(255,255,255,0.12)" }}>
@@ -699,8 +699,8 @@ const AIPracticePage = () => {
                 { val: `${streak}d`, label: "Streak" },
               ].map(({ val, label }) => (
                 <div key={label} className="py-[16px] px-3 text-center" style={{ background: "rgba(255,255,255,0.08)" }}>
-                  <div className="text-[28px] font-semibold text-white leading-none mb-1" style={{ letterSpacing: "-0.8px" }}>{val}</div>
-                  <div className="text-[12px] font-semibold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.40)" }}>{label}</div>
+                  <div className="text-[28px] font-normal text-white leading-none mb-1" style={{ letterSpacing: "-0.8px" }}>{val}</div>
+                  <div className="text-[12px] font-normal uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.40)" }}>{label}</div>
                 </div>
               ))}
             </div>
@@ -747,12 +747,12 @@ const AIPracticePage = () => {
             style={{ background: "rgba(255,255,255,0.88)", border: "0.5px solid rgba(10,132,255,0.14)", boxShadow: SH }}>
             <ChevronLeft className="w-[13px] h-[13px]" style={{ color: "rgba(10,132,255,0.7)" }} strokeWidth={2.5} />
           </div>
-          <span className="text-[14px] font-semibold" style={{ color: B1, letterSpacing: "-0.1px" }}>Back</span>
+          <span className="text-[14px] font-normal" style={{ color: B1, letterSpacing: "-0.1px" }}>Back</span>
         </div>
 
         {/* ── Page head ── */}
         <div className="px-5 pt-4">
-          <h2 className="text-[24px] font-semibold" style={{ color: T1, letterSpacing: "-0.6px" }}>Upload Syllabus</h2>
+          <h2 className="text-[24px] font-normal" style={{ color: T1, letterSpacing: "-0.6px" }}>Upload Syllabus</h2>
           <p className="text-[12px] mt-[4px] font-normal" style={{ color: T3 }}>Upload a PDF of your chapter, notes, or syllabus.</p>
         </div>
 
@@ -779,11 +779,11 @@ const AIPracticePage = () => {
               <Upload className="w-[26px] h-[26px]" style={{ color: hasFile ? "#fff" : "rgba(10,132,255,0.55)" }} strokeWidth={2.2} />
             </div>
           )}
-          <div className="text-[16px] font-semibold text-center px-2" style={{ color: T1, letterSpacing: "-0.3px" }}>
+          <div className="text-[16px] font-normal text-center px-2" style={{ color: T1, letterSpacing: "-0.3px" }}>
             {extracting ? "Reading PDF..." : file?.name || (hasFile ? "Syllabus ready" : "Drop PDF here")}
           </div>
           <div className="text-[12px] font-normal" style={{ color: T3 }}>or tap to browse your files</div>
-          <div className="text-[12px] font-semibold" style={{ color: T4 }}>Max 20 MB · PDF, DOC, DOCX</div>
+          <div className="text-[12px] font-normal" style={{ color: T4 }}>Max 20 MB · PDF, DOC, DOCX</div>
           <input ref={fileInputRef} type="file" accept="application/pdf" style={{ display: "none" }}
             onChange={e => { if (e.target.files?.[0]) handleFileUpload(e.target.files[0]); }} />
         </div>
@@ -803,7 +803,7 @@ const AIPracticePage = () => {
                 style={{ background: gradient, boxShadow: shadow }}>
                 <Icon className="w-[22px] h-[22px] text-white" strokeWidth={2.2} />
               </div>
-              <div className="text-[13px] font-semibold" style={{ color: T1, letterSpacing: "-0.2px" }}>{label}</div>
+              <div className="text-[13px] font-normal" style={{ color: T1, letterSpacing: "-0.2px" }}>{label}</div>
               <div className="text-[12px] font-normal" style={{ color: T3 }}>{sub}</div>
             </div>
           ))}
@@ -817,7 +817,7 @@ const AIPracticePage = () => {
             { label: "JPG / PNG", color: "#248A3D", bg: "rgba(52,199,89,0.10)", bdr: "rgba(52,199,89,0.22)" },
             { label: "TXT", color: "#3A3A3C", bg: "rgba(10,132,255,0.08)", bdr: "rgba(10,132,255,0.14)" },
           ].map(({ label, color, bg, bdr }) => (
-            <div key={label} className="flex items-center gap-[4px] px-[12px] py-[8px] rounded-full text-[12px] font-semibold"
+            <div key={label} className="flex items-center gap-[4px] px-[12px] py-[8px] rounded-full text-[12px] font-normal"
               style={{ background: bg, color, border: `0.5px solid ${bdr}` }}>
               <FileText className="w-[11px] h-[11px]" strokeWidth={2.5} />
               {label}
@@ -832,7 +832,7 @@ const AIPracticePage = () => {
             else if (!extracting) fileInputRef.current?.click();
           }}
           disabled={extracting}
-          className="mx-[16px] mt-[16px] w-[calc(100%-36px)] h-[52px] rounded-[18px] flex items-center justify-center gap-2 text-[15px] font-semibold text-white active:scale-[0.97] disabled:opacity-60 transition-transform relative overflow-hidden"
+          className="mx-[16px] mt-[16px] w-[calc(100%-36px)] h-[52px] rounded-[18px] flex items-center justify-center gap-2 text-[15px] font-normal text-white active:scale-[0.97] disabled:opacity-60 transition-transform relative overflow-hidden"
           style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: SH_BTN, letterSpacing: "-0.1px" }}>
           <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 52%)" }} />
           {extracting ? (
@@ -850,7 +850,7 @@ const AIPracticePage = () => {
             <Sparkles className="w-[18px] h-[18px] text-white" strokeWidth={2.2} />
           </div>
           <div>
-            <div className="text-[13px] font-semibold" style={{ color: T1, letterSpacing: "-0.2px" }}>AI generates 15–30 MCQs</div>
+            <div className="text-[13px] font-normal" style={{ color: T1, letterSpacing: "-0.2px" }}>AI generates 15–30 MCQs</div>
             <div className="text-[12px] mt-[2px] font-normal leading-[1.5]" style={{ color: T3 }}>Tailored to your syllabus with instant grading and feedback</div>
           </div>
         </div>
@@ -858,7 +858,7 @@ const AIPracticePage = () => {
         {/* ── Previously uploaded docs ── */}
         {documents.length > 0 && (
           <>
-            <div className="px-5 pt-[16px] text-[12px] font-semibold uppercase tracking-[0.1em]" style={{ color: "rgba(10,132,255,0.45)" }}>
+            <div className="px-5 pt-[16px] text-[12px] font-normal uppercase tracking-[0.1em]" style={{ color: "rgba(10,132,255,0.45)" }}>
               Or use a saved document
             </div>
             <div className="mx-[16px] mt-[12px] flex flex-col gap-[8px]">
@@ -871,7 +871,7 @@ const AIPracticePage = () => {
                     <FileText className="w-[18px] h-[18px]" style={{ color: B1 }} strokeWidth={2} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="text-[13px] font-semibold truncate" style={{ color: T1 }}>{doc.fileName}</div>
+                    <div className="text-[13px] font-normal truncate" style={{ color: T1 }}>{doc.fileName}</div>
                     <div className="text-[12px] mt-[2px]" style={{ color: T3 }}>{doc.extractedTopics?.length || 0} topics extracted</div>
                   </div>
                 </div>
@@ -912,19 +912,19 @@ const AIPracticePage = () => {
       {/* ── Toolbar ── */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-1 flex items-center gap-[8px]" style={{ color: T4 }}>
+          <div className="text-[12px] font-normal uppercase tracking-[0.12em] mb-1 flex items-center gap-[8px]" style={{ color: T4 }}>
             <span className="w-[6px] h-[6px] rounded-full" style={{ background: GREEN_D, boxShadow: "0 0 0 3px rgba(52,199,89,0.2)" }} />
             Parent Dashboard · AI Practice
           </div>
-          <h1 className="text-[28px] font-semibold leading-none" style={{ color: T1, letterSpacing: "-0.8px" }}>AI Practice Exams</h1>
+          <h1 className="text-[28px] font-normal leading-none" style={{ color: T1, letterSpacing: "-0.8px" }}>AI Practice Exams</h1>
           <div className="text-[13px] font-normal mt-[8px]" style={{ color: T3 }}>Upload syllabus, take AI exams, learn from mistakes.</div>
         </div>
         <div className="flex items-center gap-[12px]">
-          <div className="px-[16px] py-[8px] rounded-full text-[12px] font-semibold flex items-center gap-[8px]" style={{ background: "rgba(10,132,255,0.08)", color: B1, border: `0.5px solid ${BLUE_BDR_D}` }}>
+          <div className="px-[16px] py-[8px] rounded-full text-[12px] font-normal flex items-center gap-[8px]" style={{ background: "rgba(10,132,255,0.08)", color: B1, border: `0.5px solid ${BLUE_BDR_D}` }}>
             <Sparkles className="w-[12px] h-[12px]" strokeWidth={2.5} />
             USP Feature
           </div>
-          <div className="w-10 h-10 rounded-full flex items-center justify-center text-[14px] font-semibold text-white"
+          <div className="w-10 h-10 rounded-full flex items-center justify-center text-[14px] font-normal text-white"
             style={{ background: `linear-gradient(140deg, ${B1}, ${B2})`, boxShadow: "0 3px 12px rgba(10,132,255,0.36), 0 0 0 2px rgba(255,255,255,0.8)" }}>
             {studentName?.[0]?.toUpperCase() || "S"}
           </div>
@@ -945,19 +945,19 @@ const AIPracticePage = () => {
           </div>
           <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
             <div>
-              <div className="inline-flex items-center gap-[4px] px-3 py-[4px] rounded-full mb-4 text-[12px] font-semibold uppercase tracking-[0.12em]"
+              <div className="inline-flex items-center gap-[4px] px-3 py-[4px] rounded-full mb-4 text-[12px] font-normal uppercase tracking-[0.12em]"
                 style={{ background: "rgba(10,132,255,0.10)", border: "0.5px solid rgba(10,132,255,0.22)", color: B1 }}>
                 <Sparkles className="w-[12px] h-[12px]" strokeWidth={2.5} />
                 AI Powered
               </div>
-              <h2 className="text-[28px] font-semibold leading-[1.05] mb-3" style={{ color: T1, letterSpacing: "-1px" }}>
+              <h2 className="text-[28px] font-normal leading-[1.05] mb-3" style={{ color: T1, letterSpacing: "-1px" }}>
                 Practice<br />Smart.
               </h2>
               <p className="text-[14px] leading-[1.6]" style={{ color: T3 }}>
                 Upload your syllabus and let AI generate personalised exams. Grade yourself, learn from mistakes, build streaks.
               </p>
               <button onClick={() => setView("upload")}
-                className="mt-5 h-12 px-6 rounded-[14px] text-[14px] font-semibold flex items-center gap-2 transition-transform hover:scale-[1.02]"
+                className="mt-5 h-12 px-6 rounded-[14px] text-[14px] font-normal flex items-center gap-2 transition-transform hover:scale-[1.02]"
                 style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, color: "#fff", boxShadow: SH_BTN_D, letterSpacing: "-0.1px" }}>
                 <Plus className="w-4 h-4" strokeWidth={2.5} /> New Practice Exam
               </button>
@@ -973,8 +973,8 @@ const AIPracticePage = () => {
                   <div className="h-[26px] flex items-center justify-center text-[22px] leading-none mb-1">
                     {typeof icon === "string" ? icon : icon}
                   </div>
-                  <div className="text-[22px] font-semibold leading-none" style={{ color: T1, letterSpacing: "-0.6px" }}>{val}</div>
-                  <div className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color }}>{label}</div>
+                  <div className="text-[22px] font-normal leading-none" style={{ color: T1, letterSpacing: "-0.6px" }}>{val}</div>
+                  <div className="text-[12px] font-normal uppercase tracking-[0.10em]" style={{ color }}>{label}</div>
                 </div>
               ))}
             </div>
@@ -993,18 +993,18 @@ const AIPracticePage = () => {
                 🔥
               </div>
               <div>
-                <div className="text-[16px] font-semibold" style={{ color: T1, letterSpacing: "-0.2px" }}>Practice Streak</div>
+                <div className="text-[16px] font-normal" style={{ color: T1, letterSpacing: "-0.2px" }}>Practice Streak</div>
                 <div className="text-[12px] font-normal" style={{ color: T3 }}>
                   {streak > 0 ? "Keep the fire going!" : "Start today!"}
                 </div>
               </div>
             </div>
-            <div className="text-[28px] font-semibold" style={{ color: ORANGE_D, letterSpacing: "-1px" }}>{streak}<span className="text-[24px]" style={{ color: T4 }}>d</span></div>
+            <div className="text-[28px] font-normal" style={{ color: ORANGE_D, letterSpacing: "-1px" }}>{streak}<span className="text-[24px]" style={{ color: T4 }}>d</span></div>
 
             <div className="mt-4 pt-4" style={{ borderTop: `0.5px solid ${BLUE_BDR_D}` }}>
               <div className="flex items-center justify-between mb-2">
-                <span className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: T4 }}>Avg Score</span>
-                <span className="text-[15px] font-semibold" style={{ color: avgScoreD >= 80 ? GREEN_D : avgScoreD >= 50 ? ORANGE_D : avgScoreD > 0 ? RED_D : T4 }}>
+                <span className="text-[12px] font-normal uppercase tracking-[0.10em]" style={{ color: T4 }}>Avg Score</span>
+                <span className="text-[15px] font-normal" style={{ color: avgScoreD >= 80 ? GREEN_D : avgScoreD >= 50 ? ORANGE_D : avgScoreD > 0 ? RED_D : T4 }}>
                   {avgScoreD > 0 ? `${avgScoreD}%` : "—"}
                 </span>
               </div>
@@ -1023,11 +1023,11 @@ const AIPracticePage = () => {
           style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(10,132,255,0.10)" }}>
           <div className="flex items-center justify-between mb-5">
             <div>
-              <div className="text-[18px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>Practice Calendar</div>
+              <div className="text-[18px] font-normal" style={{ color: T1, letterSpacing: "-0.3px" }}>Practice Calendar</div>
               <div className="text-[12px] font-normal mt-[4px]" style={{ color: T3 }}>{practiceDates.size} days practiced this year</div>
             </div>
             {streak > 0 && (
-              <div className="px-[12px] py-[4px] rounded-full text-[12px] font-semibold flex items-center gap-[4px]"
+              <div className="px-[12px] py-[4px] rounded-full text-[12px] font-normal flex items-center gap-[4px]"
                 style={{ background: "rgba(255,149,0,0.10)", color: "#86310C", border: "0.5px solid rgba(255,149,0,0.22)" }}>
                 🔥 {streak} day streak
               </div>
@@ -1055,7 +1055,7 @@ const AIPracticePage = () => {
                 </div>
               ))}
             </div>
-            <div className="flex items-center gap-2 mt-4 text-[12px] font-semibold" style={{ color: T4 }}>
+            <div className="flex items-center gap-2 mt-4 text-[12px] font-normal" style={{ color: T4 }}>
               <span>Less</span>
               {[BG2_D, "rgba(10,132,255,0.15)", "rgba(10,132,255,0.30)", "rgba(10,132,255,0.55)", B1].map((c, i) => (
                 <div key={i} className="w-[12px] h-[12px] rounded-[3px]" style={{ background: c }} />
@@ -1068,7 +1068,7 @@ const AIPracticePage = () => {
         {/* Recent Attempts sidebar */}
         <div className="bg-white rounded-[22px] p-5"
           style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(10,132,255,0.10)" }}>
-          <div className="text-[16px] font-semibold mb-4" style={{ color: T1, letterSpacing: "-0.3px" }}>Recent Exams</div>
+          <div className="text-[16px] font-normal mb-4" style={{ color: T1, letterSpacing: "-0.3px" }}>Recent Exams</div>
           {attempts.length === 0 ? (
             <div className="py-8 text-center text-[12px]" style={{ color: T4 }}>
               No exams yet. Start your first one.
@@ -1090,12 +1090,12 @@ const AIPracticePage = () => {
                       <BarChart3 className="w-[16px] h-[16px]" style={{ color: iconColor }} strokeWidth={2.3} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="text-[12px] font-semibold truncate" style={{ color: T1, letterSpacing: "-0.1px" }}>{a.examTitle || a.topic || "Practice"}</div>
+                      <div className="text-[12px] font-normal truncate" style={{ color: T1, letterSpacing: "-0.1px" }}>{a.examTitle || a.topic || "Practice"}</div>
                       <div className="text-[12px] mt-[2px]" style={{ color: T3 }}>
                         {a.submittedAt?.toDate?.().toLocaleDateString(undefined, { month: "short", day: "numeric" }) || "—"} · {a.total || a.questionCount || 0}Q
                       </div>
                     </div>
-                    <div className="text-[15px] font-semibold shrink-0" style={{ color: iconColor, letterSpacing: "-0.3px" }}>{pct}%</div>
+                    <div className="text-[15px] font-normal shrink-0" style={{ color: iconColor, letterSpacing: "-0.3px" }}>{pct}%</div>
                   </div>
                 );
               })}
@@ -1111,11 +1111,11 @@ const AIPracticePage = () => {
           style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(10,132,255,0.10)" }}>
           <div className="flex items-center justify-between mb-5">
             <div>
-              <div className="text-[18px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>Your Documents</div>
+              <div className="text-[18px] font-normal" style={{ color: T1, letterSpacing: "-0.3px" }}>Your Documents</div>
               <div className="text-[12px] font-normal mt-[4px]" style={{ color: T3 }}>Tap to practice from a saved syllabus</div>
             </div>
             <button onClick={() => setView("upload")}
-              className="px-4 py-[8px] rounded-[12px] text-[12px] font-semibold text-white flex items-center gap-[4px] transition-transform hover:scale-[1.02]"
+              className="px-4 py-[8px] rounded-[12px] text-[12px] font-normal text-white flex items-center gap-[4px] transition-transform hover:scale-[1.02]"
               style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: SH_BTN_D }}>
               <Upload className="w-[12px] h-[12px]" strokeWidth={2.5} /> Upload New
             </button>
@@ -1126,7 +1126,7 @@ const AIPracticePage = () => {
                 style={{ background: "rgba(10,132,255,0.06)", border: `0.5px solid ${BLUE_BDR_D}` }}>
                 <FileText className="w-[28px] h-[28px]" style={{ color: B1 }} strokeWidth={1.8} />
               </div>
-              <div className="text-[14px] font-semibold mb-1" style={{ color: T1 }}>No documents yet</div>
+              <div className="text-[14px] font-normal mb-1" style={{ color: T1 }}>No documents yet</div>
               <div className="text-[12px]" style={{ color: T3 }}>Upload your first syllabus to generate AI practice exams.</div>
             </div>
           ) : (
@@ -1140,7 +1140,7 @@ const AIPracticePage = () => {
                     <FileText className="w-5 h-5" style={{ color: B1 }} strokeWidth={2} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="text-[13px] font-semibold truncate" style={{ color: T1, letterSpacing: "-0.2px" }}>{doc.fileName}</div>
+                    <div className="text-[13px] font-normal truncate" style={{ color: T1, letterSpacing: "-0.2px" }}>{doc.fileName}</div>
                     <div className="text-[12px] mt-[2px]" style={{ color: T3 }}>{doc.pageCount || 0} pages · {doc.extractedTopics?.length || 0} topics</div>
                   </div>
                 </div>
@@ -1161,20 +1161,20 @@ const AIPracticePage = () => {
             backgroundImage: "linear-gradient(rgba(255,255,255,0.014) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.014) 1px, transparent 1px)",
             backgroundSize: "24px 24px"
           }} />
-          <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-2 relative z-10" style={{ color: "rgba(255,255,255,0.50)" }}>Exam History</div>
-          <div className="text-[20px] font-semibold mb-5 relative z-10 text-white" style={{ letterSpacing: "-0.3px" }}>Your Totals</div>
+          <div className="text-[12px] font-normal uppercase tracking-[0.12em] mb-2 relative z-10" style={{ color: "rgba(255,255,255,0.50)" }}>Exam History</div>
+          <div className="text-[20px] font-normal mb-5 relative z-10 text-white" style={{ letterSpacing: "-0.3px" }}>Your Totals</div>
           <div className="grid grid-cols-3 rounded-[16px] overflow-hidden relative z-10" style={{ gap: "1px", background: "rgba(255,255,255,0.12)" }}>
             <div className="py-4 px-3 text-center" style={{ background: "rgba(255,255,255,0.08)" }}>
-              <div className="text-[24px] font-semibold text-white leading-none mb-1" style={{ letterSpacing: "-0.6px" }}>{attempts.length}</div>
-              <div className="text-[12px] font-semibold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.42)" }}>Total</div>
+              <div className="text-[24px] font-normal text-white leading-none mb-1" style={{ letterSpacing: "-0.6px" }}>{attempts.length}</div>
+              <div className="text-[12px] font-normal uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.42)" }}>Total</div>
             </div>
             <div className="py-4 px-3 text-center" style={{ background: "rgba(255,255,255,0.08)" }}>
-              <div className="text-[24px] font-semibold text-white leading-none mb-1" style={{ letterSpacing: "-0.6px" }}>{avgScoreD > 0 ? `${avgScoreD}%` : "—"}</div>
-              <div className="text-[12px] font-semibold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.42)" }}>Avg</div>
+              <div className="text-[24px] font-normal text-white leading-none mb-1" style={{ letterSpacing: "-0.6px" }}>{avgScoreD > 0 ? `${avgScoreD}%` : "—"}</div>
+              <div className="text-[12px] font-normal uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.42)" }}>Avg</div>
             </div>
             <div className="py-4 px-3 text-center" style={{ background: "rgba(255,255,255,0.08)" }}>
-              <div className="text-[24px] font-semibold text-white leading-none mb-1" style={{ letterSpacing: "-0.6px" }}>{bestScore > 0 ? `${bestScore}%` : "—"}</div>
-              <div className="text-[12px] font-semibold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.42)" }}>Best</div>
+              <div className="text-[24px] font-normal text-white leading-none mb-1" style={{ letterSpacing: "-0.6px" }}>{bestScore > 0 ? `${bestScore}%` : "—"}</div>
+              <div className="text-[12px] font-normal uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.42)" }}>Best</div>
             </div>
           </div>
         </div>
@@ -1190,11 +1190,11 @@ const AIPracticePage = () => {
         className="flex items-center gap-2 mb-6 px-4 py-[8px] rounded-[12px] cursor-pointer"
         style={{ background: "#fff", border: `0.5px solid ${BLUE_BDR_D}`, boxShadow: SH_D, color: B1 }}>
         <ChevronLeft className="w-4 h-4" strokeWidth={2.5} />
-        <span className="text-[13px] font-semibold" style={{ letterSpacing: "-0.1px" }}>Back</span>
+        <span className="text-[13px] font-normal" style={{ letterSpacing: "-0.1px" }}>Back</span>
       </button>
 
       <div className="mb-6">
-        <h1 className="text-[28px] font-semibold leading-none" style={{ color: T1, letterSpacing: "-0.8px" }}>Upload Syllabus</h1>
+        <h1 className="text-[28px] font-normal leading-none" style={{ color: T1, letterSpacing: "-0.8px" }}>Upload Syllabus</h1>
         <div className="text-[13px] font-normal mt-[8px]" style={{ color: T3 }}>Upload a PDF of your chapter, notes, or syllabus. AI will generate a practice exam.</div>
       </div>
 
@@ -1223,11 +1223,11 @@ const AIPracticePage = () => {
                 <Upload className="w-[34px] h-[34px]" style={{ color: (!!file || !!extractedText) ? "#fff" : "rgba(10,132,255,0.55)" }} strokeWidth={2.2} />
               </div>
             )}
-            <div className="text-[20px] font-semibold text-center px-3" style={{ color: T1, letterSpacing: "-0.4px" }}>
+            <div className="text-[20px] font-normal text-center px-3" style={{ color: T1, letterSpacing: "-0.4px" }}>
               {extracting ? "Reading PDF..." : file?.name || ((!!file || !!extractedText) ? "Syllabus Ready" : "Drop PDF Here")}
             </div>
             <div className="text-[13px] font-normal" style={{ color: T3 }}>or click to browse your files</div>
-            <div className="text-[12px] font-semibold" style={{ color: T4 }}>Max 20 MB · PDF only</div>
+            <div className="text-[12px] font-normal" style={{ color: T4 }}>Max 20 MB · PDF only</div>
             <input ref={fileInputRef} type="file" accept="application/pdf" style={{ display: "none" }}
               onChange={e => { if (e.target.files?.[0]) handleFileUpload(e.target.files[0]); }} />
           </div>
@@ -1239,7 +1239,7 @@ const AIPracticePage = () => {
               else if (!extracting) fileInputRef.current?.click();
             }}
             disabled={extracting}
-            className="mt-4 w-full h-14 rounded-[18px] flex items-center justify-center gap-2 text-[15px] font-semibold text-white disabled:opacity-60 transition-transform hover:scale-[1.01] relative overflow-hidden"
+            className="mt-4 w-full h-14 rounded-[18px] flex items-center justify-center gap-2 text-[15px] font-normal text-white disabled:opacity-60 transition-transform hover:scale-[1.01] relative overflow-hidden"
             style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: SH_BTN_D, letterSpacing: "-0.1px" }}>
             <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 52%)" }} />
             {extracting ? (
@@ -1262,7 +1262,7 @@ const AIPracticePage = () => {
                 style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: "0 3px 10px rgba(10,132,255,0.28)" }}>
                 <Sparkles className="w-5 h-5 text-white" strokeWidth={2.3} />
               </div>
-              <div className="text-[15px] font-semibold" style={{ color: T1, letterSpacing: "-0.2px" }}>AI Generates 15-30 MCQs</div>
+              <div className="text-[15px] font-normal" style={{ color: T1, letterSpacing: "-0.2px" }}>AI Generates 15-30 MCQs</div>
             </div>
             <div className="text-[12px] leading-[1.6] font-normal relative z-10" style={{ color: T3 }}>
               Tailored to your syllabus with instant grading, explanations, and targeted feedback on weak areas.
@@ -1272,7 +1272,7 @@ const AIPracticePage = () => {
           {/* Supported formats */}
           <div className="bg-white rounded-[22px] p-5"
             style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(10,132,255,0.10)" }}>
-            <div className="text-[12px] font-semibold uppercase tracking-[0.10em] mb-3" style={{ color: T4 }}>Supported Formats</div>
+            <div className="text-[12px] font-normal uppercase tracking-[0.10em] mb-3" style={{ color: T4 }}>Supported Formats</div>
             <div className="flex flex-wrap gap-2">
               {[
                 { label: "PDF", color: RED_D, bg: "rgba(255,59,48,0.10)", bdr: "rgba(255,59,48,0.22)" },
@@ -1280,7 +1280,7 @@ const AIPracticePage = () => {
                 { label: "JPG / PNG", color: "#248A3D", bg: "rgba(52,199,89,0.10)", bdr: "rgba(52,199,89,0.22)" },
                 { label: "TXT", color: T2, bg: "rgba(10,132,255,0.08)", bdr: "rgba(10,132,255,0.14)" },
               ].map(({ label, color, bg, bdr }) => (
-                <div key={label} className="flex items-center gap-[4px] px-3 py-[8px] rounded-full text-[12px] font-semibold"
+                <div key={label} className="flex items-center gap-[4px] px-3 py-[8px] rounded-full text-[12px] font-normal"
                   style={{ background: bg, color, border: `0.5px solid ${bdr}` }}>
                   <FileText className="w-[11px] h-[11px]" strokeWidth={2.5} />
                   {label}
@@ -1293,7 +1293,7 @@ const AIPracticePage = () => {
           {documents.length > 0 && (
             <div className="bg-white rounded-[22px] p-5"
               style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(10,132,255,0.10)" }}>
-              <div className="text-[15px] font-semibold mb-3" style={{ color: T1, letterSpacing: "-0.3px" }}>Saved Documents</div>
+              <div className="text-[15px] font-normal mb-3" style={{ color: T1, letterSpacing: "-0.3px" }}>Saved Documents</div>
               <div className="space-y-2">
                 {documents.slice(0, 4).map(doc => (
                   <div key={doc.id} onClick={() => useDocument(doc)}
@@ -1304,7 +1304,7 @@ const AIPracticePage = () => {
                       <FileText className="w-[16px] h-[16px]" style={{ color: B1 }} strokeWidth={2} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="text-[12px] font-semibold truncate" style={{ color: T1 }}>{doc.fileName}</div>
+                      <div className="text-[12px] font-normal truncate" style={{ color: T1 }}>{doc.fileName}</div>
                       <div className="text-[12px] mt-[2px]" style={{ color: T3 }}>{doc.extractedTopics?.length || 0} topics</div>
                     </div>
                   </div>
@@ -1324,11 +1324,11 @@ const AIPracticePage = () => {
         className="flex items-center gap-2 mb-6 px-4 py-[8px] rounded-[12px] cursor-pointer"
         style={{ background: "#fff", border: `0.5px solid ${BLUE_BDR_D}`, boxShadow: SH_D, color: B1 }}>
         <ChevronLeft className="w-4 h-4" strokeWidth={2.5} />
-        <span className="text-[13px] font-semibold" style={{ letterSpacing: "-0.1px" }}>Back</span>
+        <span className="text-[13px] font-normal" style={{ letterSpacing: "-0.1px" }}>Back</span>
       </button>
 
       <div className="mb-6">
-        <h1 className="text-[28px] font-semibold leading-none" style={{ color: T1, letterSpacing: "-0.8px" }}>Configure Exam</h1>
+        <h1 className="text-[28px] font-normal leading-none" style={{ color: T1, letterSpacing: "-0.8px" }}>Configure Exam</h1>
         <div className="text-[13px] font-normal mt-[8px]" style={{ color: T3 }}>
           <strong style={{ color: B1 }}>{file?.name || "Saved document"}</strong> · {pageCount} pages · {extractedTopics.length} topics
         </div>
@@ -1341,13 +1341,13 @@ const AIPracticePage = () => {
 
           {/* Topic */}
           <div>
-            <div className="text-[12px] font-semibold uppercase tracking-[0.10em] mb-3" style={{ color: T4 }}>Topic</div>
+            <div className="text-[12px] font-normal uppercase tracking-[0.10em] mb-3" style={{ color: T4 }}>Topic</div>
             <div className="flex flex-wrap gap-2">
               {extractedTopics.map(t => {
                 const isActive = topic === t;
                 return (
                   <button key={t} onClick={() => setTopic(t)}
-                    className="px-4 py-[8px] rounded-[12px] text-[12px] font-semibold transition-transform hover:scale-[1.02]"
+                    className="px-4 py-[8px] rounded-[12px] text-[12px] font-normal transition-transform hover:scale-[1.02]"
                     style={isActive ? {
                       background: `linear-gradient(135deg, ${B1}, ${B2})`, color: "#fff",
                       boxShadow: SH_BTN_D,
@@ -1364,7 +1364,7 @@ const AIPracticePage = () => {
 
           {/* Difficulty */}
           <div>
-            <div className="text-[12px] font-semibold uppercase tracking-[0.10em] mb-3" style={{ color: T4 }}>Difficulty</div>
+            <div className="text-[12px] font-normal uppercase tracking-[0.10em] mb-3" style={{ color: T4 }}>Difficulty</div>
             <div className="grid grid-cols-3 gap-2">
               {DIFFICULTIES.map(d => {
                 const isActive = difficulty === d;
@@ -1372,7 +1372,7 @@ const AIPracticePage = () => {
                 const col = colorMap[d];
                 return (
                   <button key={d} onClick={() => setDifficulty(d)}
-                    className="h-12 rounded-[14px] text-[14px] font-semibold transition-transform hover:scale-[1.02]"
+                    className="h-12 rounded-[14px] text-[14px] font-normal transition-transform hover:scale-[1.02]"
                     style={isActive ? {
                       background: `linear-gradient(135deg, ${col}, ${col}dd)`, color: "#fff",
                       boxShadow: `0 3px 12px ${col}55`,
@@ -1389,13 +1389,13 @@ const AIPracticePage = () => {
 
           {/* Question Type */}
           <div>
-            <div className="text-[12px] font-semibold uppercase tracking-[0.10em] mb-3" style={{ color: T4 }}>Question Type</div>
+            <div className="text-[12px] font-normal uppercase tracking-[0.10em] mb-3" style={{ color: T4 }}>Question Type</div>
             <div className="flex flex-wrap gap-2">
               {Q_TYPES.map(q => {
                 const isActive = questionType === q.id;
                 return (
                   <button key={q.id} onClick={() => setQuestionType(q.id)}
-                    className="px-5 py-[12px] rounded-[12px] text-[12px] font-semibold transition-transform hover:scale-[1.02]"
+                    className="px-5 py-[12px] rounded-[12px] text-[12px] font-normal transition-transform hover:scale-[1.02]"
                     style={isActive ? {
                       background: `linear-gradient(135deg, ${B1}, ${B2})`, color: "#fff",
                       boxShadow: SH_BTN_D,
@@ -1412,13 +1412,13 @@ const AIPracticePage = () => {
 
           {/* Question Count */}
           <div>
-            <div className="text-[12px] font-semibold uppercase tracking-[0.10em] mb-3" style={{ color: T4 }}>Number of Questions</div>
+            <div className="text-[12px] font-normal uppercase tracking-[0.10em] mb-3" style={{ color: T4 }}>Number of Questions</div>
             <div className="grid grid-cols-4 gap-2">
               {Q_COUNTS.map(n => {
                 const isActive = questionCount === n;
                 return (
                   <button key={n} onClick={() => setQuestionCount(n)}
-                    className="h-12 rounded-[14px] text-[15px] font-semibold transition-transform hover:scale-[1.02]"
+                    className="h-12 rounded-[14px] text-[15px] font-normal transition-transform hover:scale-[1.02]"
                     style={isActive ? {
                       background: "linear-gradient(135deg, #1D1D1F, #3A3A3C)", color: "#fff",
                       boxShadow: "0 4px 14px rgba(29,29,31,0.32)",
@@ -1435,13 +1435,13 @@ const AIPracticePage = () => {
 
           {/* Time Limit */}
           <div>
-            <div className="text-[12px] font-semibold uppercase tracking-[0.10em] mb-3" style={{ color: T4 }}>Time Limit</div>
+            <div className="text-[12px] font-normal uppercase tracking-[0.10em] mb-3" style={{ color: T4 }}>Time Limit</div>
             <div className="flex flex-wrap gap-2">
               {TIME_LIMITS.map(t => {
                 const isActive = timeLimit === t.val;
                 return (
                   <button key={t.val} onClick={() => setTimeLimit(t.val)}
-                    className="px-4 py-[12px] rounded-[12px] text-[12px] font-semibold flex items-center gap-[4px] transition-transform hover:scale-[1.02]"
+                    className="px-4 py-[12px] rounded-[12px] text-[12px] font-normal flex items-center gap-[4px] transition-transform hover:scale-[1.02]"
                     style={isActive ? {
                       background: "linear-gradient(135deg, #5AC8FA, #5AC8FA)", color: "#fff",
                       boxShadow: "0 3px 12px rgba(90,200,250,0.32)",
@@ -1469,7 +1469,7 @@ const AIPracticePage = () => {
             <div className="absolute -top-[32px] -right-[20px] w-[160px] h-[160px] rounded-full pointer-events-none"
               style={{ background: "radial-gradient(circle, rgba(255,255,255,0.14) 0%, transparent 65%)" }} />
             <div className="relative z-10">
-              <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-3" style={{ color: "rgba(255,255,255,0.50)" }}>Exam Preview</div>
+              <div className="text-[12px] font-normal uppercase tracking-[0.12em] mb-3" style={{ color: "rgba(255,255,255,0.50)" }}>Exam Preview</div>
               <div className="space-y-3">
                 {[
                   { label: "Topic", val: topic || "—" },
@@ -1479,8 +1479,8 @@ const AIPracticePage = () => {
                   { label: "Time", val: TIME_LIMITS.find(t => t.val === timeLimit)?.label || "—" },
                 ].map(({ label, val }) => (
                   <div key={label} className="flex items-center justify-between" style={{ borderBottom: "0.5px solid rgba(255,255,255,0.10)", paddingBottom: 10 }}>
-                    <span className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.50)" }}>{label}</span>
-                    <span className="text-[13px] font-semibold text-white truncate max-w-[160px]" style={{ letterSpacing: "-0.1px" }}>{val}</span>
+                    <span className="text-[12px] font-normal uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.50)" }}>{label}</span>
+                    <span className="text-[13px] font-normal text-white truncate max-w-[160px]" style={{ letterSpacing: "-0.1px" }}>{val}</span>
                   </div>
                 ))}
               </div>
@@ -1489,7 +1489,7 @@ const AIPracticePage = () => {
 
           {/* Generate button */}
           <button onClick={handleGenerateExam} disabled={generating}
-            className="w-full h-14 rounded-[18px] flex items-center justify-center gap-2 text-[15px] font-semibold text-white disabled:opacity-60 transition-transform hover:scale-[1.02] relative overflow-hidden"
+            className="w-full h-14 rounded-[18px] flex items-center justify-center gap-2 text-[15px] font-normal text-white disabled:opacity-60 transition-transform hover:scale-[1.02] relative overflow-hidden"
             style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: SH_BTN_D, letterSpacing: "-0.1px" }}>
             <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 52%)" }} />
             {generating ? <Loader2 className="relative z-10 w-5 h-5 animate-spin" /> : <Sparkles className="relative z-10 w-5 h-5" strokeWidth={2.3} />}
@@ -1527,8 +1527,8 @@ const AIPracticePage = () => {
             style={{ background: "radial-gradient(circle, rgba(255,255,255,0.14) 0%, transparent 65%)" }} />
           <div className="relative z-10 flex items-center justify-between flex-wrap gap-4">
             <div>
-              <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-2" style={{ color: "rgba(255,255,255,0.55)" }}>{examTitle}</div>
-              <div className="text-[28px] font-semibold text-white leading-none" style={{ letterSpacing: "-0.6px" }}>
+              <div className="text-[12px] font-normal uppercase tracking-[0.12em] mb-2" style={{ color: "rgba(255,255,255,0.55)" }}>{examTitle}</div>
+              <div className="text-[28px] font-normal text-white leading-none" style={{ letterSpacing: "-0.6px" }}>
                 Question {currentQ + 1} <span style={{ color: "rgba(255,255,255,0.45)" }}>/ {questions.length}</span>
               </div>
             </div>
@@ -1537,10 +1537,10 @@ const AIPracticePage = () => {
                 <div className="px-4 py-3 rounded-[14px] flex items-center gap-2"
                   style={{ background: "rgba(255,255,255,0.14)", border: "0.5px solid rgba(255,255,255,0.22)", backdropFilter: "blur(8px)" }}>
                   <Clock className="w-[16px] h-[16px] text-white" strokeWidth={2.5} />
-                  <span className="text-[16px] font-semibold text-white tabular-nums" style={{ letterSpacing: "-0.3px" }}>{timerStr}</span>
+                  <span className="text-[16px] font-normal text-white tabular-nums" style={{ letterSpacing: "-0.3px" }}>{timerStr}</span>
                 </div>
               )}
-              <div className="px-4 py-3 rounded-[14px] text-[13px] font-semibold text-white"
+              <div className="px-4 py-3 rounded-[14px] text-[13px] font-normal text-white"
                 style={{ background: "rgba(255,255,255,0.14)", border: "0.5px solid rgba(255,255,255,0.22)", backdropFilter: "blur(8px)" }}>
                 {answered} <span style={{ color: "rgba(255,255,255,0.55)" }}>/ {questions.length}</span> answered
               </div>
@@ -1559,14 +1559,14 @@ const AIPracticePage = () => {
             {q && (
               <>
                 <div className="flex items-center gap-2 mb-5">
-                  <div className="px-[12px] py-[4px] rounded-full text-[12px] font-semibold uppercase tracking-[0.10em]"
+                  <div className="px-[12px] py-[4px] rounded-full text-[12px] font-normal uppercase tracking-[0.10em]"
                     style={{ background: "rgba(10,132,255,0.10)", color: B1, border: `0.5px solid ${BLUE_BDR_D}` }}>
                     {q.type.replace("_", " ")}
                   </div>
-                  <div className="text-[12px] font-medium" style={{ color: T4 }}>{difficulty}</div>
+                  <div className="text-[12px] font-normal" style={{ color: T4 }}>{difficulty}</div>
                 </div>
 
-                <p className="text-[20px] font-semibold leading-[1.5] mb-6" style={{ color: T1, letterSpacing: "-0.3px" }}>
+                <p className="text-[20px] font-normal leading-[1.5] mb-6" style={{ color: T1, letterSpacing: "-0.3px" }}>
                   {q.questionText}
                 </p>
 
@@ -1589,7 +1589,7 @@ const AIPracticePage = () => {
                             color: T2,
                             border: `0.5px solid ${BLUE_BDR_D}`,
                           }}>
-                          <span className="w-9 h-9 rounded-[11px] flex items-center justify-center text-[14px] font-semibold shrink-0"
+                          <span className="w-9 h-9 rounded-[11px] flex items-center justify-center text-[14px] font-normal shrink-0"
                             style={{
                               background: selected ? "rgba(255,255,255,0.22)" : "#fff",
                               color: selected ? "#fff" : T3,
@@ -1597,7 +1597,7 @@ const AIPracticePage = () => {
                             }}>
                             {String.fromCharCode(65 + oi)}
                           </span>
-                          <span className="text-[14px] font-medium">{opt}</span>
+                          <span className="text-[14px] font-normal">{opt}</span>
                         </button>
                       );
                     })}
@@ -1621,20 +1621,20 @@ const AIPracticePage = () => {
             <div className="flex gap-3 mt-8">
               {currentQ > 0 && (
                 <button onClick={() => setCurrentQ(currentQ - 1)}
-                  className="flex-1 h-12 rounded-[14px] flex items-center justify-center gap-2 text-[13px] font-semibold transition-transform hover:scale-[1.01]"
+                  className="flex-1 h-12 rounded-[14px] flex items-center justify-center gap-2 text-[13px] font-normal transition-transform hover:scale-[1.01]"
                   style={{ background: "#fff", color: T2, border: `0.5px solid ${BLUE_BDR_D}`, boxShadow: SH_D }}>
                   <ChevronLeft className="w-4 h-4" strokeWidth={2.5} /> Previous
                 </button>
               )}
               {currentQ < questions.length - 1 ? (
                 <button onClick={() => setCurrentQ(currentQ + 1)}
-                  className="flex-1 h-12 rounded-[14px] flex items-center justify-center gap-2 text-[13px] font-semibold text-white transition-transform hover:scale-[1.01]"
+                  className="flex-1 h-12 rounded-[14px] flex items-center justify-center gap-2 text-[13px] font-normal text-white transition-transform hover:scale-[1.01]"
                   style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: SH_BTN_D, letterSpacing: "-0.1px" }}>
                   Next <ChevronLeft className="w-4 h-4 rotate-180" strokeWidth={2.5} />
                 </button>
               ) : (
                 <button onClick={handleSubmitExam}
-                  className="flex-1 h-12 rounded-[14px] flex items-center justify-center gap-2 text-[13px] font-semibold text-white transition-transform hover:scale-[1.01]"
+                  className="flex-1 h-12 rounded-[14px] flex items-center justify-center gap-2 text-[13px] font-normal text-white transition-transform hover:scale-[1.01]"
                   style={{ background: `linear-gradient(135deg, ${GREEN_D}, #34C759)`, boxShadow: "0 4px 14px rgba(52,199,89,0.36)", letterSpacing: "-0.1px" }}>
                   ✓ Submit Exam
                 </button>
@@ -1645,14 +1645,14 @@ const AIPracticePage = () => {
           {/* Question dots (col-1) */}
           <div className="bg-white rounded-[22px] p-6"
             style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(10,132,255,0.10)" }}>
-            <div className="text-[15px] font-semibold mb-4" style={{ color: T1, letterSpacing: "-0.3px" }}>All Questions</div>
+            <div className="text-[15px] font-normal mb-4" style={{ color: T1, letterSpacing: "-0.3px" }}>All Questions</div>
             <div className="grid grid-cols-5 gap-2">
               {questions.map((_, i) => {
                 const isCurrent = i === currentQ;
                 const isAnswered = !!answers[i];
                 return (
                   <button key={i} onClick={() => setCurrentQ(i)}
-                    className="aspect-square rounded-[10px] flex items-center justify-center text-[12px] font-semibold transition-transform hover:scale-105"
+                    className="aspect-square rounded-[10px] flex items-center justify-center text-[12px] font-normal transition-transform hover:scale-105"
                     style={isCurrent ? {
                       background: `linear-gradient(135deg, ${B1}, ${B2})`, color: "#fff",
                       boxShadow: SH_BTN_D,
@@ -1670,15 +1670,15 @@ const AIPracticePage = () => {
             </div>
 
             <div className="mt-5 pt-4 space-y-2" style={{ borderTop: `0.5px solid ${BLUE_BDR_D}` }}>
-              <div className="flex items-center gap-2 text-[12px] font-semibold" style={{ color: T3 }}>
+              <div className="flex items-center gap-2 text-[12px] font-normal" style={{ color: T3 }}>
                 <div className="w-3 h-3 rounded-[4px]" style={{ background: `linear-gradient(135deg, ${B1}, ${B2})` }} />
                 Current
               </div>
-              <div className="flex items-center gap-2 text-[12px] font-semibold" style={{ color: T3 }}>
+              <div className="flex items-center gap-2 text-[12px] font-normal" style={{ color: T3 }}>
                 <div className="w-3 h-3 rounded-[4px]" style={{ background: `linear-gradient(135deg, ${GREEN_D}, #34C759)` }} />
                 Answered
               </div>
-              <div className="flex items-center gap-2 text-[12px] font-semibold" style={{ color: T3 }}>
+              <div className="flex items-center gap-2 text-[12px] font-normal" style={{ color: T3 }}>
                 <div className="w-3 h-3 rounded-[4px]" style={{ background: BG_D, border: `0.5px solid ${BLUE_BDR_D}` }} />
                 Not yet
               </div>
@@ -1717,19 +1717,19 @@ const AIPracticePage = () => {
           {evaluating ? (
             <div className="relative z-10 text-center py-6">
               <Loader2 className="w-12 h-12 mx-auto mb-4 text-white animate-spin" />
-              <div className="text-[22px] font-semibold text-white mb-2" style={{ letterSpacing: "-0.4px" }}>AI is evaluating your answers…</div>
+              <div className="text-[22px] font-normal text-white mb-2" style={{ letterSpacing: "-0.4px" }}>AI is evaluating your answers…</div>
               <div className="text-[13px]" style={{ color: "rgba(255,255,255,0.7)" }}>This may take a few seconds</div>
             </div>
           ) : result ? (
             <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
               <div>
-                <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-3" style={{ color: "rgba(255,255,255,0.55)" }}>
+                <div className="text-[12px] font-normal uppercase tracking-[0.12em] mb-3" style={{ color: "rgba(255,255,255,0.55)" }}>
                   {examTitle} · Your Result
                 </div>
-                <div className="text-[80px] font-semibold text-white leading-none mb-2" style={{ letterSpacing: "-2px" }}>
+                <div className="text-[80px] font-normal text-white leading-none mb-2" style={{ letterSpacing: "-2px" }}>
                   {pct}<span className="text-[28px]" style={{ color: "rgba(255,255,255,0.55)" }}>%</span>
                 </div>
-                <div className="text-[18px] font-semibold text-white mb-2" style={{ letterSpacing: "-0.3px" }}>
+                <div className="text-[18px] font-normal text-white mb-2" style={{ letterSpacing: "-0.3px" }}>
                   {result.score} / {result.total} correct · Grade {result.grade}
                 </div>
                 <p className="text-[14px] leading-[1.6]" style={{ color: "rgba(255,255,255,0.75)" }}>
@@ -1746,10 +1746,10 @@ const AIPracticePage = () => {
                   <div key={label} className="rounded-[16px] py-4 px-4 flex flex-col gap-2"
                     style={{ background: bg, border: "0.5px solid rgba(255,255,255,0.22)", backdropFilter: "blur(8px)" }}>
                     <div className="flex items-center justify-between">
-                      <span className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.55)" }}>{label}</span>
+                      <span className="text-[12px] font-normal uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.55)" }}>{label}</span>
                       <Icon className="w-4 h-4" style={{ color: "rgba(255,255,255,0.7)" }} strokeWidth={2.3} />
                     </div>
-                    <div className="text-[24px] font-semibold text-white leading-none" style={{ letterSpacing: "-0.5px" }}>{val}</div>
+                    <div className="text-[24px] font-normal text-white leading-none" style={{ letterSpacing: "-0.5px" }}>{val}</div>
                   </div>
                 ))}
               </div>
@@ -1771,13 +1771,13 @@ const AIPracticePage = () => {
                       <Lightbulb className="w-5 h-5" style={{ color: RED_D }} strokeWidth={2.3} />
                     </div>
                     <div>
-                      <div className="text-[18px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>Weak Areas to Focus On</div>
+                      <div className="text-[18px] font-normal" style={{ color: T1, letterSpacing: "-0.3px" }}>Weak Areas to Focus On</div>
                       <div className="text-[12px] font-normal mt-[2px]" style={{ color: T3 }}>Topics AI identified for improvement</div>
                     </div>
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {result.weakTopics.map((t: string, i: number) => (
-                      <div key={i} className="px-4 py-[8px] rounded-full text-[12px] font-semibold"
+                      <div key={i} className="px-4 py-[8px] rounded-full text-[12px] font-normal"
                         style={{ background: "rgba(255,59,48,0.08)", color: RED_D, border: "0.5px solid rgba(255,59,48,0.22)" }}>
                         {t}
                       </div>
@@ -1789,7 +1789,7 @@ const AIPracticePage = () => {
                   style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(10,132,255,0.10)" }}>
                   <div className="flex items-center gap-2 mb-2">
                     <CheckCircle2 className="w-5 h-5" style={{ color: GREEN_D }} strokeWidth={2.3} />
-                    <div className="text-[18px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>Great Performance!</div>
+                    <div className="text-[18px] font-normal" style={{ color: T1, letterSpacing: "-0.3px" }}>Great Performance!</div>
                   </div>
                   <div className="text-[13px]" style={{ color: T3 }}>No weak areas flagged. Keep up the consistent practice.</div>
                 </div>
@@ -1798,13 +1798,13 @@ const AIPracticePage = () => {
               {/* Action buttons */}
               <div className="space-y-3">
                 <button onClick={handleRetry}
-                  className="w-full h-14 rounded-[16px] flex items-center justify-center gap-2 text-[14px] font-semibold transition-transform hover:scale-[1.02]"
+                  className="w-full h-14 rounded-[16px] flex items-center justify-center gap-2 text-[14px] font-normal transition-transform hover:scale-[1.02]"
                   style={{ background: "#fff", color: T2, border: `0.5px solid ${BLUE_BDR_D}`, boxShadow: SH_D }}>
                   <RefreshCw className="w-[16px] h-[16px]" strokeWidth={2.3} />
                   Try Again
                 </button>
                 <button onClick={handleNewExam}
-                  className="w-full h-14 rounded-[16px] flex items-center justify-center gap-2 text-[14px] font-semibold text-white transition-transform hover:scale-[1.02]"
+                  className="w-full h-14 rounded-[16px] flex items-center justify-center gap-2 text-[14px] font-normal text-white transition-transform hover:scale-[1.02]"
                   style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: SH_BTN_D, letterSpacing: "-0.1px" }}>
                   <Sparkles className="w-[16px] h-[16px]" strokeWidth={2.3} /> New Exam
                 </button>
@@ -1812,7 +1812,7 @@ const AIPracticePage = () => {
             </div>
 
             {/* ── Per-question breakdown ── */}
-            <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-3" style={{ color: T4 }}>Question Breakdown</div>
+            <div className="text-[12px] font-normal uppercase tracking-[0.12em] mb-3" style={{ color: T4 }}>Question Breakdown</div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
               {(result.evaluations || []).map((ev: any, i: number) => {
                 const q = questions[i];
@@ -1829,31 +1829,31 @@ const AIPracticePage = () => {
                         style={{ background: correct ? "rgba(52,199,89,0.10)" : "rgba(255,59,48,0.10)", border: `0.5px solid ${correct ? "rgba(52,199,89,0.22)" : "rgba(255,59,48,0.22)"}` }}>
                         {correct ? <CheckCircle2 className="w-[16px] h-[16px]" style={{ color: GREEN_D }} strokeWidth={2.5} /> : <XCircle className="w-[16px] h-[16px]" style={{ color: RED_D }} strokeWidth={2.5} />}
                       </div>
-                      <span className="text-[12px] font-semibold" style={{ color: correct ? "#248A3D" : RED_D }}>
+                      <span className="text-[12px] font-normal" style={{ color: correct ? "#248A3D" : RED_D }}>
                         Q{q.questionNo} — {correct ? "Correct" : "Wrong"}
                       </span>
                     </div>
 
-                    <p className="text-[13px] font-semibold leading-[1.5] mb-3" style={{ color: T1 }}>{q.questionText}</p>
+                    <p className="text-[13px] font-normal leading-[1.5] mb-3" style={{ color: T1 }}>{q.questionText}</p>
 
                     {!correct && (
                       <>
                         <div className="grid grid-cols-2 gap-2 mb-3">
                           <div className="px-3 py-[12px] rounded-[12px]"
                             style={{ background: "rgba(255,59,48,0.06)", border: "0.5px solid rgba(255,59,48,0.18)" }}>
-                            <div className="text-[12px] font-semibold uppercase tracking-[0.10em] mb-[4px]" style={{ color: RED_D }}>Your Answer</div>
+                            <div className="text-[12px] font-normal uppercase tracking-[0.10em] mb-[4px]" style={{ color: RED_D }}>Your Answer</div>
                             <div className="text-[12px]" style={{ color: RED_D }}>{ev.studentAnswer || "—"}</div>
                           </div>
                           <div className="px-3 py-[12px] rounded-[12px]"
                             style={{ background: "rgba(52,199,89,0.06)", border: "0.5px solid rgba(52,199,89,0.18)" }}>
-                            <div className="text-[12px] font-semibold uppercase tracking-[0.10em] mb-[4px]" style={{ color: "#248A3D" }}>Correct</div>
+                            <div className="text-[12px] font-normal uppercase tracking-[0.10em] mb-[4px]" style={{ color: "#248A3D" }}>Correct</div>
                             <div className="text-[12px]" style={{ color: "#248A3D" }}>{ev.correctAnswer || q.correctAnswer}</div>
                           </div>
                         </div>
                         {ev.explanation && (
                           <div className="px-3 py-[12px] rounded-[12px]"
                             style={{ background: "rgba(10,132,255,0.06)", border: "0.5px solid rgba(10,132,255,0.18)" }}>
-                            <div className="text-[12px] font-semibold uppercase tracking-[0.10em] mb-[4px] flex items-center gap-[4px]" style={{ color: B1 }}>
+                            <div className="text-[12px] font-normal uppercase tracking-[0.10em] mb-[4px] flex items-center gap-[4px]" style={{ color: B1 }}>
                               <Lightbulb className="w-[10px] h-[10px]" strokeWidth={2.5} /> Why?
                             </div>
                             <p className="text-[12px] leading-[1.55]" style={{ color: T2 }}>{ev.explanation}</p>

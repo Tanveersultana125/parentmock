@@ -33,7 +33,7 @@ export function ComparisonCard({ type, rank, name, score }: ComparisonCardProps)
           display: 'inline-flex',
           alignItems: 'center',
           justifyContent: 'center',
-          fontWeight: 600,
+          fontWeight: 400,
           fontSize: 12,
           letterSpacing: '-0.4px',
           marginBottom: 6,
@@ -44,7 +44,7 @@ export function ComparisonCard({ type, rank, name, score }: ComparisonCardProps)
       <p
         style={{
           fontSize: 12,
-          fontWeight: 600,
+          fontWeight: 400,
           color: T.T1,
           margin: '0 0 4px',
           letterSpacing: '-0.2px',
@@ -55,7 +55,7 @@ export function ComparisonCard({ type, rank, name, score }: ComparisonCardProps)
       <p
         style={{
           fontSize: 22,
-          fontWeight: 600,
+          fontWeight: 400,
           color: isUser ? T.B1 : T.T1,
           margin: 0,
           letterSpacing: '-0.6px',

@@ -628,7 +628,7 @@ const AlertsPage = () => {
     const SH    = "0 0 0 0.5px rgba(10,132,255,0.08), 0 2px 8px rgba(10,132,255,0.08), 0 10px 28px rgba(10,132,255,0.10)";
     const SH_LG = "0 0 0 0.5px rgba(10,132,255,0.10), 0 4px 16px rgba(10,132,255,0.11), 0 20px 48px rgba(10,132,255,0.13)";
     const SH_BTN = "0 6px 22px rgba(10,132,255,0.40), 0 2px 5px rgba(10,132,255,0.20)";
-    const FONT = "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif";
+    const FONT = "'SF Pro Display', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif";
 
     const avatarChar = (studentData?.name?.[0] || "S").toUpperCase();
 
@@ -711,7 +711,7 @@ const AlertsPage = () => {
         <div className="flex items-center justify-between px-[24px] pt-[16px]">
           <div className="flex items-center gap-[8px]">
             <div className="w-[7px] h-[7px] rounded-full animate-pulse" style={{ background: "#34C759", boxShadow: "0 0 0 2.5px rgba(0,204,85,0.2)" }} />
-            <span className="text-[16px] font-semibold" style={{ color: B1 }}>EduIntellect</span>
+            <span className="text-[16px] font-normal" style={{ color: B1 }}>EduIntellect</span>
           </div>
           <div className="flex items-center gap-[12px]">
             <div className="w-9 h-9 rounded-full flex items-center justify-center relative"
@@ -721,7 +721,7 @@ const AlertsPage = () => {
                 <span className="absolute top-[1px] right-[1px] w-2 h-2 rounded-full" style={{ background: "#FF3B30", border: "1.5px solid white" }} />
               )}
             </div>
-            <div className="w-9 h-9 rounded-full flex items-center justify-center text-[13px] font-semibold text-white"
+            <div className="w-9 h-9 rounded-full flex items-center justify-center text-[13px] font-normal text-white"
               style={{ background: `linear-gradient(140deg, ${B1}, ${B2})`, boxShadow: "0 4px 16px rgba(10,132,255,0.38), 0 0 0 2.5px rgba(255,255,255,0.85)" }}>
               {avatarChar}
             </div>
@@ -731,9 +731,9 @@ const AlertsPage = () => {
         {/* Page head */}
         <div className="pt-[16px] px-[24px]">
           <div className="flex items-center gap-[12px] mb-1 flex-wrap">
-            <h1 className="text-[28px] font-semibold" style={{ color: T1, letterSpacing: "-0.7px" }}>Alerts &amp; Notifications</h1>
+            <h1 className="text-[28px] font-normal" style={{ color: T1, letterSpacing: "-0.7px" }}>Alerts &amp; Notifications</h1>
             {unreadCount > 0 && (
-              <div className="px-3 py-[4px] rounded-full text-[12px] font-semibold text-white"
+              <div className="px-3 py-[4px] rounded-full text-[12px] font-normal text-white"
                 style={{ background: "linear-gradient(135deg, #FF3B30, #FF5E55)", boxShadow: "0 3px 10px rgba(255,59,48,0.30)", letterSpacing: "0.04em" }}>
                 {unreadCount} NEW
               </div>
@@ -745,7 +745,7 @@ const AlertsPage = () => {
         {/* Mark All Read */}
         {allAlerts.length > 0 && (
           <button onClick={markAllRead}
-            className="mx-5 mt-4 w-[calc(100%-40px)] h-12 rounded-[16px] flex items-center justify-center gap-2 text-[14px] font-semibold active:scale-[0.98] transition-transform"
+            className="mx-5 mt-4 w-[calc(100%-40px)] h-12 rounded-[16px] flex items-center justify-center gap-2 text-[14px] font-normal active:scale-[0.98] transition-transform"
             style={{ background: CARD, border: "0.5px solid rgba(10,132,255,0.16)", color: B1, boxShadow: SH, letterSpacing: "-0.1px" }}>
             <CheckCircle className="w-4 h-4" style={{ color: "rgba(10,132,255,0.7)" }} strokeWidth={2.2} />
             Mark All Read
@@ -758,7 +758,7 @@ const AlertsPage = () => {
             const active = activeTab === i;
             return (
               <button key={tab} onClick={() => setActiveTab(i)}
-                className="shrink-0 px-4 py-[8px] rounded-[14px] text-[12px] font-semibold whitespace-nowrap active:scale-[0.94] transition-transform"
+                className="shrink-0 px-4 py-[8px] rounded-[14px] text-[12px] font-normal whitespace-nowrap active:scale-[0.94] transition-transform"
                 style={active
                   ? { background: `linear-gradient(135deg, ${B1}, ${B2})`, color: "#fff", boxShadow: SH_BTN, letterSpacing: "0.02em" }
                   : { background: CARD, color: T3, border: "0.5px solid rgba(10,132,255,0.12)", boxShadow: SH, letterSpacing: "0.02em" }}>
@@ -778,7 +778,7 @@ const AlertsPage = () => {
               style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: `${SH_BTN}, 0 0 0 10px rgba(10,132,255,0.07)` }}>
               <BellRing className="w-[30px] h-[30px]" style={{ color: "rgba(255,255,255,0.95)" }} strokeWidth={2.1} />
             </div>
-            <div className="text-[18px] font-semibold text-center relative z-10" style={{ color: T1, letterSpacing: "-0.3px" }}>You're all caught up!</div>
+            <div className="text-[18px] font-normal text-center relative z-10" style={{ color: T1, letterSpacing: "-0.3px" }}>You're all caught up!</div>
             <div className="text-[12px] text-center max-w-[230px] leading-[1.6] font-normal relative z-10" style={{ color: T3 }}>
               No {filterTabs[activeTab] !== "All" ? `${filterTabs[activeTab].toLowerCase()} ` : ""}alerts right now. Check back later.
             </div>
@@ -826,15 +826,15 @@ const AlertsPage = () => {
                       <Icon className="w-[22px] h-[22px] text-white" strokeWidth={2.2} />
                     </div>
                     <div className="flex-1 min-w-0 pr-5">
-                      <div className="text-[15px] font-semibold leading-[1.3] mb-[4px]" style={{ color: T1, letterSpacing: "-0.3px" }}>
+                      <div className="text-[15px] font-normal leading-[1.3] mb-[4px]" style={{ color: T1, letterSpacing: "-0.3px" }}>
                         {alert.title}
                       </div>
                       <div className="flex flex-wrap items-center gap-[8px]">
-                        <div className="px-[12px] py-1 rounded-full text-[12px] font-semibold whitespace-nowrap"
+                        <div className="px-[12px] py-1 rounded-full text-[12px] font-normal whitespace-nowrap"
                           style={{ background: theme.badgeBg, color: theme.badgeText, border: `0.5px solid ${theme.badgeBdr}`, letterSpacing: "0.02em" }}>
                           {theme.emoji} {theme.label}
                         </div>
-                        <div className="px-[12px] py-1 rounded-full text-[12px] font-semibold whitespace-nowrap"
+                        <div className="px-[12px] py-1 rounded-full text-[12px] font-normal whitespace-nowrap"
                           style={{
                             background: alert.category === "Academic" ? "rgba(10,132,255,0.10)" : alert.category === "Attendance" ? "rgba(52,199,89,0.09)" : "rgba(10,132,255,0.08)",
                             color: alert.category === "Academic" ? B1 : alert.category === "Attendance" ? "#248A3D" : T3,
@@ -854,7 +854,7 @@ const AlertsPage = () => {
                   </div>
 
                   {/* Date row */}
-                  <div className="flex items-center gap-[4px] text-[12px] font-semibold mb-[16px]" style={{ color: T4 }}>
+                  <div className="flex items-center gap-[4px] text-[12px] font-normal mb-[16px]" style={{ color: T4 }}>
                     <Calendar className="w-3 h-3" strokeWidth={2.3} />
                     {fmtAlertDate(alert.createdAt)}
                   </div>
@@ -863,7 +863,7 @@ const AlertsPage = () => {
                   <div className="h-[0.5px] mb-[16px]" style={{ background: "rgba(10,132,255,0.07)" }} />
 
                   {/* Recommended Actions label */}
-                  <div className="flex items-center gap-[8px] text-[12px] font-semibold uppercase tracking-[0.10em] mb-[12px]" style={{ color: T4 }}>
+                  <div className="flex items-center gap-[8px] text-[12px] font-normal uppercase tracking-[0.10em] mb-[12px]" style={{ color: T4 }}>
                     <Sparkles className="w-[11px] h-[11px]" strokeWidth={2.5} />
                     Recommended Actions
                   </div>
@@ -872,7 +872,7 @@ const AlertsPage = () => {
                   <div className="flex gap-2">
                     {primary && (
                       <button onClick={(e) => { e.stopPropagation(); primary.onClick(); }}
-                        className="flex-1 h-[42px] rounded-[13px] flex items-center justify-center gap-[8px] text-[12px] font-semibold text-white active:scale-[0.95] transition-transform relative overflow-hidden"
+                        className="flex-1 h-[42px] rounded-[13px] flex items-center justify-center gap-[8px] text-[12px] font-normal text-white active:scale-[0.95] transition-transform relative overflow-hidden"
                         style={{ background: primaryGrad, boxShadow: primaryShadow, letterSpacing: "0.02em" }}>
                         <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.14) 0%, transparent 52%)" }} />
                         <span className="relative z-10 px-1 text-center truncate">{primary.label}</span>
@@ -880,7 +880,7 @@ const AlertsPage = () => {
                     )}
                     {secondary && (
                       <button onClick={(e) => { e.stopPropagation(); secondary.onClick(); }}
-                        className="flex-1 h-[42px] rounded-[13px] flex items-center justify-center gap-[8px] text-[12px] font-semibold active:scale-[0.95] transition-transform"
+                        className="flex-1 h-[42px] rounded-[13px] flex items-center justify-center gap-[8px] text-[12px] font-normal active:scale-[0.95] transition-transform"
                         style={{ background: BG, border: "0.5px solid rgba(10,132,255,0.16)", color: T2, boxShadow: SH, letterSpacing: "0.02em" }}>
                         <span className="px-1 text-center truncate">{secondary.label}</span>
                       </button>
@@ -901,7 +901,7 @@ const AlertsPage = () => {
             }}>
             <div className="absolute -top-10 -right-6 w-[160px] h-[160px] rounded-full pointer-events-none"
               style={{ background: "radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 65%)" }} />
-            <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-[12px] relative z-10" style={{ color: "rgba(255,255,255,0.48)" }}>
+            <div className="text-[12px] font-normal uppercase tracking-[0.12em] mb-[12px] relative z-10" style={{ color: "rgba(255,255,255,0.48)" }}>
               Notification Summary
             </div>
             <div className="grid grid-cols-3 gap-[1px] rounded-[16px] overflow-hidden relative z-10" style={{ background: "rgba(255,255,255,0.12)" }}>
@@ -911,8 +911,8 @@ const AlertsPage = () => {
                 { val: allAlerts.length, label: "Total" },
               ].map(({ val, label }) => (
                 <div key={label} className="py-[12px] px-3 text-center" style={{ background: "rgba(255,255,255,0.08)" }}>
-                  <div className="text-[24px] font-semibold text-white leading-none mb-1" style={{ letterSpacing: "-0.7px" }}>{val}</div>
-                  <div className="text-[12px] font-semibold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.40)" }}>{label}</div>
+                  <div className="text-[24px] font-normal text-white leading-none mb-1" style={{ letterSpacing: "-0.7px" }}>{val}</div>
+                  <div className="text-[12px] font-normal uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.40)" }}>{label}</div>
                 </div>
               ))}
             </div>
@@ -1022,20 +1022,20 @@ const AlertsPage = () => {
 
   return (
     <div className="animate-in fade-in duration-500 -m-4 sm:-m-6 md:-m-8 min-h-[calc(100vh-64px)]"
-      style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif", background: BG_D }}>
+      style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif", background: BG_D }}>
       <div className="w-full px-6 pt-8 pb-10">
 
         {/* ── Toolbar ── */}
         <div className="flex items-center justify-between mb-6 flex-wrap gap-4">
           <div>
-            <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-1 flex items-center gap-[8px]" style={{ color: T4 }}>
+            <div className="text-[12px] font-normal uppercase tracking-[0.12em] mb-1 flex items-center gap-[8px]" style={{ color: T4 }}>
               <span className="w-[6px] h-[6px] rounded-full animate-pulse" style={{ background: RED_D, boxShadow: "0 0 0 3px rgba(255,59,48,0.18)" }} />
               Parent Dashboard · Alerts
             </div>
             <div className="flex items-center gap-3">
-              <h1 className="text-[28px] font-semibold leading-none" style={{ color: T1, letterSpacing: "-0.8px" }}>Alerts &amp; Notifications</h1>
+              <h1 className="text-[28px] font-normal leading-none" style={{ color: T1, letterSpacing: "-0.8px" }}>Alerts &amp; Notifications</h1>
               {unreadCountD > 0 && (
-                <div className="px-3 py-[8px] rounded-full text-[12px] font-semibold text-white"
+                <div className="px-3 py-[8px] rounded-full text-[12px] font-normal text-white"
                   style={{ background: `linear-gradient(135deg, ${RED_D}, #FF5E55)`, boxShadow: "0 3px 10px rgba(255,59,48,0.30)", letterSpacing: "0.04em" }}>
                   {unreadCountD} NEW
                 </div>
@@ -1045,7 +1045,7 @@ const AlertsPage = () => {
           </div>
           <div className="flex items-center gap-[12px]">
             <button onClick={markAllRead}
-              className="px-4 py-[12px] rounded-[14px] text-[13px] font-semibold flex items-center gap-2 transition-transform hover:scale-[1.02]"
+              className="px-4 py-[12px] rounded-[14px] text-[13px] font-normal flex items-center gap-2 transition-transform hover:scale-[1.02]"
               style={{ background: "#fff", color: T2, border: `0.5px solid ${BLUE_BDR}`, boxShadow: SH_D, letterSpacing: "-0.1px" }}>
               <CheckCircle className="w-4 h-4" style={{ color: B1 }} strokeWidth={2.3} />
               Mark All Read
@@ -1055,7 +1055,7 @@ const AlertsPage = () => {
               <BellRing className="w-4 h-4" style={{ color: "rgba(10,132,255,0.60)" }} strokeWidth={1.8} />
               {unreadCountD > 0 && <span className="absolute top-[1px] right-[1px] w-2 h-2 rounded-full" style={{ background: RED_D, border: "1.5px solid white" }} />}
             </div>
-            <div className="w-10 h-10 rounded-full flex items-center justify-center text-[14px] font-semibold text-white"
+            <div className="w-10 h-10 rounded-full flex items-center justify-center text-[14px] font-normal text-white"
               style={{ background: `linear-gradient(140deg, ${B1}, ${B2})`, boxShadow: "0 3px 12px rgba(10,132,255,0.36), 0 0 0 2px rgba(255,255,255,0.8)" }}>
               {(studentData?.name?.[0] || "S").toUpperCase()}
             </div>
@@ -1086,13 +1086,13 @@ const AlertsPage = () => {
               <div className="absolute -top-[20px] -right-[20px] w-[100px] h-[100px] rounded-full pointer-events-none"
                 style={{ background: `radial-gradient(circle, ${glow} 0%, transparent 70%)` }} />
               <div className="flex items-center justify-between mb-3 relative">
-                <span className="text-[12px] font-semibold uppercase tracking-[0.12em]" style={{ color: T4 }}>{label}</span>
+                <span className="text-[12px] font-normal uppercase tracking-[0.12em]" style={{ color: T4 }}>{label}</span>
                 <div className="w-10 h-10 rounded-[12px] flex items-center justify-center"
                   style={{ background: grad, boxShadow: sh, transform: "translateZ(18px)" }}>
                   <Icon className="w-[18px] h-[18px] text-white" strokeWidth={2.3} />
                 </div>
               </div>
-              <div className="text-[28px] font-semibold leading-none relative" style={{ color, letterSpacing: "-1px", transform: "translateZ(10px)" }}>{val}</div>
+              <div className="text-[28px] font-normal leading-none relative" style={{ color, letterSpacing: "-1px", transform: "translateZ(10px)" }}>{val}</div>
             </button>
           ))}
         </div>
@@ -1103,12 +1103,12 @@ const AlertsPage = () => {
             const active = activeTab === i;
             return (
               <button key={tab} onClick={() => setActiveTab(i)}
-                className="px-5 py-[12px] rounded-[14px] text-[12px] font-semibold flex items-center gap-2 transition-transform hover:scale-[1.02]"
+                className="px-5 py-[12px] rounded-[14px] text-[12px] font-normal flex items-center gap-2 transition-transform hover:scale-[1.02]"
                 style={active
                   ? { background: `linear-gradient(135deg, ${B1}, ${B2})`, color: "#fff", boxShadow: SH_BTN_D, letterSpacing: "-0.1px" }
                   : { background: "#fff", color: T3, border: `0.5px solid ${BLUE_BDR}`, boxShadow: SH_D, letterSpacing: "-0.1px" }}>
                 {tab}
-                <span className="min-w-[20px] h-[20px] rounded-[6px] flex items-center justify-center text-[12px] font-semibold px-[4px]"
+                <span className="min-w-[20px] h-[20px] rounded-[6px] flex items-center justify-center text-[12px] font-normal px-[4px]"
                   style={{ background: active ? "rgba(255,255,255,0.22)" : "rgba(10,132,255,0.08)", color: active ? "#fff" : B1 }}>
                   {getTabCount(tab)}
                 </span>
@@ -1126,7 +1126,7 @@ const AlertsPage = () => {
               <div className="bg-white rounded-[22px] py-10 flex flex-col items-center"
                 style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(10,132,255,0.10)" }}>
                 <Loader2 className="w-12 h-12 animate-spin" style={{ color: B1 }} />
-                <p className="text-[13px] font-medium mt-3" style={{ color: T4 }}>Loading alerts…</p>
+                <p className="text-[13px] font-normal mt-3" style={{ color: T4 }}>Loading alerts…</p>
               </div>
             ) : filteredAlerts.length === 0 ? (
               <div className="bg-white rounded-[22px] py-10 flex flex-col items-center text-center relative overflow-hidden"
@@ -1137,7 +1137,7 @@ const AlertsPage = () => {
                   style={{ background: `linear-gradient(135deg, ${B1}, ${B2})`, boxShadow: `${SH_BTN_D}, 0 0 0 10px rgba(10,132,255,0.07)` }}>
                   <BellRing className="w-10 h-10 text-white" strokeWidth={2.1} />
                 </div>
-                <div className="text-[20px] font-semibold mb-1 relative z-10" style={{ color: T1, letterSpacing: "-0.4px" }}>You're all caught up!</div>
+                <div className="text-[20px] font-normal mb-1 relative z-10" style={{ color: T1, letterSpacing: "-0.4px" }}>You're all caught up!</div>
                 <div className="text-[13px] leading-[1.6] max-w-[400px] relative z-10" style={{ color: T3 }}>
                   No {filterTabs[activeTab] !== "All" ? `${filterTabs[activeTab].toLowerCase()} ` : ""}alerts right now. Check back later.
                 </div>
@@ -1186,15 +1186,15 @@ const AlertsPage = () => {
                             <Icon className="w-[24px] h-[24px] text-white" strokeWidth={2.2} />
                           </div>
                           <div className="flex-1 min-w-0 pr-8">
-                            <div className="text-[18px] font-semibold leading-[1.3] mb-2" style={{ color: T1, letterSpacing: "-0.3px" }}>
+                            <div className="text-[18px] font-normal leading-[1.3] mb-2" style={{ color: T1, letterSpacing: "-0.3px" }}>
                               {alert.title}
                             </div>
                             <div className="flex flex-wrap items-center gap-2">
-                              <div className="px-[12px] py-[4px] rounded-full text-[12px] font-semibold whitespace-nowrap"
+                              <div className="px-[12px] py-[4px] rounded-full text-[12px] font-normal whitespace-nowrap"
                                 style={{ background: theme.badgeBg, color: theme.badgeText, border: `0.5px solid ${theme.badgeBdr}`, letterSpacing: "0.02em" }}>
                                 {theme.emoji} {theme.label}
                               </div>
-                              <div className="px-[12px] py-[4px] rounded-full text-[12px] font-semibold whitespace-nowrap"
+                              <div className="px-[12px] py-[4px] rounded-full text-[12px] font-normal whitespace-nowrap"
                                 style={{
                                   background: alert.category === "Academic" ? "rgba(10,132,255,0.10)" : alert.category === "Attendance" ? "rgba(52,199,89,0.10)" : "rgba(10,132,255,0.08)",
                                   color: alert.category === "Academic" ? B1 : alert.category === "Attendance" ? "#248A3D" : T3,
@@ -1203,7 +1203,7 @@ const AlertsPage = () => {
                                 {alert.category}
                               </div>
                               {alert.teacherName && (
-                                <div className="flex items-center gap-[4px] text-[12px] font-medium" style={{ color: T3 }}>
+                                <div className="flex items-center gap-[4px] text-[12px] font-normal" style={{ color: T3 }}>
                                   <User className="w-[11px] h-[11px]" strokeWidth={2.3} /> {alert.teacherName}
                                 </div>
                               )}
@@ -1217,7 +1217,7 @@ const AlertsPage = () => {
                         </p>
 
                         {/* Date + meta */}
-                        <div className="flex items-center gap-4 text-[12px] font-semibold mb-5" style={{ color: T4 }}>
+                        <div className="flex items-center gap-4 text-[12px] font-normal mb-5" style={{ color: T4 }}>
                           <span className="flex items-center gap-[4px]">
                             <Calendar className="w-3 h-3" strokeWidth={2.3} />
                             {alert.date ? fmtDateStr(alert.date) : fmtAlertDateD(alert.createdAt)}
@@ -1234,7 +1234,7 @@ const AlertsPage = () => {
                         <div className="h-[0.5px] mb-4" style={{ background: "rgba(10,132,255,0.08)" }} />
 
                         {/* AI Actions label */}
-                        <div className="flex items-center gap-[8px] text-[12px] font-semibold uppercase tracking-[0.10em] mb-3" style={{ color: B1 }}>
+                        <div className="flex items-center gap-[8px] text-[12px] font-normal uppercase tracking-[0.10em] mb-3" style={{ color: B1 }}>
                           <Sparkles className="w-[12px] h-[12px]" strokeWidth={2.5} />
                           Recommended Actions
                         </div>
@@ -1243,7 +1243,7 @@ const AlertsPage = () => {
                         <div className="flex gap-2" style={{ transform: "translateZ(14px)" }}>
                           {primary && (
                             <button onClick={primary.onClick}
-                              className="flex-1 h-11 rounded-[13px] flex items-center justify-center gap-2 text-[13px] font-semibold text-white transition-transform hover:scale-[1.02] relative overflow-hidden"
+                              className="flex-1 h-11 rounded-[13px] flex items-center justify-center gap-2 text-[13px] font-normal text-white transition-transform hover:scale-[1.02] relative overflow-hidden"
                               style={{ background: primaryGrad, boxShadow: primaryShadow, letterSpacing: "-0.1px" }}>
                               <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.14) 0%, transparent 52%)" }} />
                               <span className="relative z-10 px-1 text-center truncate">{primary.label}</span>
@@ -1251,7 +1251,7 @@ const AlertsPage = () => {
                           )}
                           {secondary && (
                             <button onClick={secondary.onClick}
-                              className="flex-1 h-11 rounded-[13px] flex items-center justify-center gap-2 text-[13px] font-semibold transition-transform hover:scale-[1.02]"
+                              className="flex-1 h-11 rounded-[13px] flex items-center justify-center gap-2 text-[13px] font-normal transition-transform hover:scale-[1.02]"
                               style={{ background: BG_D, color: T2, border: `0.5px solid ${BLUE_BDR}`, boxShadow: SH_D, letterSpacing: "-0.1px" }}>
                               <span className="px-1 text-center truncate">{secondary.label}</span>
                             </button>
@@ -1289,8 +1289,8 @@ const AlertsPage = () => {
               <div className="absolute -top-[50px] -right-[32px] w-[220px] h-[220px] rounded-full pointer-events-none"
                 style={{ background: "radial-gradient(circle, rgba(255,255,255,0.14) 0%, transparent 65%)" }} />
               <div className="relative z-10" style={{ transform: "translateZ(14px)" }}>
-                <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-3" style={{ color: "rgba(255,255,255,0.50)" }}>Notification Summary</div>
-                <div className="text-[22px] font-semibold leading-[1.2] mb-5" style={{ letterSpacing: "-0.5px" }}>This Term</div>
+                <div className="text-[12px] font-normal uppercase tracking-[0.12em] mb-3" style={{ color: "rgba(255,255,255,0.50)" }}>Notification Summary</div>
+                <div className="text-[22px] font-normal leading-[1.2] mb-5" style={{ letterSpacing: "-0.5px" }}>This Term</div>
                 <div className="grid grid-cols-3 rounded-[16px] overflow-hidden" style={{ gap: "1px", background: "rgba(255,255,255,0.12)" }}>
                   {[
                     { val: unreadCountD, label: "Unread" },
@@ -1298,8 +1298,8 @@ const AlertsPage = () => {
                     { val: allAlerts.length, label: "Total" },
                   ].map(({ val, label }) => (
                     <div key={label} className="py-[12px] px-2 text-center" style={{ background: "rgba(255,255,255,0.08)" }}>
-                      <div className="text-[22px] font-semibold text-white leading-none mb-1" style={{ letterSpacing: "-0.6px" }}>{val}</div>
-                      <div className="text-[12px] font-semibold uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.42)" }}>{label}</div>
+                      <div className="text-[22px] font-normal text-white leading-none mb-1" style={{ letterSpacing: "-0.6px" }}>{val}</div>
+                      <div className="text-[12px] font-normal uppercase tracking-[0.09em]" style={{ color: "rgba(255,255,255,0.42)" }}>{label}</div>
                     </div>
                   ))}
                 </div>
@@ -1314,7 +1314,7 @@ const AlertsPage = () => {
               className="bg-white rounded-[22px] p-5 relative overflow-hidden"
               style={{ boxShadow: SH_LG_D, border: "0.5px solid rgba(10,132,255,0.10)", transformStyle: "preserve-3d", willChange: "transform" }}>
               <div data-glow className="absolute inset-0 pointer-events-none transition-opacity duration-300" style={{ opacity: 0 }} />
-              <div className="text-[15px] font-semibold mb-4" style={{ color: T1, letterSpacing: "-0.3px", transform: "translateZ(10px)" }}>By Category</div>
+              <div className="text-[15px] font-normal mb-4" style={{ color: T1, letterSpacing: "-0.3px", transform: "translateZ(10px)" }}>By Category</div>
               <div className="space-y-3">
                 {filterTabs.filter(t => t !== "All").map(cat => {
                   const count = getTabCount(cat);
@@ -1324,8 +1324,8 @@ const AlertsPage = () => {
                   return (
                     <div key={cat}>
                       <div className="flex items-center justify-between mb-[8px]">
-                        <span className="text-[12px] font-semibold" style={{ color: T2 }}>{cat}</span>
-                        <span className="text-[13px] font-semibold" style={{ color }}>{count}</span>
+                        <span className="text-[12px] font-normal" style={{ color: T2 }}>{cat}</span>
+                        <span className="text-[13px] font-normal" style={{ color }}>{count}</span>
                       </div>
                       <div className="h-[7px] rounded-[4px] overflow-hidden" style={{ background: "rgba(10,132,255,0.08)" }}>
                         <div className="h-full rounded-[4px]" style={{ width: `${pct}%`, background: bar, transition: "width 1s cubic-bezier(0.4,0,0.2,1)" }} />
@@ -1352,7 +1352,7 @@ const AlertsPage = () => {
                   <Sparkles className="w-5 h-5 text-white" strokeWidth={2.3} />
                 </div>
                 <div>
-                  <div className="text-[15px] font-semibold" style={{ color: T1, letterSpacing: "-0.2px" }}>AI Assist</div>
+                  <div className="text-[15px] font-normal" style={{ color: T1, letterSpacing: "-0.2px" }}>AI Assist</div>
                   <div className="text-[12px] font-normal" style={{ color: T3 }}>Action shortcuts</div>
                 </div>
               </div>

@@ -289,12 +289,12 @@ const ClassesPage = () => {
 
     return (
       <div className="animate-in fade-in duration-500 -mx-3 -mt-3 md:mx-0 md:mt-0"
-        style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif", background: BG, minHeight: "100vh" }}>
+        style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif", background: BG, minHeight: "100vh" }}>
 
         {/* ── Page Head ── */}
         <div className="px-[24px] pt-[16px] pb-0">
-          <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-1" style={{ color: T4 }}>Parent Dashboard</div>
-          <h1 className="text-[28px] font-semibold leading-[1.12]" style={{ color: T1, letterSpacing: "-0.7px" }}>My Classes</h1>
+          <div className="text-[12px] font-normal uppercase tracking-[0.12em] mb-1" style={{ color: T4 }}>Parent Dashboard</div>
+          <h1 className="text-[28px] font-normal leading-[1.12]" style={{ color: T1, letterSpacing: "-0.7px" }}>My Classes</h1>
           <p className="text-[13px] mt-1 font-normal" style={{ color: T3 }}>
             Enrolled subjects &amp; schedules for {childFirstName}
           </p>
@@ -317,7 +317,7 @@ const ClassesPage = () => {
               <MessageSquare className="w-[22px] h-[22px]" style={{ color: "rgba(255,255,255,0.95)" }} strokeWidth={2.2} />
             </div>
             <div className="text-left">
-              <div className="text-[16px] font-semibold text-white" style={{ letterSpacing: "-0.2px" }}>Message Teacher</div>
+              <div className="text-[16px] font-normal text-white" style={{ letterSpacing: "-0.2px" }}>Message Teacher</div>
               <div className="text-[12px]" style={{ color: "rgba(255,255,255,0.55)" }}>Send a direct message to faculty</div>
             </div>
           </div>
@@ -333,14 +333,14 @@ const ClassesPage = () => {
             <div className="w-14 h-14 rounded-2xl flex items-center justify-center" style={{ background: BG2, border: `0.5px solid ${SEP}` }}>
               <Loader2 className="w-7 h-7 animate-spin" style={{ color: B1 }} />
             </div>
-            <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: T4 }}>Loading classes…</p>
+            <p className="text-xs font-normal uppercase tracking-widest" style={{ color: T4 }}>Loading classes…</p>
           </div>
         ) : enrollments.length === 0 ? (
           <div className="mx-5 mt-5 py-10 rounded-[26px] flex flex-col items-center text-center border-2 border-dashed" style={{ borderColor: "rgba(10,132,255,0.22)" }}>
             <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-4" style={{ background: BG2 }}>
               <Target className="w-8 h-8" style={{ color: T4 }} />
             </div>
-            <h3 className="text-base font-semibold" style={{ color: T3 }}>No Classes Found</h3>
+            <h3 className="text-base font-normal" style={{ color: T3 }}>No Classes Found</h3>
             <p className="text-sm mt-1" style={{ color: T4 }}>No subject enrollments yet.</p>
           </div>
         ) : (
@@ -378,7 +378,7 @@ const ClassesPage = () => {
                     </div>
 
                     {/* Active pill */}
-                    <div className="absolute top-4 right-4 z-[2] flex items-center gap-[4px] px-[12px] py-[4px] rounded-full text-[12px] font-semibold tracking-[0.06em]"
+                    <div className="absolute top-4 right-4 z-[2] flex items-center gap-[4px] px-[12px] py-[4px] rounded-full text-[12px] font-normal tracking-[0.06em]"
                       style={{ background: theme.pillBg, border: `0.5px solid ${theme.pillBdr}`, color: theme.accent }}>
                       <span className="w-[6px] h-[6px] rounded-full animate-pulse" style={{ background: theme.accentSolid, boxShadow: `0 0 0 2.5px ${theme.pillBg}` }} />
                       Active
@@ -389,22 +389,22 @@ const ClassesPage = () => {
                       <BookOpen className="w-6 h-6" style={{ color: theme.accentSolid }} strokeWidth={2.1} />
                     </div>
 
-                    <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-[8px] relative z-10" style={{ color: T4 }}>
+                    <div className="text-[12px] font-normal uppercase tracking-[0.12em] mb-[8px] relative z-10" style={{ color: T4 }}>
                       Subject
                     </div>
-                    <h2 className="text-[28px] font-semibold mb-[16px] relative z-10 leading-[1.08]" style={{ color: T1, letterSpacing: "-0.7px" }}>
+                    <h2 className="text-[28px] font-normal mb-[16px] relative z-10 leading-[1.08]" style={{ color: T1, letterSpacing: "-0.7px" }}>
                       {subject || "Class"}
                     </h2>
 
                     {/* Class / section tag */}
                     {className ? (
-                      <div className="inline-flex items-center gap-[8px] px-[16px] py-[8px] rounded-full relative z-10 text-[12px] font-semibold"
+                      <div className="inline-flex items-center gap-[8px] px-[16px] py-[8px] rounded-full relative z-10 text-[12px] font-normal"
                         style={{ background: theme.chipBg, border: `0.5px solid ${theme.chipBdr}`, color: theme.accent }}>
                         <Layers className="w-3 h-3" style={{ color: theme.accentSolid }} strokeWidth={2.2} />
                         {className}
                       </div>
                     ) : (
-                      <div className="inline-flex items-center gap-[8px] px-[16px] py-[8px] rounded-full relative z-10 text-[12px] font-medium"
+                      <div className="inline-flex items-center gap-[8px] px-[16px] py-[8px] rounded-full relative z-10 text-[12px] font-normal"
                         style={{ background: "rgba(0,0,0,0.04)", color: T3 }}>
                         <Layers className="w-3 h-3" style={{ color: T4 }} />
                         Class not assigned
@@ -417,15 +417,15 @@ const ClassesPage = () => {
                     {/* Teacher row */}
                     <div className="flex items-center gap-[12px] px-4 py-[16px] rounded-[18px] mb-[16px]"
                       style={{ background: BG, border: "0.5px solid rgba(10,132,255,0.12)" }}>
-                      <div className="w-11 h-11 rounded-[14px] flex items-center justify-center text-[15px] font-semibold text-white shrink-0"
+                      <div className="w-11 h-11 rounded-[14px] flex items-center justify-center text-[15px] font-normal text-white shrink-0"
                         style={{ background: avatar.bg, boxShadow: avatar.shadow }}>
                         {en.initials}
                       </div>
                       <div>
-                        <div className="text-[12px] font-semibold uppercase tracking-[0.09em] mb-[4px]" style={{ color: T4 }}>
+                        <div className="text-[12px] font-normal uppercase tracking-[0.09em] mb-[4px]" style={{ color: T4 }}>
                           {isClassTeacher ? "Class Teacher" : "Subject Teacher"}
                         </div>
-                        <div className="text-[15px] font-semibold" style={{ color: T1, letterSpacing: "-0.2px" }}>
+                        <div className="text-[15px] font-normal" style={{ color: T1, letterSpacing: "-0.2px" }}>
                           {en.teacherName}
                         </div>
                       </div>
@@ -440,8 +440,8 @@ const ClassesPage = () => {
                           <Clock className="w-[14px] h-[14px]" style={{ color: B1 }} strokeWidth={2.2} />
                         </div>
                         <div className="min-w-0">
-                          <div className="text-[12px] font-semibold uppercase tracking-[0.08em] mb-[4px]" style={{ color: T4 }}>Schedule</div>
-                          <div className="text-[13px] font-semibold truncate" style={{ color: T1, letterSpacing: "-0.1px" }}>{schedule}</div>
+                          <div className="text-[12px] font-normal uppercase tracking-[0.08em] mb-[4px]" style={{ color: T4 }}>Schedule</div>
+                          <div className="text-[13px] font-normal truncate" style={{ color: T1, letterSpacing: "-0.1px" }}>{schedule}</div>
                         </div>
                       </div>
                       <div className="flex items-center gap-[12px] px-[16px] py-[12px] rounded-[16px]"
@@ -451,8 +451,8 @@ const ClassesPage = () => {
                           <School className="w-[14px] h-[14px]" style={{ color: B1 }} strokeWidth={2.2} />
                         </div>
                         <div className="min-w-0">
-                          <div className="text-[12px] font-semibold uppercase tracking-[0.08em] mb-[4px]" style={{ color: T4 }}>Year</div>
-                          <div className="text-[13px] font-semibold truncate" style={{ color: T1, letterSpacing: "-0.1px" }}>{year}</div>
+                          <div className="text-[12px] font-normal uppercase tracking-[0.08em] mb-[4px]" style={{ color: T4 }}>Year</div>
+                          <div className="text-[13px] font-normal truncate" style={{ color: T1, letterSpacing: "-0.1px" }}>{year}</div>
                         </div>
                       </div>
                     </div>
@@ -466,7 +466,7 @@ const ClassesPage = () => {
                       <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 52%)" }} />
                       <div className="flex items-center gap-[12px] relative z-10">
                         <MessageSquare className="w-[17px] h-[17px] text-white" strokeWidth={2.2} />
-                        <span className="text-[14px] font-semibold text-white" style={{ letterSpacing: "-0.1px" }}>Message Teacher</span>
+                        <span className="text-[14px] font-normal text-white" style={{ letterSpacing: "-0.1px" }}>Message Teacher</span>
                       </div>
                       <div className="w-[30px] h-[30px] rounded-[10px] flex items-center justify-center relative z-10"
                         style={{ background: "rgba(255,255,255,0.18)", border: "0.5px solid rgba(255,255,255,0.26)" }}>
@@ -504,25 +504,25 @@ const ClassesPage = () => {
                   <ShieldCheck className="w-6 h-6 text-white" strokeWidth={2.2} />
                 </div>
                 <div>
-                  <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-1" style={{ color: "rgba(255,255,255,0.45)" }}>Enrollment Verified</div>
-                  <div className="text-[18px] font-semibold text-white" style={{ letterSpacing: "-0.3px" }}>Academic Registry Active</div>
+                  <div className="text-[12px] font-normal uppercase tracking-[0.12em] mb-1" style={{ color: "rgba(255,255,255,0.45)" }}>Enrollment Verified</div>
+                  <div className="text-[18px] font-normal text-white" style={{ letterSpacing: "-0.3px" }}>Academic Registry Active</div>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 rounded-[18px] overflow-hidden relative z-10" style={{ gap: "1px", background: "rgba(255,255,255,0.14)" }}>
                 <div className="py-[16px] flex flex-col items-center gap-[4px]" style={{ background: "rgba(255,255,255,0.09)" }}>
-                  <div className="text-[28px] font-semibold text-white leading-none" style={{ letterSpacing: "-1.5px" }}>{enrollments.length}</div>
-                  <div className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.42)" }}>Subjects</div>
+                  <div className="text-[28px] font-normal text-white leading-none" style={{ letterSpacing: "-1.5px" }}>{enrollments.length}</div>
+                  <div className="text-[12px] font-normal uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.42)" }}>Subjects</div>
                 </div>
                 <div className="py-[16px] flex flex-col items-center gap-[4px]" style={{ background: "rgba(255,255,255,0.09)" }}>
-                  <div className="text-[28px] font-semibold text-white leading-none" style={{ letterSpacing: "-1.5px" }}>{uniqueTeacherCount}</div>
-                  <div className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.42)" }}>Teachers</div>
+                  <div className="text-[28px] font-normal text-white leading-none" style={{ letterSpacing: "-1.5px" }}>{uniqueTeacherCount}</div>
+                  <div className="text-[12px] font-normal uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.42)" }}>Teachers</div>
                 </div>
               </div>
             </div>
 
             {/* ── All Subjects Section ── */}
-            <div className="px-[24px] pt-5 text-[12px] font-semibold uppercase tracking-[0.10em] flex items-center gap-2"
+            <div className="px-[24px] pt-5 text-[12px] font-normal uppercase tracking-[0.10em] flex items-center gap-2"
               style={{ color: T4 }}>
               <span>All Subjects</span>
               <span className="flex-1 h-px" style={{ background: "rgba(10,132,255,0.14)" }} />
@@ -531,8 +531,8 @@ const ClassesPage = () => {
             <div className="mx-5 mt-[16px] bg-white rounded-[22px] overflow-hidden"
               style={{ boxShadow: SH, border: "0.5px solid rgba(10,132,255,0.12)" }}>
               <div className="flex items-center justify-between px-[16px] pt-4 pb-3" style={{ borderBottom: `0.5px solid ${SEP}` }}>
-                <div className="text-[16px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>Enrolled Subjects</div>
-                <div className="px-[12px] py-[4px] rounded-full text-[12px] font-semibold"
+                <div className="text-[16px] font-normal" style={{ color: T1, letterSpacing: "-0.3px" }}>Enrolled Subjects</div>
+                <div className="px-[12px] py-[4px] rounded-full text-[12px] font-normal"
                   style={{ background: "rgba(10,132,255,0.10)", border: "0.5px solid rgba(10,132,255,0.18)", color: B1 }}>
                   {enrollments.length} Active
                 </div>
@@ -556,10 +556,10 @@ const ClassesPage = () => {
                       <BookOpen className="w-5 h-5 text-white" strokeWidth={2.2} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="text-[14px] font-semibold truncate" style={{ color: T1, letterSpacing: "-0.2px" }}>{subject || "Class"}</div>
+                      <div className="text-[14px] font-normal truncate" style={{ color: T1, letterSpacing: "-0.2px" }}>{subject || "Class"}</div>
                       <div className="text-[12px] mt-1 truncate" style={{ color: T3 }}>{en.teacherName} · {schedule}</div>
                     </div>
-                    <div className="px-[12px] py-1 rounded-full text-[12px] font-semibold shrink-0"
+                    <div className="px-[12px] py-1 rounded-full text-[12px] font-normal shrink-0"
                       style={{ background: "rgba(10,132,255,0.10)", color: "#0A84FF", border: "0.5px solid rgba(10,132,255,0.22)" }}>
                       Active
                     </div>
@@ -591,16 +591,16 @@ const ClassesPage = () => {
 
   return (
     <div className="animate-in fade-in duration-500 -m-4 sm:-m-6 md:-m-8 min-h-[calc(100vh-64px)]"
-      style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif", background: BG }}>
+      style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif", background: BG }}>
       <div className="w-full px-6 pt-8 pb-10">
 
         {/* ── Toolbar row ── */}
         <div className="flex items-start justify-between gap-6 flex-wrap mb-8">
           <div>
-            <div className="text-[12px] font-semibold uppercase tracking-[0.14em] mb-2" style={{ color: T4 }}>Parent Dashboard</div>
-            <h1 className="text-[38px] font-semibold leading-[1.05]" style={{ color: T1, letterSpacing: "-1.1px" }}>My Classes</h1>
+            <div className="text-[12px] font-normal uppercase tracking-[0.14em] mb-2" style={{ color: T4 }}>Parent Dashboard</div>
+            <h1 className="text-[38px] font-normal leading-[1.05]" style={{ color: T1, letterSpacing: "-1.1px" }}>My Classes</h1>
             <p className="text-[14px] mt-2 font-normal" style={{ color: T3 }}>
-              Enrolled subjects & schedules for <span style={{ color: T1, fontWeight: 600 }}>{studentData?.name}</span>
+              Enrolled subjects & schedules for <span style={{ color: T1, fontWeight: 400 }}>{studentData?.name}</span>
             </p>
           </div>
           <button
@@ -609,7 +609,7 @@ const ClassesPage = () => {
             style={{ background: `linear-gradient(135deg, ${B1} 0%, ${B2} 100%)`, boxShadow: SH_BTN }}>
             <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.14) 0%, transparent 52%)" }} />
             <MessageSquare className="w-[18px] h-[18px] relative z-10" strokeWidth={2.2} />
-            <span className="text-[14px] font-semibold relative z-10">Message Teacher</span>
+            <span className="text-[14px] font-normal relative z-10">Message Teacher</span>
             <div className="w-8 h-8 rounded-[10px] flex items-center justify-center relative z-10"
               style={{ background: "rgba(255,255,255,0.18)", border: "0.5px solid rgba(255,255,255,0.26)" }}>
               <ChevronRight className="w-[13px] h-[13px]" strokeWidth={2.5} />
@@ -624,14 +624,14 @@ const ClassesPage = () => {
               style={{ background: "rgba(10,132,255,0.08)", border: `0.5px solid ${SEP}` }}>
               <Loader2 className="w-7 h-7 animate-spin" style={{ color: B1 }} />
             </div>
-            <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: T4 }}>Loading classes…</p>
+            <p className="text-xs font-normal uppercase tracking-widest" style={{ color: T4 }}>Loading classes…</p>
           </div>
         ) : enrollments.length === 0 ? (
           <div className="py-32 rounded-[26px] flex flex-col items-center text-center border-2 border-dashed" style={{ borderColor: "rgba(10,132,255,0.22)" }}>
             <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-4" style={{ background: "rgba(10,132,255,0.08)" }}>
               <Target className="w-8 h-8" style={{ color: T4 }} />
             </div>
-            <h3 className="text-base font-semibold" style={{ color: T3 }}>No Classes Found</h3>
+            <h3 className="text-base font-normal" style={{ color: T3 }}>No Classes Found</h3>
             <p className="text-sm mt-1" style={{ color: T4 }}>No subject enrollments yet.</p>
           </div>
         ) : (
@@ -671,28 +671,28 @@ const ClassesPage = () => {
                           style={{ background: theme.iconBoxBg, border: `0.5px solid ${theme.iconBoxBdr}` }}>
                           <BookOpen className="w-6 h-6" style={{ color: theme.accentSolid }} strokeWidth={2.1} />
                         </div>
-                        <div className="flex items-center gap-[4px] px-[12px] py-[4px] rounded-full text-[12px] font-semibold tracking-[0.06em]"
+                        <div className="flex items-center gap-[4px] px-[12px] py-[4px] rounded-full text-[12px] font-normal tracking-[0.06em]"
                           style={{ background: theme.pillBg, border: `0.5px solid ${theme.pillBdr}`, color: theme.accent }}>
                           <span className="w-[6px] h-[6px] rounded-full animate-pulse" style={{ background: theme.accentSolid, boxShadow: `0 0 0 2.5px ${theme.pillBg}` }} />
                           Active
                         </div>
                       </div>
 
-                      <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-[8px] relative z-10" style={{ color: T4 }}>
+                      <div className="text-[12px] font-normal uppercase tracking-[0.12em] mb-[8px] relative z-10" style={{ color: T4 }}>
                         Subject
                       </div>
-                      <h2 className="text-[28px] font-semibold mb-[16px] relative z-10 leading-[1.08]" style={{ color: T1, letterSpacing: "-0.6px" }}>
+                      <h2 className="text-[28px] font-normal mb-[16px] relative z-10 leading-[1.08]" style={{ color: T1, letterSpacing: "-0.6px" }}>
                         {subject || "Class"}
                       </h2>
 
                       {className ? (
-                        <div className="inline-flex items-center gap-[8px] px-[16px] py-[8px] rounded-full relative z-10 text-[12px] font-semibold"
+                        <div className="inline-flex items-center gap-[8px] px-[16px] py-[8px] rounded-full relative z-10 text-[12px] font-normal"
                           style={{ background: theme.chipBg, border: `0.5px solid ${theme.chipBdr}`, color: theme.accent }}>
                           <Layers className="w-3 h-3" style={{ color: theme.accentSolid }} strokeWidth={2.2} />
                           {className}
                         </div>
                       ) : (
-                        <div className="inline-flex items-center gap-[8px] px-[16px] py-[8px] rounded-full relative z-10 text-[12px] font-medium"
+                        <div className="inline-flex items-center gap-[8px] px-[16px] py-[8px] rounded-full relative z-10 text-[12px] font-normal"
                           style={{ background: "rgba(0,0,0,0.04)", color: T3 }}>
                           <Layers className="w-3 h-3" style={{ color: T4 }} />
                           Class not assigned
@@ -705,15 +705,15 @@ const ClassesPage = () => {
                       {/* Teacher row */}
                       <div className="flex items-center gap-[12px] px-4 py-[16px] rounded-[18px] mb-[16px]"
                         style={{ background: BG, border: "0.5px solid rgba(10,132,255,0.12)" }}>
-                        <div className="w-11 h-11 rounded-[14px] flex items-center justify-center text-[15px] font-semibold text-white shrink-0"
+                        <div className="w-11 h-11 rounded-[14px] flex items-center justify-center text-[15px] font-normal text-white shrink-0"
                           style={{ background: avatar.bg, boxShadow: avatar.shadow }}>
                           {en.initials}
                         </div>
                         <div>
-                          <div className="text-[12px] font-semibold uppercase tracking-[0.09em] mb-[4px]" style={{ color: T4 }}>
+                          <div className="text-[12px] font-normal uppercase tracking-[0.09em] mb-[4px]" style={{ color: T4 }}>
                             {isClassTeacher ? "Class Teacher" : "Subject Teacher"}
                           </div>
-                          <div className="text-[15px] font-semibold" style={{ color: T1, letterSpacing: "-0.2px" }}>
+                          <div className="text-[15px] font-normal" style={{ color: T1, letterSpacing: "-0.2px" }}>
                             {en.teacherName}
                           </div>
                         </div>
@@ -728,8 +728,8 @@ const ClassesPage = () => {
                             <Clock className="w-[14px] h-[14px]" style={{ color: B1 }} strokeWidth={2.2} />
                           </div>
                           <div className="min-w-0">
-                            <div className="text-[12px] font-semibold uppercase tracking-[0.08em] mb-[4px]" style={{ color: T4 }}>Schedule</div>
-                            <div className="text-[13px] font-semibold truncate" style={{ color: T1, letterSpacing: "-0.1px" }}>{schedule}</div>
+                            <div className="text-[12px] font-normal uppercase tracking-[0.08em] mb-[4px]" style={{ color: T4 }}>Schedule</div>
+                            <div className="text-[13px] font-normal truncate" style={{ color: T1, letterSpacing: "-0.1px" }}>{schedule}</div>
                           </div>
                         </div>
                         <div className="flex items-center gap-[12px] px-[16px] py-[12px] rounded-[16px]"
@@ -739,8 +739,8 @@ const ClassesPage = () => {
                             <School className="w-[14px] h-[14px]" style={{ color: B1 }} strokeWidth={2.2} />
                           </div>
                           <div className="min-w-0">
-                            <div className="text-[12px] font-semibold uppercase tracking-[0.08em] mb-[4px]" style={{ color: T4 }}>Year</div>
-                            <div className="text-[13px] font-semibold truncate" style={{ color: T1, letterSpacing: "-0.1px" }}>{year}</div>
+                            <div className="text-[12px] font-normal uppercase tracking-[0.08em] mb-[4px]" style={{ color: T4 }}>Year</div>
+                            <div className="text-[13px] font-normal truncate" style={{ color: T1, letterSpacing: "-0.1px" }}>{year}</div>
                           </div>
                         </div>
                       </div>
@@ -754,7 +754,7 @@ const ClassesPage = () => {
                           <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 52%)" }} />
                           <div className="flex items-center gap-[12px] relative z-10">
                             <MessageSquare className="w-[17px] h-[17px] text-white" strokeWidth={2.2} />
-                            <span className="text-[14px] font-semibold text-white" style={{ letterSpacing: "-0.1px" }}>Message Teacher</span>
+                            <span className="text-[14px] font-normal text-white" style={{ letterSpacing: "-0.1px" }}>Message Teacher</span>
                           </div>
                           <div className="w-[30px] h-[30px] rounded-[10px] flex items-center justify-center relative z-10"
                             style={{ background: "rgba(255,255,255,0.18)", border: "0.5px solid rgba(255,255,255,0.26)" }}>
@@ -797,19 +797,19 @@ const ClassesPage = () => {
                     <ShieldCheck className="w-7 h-7 text-white" strokeWidth={2.2} />
                   </div>
                   <div>
-                    <div className="text-[12px] font-semibold uppercase tracking-[0.12em] mb-1" style={{ color: "rgba(255,255,255,0.45)" }}>Enrollment Verified</div>
-                    <div className="text-[20px] font-semibold text-white" style={{ letterSpacing: "-0.4px" }}>Academic Registry Active</div>
+                    <div className="text-[12px] font-normal uppercase tracking-[0.12em] mb-1" style={{ color: "rgba(255,255,255,0.45)" }}>Enrollment Verified</div>
+                    <div className="text-[20px] font-normal text-white" style={{ letterSpacing: "-0.4px" }}>Academic Registry Active</div>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 rounded-[18px] overflow-hidden relative z-10" style={{ gap: "1px", background: "rgba(255,255,255,0.14)" }}>
                   <div className="py-5 flex flex-col items-center gap-[4px]" style={{ background: "rgba(255,255,255,0.09)" }}>
-                    <div className="text-[42px] font-semibold text-white leading-none" style={{ letterSpacing: "-2px" }}>{enrollments.length}</div>
-                    <div className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.42)" }}>Subjects</div>
+                    <div className="text-[42px] font-normal text-white leading-none" style={{ letterSpacing: "-2px" }}>{enrollments.length}</div>
+                    <div className="text-[12px] font-normal uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.42)" }}>Subjects</div>
                   </div>
                   <div className="py-5 flex flex-col items-center gap-[4px]" style={{ background: "rgba(255,255,255,0.09)" }}>
-                    <div className="text-[42px] font-semibold text-white leading-none" style={{ letterSpacing: "-2px" }}>{uniqueTeacherCount}</div>
-                    <div className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.42)" }}>Teachers</div>
+                    <div className="text-[42px] font-normal text-white leading-none" style={{ letterSpacing: "-2px" }}>{uniqueTeacherCount}</div>
+                    <div className="text-[12px] font-normal uppercase tracking-[0.10em]" style={{ color: "rgba(255,255,255,0.42)" }}>Teachers</div>
                   </div>
                 </div>
               </div>
@@ -818,8 +818,8 @@ const ClassesPage = () => {
               <div className="lg:col-span-3 bg-white rounded-[22px] overflow-hidden"
                 style={{ boxShadow: SH, border: "0.5px solid rgba(10,132,255,0.12)" }}>
                 <div className="flex items-center justify-between px-6 py-4" style={{ borderBottom: `0.5px solid ${SEP}` }}>
-                  <div className="text-[18px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>Enrolled Subjects</div>
-                  <div className="px-3 py-[4px] rounded-full text-[12px] font-semibold"
+                  <div className="text-[18px] font-normal" style={{ color: T1, letterSpacing: "-0.3px" }}>Enrolled Subjects</div>
+                  <div className="px-3 py-[4px] rounded-full text-[12px] font-normal"
                     style={{ background: "rgba(10,132,255,0.10)", border: "0.5px solid rgba(10,132,255,0.18)", color: B1 }}>
                     {enrollments.length} Active
                   </div>
@@ -843,10 +843,10 @@ const ClassesPage = () => {
                         <BookOpen className="w-5 h-5 text-white" strokeWidth={2.2} />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className="text-[14px] font-semibold truncate" style={{ color: T1, letterSpacing: "-0.2px" }}>{subject || "Class"}</div>
+                        <div className="text-[14px] font-normal truncate" style={{ color: T1, letterSpacing: "-0.2px" }}>{subject || "Class"}</div>
                         <div className="text-[12px] mt-1 truncate" style={{ color: T3 }}>{en.teacherName} · {schedule}</div>
                       </div>
-                      <div className="px-3 py-[4px] rounded-full text-[12px] font-semibold shrink-0"
+                      <div className="px-3 py-[4px] rounded-full text-[12px] font-normal shrink-0"
                         style={{ background: "rgba(10,132,255,0.10)", color: "#0A84FF", border: "0.5px solid rgba(10,132,255,0.22)" }}>
                         Active
                       </div>

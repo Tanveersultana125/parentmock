@@ -18,7 +18,7 @@ export function RankBadge({ rank, size = 'md' }: RankBadgeProps) {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    fontWeight: 600,
+    fontWeight: 400,
     fontSize,
     letterSpacing: '-0.4px',
     boxShadow: shadow,
@@ -73,7 +73,7 @@ export function RankBadge({ rank, size = 'md' }: RankBadgeProps) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        fontWeight: 600,
+        fontWeight: 400,
         fontSize: 13,
         flexShrink: 0,
       }}

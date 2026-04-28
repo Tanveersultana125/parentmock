@@ -86,7 +86,7 @@ export default function Leaderboard() {
         <h1
           style={{
             fontSize: 34,
-            fontWeight: 600,
+            fontWeight: 400,
             letterSpacing: '-1.4px',
             color: T.T1,
             margin: '8px 0',
@@ -108,7 +108,7 @@ export default function Leaderboard() {
           }}
         >
           <span style={{ width: 5, height: 5, borderRadius: '50%', background: T.B1 }} />
-          <span style={{ fontSize: 11, fontWeight: 600, color: T.B1 }}>
+          <span style={{ fontSize: 11, fontWeight: 400, color: T.B1 }}>
             Resets in {resetIn} · {data.totalStudents} students
           </span>
         </div>
@@ -139,7 +139,7 @@ export default function Leaderboard() {
           color: T.B1,
           cursor: 'pointer',
           fontFamily: FONT,
-          fontWeight: 600,
+          fontWeight: 400,
           letterSpacing: '-0.2px',
           boxShadow: T.SH,
         }}
@@ -151,7 +151,7 @@ export default function Leaderboard() {
         style={{
           textAlign: 'center',
           fontSize: 10,
-          fontWeight: 500,
+          fontWeight: 400,
           color: T.T4,
           margin: '18px 0 0',
         }}

@@ -27,7 +27,7 @@ export function MetricCard({ label, value, classAvg, isPercentage }: MetricCardP
       <p
         style={{
           fontSize: 32,
-          fontWeight: 600,
+          fontWeight: 400,
           letterSpacing: '-1px',
           color: T.T1,
           margin: '8px 0 0',
@@ -56,7 +56,7 @@ export function MetricCard({ label, value, classAvg, isPercentage }: MetricCardP
             }}
           />
         </div>
-        <span style={{ fontSize: 10, fontWeight: 600, color: diffColor }}>
+        <span style={{ fontSize: 10, fontWeight: 400, color: diffColor }}>
           {diff >= 0 ? '+' : ''}
           {diff} vs class
         </span>

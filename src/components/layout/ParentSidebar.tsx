@@ -88,8 +88,8 @@ export const ParentSidebar = ({ open, onClose }: ParentSidebarProps) => {
           <GraduationCap className="w-5 h-5 text-white" />
         </div>
         <div className="flex flex-col leading-none flex-1 min-w-0">
-          <span className="font-semibold text-lg tracking-wide uppercase" style={{ color: "#1D1D1F" }}>EDULLENT</span>
-          <span className="text-[12px] font-semibold uppercase tracking-widest mt-1" style={{ color: "#A1A1A6" }}>Parent Portal</span>
+          <span className="font-normal text-lg tracking-wide uppercase" style={{ color: "#1D1D1F" }}>EDULLENT</span>
+          <span className="text-[12px] font-normal uppercase tracking-widest mt-1" style={{ color: "#A1A1A6" }}>Parent Portal</span>
         </div>
         {/* Close button — mobile only */}
         <button
@@ -107,7 +107,7 @@ export const ParentSidebar = ({ open, onClose }: ParentSidebarProps) => {
         {navGroups.map((group, idx) => (
           <div key={group.label} className={idx === 0 ? "" : "mt-4"}>
             <div
-              className="px-4 pb-1.5 text-[12px] font-semibold uppercase tracking-[0.14em]"
+              className="px-4 pb-1.5 text-[12px] font-normal uppercase tracking-[0.14em]"
               style={{ color: "#A1A1A6" }}
             >
               {group.label}
@@ -120,7 +120,7 @@ export const ParentSidebar = ({ open, onClose }: ParentSidebarProps) => {
                     key={item.path}
                     to={item.path}
                     onClick={onClose}
-                    className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all relative ${
+                    className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-normal transition-all relative ${
                       isActive ? "shadow-md" : "hover:bg-[rgba(23,12,121,0.06)]"
                     }`}
                     style={isActive
@@ -131,7 +131,7 @@ export const ParentSidebar = ({ open, onClose }: ParentSidebarProps) => {
                     <item.icon className="w-5 h-5 flex-shrink-0" />
                     <span>{item.title}</span>
                     {item.badge && (
-                      <span className="absolute right-3 min-w-[20px] h-5 flex items-center justify-center rounded-full text-xs font-semibold bg-red-500 text-white">
+                      <span className="absolute right-3 min-w-[20px] h-5 flex items-center justify-center rounded-full text-xs font-normal bg-red-500 text-white">
                         {item.badge}
                       </span>
                     )}
@@ -146,13 +146,13 @@ export const ParentSidebar = ({ open, onClose }: ParentSidebarProps) => {
       {/* Profile (logout removed — mock-data demo build, no auth) */}
       <div className="p-4 space-y-3" style={{ borderTop: "0.5px solid rgba(23,12,121,0.08)" }}>
         <div className="flex items-center gap-3 px-2">
-          <div className="w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-semibold shadow-lg flex-shrink-0"
+          <div className="w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-normal shadow-lg flex-shrink-0"
             style={{ background: "#1D1D1F" }}>
             {studentData?.name?.[0] || user?.displayName?.[0] || "P"}
           </div>
           <div className="overflow-hidden">
-            <p className="text-sm font-semibold truncate" style={{ color: "#1D1D1F" }}>{studentData?.name || user?.displayName || "Parent"}</p>
-            <p className="text-[12px] font-medium uppercase tracking-wider truncate" style={{ color: "#A1A1A6" }}>
+            <p className="text-sm font-normal truncate" style={{ color: "#1D1D1F" }}>{studentData?.name || user?.displayName || "Parent"}</p>
+            <p className="text-[12px] font-normal uppercase tracking-wider truncate" style={{ color: "#A1A1A6" }}>
               {studentData?.className || "General"} | ID: {studentData?.rollNo || studentData?.id?.slice(-5) || "PENDING"}
             </p>
           </div>

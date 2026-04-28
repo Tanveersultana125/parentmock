@@ -54,7 +54,7 @@ const Card = ({ children, title, action, style }: { children: React.ReactNode; t
     >
       {title && (
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "14px 20px", borderBottom: `1px solid ${T.s2}`, position: "relative", zIndex: 2 }}>
-          <span style={{ fontSize: 14, fontWeight: 600, color: T.ink }}>{title}</span>
+          <span style={{ fontSize: 14, fontWeight: 400, color: T.ink }}>{title}</span>
           {action || null}
         </div>
       )}
@@ -63,7 +63,7 @@ const Card = ({ children, title, action, style }: { children: React.ReactNode; t
   );
 };
 
-const DetailLink = () => <span style={{ fontSize: 11, color: T.blue, fontWeight: 500, cursor: "pointer" }}>Details →</span>;
+const DetailLink = () => <span style={{ fontSize: 11, color: T.blue, fontWeight: 400, cursor: "pointer" }}>Details →</span>;
 
 // ═══════════════════════════════════════════════════════════════════════
 // MOCK DATA — flip USE_MOCK_DATA to false to restore live Firestore data
@@ -348,7 +348,7 @@ const MyChildPage = () => {
   if (!student || !sid) return (
     <div style={{ textAlign: "center", padding: 64 }}>
       <AlertCircle size={40} color={T.red} style={{ margin: "0 auto 12px" }} />
-      <p style={{ fontSize: 16, fontWeight: 600, color: T.ink }}>No child profile linked to this account.</p>
+      <p style={{ fontSize: 16, fontWeight: 400, color: T.ink }}>No child profile linked to this account.</p>
     </div>
   );
 
@@ -365,18 +365,18 @@ const MyChildPage = () => {
   }));
 
   return (
-    <div style={{ minHeight: "100vh", background: T.bg, padding: isMobile ? "12px 12px 60px" : "20px 24px 60px", fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif" }}>
+    <div style={{ minHeight: "100vh", background: T.bg, padding: isMobile ? "12px 12px 60px" : "20px 24px 60px", fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif" }}>
 
       {/* ═══ TOP BAR ══════════════════════════════════════════════════════════ */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: isMobile ? 14 : 24, gap: 8, flexWrap: "wrap" }}>
-        <button onClick={() => navigate("/")} style={{ display: "flex", alignItems: "center", gap: 6, padding: isMobile ? "7px 12px" : "8px 16px", borderRadius: 10, border: `1px solid ${T.bdr}`, background: T.white, color: T.ink2, fontSize: isMobile ? 12 : 13, fontWeight: 500, cursor: "pointer", flexShrink: 0 }}>
+        <button onClick={() => navigate("/")} style={{ display: "flex", alignItems: "center", gap: 6, padding: isMobile ? "7px 12px" : "8px 16px", borderRadius: 10, border: `1px solid ${T.bdr}`, background: T.white, color: T.ink2, fontSize: isMobile ? 12 : 13, fontWeight: 400, cursor: "pointer", flexShrink: 0 }}>
           <ArrowLeft size={14} /> {isMobile ? "BACK" : "RETURN"}
         </button>
         <div style={{ display: "flex", gap: 8 }}>
-          <button onClick={() => window.print()} style={{ display: "flex", alignItems: "center", gap: 6, padding: isMobile ? "7px 12px" : "8px 16px", borderRadius: 10, border: `1px solid ${T.bdr}`, background: T.white, color: T.ink2, fontSize: 12, fontWeight: 500, cursor: "pointer" }}>
+          <button onClick={() => window.print()} style={{ display: "flex", alignItems: "center", gap: 6, padding: isMobile ? "7px 12px" : "8px 16px", borderRadius: 10, border: `1px solid ${T.bdr}`, background: T.white, color: T.ink2, fontSize: 12, fontWeight: 400, cursor: "pointer" }}>
             <Printer size={13} /> {isMobile ? "PDF" : "EXPORT"}
           </button>
-          <button onClick={() => navigate("/teacher-notes")} style={{ display: "flex", alignItems: "center", gap: 6, padding: isMobile ? "7px 12px" : "8px 16px", borderRadius: 10, border: "none", background: T.blue, color: "#fff", fontSize: 12, fontWeight: 600, cursor: "pointer" }}>
+          <button onClick={() => navigate("/teacher-notes")} style={{ display: "flex", alignItems: "center", gap: 6, padding: isMobile ? "7px 12px" : "8px 16px", borderRadius: 10, border: "none", background: T.blue, color: "#fff", fontSize: 12, fontWeight: 400, cursor: "pointer" }}>
             <MessageSquare size={13} /> {isMobile ? "MSG" : "CONTACT"}
           </button>
         </div>
@@ -395,10 +395,10 @@ const MyChildPage = () => {
                     strokeDasharray={2 * Math.PI * 26} strokeDashoffset={2 * Math.PI * 26 * (1 - m.avg / 100)} transform="rotate(-90 32 32)"
                     style={{ transition: "stroke-dashoffset 1s ease" }} />
                 </svg>
-                <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 600, color: T.blue }}>{(m.avg / 25).toFixed(1)}</div>
+                <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 400, color: T.blue }}>{(m.avg / 25).toFixed(1)}</div>
               </div>
               <div>
-                <div style={{ fontSize: 28, fontWeight: 600, color: T.ink }}>{Math.round(m.avg)}%</div>
+                <div style={{ fontSize: 28, fontWeight: 400, color: T.ink }}>{Math.round(m.avg)}%</div>
                 <div style={{ fontSize: 11, color: T.ink3, display: "flex", alignItems: "center", gap: 4 }}>
                   Avg Score · {testScores.length} tests
                   {m.trend === "up" && <TrendingUp size={12} color={T.grn} />}
@@ -412,7 +412,7 @@ const MyChildPage = () => {
                 <div style={{ flex: 1, height: 6, background: T.s1, borderRadius: 3, overflow: "hidden" }}>
                   <div style={{ height: "100%", width: `${sc}%`, background: sc >= 75 ? T.blue : sc >= 50 ? T.amb : T.red, borderRadius: 3, transition: "width 1s ease" }} />
                 </div>
-                <span style={{ fontSize: 12, fontWeight: 600, color: sc >= 75 ? T.blue : sc >= 50 ? T.amb : T.red, width: 30, textAlign: "right" }}>{sc}</span>
+                <span style={{ fontSize: 12, fontWeight: 400, color: sc >= 75 ? T.blue : sc >= 50 ? T.amb : T.red, width: 30, textAlign: "right" }}>{sc}</span>
               </div>
             ))}
           </Card>
@@ -428,10 +428,10 @@ const MyChildPage = () => {
                     strokeDasharray={2 * Math.PI * 28} strokeDashoffset={2 * Math.PI * 28 * (1 - m.attRate / 100)}
                     transform="rotate(-90 36 36)" style={{ transition: "stroke-dashoffset 1s ease" }} />
                 </svg>
-                <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, fontWeight: 600, color: m.attRate >= 85 ? T.grn : T.amb }}>{Math.round(m.attRate)}%</div>
+                <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, fontWeight: 400, color: m.attRate >= 85 ? T.grn : T.amb }}>{Math.round(m.attRate)}%</div>
               </div>
               <div>
-                <div style={{ fontSize: 15, fontWeight: 600, color: T.ink }}>Present</div>
+                <div style={{ fontSize: 15, fontWeight: 400, color: T.ink }}>Present</div>
                 <div style={{ fontSize: 12, color: T.ink3, marginTop: 2 }}>Late: {m.late} · Abs: {m.abs}</div>
                 <div style={{ fontSize: 11, color: T.ink3, marginTop: 2 }}>{m.pres + m.late} / {m.tot} days</div>
               </div>
@@ -456,7 +456,7 @@ const MyChildPage = () => {
                 <div style={{ flex: 1, height: 6, background: T.s1, borderRadius: 3, overflow: "hidden" }}>
                   <div style={{ height: "100%", width: `${sc}%`, background: sc >= 75 ? T.blue : sc >= 50 ? T.grn : T.red, borderRadius: 3 }} />
                 </div>
-                <span style={{ fontSize: 12, fontWeight: 600, color: T.ink, width: 28, textAlign: "right" }}>{sc}</span>
+                <span style={{ fontSize: 12, fontWeight: 400, color: T.ink, width: 28, textAlign: "right" }}>{sc}</span>
               </div>
             ))}
           </Card>
@@ -464,16 +464,16 @@ const MyChildPage = () => {
 
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", paddingTop: isMobile ? 16 : 20, order: isMobile ? -1 : 0, padding: isMobile ? "20px 16px 18px" : undefined, background: isMobile ? T.white : "transparent", borderRadius: isMobile ? 16 : 0, border: isMobile ? `1px solid ${T.bdr}` : "none" }}>
           <div style={{ width: isMobile ? 110 : 140, height: isMobile ? 110 : 140, borderRadius: "50%", border: `4px solid ${T.blue}`, background: T.blBg, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: isMobile ? 12 : 16, boxShadow: "0 8px 30px rgba(59,91,219,0.15)" }}>
-            <span style={{ fontSize: 42, fontWeight: 600, color: T.blue }}>{initials}</span>
+            <span style={{ fontSize: 42, fontWeight: 400, color: T.blue }}>{initials}</span>
           </div>
-          <h2 style={{ fontSize: 20, fontWeight: 600, color: T.ink, textAlign: "center", marginBottom: 4 }}>{sName}</h2>
+          <h2 style={{ fontSize: 20, fontWeight: 400, color: T.ink, textAlign: "center", marginBottom: 4 }}>{sName}</h2>
           <p style={{ fontSize: 12, color: T.ink3, textAlign: "center", marginBottom: 4 }}>{student.className || student.class || "—"}</p>
           <p style={{ fontSize: 11, color: T.ink3, textAlign: "center", marginBottom: 12 }}>Roll: {student.rollNo || student.roll || "—"} · ID: {sid.slice(0, 6).toUpperCase()}</p>
           <div style={{ display: "flex", gap: 6 }}>
-            <span style={{ padding: "4px 12px", borderRadius: 20, background: T.glBg, color: T.grn, fontSize: 10, fontWeight: 600 }}>ACTIVE</span>
-            <span style={{ padding: "4px 12px", borderRadius: 20, background: riskColor === T.grn ? T.glBg : riskColor === T.amb ? T.alBg : T.rlBg, color: riskColor, fontSize: 10, fontWeight: 600 }}>{riskLevel}</span>
+            <span style={{ padding: "4px 12px", borderRadius: 20, background: T.glBg, color: T.grn, fontSize: 10, fontWeight: 400 }}>ACTIVE</span>
+            <span style={{ padding: "4px 12px", borderRadius: 20, background: riskColor === T.grn ? T.glBg : riskColor === T.amb ? T.alBg : T.rlBg, color: riskColor, fontSize: 10, fontWeight: 400 }}>{riskLevel}</span>
           </div>
-          <button onClick={() => setEditOpen(true)} style={{ marginTop: 14, padding: "6px 14px", borderRadius: 20, border: `1px solid ${T.bdr}`, background: T.white, color: T.ink2, fontSize: 11, fontWeight: 500, cursor: "pointer" }}>
+          <button onClick={() => setEditOpen(true)} style={{ marginTop: 14, padding: "6px 14px", borderRadius: 20, border: `1px solid ${T.bdr}`, background: T.white, color: T.ink2, fontSize: 11, fontWeight: 400, cursor: "pointer" }}>
             Edit Profile
           </button>
         </div>
@@ -482,13 +482,13 @@ const MyChildPage = () => {
           <Card title="Behaviour Record" action={<DetailLink />}>
             {incidents.length === 0 ? (
               <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 12px", background: T.glBg, borderRadius: 10 }}>
-                <CheckCircle2 size={14} color={T.grn} /><span style={{ fontSize: 12, color: T.grn, fontWeight: 500 }}>No incidents recorded</span>
+                <CheckCircle2 size={14} color={T.grn} /><span style={{ fontSize: 12, color: T.grn, fontWeight: 400 }}>No incidents recorded</span>
               </div>
             ) : incidents.slice(0, 3).map(inc => (
               <div key={inc.id} style={{ display: "flex", alignItems: "flex-start", gap: 8, padding: "8px 0", borderBottom: `1px solid ${T.s2}` }}>
                 <div style={{ width: 8, height: 8, borderRadius: "50%", background: T.red, marginTop: 5, flexShrink: 0 }} />
                 <div>
-                  <span style={{ fontSize: 12, fontWeight: 600, color: T.red }}>{(inc.type || "INCIDENT").toUpperCase()}</span>
+                  <span style={{ fontSize: 12, fontWeight: 400, color: T.red }}>{(inc.type || "INCIDENT").toUpperCase()}</span>
                   <p style={{ fontSize: 11, color: T.ink3, marginTop: 2 }}>{(inc.description || inc.content || "").slice(0, 80)}</p>
                 </div>
               </div>
@@ -498,7 +498,7 @@ const MyChildPage = () => {
           <Card title="AI Intelligence" action={<DetailLink />}>
             <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 8 }}>
               <span style={{ fontSize: 11, color: T.ink3 }}>Predicted next score:</span>
-              <span style={{ fontSize: 20, fontWeight: 600, color: T.blue }}>{Math.min(100, Math.round(m.avg + Math.max(0, (100 - m.avg) * 0.05)))}%</span>
+              <span style={{ fontSize: 20, fontWeight: 400, color: T.blue }}>{Math.min(100, Math.round(m.avg + Math.max(0, (100 - m.avg) * 0.05)))}%</span>
             </div>
             <div style={{ fontSize: 11, color: T.ink3, lineHeight: 1.6 }}>
               {m.trend === "up" ? "Performance is improving. Your child is on a positive trajectory." :
@@ -512,7 +512,7 @@ const MyChildPage = () => {
               <p style={{ fontSize: 12, color: T.ink3, textAlign: "center", padding: "8px 0" }}>No messages yet</p>
             ) : parentNotes.slice(0, 2).map(n => (
               <div key={n.id} style={{ padding: "8px 0", borderBottom: `1px solid ${T.s2}` }}>
-                <div style={{ fontSize: 10, color: n.from === "teacher" ? T.blue : T.grn, fontWeight: 600, marginBottom: 2 }}>
+                <div style={{ fontSize: 10, color: n.from === "teacher" ? T.blue : T.grn, fontWeight: 400, marginBottom: 2 }}>
                   {n.from === "teacher" ? (n.teacherName || "TEACHER") : "YOU"} · {timeAgo(n.createdAt)}
                 </div>
                 <p style={{ fontSize: 12, color: T.ink2, lineHeight: 1.5, margin: 0 }}>{(n.content || n.message || "").slice(0, 100)}</p>
@@ -556,7 +556,7 @@ const MyChildPage = () => {
 
       {/* ═══ ASSIGNMENTS + RISK ═══ */}
       <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? 14 : 20, marginBottom: isMobile ? 14 : 20 }}>
-        <Card title={`Assignments · ${m.subCount}/${m.asgCount}`} action={<span style={{ fontSize: 11, color: T.blue, fontWeight: 500, cursor: "pointer" }}>View All →</span>}>
+        <Card title={`Assignments · ${m.subCount}/${m.asgCount}`} action={<span style={{ fontSize: 11, color: T.blue, fontWeight: 400, cursor: "pointer" }}>View All →</span>}>
           {[...assignments].sort((a, b) => (toDate(b.dueDate)?.getTime() || 0) - (toDate(a.dueDate)?.getTime() || 0)).slice(0, 5).map(a => {
             const sub = submissions.find((s: any) => s.assignmentId === a.id);
             return (
@@ -570,7 +570,7 @@ const MyChildPage = () => {
         </Card>
 
         <Card title="Risk Assessment" action={<DetailLink />}>
-          <div style={{ fontSize: 22, fontWeight: 600, color: riskColor, marginBottom: 14 }}>{riskLevel}</div>
+          <div style={{ fontSize: 22, fontWeight: 400, color: riskColor, marginBottom: 14 }}>{riskLevel}</div>
           {[
             { label: "ATTENDANCE", val: m.attRate, color: m.attRate >= 85 ? T.blue : T.amb, extra: undefined as string | undefined },
             { label: "ACADEMIC", val: m.avg, color: m.avg >= 75 ? T.blue : m.avg >= 50 ? T.amb : T.red, extra: undefined },
@@ -582,7 +582,7 @@ const MyChildPage = () => {
               <div style={{ flex: 1, height: 6, background: T.s1, borderRadius: 3, overflow: "hidden" }}>
                 {r.val >= 0 && <div style={{ height: "100%", width: `${r.val}%`, background: r.color, borderRadius: 3, transition: "width 1s" }} />}
               </div>
-              <span style={{ fontSize: 12, fontWeight: 600, color: r.color, width: 60, textAlign: "right" }}>{r.extra || `${Math.round(r.val >= 0 ? r.val : 0)}%`}</span>
+              <span style={{ fontSize: 12, fontWeight: 400, color: r.color, width: 60, textAlign: "right" }}>{r.extra || `${Math.round(r.val >= 0 ? r.val : 0)}%`}</span>
             </div>
           ))}
         </Card>
@@ -593,23 +593,23 @@ const MyChildPage = () => {
         <Card title="Attendance Calendar" action={<span style={{ fontSize: 11, color: T.ink3 }}>Daily attendance record</span>}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 16, marginBottom: 14 }}>
             <button onClick={() => setCalMonth(new Date(calYear, calMon - 1))} style={{ background: "none", border: "none", cursor: "pointer", color: T.ink3 }}><ChevronLeft size={16} /></button>
-            <span style={{ fontSize: 13, fontWeight: 600, color: T.ink }}>{MONTHS[calMon]} {calYear}</span>
+            <span style={{ fontSize: 13, fontWeight: 400, color: T.ink }}>{MONTHS[calMon]} {calYear}</span>
             <button onClick={() => setCalMonth(new Date(calYear, calMon + 1))} style={{ background: "none", border: "none", cursor: "pointer", color: T.ink3 }}><ChevronRight size={16} /></button>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8, marginBottom: 14 }}>
             <div style={{ textAlign: "center", padding: "10px 0", background: T.glBg, borderRadius: 10 }}>
-              <div style={{ fontSize: 20, fontWeight: 600, color: T.grn }}>{calPresent}</div><div style={{ fontSize: 10, color: T.grn }}>PRESENT</div>
+              <div style={{ fontSize: 20, fontWeight: 400, color: T.grn }}>{calPresent}</div><div style={{ fontSize: 10, color: T.grn }}>PRESENT</div>
             </div>
             <div style={{ textAlign: "center", padding: "10px 0", background: T.alBg, borderRadius: 10 }}>
-              <div style={{ fontSize: 20, fontWeight: 600, color: T.amb }}>{calLate}</div><div style={{ fontSize: 10, color: T.amb }}>LATE</div>
+              <div style={{ fontSize: 20, fontWeight: 400, color: T.amb }}>{calLate}</div><div style={{ fontSize: 10, color: T.amb }}>LATE</div>
             </div>
             <div style={{ textAlign: "center", padding: "10px 0", background: T.rlBg, borderRadius: 10 }}>
-              <div style={{ fontSize: 20, fontWeight: 600, color: T.red }}>{calAbsent}</div><div style={{ fontSize: 10, color: T.red }}>ABSENT</div>
+              <div style={{ fontSize: 20, fontWeight: 400, color: T.red }}>{calAbsent}</div><div style={{ fontSize: 10, color: T.red }}>ABSENT</div>
             </div>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: 4, textAlign: "center" }}>
             {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map(d => (
-              <div key={d} style={{ fontSize: 10, fontWeight: 600, color: T.ink3, padding: "4px 0" }}>{d}</div>
+              <div key={d} style={{ fontSize: 10, fontWeight: 400, color: T.ink3, padding: "4px 0" }}>{d}</div>
             ))}
             {calDays.map((d, i) => {
               if (!d) return <div key={i} />;
@@ -647,10 +647,10 @@ const MyChildPage = () => {
               <div style={{ width: 8, height: 8, borderRadius: "50%", background: iv.status === "completed" ? T.grn : T.amb, marginTop: 5, flexShrink: 0 }} />
               <div style={{ flex: 1 }}>
                 <div style={{ fontSize: 11, color: T.ink3, marginBottom: 2 }}>{timeAgo(iv.createdAt)}</div>
-                <div style={{ fontSize: 13, fontWeight: 600, color: T.ink }}>{iv.actionTitle || iv.title || "Intervention"}</div>
+                <div style={{ fontSize: 13, fontWeight: 400, color: T.ink }}>{iv.actionTitle || iv.title || "Intervention"}</div>
                 <div style={{ display: "flex", gap: 6, marginTop: 4 }}>
-                  <span style={{ padding: "2px 8px", borderRadius: 4, background: T.blBg, color: T.blue, fontSize: 10, fontWeight: 600 }}>{(iv.actionType || iv.type || "GENERAL").toUpperCase()}</span>
-                  <span style={{ padding: "2px 8px", borderRadius: 4, background: iv.status === "completed" ? T.glBg : T.alBg, color: iv.status === "completed" ? T.grn : T.amb, fontSize: 10, fontWeight: 600 }}>{iv.status === "completed" ? "Complete" : "Active"}</span>
+                  <span style={{ padding: "2px 8px", borderRadius: 4, background: T.blBg, color: T.blue, fontSize: 10, fontWeight: 400 }}>{(iv.actionType || iv.type || "GENERAL").toUpperCase()}</span>
+                  <span style={{ padding: "2px 8px", borderRadius: 4, background: iv.status === "completed" ? T.glBg : T.alBg, color: iv.status === "completed" ? T.grn : T.amb, fontSize: 10, fontWeight: 400 }}>{iv.status === "completed" ? "Complete" : "Active"}</span>
                 </div>
               </div>
               <span style={{ fontSize: 10, color: T.ink3, flexShrink: 0 }}>{iv.assignedTo || ""}</span>
@@ -665,12 +665,12 @@ const MyChildPage = () => {
           {incidents.length === 0 ? (
             <div style={{ textAlign: "center", padding: "20px 0" }}>
               <CheckCircle2 size={24} color={T.grn} style={{ margin: "0 auto 8px" }} />
-              <p style={{ fontSize: 12, color: T.grn, fontWeight: 500 }}>No incidents on record</p>
+              <p style={{ fontSize: 12, color: T.grn, fontWeight: 400 }}>No incidents on record</p>
             </div>
           ) : incidents.map(inc => (
             <div key={inc.id} style={{ padding: "10px 0", borderBottom: `1px solid ${T.s2}` }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <span style={{ fontSize: 12, fontWeight: 600, color: T.red }}>• {(inc.type || "INCIDENT").toUpperCase()}</span>
+                <span style={{ fontSize: 12, fontWeight: 400, color: T.red }}>• {(inc.type || "INCIDENT").toUpperCase()}</span>
                 <span style={{ fontSize: 10, color: T.ink3 }}>{timeAgo(inc.createdAt || inc.date)}</span>
               </div>
               <p style={{ fontSize: 11, color: T.ink2, marginTop: 4, lineHeight: 1.5 }}>{(inc.description || inc.content || "").slice(0, 120)}</p>
@@ -678,7 +678,7 @@ const MyChildPage = () => {
           ))}
           {incidents.length > 0 && (
             <div style={{ textAlign: "center", padding: "10px 0", marginTop: 8, background: T.rlBg, borderRadius: 8 }}>
-              <span style={{ fontSize: 11, color: T.red, fontWeight: 500 }}>Total: {incidents.length} incident{incidents.length > 1 ? "s" : ""} recorded</span>
+              <span style={{ fontSize: 11, color: T.red, fontWeight: 400 }}>Total: {incidents.length} incident{incidents.length > 1 ? "s" : ""} recorded</span>
             </div>
           )}
         </Card>
@@ -697,7 +697,7 @@ const MyChildPage = () => {
                 <item.icon size={14} color={T.ink3} />
                 <span style={{ fontSize: 12, color: T.ink3 }}>{item.label}</span>
               </div>
-              <span style={{ fontSize: 13, fontWeight: 600, color: T.ink }}>{item.val}</span>
+              <span style={{ fontSize: 13, fontWeight: 400, color: T.ink }}>{item.val}</span>
             </div>
           ))}
         </Card>
@@ -709,8 +709,8 @@ const MyChildPage = () => {
           {parentNotes.slice(0, 3).map(n => (
             <div key={n.id} style={{ padding: "12px 0", borderBottom: `1px solid ${T.s2}` }}>
               <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
-                <span style={{ fontSize: 13, fontWeight: 600, color: T.ink }}>{n.from === "teacher" ? (n.teacherName || "TEACHER") : "YOU"}</span>
-                <span style={{ padding: "2px 8px", borderRadius: 4, background: n.from === "teacher" ? T.blBg : T.glBg, color: n.from === "teacher" ? T.blue : T.grn, fontSize: 10, fontWeight: 600 }}>{n.from === "teacher" ? "FACULTY" : "PARENT"}</span>
+                <span style={{ fontSize: 13, fontWeight: 400, color: T.ink }}>{n.from === "teacher" ? (n.teacherName || "TEACHER") : "YOU"}</span>
+                <span style={{ padding: "2px 8px", borderRadius: 4, background: n.from === "teacher" ? T.blBg : T.glBg, color: n.from === "teacher" ? T.blue : T.grn, fontSize: 10, fontWeight: 400 }}>{n.from === "teacher" ? "FACULTY" : "PARENT"}</span>
                 <span style={{ fontSize: 10, color: T.ink3, marginLeft: "auto" }}>{timeAgo(n.createdAt)}</span>
               </div>
               <p style={{ fontSize: 12, color: T.ink2, lineHeight: 1.5, margin: 0 }}>{(n.content || n.message || "").slice(0, 120)}</p>
@@ -736,7 +736,7 @@ const MyChildPage = () => {
           <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch" }}>
           <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12, minWidth: 280 }}>
             <thead>
-              <tr>{["SUBJECT", "DATE", "SCORE"].map(h => <th key={h} style={{ textAlign: "left", padding: "6px 8px", fontSize: 10, color: T.ink3, fontWeight: 600, borderBottom: `1px solid ${T.s2}` }}>{h}</th>)}</tr>
+              <tr>{["SUBJECT", "DATE", "SCORE"].map(h => <th key={h} style={{ textAlign: "left", padding: "6px 8px", fontSize: 10, color: T.ink3, fontWeight: 400, borderBottom: `1px solid ${T.s2}` }}>{h}</th>)}</tr>
             </thead>
             <tbody>
               {scoreHistory.map(t => {
@@ -745,7 +745,7 @@ const MyChildPage = () => {
                   <tr key={t.id} style={{ borderBottom: `1px solid ${T.s2}` }}>
                     <td style={{ padding: "8px", color: T.ink }}>{(t.subject || t.subjectName || "TEST").slice(0, 20)}</td>
                     <td style={{ padding: "8px", color: T.ink3 }}>{d ? d.toLocaleDateString("en-IN", { day: "2-digit", month: "short" }).toUpperCase() : "—"}</td>
-                    <td style={{ padding: "8px", fontWeight: 600, color: T.blue }}>{Number(t.percentage ?? t.score ?? 0)}%</td>
+                    <td style={{ padding: "8px", fontWeight: 400, color: T.blue }}>{Number(t.percentage ?? t.score ?? 0)}%</td>
                   </tr>
                 );
               })}
@@ -762,14 +762,14 @@ const MyChildPage = () => {
         {!isMobile && <span>★ Data: Live</span>}
         <span>★ Secured</span>
         <span>★ ID: {sid.slice(0, 8).toUpperCase()}</span>
-        <span style={{ color: T.blue, fontWeight: 600 }}>{new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" })}</span>
+        <span style={{ color: T.blue, fontWeight: 400 }}>{new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" })}</span>
       </div>
 
       {/* ═══ EDIT PROFILE MODAL ═══ */}
       {editOpen && (
         <div style={{ position: "fixed", inset: 0, background: "rgba(15,23,42,0.4)", backdropFilter: "blur(4px)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 50 }} onClick={() => setEditOpen(false)}>
           <div onClick={e => e.stopPropagation()} style={{ background: T.white, borderRadius: 16, width: 420, maxWidth: "90vw", padding: 24, boxShadow: "0 20px 60px rgba(0,0,0,0.15)" }}>
-            <h3 style={{ fontSize: 16, fontWeight: 600, color: T.ink, marginBottom: 16 }}>Edit Profile</h3>
+            <h3 style={{ fontSize: 16, fontWeight: 400, color: T.ink, marginBottom: 16 }}>Edit Profile</h3>
             {([
               { key: "dob", label: "Date of Birth", type: "date" },
               { key: "bloodGroup", label: "Blood Group", type: "text" },
@@ -777,7 +777,7 @@ const MyChildPage = () => {
               { key: "emergencyContact", label: "Emergency Contact", type: "tel" },
             ] as const).map(f => (
               <div key={f.key} style={{ marginBottom: 12 }}>
-                <label style={{ fontSize: 10, fontWeight: 600, color: T.ink3, textTransform: "uppercase", letterSpacing: "0.05em" }}>{f.label}</label>
+                <label style={{ fontSize: 10, fontWeight: 400, color: T.ink3, textTransform: "uppercase", letterSpacing: "0.05em" }}>{f.label}</label>
                 <input
                   type={f.type}
                   value={(form as any)[f.key]}
@@ -788,8 +788,8 @@ const MyChildPage = () => {
               </div>
             ))}
             <div style={{ display: "flex", gap: 8, marginTop: 16 }}>
-              <button onClick={() => setEditOpen(false)} style={{ flex: 1, padding: "10px 16px", borderRadius: 10, border: `1px solid ${T.bdr}`, background: T.white, color: T.ink2, fontSize: 13, fontWeight: 500, cursor: "pointer" }}>Cancel</button>
-              <button onClick={handleSave} disabled={saving} style={{ flex: 1, padding: "10px 16px", borderRadius: 10, border: "none", background: T.blue, color: "#fff", fontSize: 13, fontWeight: 600, cursor: "pointer", opacity: saving ? 0.6 : 1 }}>
+              <button onClick={() => setEditOpen(false)} style={{ flex: 1, padding: "10px 16px", borderRadius: 10, border: `1px solid ${T.bdr}`, background: T.white, color: T.ink2, fontSize: 13, fontWeight: 400, cursor: "pointer" }}>Cancel</button>
+              <button onClick={handleSave} disabled={saving} style={{ flex: 1, padding: "10px 16px", borderRadius: 10, border: "none", background: T.blue, color: "#fff", fontSize: 13, fontWeight: 400, cursor: "pointer", opacity: saving ? 0.6 : 1 }}>
                 {saving ? "Saving..." : "Save Changes"}
               </button>
             </div>

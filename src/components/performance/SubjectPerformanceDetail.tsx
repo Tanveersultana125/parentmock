@@ -33,10 +33,10 @@ export const SubjectPerformanceDetail = ({ subject, teacher, grade, average, top
 
       {/* Back / Header */}
       <div className="flex items-center gap-3 mb-2">
-        <button onClick={onBack} className="flex items-center gap-1.5 text-slate-400 hover:text-slate-700 transition-all text-sm font-medium">
+        <button onClick={onBack} className="flex items-center gap-1.5 text-slate-400 hover:text-slate-700 transition-all text-sm font-normal">
           <ArrowLeft className="w-4 h-4" />
         </button>
-        <p className="text-[12px] font-semibold text-slate-400 uppercase tracking-widest">
+        <p className="text-[12px] font-normal text-slate-400 uppercase tracking-widest">
           Result of click: "Performance Details - {subject}"
         </p>
       </div>
@@ -48,17 +48,17 @@ export const SubjectPerformanceDetail = ({ subject, teacher, grade, average, top
             <Icon className="w-7 h-7" />
           </div>
           <div>
-            <h1 className="text-xl font-semibold text-slate-900">{subject}</h1>
+            <h1 className="text-xl font-normal text-slate-900">{subject}</h1>
             <p className="text-sm text-slate-400 mt-1">Teacher: {teacher}</p>
           </div>
         </div>
         <div className="flex items-center gap-8 sm:border-l border-slate-100 sm:pl-8">
           <div className="text-center">
-            <p className={`text-3xl font-semibold ${gradeColor}`}>{grade}</p>
+            <p className={`text-3xl font-normal ${gradeColor}`}>{grade}</p>
             <p className="text-xs text-slate-400 mt-1">Current Grade</p>
           </div>
           <div className="text-center">
-            <p className="text-3xl font-semibold text-slate-800">{average}%</p>
+            <p className="text-3xl font-normal text-slate-800">{average}%</p>
             <p className="text-xs text-slate-400 mt-1">Average</p>
           </div>
         </div>
@@ -69,7 +69,7 @@ export const SubjectPerformanceDetail = ({ subject, teacher, grade, average, top
 
         {/* Topic Performance */}
         <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-sm">
-          <h3 className="text-base font-semibold text-slate-800 mb-5">Topic Performance</h3>
+          <h3 className="text-base font-normal text-slate-800 mb-5">Topic Performance</h3>
           <div className="space-y-4">
             {topics.map(topic => {
               const barColor = topic.score >= 75 ? "bg-emerald-500" : topic.score >= 60 ? "bg-amber-400" : "bg-rose-500";
@@ -78,7 +78,7 @@ export const SubjectPerformanceDetail = ({ subject, teacher, grade, average, top
                 <div key={topic.name}>
                   <div className="flex justify-between items-center mb-1.5">
                     <span className="text-sm text-slate-600">{topic.name}</span>
-                    <span className={`text-sm font-semibold ${scoreColor}`}>{topic.score}%</span>
+                    <span className={`text-sm font-normal ${scoreColor}`}>{topic.score}%</span>
                   </div>
                   <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
                     <div className={`h-full ${barColor} rounded-full transition-all duration-700`} style={{ width: `${topic.score}%` }} />
@@ -91,17 +91,17 @@ export const SubjectPerformanceDetail = ({ subject, teacher, grade, average, top
 
         {/* Recent Test Scores */}
         <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-sm">
-          <h3 className="text-base font-semibold text-slate-800 mb-5">Recent Test Scores</h3>
+          <h3 className="text-base font-normal text-slate-800 mb-5">Recent Test Scores</h3>
           <div className="space-y-3 max-h-72 overflow-y-auto">
             {testScores.length > 0 ? testScores.map((test, i) => {
               const badgeStyle = test.status === "success" ? "bg-emerald-50 text-emerald-700 border border-emerald-100" : test.status === "warning" ? "bg-amber-50 text-amber-700 border border-amber-100" : "bg-rose-50 text-rose-700 border border-rose-100";
               return (
                 <div key={i} className="flex items-center justify-between py-3 border-b border-slate-50 last:border-0">
                   <div>
-                    <p className="text-sm font-semibold text-slate-800">{test.name}</p>
+                    <p className="text-sm font-normal text-slate-800">{test.name}</p>
                     <p className="text-xs text-slate-400 mt-1">{test.date}</p>
                   </div>
-                  <span className={`text-xs font-semibold px-3 py-1.5 rounded-lg ${badgeStyle}`}>{test.score}</span>
+                  <span className={`text-xs font-normal px-3 py-1.5 rounded-lg ${badgeStyle}`}>{test.score}</span>
                 </div>
               );
             }) : (
@@ -116,9 +116,9 @@ export const SubjectPerformanceDetail = ({ subject, teacher, grade, average, top
 
         {/* Teacher Feedback */}
         <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-sm">
-          <h3 className="text-base font-semibold text-slate-800 mb-4">Teacher Feedback</h3>
+          <h3 className="text-base font-normal text-slate-800 mb-4">Teacher Feedback</h3>
           <div className="bg-emerald-50 border border-emerald-100 rounded-xl p-5 relative">
-            <span className="text-5xl text-emerald-200 font-semibold absolute -top-2 left-3 select-none leading-none">"</span>
+            <span className="text-5xl text-emerald-200 font-normal absolute -top-2 left-3 select-none leading-none">"</span>
             <p className="text-sm text-slate-700 leading-relaxed relative z-10 pt-3">{feedback}</p>
           </div>
           <div className="flex items-center gap-3 mt-4">
@@ -126,7 +126,7 @@ export const SubjectPerformanceDetail = ({ subject, teacher, grade, average, top
               <User className="w-4 h-4 text-white" />
             </div>
             <div>
-              <p className="text-sm font-semibold text-slate-800">{teacher}</p>
+              <p className="text-sm font-normal text-slate-800">{teacher}</p>
               <p className="text-xs text-slate-400">Class Teacher</p>
             </div>
           </div>
@@ -134,7 +134,7 @@ export const SubjectPerformanceDetail = ({ subject, teacher, grade, average, top
 
         {/* Suggested Resources */}
         <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-sm">
-          <h3 className="text-base font-semibold text-slate-800 mb-4">Suggested Resources</h3>
+          <h3 className="text-base font-normal text-slate-800 mb-4">Suggested Resources</h3>
           <div className="space-y-3">
             {resources.map((res, i) => {
               const ResIcon = res.icon === "FileText" ? FileText : res.icon === "PlayCircle" ? PlayCircle : Star;
@@ -149,10 +149,10 @@ export const SubjectPerformanceDetail = ({ subject, teacher, grade, average, top
                     <ResIcon className={`w-4 h-4 ${iconColor}`} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-semibold text-slate-800 truncate">{res.title}</p>
+                    <p className="text-sm font-normal text-slate-800 truncate">{res.title}</p>
                     <p className="text-xs text-slate-400 truncate">{res.subtitle}</p>
                   </div>
-                  <span className="text-xs font-semibold text-[#1D1D1F] group-hover:underline flex-shrink-0">{res.action}</span>
+                  <span className="text-xs font-normal text-[#1D1D1F] group-hover:underline flex-shrink-0">{res.action}</span>
                 </div>
               );
             })}

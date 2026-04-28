@@ -56,7 +56,7 @@ export function ForecastCard({ data }: ForecastCardProps) {
           <span
             style={{
               fontSize: 9,
-              fontWeight: 600,
+              fontWeight: 400,
               color: T.VIOLET_LIGHT,
               letterSpacing: '1.4px',
               textTransform: 'uppercase',
@@ -70,7 +70,7 @@ export function ForecastCard({ data }: ForecastCardProps) {
       <p
         style={{
           fontSize: 11,
-          fontWeight: 600,
+          fontWeight: 400,
           letterSpacing: '1.6px',
           color: 'rgba(255,255,255,0.55)',
           margin: '0 0 8px',
@@ -93,7 +93,7 @@ export function ForecastCard({ data }: ForecastCardProps) {
         <span
           style={{
             fontSize: 64,
-            fontWeight: 600,
+            fontWeight: 400,
             letterSpacing: '-3.5px',
             lineHeight: 0.9,
             color: '#FFFFFF',
@@ -107,13 +107,13 @@ export function ForecastCard({ data }: ForecastCardProps) {
           #{data.projectedRank}
         </span>
         <div>
-          <p style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.7)', margin: 0 }}>
+          <p style={{ fontSize: 13, fontWeight: 400, color: 'rgba(255,255,255,0.7)', margin: 0 }}>
             {data.rankChange > 0 ? `Up ${data.rankChange} spots` : data.rankChange < 0 ? `Down ${-data.rankChange}` : 'Holding rank'}
           </p>
           <p
             style={{
               fontSize: 11,
-              fontWeight: 500,
+              fontWeight: 400,
               color: 'rgba(255,255,255,0.55)',
               margin: '2px 0 0',
             }}
@@ -156,7 +156,7 @@ export function ForecastCard({ data }: ForecastCardProps) {
               <span
                 style={{
                   fontSize: 13,
-                  fontWeight: 600,
+                  fontWeight: 400,
                   color: s.highlight ? T.VIOLET_LIGHT : '#FFFFFF',
                   letterSpacing: '-0.2px',
                 }}
@@ -188,7 +188,7 @@ export function ForecastCard({ data }: ForecastCardProps) {
           position: 'relative',
         }}
       >
-        <span style={{ fontSize: 11, fontWeight: 500, color: 'rgba(255,255,255,0.5)' }}>
+        <span style={{ fontSize: 11, fontWeight: 400, color: 'rgba(255,255,255,0.5)' }}>
           Confidence
         </span>
         <div
@@ -209,7 +209,7 @@ export function ForecastCard({ data }: ForecastCardProps) {
             }}
           />
         </div>
-        <span style={{ fontSize: 11, fontWeight: 600, color: T.VIOLET_LIGHT }}>
+        <span style={{ fontSize: 11, fontWeight: 400, color: T.VIOLET_LIGHT }}>
           {data.confidence}%
         </span>
       </div>

@@ -251,11 +251,11 @@ const TestsPage = () => {
 
     return (
       <div className="animate-in fade-in duration-500 -mx-3 -mt-3 md:mx-0 md:mt-0"
-        style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif", background: BG, minHeight: "100vh" }}>
+        style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif", background: BG, minHeight: "100vh" }}>
 
         {/* ── Page Head ── */}
         <div className="px-[24px] pt-[16px]">
-          <div className="text-[28px] font-semibold mb-[4px]" style={{ color: T1, letterSpacing: "-0.7px" }}>Tests &amp; Examinations</div>
+          <div className="text-[28px] font-normal mb-[4px]" style={{ color: T1, letterSpacing: "-0.7px" }}>Tests &amp; Examinations</div>
           <div className="text-[12px] font-normal" style={{ color: T3 }}>Track upcoming assessments and latest outcomes</div>
         </div>
 
@@ -280,13 +280,13 @@ const TestsPage = () => {
             style={{ background: "rgba(10,132,255,0.14)", border: "0.5px solid rgba(10,132,255,0.28)" }}>
             <Calendar className="w-[17px] h-[17px]" style={{ color: B1 }} />
           </div>
-          <div className="text-[12px] font-semibold uppercase tracking-[0.08em] relative" style={{ color: T4 }}>Coming Up Next</div>
-          <div className="text-[22px] font-semibold mt-1 leading-[1.15] relative" style={{ color: T1, letterSpacing: "-0.6px" }}>
+          <div className="text-[12px] font-normal uppercase tracking-[0.08em] relative" style={{ color: T4 }}>Coming Up Next</div>
+          <div className="text-[22px] font-normal mt-1 leading-[1.15] relative" style={{ color: T1, letterSpacing: "-0.6px" }}>
             {nextTest?.testName || "No upcoming tests"}
           </div>
           {nextTest && (
             <div className="flex items-center gap-[8px] mt-[12px] relative flex-wrap">
-              <span className="text-[12px] font-semibold" style={{ color: T3, letterSpacing: "-0.1px" }}>
+              <span className="text-[12px] font-normal" style={{ color: T3, letterSpacing: "-0.1px" }}>
                 {formatDate(nextTest.date)}
               </span>
               {/* Only render time when the test doc provides one —
@@ -294,11 +294,11 @@ const TestsPage = () => {
               {nextTest.time && (
                 <>
                   <div className="w-1 h-1 rounded-full" style={{ background: T4 }} />
-                  <span className="text-[12px] font-semibold" style={{ color: T3 }}>{nextTest.time}</span>
+                  <span className="text-[12px] font-normal" style={{ color: T3 }}>{nextTest.time}</span>
                 </>
               )}
               <div className="w-1 h-1 rounded-full" style={{ background: T4 }} />
-              <span className="text-[12px] font-semibold" style={{ color: B1 }}>
+              <span className="text-[12px] font-normal" style={{ color: B1 }}>
                 {getDayDiff(nextTest.date)} day{getDayDiff(nextTest.date) === 1 ? "" : "s"}
               </span>
             </div>
@@ -317,8 +317,8 @@ const TestsPage = () => {
           <div className="absolute -top-10 -right-8 w-[120px] h-[120px] rounded-full pointer-events-none"
             style={{ background: "radial-gradient(circle, rgba(10,132,255,0.05) 0%, transparent 70%)" }} />
           <div className="flex items-center justify-between mb-[16px]">
-            <div className="text-[18px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>Upcoming Tests</div>
-            <div className="text-[12px] font-semibold px-[12px] py-[4px] rounded-full tracking-[0.02em]"
+            <div className="text-[18px] font-normal" style={{ color: T1, letterSpacing: "-0.3px" }}>Upcoming Tests</div>
+            <div className="text-[12px] font-normal px-[12px] py-[4px] rounded-full tracking-[0.02em]"
               style={{ color: B1, background: "rgba(10,132,255,0.10)", border: "0.5px solid rgba(10,132,255,0.18)" }}>
               {upcomingTests.length} test{upcomingTests.length === 1 ? "" : "s"}
             </div>
@@ -327,7 +327,7 @@ const TestsPage = () => {
           {loading ? (
             <div className="flex flex-col items-center gap-3 py-8">
               <Loader2 className="w-8 h-8 animate-spin" style={{ color: B1 }} />
-              <p className="text-xs font-medium" style={{ color: T4 }}>Loading tests…</p>
+              <p className="text-xs font-normal" style={{ color: T4 }}>Loading tests…</p>
             </div>
           ) : upcomingTests.length === 0 ? (
             <div className="flex flex-col items-center gap-[12px] pt-6 pb-4 relative z-10">
@@ -335,7 +335,7 @@ const TestsPage = () => {
                 style={{ background: "rgba(52,199,89,0.10)", border: "0.5px solid rgba(52,199,89,0.22)", boxShadow: "0 0 0 8px rgba(10,132,255,0.04)" }}>
                 <CheckCircle className="w-[26px] h-[26px]" style={{ color: GREEN }} strokeWidth={2.2} />
               </div>
-              <div className="text-[13px] font-medium" style={{ color: T4, letterSpacing: "-0.1px" }}>No upcoming tests</div>
+              <div className="text-[13px] font-normal" style={{ color: T4, letterSpacing: "-0.1px" }}>No upcoming tests</div>
               <div className="text-[12px] font-normal text-center max-w-[200px] leading-[1.55]" style={{ color: T4 }}>
                 You're all clear! New tests will appear here when scheduled by your teacher.
               </div>
@@ -361,31 +361,31 @@ const TestsPage = () => {
                     style={{ background: BG, border: "0.5px solid rgba(10,132,255,0.12)", transitionTimingFunction: "cubic-bezier(0.34,1.56,0.64,1)" }}>
                     <div className="w-11 h-11 rounded-[14px] flex flex-col items-center justify-center gap-[1px] shrink-0"
                       style={dateChipStyle(urgent)}>
-                      <div className="text-[18px] font-semibold text-white leading-none">{d ? d.getDate() : "—"}</div>
-                      <div className="text-[12px] font-semibold uppercase tracking-[0.08em]" style={{ color: "rgba(255,255,255,0.68)" }}>
+                      <div className="text-[18px] font-normal text-white leading-none">{d ? d.getDate() : "—"}</div>
+                      <div className="text-[12px] font-normal uppercase tracking-[0.08em]" style={{ color: "rgba(255,255,255,0.68)" }}>
                         {d ? MONTHS[d.getMonth()] : ""}
                       </div>
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="text-[14px] font-semibold truncate" style={{ color: T1, letterSpacing: "-0.2px", marginBottom: 3 }}>
+                      <div className="text-[14px] font-normal truncate" style={{ color: T1, letterSpacing: "-0.2px", marginBottom: 3 }}>
                         {t.testName || t.subject || "Test"}
                       </div>
                       <div className="flex items-center gap-2 flex-wrap">
                         {t.teacherName && (
-                          <div className="flex items-center gap-[4px] text-[12px] font-medium" style={{ color: T3 }}>
+                          <div className="flex items-center gap-[4px] text-[12px] font-normal" style={{ color: T3 }}>
                             <User className="w-[10px] h-[10px]" strokeWidth={2.5} />
                             <span className="truncate max-w-[90px]">{t.teacherName}</span>
                           </div>
                         )}
                         {(t.time || d) && (
-                          <div className="flex items-center gap-[4px] text-[12px] font-medium" style={{ color: T3 }}>
+                          <div className="flex items-center gap-[4px] text-[12px] font-normal" style={{ color: T3 }}>
                             <Clock className="w-[10px] h-[10px]" strokeWidth={2.5} />
                             {t.time || `${days} day${days === 1 ? "" : "s"}`}
                           </div>
                         )}
                       </div>
                     </div>
-                    <div className="px-[12px] py-1 rounded-full text-[12px] font-semibold shrink-0"
+                    <div className="px-[12px] py-1 rounded-full text-[12px] font-normal shrink-0"
                       style={{ background: tag.bg, color: tag.color, border: `0.5px solid ${tag.border}` }}>
                       {type.label}
                     </div>
@@ -408,8 +408,8 @@ const TestsPage = () => {
           <div className="absolute -top-10 -right-8 w-[120px] h-[120px] rounded-full pointer-events-none"
             style={{ background: "radial-gradient(circle, rgba(10,132,255,0.05) 0%, transparent 70%)" }} />
           <div className="flex items-center justify-between mb-[16px]">
-            <div className="text-[18px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>Recent Results</div>
-            <div className="text-[12px] font-semibold px-[12px] py-[4px] rounded-full tracking-[0.02em]"
+            <div className="text-[18px] font-normal" style={{ color: T1, letterSpacing: "-0.3px" }}>Recent Results</div>
+            <div className="text-[12px] font-normal px-[12px] py-[4px] rounded-full tracking-[0.02em]"
               style={{ color: B1, background: "rgba(10,132,255,0.10)", border: "0.5px solid rgba(10,132,255,0.18)" }}>
               {recentResults.length} result{recentResults.length === 1 ? "" : "s"}
             </div>
@@ -418,7 +418,7 @@ const TestsPage = () => {
           {loading ? (
             <div className="flex flex-col items-center gap-3 py-8">
               <Loader2 className="w-8 h-8 animate-spin" style={{ color: B1 }} />
-              <p className="text-xs font-medium" style={{ color: T4 }}>Loading results…</p>
+              <p className="text-xs font-normal" style={{ color: T4 }}>Loading results…</p>
             </div>
           ) : recentResults.length === 0 ? (
             <div className="flex flex-col items-center gap-[12px] pt-6 pb-4 relative z-10">
@@ -426,7 +426,7 @@ const TestsPage = () => {
                 style={{ background: "rgba(10,132,255,0.08)", border: "0.5px solid rgba(10,132,255,0.16)", boxShadow: "0 0 0 8px rgba(10,132,255,0.04)" }}>
                 <Clock className="w-[26px] h-[26px]" style={{ color: "rgba(10,132,255,0.5)" }} strokeWidth={2.2} />
               </div>
-              <div className="text-[13px] font-medium" style={{ color: T4, letterSpacing: "-0.1px" }}>No results yet</div>
+              <div className="text-[13px] font-normal" style={{ color: T4, letterSpacing: "-0.1px" }}>No results yet</div>
               <div className="text-[12px] font-normal text-center max-w-[200px] leading-[1.55]" style={{ color: T4 }}>
                 Completed test results will be shown here after grading.
               </div>
@@ -448,20 +448,20 @@ const TestsPage = () => {
                     onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.stopPropagation(); openRow(); } }}
                     className="flex items-center gap-[12px] px-[16px] py-[12px] rounded-[18px] active:scale-[0.97] transition-transform cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
                     style={{ background: BG, border: "0.5px solid rgba(10,132,255,0.12)", transitionTimingFunction: "cubic-bezier(0.34,1.56,0.64,1)" }}>
-                    <div className="w-11 h-11 rounded-[14px] flex items-center justify-center text-[16px] font-semibold text-white shrink-0"
+                    <div className="w-11 h-11 rounded-[14px] flex items-center justify-center text-[16px] font-normal text-white shrink-0"
                       style={{ background: grad.bg, boxShadow: grad.shadow }}>
                       {Math.round(pct)}%
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="text-[14px] font-semibold truncate" style={{ color: T1, letterSpacing: "-0.2px", marginBottom: 3 }}>
+                      <div className="text-[14px] font-normal truncate" style={{ color: T1, letterSpacing: "-0.2px", marginBottom: 3 }}>
                         {r.testName || r.subject || "Test"}
                       </div>
                       <div className="flex items-center gap-2 flex-wrap">
-                        <span className="text-[12px] font-medium" style={{ color: T3 }}>
+                        <span className="text-[12px] font-normal" style={{ color: T3 }}>
                           {r.score ?? "—"}/{r.maxScore ?? 100}
                         </span>
-                        <span className="text-[12px] font-medium" style={{ color: T4 }}>·</span>
-                        <span className="text-[12px] font-medium" style={{ color: T3 }}>
+                        <span className="text-[12px] font-normal" style={{ color: T4 }}>·</span>
+                        <span className="text-[12px] font-normal" style={{ color: T3 }}>
                           {formatDate(r.timestamp || r.date)}
                         </span>
                       </div>
@@ -485,8 +485,8 @@ const TestsPage = () => {
           <div className="absolute -top-10 -right-8 w-[120px] h-[120px] rounded-full pointer-events-none"
             style={{ background: "radial-gradient(circle, rgba(10,132,255,0.05) 0%, transparent 70%)" }} />
           <div className="flex items-center justify-between mb-1">
-            <div className="text-[18px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>This Term Performance</div>
-            <div className="text-[12px] font-semibold" style={{ color: B1 }}>{stats.totalTaken} taken</div>
+            <div className="text-[18px] font-normal" style={{ color: T1, letterSpacing: "-0.3px" }}>This Term Performance</div>
+            <div className="text-[12px] font-normal" style={{ color: B1 }}>{stats.totalTaken} taken</div>
           </div>
           <div className="grid grid-cols-2 gap-[12px] mt-3 relative z-10">
             {[
@@ -500,8 +500,8 @@ const TestsPage = () => {
                 <div className="absolute pointer-events-none" style={{ bottom: 8, right: 8 }}>
                   <DecorIcon style={{ width: 56, height: 56, color, opacity: 0.20, strokeWidth: 1.6 }} />
                 </div>
-                <div className="text-[28px] font-semibold leading-none relative" style={{ color, letterSpacing: "-1.2px" }}>{val}</div>
-                <div className="text-[12px] font-semibold uppercase tracking-[0.06em] mt-[8px] relative" style={{ color }}>{label}</div>
+                <div className="text-[28px] font-normal leading-none relative" style={{ color, letterSpacing: "-1.2px" }}>{val}</div>
+                <div className="text-[12px] font-normal uppercase tracking-[0.06em] mt-[8px] relative" style={{ color }}>{label}</div>
               </div>
             ))}
           </div>
@@ -518,8 +518,8 @@ const TestsPage = () => {
             className="mx-5 mt-3 bg-white rounded-[20px] px-[16px] py-4 cursor-pointer active:scale-[0.98] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
             style={{ boxShadow: SH, border: "0.5px solid rgba(10,132,255,0.10)" }}>
             <div className="flex items-center justify-between mb-3">
-              <div className="text-[14px] font-semibold" style={{ color: T1, letterSpacing: "-0.2px" }}>Monthly Activity</div>
-              <div className="text-[12px] font-semibold" style={{ color: B1 }}>{academicYear} Term</div>
+              <div className="text-[14px] font-normal" style={{ color: T1, letterSpacing: "-0.2px" }}>Monthly Activity</div>
+              <div className="text-[12px] font-normal" style={{ color: B1 }}>{academicYear} Term</div>
             </div>
             <div className="flex items-end gap-[8px] h-12 mb-[8px]">
               {monthlyActivity.map((m, i) => {
@@ -536,7 +536,7 @@ const TestsPage = () => {
                         boxShadow: m.isCurrent ? "0 0 0 3px rgba(10,132,255,0.18)" : "none",
                       }}
                     />
-                    <span className="text-[12px] font-semibold uppercase tracking-[0.04em]" style={{ color: m.isCurrent ? B1 : T4 }}>
+                    <span className="text-[12px] font-normal uppercase tracking-[0.04em]" style={{ color: m.isCurrent ? B1 : T4 }}>
                       {m.label}
                     </span>
                   </div>
@@ -614,17 +614,17 @@ const TestsPage = () => {
 
   return (
     <div className="animate-in fade-in duration-500 -m-4 sm:-m-6 md:-m-8 min-h-[calc(100vh-64px)]"
-      style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', sans-serif", background: BG }}>
+      style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif", background: BG }}>
       <div className="w-full px-6 pt-8 pb-10">
 
         {/* ── Toolbar ── */}
         <div className="flex items-start justify-between gap-6 flex-wrap mb-5">
           <div>
-            <div className="text-[28px] font-semibold" style={{ color: T1, letterSpacing: "-0.9px" }}>Tests &amp; Examinations</div>
+            <div className="text-[28px] font-normal" style={{ color: T1, letterSpacing: "-0.9px" }}>Tests &amp; Examinations</div>
             <div className="text-[14px] mt-2 font-normal" style={{ color: T3 }}>Track upcoming assessments and latest outcomes</div>
           </div>
           {stats.totalTaken > 0 && (
-            <div className="px-4 py-[12px] rounded-full text-[13px] font-semibold tracking-[0.02em] whitespace-nowrap"
+            <div className="px-4 py-[12px] rounded-full text-[13px] font-normal tracking-[0.02em] whitespace-nowrap"
               style={{ background: "rgba(10,132,255,0.10)", color: B1, border: "0.5px solid rgba(10,132,255,0.20)" }}>
               {stats.totalTaken} Completed
             </div>
@@ -655,13 +655,13 @@ const TestsPage = () => {
                 <Calendar className="w-[22px] h-[22px]" style={{ color: B1 }} strokeWidth={2.2} />
               </div>
               <div>
-                <div className="text-[12px] font-semibold uppercase tracking-[0.10em]" style={{ color: T4 }}>Coming Up Next</div>
-                <div className="text-[28px] font-semibold mt-1 leading-[1.1]" style={{ color: T1, letterSpacing: "-0.8px" }}>
+                <div className="text-[12px] font-normal uppercase tracking-[0.10em]" style={{ color: T4 }}>Coming Up Next</div>
+                <div className="text-[28px] font-normal mt-1 leading-[1.1]" style={{ color: T1, letterSpacing: "-0.8px" }}>
                   {nextTest?.testName || "No upcoming tests"}
                 </div>
                 <div className="flex items-center gap-2 mt-2 flex-wrap">
                   {nextTest && (
-                    <span className="text-[13px] font-semibold" style={{ color: T3, letterSpacing: "-0.1px" }}>
+                    <span className="text-[13px] font-normal" style={{ color: T3, letterSpacing: "-0.1px" }}>
                       {formatDate(nextTest.date)}
                     </span>
                   )}
@@ -670,7 +670,7 @@ const TestsPage = () => {
                   {nextTest?.time && (
                     <>
                       <div className="w-1 h-1 rounded-full" style={{ background: T4 }} />
-                      <span className="text-[13px] font-semibold" style={{ color: T3, letterSpacing: "-0.1px" }}>
+                      <span className="text-[13px] font-normal" style={{ color: T3, letterSpacing: "-0.1px" }}>
                         {nextTest.time}
                       </span>
                     </>
@@ -682,8 +682,8 @@ const TestsPage = () => {
             {nextTest && (
               <div className="px-6 py-4 rounded-[18px] text-center min-w-[120px] relative"
                 style={{ background: "rgba(10,132,255,0.08)", border: "0.5px solid rgba(10,132,255,0.20)" }}>
-                <div className="text-[28px] font-semibold leading-none" style={{ color: B1, letterSpacing: "-1.4px" }}>{getDayDiff(nextTest.date)}</div>
-                <div className="text-[12px] font-semibold uppercase tracking-widest mt-1" style={{ color: T4 }}>Days Left</div>
+                <div className="text-[28px] font-normal leading-none" style={{ color: B1, letterSpacing: "-1.4px" }}>{getDayDiff(nextTest.date)}</div>
+                <div className="text-[12px] font-normal uppercase tracking-widest mt-1" style={{ color: T4 }}>Days Left</div>
               </div>
             )}
           </div>
@@ -704,8 +704,8 @@ const TestsPage = () => {
             <div className="absolute -top-10 -right-8 w-[140px] h-[140px] rounded-full pointer-events-none"
               style={{ background: "radial-gradient(circle, rgba(10,132,255,0.05) 0%, transparent 70%)" }} />
             <div className="flex items-center justify-between mb-4 relative z-10">
-              <div className="text-[18px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>Upcoming Tests</div>
-              <div className="text-[12px] font-semibold px-3 py-[4px] rounded-full tracking-[0.02em]"
+              <div className="text-[18px] font-normal" style={{ color: T1, letterSpacing: "-0.3px" }}>Upcoming Tests</div>
+              <div className="text-[12px] font-normal px-3 py-[4px] rounded-full tracking-[0.02em]"
                 style={{ color: B1, background: "rgba(10,132,255,0.10)", border: "0.5px solid rgba(10,132,255,0.18)" }}>
                 {upcomingTests.length} test{upcomingTests.length === 1 ? "" : "s"}
               </div>
@@ -714,7 +714,7 @@ const TestsPage = () => {
             {loading ? (
               <div className="flex flex-col items-center gap-3 py-10">
                 <Loader2 className="w-8 h-8 animate-spin" style={{ color: B1 }} />
-                <p className="text-xs font-medium" style={{ color: T4 }}>Loading tests…</p>
+                <p className="text-xs font-normal" style={{ color: T4 }}>Loading tests…</p>
               </div>
             ) : upcomingTests.length === 0 ? (
               <div className="flex flex-col items-center gap-3 py-10 relative z-10">
@@ -722,7 +722,7 @@ const TestsPage = () => {
                   style={{ background: "rgba(52,199,89,0.10)", border: "0.5px solid rgba(52,199,89,0.22)", boxShadow: "0 0 0 8px rgba(10,132,255,0.04)" }}>
                   <CheckCircle className="w-7 h-7" style={{ color: GREEN }} strokeWidth={2.2} />
                 </div>
-                <div className="text-[14px] font-medium" style={{ color: T4, letterSpacing: "-0.1px" }}>No upcoming tests</div>
+                <div className="text-[14px] font-normal" style={{ color: T4, letterSpacing: "-0.1px" }}>No upcoming tests</div>
                 <div className="text-[12px] font-normal text-center max-w-[260px] leading-[1.55]" style={{ color: T4 }}>
                   You're all clear! New tests will appear here when scheduled by your teacher.
                 </div>
@@ -748,31 +748,31 @@ const TestsPage = () => {
                       style={{ background: BG, border: "0.5px solid rgba(10,132,255,0.12)" }}>
                       <div className="w-12 h-12 rounded-[14px] flex flex-col items-center justify-center gap-[1px] shrink-0"
                         style={dateChipStyleD(urgent)}>
-                        <div className="text-[18px] font-semibold text-white leading-none">{d ? d.getDate() : "—"}</div>
-                        <div className="text-[12px] font-semibold uppercase tracking-[0.08em]" style={{ color: "rgba(255,255,255,0.72)" }}>
+                        <div className="text-[18px] font-normal text-white leading-none">{d ? d.getDate() : "—"}</div>
+                        <div className="text-[12px] font-normal uppercase tracking-[0.08em]" style={{ color: "rgba(255,255,255,0.72)" }}>
                           {d ? MONTHS[d.getMonth()] : ""}
                         </div>
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className="text-[14px] font-semibold truncate mb-[4px]" style={{ color: T1, letterSpacing: "-0.2px" }}>
+                        <div className="text-[14px] font-normal truncate mb-[4px]" style={{ color: T1, letterSpacing: "-0.2px" }}>
                           {t.testName || t.subject || "Test"}
                         </div>
                         <div className="flex items-center gap-3 flex-wrap">
                           {t.teacherName && (
-                            <div className="flex items-center gap-1 text-[12px] font-medium" style={{ color: T3 }}>
+                            <div className="flex items-center gap-1 text-[12px] font-normal" style={{ color: T3 }}>
                               <User className="w-[11px] h-[11px]" strokeWidth={2.5} />
                               <span className="truncate max-w-[120px]">{t.teacherName}</span>
                             </div>
                           )}
                           {(t.time || d) && (
-                            <div className="flex items-center gap-1 text-[12px] font-medium" style={{ color: T3 }}>
+                            <div className="flex items-center gap-1 text-[12px] font-normal" style={{ color: T3 }}>
                               <Clock className="w-[11px] h-[11px]" strokeWidth={2.5} />
                               {t.time || `${days} day${days === 1 ? "" : "s"}`}
                             </div>
                           )}
                         </div>
                       </div>
-                      <div className="px-3 py-[4px] rounded-full text-[12px] font-semibold shrink-0"
+                      <div className="px-3 py-[4px] rounded-full text-[12px] font-normal shrink-0"
                         style={{ background: tag.bg, color: tag.color, border: `0.5px solid ${tag.border}` }}>
                         {type.label}
                       </div>
@@ -795,8 +795,8 @@ const TestsPage = () => {
             <div className="absolute -top-10 -right-8 w-[140px] h-[140px] rounded-full pointer-events-none"
               style={{ background: "radial-gradient(circle, rgba(10,132,255,0.05) 0%, transparent 70%)" }} />
             <div className="flex items-center justify-between mb-4 relative z-10">
-              <div className="text-[18px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>Recent Results</div>
-              <div className="text-[12px] font-semibold px-3 py-[4px] rounded-full tracking-[0.02em]"
+              <div className="text-[18px] font-normal" style={{ color: T1, letterSpacing: "-0.3px" }}>Recent Results</div>
+              <div className="text-[12px] font-normal px-3 py-[4px] rounded-full tracking-[0.02em]"
                 style={{ color: B1, background: "rgba(10,132,255,0.10)", border: "0.5px solid rgba(10,132,255,0.18)" }}>
                 {recentResults.length} result{recentResults.length === 1 ? "" : "s"}
               </div>
@@ -805,7 +805,7 @@ const TestsPage = () => {
             {loading ? (
               <div className="flex flex-col items-center gap-3 py-10">
                 <Loader2 className="w-8 h-8 animate-spin" style={{ color: B1 }} />
-                <p className="text-xs font-medium" style={{ color: T4 }}>Loading results…</p>
+                <p className="text-xs font-normal" style={{ color: T4 }}>Loading results…</p>
               </div>
             ) : recentResults.length === 0 ? (
               <div className="flex flex-col items-center gap-3 py-10 relative z-10">
@@ -813,7 +813,7 @@ const TestsPage = () => {
                   style={{ background: "rgba(10,132,255,0.08)", border: "0.5px solid rgba(10,132,255,0.16)", boxShadow: "0 0 0 8px rgba(10,132,255,0.04)" }}>
                   <Clock className="w-7 h-7" style={{ color: "rgba(10,132,255,0.5)" }} strokeWidth={2.2} />
                 </div>
-                <div className="text-[14px] font-medium" style={{ color: T4, letterSpacing: "-0.1px" }}>No results yet</div>
+                <div className="text-[14px] font-normal" style={{ color: T4, letterSpacing: "-0.1px" }}>No results yet</div>
                 <div className="text-[12px] font-normal text-center max-w-[260px] leading-[1.55]" style={{ color: T4 }}>
                   Completed test results will be shown here after grading.
                 </div>
@@ -835,20 +835,20 @@ const TestsPage = () => {
                       onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.stopPropagation(); openRow(); } }}
                       className="flex items-center gap-[12px] px-4 py-[12px] rounded-[18px] transition-all hover:-translate-y-0.5 hover:shadow-md cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
                       style={{ background: BG, border: "0.5px solid rgba(10,132,255,0.12)" }}>
-                      <div className="w-12 h-12 rounded-[14px] flex items-center justify-center text-[18px] font-semibold text-white shrink-0"
+                      <div className="w-12 h-12 rounded-[14px] flex items-center justify-center text-[18px] font-normal text-white shrink-0"
                         style={{ background: grad.bg, boxShadow: grad.shadow }}>
                         {Math.round(pct)}%
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className="text-[14px] font-semibold truncate mb-[4px]" style={{ color: T1, letterSpacing: "-0.2px" }}>
+                        <div className="text-[14px] font-normal truncate mb-[4px]" style={{ color: T1, letterSpacing: "-0.2px" }}>
                           {r.testName || r.subject || "Test"}
                         </div>
                         <div className="flex items-center gap-2 flex-wrap">
-                          <span className="text-[12px] font-medium" style={{ color: T3 }}>
+                          <span className="text-[12px] font-normal" style={{ color: T3 }}>
                             {r.score ?? "—"}/{r.maxScore ?? 100}
                           </span>
-                          <span className="text-[12px] font-medium" style={{ color: T4 }}>·</span>
-                          <span className="text-[12px] font-medium" style={{ color: T3 }}>
+                          <span className="text-[12px] font-normal" style={{ color: T4 }}>·</span>
+                          <span className="text-[12px] font-normal" style={{ color: T3 }}>
                             {formatDate(r.timestamp || r.date)}
                           </span>
                         </div>
@@ -876,8 +876,8 @@ const TestsPage = () => {
             <div className="absolute -top-10 -right-8 w-[140px] h-[140px] rounded-full pointer-events-none"
               style={{ background: "radial-gradient(circle, rgba(10,132,255,0.05) 0%, transparent 70%)" }} />
             <div className="flex items-center justify-between mb-2 relative z-10">
-              <div className="text-[18px] font-semibold" style={{ color: T1, letterSpacing: "-0.3px" }}>This Term Performance</div>
-              <div className="text-[12px] font-semibold" style={{ color: B1 }}>{stats.totalTaken} taken</div>
+              <div className="text-[18px] font-normal" style={{ color: T1, letterSpacing: "-0.3px" }}>This Term Performance</div>
+              <div className="text-[12px] font-normal" style={{ color: B1 }}>{stats.totalTaken} taken</div>
             </div>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-4 relative z-10">
               {[
@@ -891,8 +891,8 @@ const TestsPage = () => {
                   <div className="absolute pointer-events-none" style={{ bottom: 12, right: 12 }}>
                     <DecorIcon style={{ width: 72, height: 72, color, opacity: 0.20, strokeWidth: 1.6 }} />
                   </div>
-                  <div className="text-[42px] font-semibold leading-none relative" style={{ color, letterSpacing: "-1.4px" }}>{val}</div>
-                  <div className="text-[12px] font-semibold uppercase tracking-[0.08em] mt-2 relative" style={{ color }}>{label}</div>
+                  <div className="text-[42px] font-normal leading-none relative" style={{ color, letterSpacing: "-1.4px" }}>{val}</div>
+                  <div className="text-[12px] font-normal uppercase tracking-[0.08em] mt-2 relative" style={{ color }}>{label}</div>
                 </div>
               ))}
             </div>
@@ -909,8 +909,8 @@ const TestsPage = () => {
               className="bg-white rounded-[22px] px-5 py-5 cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/40"
               style={{ boxShadow: SH, border: "0.5px solid rgba(10,132,255,0.10)" }}>
               <div className="flex items-center justify-between mb-4">
-                <div className="text-[15px] font-semibold" style={{ color: T1, letterSpacing: "-0.2px" }}>Monthly Activity</div>
-                <div className="text-[12px] font-semibold" style={{ color: B1 }}>{academicYear}</div>
+                <div className="text-[15px] font-normal" style={{ color: T1, letterSpacing: "-0.2px" }}>Monthly Activity</div>
+                <div className="text-[12px] font-normal" style={{ color: B1 }}>{academicYear}</div>
               </div>
               <div className="flex items-end gap-[8px] h-[100px] mb-2">
                 {monthlyActivityD.map((m, i) => {
@@ -927,7 +927,7 @@ const TestsPage = () => {
                           boxShadow: m.isCurrent ? "0 0 0 3px rgba(10,132,255,0.18)" : "none",
                         }}
                       />
-                      <span className="text-[12px] font-semibold uppercase tracking-[0.04em]" style={{ color: m.isCurrent ? B1 : T4 }}>
+                      <span className="text-[12px] font-normal uppercase tracking-[0.04em]" style={{ color: m.isCurrent ? B1 : T4 }}>
                         {m.label}
                       </span>
                     </div>
@@ -935,8 +935,8 @@ const TestsPage = () => {
                 })}
               </div>
               <div className="flex items-center justify-between pt-3 mt-2" style={{ borderTop: "0.5px solid rgba(10,132,255,0.08)" }}>
-                <span className="text-[12px] font-medium" style={{ color: T4 }}>Tests this month</span>
-                <span className="text-[13px] font-semibold" style={{ color: B1 }}>{monthlyActivityD[monthlyActivityD.length - 1].count}</span>
+                <span className="text-[12px] font-normal" style={{ color: T4 }}>Tests this month</span>
+                <span className="text-[13px] font-normal" style={{ color: B1 }}>{monthlyActivityD[monthlyActivityD.length - 1].count}</span>
               </div>
             </div>
           ) : (
@@ -946,7 +946,7 @@ const TestsPage = () => {
                 style={{ background: "rgba(10,132,255,0.08)", border: "0.5px solid rgba(10,132,255,0.16)" }}>
                 <GraduationCap className="w-8 h-8" style={{ color: "rgba(10,132,255,0.5)" }} strokeWidth={2.2} />
               </div>
-              <div className="text-[14px] font-semibold" style={{ color: T1 }}>No activity yet</div>
+              <div className="text-[14px] font-normal" style={{ color: T1 }}>No activity yet</div>
               <div className="text-[12px]" style={{ color: T4 }}>Monthly test activity will appear here</div>
             </div>
           )}

@@ -17,7 +17,7 @@ export const OfflineBanner = () => {
     <div style={{
       position: "fixed", top: 0, left: 0, right: 0, zIndex: 9999,
       background: "#FF3B30", color: "#fff",
-      padding: "8px 16px", fontSize: 13, fontWeight: 600,
+      padding: "8px 16px", fontSize: 13, fontWeight: 400,
       textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
     }}>
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round">
